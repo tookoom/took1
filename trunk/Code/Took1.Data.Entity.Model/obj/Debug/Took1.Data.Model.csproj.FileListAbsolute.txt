@@ -1,0 +1,13 @@
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Data.Model.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Data.Model.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\obj\Debug\Took1.Data.Model.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\obj\Debug\Took1.Data.Model.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Data.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Data.Entity.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Diagnostics.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Data.Entity.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Data.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Model\bin\Debug\Took1.Diagnostics.pdb

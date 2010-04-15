@@ -1,0 +1,5 @@
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Entity\bin\Debug\Took1.Data.Entity.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Entity\bin\Debug\Took1.Data.Entity.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Entity\obj\Debug\Took1.Data.Entity.dll
+C:\Users\andre\Documents\Projects\Took1\Code\Took1.Data.Entity\obj\Debug\Took1.Data.Entity.pdb
