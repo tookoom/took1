@@ -1,0 +1,16 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Took1.PicDeveloper.Control.DialogWindow"
+	x:Name="UserControl"
+	d:DesignWidth="800" d:DesignHeight="445.5" MouseDown="UserControl_MouseDown">
+
+	<Grid x:Name="LayoutRoot">
+		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Margin="0,0,0,0" Opacity="0.745"/>
+		<ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" x:Name="contentPresenteMain" MouseDown="contentPresenteMain_MouseDown" Margin="50,50,50,70"/>
+		<TextBlock VerticalAlignment="Bottom" Height="Auto" Text="(Clique para retornar)" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="24" Margin="0,0,0,20" x:Name="textBlockReturnMessage"/>
+	</Grid>
+</UserControl>

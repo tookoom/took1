@@ -1,0 +1,177 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:Took1_Net="clr-namespace:Took1.Net;assembly=Took1" xmlns:local="clr-namespace:Took1.MailSender" x:Class="Took1.MailSender.MainWindow"
+    Title="Took1.MailSender" Height="400" Width="800">
+	<Window.Resources>
+		<local:OutputMessageTypeToColorConverter x:Key="OutputMessageTypeToColorConverter"/>
+		<local:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
+		<local:OutputMessageCollection x:Key="OutputMessageCollectionDataSource" d:IsDataSource="True"/>
+		<Took1_Net:SmtpClient x:Key="SmtpClientDataSource" d:IsDataSource="True"/>
+		<Took1_Net:NetworkCredential x:Key="NetworkCredentialDataSource" d:IsDataSource="True"/>
+		<DataTemplate x:Key="NetworkCredentialDataTemplate">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" MinWidth="20"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBlock VerticalAlignment="Center" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Margin="4,0" Text="UserName:"/>
+				<TextBlock VerticalAlignment="Center" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Margin="4,0" Grid.Row="1" Text="Password:"/>
+				<TextBlock Margin="4,0" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"><Run Text="Domain:"/></TextBlock>
+				<TextBox HorizontalAlignment="Stretch" Margin="4,2" Text="{Binding UserName, Mode=TwoWay}" TextWrapping="Wrap" d:LayoutOverrides="Height" VerticalAlignment="Center" Grid.Column="1"/>
+				<TextBox HorizontalAlignment="Stretch" Margin="4,2" Text="{Binding Password, Mode=TwoWay}" d:LayoutOverrides="Height" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+				<TextBox HorizontalAlignment="Stretch" Margin="4,2" Text="{Binding Domain, Mode=TwoWay}" TextWrapping="Wrap" d:LayoutOverrides="Height" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+			</Grid>
+		</DataTemplate>
+		<DataTemplate x:Key="SmtpClientDataTemplate">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" MinWidth="20"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBlock VerticalAlignment="Center" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Margin="4,0" Text="Host:"/>
+				<TextBlock VerticalAlignment="Center" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Margin="4,0" Grid.Row="1" Text="Port:"/>
+				<TextBox HorizontalAlignment="Stretch" Margin="4,2" Text="{Binding Host, Mode=TwoWay}" TextWrapping="Wrap" d:LayoutOverrides="Height" VerticalAlignment="Center" Grid.Column="1"/>
+				<TextBox HorizontalAlignment="Stretch" Margin="4,2" Text="{Binding Port, Mode=TwoWay}" TextWrapping="Wrap" d:LayoutOverrides="Height" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+				<CheckBox HorizontalAlignment="Stretch" Margin="4,2" Content="Enable SSL" IsChecked="{Binding EnableSsl, Mode=TwoWay}" d:LayoutOverrides="Height" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+			</Grid>
+		</DataTemplate>
+		<DataTemplate x:Key="OutputMessageTemplate">
+			<Border Width="Auto" Height="Auto" BorderBrush="#FFEAEAEA" BorderThickness="1" Margin="0,1">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" MinWidth="15"/>
+						<ColumnDefinition Width="Auto" MinWidth="15"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Text="{Binding Data}" VerticalAlignment="Center" Foreground="{Binding Path=OutputMessageType, Converter={StaticResource OutputMessageTypeToColorConverter}, Mode=OneTime}" d:LayoutOverrides="Width" Grid.ColumnSpan="2" Grid.Column="1" Margin="4,2"/>
+					<TextBlock Text="{Binding Path=Timestamp, Converter={StaticResource DateTimeToStringConverter}, Mode=Default}" VerticalAlignment="Center" Foreground="{Binding Path=OutputMessageType, Converter={StaticResource OutputMessageTypeToColorConverter}, Mode=OneTime}" d:LayoutOverrides="Width" Grid.ColumnSpan="1" Margin="4,0"/>
+				</Grid>
+			</Border>
+		</DataTemplate>
+	</Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource OutputMessageCollectionDataSource}}">
+        
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+    	<Grid.RowDefinitions>
+    		<RowDefinition/>
+    		<RowDefinition Height="Auto" MinHeight="26"/>
+    	</Grid.RowDefinitions>
+    	<Grid x:Name="gridOutput" Margin="182.529,0,0,0" Grid.RowSpan="2">
+    		<Grid.RowDefinitions>
+    			<RowDefinition Height="0.496*"/>
+    			<RowDefinition Height="3"/>
+    			<RowDefinition Height="0.504*"/>
+    		</Grid.RowDefinitions>
+    		<GridSplitter HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" d:IsLocked="True"/>
+    	</Grid>
+        
+    	<TabControl Margin="4,4,4,2">
+    		<TabItem Header="Connection">
+    			<Grid x:Name="gridCommand" Margin="0" >
+    				<Grid.RowDefinitions>
+    					<RowDefinition Height="Auto" MinHeight="50"/>
+    					<RowDefinition Height="26"/>
+    					<RowDefinition Height="Auto" MinHeight="50"/>
+    				</Grid.RowDefinitions>
+    				<GroupBox x:Name="groupBoxSmtpClient" HorizontalAlignment="Left" VerticalAlignment="Top" Header="Servidor">
+    					<ContentControl x:Name="contentSmtpClient" Margin="0" DataContext="{Binding Source={StaticResource SmtpClientDataSource}}" Content="{Binding Mode=OneWay}" ContentTemplate="{DynamicResource SmtpClientDataTemplate}" VerticalAlignment="Center" Width="574" />
+    				</GroupBox>
+    				<CheckBox x:Name="checkBoxAuthenticationRequired" VerticalAlignment="Center" Content="Authentication Required" Grid.Row="1" Margin="4,0" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+    				<GroupBox x:Name="groupBoxNetworkCredential" VerticalAlignment="Top" Header="Autenticação" Grid.Row="2">
+    					<ContentControl x:Name="contentCredential" Margin="0" DataContext="{Binding Source={StaticResource NetworkCredentialDataSource}}" ContentTemplate="{DynamicResource NetworkCredentialDataTemplate}" VerticalAlignment="Center" Content="{Binding Mode=OneWay}" />
+    				</GroupBox>
+    			</Grid>
+    		</TabItem>
+    		<TabItem Header="Mail">
+    			<Grid>
+    				<Grid.ColumnDefinitions>
+    					<ColumnDefinition Width="1*"/>
+    					<ColumnDefinition Width="1*"/>
+    				</Grid.ColumnDefinitions>
+    				<GroupBox Margin="2,0" Header="Info">
+    					<Grid Margin="0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition MinWidth="30" Width="Auto"/>
+    							<ColumnDefinition/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto" MinHeight="15"/>
+    							<RowDefinition Height="Auto" MinHeight="15"/>
+    							<RowDefinition Height="Auto" MinHeight="15"/>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto" MinHeight="15"/>
+    						</Grid.RowDefinitions>
+    						<TextBlock Margin="4,2" VerticalAlignment="Center" Text="Sender Name:" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+    						<TextBlock Margin="4,2" Grid.Row="1" Text="Sender Mail:" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+    						<TextBlock Margin="4,2" Grid.Row="2" Text="To:" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+    						<TextBlock Margin="4,2" Grid.Row="4" Text="Subject:" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+    						<TextBox x:Name="textBoxSenderName" Margin="4,2" VerticalAlignment="Center" Grid.Column="1" Text="TextBox" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+    						<TextBox x:Name="textBoxSenderMail" Margin="4,2" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Text="TextBox" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+    						<Grid Margin="4,2,4,4" Grid.Column="1" Grid.Row="2" d:LayoutOverrides="Height">
+    							<Grid.ColumnDefinitions>
+    								<ColumnDefinition/>
+    								<ColumnDefinition MinWidth="10" Width="Auto"/>
+    							</Grid.ColumnDefinitions>
+    							<TextBox x:Name="textBoxMailRecipient" Margin="0,0,2,0" Text="TextBox" TextWrapping="Wrap" d:LayoutOverrides="Width"/>
+    							<Button HorizontalAlignment="Left" Margin="2,0,0,0" VerticalAlignment="Center" Width="25" Content="..." Grid.Column="1"/>
+    						</Grid>
+    						<TextBox x:Name="textBoxMailSubject" Margin="4,2" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" Text="TextBox" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+    						<ListBox x:Name="listBoxMailRecipients" Margin="4,2" Grid.ColumnSpan="2" Grid.Row="3"/>
+    					</Grid>
+    				</GroupBox>
+    				<GroupBox Margin="2,0" Header="Message" Grid.Column="1">
+    					<Grid>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="26"/>
+    						</Grid.RowDefinitions>
+    						<TextBox x:Name="textBoxMessageContent" Margin="2" Text="TextBox" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
+    						<Grid Margin="0" Grid.Row="1">
+    							<Grid.ColumnDefinitions>
+    								<ColumnDefinition MinWidth="20" Width="Auto"/>
+    								<ColumnDefinition/>
+    								<ColumnDefinition MinWidth="20" Width="Auto"/>
+    								<ColumnDefinition MinWidth="20" Width="Auto"/>
+    							</Grid.ColumnDefinitions>
+    							<CheckBox x:Name="checkBoxMessageIsHtml" Margin="4,0" VerticalAlignment="Center" Content="Html" Grid.Row="1"/>
+    							<Button x:Name="buttonMessageClear" Margin="4,0" VerticalAlignment="Center" Width="40" Content="Clear" Grid.Column="2" Click="buttonMessageClear_Click" d:LayoutOverrides="Height"/>
+    							<Button x:Name="buttonMessageLoad" Margin="4,0" VerticalAlignment="Center" Width="40" Content="Load" Grid.Column="3" Click="buttonMessageLoad_Click" d:LayoutOverrides="Height"/>
+    						</Grid>
+    					</Grid>
+    				</GroupBox>
+    			</Grid>
+    		</TabItem>
+    		<TabItem Header="Debug">
+    			<Grid>
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    				</Grid.RowDefinitions>
+    				<Grid.ColumnDefinitions>
+    					<ColumnDefinition/>
+    				</Grid.ColumnDefinitions>
+    				<GroupBox Margin="4,0" Header="Output">
+    					<ScrollViewer VerticalScrollBarVisibility="Auto">
+    						<ItemsControl x:Name="outputControl" ItemTemplate="{DynamicResource OutputMessageTemplate}" ItemsSource="{Binding Source = {StaticResource SmtpClientDataSource}}" MouseRightButtonDown="outputControl_MouseRightButtonDown"/>
+    					</ScrollViewer>
+    				</GroupBox>
+    			</Grid>
+    		</TabItem>
+    	</TabControl>
+    	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Orientation="Horizontal">
+    		<Button x:Name="buttonSendMail" HorizontalAlignment="Center" Margin="0,2,0,4" VerticalAlignment="Center" Width="150" Content="Send" Click="buttonSendMail_Click"/>
+    	</StackPanel>
+        
+    </Grid>
+</Window>
