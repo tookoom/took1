@@ -1,5 +1,0 @@
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Diagnostics\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Diagnostics\bin\Debug\Took1.Diagnostics.dll
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Diagnostics\bin\Debug\Took1.Diagnostics.pdb
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Diagnostics\obj\Debug\Took1.Diagnostics.dll
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Diagnostics\obj\Debug\Took1.Diagnostics.pdb

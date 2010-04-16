@@ -20,6 +20,7 @@ using Took1.Data;
 //using System.ComponentModel;
 using Took1.PicDeveloper.Control;
 using Took1.Data.Converter;
+using Took1.Data.Entity.Model;
 
 namespace Took1.PicDeveloper
 {
