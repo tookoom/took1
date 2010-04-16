@@ -1,5 +1,0 @@
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Devices\bin\Debug\Took1.Devices.dll
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Devices\bin\Debug\Took1.Devices.pdb
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Devices\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Devices\obj\Debug\Took1.Devices.dll
-C:\Users\andre\Documents\Projects\Took1\Code\Took1.Devices\obj\Debug\Took1.Devices.pdb

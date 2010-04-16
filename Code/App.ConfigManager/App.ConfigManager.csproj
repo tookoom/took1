@@ -94,6 +94,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Took1.Data.Entity.Model\Took1.Data.Entity.Model.csproj">
+      <Project>{5EA1FFA2-E0CA-4435-B3F4-57D7A5A42613}</Project>
+      <Name>Took1.Data.Entity.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Took1.Data\Took1.Data.csproj">
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
       <Name>Took1.Data</Name>

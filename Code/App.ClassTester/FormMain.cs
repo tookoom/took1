@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using Took1.Data.Source;
-using Took1.Data.Model;
 using Took1.Data.Entity;
+using Took1.Data.Entity.Source;
+using Took1.Data.Entity.Model;
 
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Took1.Data;
 using System.Collections.ObjectModel;
+using Took1.Data.Entity.Model;
 
 namespace Took1.ConfigManager
 {

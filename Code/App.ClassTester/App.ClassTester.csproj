@@ -103,6 +103,14 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Took1.Data.Entity.Model\Took1.Data.Entity.Model.csproj">
+      <Project>{5EA1FFA2-E0CA-4435-B3F4-57D7A5A42613}</Project>
+      <Name>Took1.Data.Entity.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Took1.Data.Entity.Source\Took1.Data.Entity.Source.csproj">
+      <Project>{6079DE7A-D618-4430-8B7C-98319733D29F}</Project>
+      <Name>Took1.Data.Entity.Source</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Took1.Data.Entity\Took1.Data.Entity.csproj">
       <Project>{6AA687CE-EC1E-4FCB-857D-253C75E47B5B}</Project>
       <Name>Took1.Data.Entity</Name>

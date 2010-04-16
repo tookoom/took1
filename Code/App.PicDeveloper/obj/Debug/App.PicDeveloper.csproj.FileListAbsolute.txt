@@ -23,3 +23,7 @@ C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\obj\Debug\Took1.Pi
 C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\obj\Debug\App.PicDeveloper.csproj.GenerateResource.Cache
 C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\obj\Debug\Took1.PicDeveloper.exe
 C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\obj\Debug\Took1.PicDeveloper.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\bin\Debug\Took1.Data.Entity.Model.dll
+C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\bin\Debug\Took1.Data.Entity.dll
+C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\bin\Debug\Took1.Data.Entity.Model.pdb
+C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\bin\Debug\Took1.Data.Entity.pdb
