@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="Took1.Silverlight.LifeManager.Control.TransactionControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="450" Height="300" 
+	xmlns:Took1_Silverlight_LifeManager="clr-namespace:Took1.Silverlight.LifeManager;assembly=Took1.Silverlight.LifeManager" 
+	xmlns:Took1_Silverlight_LifeManager_Data_Collection="clr-namespace:Took1.Silverlight.LifeManager.Data.Collection;assembly=Took1.Silverlight.LifeManager.Data" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+	xmlns:Took1_Silverlight_LifeManager_Data_Model="clr-namespace:Took1.Silverlight.LifeManager.Data.Model;assembly=Took1.Silverlight.LifeManager.Data" 
+	xmlns:System="clr-namespace:System;assembly=mscorlib" 
+	xmlns:basics="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls">
+	<UserControl.Resources>
+		<Took1_Silverlight_LifeManager_Data_Collection:TransactionAccountCollection x:Key="TransactionAccountCollectionDataSource" d:IsDataSource="True"/>
+		<Took1_Silverlight_LifeManager:TransactionTypeToBoolConverter x:Key="TransactionTypeToBoolConverter"/>
+		<Took1_Silverlight_LifeManager_Data_Collection:TransactionCollection x:Key="TransactionDataSource" d:IsDataSource="True"/>
+		<Took1_Silverlight_LifeManager_Data_Model:Transaction x:Key="SelectedTransactionDataSource" d:IsDataSource="True"/>
+		<System:Int32 x:Key="SelectedIndexDataSource" d:IsDataSource="True"/>
+		<Took1_Silverlight_LifeManager_Data_Collection:AccountCollection x:Key="AccountCollectionDataSource" d:IsDataSource="True"/>
+		<DataTemplate x:Key="AccountCollectionTemplate">
+			<StackPanel>
+				<TextBlock Text="{Binding Name}"/>
+			</StackPanel>
+		</DataTemplate>
+		<DataTemplate x:Key="TransactionTemplate">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="75"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="28"/>
+					<RowDefinition Height="28"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<TextBlock HorizontalAlignment="Stretch" Margin="4,0,4,0" VerticalAlignment="Center" Text="Nome:" TextWrapping="Wrap"/>
+				<TextBox Grid.Row="0" Text="{Binding Name}" Margin="4,0,4,0" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="1" FontWeight="Bold" FontFamily="Portable User Interface"/>
+				<TextBlock HorizontalAlignment="Stretch" Margin="4,0,4,0" VerticalAlignment="Center" Grid.Row="1" Text="Data:" TextWrapping="Wrap"/>
+				<basics:DatePicker Grid.Row="1" SelectedDate="{Binding EntryTimeStamp, Mode=TwoWay}" DisplayDate="{Binding EntryTimeStamp, Mode=TwoWay}" Margin="4,0,4,0" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="1" FontWeight="Bold" FontFamily="Portable User Interface"/>
+				<TextBlock HorizontalAlignment="Stretch" Margin="4,0,4,0" VerticalAlignment="Center" Grid.Row="2" Text="Categoria:" TextWrapping="Wrap"/>
+				<ComboBox Grid.Row="2" SelectedItem="{Binding Category.Name}" Margin="4,0,4,0" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="1" FontWeight="Bold" FontFamily="Portable User Interface"/>
+			</Grid>
+		</DataTemplate>
+		<Took1_Silverlight_LifeManager_Data_Model:TransactionAccount x:Key="TransactionAccountDataSource" d:IsDataSource="True"/>
+		<DataTemplate x:Key="TransactionAccountTemplate">
+			<Border Height="Auto" Width="Auto" BorderBrush="#FFCCCCCC" BorderThickness="1,1,1,1">
+				<Grid Height="Auto" MinHeight="50" MinWidth="250" Width="Auto">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="0.44*"/>
+						<RowDefinition Height="0.56*"/>
+					</Grid.RowDefinitions>
+					<TextBlock HorizontalAlignment="Stretch" Margin="4,2,4,2" VerticalAlignment="Center" FontFamily="Portable User Interface" FontWeight="Bold" Text="{Binding Account.Name, Mode=OneWay}" TextWrapping="Wrap"/>
+					<TextBox HorizontalAlignment="Stretch" Margin="4,2,4,2" VerticalAlignment="Center" Grid.Row="1" Text="{Binding Value, Mode=TwoWay}" TextAlignment="Right" TextWrapping="Wrap"/>
+				</Grid>
+			</Border>
+		</DataTemplate>
+	</UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White" DataContext="{Binding Source={StaticResource TransactionAccountCollectionDataSource}}">
+
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="28"/>
+    		<RowDefinition Height="0.86*"/>
+    		<RowDefinition Height="0.14*"/>
+    		<RowDefinition Height="30"/>
+    	</Grid.RowDefinitions>
+    	<Grid Height="Auto" x:Name="gridSelector" Width="Auto" Margin="0,0,0,0" Grid.Row="3">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="30"/>
+    			<ColumnDefinition Width="25"/>
+    			<ColumnDefinition Width="*"/>
+    			<ColumnDefinition Width="35"/>
+    			<ColumnDefinition Width="25"/>
+    			<ColumnDefinition Width="30"/>
+    		</Grid.ColumnDefinitions>
+    		<Button HorizontalAlignment="Stretch" Margin="2,0,2,0" VerticalAlignment="Center" Grid.Column="5" Content="&gt;&gt;" x:Name="buttonGoToLastTransaction" Click="buttonGoToLastTransaction_Click"/>
+    		<Button HorizontalAlignment="Stretch" Margin="2,0,2,0" VerticalAlignment="Center" Grid.Column="1" Content="&lt;" x:Name="buttonGoToPreviousTransaction" Click="buttonGoToPreviousTransaction_Click"/>
+    		<Button HorizontalAlignment="Stretch" Margin="2,0,2,0" VerticalAlignment="Center" Grid.Column="4" Content="&gt;" Click="buttonGoToNextTransaction_Click" x:Name="buttonGoToNextTransaction"/>
+    		<Button HorizontalAlignment="Stretch" Margin="2,0,2,0" VerticalAlignment="Center" Content="&lt;&lt;" Click="buttonGoToFirstTransaction_Click" x:Name="buttonGoToFirstTransaction"/>
+    		<Slider Margin="2,0,2,0" x:Name="sliderTransactions" VerticalAlignment="Center" Grid.Column="2" Maximum="{Binding Mode=TwoWay, Path=Count}" Minimum="1" SmallChange="1" ValueChanged="sliderTransactions_ValueChanged"/>
+    		<TextBox HorizontalAlignment="Stretch" Margin="2,0,2,0" VerticalAlignment="Center" Grid.Column="3" Text="000" TextWrapping="Wrap" x:Name="textBoxTransactionIndex" TextAlignment="Right" IsReadOnly="True" AcceptsReturn="False"/>
+    	</Grid>
+    	<Border Margin="0,0,0,2" BorderThickness="1,1,1,1" BorderBrush="#FFCCCCCC">
+    		<StackPanel Width="Auto" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+    			<RadioButton Content="Entrada" Margin="4,0,4,0" x:Name="radioButtonIn" FontWeight="Bold" FontFamily="Portable User Interface" VerticalAlignment="Center" Checked="radioButtonIn_Checked" IsChecked="False"/>
+    			<RadioButton Content="Saída" Margin="4,0,4,0" x:Name="radioButtonOut" FontWeight="Bold" FontFamily="Portable User Interface" VerticalAlignment="Center" Checked="radioButtonOut_Checked" IsChecked="True"/>
+    			<Button Content="Novo" VerticalAlignment="Center" Width="100" x:Name="buttonNewTransaction" Margin="4,0,4,0"/>
+    			<Button Content="Deleta" x:Name="buttonDeleteTransaction" Width="100" Margin="4,0,4,0"/>
+    		</StackPanel>
+    	</Border>
+    	<Border Grid.Row="1" BorderThickness="1,1,1,1" BorderBrush="#FFCCCCCC" Grid.RowSpan="2">
+    		<Grid>
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="80"/>
+    				<RowDefinition/>
+    				<RowDefinition Height="40"/>
+    			</Grid.RowDefinitions>
+    			<ContentControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{Binding Mode=OneWay, Source={StaticResource SelectedTransactionDataSource}}" ContentTemplate="{StaticResource TransactionTemplate}" x:Name="contentControlTransaction" BorderThickness="0,0,0,0" Height="Auto" Width="Auto"/>
+    			<Border Margin="0" BorderThickness="1,1,1,1" BorderBrush="#FFCCCCCC" Grid.Row="2">
+    				<StackPanel d:LayoutOverrides="Height" Width="Auto" Margin="2" Orientation="Horizontal">
+    					<Border Width="Auto" Background="{StaticResource LightGrayBackground}" BorderBrush="#FFCCCCCC" BorderThickness="1,1,1,1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,2,0,2">
+    						<StackPanel Margin="0,0,0,0" Width="Auto" Orientation="Horizontal">
+    							<Button x:Name="buttonNewAccount" FontSize="10" Content="New" Click="buttonNewTransactionAccount_Click" Margin="2,2,2,2" Width="50" d:LayoutOverrides="Height"/>
+    							<ComboBox x:Name="comboBoxAccount" ItemTemplate="{StaticResource AccountCollectionTemplate}" ItemsSource="{Binding Mode=OneWay, Source={StaticResource AccountCollectionDataSource}}" Margin="2,2,2,2" Width="Auto" MinWidth="150"/>
+    						</StackPanel>
+    					</Border>
+    					<Button Height="Auto" Margin="0,2,0,2" x:Name="buttonDeleteAccount" FontSize="10" Content="Delete" Click="buttonDeleteTransactionAccount_Click" Width="50"/>
+    					<Button Height="Auto" Margin="0,2,0,2" x:Name="buttonSaveAccount" FontSize="10" Content="Save" Click="buttonSaveTransactionAccount_Click" Width="50"/>
+    				</StackPanel>
+    			</Border>
+    			<ListBox x:Name="listBoxTransactionAccount" Margin="2" ItemTemplate="{StaticResource TransactionAccountTemplate}" ItemsSource="{Binding}" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" SelectionChanged="listBoxTransactionAccount_SelectionChanged"/>
+
+    		</Grid>
+
+    	</Border>
+
+    </Grid>
+</UserControl>
