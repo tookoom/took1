@@ -1,0 +1,20 @@
+<publishData>
+  <publishTarget publishUrl="C:\Users\andre\Documents\Visual Studio 2008\Projects\Took1\Took1.Web.Cloud\Publish\">
+    <file relUrl="bin/System.Web.DomainServices.dll" publishTime="07/06/2009 13:26:44" />
+    <file relUrl="ClientBin/Took1.Silverlight.Cloud.TestApp.xap" publishTime="09/10/2009 18:43:44" />
+    <file relUrl="Took1.Silverlight.Cloud.TestAppTestPage.html" publishTime="09/10/2009 18:19:49" />
+    <file relUrl="Silverlight.js" publishTime="09/10/2009 18:19:49" />
+    <file relUrl="bin/Took1.Web.Cloud.dll" publishTime="09/10/2009 18:27:41" />
+    <file relUrl="bin/System.ComponentModel.DataAnnotations.dll" publishTime="07/06/2009 13:26:44" />
+    <file relUrl="bin/System.Web.DomainServices.xml" publishTime="07/06/2009 13:25:24" />
+    <file relUrl="Web.config" publishTime="09/10/2009 18:36:11" />
+    <file relUrl="Default.aspx" publishTime="09/10/2009 18:17:33" />
+    <file relUrl="Took1.Silverlight.Cloud.TestAppTestPage.aspx" publishTime="09/10/2009 18:19:49" />
+    <file relUrl="bin/System.Web.DomainServices.Providers.xml" publishTime="07/06/2009 13:25:28" />
+    <file relUrl="bin/System.Web.Ria.dll" publishTime="07/06/2009 13:26:44" />
+    <file relUrl="bin/System.ComponentModel.DataAnnotations.xml" publishTime="06/12/2009 14:55:02" />
+    <file relUrl="bin/System.Web.DomainServices.Providers.dll" publishTime="07/06/2009 13:26:44" />
+    <file relUrl="bin/Took1.Web.Cloud.pdb" publishTime="09/10/2009 18:27:41" />
+    <file relUrl="bin/System.Web.Ria.xml" publishTime="07/06/2009 13:25:30" />
+  </publishTarget>
+</publishData>
