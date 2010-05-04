@@ -1,4 +1,4 @@
-﻿namespace Took1.ClassTester
+﻿namespace TK1.ClassTester
 {
     partial class FormMain
     {

@@ -11,11 +11,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Took1.Net;
-using Took1.Data;
-using Took1.Data.Presentation;
+using TK1.Net;
+using TK1.Data;
+using TK1.Data.Presentation;
 
-namespace Took1.MailSender
+namespace TK1.MailSender
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Took1.ConfigManager.Properties
+namespace TK1.ConfigManager.Properties
 {
 
 

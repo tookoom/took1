@@ -9,9 +9,9 @@
 
 
 
-using Took1.Diagnostics;
+using TK1.Diagnostics;
 using System;
-namespace Took1.Diagnostics {
+namespace TK1.Diagnostics {
     /// <summary>
     /// Gerenciador de Erros
     /// </summary>

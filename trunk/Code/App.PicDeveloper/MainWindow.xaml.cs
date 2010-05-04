@@ -12,17 +12,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Interop;
-using Took1.PicDeveloper.Data;
+using TK1.PicDeveloper.Data;
 using System.IO;
-using Took1.PicDeveloper.Collection;
-using Took1.Xml;
-using Took1.Data;
+using TK1.PicDeveloper.Collection;
+using TK1.Xml;
+using TK1.Data;
 //using System.ComponentModel;
-using Took1.PicDeveloper.Control;
-using Took1.Data.Converter;
-using Took1.Data.Entity.Model;
+using TK1.PicDeveloper.Control;
+using TK1.Data.Converter;
+using TK1.Data.Entity.Model;
 
-namespace Took1.PicDeveloper
+namespace TK1.PicDeveloper
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
@@ -331,25 +331,25 @@ namespace Took1.PicDeveloper
             {
                 Name = ParameterNames.ButtonIconCamera,
                 Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\Took1\PicDeveloper\Image\Camera.png"
+                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Camera.png"
             });
             parameterCollection.Add(new Parameter
             {
                 Name = ParameterNames.ButtonIconCD,
                 Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\Took1\PicDeveloper\Image\CD.png"
+                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\CD.png"
             });
             parameterCollection.Add(new Parameter
             {
                 Name = ParameterNames.ButtonIconFolder,
                 Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\Took1\PicDeveloper\Image\Folder.png"
+                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Folder.png"
             });
             parameterCollection.Add(new Parameter
             {
                 Name = ParameterNames.ButtonIconPenDrive,
                 Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\Took1\PicDeveloper\Image\PenDrive.png"
+                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\PenDrive.png"
             });
 
             #endregion
@@ -400,13 +400,13 @@ namespace Took1.PicDeveloper
             {
                 Name = ParameterNames.BottonLeftImage,
                 Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\Took1\PicDeveloper\Image\Easter Bunny.jpg"
+                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Easter Bunny.jpg"
             });
             parameterCollection.Add(new Parameter
             {
                 Name = ParameterNames.TopLeftImage,
                 Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\Took1\PicDeveloper\Image\porco.bmp"
+                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\porco.bmp"
             });
             
             #endregion
@@ -675,9 +675,6 @@ namespace Took1.PicDeveloper
             catch (Exception exception) { MessageBox.Show(exception.Message, "ERRO!!!"); }
 
         }
-
-
-
 
         //public static string PicTypeToString(PictureType Type)
         //{

@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace Took1.Life
+namespace TK1.Life
 {
     /// <summary>
     /// Interaction logic for App.xaml

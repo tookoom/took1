@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Took1.Xml
+namespace TK1.Xml
 {
     public class XmlLoader
     {

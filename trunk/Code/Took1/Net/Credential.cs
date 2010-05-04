@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Took1.Net
+namespace TK1.Net
 {
     /// <summary>
     /// Dados para autenticação de usuário junto ao servidor

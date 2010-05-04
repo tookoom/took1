@@ -9,7 +9,7 @@
 
 
 using System;
-namespace Took1.Diagnostics {
+namespace TK1.Diagnostics {
     /// <summary>
     /// Argumentos para eventos de ErrorManager
     /// </summary>

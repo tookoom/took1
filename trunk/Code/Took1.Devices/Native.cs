@@ -5,7 +5,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Took1.Devices
+namespace TK1.Devices
 {
 	internal sealed class Native
 	{

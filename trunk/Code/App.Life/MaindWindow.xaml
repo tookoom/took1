@@ -1,4 +1,4 @@
-﻿<Window x:Class="Took1.Life.MainWindow"
+﻿<Window x:Class="TK1.Life.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="MainWindow" Height="300" Width="300">

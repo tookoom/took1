@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace Took1.Data.Entity
+namespace TK1.Data.Entity
 {
     public class EntitySet<T> : List<T> where T : class 
     {

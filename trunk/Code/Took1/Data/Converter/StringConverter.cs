@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Took1.Data.Converter
+namespace TK1.Data.Converter
 {
 	/// <summary>
 	/// Conversor de strings para outros tipos de valores

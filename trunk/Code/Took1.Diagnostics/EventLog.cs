@@ -9,9 +9,9 @@
 
 
 
-using Took1.Diagnostics;
+using TK1.Diagnostics;
 using System;
-namespace Took1.Diagnostics {
+namespace TK1.Diagnostics {
     /// <summary>
     /// Insere entrada no eventLog do sistema, podendo criar source caso não exista.
     /// </summary>

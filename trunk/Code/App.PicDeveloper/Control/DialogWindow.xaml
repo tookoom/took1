@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	x:Class="Took1.PicDeveloper.Control.DialogWindow"
+	x:Class="TK1.PicDeveloper.Control.DialogWindow"
 	x:Name="UserControl"
 	d:DesignWidth="800" d:DesignHeight="445.5" MouseDown="UserControl_MouseDown">
 

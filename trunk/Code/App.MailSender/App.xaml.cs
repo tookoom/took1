@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace Took1.MailSender
+namespace TK1.MailSender
 {
     /// <summary>
     /// Interaction logic for App.xaml

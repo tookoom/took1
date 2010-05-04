@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Took1.Devices
+namespace TK1.Devices
 {
     /// <summary>
     /// The device class for disk devices.

@@ -13,10 +13,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
-using Took1.Data;
-using Took1.Xml;
+using TK1.Data;
+using TK1.Xml;
 
-namespace Took1.ConfigManager
+namespace TK1.ConfigManager
 {
     /// <summary>
     /// Interaction logic for Window1.xaml

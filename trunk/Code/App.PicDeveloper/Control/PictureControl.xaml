@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	x:Class="Took1.PicDeveloper.Control.PictureControl"
+	x:Class="TK1.PicDeveloper.Control.PictureControl"
 	x:Name="UserControl"
 	d:DesignWidth="412" d:DesignHeight="291" Width="330" Height="250">
 
@@ -29,19 +29,19 @@
 			<Rectangle Fill="{DynamicResource ButtonBorder}" Stroke="#FFCCCCCC" Margin="0" Grid.ColumnSpan="5"/>
 			<TextBlock Margin="0,0,0,0" Width="Auto" TextWrapping="Wrap" Foreground="#FFFFFFFF" FontWeight="Bold" FontSize="16" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" Text="Quantidade:" HorizontalAlignment="Right"/>
 			<Button VerticalAlignment="Stretch" Margin="2,4,2,4" d:LayoutOverrides="Width" x:Name="buttonPicAdd" Grid.Column="3" FontWeight="Bold" FontSize="14" Click="buttonPicAdd_Click" Style="{DynamicResource SourceButtonStyle}">
-				<Image Width="16" Height="16" Source="/Took1.PicDeveloper;Component/Image/add.png" Stretch="None"/>
+				<Image Width="16" Height="16" Source="/TK1.PicDeveloper;Component/Image/add.png" Stretch="None"/>
 			</Button>
 			<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,4,2,4" d:LayoutOverrides="Width" x:Name="buttonPicRemove" Grid.Column="1" FontWeight="Bold" FontSize="14" Click="buttonPicRemove_Click" Style="{DynamicResource SourceButtonStyle}">
-				<Image Width="16" Height="16" Source="/Took1.PicDeveloper;Component/Image/delete.png" Stretch="None"/>
+				<Image Width="16" Height="16" Source="/TK1.PicDeveloper;Component/Image/delete.png" Stretch="None"/>
 			</Button>
 			<TextBox Margin="2,5,2,5" Text="0" TextWrapping="Wrap" TextAlignment="Right" x:Name="textBoxQuantity" Grid.Column="2" VerticalAlignment="Stretch" FontSize="14" FontWeight="Bold"/>
 			<Button Margin="2,4,2,4" x:Name="buttonZoom" d:LayoutOverrides="Width, Height" Grid.Column="4" VerticalAlignment="Stretch" Click="buttonZoom_Click" Style="{DynamicResource SourceButtonStyle}">
-				<Image Width="16" Height="16" Source="/Took1.PicDeveloper;Component/Image/zoom.png" Stretch="None"/>
+				<Image Width="16" Height="16" Source="/TK1.PicDeveloper;Component/Image/zoom.png" Stretch="None"/>
 			</Button>
 		</Grid>
 		<Rectangle Margin="4,4,4,4" VerticalAlignment="Stretch" Height="Auto" Fill="#FFFFFFFF" Stroke="{x:Null}" d:IsLocked="True" Grid.ColumnSpan="2"/>
 		<ContentPresenter Margin="8,8,8,8" x:Name="contentPresenterPicture" OpacityMask="#FFFFFFFF" MouseDown="contentPresenterPicture_MouseDown" Grid.ColumnSpan="2"/>
-		<Image Margin="0,0,4,4" Source="/Took1.PicDeveloper;Component/Image/Symbol-check.png" x:Name="imageCheck" Opacity="0.795" MouseDown="imageCheck_MouseDown" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="130" Visibility="Collapsed" Grid.Column="1"/>
-		<Image x:Name="imageSave" Margin="0,0,4,4" VerticalAlignment="Bottom" Height="130" Source="/Took1.PicDeveloper;Component/Image/Icon-Disk02-Green.png" HorizontalAlignment="Right" Opacity="0.8" Visibility="Collapsed" Grid.Column="1"/>
+		<Image Margin="0,0,4,4" Source="/TK1.PicDeveloper;Component/Image/Symbol-check.png" x:Name="imageCheck" Opacity="0.795" MouseDown="imageCheck_MouseDown" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="130" Visibility="Collapsed" Grid.Column="1"/>
+		<Image x:Name="imageSave" Margin="0,0,4,4" VerticalAlignment="Bottom" Height="130" Source="/TK1.PicDeveloper;Component/Image/Icon-Disk02-Green.png" HorizontalAlignment="Right" Opacity="0.8" Visibility="Collapsed" Grid.Column="1"/>
 	</Grid>
 </UserControl>

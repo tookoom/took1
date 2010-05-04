@@ -11,7 +11,7 @@
 
 using System.IO;
 using System;
-namespace Took1.Diagnostics {
+namespace TK1.Diagnostics {
     /// <summary>
     /// Gera log em arquivo texto
     /// </summary>
