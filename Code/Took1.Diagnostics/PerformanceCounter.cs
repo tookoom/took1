@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Took1.Diagnostics {
+namespace TK1.Diagnostics {
     /// <summary>
     /// Classe para exibir dados da performance de processos (uso de memória,
     /// processador, ...)

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Took1.Diagnostics
+namespace TK1.Diagnostics
 {
     /// <summary>
     /// Coleção de PerformanceCounters

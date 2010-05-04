@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Took1.PicDeveloper
+namespace TK1.PicDeveloper
 {
 	/// <summary>
 	/// Interaction logic for ProgressReporter.xaml

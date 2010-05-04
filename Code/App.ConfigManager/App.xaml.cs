@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace Took1.ConfigManager
+namespace TK1.ConfigManager
 {
     /// <summary>
     /// Interaction logic for App.xaml

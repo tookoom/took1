@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Took1.Data.Entity.Model;
+using TK1.Data.Entity.Model;
 
-namespace Took1.Data.Entity.Source
+namespace TK1.Data.Entity.Source
 {
     public class DataContextState
     {

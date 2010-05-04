@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Took1.Devices
+namespace TK1.Devices
 {
     /// <summary>
     /// A volume device.

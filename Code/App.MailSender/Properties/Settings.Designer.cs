@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Took1.MailSender.Properties
+namespace TK1.MailSender.Properties
 {
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Took1.ClassTester
+namespace TK1.ClassTester
 {
     static class Program
     {

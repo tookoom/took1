@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Took1
+namespace TK1
 {
     public class AppFolder
     {
         public static string GetAppFolder()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\Took1\";
+            return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\TK1\";
         }
         public static string GetAppConfigFolder(string appName)
         {

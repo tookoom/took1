@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 
-namespace Took1.PicDeveloper.Data
+namespace TK1.PicDeveloper.Data
 {
     public class Picture
     {

@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace Took1.Business
+namespace TK1.Business
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,7 +1,7 @@
 ﻿<Application
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Took1.ConfigManager" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="Took1.ConfigManager.App"
+    xmlns:local="clr-namespace:TK1.ConfigManager" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="TK1.ConfigManager.App"
     StartupUri="MainWindow.xaml" mc:Ignorable="d">
     <Application.Resources>
          

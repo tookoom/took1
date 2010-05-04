@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Took1.Data.Presentation
+namespace TK1.Data.Presentation
 {
 	/// <summary>
 	/// Tipos de mensagem de saída

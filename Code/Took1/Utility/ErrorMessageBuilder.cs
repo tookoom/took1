@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Took1.Utility
+namespace TK1.Utility
 {
     public class ErrorMessageBuilder
     {

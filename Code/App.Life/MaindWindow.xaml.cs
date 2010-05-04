@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Took1.Life
+namespace TK1.Life
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

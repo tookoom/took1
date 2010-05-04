@@ -12,7 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace Took1.PicDeveloper.Control
+namespace TK1.PicDeveloper.Control
 {
 	/// <summary>
 	/// Interaction logic for DialogWindow.xaml

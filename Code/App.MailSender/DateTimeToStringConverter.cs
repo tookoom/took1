@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Data;
 
-namespace Took1.MailSender
+namespace TK1.MailSender
 {
     public class DateTimeToStringConverter : IValueConverter
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace Took1.Reflection
+namespace TK1.Reflection
 {
     public class TypeCheck
     {

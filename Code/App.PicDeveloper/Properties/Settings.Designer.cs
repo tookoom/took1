@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Took1.PicDeveloper.Properties
+namespace TK1.PicDeveloper.Properties
 {
 
 

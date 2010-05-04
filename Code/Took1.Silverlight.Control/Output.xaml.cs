@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace Took1.Silverlight.Controls
+namespace Numericon.Web.Silverlight.Controls
 {
     public partial class Output : UserControl
     {

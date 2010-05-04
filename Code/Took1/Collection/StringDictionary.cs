@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using Took1.Xml;
+using TK1.Xml;
 
-namespace Took1.Collection
+namespace TK1.Collection
 {
 	/// <summary>
 	/// Dicionário de pares de string (chave e valor)

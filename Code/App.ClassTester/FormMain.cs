@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using Took1.Data.Entity;
-using Took1.Data.Entity.Source;
-using Took1.Data.Entity.Model;
+using TK1.Data.Entity;
+using TK1.Data.Entity.Source;
+using TK1.Data.Entity.Model;
 
 
 
 
-namespace Took1.ClassTester
+namespace TK1.ClassTester
 {
     public partial class FormMain : Form
     {

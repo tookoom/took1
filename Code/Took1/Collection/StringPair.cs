@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Took1.Collection
+namespace TK1.Collection
 {
 	/// <summary>
 	/// Par de strings Chave/Valor

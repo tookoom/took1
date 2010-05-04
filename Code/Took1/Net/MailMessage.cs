@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 
-namespace Took1.Net
+namespace TK1.Net
 {
     	/// <summary>
 	/// Mensagem de e-mail

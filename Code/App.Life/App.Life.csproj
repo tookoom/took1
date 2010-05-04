@@ -8,8 +8,8 @@
     <ProjectGuid>{3BF7463F-A72E-4FF5-8650-534CF800466C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>App.Life</RootNamespace>
-    <AssemblyName>App.Life</AssemblyName>
+    <RootNamespace>Took1.Life</RootNamespace>
+    <AssemblyName>Took1.Life</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

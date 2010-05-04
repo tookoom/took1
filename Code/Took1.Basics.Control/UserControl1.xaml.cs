@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Took1.Basics.Control
+namespace TK1.Basics.Control
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml

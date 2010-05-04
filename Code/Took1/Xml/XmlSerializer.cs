@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 using System.IO.IsolatedStorage;
 using System.Xml.Linq;
 
-namespace Took1.Xml
+namespace TK1.Xml
 {
     /// <summary>
     /// Classe utilizada com serialização de objetos.

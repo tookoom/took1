@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 
-namespace Took1.Devices
+namespace TK1.Devices
 {
     /// <summary>
     /// A generic base class for physical devices.

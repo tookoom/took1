@@ -9,7 +9,7 @@
 
 
 
-namespace Took1.Diagnostics {
+namespace TK1.Diagnostics {
 	/// <summary>
 	/// Tipos de entradas de eventLog (Info, Warning, Error)
 	/// </summary>
