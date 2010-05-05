@@ -1,32 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight", "TK1.Silverlight\TK1.Silverlight.csproj", "{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.LifeManager", "TK1.Silverlight.LifeManager\TK1.Silverlight.LifeManager.csproj", "{8D7D907C-8B57-400F-BF6D-A0955E5F38D7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.LifeManager.Data", "TK1.Silverlight.LifeManager.Data\TK1.Silverlight.LifeManager.Data.csproj", "{B30A4BB0-3E26-44A9-937E-9BBCADB8B292}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.LifeManager.App", "TK1.Silverlight.LifeManager.App\TK1.Silverlight.LifeManager.App.csproj", "{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C} = {C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}
-		{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C} = {C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.LifeManager.App.Web", "TK1.Silverlight.LifeManager.App.Web\TK1.Silverlight.LifeManager.App.Web.csproj", "{9C044C65-5E37-4714-8C62-82B9AC57106B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.Controls", "TK1.Silverlight.Control\TK1.Silverlight.Controls.csproj", "{6B5D05D2-1021-4601-A0CA-5CBA5F330E4F}"
-EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "TK1.Web.Cloud.Service", "TK1.Web.Cloud.Service\TK1.Web.Cloud.Service.ccproj", "{B4B5B7D1-F546-432A-B112-BDCE9EB7E66A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Web.Cloud", "TK1.Web.Cloud\TK1.Web.Cloud.csproj", "{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.Cloud.TestApp", "TK1.Silverlight.Cloud.TestApp\TK1.Silverlight.Cloud.TestApp.csproj", "{899AD91E-1917-4709-8CBA-A8C8DBBF8076}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C} = {C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Web.Cloud.Data.Ria", "TK1.Web.Cloud.Data\TK1.Web.Cloud.Data.Ria.csproj", "{6E95F2ED-315A-413D-99FD-B57CFFF1DDDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight", "..\Code\TK1.Silverlight\TK1.Silverlight.csproj", "{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -38,46 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D7D907C-8B57-400F-BF6D-A0955E5F38D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D7D907C-8B57-400F-BF6D-A0955E5F38D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D7D907C-8B57-400F-BF6D-A0955E5F38D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D7D907C-8B57-400F-BF6D-A0955E5F38D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B30A4BB0-3E26-44A9-937E-9BBCADB8B292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B30A4BB0-3E26-44A9-937E-9BBCADB8B292}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B30A4BB0-3E26-44A9-937E-9BBCADB8B292}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B30A4BB0-3E26-44A9-937E-9BBCADB8B292}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C044C65-5E37-4714-8C62-82B9AC57106B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C044C65-5E37-4714-8C62-82B9AC57106B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C044C65-5E37-4714-8C62-82B9AC57106B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C044C65-5E37-4714-8C62-82B9AC57106B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B5D05D2-1021-4601-A0CA-5CBA5F330E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B5D05D2-1021-4601-A0CA-5CBA5F330E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B5D05D2-1021-4601-A0CA-5CBA5F330E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B5D05D2-1021-4601-A0CA-5CBA5F330E4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4B5B7D1-F546-432A-B112-BDCE9EB7E66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4B5B7D1-F546-432A-B112-BDCE9EB7E66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4B5B7D1-F546-432A-B112-BDCE9EB7E66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4B5B7D1-F546-432A-B112-BDCE9EB7E66A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C11F5CDC-AEF5-432E-81EC-1E98C5976F2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{899AD91E-1917-4709-8CBA-A8C8DBBF8076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{899AD91E-1917-4709-8CBA-A8C8DBBF8076}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{899AD91E-1917-4709-8CBA-A8C8DBBF8076}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{899AD91E-1917-4709-8CBA-A8C8DBBF8076}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E95F2ED-315A-413D-99FD-B57CFFF1DDDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E95F2ED-315A-413D-99FD-B57CFFF1DDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E95F2ED-315A-413D-99FD-B57CFFF1DDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E95F2ED-315A-413D-99FD-B57CFFF1DDDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
