@@ -8,10 +8,10 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Silverlight.LifeManager.App.Web</RootNamespace>
-    <AssemblyName>Took1.Silverlight.LifeManager.App.Web</AssemblyName>
+    <RootNamespace>TK1.Silverlight.LifeManager.App.Web</RootNamespace>
+    <AssemblyName>TK1.Silverlight.LifeManager.App.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SilverlightApplicationList>{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}|..\Took1.Silverlight.LifeManager.App\Took1.Silverlight.LifeManager.App.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}|..\TK1.Silverlight.LifeManager.App\TK1.Silverlight.LifeManager.App.csproj|ClientBin|False</SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,13 +55,13 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientBin\Took1.Silverlight.LifeManager.App.xap" />
+    <Content Include="ClientBin\TK1.Silverlight.LifeManager.App.xap" />
     <Content Include="Default.aspx" />
     <Content Include="Php\DataSource\datasource.xml" />
     <Content Include="Php\index.html" />
     <Content Include="Silverlight.js" />
-    <Content Include="Took1.Silverlight.LifeManager.AppTestPage.aspx" />
-    <Content Include="Took1.Silverlight.LifeManager.AppTestPage.html" />
+    <Content Include="TK1.Silverlight.LifeManager.AppTestPage.aspx" />
+    <Content Include="TK1.Silverlight.LifeManager.AppTestPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,9 +81,9 @@
     <None Include="Php\upload.php" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Took1.Silverlight.Control\Took1.Silverlight.Controls.csproj">
+    <ProjectReference Include="..\TK1.Silverlight.Control\TK1.Silverlight.Controls.csproj">
       <Project>{6B5D05D2-1021-4601-A0CA-5CBA5F330E4F}</Project>
-      <Name>Took1.Silverlight.Controls</Name>
+      <Name>TK1.Silverlight.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

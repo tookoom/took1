@@ -8,11 +8,11 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Web.Cloud</RootNamespace>
-    <AssemblyName>Took1.Web.Cloud</AssemblyName>
+    <RootNamespace>TK1.Web.Cloud</RootNamespace>
+    <AssemblyName>TK1.Web.Cloud</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <RoleType>Web</RoleType>
-    <SilverlightApplicationList>{899AD91E-1917-4709-8CBA-A8C8DBBF8076}|..\Took1.Silverlight.Cloud.TestApp\Took1.Silverlight.Cloud.TestApp.csproj|ClientBin|False,{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}|..\Took1.Silverlight.LifeManager.App\Took1.Silverlight.LifeManager.App.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>{899AD91E-1917-4709-8CBA-A8C8DBBF8076}|..\TK1.Silverlight.Cloud.TestApp\TK1.Silverlight.Cloud.TestApp.csproj|ClientBin|False,{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}|..\TK1.Silverlight.LifeManager.App\TK1.Silverlight.LifeManager.App.csproj|ClientBin|False</SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,14 +71,14 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientBin\Took1.Silverlight.Cloud.TestApp.xap" />
-    <Content Include="ClientBin\Took1.Silverlight.LifeManager.App.xap" />
+    <Content Include="ClientBin\TK1.Silverlight.Cloud.TestApp.xap" />
+    <Content Include="ClientBin\TK1.Silverlight.LifeManager.App.xap" />
     <Content Include="Default.aspx" />
     <Content Include="Silverlight.js" />
-    <Content Include="Took1.Silverlight.Cloud.TestAppTestPage.aspx" />
-    <Content Include="Took1.Silverlight.Cloud.TestAppTestPage.html" />
-    <Content Include="Took1.Silverlight.LifeManager.AppTestPage.aspx" />
-    <Content Include="Took1.Silverlight.LifeManager.AppTestPage.html" />
+    <Content Include="TK1.Silverlight.Cloud.TestAppTestPage.aspx" />
+    <Content Include="TK1.Silverlight.Cloud.TestAppTestPage.html" />
+    <Content Include="TK1.Silverlight.LifeManager.AppTestPage.aspx" />
+    <Content Include="TK1.Silverlight.LifeManager.AppTestPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

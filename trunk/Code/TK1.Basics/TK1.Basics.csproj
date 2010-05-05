@@ -8,8 +8,8 @@
     <ProjectGuid>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Basics</RootNamespace>
-    <AssemblyName>Took1.Basics</AssemblyName>
+    <RootNamespace>TK1.Basics</RootNamespace>
+    <AssemblyName>TK1.Basics</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

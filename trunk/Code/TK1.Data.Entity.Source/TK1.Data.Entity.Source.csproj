@@ -8,8 +8,8 @@
     <ProjectGuid>{6079DE7A-D618-4430-8B7C-98319733D29F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Data.Entity.Source</RootNamespace>
-    <AssemblyName>Took1.Data.Entity.Source</AssemblyName>
+    <RootNamespace>TK1.Data.Entity.Source</RootNamespace>
+    <AssemblyName>TK1.Data.Entity.Source</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,25 +50,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Took1.Data.Entity.Model\Took1.Data.Entity.Model.csproj">
+    <ProjectReference Include="..\TK1.Data.Entity.Model\TK1.Data.Entity.Model.csproj">
       <Project>{5EA1FFA2-E0CA-4435-B3F4-57D7A5A42613}</Project>
-      <Name>Took1.Data.Entity.Model</Name>
+      <Name>TK1.Data.Entity.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1.Data.Entity\Took1.Data.Entity.csproj">
+    <ProjectReference Include="..\TK1.Data.Entity\TK1.Data.Entity.csproj">
       <Project>{6AA687CE-EC1E-4FCB-857D-253C75E47B5B}</Project>
-      <Name>Took1.Data.Entity</Name>
+      <Name>TK1.Data.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1.Data\Took1.Data.csproj">
+    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
-      <Name>Took1.Data</Name>
+      <Name>TK1.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1.Diagnostics\Took1.Diagnostics.csproj">
+    <ProjectReference Include="..\TK1.Diagnostics\TK1.Diagnostics.csproj">
       <Project>{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}</Project>
-      <Name>Took1.Diagnostics</Name>
+      <Name>TK1.Diagnostics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1\Took1.csproj">
+    <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
-      <Name>Took1</Name>
+      <Name>TK1</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

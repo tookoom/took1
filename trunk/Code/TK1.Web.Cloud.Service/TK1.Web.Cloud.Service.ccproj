@@ -7,10 +7,10 @@
     <ProjectGuid>{b4b5b7d1-f546-432a-b112-bdce9eb7e66a}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Web.Cloud.Service</RootNamespace>
-    <AssemblyName>Took1.Web.Cloud.Service</AssemblyName>
+    <RootNamespace>TK1.Web.Cloud.Service</RootNamespace>
+    <AssemblyName>TK1.Web.Cloud.Service</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
-    <Name>Took1.Web.Cloud.Service</Name>
+    <Name>TK1.Web.Cloud.Service</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,8 +35,8 @@
     <ServiceConfiguration Include="ServiceConfiguration.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Took1.Web.Cloud\Took1.Web.Cloud.csproj">
-      <Name>Took1.Web.Cloud</Name>
+    <ProjectReference Include="..\TK1.Web.Cloud\TK1.Web.Cloud.csproj">
+      <Name>TK1.Web.Cloud</Name>
       <Project>{c11f5cdc-aef5-432e-81ec-1e98c5976f2c}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>

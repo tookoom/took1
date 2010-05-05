@@ -8,8 +8,8 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Silverlight.Controls</RootNamespace>
-    <AssemblyName>Took1.Silverlight.Controls</AssemblyName>
+    <RootNamespace>TK1.Silverlight.Controls</RootNamespace>
+    <AssemblyName>TK1.Silverlight.Controls</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
@@ -126,9 +126,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Took1.Silverlight\Took1.Silverlight.csproj">
+    <ProjectReference Include="..\TK1.Silverlight\TK1.Silverlight.csproj">
       <Project>{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}</Project>
-      <Name>Took1.Silverlight</Name>
+      <Name>TK1.Silverlight</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\V3.0\Microsoft.Silverlight.CSharp.targets" />

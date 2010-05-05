@@ -8,8 +8,8 @@
     <ProjectGuid>{5A742711-0956-4D06-8544-56286E383BB8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Data.Model.Presentation</RootNamespace>
-    <AssemblyName>Took1.Data.Model.Presentation</AssemblyName>
+    <RootNamespace>TK1.Data.Model.Presentation</RootNamespace>
+    <AssemblyName>TK1.Data.Model.Presentation</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

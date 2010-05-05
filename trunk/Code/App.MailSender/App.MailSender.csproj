@@ -8,8 +8,8 @@
     <ProjectGuid>{43222077-D096-42AF-BCF1-49DBA824895C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.MailSender</RootNamespace>
-    <AssemblyName>Took1.MailSender</AssemblyName>
+    <RootNamespace>TK1.MailSender</RootNamespace>
+    <AssemblyName>TK1.MailSender</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -95,9 +95,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Took1\Took1.csproj">
+    <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
-      <Name>Took1</Name>
+      <Name>TK1</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

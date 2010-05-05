@@ -8,8 +8,8 @@
     <ProjectGuid>{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Diagnostics</RootNamespace>
-    <AssemblyName>Took1.Diagnostics</AssemblyName>
+    <RootNamespace>TK1.Diagnostics</RootNamespace>
+    <AssemblyName>TK1.Diagnostics</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

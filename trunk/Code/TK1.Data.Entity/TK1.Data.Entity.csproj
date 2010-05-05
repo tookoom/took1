@@ -8,8 +8,8 @@
     <ProjectGuid>{6AA687CE-EC1E-4FCB-857D-253C75E47B5B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Data.Entity</RootNamespace>
-    <AssemblyName>Took1.Data.Entity</AssemblyName>
+    <RootNamespace>TK1.Data.Entity</RootNamespace>
+    <AssemblyName>TK1.Data.Entity</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
