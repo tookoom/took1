@@ -3,7 +3,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>Took1.Silverlight.LifeManager.AppTestPage.aspx?Blank=true</StartPageUrl>
+          <StartPageUrl>TK1.Silverlight.LifeManager.AppTestPage.aspx?Blank=true</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>True</SilverlightDebugging>
@@ -26,7 +26,7 @@
           <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
           <EnableWcfTestClientForSVC>False</EnableWcfTestClientForSVC>
           <ProjectOutputReferences>
-            <Ref Project="{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}" Folder="ClientBin">Took1.Silverlight.LifeManager.App.xap</Ref>
+            <Ref Project="{36724A65-F6EA-4A49-9FDE-73AD1D22E2BD}" Folder="ClientBin">TK1.Silverlight.LifeManager.App.xap</Ref>
           </ProjectOutputReferences>
         </WebProjectProperties>
       </FlavorProperties>

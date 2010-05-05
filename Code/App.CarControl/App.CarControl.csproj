@@ -8,8 +8,8 @@
     <ProjectGuid>{45374029-0FF6-4A46-83D4-2F3E516C2A23}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.CarControl</RootNamespace>
-    <AssemblyName>Took1.CarControl</AssemblyName>
+    <RootNamespace>TK1.CarControl</RootNamespace>
+    <AssemblyName>TK1.CarControl</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

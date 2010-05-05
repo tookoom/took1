@@ -8,8 +8,8 @@
     <ProjectGuid>{CECA59A5-87A4-4683-8413-B416A7ADFF5A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.PicDeveloper</RootNamespace>
-    <AssemblyName>Took1.PicDeveloper</AssemblyName>
+    <RootNamespace>TK1.PicDeveloper</RootNamespace>
+    <AssemblyName>TK1.PicDeveloper</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -123,17 +123,17 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Took1.Data.Entity.Model\Took1.Data.Entity.Model.csproj">
+    <ProjectReference Include="..\TK1.Data.Entity.Model\TK1.Data.Entity.Model.csproj">
       <Project>{5EA1FFA2-E0CA-4435-B3F4-57D7A5A42613}</Project>
-      <Name>Took1.Data.Entity.Model</Name>
+      <Name>TK1.Data.Entity.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1.Data\Took1.Data.csproj">
+    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
-      <Name>Took1.Data</Name>
+      <Name>TK1.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1\Took1.csproj">
+    <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
-      <Name>Took1</Name>
+      <Name>TK1</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

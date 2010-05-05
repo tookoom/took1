@@ -8,8 +8,8 @@
     <ProjectGuid>{2B1DC70C-89E1-46F4-96C7-03BD38D80330}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Devices</RootNamespace>
-    <AssemblyName>Took1.Devices</AssemblyName>
+    <RootNamespace>TK1.Devices</RootNamespace>
+    <AssemblyName>TK1.Devices</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

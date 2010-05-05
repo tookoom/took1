@@ -8,17 +8,17 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Silverlight.LifeManager.App</RootNamespace>
-    <AssemblyName>Took1.Silverlight.LifeManager.App</AssemblyName>
+    <RootNamespace>TK1.Silverlight.LifeManager.App</RootNamespace>
+    <AssemblyName>TK1.Silverlight.LifeManager.App</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SilverlightApplication>true</SilverlightApplication>
     <SupportedCultures>
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>Took1.Silverlight.LifeManager.App.xap</XapFilename>
+    <XapFilename>TK1.Silverlight.LifeManager.App.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>Took1.Silverlight.LifeManager.App.App</SilverlightAppEntry>
+    <SilverlightAppEntry>TK1.Silverlight.LifeManager.App.App</SilverlightAppEntry>
     <TestPageFileName>TestPage.html</TestPageFileName>
     <CreateTestPage>true</CreateTestPage>
     <ValidateXaml>true</ValidateXaml>
@@ -118,21 +118,21 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Took1.Silverlight.Control\Took1.Silverlight.Controls.csproj">
+    <ProjectReference Include="..\TK1.Silverlight.Control\TK1.Silverlight.Controls.csproj">
       <Project>{6B5D05D2-1021-4601-A0CA-5CBA5F330E4F}</Project>
-      <Name>Took1.Silverlight.Controls</Name>
+      <Name>TK1.Silverlight.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1.Silverlight.LifeManager\Took1.Silverlight.LifeManager.csproj">
+    <ProjectReference Include="..\TK1.Silverlight.LifeManager\TK1.Silverlight.LifeManager.csproj">
       <Project>{8D7D907C-8B57-400F-BF6D-A0955E5F38D7}</Project>
-      <Name>Took1.Silverlight.LifeManager</Name>
+      <Name>TK1.Silverlight.LifeManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1.Silverlight\Took1.Silverlight.csproj">
+    <ProjectReference Include="..\TK1.Silverlight\TK1.Silverlight.csproj">
       <Project>{C0BA77F6-6B1D-4A5D-9CE4-37252F77F383}</Project>
-      <Name>Took1.Silverlight</Name>
+      <Name>TK1.Silverlight</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Took1.Web.Cloud.Data\Took1.Web.Cloud.Data.Ria.csproj">
+    <ProjectReference Include="..\TK1.Web.Cloud.Data\TK1.Web.Cloud.Data.Ria.csproj">
       <Project>{6E95F2ED-315A-413D-99FD-B57CFFF1DDDC}</Project>
-      <Name>Took1.Web.Cloud.Data.Ria</Name>
+      <Name>TK1.Web.Cloud.Data.Ria</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

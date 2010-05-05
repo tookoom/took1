@@ -8,8 +8,8 @@
     <ProjectGuid>aaa8f92e-9f57-46b9-8036-1dc37506bdce</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Data.Model.Controller</RootNamespace>
-    <AssemblyName>Took1.Data.Model.Controller</AssemblyName>
+    <RootNamespace>TK1.Data.Model.Controller</RootNamespace>
+    <AssemblyName>TK1.Data.Model.Controller</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -8,8 +8,8 @@
     <ProjectGuid>{B1B8234D-8130-459A-8C16-91E6190E708D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1</RootNamespace>
-    <AssemblyName>Took1</AssemblyName>
+    <RootNamespace>TK1</RootNamespace>
+    <AssemblyName>TK1</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>Svn</SccProjectName>

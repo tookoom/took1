@@ -8,17 +8,17 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Took1.Silverlight.Cloud.TestApp</RootNamespace>
-    <AssemblyName>Took1.Silverlight.Cloud.TestApp</AssemblyName>
+    <RootNamespace>TK1.Silverlight.Cloud.TestApp</RootNamespace>
+    <AssemblyName>TK1.Silverlight.Cloud.TestApp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SilverlightApplication>true</SilverlightApplication>
     <SupportedCultures>
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>Took1.Silverlight.Cloud.TestApp.xap</XapFilename>
+    <XapFilename>TK1.Silverlight.Cloud.TestApp.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>Took1.Silverlight.Cloud.TestApp.App</SilverlightAppEntry>
+    <SilverlightAppEntry>TK1.Silverlight.Cloud.TestApp.App</SilverlightAppEntry>
     <TestPageFileName>TestPage.html</TestPageFileName>
     <CreateTestPage>true</CreateTestPage>
     <ValidateXaml>true</ValidateXaml>
@@ -26,7 +26,7 @@
     <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
     <UsePlatformExtensions>false</UsePlatformExtensions>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
-    <LinkedServerProject>..\Took1.Web.Cloud\Took1.Web.Cloud.csproj</LinkedServerProject>
+    <LinkedServerProject>..\TK1.Web.Cloud\TK1.Web.Cloud.csproj</LinkedServerProject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
