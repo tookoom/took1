@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TK1.Basics.Control.Properties
+namespace TK1.Wpf.Controls.Properties
 {
 
 

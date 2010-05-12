@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B681C774-1337-4713-B04A-E839B1E4E31E}</ProjectGuid>
+    <ProjectGuid>{B92BEEE2-B92C-4AB1-81E0-74D29815D202}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TK1.Basics.Control</RootNamespace>
-    <AssemblyName>TK1.Basics.Control</AssemblyName>
+    <RootNamespace>TK1.Wpf.Controls</RootNamespace>
+    <AssemblyName>TK1.Wpf.Controls</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -45,17 +45,30 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UserControl1.xaml">
+    <Page Include="PropertyEditor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
+    <Page Include="PropertyValueEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="PropertyEditor.xaml.cs">
+      <DependentUpon>PropertyEditor.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -73,6 +86,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PropertyValueChangedEventArgs.cs" />
+    <Compile Include="PropertyValueEditor.xaml.cs">
+      <DependentUpon>PropertyValueEditor.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,6 +99,35 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\error.png" />
+    <Resource Include="Resources\Images\help.png" />
+    <Resource Include="Resources\Images\information.png" />
+    <Resource Include="Resources\Images\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
+      <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
+      <Name>TK1.Basics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Data.Model.Presentation\TK1.Data.Model.Presentation.csproj">
+      <Project>{5A742711-0956-4D06-8544-56286E383BB8}</Project>
+      <Name>TK1.Data.Model.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1\TK1.csproj">
+      <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
+      <Name>TK1</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -159,7 +159,7 @@
         <!--PicDeveloper:DialogWindow HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" d:IsHidden="True" x:Name="dialogWindow" Grid.ColumnSpan="2" Grid.RowSpan="4" d:IsLocked="True"/-->
         <Path Fill="{DynamicResource DarkBlue}" Stretch="Fill" Stroke="{DynamicResource DarkBlue}" StrokeThickness="4" HorizontalAlignment="Right" Margin="0,0,0.333,1.167" VerticalAlignment="Bottom" Width="17.334" Height="17.333" Grid.Column="1" Grid.Row="3" Data="M797,429 L784.33333,441.33333 797.66665,442.3337 z"/>
 
-    	<TK1_PicDeveloper_Control:DialogWindow x:Name="dialogWindow" Margin="0" d:LayoutOverrides="Width, Height" Grid.RowSpan="4" Grid.ColumnSpan="2" Grid.Row="1" d:IsHidden="True" d:IsLocked="True"/>
+    	<TK1_PicDeveloper_Control:DialogWindow x:Name="dialogWindow" Margin="0" d:LayoutOverrides="Width, Height" Grid.RowSpan="4" Grid.ColumnSpan="2" Grid.Row="1" d:IsHidden="True"/>
 
     </Grid>
 </Window>
