@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CECA59A5-87A4-4683-8413-B416A7ADFF5A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{B681C774-1337-4713-B04A-E839B1E4E31E}</ProjectGuid>
+    <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TK1.PicDeveloper</RootNamespace>
-    <AssemblyName>TK1.PicDeveloper</AssemblyName>
+    <RootNamespace>TK1.Basics.Controls</RootNamespace>
+    <AssemblyName>TK1.Basics.Controls</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,7 +37,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -51,52 +50,16 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="Control\PictureControl.xaml">
+    <Page Include="Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Control\DialogWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ProgressReporter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collection\PictureCollection.cs" />
-    <Compile Include="Collection\PicturePriceCollection.cs" />
-    <Compile Include="Const.cs" />
-    <Compile Include="Control\PictureControl.xaml.cs">
-      <DependentUpon>PictureControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Picture.cs" />
-    <Compile Include="Data\PicturePrice.cs" />
-    <Compile Include="Data\PictureSize.cs" />
-    <Compile Include="Data\PictureType.cs" />
-    <Compile Include="Control\DialogWindow.xaml.cs">
-      <DependentUpon>DialogWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressReporter.xaml.cs">
-      <DependentUpon>ProgressReporter.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -110,7 +73,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Settings\PicDeveloperSettings.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -122,21 +84,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TK1.Basics.Controls\TK1.Basics.Controls.csproj">
-      <Project>{B681C774-1337-4713-B04A-E839B1E4E31E}</Project>
-      <Name>TK1.Basics.Controls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
-      <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
-      <Name>TK1.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Diagnostics\TK1.Diagnostics.csproj">
-      <Project>{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}</Project>
-      <Name>TK1.Diagnostics</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Wpf.Controls\TK1.Wpf.Controls.csproj">
       <Project>{B92BEEE2-B92C-4AB1-81E0-74D29815D202}</Project>
@@ -146,41 +96,6 @@
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
       <Name>TK1</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Check.png" />
-    <Resource Include="Resources\Images\xmag.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\accept.png" />
-    <Resource Include="Resources\Images\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\zoom.png" />
-    <Resource Include="Resources\Images\zoom_in.png" />
-    <Resource Include="Resources\Images\zoom_out.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Check-256x256.png" />
-    <Resource Include="Resources\Images\Symbol-check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Icon-Disk02-Green.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\x01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\minimize01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\maximize04.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,13 +30,9 @@ C:\Users\andre\Documents\Projects\Took1\Code\App.PicDeveloper\bin\Debug\Took1.Da
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.PicDeveloper.exe
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.PicDeveloper.pdb
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Data.dll
-C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Data.Entity.Model.dll
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.dll
-C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Data.Entity.dll
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Data.pdb
-C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Data.Entity.pdb
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.pdb
-C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Data.Entity.Model.pdb
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\obj\Debug\Control\PictureControl.baml
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\obj\Debug\Control\DialogWindow.baml
@@ -56,3 +52,11 @@ C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\obj\Debug\TK1.PicDev
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\obj\Debug\App.PicDeveloper.csproj.GenerateResource.Cache
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\obj\Debug\TK1.PicDeveloper.exe
 C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\obj\Debug\TK1.PicDeveloper.pdb
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Basics.Controls.dll
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Basics.dll
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Diagnostics.dll
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Wpf.Controls.dll
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Wpf.Controls.pdb
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Diagnostics.pdb
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Basics.pdb
+C:\Users\andre\Documents\Projects\TK1\Code\App.PicDeveloper\bin\Debug\TK1.Basics.Controls.pdb

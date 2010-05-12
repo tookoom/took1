@@ -20,7 +20,7 @@ using TK1.Data;
 //using System.ComponentModel;
 using TK1.PicDeveloper.Control;
 using TK1.Data.Converter;
-using TK1.Data.Entity.Model;
+using TK1.PicDeveloper.Settings;
 
 namespace TK1.PicDeveloper
 {
@@ -51,7 +51,7 @@ namespace TK1.PicDeveloper
         private string filePath = string.Empty;
         private string clientPictureFolderPath = string.Empty;
         private string windowName = string.Empty;
-        private ParameterCollection parameterCollection = new ParameterCollection();
+        //private ParameterCollection parameterCollection = new ParameterCollection();
 
         private Picture bottomLeftImage;
         private Picture buttonIconCamera;
@@ -215,31 +215,31 @@ namespace TK1.PicDeveloper
         }
         private void bindParameterCollection()
         {
-            //dialogWindow.IsVisible = false;
-            WindowName = string.Format("{0} - {1}", 
-                parameterCollection.GetValue(ParameterNames.WindowName),
-                parameterCollection.GetValue(ParameterNames.CustomMessage));
-            try
-            {
-                BottomLeftImage = parameterCollection.GetValue(ParameterNames.BottonLeftImage);
-                ButtonIconCamera = parameterCollection.GetValue(ParameterNames.ButtonIconCamera);
-                ButtonIconCD = parameterCollection.GetValue(ParameterNames.ButtonIconCD);
-                ButtonIconFolder = parameterCollection.GetValue(ParameterNames.ButtonIconFolder);
-                ButtonIconPenDrive = parameterCollection.GetValue(ParameterNames.ButtonIconPenDrive);
-                TopLeftImage = parameterCollection.GetValue(ParameterNames.TopLeftImage);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message,
-                    "Erro ao carregar Imagens",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-            }
-            clientPictureFolderPath = parameterCollection.GetValue(ParameterNames.PicDirectory);
-            selectedPicSize = PictureSizeConverter.StringToPictureType(parameterCollection.GetValue(ParameterNames.StandardPicSize));
-            selectedPicType = PictureTypeConverter.StringToPictureType(parameterCollection.GetValue(ParameterNames.StandardPicType));
-            changePicInfo();
-            loadPrices();
+            ////dialogWindow.IsVisible = false;
+            //WindowName = string.Format("{0} - {1}", 
+            //    parameterCollection.GetValue(ParameterNames.WindowName),
+            //    parameterCollection.GetValue(ParameterNames.CustomMessage));
+            //try
+            //{
+            //    BottomLeftImage = parameterCollection.GetValue(ParameterNames.BottonLeftImage);
+            //    ButtonIconCamera = parameterCollection.GetValue(ParameterNames.ButtonIconCamera);
+            //    ButtonIconCD = parameterCollection.GetValue(ParameterNames.ButtonIconCD);
+            //    ButtonIconFolder = parameterCollection.GetValue(ParameterNames.ButtonIconFolder);
+            //    ButtonIconPenDrive = parameterCollection.GetValue(ParameterNames.ButtonIconPenDrive);
+            //    TopLeftImage = parameterCollection.GetValue(ParameterNames.TopLeftImage);
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(exception.Message,
+            //        "Erro ao carregar Imagens",
+            //        MessageBoxButton.OK,
+            //        MessageBoxImage.Error);
+            //}
+            //clientPictureFolderPath = parameterCollection.GetValue(ParameterNames.PicDirectory);
+            //selectedPicSize = PictureSizeConverter.StringToPictureType(parameterCollection.GetValue(ParameterNames.StandardPicSize));
+            //selectedPicType = PictureTypeConverter.StringToPictureType(parameterCollection.GetValue(ParameterNames.StandardPicType));
+            //changePicInfo();
+            //loadPrices();
         }
         private void calculateTotalPrice()
         {
@@ -323,120 +323,120 @@ namespace TK1.PicDeveloper
         }
         private void generateStandardConfigFile()
         {
-            if (parameterCollection == null)
-                parameterCollection = new ParameterCollection();
+            //if (parameterCollection == null)
+            //    parameterCollection = new ParameterCollection();
 
-            #region BUTTON ICONS
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.ButtonIconCamera,
-                Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Camera.png"
-            });
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.ButtonIconCD,
-                Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\CD.png"
-            });
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.ButtonIconFolder,
-                Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Folder.png"
-            });
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.ButtonIconPenDrive,
-                Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\PenDrive.png"
-            });
+            //#region BUTTON ICONS
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.ButtonIconCamera,
+            //    Type = ParameterTypes.FilePath,
+            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Camera.png"
+            //});
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.ButtonIconCD,
+            //    Type = ParameterTypes.FilePath,
+            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\CD.png"
+            //});
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.ButtonIconFolder,
+            //    Type = ParameterTypes.FilePath,
+            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Folder.png"
+            //});
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.ButtonIconPenDrive,
+            //    Type = ParameterTypes.FilePath,
+            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\PenDrive.png"
+            //});
 
-            #endregion
-            #region PRICE LIST
-            if(picturePriceCollection == null)
-                picturePriceCollection = new PicturePriceCollection();
+            //#endregion
+            //#region PRICE LIST
+            //if(picturePriceCollection == null)
+            //    picturePriceCollection = new PicturePriceCollection();
 
-            parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow10x15, Value = 1.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow13x18, Value = 2.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow15x21, Value = 3.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow20x25, Value = 4.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow20x30, Value = 5.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow30x45, Value = 6.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow10x15, Value = 1.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow13x18, Value = 2.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow15x21, Value = 3.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow20x25, Value = 4.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow20x30, Value = 5.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow30x45, Value = 6.ToString(), Type = ParameterTypes.Int });
 
-            parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular10x15, Value= 7.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular13x18, Value= 8.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular15x21, Value= 9.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular20x25, Value= 10.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular20x30, Value= 11.ToString(), Type = ParameterTypes.Int });
-            parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular30x45, Value= 12.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular10x15, Value= 7.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular13x18, Value= 8.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular15x21, Value= 9.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular20x25, Value= 10.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular20x30, Value= 11.ToString(), Type = ParameterTypes.Int });
+            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular30x45, Value= 12.ToString(), Type = ParameterTypes.Int });
 
-            #endregion
-            #region STANDARD VALUES
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.PicDirectory,
-                Type = ParameterTypes.FilePath,
-                Value = @"C:\PicDeveloper"
-            });
+            //#endregion
+            //#region STANDARD VALUES
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.PicDirectory,
+            //    Type = ParameterTypes.FilePath,
+            //    Value = @"C:\PicDeveloper"
+            //});
 
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.StandardPicSize,
-                Type = ParameterTypes.String,
-                Value = "10x15"
-            });
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.StandardPicSize,
+            //    Type = ParameterTypes.String,
+            //    Value = "10x15"
+            //});
 
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.StandardPicType,
-                Type = ParameterTypes.String,
-                Value = "Gloss"
-            });
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.StandardPicType,
+            //    Type = ParameterTypes.String,
+            //    Value = "Gloss"
+            //});
 
-            #endregion
-            #region WINDOW IMAGES
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.BottonLeftImage,
-                Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Easter Bunny.jpg"
-            });
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.TopLeftImage,
-                Type = ParameterTypes.FilePath,
-                Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\porco.bmp"
-            });
+            //#endregion
+            //#region WINDOW IMAGES
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.BottonLeftImage,
+            //    Type = ParameterTypes.FilePath,
+            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Easter Bunny.jpg"
+            //});
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.TopLeftImage,
+            //    Type = ParameterTypes.FilePath,
+            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\porco.bmp"
+            //});
             
-            #endregion
-            #region WINDOW MESSAGES
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.CustomMessage,
-                Type = ParameterTypes.String,
-                Value = "Feliz dia das crianças!"
-            });
-            parameterCollection.Add(new Parameter
-            {
-                Name = ParameterNames.WindowName,
-                Type = ParameterTypes.String,
-                Value = ".:: escolha suas fotos ::."
-            });
+            //#endregion
+            //#region WINDOW MESSAGES
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.CustomMessage,
+            //    Type = ParameterTypes.String,
+            //    Value = "Feliz dia das crianças!"
+            //});
+            //parameterCollection.Add(new Parameter
+            //{
+            //    Name = ParameterNames.WindowName,
+            //    Type = ParameterTypes.String,
+            //    Value = ".:: escolha suas fotos ::."
+            //});
 
-            #endregion
+            //#endregion
 
 
-            generateConfigFile();
+            //generateConfigFile();
         }
         private void generateConfigFile()
         {
-            string content = XmlSerializer<ParameterCollection>.Save(parameterCollection);
-            if (!Directory.Exists(AppFolder.GetAppFolder()))
-                Directory.CreateDirectory(AppFolder.GetAppFolder());
-            if (!Directory.Exists(AppFolder.GetAppConfigFolder(appName)))
-                Directory.CreateDirectory(AppFolder.GetAppConfigFolder(appName));
-            File.WriteAllText(configFilePath, content);
+            //string content = XmlSerializer<ParameterCollection>.Save(parameterCollection);
+            //if (!Directory.Exists(AppFolder.GetAppFolder()))
+            //    Directory.CreateDirectory(AppFolder.GetAppFolder());
+            //if (!Directory.Exists(AppFolder.GetAppConfigFolder(appName)))
+            //    Directory.CreateDirectory(AppFolder.GetAppConfigFolder(appName));
+            //File.WriteAllText(configFilePath, content);
 
         }
         private void getFolderPics()
@@ -464,25 +464,25 @@ namespace TK1.PicDeveloper
         }
         private void loadConfigFile()
         {
-            try
-            {
-                if (configFilePath != string.Empty)
-                {
-                    if (!File.Exists(configFilePath))
-                        generateStandardConfigFile();
-                    string content = File.ReadAllText(configFilePath);
-                    ParameterCollection collection = XmlSerializer<ParameterCollection>.Load(content);
-                    if (collection != null)
-                    {
-                        parameterCollection = collection;
-                        bindParameterCollection();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            //try
+            //{
+            //    if (configFilePath != string.Empty)
+            //    {
+            //        if (!File.Exists(configFilePath))
+            //            generateStandardConfigFile();
+            //        string content = File.ReadAllText(configFilePath);
+            //        ParameterCollection collection = XmlSerializer<ParameterCollection>.Load(content);
+            //        if (collection != null)
+            //        {
+            //            parameterCollection = collection;
+            //            bindParameterCollection();
+            //        }
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(e.Message);
+            //}
         }
         private void loadCdromItems()
         {
@@ -527,82 +527,82 @@ namespace TK1.PicDeveloper
         }
         private void loadPrices()
         {
-            if (picturePriceCollection == null)
-                picturePriceCollection = new PicturePriceCollection();
+            //if (picturePriceCollection == null)
+            //    picturePriceCollection = new PicturePriceCollection();
 
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow10x15)),
-                Size = PictureSize._10x15,
-                Type = PictureType.Gloss
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow13x18)),
-                Size = PictureSize._13x18,
-                Type = PictureType.Gloss
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow15x21)),
-                Size = PictureSize._15x21,
-                Type = PictureType.Gloss
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x25)),
-                Size = PictureSize._20x25,
-                Type = PictureType.Gloss
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x30)),
-                Size = PictureSize._20x30,
-                Type = PictureType.Gloss
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow30x45)),
-                Size = PictureSize._30x45,
-                Type = PictureType.Gloss
-            });
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow10x15)),
+            //    Size = PictureSize._10x15,
+            //    Type = PictureType.Gloss
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow13x18)),
+            //    Size = PictureSize._13x18,
+            //    Type = PictureType.Gloss
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow15x21)),
+            //    Size = PictureSize._15x21,
+            //    Type = PictureType.Gloss
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x25)),
+            //    Size = PictureSize._20x25,
+            //    Type = PictureType.Gloss
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x30)),
+            //    Size = PictureSize._20x30,
+            //    Type = PictureType.Gloss
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow30x45)),
+            //    Size = PictureSize._30x45,
+            //    Type = PictureType.Gloss
+            //});
 
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular10x15)),
-                Size = PictureSize._10x15,
-                Type = PictureType.Regular
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular13x18)),
-                Size = PictureSize._13x18,
-                Type = PictureType.Regular
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular15x21)),
-                Size = PictureSize._15x21,
-                Type = PictureType.Regular
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x25)),
-                Size = PictureSize._20x25,
-                Type = PictureType.Regular
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x30)),
-                Size = PictureSize._20x30,
-                Type = PictureType.Regular
-            });
-            picturePriceCollection.Add(new PicturePrice
-            {
-                Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular30x45)),
-                Size = PictureSize._30x45,
-                Type = PictureType.Regular
-            });
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular10x15)),
+            //    Size = PictureSize._10x15,
+            //    Type = PictureType.Regular
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular13x18)),
+            //    Size = PictureSize._13x18,
+            //    Type = PictureType.Regular
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular15x21)),
+            //    Size = PictureSize._15x21,
+            //    Type = PictureType.Regular
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x25)),
+            //    Size = PictureSize._20x25,
+            //    Type = PictureType.Regular
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x30)),
+            //    Size = PictureSize._20x30,
+            //    Type = PictureType.Regular
+            //});
+            //picturePriceCollection.Add(new PicturePrice
+            //{
+            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular30x45)),
+            //    Size = PictureSize._30x45,
+            //    Type = PictureType.Regular
+            //});
 
 
         }
@@ -805,8 +805,10 @@ namespace TK1.PicDeveloper
         }
         private void buttonSaveAndFinish_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            savePics();
-            finish();
+            dialogWindow.DialogContent = new TK1.Basics.Controls.Settings() { Value = new PicDeveloperSettings() };
+            dialogWindow.Visibility = Visibility.Visible;
+            //savePics();
+            //finish();
 
         }
 
