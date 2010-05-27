@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 using System.Windows.Interop;
 using TK1.PicDeveloper.Data;
 using System.IO;
-using TK1.PicDeveloper.Collection;
 using TK1.Xml;
 using TK1.Data;
 //using System.ComponentModel;
