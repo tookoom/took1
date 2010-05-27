@@ -20,10 +20,22 @@ namespace TK1.Basics.Controls
     /// <summary>
     /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class Settings : UserControl
+    public partial class PropertySetter : UserControl
     {
         #region EVENTS
+        public Action OpenSettings;
+        public Action ReloadSettings;
+        public Action SaveSettings;
 
+        //public event EventHandler ClientEntitiesChanged;
+        //private void OnClientEntitiesChanged(EventArgs e)
+        //{
+        //    EventHandler handler = ClientEntitiesChanged;
+        //    if (handler != null)
+        //    {
+        //        handler(this, e);
+        //    }
+        //}
         #endregion
         #region PRIVATE MEMBERS
         bool hasPath;
@@ -49,7 +61,7 @@ namespace TK1.Basics.Controls
 
         #endregion
         
-        public Settings()
+        public PropertySetter()
         {
             InitializeComponent();
         }
@@ -105,21 +117,34 @@ namespace TK1.Basics.Controls
                 propertyEditor.Source = value;
             }
         }
-
-
+        private void open()
+        {
+            if (OpenSettings != null)
+                OpenSettings();
+        }
+        private void reload()
+        {
+            if (ReloadSettings != null)
+                ReloadSettings();
+        }
+        private void save()
+        {
+            if (SaveSettings != null)
+                SaveSettings();
+        }
 
         #region UI EVENT HANDLERS
         private void buttonOpen_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // TODO: Add event handler implementation here.
+            open();
         }
         private void buttonReload_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // TODO: Add event handler implementation here.
+            reload();
         }
         private void buttonSave_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // TODO: Add event handler implementation here.
+            save();
         }
 
         #endregion

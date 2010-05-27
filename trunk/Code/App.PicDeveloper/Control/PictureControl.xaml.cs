@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TK1.PicDeveloper.Data;
+using TK1.Wpf.Controls.Binding;
 
 namespace TK1.PicDeveloper.Control
 {
@@ -19,9 +21,8 @@ namespace TK1.PicDeveloper.Control
 	public partial class PictureControl
 	{
         #region EVENTS
-        public delegate void EventHandler(Object sender, EventArgs e);
         public event EventHandler PicQuantityChanged;
-        protected virtual void OnQuantityChanged(EventArgs e)
+        private void onQuantityChanged(EventArgs e)
         {
             EventHandler handler = PicQuantityChanged;
             if (handler != null)
@@ -33,7 +34,7 @@ namespace TK1.PicDeveloper.Control
 
         public delegate void ZoomEventHandler(Object sender, ZoomEventArgs e);
         public event ZoomEventHandler ShowZoomedImage;
-        protected virtual void OnZoom(ZoomEventArgs e)
+        private void onZoom(ZoomEventArgs e)
         {
             ZoomEventHandler handler = ShowZoomedImage;
             if (handler != null)
@@ -47,27 +48,13 @@ namespace TK1.PicDeveloper.Control
 
         #endregion
         #region PRIVATE MEMBERS
-        private string fileName = "";
-        private int quantity = 0;
-        private bool isChecked = false;
         private bool isSaved = false;
+
+        private Picture picture;
+
 
         #endregion
         #region PUBLIC PROPERTIES
-        public string FileName
-        {
-            get { return fileName; }
-            set { fileName = value; }
-        }
-        public bool IsChecked
-        {
-            get { return isChecked; }
-            set
-            {
-                isChecked = value;
-                setControlStatus();
-            }
-        }
         public bool IsSaved
         {
             get { return isSaved; }
@@ -77,19 +64,13 @@ namespace TK1.PicDeveloper.Control
                 setControlStatus();
             }
         }
-
-        public int Quantity
+        public Picture Picture
         {
-            get { return quantity; }
-            set
-            {
-                quantity = value;
-                textBoxQuantity.Text = quantity.ToString();
-                if (quantity == 0) IsChecked = false;
-                else IsChecked = true;
+            get { return picture; }
+            set { picture = value;
+            setPicture();
             }
         }
-
         #endregion
 
         public PictureControl()
@@ -101,62 +82,114 @@ namespace TK1.PicDeveloper.Control
 
         private void setControlStatus()
         {
-            if (isChecked & !isSaved)
-            {
-                imageCheck.Visibility = Visibility.Visible;
-                imageSave.Visibility = Visibility.Collapsed;
+            //if (isChecked & !isSaved)
+            //{
+            //    imageCheck.Visibility = Visibility.Visible;
+            //    imageSave.Visibility = Visibility.Collapsed;
 
-                buttonPicAdd.IsEnabled = true;
-                buttonPicRemove.IsEnabled = true;
-                buttonZoom.IsEnabled = true;
-                textBoxQuantity.IsEnabled = true;
+            //    buttonPicAdd.IsEnabled = true;
+            //    buttonPicRemove.IsEnabled = true;
+            //    buttonZoom.IsEnabled = true;
+            //    textBoxQuantity.IsEnabled = true;
 
-            }
-            else if (isChecked & isSaved)
-            {
-                imageCheck.Visibility = Visibility.Collapsed;
-                imageSave.Visibility = Visibility.Visible;
+            //}
+            //else if (isChecked & isSaved)
+            //{
+            //    imageCheck.Visibility = Visibility.Collapsed;
+            //    imageSave.Visibility = Visibility.Visible;
 
-                buttonPicAdd.IsEnabled = false;
-                buttonPicRemove.IsEnabled = false;
-                buttonZoom.IsEnabled = false;
-                textBoxQuantity.IsEnabled = false;
+            //    buttonPicAdd.IsEnabled = false;
+            //    buttonPicRemove.IsEnabled = false;
+            //    buttonZoom.IsEnabled = false;
+            //    textBoxQuantity.IsEnabled = false;
                 
+            //}
+            //else
+            //{
+            //    imageCheck.Visibility = Visibility.Collapsed;
+            //    imageSave.Visibility = Visibility.Collapsed;
+            //}
+
+        }
+        private void setFadeElement()
+        {
+            if (picture != null)
+            {
+                if (picture.Quantity > 0)
+                    borderFadeElement.Visibility = Visibility.Collapsed;
+                else
+                    borderFadeElement.Visibility = Visibility.Visible;
+            }
+        }
+        private void setPicture()
+        {
+            if (picture == null)
+            {
             }
             else
             {
-                imageCheck.Visibility = Visibility.Collapsed;
-                imageSave.Visibility = Visibility.Collapsed;
             }
-
+            this.DataContext = picture;
+            updateUI();
         }
         private void togleQuantity()
         {
             if (!IsSaved)
             {
-                if (Quantity == 0) Quantity++;
-                else
+                if (picture != null)
                 {
-                    if (Quantity == 1) Quantity = 0;
+                    if (picture.Quantity == 0)
+                    {
+                        picture.Quantity = 1;
+                        picture.IsSelected = true;
+                    }
+                    else
+                    {
+                        if (picture.Quantity == 1)
+                        {
+                            picture.Quantity = 0;
+                            picture.IsSelected = false;
+                        }
+                        picture.IsSelected = true;
+                    }
+                    updateUI();
+                    onQuantityChanged(new EventArgs());
                 }
-                OnQuantityChanged(new EventArgs());
             }
         }
+        private void updateUI()
+        {
+            setFadeElement();
+            BindingHelper.UpdateIsCheckedBindingTarget(checkBoxIsSelected);
+            BindingHelper.UpdateTextBindingTarget(textBoxQuantity);
+
+        }
+
 
         #region UI EVENT HANDLERS
         private void buttonPicAdd_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Quantity++;
-            OnQuantityChanged(new EventArgs());
+            if (picture != null)
+                picture.Quantity++;
+            setFadeElement();
+            BindingHelper.UpdateTextBindingTarget(textBoxQuantity);
+            onQuantityChanged(new EventArgs());
         }
         private void buttonPicRemove_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (Quantity > 0) Quantity--;
-            OnQuantityChanged(new EventArgs());
+            if (picture != null)
+                if (picture.Quantity > 0)
+                    picture.Quantity--;
+            setFadeElement();
+            BindingHelper.UpdateTextBindingTarget(textBoxQuantity);
+            onQuantityChanged(new EventArgs());
         }
         private void buttonZoom_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            OnZoom(new ZoomEventArgs() { FileName = fileName });
+            if (picture != null)
+            {
+                onZoom(new ZoomEventArgs() { Picture = picture });
+            }
         }
 
         private void contentPresenterPicture_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -168,13 +201,43 @@ namespace TK1.PicDeveloper.Control
         {
             togleQuantity();
         }
-        
+
+        private void CheckBox_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox != null)
+            {
+                if (checkBox.IsChecked.HasValue)
+                {
+                    if (checkBox.IsChecked.Value)
+                    {
+                        picture.IsSelected = true;
+                        if (picture.Quantity == 0)
+                            picture.Quantity = 1;
+                    }
+                    else
+                    {
+                        picture.IsSelected = true;
+                    }
+                }
+                updateUI();
+            }
+        }
+        private void Image_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            togleQuantity();
+        }
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            BindingHelper.UpdateTextBindingSource(sender as TextBox);
+        }
+
         #endregion    
     }
 
     public class ZoomEventArgs : EventArgs
     {
-        public string FileName { get; set; }
+        public Picture Picture { get; set; }
     }
 
 

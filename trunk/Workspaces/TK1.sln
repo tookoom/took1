@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.CarControl", "..\Code\App.CarControl\App.CarControl.csproj", "{45374029-0FF6-4A46-83D4-2F3E516C2A23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.ConfigManager", "..\Code\App.ConfigManager\App.ConfigManager.csproj", "{2098ED71-A6CA-465E-90E6-6A35795FBA7E}"
@@ -11,11 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.PicDeveloper", "..\Code
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Diagnostics", "..\Code\TK1.Diagnostics\TK1.Diagnostics.csproj", "{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data", "..\Code\TK1.Data\TK1.Data.csproj", "{2484CD63-A0B0-46AE-A423-B32E6A6AD279}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Devices", "..\Code\TK1.Devices\TK1.Devices.csproj", "{2B1DC70C-89E1-46F4-96C7-03BD38D80330}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data.Entity", "..\Code\TK1.Data.Entity\TK1.Data.Entity.csproj", "{6AA687CE-EC1E-4FCB-857D-253C75E47B5B}"
 EndProject
@@ -75,18 +71,10 @@ Global
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7EFE1C6-7484-4F88-A93C-853A47E75B2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6AA687CE-EC1E-4FCB-857D-253C75E47B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6AA687CE-EC1E-4FCB-857D-253C75E47B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AA687CE-EC1E-4FCB-857D-253C75E47B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU

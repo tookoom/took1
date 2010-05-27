@@ -28,8 +28,6 @@ namespace TK1.Dev
         #region UI EVENT HANDLERS
         private void buttonDev1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Settings settings = new Settings() { Value = new foo() { Name = "teste", Target = EnvironmentVariableTarget.Process } };
-            contentPresenter.Content = settings;
         }
 
         private void buttonDev2_Click(object sender, System.Windows.RoutedEventArgs e)

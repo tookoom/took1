@@ -1,7 +1,7 @@
 ﻿<UserControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:TK1_Wpf_Controls="clr-namespace:TK1.Wpf.Controls;assembly=TK1.Wpf.Controls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="TK1.Basics.Controls.Settings" mc:Ignorable="d" Background="White" MinWidth="400" MinHeight="300">
+    xmlns:TK1_Wpf_Controls="clr-namespace:TK1.Wpf.Controls;assembly=TK1.Wpf.Controls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="TK1.Basics.Controls.PropertySetter" mc:Ignorable="d" Background="White" MinWidth="400" MinHeight="300">
     <Grid>
     	<Grid.ColumnDefinitions>
     		<ColumnDefinition/>
@@ -14,7 +14,7 @@
     	<ScrollViewer Margin="4" Grid.Row="1" d:LayoutOverrides="Width, Height, GridBox" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
     		<TK1_Wpf_Controls:PropertyEditor x:Name="propertyEditor" IsExpanded="True"/>
     	</ScrollViewer>
-    	<TextBlock Text="Settings" TextWrapping="Wrap" d:LayoutOverrides="Height" Margin="4,2" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <TextBlock Text="PropertySetter" TextWrapping="Wrap" d:LayoutOverrides="Height" Margin="4,2" FontWeight="Bold" Grid.ColumnSpan="2"/>
     	<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="4">
     		<Button x:Name="buttonOpen" Content="Open" Click="buttonOpen_Click"/>
     		<Button x:Name="buttonSave" Content="Save" Click="buttonSave_Click"/>

@@ -1,27 +1,73 @@
 ﻿<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-    xmlns:TK1_PicDeveloper_Control="clr-namespace:TK1.PicDeveloper.Control" x:Class="TK1.PicDeveloper.MainWindow"
-    Title="PicDeveloper" Height="600" Width="850" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Loaded="Window_Loaded">
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:TK1_PicDeveloper_Control="clr-namespace:TK1.PicDeveloper.Control" 
+    xmlns:TK1_PicDeveloper_Collection="clr-namespace:TK1.PicDeveloper.Collection" 
+    xmlns:TK1_Data_Model_Presentation="clr-namespace:TK1.Data.Model.Presentation;assembly=TK1.Data.Model.Presentation" mc:Ignorable="d" 
+    x:Class="TK1.PicDeveloper.MainWindow"
+    Title="PicDeveloper" Height="600" Width="850" ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
     <Window.Resources>
+    	<TK1_Data_Model_Presentation:PersonView x:Key="PersonViewDataSource" d:IsDataSource="True"/>
+    	<TK1_PicDeveloper_Collection:PictureCollection x:Key="PictureCollectionDataSource" d:IsDataSource="True"/>
         <SolidColorBrush x:Key="DarkBlue" Color="#FF253A52"/>
+        <DataTemplate x:Key="PictureTemplate">
+        	<Border BorderThickness="1" BorderBrush="#FFD8D8D8" Margin="4">
+        		<Grid Margin="2">
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="Auto" MinWidth="15"/>
+        				<ColumnDefinition Width="Auto" MinWidth="15"/>
+        			</Grid.ColumnDefinitions>
+        			<Grid.RowDefinitions>
+        				<RowDefinition Height="0.48*"/>
+        				<RowDefinition Height="Auto" MinHeight="23.96"/>
+        				<RowDefinition Height="0.52*"/>
+        				<RowDefinition Height="0.52*"/>
+        			</Grid.RowDefinitions>
+        			<CheckBox IsChecked="{Binding IsSelected}" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.ColumnSpan="2" Content="Revelar" FontWeight="Bold"/>
+        			<Image Grid.ColumnSpan="2" Margin="0" Grid.RowSpan="1" Source="{Binding Path, Mode=OneTime}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" MinWidth="15" MinHeight="15" Width="200" Stretch="Uniform" Height="200"/>
+        			<TextBlock Text="{Binding Name}" Margin="4" VerticalAlignment="Stretch" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="2" Grid.Row="2"/>
+        			<TextBlock Margin="4,2" TextWrapping="Wrap" Text="Quantidade:" d:LayoutOverrides="Width, Height" Grid.Row="3" VerticalAlignment="Center" FontWeight="Bold"/>
+        			<TextBox Text="{Binding Quantity}" Margin="4,2" VerticalAlignment="Bottom" d:LayoutOverrides="Width" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="2"/>
+        		</Grid>
+        	</Border>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="WrapItemsPanelTemplate">
+        	<WrapPanel IsItemsHost="True" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        </ItemsPanelTemplate>
+        <DataTemplate x:Key="EmailTemplate">
+        	<Grid>
+        		<TextBox Text="{Binding Address, Mode=TwoWay}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1" Grid.Column="2"/>
+        	</Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="TelephoneTemplate">
+        	<Grid>
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="Auto" MinWidth="10"/>
+        			<ColumnDefinition Width="Auto" MinWidth="10"/>
+        			<ColumnDefinition/>
+        		</Grid.ColumnDefinitions>
+        		<TextBox Text="{Binding Code, Mode=TwoWay}" Grid.ColumnSpan="1" Grid.Column="0" d:LayoutOverrides="Width, Height"/>
+        		<TextBlock Margin="4,0" TextWrapping="Wrap" Text="-" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
+        		<TextBox Text="{Binding Number, Mode=TwoWay}" d:LayoutOverrides="Width, Height" Grid.ColumnSpan="1" Grid.Column="2"/>
+        	</Grid>
+        </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid DataContext="{Binding Source={StaticResource PictureCollectionDataSource}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="467.2"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+        	<RowDefinition Height="Auto"/>
             <RowDefinition Height="187"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
-        <Rectangle StrokeThickness="4" Margin="0,-3,0,0" x:Name="rectangleBack" Stroke="{DynamicResource DarkBlue}" Fill="{DynamicResource GrayGradient}" RadiusX="0" RadiusY="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1" d:IsLocked="True"/>
-        <Grid x:Name="gridTopBar" Background="{DynamicResource DarkBlueGradient}" Grid.ColumnSpan="2">
+        <Rectangle StrokeThickness="4" Margin="0" x:Name="rectangleBack" Stroke="{DynamicResource DarkBlue}" Fill="{DynamicResource GrayGradient}" RadiusX="0" RadiusY="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1"/>
+        <Grid x:Name="gridTopBar" Background="{DynamicResource DarkBlueGradient}" Grid.ColumnSpan="2" Visibility="Collapsed" d:IsLocked="True">
         	<Grid.ColumnDefinitions>
         		<ColumnDefinition/>
         		<ColumnDefinition Width="Auto" MinWidth="20"/>
@@ -53,8 +99,8 @@
         </Grid>
         <Grid Width="Auto" Margin="8,0,8,0" x:Name="gridPics" Background="{x:Null}" Grid.ColumnSpan="2" Grid.Row="2">
             <Border CornerRadius="5,0,5,5" BorderThickness="2,2,2,2" Background="{DynamicResource LightGray}" BorderBrush="{DynamicResource DarkGray}" Visibility="Visible">
-            	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="12,6,-2,4">
-            		<WrapPanel x:Name="wrapPanelPictures" Width="Auto" Height="Auto"/>
+            	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4">
+            		<WrapPanel x:Name="wrapPanelPictures" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
             	</ScrollViewer>
             </Border>
         </Grid>
@@ -75,6 +121,7 @@
         		<Button Margin="4,8" Content="Salvar e Finalizar" x:Name="buttonSaveAndFinish" Click="buttonSaveAndFinish_Click"/>
         		<Button x:Name="buttonSaveAndAdd" Margin="4,8" Content="Salvar e Adicionar" Click="buttonSaveAndAdd_Click"/>
         		<TextBlock x:Name="textBlockReset" HorizontalAlignment="Center" Text="Resetar" TextWrapping="Wrap" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Bold" Background="{x:Null}" Foreground="{DynamicResource DarkBlue}" Cursor="Hand" MouseDown="textBlockReset_MouseDown" Margin="4"/>
+            	<TextBlock x:Name="textBlockSettings" HorizontalAlignment="Center" Text="Settings" TextWrapping="Wrap" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Bold" Background="{x:Null}" Foreground="{DynamicResource DarkBlue}" Cursor="Hand" MouseDown="textBlockSettings_MouseDown" Margin="4"/>
         	</StackPanel>
             <TextBlock TextWrapping="Wrap" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"><Run Language="fr-fr" Text="Fotos digitais somente com pagamento antecipado"/></TextBlock>
             <TextBlock Margin="0,0,4,4" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold" x:Name="textBlockTotalPrice" Grid.Column="4"><Run Language="fr-fr" Text="Total"/></TextBlock>
@@ -94,66 +141,78 @@
             </Grid.RenderTransform>
             <ContentPresenter HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="contentPresenterTopLeftImage" VerticalAlignment="Top" Width="Auto" Height="Auto"/>
         </Grid>
-        <Border Margin="0,6,8,-2" Background="{DynamicResource LightGray}" BorderBrush="{DynamicResource DarkGray}" BorderThickness="2,2,2,0" CornerRadius="5,5,0,0" x:Name="borderTopRight" Grid.Column="1" Grid.Row="1">
+        <Border Margin="0,6,8,-2" Background="{DynamicResource LightGray}" BorderBrush="{DynamicResource DarkGray}" BorderThickness="2,2,2,0" CornerRadius="5,5,0,0" x:Name="borderTopRight" Grid.Column="1" Grid.Row="1" DataContext="{Binding Source={StaticResource PersonViewDataSource}}">
             <Grid x:Name="gridTopRight" Width="Auto" Background="{x:Null}" Margin="4,4,4,0" Height="Auto">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="29"/>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="*"/>
+                	<RowDefinition Height="Auto" MinHeight="54"/>
+                	<RowDefinition Height="25"/>
+                	<RowDefinition Height="25"/>
+                	<RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
+                	<ColumnDefinition Width="80"/>
+                	<ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Text="Nome" TextWrapping="Wrap" x:Name="textBoxClientName" Margin="4,0,4,0" Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
-                <TextBox Text="Telefone" TextWrapping="Wrap" d:LayoutOverrides="Height" x:Name="textBoxClientPhone" Margin="4,0,4,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Margin="0,0,4,0" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Right" d:LayoutOverrides="Width, Height"><Run Language="fr-fr" Text="Nome:"/></TextBlock>
-                <TextBlock Margin="0,0,4,0" Width="Auto" Height="Auto" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"><Run Language="fr-fr" Text="Tamanho:"/></TextBlock>
-                <TextBlock Margin="0,0,4,0" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Right" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" Grid.Row="3"><Run Language="fr-fr" Text="Papel:"/></TextBlock>
-                <TextBlock HorizontalAlignment="Right" Margin="0,0,4,0" Height="Auto" TextWrapping="Wrap" Text="Telefone:" Grid.Row="1" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
-                <Grid Margin="4,0,4,0" Grid.Column="1" Grid.Row="2" x:Name="gridPicSizes" VerticalAlignment="Center">
+                <Grid x:Name="gridClient" Grid.ColumnSpan="4" Margin="0" DataContext="{Binding}">
+                	<Grid.ColumnDefinitions>
+                		<ColumnDefinition Width="Auto" MinWidth="15"/>
+                		<ColumnDefinition/>
+                	</Grid.ColumnDefinitions>
+                	<Grid.RowDefinitions>
+                		<RowDefinition Height="1*"/>
+                		<RowDefinition Height="1*"/>
+                		<RowDefinition Height="1*"/>						
+                	</Grid.RowDefinitions>
+            		<TextBlock Margin="4,2" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap"><Run Language="fr-fr" Text="Nome:"/></TextBlock>
+            		<TextBox Text="{Binding Name, Mode=TwoWay}" TextWrapping="Wrap" x:Name="textBoxClientName" Margin="4,2" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1"/>
+            		<TextBlock Margin="4,2" Height="Auto" TextWrapping="Wrap" Text="E-mail:" Grid.Row="1" VerticalAlignment="Center" d:LayoutOverrides="GridBox"/>
+            		<ListBox Grid.Column="1" ItemTemplate="{DynamicResource EmailTemplate}" ItemsSource="{Binding EmailList, Mode=TwoWay}" Margin="4,2" Grid.Row="1" MinHeight="20" HorizontalContentAlignment="Stretch"/>
+            		<TextBlock Margin="4,2" Height="Auto" TextWrapping="Wrap" Text="Telefones:" Grid.Row="2" VerticalAlignment="Center" d:LayoutOverrides="GridBox"/>
+            		<ListBox Grid.Column="1" ItemTemplate="{DynamicResource TelephoneTemplate}" ItemsSource="{Binding PhoneList, Mode=TwoWay}" Margin="4,2" Grid.Row="2" MinHeight="20" HorizontalContentAlignment="Stretch"/>
+            	</Grid>
+                <TextBlock Margin="0,0,4,0" Width="Auto" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"><Run Language="fr-fr" Text="Tamanho:"/></TextBlock>
+                <Grid Margin="4,0,4,0" Grid.Column="1" Grid.Row="1" x:Name="gridPicSizes" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="10x15" x:Name="radioButtonSize1" Click="radioButtonSize1_Click" IsChecked="True" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="13x18" x:Name="radioButtonSize2" d:LayoutOverrides="Width, Height" IsChecked="True" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Click="radioButtonSize2_Click"/>
-                    <RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="20x30" x:Name="radioButtonSize5" Click="radioButtonSize5_Click" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4"/>
-                    <RadioButton Margin="0,0,0,0" Height="Auto" Content="20x25" x:Name="radioButtonSize4" Click="radioButtonSize4_Click" d:LayoutOverrides="Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3"/>
-                    <RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="15x21" x:Name="radioButtonSize3" Click="radioButtonSize3_Click" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
-                    <RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="30x45" x:Name="radioButtonSize6" Click="radioButtonSize6_Click" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5"/>
+                	<RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="10x15" x:Name="radioButtonSize1" Click="radioButtonSize1_Click" IsChecked="True" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                	<RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="13x18" x:Name="radioButtonSize2" d:LayoutOverrides="Width, Height" IsChecked="True" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Click="radioButtonSize2_Click"/>
+                	<RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="20x30" x:Name="radioButtonSize5" Click="radioButtonSize5_Click" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4"/>
+                	<RadioButton Margin="0,0,0,0" Height="Auto" Content="20x25" x:Name="radioButtonSize4" Click="radioButtonSize4_Click" d:LayoutOverrides="Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3"/>
+                	<RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="15x21" x:Name="radioButtonSize3" Click="radioButtonSize3_Click" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
+                	<RadioButton Margin="0,0,0,0" Width="Auto" Height="Auto" Content="30x45" x:Name="radioButtonSize6" Click="radioButtonSize6_Click" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5"/>
                 </Grid>
-                <Grid Margin="4,0,4,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" x:Name="gridPicTypes" VerticalAlignment="Center">
+                <TextBlock Margin="0,0,4,0" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2"><Run Language="fr-fr" Text="Papel:"/></TextBlock>
+                <Grid Margin="4,0,4,0" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" x:Name="gridPicTypes" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <RadioButton Width="Auto" Height="Auto" Content="Brilho" x:Name="radioButtonTypeGloss" Click="radioButtonTypeGloss_Click" d:LayoutOverrides="Width, Height" IsChecked="True" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center"/>
                     <RadioButton Margin="0,0,0,0" Height="Auto" Content="Fosco" x:Name="radioButtonTypeRegular" Click="radioButtonTypeRegular_Click" d:LayoutOverrides="Width, Height" IsChecked="True" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
                 </Grid>
-                <Grid x:Name="gridButtons" Margin="0,0,0,0" Grid.Row="4" Grid.ColumnSpan="2">
+                <Grid x:Name="gridButtons" Margin="0,0,0,0" Grid.Row="3" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="buttonSourcePenDrive" Content="PenDrive" Click="buttonSourcePenDrive_Click" d:LayoutOverrides="Height" Margin="4,4,4,4" Style="{DynamicResource SourceButtonStyle}"/>
                     <Button Margin="4,4,4,4" x:Name="buttonSourceCD" Content="CD" Click="buttonSourceCD_Click" d:LayoutOverrides="Height" Grid.Column="1" Style="{DynamicResource SourceButtonStyle}"/>
                     <Button Margin="4,4,4,4" x:Name="buttonSourceCamera" Content="Camera" Click="buttonSourceCamera_Click" d:LayoutOverrides="Height" Grid.Column="2" Style="{DynamicResource SourceButtonStyle}"/>
                     <Button Margin="4,4,4,4" Content="Folder" Width="Auto" d:LayoutOverrides="HorizontalAlignment, Height" x:Name="buttonSourceFolder" Click="buttonSourceFolder_Click" Grid.Column="3" Style="{DynamicResource SourceButtonStyle}"/>
                 </Grid>
-                <TextBlock Text="Carregando..." TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Margin="0,0,0,4" x:Name="textBlockLoading" VerticalAlignment="Bottom" Grid.Row="4" HorizontalAlignment="Right" Visibility="Collapsed"/>
+                <TextBlock Text="Carregando..." TextWrapping="Wrap" d:LayoutOverrides="GridBox" Margin="0,0,0,4" x:Name="textBlockLoading" VerticalAlignment="Bottom" Grid.Row="3" HorizontalAlignment="Right" Visibility="Collapsed" Grid.Column="1"/>
             </Grid>
         </Border>
         <!--PicDeveloper:DialogWindow HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" d:IsHidden="True" x:Name="dialogWindow" Grid.ColumnSpan="2" Grid.RowSpan="4" d:IsLocked="True"/-->
