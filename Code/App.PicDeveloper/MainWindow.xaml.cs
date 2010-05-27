@@ -21,6 +21,10 @@ using TK1.Data;
 using TK1.PicDeveloper.Control;
 using TK1.Data.Converter;
 using TK1.PicDeveloper.Settings;
+using TK1.Utility;
+using TK1.Configuration;
+using TK1.Basics.Controls;
+using TK1.Data.Model.Presentation;
 
 namespace TK1.PicDeveloper
 {
@@ -29,29 +33,18 @@ namespace TK1.PicDeveloper
     /// </summary>
     public partial class MainWindow : Window
     {
-        #region CONST
-        private const string appName = "PicDeveloper";
-        private const int thumbPixelWidth = 300;
-        private const int zoomPixelWidth = 1000;
-        #endregion
         #region DELEGATES
         delegate void PictureCallback(Picture picture);
-        delegate void PathCallback(string path);
         #endregion
         #region PRIVATE MEMBERS
         private bool isLoading;
         private bool isMouseDragging = false;
         private bool isUsingUsbDrive = false;
         private Point offsetPoint;
-        private PictureSize selectedPicSize;
-        private PictureType selectedPicType;
-        private int pictureCounter = 0;
 
-        private string configFilePath = string.Empty;
         private string filePath = string.Empty;
         private string clientPictureFolderPath = string.Empty;
         private string windowName = string.Empty;
-        //private ParameterCollection parameterCollection = new ParameterCollection();
 
         private Picture bottomLeftImage;
         private Picture buttonIconCamera;
@@ -60,14 +53,8 @@ namespace TK1.PicDeveloper
         private Picture buttonIconPenDrive;
         private Picture topLeftImage;
 
-        private PictureCollection pictureList;
-        private PicturePriceCollection picturePriceCollection;
-        //private List<Volume> usbVolumeList = new List<Volume>();
-        //private List<Volume> cdromVolumeList = new List<Volume>();
-
-        private float totalPrice = 0;
-        private int quantity = 0;
-
+        PicDeveloperSettings settings = null;
+        PictureManager pictureManager = null;
 
         #endregion   
         #region PUBLIC PROPERTIES
@@ -106,7 +93,7 @@ namespace TK1.PicDeveloper
             set
             {
                 bottomLeftImage = new Picture(value, 1000);
-                contentPresenterBottomLeftImage.Content = new Image() { Source = bottomLeftImage.ImageSource };
+                contentPresenterBottomLeftImage.Content = new Image();// { Source = bottomLeftImage.ImageSource };
             }
         }
         public string ButtonIconCamera
@@ -114,7 +101,7 @@ namespace TK1.PicDeveloper
             set
             {
                 buttonIconCamera = new Picture(value, 1000);
-                buttonSourceCamera.Content = new Image() { Source = buttonIconCamera.ImageSource };
+                buttonSourceCamera.Content = new Image();// { Source = buttonIconCamera.ImageSource };
             }
         }
         public string ButtonIconCD
@@ -122,7 +109,7 @@ namespace TK1.PicDeveloper
             set
             {
                 buttonIconCD = new Picture(value, 1000);
-                buttonSourceCD.Content = new Image() { Source = buttonIconCD.ImageSource };
+                buttonSourceCD.Content = new Image();// { Source = buttonIconCD.ImageSource };
             }
         }
         public string ButtonIconFolder
@@ -130,7 +117,7 @@ namespace TK1.PicDeveloper
             set
             {
                 buttonIconFolder = new Picture(value, 1000);
-                buttonSourceFolder.Content = new Image() { Source = buttonIconFolder.ImageSource };
+                buttonSourceFolder.Content = new Image();// { Source = buttonIconFolder.ImageSource };
             }
         }
         public string ButtonIconPenDrive
@@ -138,7 +125,7 @@ namespace TK1.PicDeveloper
             set
             {
                 buttonIconPenDrive = new Picture(value, 1000);
-                buttonSourcePenDrive.Content = new Image() { Source = buttonIconPenDrive.ImageSource };
+                buttonSourcePenDrive.Content = new Image();// { Source = buttonIconPenDrive.ImageSource };
             }
         }
         public string TopLeftImage
@@ -146,28 +133,10 @@ namespace TK1.PicDeveloper
             set
             {
                 topLeftImage = new Picture(value, 1000);
-                contentPresenterTopLeftImage.Content = new Image() { Source = topLeftImage.ImageSource };
+                contentPresenterTopLeftImage.Content = new Image();//{ Source = topLeftImage.ImageSource };
             }
         }
 
-        public int Quantity
-        {
-            get { return quantity; }
-            set
-            {
-                quantity = value;
-                textBlockQuantity.Text = string.Format("{0} Fotos", quantity);
-            }
-        }
-        public float TotalPrice
-        {
-            get { return totalPrice; }
-            set
-            {
-                totalPrice = value;
-                textBlockTotalPrice.Text = string.Format("Total: R$ {0:0.00}", totalPrice);
-            }
-        }
 
         #endregion
         
@@ -175,436 +144,117 @@ namespace TK1.PicDeveloper
         {
             InitializeComponent();
 
-            initialize();
+            ////initialize();
         }
 
+        ////private void addPicture(Picture picture)
+        ////{
+        ////    if (this.Dispatcher.CheckAccess())
+        ////    {
+        ////        if (picture != null)
+        ////        {
+        ////            PictureControl control = new PictureControl();
+        ////            control.FileName = picture.Path;
+        ////            control.contentPresenterPicture.Content = new Image();// { Source = picture.ImageSource };
+        ////            control.PicQuantityChanged += new PictureControl.EventHandler(control_PicQuantityChanged);
+        ////            control.ShowZoomedImage += new PictureControl.ZoomEventHandler(control_ShowZoomedImage);
+        ////            wrapPanelPictures.Children.Add(control);
+                    
+        ////        }
+        ////    }
+        ////    else
+        ////    {
+        ////        PictureCallback callback = new PictureCallback(addPicture);
+        ////        this.Dispatcher.Invoke(callback, picture);
+        ////    }
+        ////}
         private void addPicture(Picture picture)
         {
             if (this.Dispatcher.CheckAccess())
             {
                 if (picture != null)
                 {
-                    PictureControl control = new PictureControl();
-                    control.FileName = picture.Path;
-                    control.contentPresenterPicture.Content = new Image() { Source = picture.ImageSource };
-                    control.PicQuantityChanged += new PictureControl.EventHandler(control_PicQuantityChanged);
-                    control.ShowZoomedImage += new PictureControl.ZoomEventHandler(control_ShowZoomedImage);
-                    wrapPanelPictures.Children.Add(control);
+                    PictureControl pictureControl = new PictureControl() { Picture = picture };
+                    wrapPanelPictures.Children.Add(pictureControl);
                 }
             }
             else
             {
                 PictureCallback callback = new PictureCallback(addPicture);
                 this.Dispatcher.Invoke(callback, picture);
-            }
-        }
-        private void addPicture(string path)
-        {
-            if (this.Dispatcher.CheckAccess())
-            {
-                Picture picture = new Picture(path, thumbPixelWidth);
-                pictureList.Add(picture);
-                //addPicture(picture);
-            }
-            else
-            {
-                PathCallback callback = new PathCallback(addPicture);
-                this.Dispatcher.Invoke(callback, path);
 
-            }
-        }
-        private void bindParameterCollection()
-        {
-            ////dialogWindow.IsVisible = false;
-            //WindowName = string.Format("{0} - {1}", 
-            //    parameterCollection.GetValue(ParameterNames.WindowName),
-            //    parameterCollection.GetValue(ParameterNames.CustomMessage));
-            //try
-            //{
-            //    BottomLeftImage = parameterCollection.GetValue(ParameterNames.BottonLeftImage);
-            //    ButtonIconCamera = parameterCollection.GetValue(ParameterNames.ButtonIconCamera);
-            //    ButtonIconCD = parameterCollection.GetValue(ParameterNames.ButtonIconCD);
-            //    ButtonIconFolder = parameterCollection.GetValue(ParameterNames.ButtonIconFolder);
-            //    ButtonIconPenDrive = parameterCollection.GetValue(ParameterNames.ButtonIconPenDrive);
-            //    TopLeftImage = parameterCollection.GetValue(ParameterNames.TopLeftImage);
-            //}
-            //catch (Exception exception)
-            //{
-            //    MessageBox.Show(exception.Message,
-            //        "Erro ao carregar Imagens",
-            //        MessageBoxButton.OK,
-            //        MessageBoxImage.Error);
-            //}
-            //clientPictureFolderPath = parameterCollection.GetValue(ParameterNames.PicDirectory);
-            //selectedPicSize = PictureSizeConverter.StringToPictureType(parameterCollection.GetValue(ParameterNames.StandardPicSize));
-            //selectedPicType = PictureTypeConverter.StringToPictureType(parameterCollection.GetValue(ParameterNames.StandardPicType));
-            //changePicInfo();
-            //loadPrices();
-        }
-        private void calculateTotalPrice()
-        {
-            float totalprice = 0;
-            float unitprice = 0;
-            int count = 0;
-
-            var query = from el in picturePriceCollection
-                        where el.Size == selectedPicSize & el.Type == selectedPicType
-                        select el.Price;
-
-            if (query.Count() > 0)
-                unitprice = query.FirstOrDefault();
-
-            foreach (PictureControl pictureControl in wrapPanelPictures.Children)
-            {
-                totalprice += pictureControl.Quantity * unitprice;
-                count += (int)pictureControl.Quantity;
-            }
-            TotalPrice = totalprice;
-            Quantity = count;
-        }
-        private static void clearDirectoryContent(string path)
-        {
-            foreach (string filename in System.IO.Directory.GetFiles(path))
-            {
-                try
-                {
-                    System.IO.File.Delete(filename);
-                }
-                catch { }
             }
         }
         private void changePicInfo()
         {
-            if (selectedPicSize == PictureSize._10x15)
-                radioButtonSize1.IsChecked = true;
+            if (pictureManager != null)
+            {
+                if (pictureManager.PicSize == PaperSizes._10x15)
+                    radioButtonSize1.IsChecked = true;
 
-            if (selectedPicSize == PictureSize._13x18)
-                radioButtonSize2.IsChecked = true;
+                if (pictureManager.PicSize == PaperSizes._13x18)
+                    radioButtonSize2.IsChecked = true;
 
-            if (selectedPicSize == PictureSize._15x21)
-                radioButtonSize3.IsChecked = true;
+                if (pictureManager.PicSize == PaperSizes._15x21)
+                    radioButtonSize3.IsChecked = true;
 
-            if (selectedPicSize == PictureSize._20x25)
-                radioButtonSize4.IsChecked = true;
+                if (pictureManager.PicSize == PaperSizes._20x25)
+                    radioButtonSize4.IsChecked = true;
 
-            if (selectedPicSize == PictureSize._20x30)
-                radioButtonSize5.IsChecked = true;
+                if (pictureManager.PicSize == PaperSizes._20x30)
+                    radioButtonSize5.IsChecked = true;
 
-            if (selectedPicSize == PictureSize._30x45)
-                radioButtonSize6.IsChecked = true;
+                if (pictureManager.PicSize == PaperSizes._30x45)
+                    radioButtonSize6.IsChecked = true;
 
-            if (selectedPicType == PictureType.Gloss)
-                radioButtonTypeGloss.IsChecked = true;
+                if (pictureManager.PicType == PaperTypes.Gloss)
+                    radioButtonTypeGloss.IsChecked = true;
 
-            if (selectedPicType == PictureType.Regular)
-                radioButtonTypeRegular.IsChecked = true;
+                if (pictureManager.PicType == PaperTypes.Regular)
+                    radioButtonTypeRegular.IsChecked = true;
+            }
         }
-        private string createInfoFile()
+        private void showSettings()
         {
-            string info = "";
-            string newline = Environment.NewLine;
-            info += string.Format("Registro {0} " + newline, DateTime.Now);
-            info += string.Format("Nome do cliente: {0} " + newline, textBoxClientName.Text);
-            info += string.Format("Telefone do cliente: {0} " + newline, textBoxClientPhone.Text);
-            info += string.Format("Tamanho de foto: {0} " + newline, selectedPicSize);
-            info += string.Format("Tipo do papel: {0} " + newline, selectedPicType);
-            info += string.Format("Total de fotos: {0} " + newline, pictureCounter);
-            info += string.Format("Preço total: R$ {0} " + newline, TotalPrice);
-            return info;
-        }
-        private void finish()
-        {
-            pictureList.Clear();
-            //wrapPanelPictures.Children.Clear();
-            Quantity = 0;
-            TotalPrice = 0;
-            textBoxClientName.Text = "";
-            textBoxClientPhone.Text = "";
-        }
-        private void generateStandardConfigFile()
-        {
-            //if (parameterCollection == null)
-            //    parameterCollection = new ParameterCollection();
-
-            //#region BUTTON ICONS
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.ButtonIconCamera,
-            //    Type = ParameterTypes.FilePath,
-            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Camera.png"
-            //});
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.ButtonIconCD,
-            //    Type = ParameterTypes.FilePath,
-            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\CD.png"
-            //});
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.ButtonIconFolder,
-            //    Type = ParameterTypes.FilePath,
-            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Folder.png"
-            //});
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.ButtonIconPenDrive,
-            //    Type = ParameterTypes.FilePath,
-            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\PenDrive.png"
-            //});
-
-            //#endregion
-            //#region PRICE LIST
-            //if(picturePriceCollection == null)
-            //    picturePriceCollection = new PicturePriceCollection();
-
-            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow10x15, Value = 1.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow13x18, Value = 2.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow15x21, Value = 3.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow20x25, Value = 4.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow20x30, Value = 5.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name = ParameterNames.PriceGlow30x45, Value = 6.ToString(), Type = ParameterTypes.Int });
-
-            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular10x15, Value= 7.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular13x18, Value= 8.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular15x21, Value= 9.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular20x25, Value= 10.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular20x30, Value= 11.ToString(), Type = ParameterTypes.Int });
-            //parameterCollection.Add(new Parameter() { Name=ParameterNames.PriceRegular30x45, Value= 12.ToString(), Type = ParameterTypes.Int });
-
-            //#endregion
-            //#region STANDARD VALUES
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.PicDirectory,
-            //    Type = ParameterTypes.FilePath,
-            //    Value = @"C:\PicDeveloper"
-            //});
-
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.StandardPicSize,
-            //    Type = ParameterTypes.String,
-            //    Value = "10x15"
-            //});
-
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.StandardPicType,
-            //    Type = ParameterTypes.String,
-            //    Value = "Gloss"
-            //});
-
-            //#endregion
-            //#region WINDOW IMAGES
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.BottonLeftImage,
-            //    Type = ParameterTypes.FilePath,
-            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\Easter Bunny.jpg"
-            //});
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.TopLeftImage,
-            //    Type = ParameterTypes.FilePath,
-            //    Value = @"C:\Documents and Settings\All Users\Application Data\TK1\PicDeveloper\Image\porco.bmp"
-            //});
-            
-            //#endregion
-            //#region WINDOW MESSAGES
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.CustomMessage,
-            //    Type = ParameterTypes.String,
-            //    Value = "Feliz dia das crianças!"
-            //});
-            //parameterCollection.Add(new Parameter
-            //{
-            //    Name = ParameterNames.WindowName,
-            //    Type = ParameterTypes.String,
-            //    Value = ".:: escolha suas fotos ::."
-            //});
-
-            //#endregion
-
-
-            //generateConfigFile();
-        }
-        private void generateConfigFile()
-        {
-            //string content = XmlSerializer<ParameterCollection>.Save(parameterCollection);
-            //if (!Directory.Exists(AppFolder.GetAppFolder()))
-            //    Directory.CreateDirectory(AppFolder.GetAppFolder());
-            //if (!Directory.Exists(AppFolder.GetAppConfigFolder(appName)))
-            //    Directory.CreateDirectory(AppFolder.GetAppConfigFolder(appName));
-            //File.WriteAllText(configFilePath, content);
-
-        }
-        private void getFolderPics()
-        {
-            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            folderBrowserDialog.ShowDialog();
-            string path = folderBrowserDialog.SelectedPath;
-            loadDirectories(path);
-
+            PropertySetter propertySetter = new PropertySetter() { Value = settings };
+            propertySetter.OpenSettings = new Action(loadSettingsFile);
+            propertySetter.ReloadSettings = new Action(loadSettingsFile);
+            propertySetter.SaveSettings = new Action(saveSettings);
+            dialogWindow.DialogContent = propertySetter;
+            dialogWindow.Visibility = Visibility.Visible;
         }
         private void initialize()
         {
+            loadSettingsFile();
+
+            pictureManager = new PictureManager(settings);
+            pictureManager.AddPicture = new Action<Picture>(addPicture);
+            pictureManager.RemovePicture = new Action<Picture>(removePicture);
+            pictureManager.TotalPriceChanged += new EventHandler(pictureManager_TotalPriceChanged);
+
+            gridClient.DataContext = pictureManager.Client;
+
             dialogWindow.IsVisible = false;
             dialogWindow.WindowMouseDown += new DialogWindow.EventHandler(dialogWindow_WindowMouseDown);
 
-
-            pictureList = new PictureCollection();
-            pictureList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(pictureList_CollectionChanged);
-            configFilePath = AppFolder.GetAppConfigFilePath(appName);
-            loadConfigFile();
-
-            TotalPrice = 0;
             textBlockLoading.Text = "";
 
         }
-        private void loadConfigFile()
+
+        private void loadSettingsFile()
         {
-            //try
-            //{
-            //    if (configFilePath != string.Empty)
-            //    {
-            //        if (!File.Exists(configFilePath))
-            //            generateStandardConfigFile();
-            //        string content = File.ReadAllText(configFilePath);
-            //        ParameterCollection collection = XmlSerializer<ParameterCollection>.Load(content);
-            //        if (collection != null)
-            //        {
-            //            parameterCollection = collection;
-            //            bindParameterCollection();
-            //        }
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show(e.Message);
-            //}
-        }
-        private void loadCdromItems()
-        {
-            //cdromVolumeList.Clear();
-            //VolumeDeviceClass volumeDeviceClass = new VolumeDeviceClass();
-            //foreach (Volume volume in volumeDeviceClass.Devices)
-            //{
-            //    if (volume.Class == "CDROM")
-            //        cdromVolumeList.Add(volume);
-            //}
-            //if (cdromVolumeList.Count > 0)
-            //{
-            //    //if(cdromVolumeList[0].Disks.Count>0)
-            //    buttonSourceCD.IsEnabled = true;
-            //}
-            //else buttonSourceCD.IsEnabled = false;
-
-        }
-        private void loadDirectories(string path)
-        {
-            System.ComponentModel.BackgroundWorker folderBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            folderBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(folderBackgroundWorker_DoWork);
-            folderBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(folderBackgroundWorker_RunWorkerCompleted);
-            folderBackgroundWorker.RunWorkerAsync(path);
-        }
-        private void loadUsbItems()
-        {
-            //isLoading = true;
-            //usbVolumeList.Clear();
-
-            //// display volumes
-            //VolumeDeviceClass volumeDeviceClass = new VolumeDeviceClass();
-            //foreach (Volume volume in volumeDeviceClass.Devices)
-            //{
-            //    if (volume.IsUsb)
-            //        usbVolumeList.Add(volume);
-            //}
-            //if (usbVolumeList.Count > 0)
-            //    buttonSourcePenDrive.IsEnabled = true;
-            //else buttonSourcePenDrive.IsEnabled = false;
-            //isLoading = false;
-        }
-        private void loadPrices()
-        {
-            //if (picturePriceCollection == null)
-            //    picturePriceCollection = new PicturePriceCollection();
-
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow10x15)),
-            //    Size = PictureSize._10x15,
-            //    Type = PictureType.Gloss
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow13x18)),
-            //    Size = PictureSize._13x18,
-            //    Type = PictureType.Gloss
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow15x21)),
-            //    Size = PictureSize._15x21,
-            //    Type = PictureType.Gloss
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x25)),
-            //    Size = PictureSize._20x25,
-            //    Type = PictureType.Gloss
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x30)),
-            //    Size = PictureSize._20x30,
-            //    Type = PictureType.Gloss
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow30x45)),
-            //    Size = PictureSize._30x45,
-            //    Type = PictureType.Gloss
-            //});
-
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular10x15)),
-            //    Size = PictureSize._10x15,
-            //    Type = PictureType.Regular
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular13x18)),
-            //    Size = PictureSize._13x18,
-            //    Type = PictureType.Regular
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular15x21)),
-            //    Size = PictureSize._15x21,
-            //    Type = PictureType.Regular
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x25)),
-            //    Size = PictureSize._20x25,
-            //    Type = PictureType.Regular
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x30)),
-            //    Size = PictureSize._20x30,
-            //    Type = PictureType.Regular
-            //});
-            //picturePriceCollection.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular30x45)),
-            //    Size = PictureSize._30x45,
-            //    Type = PictureType.Regular
-            //});
-
-
+            try
+            {
+                settings = SettingsFileLoader<PicDeveloperSettings>.Load(Constraints.AppName);
+                if (settings == null)
+                    saveSettings();
+            }
+            catch (Exception exception)
+            {
+                string caption = "loadConfigFile";
+                string message = ErrorMessageBuilder.CreateMessage(exception);
+                MessageBox.Show(message, caption);
+            }
         }
         private void removePicture(Picture picture)
         {
@@ -613,7 +263,7 @@ namespace TK1.PicDeveloper
                 if (picture != null)
                 {
                     PictureControl control = (from el in wrapPanelPictures.Children.Cast<PictureControl>()
-                                              where (el.Content as Image).Source == picture.ImageSource
+                                              where el.Picture == picture
                                               select el).FirstOrDefault();
                     if (control != null)
                         wrapPanelPictures.Children.Remove(control);
@@ -625,188 +275,52 @@ namespace TK1.PicDeveloper
                 this.Dispatcher.Invoke(callback, picture);
             }
         }
-        private void resetPicture()
+        private void saveSettings()
         {
-            wrapPanelPictures.Children.Clear();
-        }
-        private void savePics()
-        {
-            string path = string.Format("{0}\\{1}_{2}_{3}\\", clientPictureFolderPath,selectedPicSize,selectedPicType, textBoxClientName.Text);
             try
             {
-                if (System.IO.Directory.Exists(path))
-                {
-                    //string 
-                    clearDirectoryContent(path);
-                }
-                else
-                    System.IO.Directory.CreateDirectory(path);
-
-                foreach (PictureControl pictureControl in wrapPanelPictures.Children)
-                {
-                    if (!pictureControl.IsSaved)
-                    {
-                        for (int i = 0; i < pictureControl.Quantity; i++)
-                        {
-                            pictureCounter++;
-                            string newFile = path + pictureCounter.ToString() + ".jpg";
-                            try
-                            {
-                                System.IO.File.Copy(pictureControl.FileName, newFile);
-                            }
-                            catch { }
-                            pictureControl.IsSaved = true;
-                        }
-                    }
-                }
-                string info = createInfoFile();
-                System.IO.File.WriteAllText(path + "Info.txt", info);
-
-                MessageBox.Show("Arquivos gravados em " + path);
-
-                //try
-                //{
-                //    if (isUsingUsbDrive)
-                //        usbVolumeList[0].Eject(true);
-                //}
-                //catch { }
-
+                if (settings == null)
+                    settings = new PicDeveloperSettings();
+                SettingsFileLoader<PicDeveloperSettings>.Save(Constraints.AppName, settings);
             }
-            catch (Exception exception) { MessageBox.Show(exception.Message, "ERRO!!!"); }
-
-        }
-
-        //public static string PicTypeToString(PictureType Type)
-        //{
-        //    switch (Type)
-        //    {
-        //        case PictureType.Gloss: return "Gloss";
-        //        case PictureType.Regular: return "Regular";
-        //        default: return "";
-        //    }
-        //}
-        //public static string PicSizeToString(PictureSize Size)
-        //{
-        //    switch (Size)
-        //    {
-        //        case PictureSize._10x15: return "10x15";
-        //        case PictureSize._13x18: return "13x18";
-        //        case PictureSize._15x21: return "15x21";
-        //        case PictureSize._20x25: return "20x25";
-        //        case PictureSize._20x30: return "20x30";
-        //        case PictureSize._30x45: return "30x45";
-        //        default: return "";
-        //    }
-        //}
-        //public static PictureType StringToPicType(string Type)
-        //{
-        //    switch (Type)
-        //    {
-        //        case "Gloss": return PictureType.Gloss;
-        //        case "Regular": return PictureType.Regular;
-        //        default: return PictureType.Gloss; ;
-        //    }
-        //}
-        //public static PictureSize StringToPicSize(string Size)
-        //{
-        //    switch (Size)
-        //    {
-        //        case "10x15": return PictureSize._10x15;
-        //        case "13x18": return PictureSize._13x18;
-        //        case "15x21": return PictureSize._15x21;
-        //        case "20x25": return PictureSize._20x25;
-        //        case "20x30": return PictureSize._20x30;
-        //        case "30x45": return PictureSize._30x45;
-        //        default: return PictureSize._10x15;
-        //    }
-        //}
-
-        private IntPtr wndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            IntPtr result = IntPtr.Zero;
-            return result;
-            //if (msg == Native.WM_DEVICECHANGE)
-            //{
-            //    if (!isLoading)
-            //    {
-            //        loadUsbItems();
-            //        loadCdromItems();
-            //    }
-            //}
-            //return IntPtr.Zero;
-        }
-        void pictureList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            if (e != null)
+            catch (Exception exception)
             {
-                if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Reset)
-                {
-                    resetPicture();
-                    Quantity = 0;
-                    calculateTotalPrice();
-                }
-                else
-                {
-                    if (e.NewItems != null)
-                    {
-                        foreach (Picture picture in e.NewItems)
-                            addPicture(picture);
-                    }
-                    if (e.OldItems != null)
-                    {
-                        foreach (Picture picture in e.OldItems)
-                            removePicture(picture);
-
-                    }
-                }
+                string caption = "loadConfigFile";
+                string message = ErrorMessageBuilder.CreateMessage(exception);
+                MessageBox.Show(message, caption);
             }
         }
-
 
         void control_ShowZoomedImage(object sender, ZoomEventArgs e)
         {
             dialogWindow.IsVisible = true;
-            Picture picture = new Picture(e.FileName, zoomPixelWidth);
-            dialogWindow.DialogContent = new Image() { Source = picture.ImageSource };
+            Picture picture = e.Picture;
+            dialogWindow.DialogContent = new Image();//{ Source = picture.ImageSource };
         }
         void control_PicQuantityChanged(object sender, EventArgs e)
         {
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void dialogWindow_WindowMouseDown(object sender, EventArgs e)
         {
             dialogWindow.IsVisible = false;
         }
-        void folderBackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+
+        #region EVENT HANDLERS
+        void pictureManager_TotalPriceChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
         }
-        void folderBackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            try
-            {
-                string path = e.Argument as string;
-                foreach (string filename in System.IO.Directory.GetFiles(path))
-                {
-                    addPicture(filename);
-                }
-                foreach (string subDirectory in System.IO.Directory.GetDirectories(path))
-                {
-                    loadDirectories(subDirectory);
-                }
-            }
-            catch (Exception exception) { }
-        }
+
+        #endregion
 
         #region UI EVENT HANDLERS
         private void buttonSaveAndAdd_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            savePics();
+            pictureManager.SavePics();
         }
         private void buttonSaveAndFinish_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            dialogWindow.DialogContent = new TK1.Basics.Controls.Settings() { Value = new PicDeveloperSettings() };
-            dialogWindow.Visibility = Visibility.Visible;
             //savePics();
             //finish();
 
@@ -822,11 +336,11 @@ namespace TK1.PicDeveloper
         }
         private void buttonSourceFolder_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            getFolderPics();
+            pictureManager.GetFolderPics();
         }
         private void buttonSourcePenDrive_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            getFolderPics();
+            pictureManager.GetFolderPics();
         }
 
         private void buttonWindowClose_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -847,51 +361,51 @@ namespace TK1.PicDeveloper
 
         private void radioButtonSize1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicSize = PictureSize._10x15;
+            pictureManager.PicSize = PaperSizes._10x15;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void radioButtonSize2_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicSize = PictureSize._13x18;
+            pictureManager.PicSize = PaperSizes._13x18;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void radioButtonSize3_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicSize = PictureSize._15x21;
+            pictureManager.PicSize = PaperSizes._15x21;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void radioButtonSize4_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicSize = PictureSize._20x25;
+            pictureManager.PicSize = PaperSizes._20x25;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void radioButtonSize5_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicSize = PictureSize._20x30;
+            pictureManager.PicSize = PaperSizes._20x30;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void radioButtonSize6_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicSize = PictureSize._30x45;
+            pictureManager.PicSize = PaperSizes._30x45;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void radioButtonTypeGloss_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicType = PictureType.Gloss;
+            pictureManager.PicType = PaperTypes.Gloss;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
         private void radioButtonTypeRegular_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            selectedPicType = PictureType.Regular;
+            pictureManager.PicType = PaperTypes.Regular;
             changePicInfo();
-            calculateTotalPrice();
+            pictureManager.CalculateTotalPrice();
         }
 
         private void rectangleBar_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -923,16 +437,20 @@ namespace TK1.PicDeveloper
 
         private void textBlockReset_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            pictureList.Clear();
+            pictureManager.ClearList();
         }
+        private void textBlockSettings_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            showSettings();
+        }
+
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            HwndSource source = HwndSource.FromHwnd(new WindowInteropHelper(this).Handle);
-            source.AddHook(new HwndSourceHook(wndProc));
+            initialize();
 
-            loadUsbItems();
-            loadCdromItems();
+            //pictureManager.LoadUsbItems();
+            //pictureManager.LoadCdromItems();
         }
 
 

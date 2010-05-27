@@ -11,13 +11,13 @@ namespace TK1
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\TK1\";
         }
-        public static string GetAppConfigFolder(string appName)
+        public static string GetAppSettingsFolder(string appName)
         {
-            return AppFolder.GetAppFolder() + appName + @"\Config\";
+            return AppFolder.GetAppFolder() + appName + @"\Settings\";
         }
-        public static string GetAppConfigFilePath(string appName)
+        public static string GetAppSettingsFilePath(string appName)
         {
-            return AppFolder.GetAppConfigFolder(appName) + @"Settings.took1cfg";
+            return AppFolder.GetAppSettingsFolder(appName) + @"Settings.tk1cfg";
         }
 
     }
