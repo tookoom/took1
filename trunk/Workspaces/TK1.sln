@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Basics.Controls", "..\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Dev", "..\Code\App.Dev\App.Dev.csproj", "{7DA409CD-E8A8-4902-8D23-A412F7F488A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Media", "..\Code\TK1.Media\TK1.Media.csproj", "{2B1DC70C-89E1-46F4-96C7-03BD38D80330}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -131,6 +133,10 @@ Global
 		{7DA409CD-E8A8-4902-8D23-A412F7F488A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DA409CD-E8A8-4902-8D23-A412F7F488A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DA409CD-E8A8-4902-8D23-A412F7F488A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,6 +25,8 @@ using TK1.Utility;
 using TK1.Configuration;
 using TK1.Basics.Controls;
 using TK1.Data.Model.Presentation;
+using TK1.Media.Controls;
+using TK1.Media.Data;
 
 namespace TK1.PicDeveloper
 {
@@ -54,7 +56,7 @@ namespace TK1.PicDeveloper
         private Picture topLeftImage;
 
         PicDeveloperSettings settings = null;
-        PictureManager pictureManager = null;
+        PictureDevelopmentManager pictureManager = null;
 
         #endregion   
         #region PUBLIC PROPERTIES
@@ -174,8 +176,8 @@ namespace TK1.PicDeveloper
             {
                 if (picture != null)
                 {
-                    PictureControl pictureControl = new PictureControl() { Picture = picture };
-                    wrapPanelPictures.Children.Add(pictureControl);
+                    PictureSelector pictureSelector = new PictureSelector() { Picture = picture };
+                    wrapPanelPictures.Children.Add(pictureSelector);
                 }
             }
             else
@@ -227,7 +229,7 @@ namespace TK1.PicDeveloper
         {
             loadSettingsFile();
 
-            pictureManager = new PictureManager(settings);
+            pictureManager = new PictureDevelopmentManager(settings);
             pictureManager.AddPicture = new Action<Picture>(addPicture);
             pictureManager.RemovePicture = new Action<Picture>(removePicture);
             pictureManager.TotalPriceChanged += new EventHandler(pictureManager_TotalPriceChanged);
@@ -262,7 +264,7 @@ namespace TK1.PicDeveloper
             {
                 if (picture != null)
                 {
-                    PictureControl control = (from el in wrapPanelPictures.Children.Cast<PictureControl>()
+                    PictureSelector control = (from el in wrapPanelPictures.Children.Cast<PictureSelector>()
                                               where el.Picture == picture
                                               select el).FirstOrDefault();
                     if (control != null)

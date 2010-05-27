@@ -78,12 +78,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Control\PictureControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Control\DialogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,25 +100,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Collection\PictureDevelopmentCollection.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collection\PictureCollection.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="Control\PictureControl.xaml.cs">
-      <DependentUpon>PictureControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Picture.cs" />
+    <Compile Include="Data\PictureDevelopment.cs" />
     <Compile Include="Data\PicturePrice.cs" />
     <Compile Include="Data\PaperSizes.cs" />
     <Compile Include="Data\PaperTypes.cs" />
     <Compile Include="Control\DialogWindow.xaml.cs">
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PictureManager.cs" />
+    <Compile Include="PictureDevelopmentManager.cs" />
     <Compile Include="ProgressReporter.xaml.cs">
       <DependentUpon>ProgressReporter.xaml</DependentUpon>
     </Compile>
@@ -169,6 +160,10 @@
     <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
       <Name>TK1.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Media\TK1.Media.csproj">
+      <Project>{2B1DC70C-89E1-46F4-96C7-03BD38D80330}</Project>
+      <Name>TK1.Media</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Wpf.Controls\TK1.Wpf.Controls.csproj">
       <Project>{B92BEEE2-B92C-4AB1-81E0-74D29815D202}</Project>

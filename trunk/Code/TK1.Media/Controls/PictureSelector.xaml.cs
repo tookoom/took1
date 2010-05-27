@@ -10,15 +10,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TK1.PicDeveloper.Data;
+using TK1.Media.Data;
 using TK1.Wpf.Controls.Binding;
 
-namespace TK1.PicDeveloper.Control
+namespace TK1.Media.Controls
 {
 	/// <summary>
 	/// Interaction logic for ControlPicture.xaml
 	/// </summary>
-	public partial class PictureControl
+	public partial class PictureSelector
 	{
         #region EVENTS
         public event EventHandler PicQuantityChanged;
@@ -73,7 +73,7 @@ namespace TK1.PicDeveloper.Control
         }
         #endregion
 
-        public PictureControl()
+        public PictureSelector()
 		{
 			this.InitializeComponent();
 
