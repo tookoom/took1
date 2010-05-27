@@ -4,13 +4,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:TK1_PicDeveloper_Control="clr-namespace:TK1.PicDeveloper.Control" 
-    xmlns:TK1_PicDeveloper_Collection="clr-namespace:TK1.PicDeveloper.Collection" 
+    xmlns:TK1_Media_Collection="clr-namespace:TK1.Media.Collection;assembly=TK1.Media" 
     xmlns:TK1_Data_Model_Presentation="clr-namespace:TK1.Data.Model.Presentation;assembly=TK1.Data.Model.Presentation" mc:Ignorable="d" 
     x:Class="TK1.PicDeveloper.MainWindow"
     Title="PicDeveloper" Height="600" Width="850" ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
     <Window.Resources>
     	<TK1_Data_Model_Presentation:PersonView x:Key="PersonViewDataSource" d:IsDataSource="True"/>
-    	<TK1_PicDeveloper_Collection:PictureCollection x:Key="PictureCollectionDataSource" d:IsDataSource="True"/>
+        <TK1_Media_Collection:PictureCollection x:Key="PictureCollectionDataSource" d:IsDataSource="True"/>
         <SolidColorBrush x:Key="DarkBlue" Color="#FF253A52"/>
         <DataTemplate x:Key="PictureTemplate">
         	<Border BorderThickness="1" BorderBrush="#FFD8D8D8" Margin="4">
@@ -202,15 +202,15 @@
                 </Grid>
                 <Grid x:Name="gridButtons" Margin="0,0,0,0" Grid.Row="3" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
-                    	<ColumnDefinition Width="1*"/>
-                    	<ColumnDefinition Width="1*"/>
-                    	<ColumnDefinition Width="1*"/>
-                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="Auto"/>
+                    	<ColumnDefinition Width="Auto"/>
+                    	<ColumnDefinition Width="Auto"/>
+                    	<ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="buttonSourcePenDrive" Content="PenDrive" Click="buttonSourcePenDrive_Click" d:LayoutOverrides="Height" Margin="4,4,4,4" Style="{DynamicResource SourceButtonStyle}"/>
-                    <Button Margin="4,4,4,4" x:Name="buttonSourceCD" Content="CD" Click="buttonSourceCD_Click" d:LayoutOverrides="Height" Grid.Column="1" Style="{DynamicResource SourceButtonStyle}"/>
-                    <Button Margin="4,4,4,4" x:Name="buttonSourceCamera" Content="Camera" Click="buttonSourceCamera_Click" d:LayoutOverrides="Height" Grid.Column="2" Style="{DynamicResource SourceButtonStyle}"/>
-                    <Button Margin="4,4,4,4" Content="Folder" Width="Auto" d:LayoutOverrides="HorizontalAlignment, Height" x:Name="buttonSourceFolder" Click="buttonSourceFolder_Click" Grid.Column="3" Style="{DynamicResource SourceButtonStyle}"/>
+                    <Button x:Name="buttonSourcePenDrive" Content="PenDrive" Click="buttonSourcePenDrive_Click" d:LayoutOverrides="Height" Margin="4,4,4,4" Style="{DynamicResource SourceButtonStyle}" Visibility="Collapsed"/>
+                    <Button Margin="4,4,4,4" x:Name="buttonSourceCD" Content="CD" Click="buttonSourceCD_Click" d:LayoutOverrides="Height" Grid.Column="1" Style="{DynamicResource SourceButtonStyle}" Visibility="Collapsed"/>
+                    <Button Margin="4,4,4,4" x:Name="buttonSourceCamera" Content="Camera" Click="buttonSourceCamera_Click" d:LayoutOverrides="Height" Grid.Column="2" Style="{DynamicResource SourceButtonStyle}" Visibility="Collapsed"/>
+                    <Button Margin="4,4,4,4" Content="Carregar" Width="Auto" d:LayoutOverrides="HorizontalAlignment, Height" x:Name="buttonSourceFolder" Click="buttonSourceFolder_Click" Grid.Column="3" Style="{DynamicResource SourceButtonStyle}"/>
                 </Grid>
                 <TextBlock Text="Carregando..." TextWrapping="Wrap" d:LayoutOverrides="GridBox" Margin="0,0,0,4" x:Name="textBlockLoading" VerticalAlignment="Bottom" Grid.Row="3" HorizontalAlignment="Right" Visibility="Collapsed" Grid.Column="1"/>
             </Grid>

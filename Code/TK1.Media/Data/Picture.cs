@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 
-namespace TK1.PicDeveloper.Data
+namespace TK1.Media.Data
 {
     public class Picture
     {
@@ -14,23 +14,12 @@ namespace TK1.PicDeveloper.Data
         public int Quantity { get; set; }
         public string Path { get; set; }
         public int PixelWidth { get; set; }
-        //public BitmapImage ImageSource { get; set; }
-        public PaperTypes Type { get; set; }
-        public PaperSizes Size { get; set; }
 
         public Picture(string path, int pixelWidth)
         {
             IsSelected = false;
             Path = path;
             Name = System.IO.Path.GetFileNameWithoutExtension(path);
-            ////_Image = new Image();
-            //ImageSource = new BitmapImage();
-            //ImageSource.BeginInit();
-            //ImageSource.DecodePixelWidth = pixelWidth;
-            //ImageSource.CacheOption = BitmapCacheOption.OnLoad;
-            //ImageSource.UriSource = new Uri(Path);
-            //ImageSource.EndInit();
-            ////_Image.Source = _Bitmap;
         }
 
     }
