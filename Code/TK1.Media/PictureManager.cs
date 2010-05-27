@@ -153,17 +153,23 @@ namespace TK1.Media
 
         }
 
-        private void addPicture(string path)
+        private void initialize()
+        {
+            pictures = new PictureCollection();
+            pictures.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(pictures_CollectionChanged);
+        }
+
+        protected void addPicture(string path)
         {
             Picture picture = new Picture(path, thumbPixelWidth) { Quantity = 1 };
             pictures.Add(picture);
         }
-        private void addPicture(Picture picture)
+        protected void addPicture(Picture picture)
         {
             if (AddPicture != null)
                 AddPicture(picture);
         }
-        private static void clearDirectoryContent(string path)
+        protected static void clearDirectoryContent(string path)
         {
             foreach (string filename in System.IO.Directory.GetFiles(path))
             {
@@ -174,100 +180,14 @@ namespace TK1.Media
                 catch { }
             }
         }
-        private void initialize()
-        {
-            pictures = new PictureCollection();
-            pictures.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(pictures_CollectionChanged);
-        }
-        private void loadDirectories(string path)
+        protected void loadDirectories(string path)
         {
             System.ComponentModel.BackgroundWorker folderBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             folderBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(folderBackgroundWorker_DoWork);
             folderBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(folderBackgroundWorker_RunWorkerCompleted);
             folderBackgroundWorker.RunWorkerAsync(path);
         }
-        private void loadPrices()
-        {
-            //if (priceList == null)
-            //    priceList = new PicturePriceCollection();
-
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow10x15)),
-            //    Size = PaperSizes._10x15,
-            //    Type = PaperTypes.Gloss
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow13x18)),
-            //    Size = PaperSizes._13x18,
-            //    Type = PaperTypes.Gloss
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow15x21)),
-            //    Size = PaperSizes._15x21,
-            //    Type = PaperTypes.Gloss
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x25)),
-            //    Size = PaperSizes._20x25,
-            //    Type = PaperTypes.Gloss
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow20x30)),
-            //    Size = PaperSizes._20x30,
-            //    Type = PaperTypes.Gloss
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceGlow30x45)),
-            //    Size = PaperSizes._30x45,
-            //    Type = PaperTypes.Gloss
-            //});
-
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular10x15)),
-            //    Size = PaperSizes._10x15,
-            //    Type = PaperTypes.Regular
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular13x18)),
-            //    Size = PaperSizes._13x18,
-            //    Type = PaperTypes.Regular
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular15x21)),
-            //    Size = PaperSizes._15x21,
-            //    Type = PaperTypes.Regular
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x25)),
-            //    Size = PaperSizes._20x25,
-            //    Type = PaperTypes.Regular
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular20x30)),
-            //    Size = PaperSizes._20x30,
-            //    Type = PaperTypes.Regular
-            //});
-            //priceList.Add(new PicturePrice
-            //{
-            //    Price = StringConverter.ToFloat(parameterCollection.GetValue(ParameterNames.PriceRegular30x45)),
-            //    Size = PaperSizes._30x45,
-            //    Type = PaperTypes.Regular
-            //});
-
-
-        }
-        private void removePicture(Picture picture)
+        protected void removePicture(Picture picture)
         {
             if (RemovePicture != null)
                 RemovePicture(picture);
