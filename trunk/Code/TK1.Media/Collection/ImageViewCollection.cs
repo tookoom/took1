@@ -7,7 +7,7 @@ using TK1.Media.Data;
 
 namespace TK1.Media.Collection
 {
-    public class PictureCollection : ObservableCollection<Picture>
+    public class ImageViewCollection : ObservableCollection<ImageView>
     {
     }
 }

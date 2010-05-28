@@ -8,9 +8,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using TK1.Wpf.Controls.Resources;
+using TK1.Controls.Resources;
 
-namespace TK1.Wpf.Controls.Binding
+namespace TK1.Controls.Binding
 {
     public class ControlValidation
     {

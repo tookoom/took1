@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Reflection;
 using TK1.Reflection;
 
-namespace TK1.Wpf.Controls
+namespace TK1.Controls
 {
     /// <summary>
     /// Interaction logic for PropertyEditor.xaml

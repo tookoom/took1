@@ -35,13 +35,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Home", "..\Code\App.Hom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data.Source", "..\Code\TK1.Data.Source\TK1.Data.Source.csproj", "{B00F2B3E-4002-4DD3-AA00-1057F5D908F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Wpf.Controls", "..\Code\TK1.Wpf.Controls\TK1.Wpf.Controls.csproj", "{B92BEEE2-B92C-4AB1-81E0-74D29815D202}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Basics.Controls", "..\Code\TK1.Basics.Controls\TK1.Basics.Controls.csproj", "{B681C774-1337-4713-B04A-E839B1E4E31E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Dev", "..\Code\App.Dev\App.Dev.csproj", "{7DA409CD-E8A8-4902-8D23-A412F7F488A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Media", "..\Code\TK1.Media\TK1.Media.csproj", "{2B1DC70C-89E1-46F4-96C7-03BD38D80330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Controls", "..\Code\TK1.Controls\TK1.Controls.csproj", "{B92BEEE2-B92C-4AB1-81E0-74D29815D202}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -121,10 +121,6 @@ Global
 		{B00F2B3E-4002-4DD3-AA00-1057F5D908F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B00F2B3E-4002-4DD3-AA00-1057F5D908F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B00F2B3E-4002-4DD3-AA00-1057F5D908F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B681C774-1337-4713-B04A-E839B1E4E31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B681C774-1337-4713-B04A-E839B1E4E31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B681C774-1337-4713-B04A-E839B1E4E31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -137,6 +133,10 @@ Global
 		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B1DC70C-89E1-46F4-96C7-03BD38D80330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92BEEE2-B92C-4AB1-81E0-74D29815D202}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

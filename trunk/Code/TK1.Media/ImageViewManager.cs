@@ -8,9 +8,10 @@ using System.IO;
 
 namespace TK1.Media
 {
-    public class PictureManager
+    public class ImageViewManager
     {
         #region CONST
+        protected const int thumbPixelHeigth = 200;
         protected const int thumbPixelWidth = 300;
         protected const int zoomPixelWidth = 1000;
         #endregion
@@ -22,7 +23,7 @@ namespace TK1.Media
         protected int pictureCounter = 0;
 
         protected string filePath = string.Empty;
-        protected PictureCollection pictures;
+        protected ImageViewCollection pictures;
 
         protected int quantity = 0;
 
@@ -31,8 +32,9 @@ namespace TK1.Media
 
         #endregion
         #region PUBIC ACTIONS
-        public Action<Picture> AddPicture;
-        public Action<Picture> RemovePicture;
+        public Action<ImageView> AddPictureWorker;
+        public Action<ImageView> RemovePictureWorker;
+        public Action ResetWorker;
 
         #endregion        
         #region PUBLIC PROPERTIES
@@ -45,14 +47,14 @@ namespace TK1.Media
                 //textBlockQuantity.Text = string.Format("{0} Fotos", quantity);
             }
         }
-        public PictureCollection Pictures
+        public ImageViewCollection Pictures
         {
             get { return pictures; }
             set { pictures = value; }
         }
         #endregion
 
-        public PictureManager()
+        public ImageViewManager()
         {
             initialize();
         }
@@ -68,7 +70,8 @@ namespace TK1.Media
             //folderBrowserDialog.ShowDialog();
             //string path = folderBrowserDialog.SelectedPath;
 
-            string path = @"C:\Users\andre\Pictures\DJ";
+            //string path = @"C:\Users\andre\Pictures\DJ";
+            string path = @"C:\Users\andre\Pictures\Fotos";
             loadDirectories(path);
 
         }
@@ -155,19 +158,19 @@ namespace TK1.Media
 
         private void initialize()
         {
-            pictures = new PictureCollection();
+            pictures = new ImageViewCollection();
             pictures.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(pictures_CollectionChanged);
         }
 
         protected void addPicture(string path)
         {
-            Picture picture = new Picture(path, thumbPixelWidth) { Quantity = 1 };
-            pictures.Add(picture);
+            ImageView imageView = new ImageView(path, thumbPixelHeigth, thumbPixelWidth) { Quantity = 1, IsSelected = true };
+            pictures.Add(imageView);
         }
-        protected void addPicture(Picture picture)
+        protected void addPicture(ImageView imageView)
         {
-            if (AddPicture != null)
-                AddPicture(picture);
+            if (AddPictureWorker != null)
+                AddPictureWorker(imageView);
         }
         protected static void clearDirectoryContent(string path)
         {
@@ -187,12 +190,16 @@ namespace TK1.Media
             folderBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(folderBackgroundWorker_RunWorkerCompleted);
             folderBackgroundWorker.RunWorkerAsync(path);
         }
-        protected void removePicture(Picture picture)
+        protected void removePicture(ImageView imageView)
         {
-            if (RemovePicture != null)
-                RemovePicture(picture);
+            if (RemovePictureWorker != null)
+                RemovePictureWorker(imageView);
         }
-
+        protected void reset()
+        {
+            if (ResetWorker != null)
+                ResetWorker();
+        }
 
         #region EVENT HANDLERS
         private IntPtr wndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -215,20 +222,20 @@ namespace TK1.Media
             {
                 if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Reset)
                 {
-                    ClearList();
+                    reset();
                     Quantity = 0;
                 }
                 else
                 {
                     if (e.NewItems != null)
                     {
-                        foreach (Picture picture in e.NewItems)
-                            addPicture(picture);
+                        foreach (ImageView imageView in e.NewItems)
+                            addPicture(imageView);
                     }
                     if (e.OldItems != null)
                     {
-                        foreach (Picture picture in e.OldItems)
-                            removePicture(picture);
+                        foreach (ImageView imageView in e.OldItems)
+                            removePicture(imageView);
 
                     }
                 }

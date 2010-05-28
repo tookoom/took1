@@ -113,7 +113,7 @@
     <Compile Include="Control\DialogWindow.xaml.cs">
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PictureDevelopmentManager.cs" />
+    <Compile Include="PictureManager.cs" />
     <Compile Include="ProgressReporter.xaml.cs">
       <DependentUpon>ProgressReporter.xaml</DependentUpon>
     </Compile>
@@ -162,10 +162,6 @@
     <ProjectReference Include="..\TK1.Media\TK1.Media.csproj">
       <Project>{2B1DC70C-89E1-46F4-96C7-03BD38D80330}</Project>
       <Name>TK1.Media</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Wpf.Controls\TK1.Wpf.Controls.csproj">
-      <Project>{B92BEEE2-B92C-4AB1-81E0-74D29815D202}</Project>
-      <Name>TK1.Wpf.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>

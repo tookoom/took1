@@ -11,14 +11,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TK1.Media.Data;
-using TK1.Wpf.Controls.Binding;
+using TK1.Controls.Binding;
+using System.IO;
 
 namespace TK1.Media.Controls
 {
 	/// <summary>
 	/// Interaction logic for ControlPicture.xaml
 	/// </summary>
-	public partial class PictureSelector
+	public partial class ImageSelector
 	{
         #region EVENTS
         public event EventHandler PicQuantityChanged;
@@ -48,118 +49,97 @@ namespace TK1.Media.Controls
 
         #endregion
         #region PRIVATE MEMBERS
+        private bool hasQuantity = false;
         private bool isSaved = false;
-
-        private Picture picture;
-
+        private ImageView imageView;
 
         #endregion
         #region PUBLIC PROPERTIES
+        public bool HasQuantity
+        {
+            get { return hasQuantity; }
+            set
+            {
+                hasQuantity = value;
+                updateUI();
+            }
+        }
         public bool IsSaved
         {
             get { return isSaved; }
             set
             {
                 isSaved = value;
-                setControlStatus();
+                updateUI();
             }
         }
-        public Picture Picture
+        public ImageView Picture
         {
-            get { return picture; }
-            set { picture = value;
+            get { return imageView; }
+            set { imageView = value;
             setPicture();
             }
         }
         #endregion
 
-        public PictureSelector()
+        public ImageSelector()
 		{
 			this.InitializeComponent();
-
-            setControlStatus();
+            updateUI();
 		}
 
-        private void setControlStatus()
-        {
-            //if (isChecked & !isSaved)
-            //{
-            //    imageCheck.Visibility = Visibility.Visible;
-            //    imageSave.Visibility = Visibility.Collapsed;
-
-            //    buttonPicAdd.IsEnabled = true;
-            //    buttonPicRemove.IsEnabled = true;
-            //    buttonZoom.IsEnabled = true;
-            //    textBoxQuantity.IsEnabled = true;
-
-            //}
-            //else if (isChecked & isSaved)
-            //{
-            //    imageCheck.Visibility = Visibility.Collapsed;
-            //    imageSave.Visibility = Visibility.Visible;
-
-            //    buttonPicAdd.IsEnabled = false;
-            //    buttonPicRemove.IsEnabled = false;
-            //    buttonZoom.IsEnabled = false;
-            //    textBoxQuantity.IsEnabled = false;
-                
-            //}
-            //else
-            //{
-            //    imageCheck.Visibility = Visibility.Collapsed;
-            //    imageSave.Visibility = Visibility.Collapsed;
-            //}
-
-        }
-        private void setFadeElement()
-        {
-            if (picture != null)
-            {
-                if (picture.Quantity > 0)
-                    borderFadeElement.Visibility = Visibility.Collapsed;
-                else
-                    borderFadeElement.Visibility = Visibility.Visible;
-            }
-        }
         private void setPicture()
         {
-            if (picture == null)
+            if (imageView == null)
             {
             }
             else
             {
             }
-            this.DataContext = picture;
+            this.DataContext = imageView;
             updateUI();
         }
         private void togleQuantity()
         {
             if (!IsSaved)
             {
-                if (picture != null)
+                if (imageView != null)
                 {
-                    if (picture.Quantity == 0)
+                    if (imageView.Quantity == 0)
                     {
-                        picture.Quantity = 1;
-                        picture.IsSelected = true;
+                        imageView.IsSelected = true;
                     }
                     else
                     {
-                        if (picture.Quantity == 1)
-                        {
-                            picture.Quantity = 0;
-                            picture.IsSelected = false;
-                        }
-                        picture.IsSelected = true;
+                        if (imageView.Quantity == 1)
+                            imageView.Quantity = 0;
                     }
+                    imageView.IsSelected = imageView.Quantity > 0;
                     updateUI();
                     onQuantityChanged(new EventArgs());
                 }
             }
         }
+        private void updateFadeElement()
+        {
+            if (imageView != null)
+            {
+                if (imageView.Quantity > 0)
+                    borderFadeElement.Visibility = Visibility.Collapsed;
+                else
+                    borderFadeElement.Visibility = Visibility.Visible;
+            }
+        }
         private void updateUI()
         {
-            setFadeElement();
+            if (hasQuantity)
+                gridQuantity.Visibility = Visibility.Visible;
+            else
+                gridQuantity.Visibility = Visibility.Collapsed;
+
+            updateFadeElement();
+
+
             BindingHelper.UpdateIsCheckedBindingTarget(checkBoxIsSelected);
             BindingHelper.UpdateTextBindingTarget(textBoxQuantity);
 
@@ -169,32 +149,32 @@ namespace TK1.Media.Controls
         #region UI EVENT HANDLERS
         private void buttonPicAdd_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (picture != null)
-                picture.Quantity++;
-            setFadeElement();
-            BindingHelper.UpdateTextBindingTarget(textBoxQuantity);
+            if (imageView != null)
+            {
+                imageView.Quantity++;
+                imageView.IsSelected = true;
+            }
+            updateUI();
             onQuantityChanged(new EventArgs());
         }
         private void buttonPicRemove_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (picture != null)
-                if (picture.Quantity > 0)
-                    picture.Quantity--;
-            setFadeElement();
-            BindingHelper.UpdateTextBindingTarget(textBoxQuantity);
+            if (imageView != null)
+            {
+                if (imageView.Quantity > 0)
+                    imageView.Quantity--;
+                if(imageView.Quantity == 0)
+                    imageView.IsSelected = false;
+            }
+            updateUI();
             onQuantityChanged(new EventArgs());
         }
         private void buttonZoom_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (picture != null)
+            if (imageView != null)
             {
-                onZoom(new ZoomEventArgs() { Picture = picture });
+                onZoom(new ZoomEventArgs() { Picture = imageView });
             }
-        }
-
-        private void contentPresenterPicture_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            togleQuantity();
         }
 
         private void imageCheck_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -211,16 +191,19 @@ namespace TK1.Media.Controls
                 {
                     if (checkBox.IsChecked.Value)
                     {
-                        picture.IsSelected = true;
-                        if (picture.Quantity == 0)
-                            picture.Quantity = 1;
+                        imageView.IsSelected = true;
+                        if (imageView.Quantity == 0)
+                            imageView.Quantity = 1;
                     }
                     else
                     {
-                        picture.IsSelected = true;
+                        imageView.IsSelected = false;
+                        imageView.Quantity = 0;
                     }
                 }
                 updateUI();
+                onQuantityChanged(new EventArgs());
+
             }
         }
         private void Image_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -230,6 +213,7 @@ namespace TK1.Media.Controls
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             BindingHelper.UpdateTextBindingSource(sender as TextBox);
+            onQuantityChanged(new EventArgs());
         }
 
         #endregion    
@@ -237,7 +221,7 @@ namespace TK1.Media.Controls
 
     public class ZoomEventArgs : EventArgs
     {
-        public Picture Picture { get; set; }
+        public ImageView Picture { get; set; }
     }
 
 

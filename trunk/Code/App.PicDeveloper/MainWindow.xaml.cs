@@ -26,6 +26,7 @@ using TK1.Basics.Controls;
 using TK1.Data.Model.Presentation;
 using TK1.Media.Controls;
 using TK1.Media.Data;
+using System.ComponentModel;
 
 namespace TK1.PicDeveloper
 {
@@ -35,7 +36,10 @@ namespace TK1.PicDeveloper
     public partial class MainWindow : Window
     {
         #region DELEGATES
-        delegate void PictureCallback(Picture picture);
+        delegate void PictureCallback(ImageView imageView);
+        delegate void PictureSelectorCallback(ImageSelector imageSelector);
+        delegate void VoidCallback();
+
         #endregion
         #region PRIVATE MEMBERS
         private bool isLoading;
@@ -47,15 +51,8 @@ namespace TK1.PicDeveloper
         private string clientPictureFolderPath = string.Empty;
         private string windowName = string.Empty;
 
-        private Picture bottomLeftImage;
-        private Picture buttonIconCamera;
-        private Picture buttonIconCD;
-        private Picture buttonIconFolder;
-        private Picture buttonIconPenDrive;
-        private Picture topLeftImage;
-
         PicDeveloperSettings settings = null;
-        PictureDevelopmentManager pictureManager = null;
+        PictureManager pictureManager = null;
 
         #endregion   
         #region PUBLIC PROPERTIES
@@ -89,54 +86,6 @@ namespace TK1.PicDeveloper
                 textBlockWindowName.Text = windowName;
             }
         }
-        public string BottomLeftImage
-        {
-            set
-            {
-                bottomLeftImage = new Picture(value, 1000);
-                contentPresenterBottomLeftImage.Content = new Image();// { Source = bottomLeftImage.ImageSource };
-            }
-        }
-        public string ButtonIconCamera
-        {
-            set
-            {
-                buttonIconCamera = new Picture(value, 1000);
-                buttonSourceCamera.Content = new Image();// { Source = buttonIconCamera.ImageSource };
-            }
-        }
-        public string ButtonIconCD
-        {
-            set
-            {
-                buttonIconCD = new Picture(value, 1000);
-                buttonSourceCD.Content = new Image();// { Source = buttonIconCD.ImageSource };
-            }
-        }
-        public string ButtonIconFolder
-        {
-            set
-            {
-                buttonIconFolder = new Picture(value, 1000);
-                buttonSourceFolder.Content = new Image();// { Source = buttonIconFolder.ImageSource };
-            }
-        }
-        public string ButtonIconPenDrive
-        {
-            set
-            {
-                buttonIconPenDrive = new Picture(value, 1000);
-                buttonSourcePenDrive.Content = new Image();// { Source = buttonIconPenDrive.ImageSource };
-            }
-        }
-        public string TopLeftImage
-        {
-            set
-            {
-                topLeftImage = new Picture(value, 1000);
-                contentPresenterTopLeftImage.Content = new Image();//{ Source = topLeftImage.ImageSource };
-            }
-        }
 
 
         #endregion
@@ -148,15 +97,15 @@ namespace TK1.PicDeveloper
             ////initialize();
         }
 
-        ////private void addPicture(Picture picture)
+        ////private void addPicture(Picture imageView)
         ////{
         ////    if (this.Dispatcher.CheckAccess())
         ////    {
-        ////        if (picture != null)
+        ////        if (imageView != null)
         ////        {
         ////            PictureControl control = new PictureControl();
-        ////            control.FileName = picture.Path;
-        ////            control.contentPresenterPicture.Content = new Image();// { Source = picture.ImageSource };
+        ////            control.FileName = imageView.Path;
+        ////            control.contentPresenterPicture.Content = new Image();// { Source = imageView.ImageSource };
         ////            control.PicQuantityChanged += new PictureControl.EventHandler(control_PicQuantityChanged);
         ////            control.ShowZoomedImage += new PictureControl.ZoomEventHandler(control_ShowZoomedImage);
         ////            wrapPanelPictures.Children.Add(control);
@@ -166,26 +115,56 @@ namespace TK1.PicDeveloper
         ////    else
         ////    {
         ////        PictureCallback callback = new PictureCallback(addPicture);
-        ////        this.Dispatcher.Invoke(callback, picture);
+        ////        this.Dispatcher.Invoke(callback, imageView);
         ////    }
         ////}
-        private void addPicture(Picture picture)
+        private void addPicture(ImageView imageView)
         {
             if (this.Dispatcher.CheckAccess())
             {
-                if (picture != null)
+                if (imageView != null)
                 {
-                    PictureSelector pictureSelector = new PictureSelector() { Picture = picture };
-                    wrapPanelPictures.Children.Add(pictureSelector);
+                    ImageSelector imageSelector = new ImageSelector() { Picture = imageView, HasQuantity = true };
+                    imageSelector.PicQuantityChanged += new EventHandler(imageSelector_PicQuantityChanged);
+                    imageSelector.ShowZoomedImage += new ImageSelector.ZoomEventHandler(imageSelector_ShowZoomedImage);
+
+                    BackgroundWorker imageSelectorWorker = new BackgroundWorker();
+                    imageSelectorWorker.DoWork += new DoWorkEventHandler(imageSelectorWorker_DoWork);
+                    imageSelectorWorker.RunWorkerAsync(imageSelector);
                 }
             }
             else
             {
                 PictureCallback callback = new PictureCallback(addPicture);
-                this.Dispatcher.Invoke(callback, picture);
+                this.Dispatcher.Invoke(callback, imageView);
 
             }
         }
+
+        void imageSelectorWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ImageSelector imageSelector = e.Argument as ImageSelector;
+            addPictureSelector(imageSelector);
+        }
+
+        private void addPictureSelector(ImageSelector imageSelector)
+        {
+            if (imageSelector != null)
+            {
+                if (this.Dispatcher.CheckAccess())
+                {
+                    wrapPanelPictures.Children.Add(imageSelector);
+                }
+                else
+                {
+                    PictureSelectorCallback callback = new PictureSelectorCallback(addPictureSelector);
+                    this.Dispatcher.Invoke(callback, imageSelector);
+
+                }
+
+            }
+        }
+
         private void changePicInfo()
         {
             if (pictureManager != null)
@@ -228,9 +207,10 @@ namespace TK1.PicDeveloper
         {
             loadSettingsFile();
 
-            pictureManager = new PictureDevelopmentManager(settings);
-            pictureManager.AddPicture = new Action<Picture>(addPicture);
-            pictureManager.RemovePicture = new Action<Picture>(removePicture);
+            pictureManager = new PictureManager(settings);
+            pictureManager.AddPictureWorker = new Action<ImageView>(addPicture);
+            pictureManager.RemovePictureWorker = new Action<ImageView>(removePicture);
+            pictureManager.ResetWorker = new Action(reset);
             pictureManager.TotalPriceChanged += new EventHandler(pictureManager_TotalPriceChanged);
 
             gridClient.DataContext = pictureManager.Client;
@@ -241,7 +221,6 @@ namespace TK1.PicDeveloper
             textBlockLoading.Text = "";
 
         }
-
         private void loadSettingsFile()
         {
             try
@@ -257,14 +236,14 @@ namespace TK1.PicDeveloper
                 MessageBox.Show(message, caption);
             }
         }
-        private void removePicture(Picture picture)
+        private void removePicture(ImageView imageView)
         {
             if (this.Dispatcher.CheckAccess())
             {
-                if (picture != null)
+                if (imageView != null)
                 {
-                    PictureSelector control = (from el in wrapPanelPictures.Children.Cast<PictureSelector>()
-                                              where el.Picture == picture
+                    ImageSelector control = (from el in wrapPanelPictures.Children.Cast<ImageSelector>()
+                                              where el.Picture == imageView
                                               select el).FirstOrDefault();
                     if (control != null)
                         wrapPanelPictures.Children.Remove(control);
@@ -273,7 +252,19 @@ namespace TK1.PicDeveloper
             else
             {
                 PictureCallback callback = new PictureCallback(removePicture);
-                this.Dispatcher.Invoke(callback, picture);
+                this.Dispatcher.Invoke(callback, imageView);
+            }
+        }
+        protected void reset()
+        {
+            if (this.Dispatcher.CheckAccess())
+            {
+                wrapPanelPictures.Children.Clear();
+            }
+            else
+            {
+                VoidCallback callback = new VoidCallback(reset);
+                this.Dispatcher.Invoke(callback);
             }
         }
         private void saveSettings()
@@ -292,20 +283,6 @@ namespace TK1.PicDeveloper
             }
         }
 
-        void control_ShowZoomedImage(object sender, ZoomEventArgs e)
-        {
-            dialogWindow.IsVisible = true;
-            Picture picture = e.Picture;
-            dialogWindow.DialogContent = new Image();//{ Source = picture.ImageSource };
-        }
-        void control_PicQuantityChanged(object sender, EventArgs e)
-        {
-            pictureManager.CalculateTotalPrice();
-        }
-        private void dialogWindow_WindowMouseDown(object sender, EventArgs e)
-        {
-            dialogWindow.IsVisible = false;
-        }
 
         #region EVENT HANDLERS
         void pictureManager_TotalPriceChanged(object sender, EventArgs e)
@@ -316,32 +293,22 @@ namespace TK1.PicDeveloper
         #endregion
 
         #region UI EVENT HANDLERS
-        private void buttonSaveAndAdd_Click(object sender, System.Windows.RoutedEventArgs e)
+
+        private void buttonClear_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            pictureManager.ClearList();
+        }
+        private void buttonLoad_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            pictureManager.GetFolderPics();
+        }
+        private void buttonSave_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             pictureManager.SavePics();
         }
-        private void buttonSaveAndFinish_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void buttonSettings_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            //savePics();
-            //finish();
-
-        }
-
-        private void buttonSourceCamera_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            // TODO: Add event handler implementation here.
-        }
-        private void buttonSourceCD_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	// TODO: Add event handler implementation here.
-        }
-        private void buttonSourceFolder_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            pictureManager.GetFolderPics();
-        }
-        private void buttonSourcePenDrive_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            pictureManager.GetFolderPics();
+            showSettings();
         }
 
         private void buttonWindowClose_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -358,6 +325,22 @@ namespace TK1.PicDeveloper
         private void buttonWindowMinimize_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void dialogWindow_WindowMouseDown(object sender, EventArgs e)
+        {
+            dialogWindow.IsVisible = false;
+        }
+
+        void imageSelector_PicQuantityChanged(object sender, EventArgs e)
+        {
+            pictureManager.CalculateTotalPrice();
+        }
+        private void imageSelector_ShowZoomedImage(object sender, ZoomEventArgs e)
+        {
+            dialogWindow.IsVisible = true;
+            ImageView imageView = e.Picture;
+            dialogWindow.DialogContent = new Image(){ Source = new BitmapImage( new Uri( imageView.Path))  };
         }
 
         private void radioButtonSize1_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -435,16 +418,6 @@ namespace TK1.PicDeveloper
                 e.Handled = true;
             }
         }
-
-        private void textBlockReset_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            pictureManager.ClearList();
-        }
-        private void textBlockSettings_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            showSettings();
-        }
-
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {

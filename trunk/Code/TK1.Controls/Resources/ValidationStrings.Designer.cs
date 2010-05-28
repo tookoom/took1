@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TK1.Wpf.Controls.Resources {
+namespace TK1.Controls.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TK1.Wpf.Controls.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TK1.Wpf.Controls.Resources.ValidationStrings", typeof(ValidationStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TK1.Controls.Resources.ValidationStrings", typeof(ValidationStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

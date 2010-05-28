@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 
-namespace TK1.Wpf.Controls.Binding
+namespace TK1.Controls.Binding
 {
     public static class ControlValidationHelper
     {

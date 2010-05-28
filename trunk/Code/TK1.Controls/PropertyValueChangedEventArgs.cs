@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace TK1.Wpf.Controls
+namespace TK1.Controls
 {
     public delegate void PropertyValueChangedEventHandler(Object sender, PropertyValueChangedEventArgs e);
 
