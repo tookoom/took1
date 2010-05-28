@@ -15,7 +15,7 @@ using System.Collections;
 using TK1.Reflection;
 using System.Reflection;
 
-namespace TK1.Wpf.Controls
+namespace TK1.Controls
 {
     /// <summary>
     /// Interaction logic for PropertyValueEditor.xaml

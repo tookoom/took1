@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace TK1.Wpf.Controls.Binding
+namespace TK1.Controls.Binding
 {
     public enum ControlValidationStates
     {

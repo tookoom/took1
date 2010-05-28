@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 
-namespace TK1.Wpf.Controls.Binding
+namespace TK1.Controls.Binding
 {
     public class ControlValidationErrorBuilder : System.Windows.Controls.Control
     {

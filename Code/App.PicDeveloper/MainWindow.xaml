@@ -10,7 +10,7 @@
     Title="PicDeveloper" Height="600" Width="850" ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
     <Window.Resources>
     	<TK1_Data_Model_Presentation:PersonView x:Key="PersonViewDataSource" d:IsDataSource="True"/>
-        <TK1_Media_Collection:PictureCollection x:Key="PictureCollectionDataSource" d:IsDataSource="True"/>
+        <TK1_Media_Collection:ImageViewCollection x:Key="PictureCollectionDataSource" d:IsDataSource="True"/>
         <SolidColorBrush x:Key="DarkBlue" Color="#FF253A52"/>
         <DataTemplate x:Key="PictureTemplate">
         	<Border BorderThickness="1" BorderBrush="#FFD8D8D8" Margin="4">
@@ -54,7 +54,7 @@
         	</Grid>
         </DataTemplate>
     </Window.Resources>
-    <Grid DataContext="{Binding Source={StaticResource PictureCollectionDataSource}}">
+    <Grid DataContext="{Binding Source={StaticResource PictureCollectionDataSource}}" Background="{DynamicResource GrayGradient}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="467.2"/>
@@ -66,7 +66,16 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
-        <Rectangle StrokeThickness="4" Margin="0" x:Name="rectangleBack" Stroke="{DynamicResource DarkBlue}" Fill="{DynamicResource GrayGradient}" RadiusX="0" RadiusY="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1"/>
+        <Grid x:Name="gridTopLeftImage" Margin="8,8,8,8" RenderTransformOrigin="0.5,0.5" Grid.Row="1">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                	<ScaleTransform ScaleX="1" ScaleY="1"/>
+                	<SkewTransform AngleX="0" AngleY="0"/>
+                	<RotateTransform Angle="0"/>
+                	<TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+        </Grid>
         <Grid x:Name="gridTopBar" Background="{DynamicResource DarkBlueGradient}" Grid.ColumnSpan="2" Visibility="Collapsed" d:IsLocked="True">
         	<Grid.ColumnDefinitions>
         		<ColumnDefinition/>
@@ -117,29 +126,13 @@
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="0.5*"/>
             </Grid.RowDefinitions>
-            <StackPanel Margin="0,0,20,0" Grid.Column="5" Orientation="Horizontal" d:LayoutOverrides="Height" Grid.RowSpan="2">
-        		<Button Margin="4,8" Content="Salvar e Finalizar" x:Name="buttonSaveAndFinish" Click="buttonSaveAndFinish_Click"/>
-        		<Button x:Name="buttonSaveAndAdd" Margin="4,8" Content="Salvar e Adicionar" Click="buttonSaveAndAdd_Click"/>
-        		<TextBlock x:Name="textBlockReset" HorizontalAlignment="Center" Text="Resetar" TextWrapping="Wrap" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Bold" Background="{x:Null}" Foreground="{DynamicResource DarkBlue}" Cursor="Hand" MouseDown="textBlockReset_MouseDown" Margin="4"/>
-            	<TextBlock x:Name="textBlockSettings" HorizontalAlignment="Center" Text="Settings" TextWrapping="Wrap" VerticalAlignment="Center" TextDecorations="Underline" FontWeight="Bold" Background="{x:Null}" Foreground="{DynamicResource DarkBlue}" Cursor="Hand" MouseDown="textBlockSettings_MouseDown" Margin="4"/>
-        	</StackPanel>
+            <StackPanel Margin="0,0,20,0" Grid.Column="5" Orientation="Horizontal" d:LayoutOverrides="Height" Grid.RowSpan="2"/>
             <TextBlock TextWrapping="Wrap" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"><Run Language="fr-fr" Text="Fotos digitais somente com pagamento antecipado"/></TextBlock>
             <TextBlock Margin="0,0,4,4" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold" x:Name="textBlockTotalPrice" Grid.Column="4"><Run Language="fr-fr" Text="Total"/></TextBlock>
             <TextBlock Margin="0,4,4,0" TextWrapping="Wrap" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" x:Name="textBlockQuantity" Grid.Row="1" VerticalAlignment="Top" Grid.Column="4"><Run Language="fr-fr" Text="Total"/></TextBlock>
             <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Grid.RowSpan="2" x:Name="gridBottomLeftImage">
                 <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="Auto" Height="Auto" x:Name="contentPresenterBottomLeftImage" Margin="0,4,0,0"/>
             </Grid>
-        </Grid>
-        <Grid x:Name="gridTopLeftImage" Margin="8,8,8,8" RenderTransformOrigin="0.5,0.5" Grid.Row="1">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="1" ScaleY="1"/>
-                    <SkewTransform AngleX="0" AngleY="0"/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform X="0" Y="0"/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-            <ContentPresenter HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="contentPresenterTopLeftImage" VerticalAlignment="Top" Width="Auto" Height="Auto"/>
         </Grid>
         <Border Margin="0,6,8,-2" Background="{DynamicResource LightGray}" BorderBrush="{DynamicResource DarkGray}" BorderThickness="2,2,2,0" CornerRadius="5,5,0,0" x:Name="borderTopRight" Grid.Column="1" Grid.Row="1" DataContext="{Binding Source={StaticResource PersonViewDataSource}}">
             <Grid x:Name="gridTopRight" Width="Auto" Background="{x:Null}" Margin="4,4,4,0" Height="Auto">
@@ -202,15 +195,15 @@
                 </Grid>
                 <Grid x:Name="gridButtons" Margin="0,0,0,0" Grid.Row="3" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
-                    	<ColumnDefinition Width="Auto"/>
-                    	<ColumnDefinition Width="Auto"/>
-                    	<ColumnDefinition Width="Auto"/>
-                    	<ColumnDefinition/>
+                    	<ColumnDefinition Width="3*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
+                    	<ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="buttonSourcePenDrive" Content="PenDrive" Click="buttonSourcePenDrive_Click" d:LayoutOverrides="Height" Margin="4,4,4,4" Style="{DynamicResource SourceButtonStyle}" Visibility="Collapsed"/>
-                    <Button Margin="4,4,4,4" x:Name="buttonSourceCD" Content="CD" Click="buttonSourceCD_Click" d:LayoutOverrides="Height" Grid.Column="1" Style="{DynamicResource SourceButtonStyle}" Visibility="Collapsed"/>
-                    <Button Margin="4,4,4,4" x:Name="buttonSourceCamera" Content="Camera" Click="buttonSourceCamera_Click" d:LayoutOverrides="Height" Grid.Column="2" Style="{DynamicResource SourceButtonStyle}" Visibility="Collapsed"/>
-                    <Button Margin="4,4,4,4" Content="Carregar" Width="Auto" d:LayoutOverrides="HorizontalAlignment, Height" x:Name="buttonSourceFolder" Click="buttonSourceFolder_Click" Grid.Column="3" Style="{DynamicResource SourceButtonStyle}"/>
+                    <Button Margin="4,4,4,4" Content="Carregar" Width="Auto" d:LayoutOverrides="HorizontalAlignment, Height" x:Name="buttonLoad" Click="buttonLoad_Click" Style="{DynamicResource BarButtonStyle}"/>
+                    <Button Margin="4" Content="Salvar" x:Name="buttonSave" Click="buttonSave_Click" Style="{DynamicResource BarButtonStyle}" Grid.Column="1"/>
+                	<Button x:Name="buttonClear" Content="Limpar" Click="buttonClear_Click" d:LayoutOverrides="Height" Margin="4,4,4,4" Style="{DynamicResource BarButtonStyle}" Grid.Column="2"/>
+                	<Button Margin="4,4,4,4" x:Name="buttonSettings" Content="Configurações" Click="buttonSettings_Click" d:LayoutOverrides="Height" Grid.Column="3" Style="{DynamicResource BarButtonStyle}"/>
                 </Grid>
                 <TextBlock Text="Carregando..." TextWrapping="Wrap" d:LayoutOverrides="GridBox" Margin="0,0,0,4" x:Name="textBlockLoading" VerticalAlignment="Bottom" Grid.Row="3" HorizontalAlignment="Right" Visibility="Collapsed" Grid.Column="1"/>
             </Grid>

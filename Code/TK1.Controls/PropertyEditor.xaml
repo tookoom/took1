@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-	x:Class="TK1.Wpf.Controls.PropertyEditor"
+	x:Class="TK1.Controls.PropertyEditor"
     Loaded="UserControl_Loaded" MinHeight="15" MinWidth="200" Background="White" >
     <Grid>
     	<Expander x:Name="expander" d:LayoutOverrides="Height">
