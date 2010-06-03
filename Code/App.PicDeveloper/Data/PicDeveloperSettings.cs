@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using TK1.PicDeveloper.Data;
 
-namespace TK1.PicDeveloper.Settings
+namespace TK1.PicDeveloper.Data
 {
     public class PicDeveloperSettings
     {
@@ -18,6 +18,7 @@ namespace TK1.PicDeveloper.Settings
         {
             DefaultSize = PaperSizes._10x15;
             DefaultType = PaperTypes.Regular;
+            PicDirectory = AppFolder.GetAppFolder(Constraints.AppName, "Pictures");
             Prices = new List<PicturePrice>()
             {
                 new PicturePrice(){ Price= 1, Type = PaperTypes.Gloss, Size = PaperSizes._10x15},

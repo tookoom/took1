@@ -22,10 +22,10 @@ namespace TK1.Media.Controls
 	public partial class ImageSelector
 	{
         #region EVENTS
-        public event EventHandler PicQuantityChanged;
+        public event EventHandler QuantityChanged;
         private void onQuantityChanged(EventArgs e)
         {
-            EventHandler handler = PicQuantityChanged;
+            EventHandler handler = QuantityChanged;
             if (handler != null)
             {
                 // Invokes the delegates.
@@ -107,7 +107,7 @@ namespace TK1.Media.Controls
                 {
                     if (imageView.Quantity == 0)
                     {
-                        imageView.IsSelected = true;
+                        imageView.Quantity = 1;
                     }
                     else
                     {
@@ -177,6 +177,10 @@ namespace TK1.Media.Controls
             }
         }
 
+        private void borderFadeElement_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            togleQuantity();
+        }
         private void imageCheck_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             togleQuantity();

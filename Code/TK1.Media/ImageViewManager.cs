@@ -16,14 +16,23 @@ namespace TK1.Media
         protected const int zoomPixelWidth = 1000;
         #endregion
         #region EVENTS
+        public event EventHandler QuantityChanged;
+        private void onQuantityChanged(EventArgs e)
+        {
+            EventHandler handler = QuantityChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
         #endregion
         #region PRIVATE MEMBERS
         protected bool isLoading;
         protected bool isUsingUsbDrive = false;
-        protected int pictureCounter = 0;
+        protected int imageCount = 0;
 
         protected string filePath = string.Empty;
-        protected ImageViewCollection pictures;
+        protected ImageViewCollection images;
 
         protected int quantity = 0;
 
@@ -44,13 +53,13 @@ namespace TK1.Media
             set
             {
                 quantity = value;
-                //textBlockQuantity.Text = string.Format("{0} Fotos", quantity);
+                onQuantityChanged(new EventArgs());
             }
         }
-        public ImageViewCollection Pictures
+        public ImageViewCollection Images
         {
-            get { return pictures; }
-            set { pictures = value; }
+            get { return images; }
+            set { images = value; }
         }
         #endregion
 
@@ -61,8 +70,8 @@ namespace TK1.Media
 
         public void ClearList()
         {
-            if (pictures != null)
-                pictures.Clear();
+            if (images != null)
+                images.Clear();
         }
         public void GetFolderPics()
         {
@@ -70,8 +79,8 @@ namespace TK1.Media
             //folderBrowserDialog.ShowDialog();
             //string path = folderBrowserDialog.SelectedPath;
 
-            //string path = @"C:\Users\andre\Pictures\DJ";
-            string path = @"C:\Users\andre\Pictures\Fotos";
+            string path = @"C:\Users\andre\Pictures\DJ";
+            //string path = @"C:\Users\andre\Pictures\Fotos";
             loadDirectories(path);
 
         }
@@ -109,63 +118,59 @@ namespace TK1.Media
             //else buttonSourcePenDrive.IsEnabled = false;
             //isLoading = false;
         }
-        public void SavePics()
+        public void SavePics(string path)
         {
-            //string path = string.Format("{0}\\{1}_{2}_{3}\\", clientPictureFolderPath, selectedPicSize, selectedPicType, textBoxClientName.Text);
-            //try
-            //{
-            //    if (System.IO.Directory.Exists(path))
-            //    {
-            //        //string 
-            //        clearDirectoryContent(path);
-            //    }
-            //    else
-            //        System.IO.Directory.CreateDirectory(path);
+            try
+            {
+                if (System.IO.Directory.Exists(path))
+                {
+                    clearDirectoryContent(path);
+                }
+                else
+                    System.IO.Directory.CreateDirectory(path);
 
-            //    foreach (PictureControl pictureControl in wrapPanelPictures.Children)
-            //    {
-            //        if (!pictureControl.IsSaved)
-            //        {
-            //            for (int i = 0; i < pictureControl.Quantity; i++)
-            //            {
-            //                pictureCounter++;
-            //                string newFile = path + pictureCounter.ToString() + ".jpg";
-            //                try
-            //                {
-            //                    System.IO.File.Copy(pictureControl.FileName, newFile);
-            //                }
-            //                catch { }
-            //                pictureControl.IsSaved = true;
-            //            }
-            //        }
-            //    }
-            //    string info = createInfoFile();
-            //    System.IO.File.WriteAllText(path + "Info.txt", info);
+                foreach (var image in images)
+                {
+                    //if (!pictureControl.IsSaved)
+                    //{
+                        for (int i = 0; i < image.Quantity; i++)
+                        {
+                            imageCount++;
+                            string newFile = path + imageCount.ToString() + ".jpg";
+                            try
+                            {
+                                System.IO.File.Copy(image.Path, newFile);
+                            }
+                            catch (Exception exception) { }
+                            //pictureControl.IsSaved = true;
+                        }
+                    //}
+                }
 
-            //    //MessageBox.Show("Arquivos gravados em " + path);
+                //MessageBox.Show("Arquivos gravados em " + path);
 
-            //    //try
-            //    //{
-            //    //    if (isUsingUsbDrive)
-            //    //        usbVolumeList[0].Eject(true);
-            //    //}
-            //    //catch { }
+                //try
+                //{
+                //    if (isUsingUsbDrive)
+                //        usbVolumeList[0].Eject(true);
+                //}
+                //catch { }
 
-            //}
-            //catch (Exception exception) { MessageBox.Show(exception.Message, "ERRO!!!"); }
+            }
+            catch (Exception exception) {}
 
         }
 
         private void initialize()
         {
-            pictures = new ImageViewCollection();
-            pictures.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(pictures_CollectionChanged);
+            images = new ImageViewCollection();
+            images.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(pictures_CollectionChanged);
         }
 
         protected void addPicture(string path)
         {
             ImageView imageView = new ImageView(path, thumbPixelHeigth, thumbPixelWidth) { Quantity = 1, IsSelected = true };
-            pictures.Add(imageView);
+            images.Add(imageView);
         }
         protected void addPicture(ImageView imageView)
         {
@@ -216,7 +221,7 @@ namespace TK1.Media
             //}
             //return IntPtr.Zero;
         }
-        void pictures_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void pictures_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (e != null)
             {
@@ -230,25 +235,28 @@ namespace TK1.Media
                     if (e.NewItems != null)
                     {
                         foreach (ImageView imageView in e.NewItems)
+                        {
                             addPicture(imageView);
+                            Quantity += imageView.Quantity;
+                        }
                     }
                     if (e.OldItems != null)
                     {
                         foreach (ImageView imageView in e.OldItems)
+                        {
                             removePicture(imageView);
-
+                            Quantity -= imageView.Quantity;
+                        }
                     }
                 }
             }
         }
 
-
-
-        void folderBackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        private void folderBackgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             //throw new NotImplementedException();
         }
-        void folderBackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void folderBackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             try
             {
