@@ -7,13 +7,25 @@ namespace TK1
 {
     public class AppFolder
     {
-        public static string GetAppFolder()
+        public static string GetBaseAppFolder()
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\TK1\";
         }
+        public static string GetAppFolder(string appName)
+        {
+            return AppFolder.GetBaseAppFolder() + appName + @"\";
+        }
+        public static string GetAppFolder(string appName, string child)
+        {
+            return AppFolder.GetBaseAppFolder() + appName + string.Format(@"\{0}\", child);
+        }
         public static string GetAppSettingsFolder(string appName)
         {
-            return AppFolder.GetAppFolder() + appName + @"\Settings\";
+            return AppFolder.GetBaseAppFolder() + appName + @"\Settings\";
+        }
+        public static string GetAppSettingsAssemblyPath(string appName)
+        {
+            return AppFolder.GetAppSettingsFolder(appName) + @"Settings.assembly";
         }
         public static string GetAppSettingsFilePath(string appName)
         {

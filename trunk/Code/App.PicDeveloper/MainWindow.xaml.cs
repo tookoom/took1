@@ -19,14 +19,13 @@ using TK1.Data;
 //using System.ComponentModel;
 using TK1.PicDeveloper.Control;
 using TK1.Data.Converter;
-using TK1.PicDeveloper.Settings;
 using TK1.Utility;
-using TK1.Configuration;
 using TK1.Basics.Controls;
 using TK1.Data.Model.Presentation;
 using TK1.Media.Controls;
 using TK1.Media.Data;
 using System.ComponentModel;
+using TK1.Settings;
 
 namespace TK1.PicDeveloper
 {
@@ -97,74 +96,25 @@ namespace TK1.PicDeveloper
             ////initialize();
         }
 
-        ////private void addPicture(Picture imageView)
-        ////{
-        ////    if (this.Dispatcher.CheckAccess())
-        ////    {
-        ////        if (imageView != null)
-        ////        {
-        ////            PictureControl control = new PictureControl();
-        ////            control.FileName = imageView.Path;
-        ////            control.contentPresenterPicture.Content = new Image();// { Source = imageView.ImageSource };
-        ////            control.PicQuantityChanged += new PictureControl.EventHandler(control_PicQuantityChanged);
-        ////            control.ShowZoomedImage += new PictureControl.ZoomEventHandler(control_ShowZoomedImage);
-        ////            wrapPanelPictures.Children.Add(control);
-                    
-        ////        }
-        ////    }
-        ////    else
-        ////    {
-        ////        PictureCallback callback = new PictureCallback(addPicture);
-        ////        this.Dispatcher.Invoke(callback, imageView);
-        ////    }
-        ////}
         private void addPicture(ImageView imageView)
         {
             if (this.Dispatcher.CheckAccess())
             {
                 if (imageView != null)
                 {
-                    ImageSelector imageSelector = new ImageSelector() { Picture = imageView, HasQuantity = true };
-                    imageSelector.PicQuantityChanged += new EventHandler(imageSelector_PicQuantityChanged);
-                    imageSelector.ShowZoomedImage += new ImageSelector.ZoomEventHandler(imageSelector_ShowZoomedImage);
 
-                    BackgroundWorker imageSelectorWorker = new BackgroundWorker();
-                    imageSelectorWorker.DoWork += new DoWorkEventHandler(imageSelectorWorker_DoWork);
-                    imageSelectorWorker.RunWorkerAsync(imageSelector);
+                    ImageSelector imageSelector = new ImageSelector() { Picture = imageView, HasQuantity = true };
+                    imageSelector.QuantityChanged += new EventHandler(imageSelector_QuantityChanged);
+                    imageSelector.ShowZoomedImage += new ImageSelector.ZoomEventHandler(imageSelector_ShowZoomedImage);
+                    wrapPanelPictures.Children.Add(imageSelector);
                 }
             }
             else
             {
                 PictureCallback callback = new PictureCallback(addPicture);
                 this.Dispatcher.Invoke(callback, imageView);
-
             }
         }
-
-        void imageSelectorWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            ImageSelector imageSelector = e.Argument as ImageSelector;
-            addPictureSelector(imageSelector);
-        }
-
-        private void addPictureSelector(ImageSelector imageSelector)
-        {
-            if (imageSelector != null)
-            {
-                if (this.Dispatcher.CheckAccess())
-                {
-                    wrapPanelPictures.Children.Add(imageSelector);
-                }
-                else
-                {
-                    PictureSelectorCallback callback = new PictureSelectorCallback(addPictureSelector);
-                    this.Dispatcher.Invoke(callback, imageSelector);
-
-                }
-
-            }
-        }
-
         private void changePicInfo()
         {
             if (pictureManager != null)
@@ -211,9 +161,11 @@ namespace TK1.PicDeveloper
             pictureManager.AddPictureWorker = new Action<ImageView>(addPicture);
             pictureManager.RemovePictureWorker = new Action<ImageView>(removePicture);
             pictureManager.ResetWorker = new Action(reset);
+            pictureManager.QuantityChanged += new EventHandler(pictureManager_QuantityChanged);
             pictureManager.TotalPriceChanged += new EventHandler(pictureManager_TotalPriceChanged);
 
             gridClient.DataContext = pictureManager.Client;
+            gridBottom.DataContext = pictureManager;
 
             dialogWindow.IsVisible = false;
             dialogWindow.WindowMouseDown += new DialogWindow.EventHandler(dialogWindow_WindowMouseDown);
@@ -225,7 +177,7 @@ namespace TK1.PicDeveloper
         {
             try
             {
-                settings = SettingsFileLoader<PicDeveloperSettings>.Load(Constraints.AppName);
+                settings = SettingsFileLoader.Load<PicDeveloperSettings>(Constraints.AppName);
                 if (settings == null)
                     saveSettings();
             }
@@ -273,7 +225,7 @@ namespace TK1.PicDeveloper
             {
                 if (settings == null)
                     settings = new PicDeveloperSettings();
-                SettingsFileLoader<PicDeveloperSettings>.Save(Constraints.AppName, settings);
+                SettingsFileLoader.Save<PicDeveloperSettings>(Constraints.AppName, settings);
             }
             catch (Exception exception)
             {
@@ -285,9 +237,11 @@ namespace TK1.PicDeveloper
 
 
         #region EVENT HANDLERS
+        void pictureManager_QuantityChanged(object sender, EventArgs e)
+        {
+        }
         void pictureManager_TotalPriceChanged(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
         }
 
         #endregion
@@ -332,7 +286,7 @@ namespace TK1.PicDeveloper
             dialogWindow.IsVisible = false;
         }
 
-        void imageSelector_PicQuantityChanged(object sender, EventArgs e)
+        private void imageSelector_QuantityChanged(object sender, EventArgs e)
         {
             pictureManager.CalculateTotalPrice();
         }

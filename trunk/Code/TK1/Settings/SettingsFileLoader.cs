@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using TK1.Xml;
+using System.Reflection;
 
-namespace TK1.Configuration
+namespace TK1.Settings
 {
-    public class SettingsFileLoader<T> where T : class
+    public class SettingsFileLoader
     {
-        public static T Load(string appName)
+        public static T Load<T>(string appName) where T : class
         {
             T result = null;
             string path = AppFolder.GetAppSettingsFilePath(appName);
-            if (path != null & path != string.Empty)
+            if (!string.IsNullOrEmpty(path))
             {
                 if (File.Exists(path))
                 {
@@ -23,12 +24,12 @@ namespace TK1.Configuration
             }
             return result;
         }
-        public static void Save(string appName, T content)
+        public static void Save<T>(string appName, T content) where T : class
         {
             if (content != null)
             {
                 string path = AppFolder.GetAppSettingsFilePath(appName);
-                if (path != null & path != string.Empty)
+                if (!string.IsNullOrEmpty(path))
                 {
                     string fileContent = XmlSerializer<T>.Save(content);
                     if (fileContent != null)
@@ -40,6 +41,37 @@ namespace TK1.Configuration
                     }
                 }
             }
+        }
+
+        public static object LoadGeneric(string appName, Type type)
+        {
+            object result = null;
+            if (type != null)
+            {
+                MethodInfo method = typeof(SettingsFileLoader).GetMethod("Load");
+                if (method != null)
+                {
+                    MethodInfo genericMethod = method.MakeGenericMethod(new Type[] { type });
+                    result = genericMethod.Invoke(null, new object[] { appName });
+
+                }
+            }
+            return result;
+        }
+        public static object SaveGeneric(string appName, Type type, object content)
+        {
+            object result = null;
+            if (type != null)
+            {
+                MethodInfo method = typeof(SettingsFileLoader).GetMethod("Save");
+                if (method != null)
+                {
+                    MethodInfo genericMethod = method.MakeGenericMethod(new Type[] { type });
+                    result = genericMethod.Invoke(null, new object[] { appName, content });
+
+                }
+            }
+            return result;
         }
     }
 }

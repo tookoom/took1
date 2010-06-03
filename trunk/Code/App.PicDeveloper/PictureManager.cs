@@ -5,7 +5,6 @@ using System.Text;
 using TK1.Media.Data;
 using TK1.Media.Collection;
 using System.IO;
-using TK1.PicDeveloper.Settings;
 using TK1.PicDeveloper.Data;
 using TK1.Data.Model.Presentation;
 using TK1.Media;
@@ -16,7 +15,7 @@ namespace TK1.PicDeveloper
     {
         #region CONST
         #endregion
-        #region EVENTS
+        #region EVENTS        
         public event EventHandler TotalPriceChanged;
         private void onTotalPriceChanged(EventArgs e)
         {
@@ -27,36 +26,31 @@ namespace TK1.PicDeveloper
             }
         }
 
+
         #endregion
         #region PRIVATE MEMBERS
         private PaperSizes selectedPicSize;
         private PaperTypes selectedPicType;
 
         private string clientPictureFolderPath = string.Empty;
-        //private PictureDevelopmentCollection pictureDevelopments;
-        private List<PicturePrice> priceList;
 
         private float totalPrice = 0;
-        private int quantity = 0;
 
-        PicDeveloperSettings settings = null;
-        PersonView client = null;
+        private PersonView client = null;
+        private List<PicturePrice> prices;
+        private PicDeveloperSettings settings = null;
 
         #endregion
-        #region PUBIC ACTIONS
+        #region PUBLIC ACTIONS
         //public Action<PictureDevelopment> AddPicture;
         //public Action<PictureDevelopment> RemovePicture;
 
         #endregion        
         #region PUBLIC PROPERTIES
-        public float TotalPrice
+        public PersonView Client
         {
-            get { return totalPrice; }
-            set
-            {
-                totalPrice = value;
-                //textBlockTotalPrice.Text = string.Format("Total: R$ {0:0.00}", totalPrice);
-            }
+            get { return client; }
+            set { client = value; }
         }
         public PaperSizes PicSize
         {
@@ -68,15 +62,14 @@ namespace TK1.PicDeveloper
             get { return selectedPicType; }
             set { selectedPicType = value; }
         }
-        //public PictureDevelopmentCollection Pictures
-        //{
-        //    get { return pictureDevelopments; }
-        //    set { pictureDevelopments = value; }
-        //}
-        public PersonView Client
+        public float TotalPrice
         {
-            get { return client; }
-            set { client = value; }
+            get { return totalPrice; }
+            set
+            {
+                totalPrice = value;
+                //textBlockTotalPrice.Text = string.Format("Total: R$ {0:0.00}", totalPrice);
+            }
         }
 
         #endregion
@@ -111,32 +104,40 @@ namespace TK1.PicDeveloper
         }
         public void SavePics()
         {
-            base.SavePics();
+            string path = string.Format("{0}{1}_{2}_{3}\\", settings.PicDirectory, selectedPicSize, selectedPicType, client.Name);
+            base.SavePics(path);
+            string info = createInfoFile();
+            System.IO.File.WriteAllText(path + "Info.txt", info);
+
         }
 
 
         private void calculateTotalPrice()
         {
-            float totalprice = 0;
-            float unitprice = 0;
-            int count = 0;
-
-            var query = from el in priceList
-                        where el.Size == selectedPicSize & el.Type == selectedPicType
-                        select el.Price;
-
-            if (query.Count() > 0)
-                unitprice = query.FirstOrDefault();
-
-            foreach (ImageView imageView in pictures)
+            lock (images)
             {
-                totalprice += imageView.Quantity * unitprice;
-                count += (int)imageView.Quantity;
+                Quantity = (from el in images
+                            select el.Quantity).Sum();
+
+                float totalprice = 0;
+                float unitprice = 0;
+
+                var query = from el in prices
+                            where el.Size == selectedPicSize & el.Type == selectedPicType
+                            select el.Price;
+
+                if (query.Count() > 0)
+                    unitprice = query.FirstOrDefault();
+
+                foreach (ImageView imageView in images)
+                {
+                    totalprice += imageView.Quantity * unitprice;
+                }
+                TotalPrice = totalprice;
             }
 
-            TotalPrice = totalprice;
-            Quantity = count;
             onTotalPriceChanged(new EventArgs());
+            
         }
         private string createInfoFile()
         {
@@ -147,24 +148,21 @@ namespace TK1.PicDeveloper
             //info += string.Format("Telefone do cliente: {0} " + newline, textBoxClientPhone.Text);
             info += string.Format("Tamanho de foto: {0} " + newline, selectedPicSize);
             info += string.Format("Tipo do papel: {0} " + newline, selectedPicType);
-            info += string.Format("Total de fotos: {0} " + newline, pictureCounter);
+            info += string.Format("Total de fotos: {0} " + newline, imageCount);
             info += string.Format("Preço total: R$ {0} " + newline, TotalPrice);
             return info;
         }
         private void finish()
         {
-            pictures.Clear();
-            //wrapPanelPictures.Children.Clear();
+            images.Clear();
             Quantity = 0;
             TotalPrice = 0;
-            //textBoxClientName.Text = "";
-            //textBoxClientPhone.Text = "";
         }
         private void initialize()
         {
             TotalPrice = 0;
 
-            priceList = new List<PicturePrice>();
+            loadPrices();
 
             client = new PersonView();
             client.Name = "Nome";
@@ -173,8 +171,12 @@ namespace TK1.PicDeveloper
         }
         private void loadPrices()
         {
-            //if (priceList == null)
-            //    priceList = new PicturePriceCollection();
+            if (settings != null)
+                if (settings.Prices != null)
+                    prices = settings.Prices;
+
+            if(prices == null)
+                prices = new List<PicturePrice>();
 
             //priceList.Add(new PicturePrice
             //{
