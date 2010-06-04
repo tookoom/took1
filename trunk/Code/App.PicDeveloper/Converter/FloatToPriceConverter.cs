@@ -17,7 +17,7 @@ namespace TK1.PicDeveloper.Converter
             try
             {
                 float price = (float)value;
-                result = string.Format("R${0}", price);
+                result = string.Format("R${0:0.00}", price);
             }
             catch { }
             return result;

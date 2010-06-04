@@ -263,7 +263,7 @@ namespace TK1.PicDeveloper
             {
                 pictureManager.SavePics();
                 string caption = "Fotos gravadas com sucesso!";
-                string message = string.Format("Foram gravadas {0} fotos, com valor total de R${1}.\nDeseja finalizar?", pictureManager.Quantity, pictureManager.TotalPrice);
+                string message = string.Format("Foram gravadas {0} fotos, com valor total de R${1:0.00}.\nDeseja finalizar?", pictureManager.Quantity, pictureManager.TotalPrice);
                 var result = MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                     pictureManager.ClearList();
