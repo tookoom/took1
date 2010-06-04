@@ -150,7 +150,7 @@ namespace TK1.PicDeveloper
             info += string.Format("Tamanho de foto: {0} " + newline, selectedPicSize);
             info += string.Format("Tipo do papel: {0} " + newline, selectedPicType);
             info += string.Format("Total de fotos: {0} " + newline, imageCount);
-            info += string.Format("Preço total: R$ {0} " + newline, TotalPrice);
+            info += string.Format("Preço total: R$ {0:0.00} " + newline, TotalPrice);
             return info;
         }
         private void finish()
