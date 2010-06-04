@@ -21,7 +21,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_28D307DBEF954A31A313EE1FCCBCE7B3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_357C9C00EDD24413ACEBB8AD530149FB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -52,12 +64,6 @@
         "Entry"
         {
         "MsmKey" = "8:_D3D0DE95EBA9A449CD0905380CB6645E"
-        "OwnerKey" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D3D0DE95EBA9A449CD0905380CB6645E"
         "OwnerKey" = "8:_6B6269DF6635B5A324B3B79CDB4C243C"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -65,6 +71,12 @@
         {
         "MsmKey" = "8:_D3D0DE95EBA9A449CD0905380CB6645E"
         "OwnerKey" = "8:_7B69C3FE1618109AABD19B9B4DE17669"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D3D0DE95EBA9A449CD0905380CB6645E"
+        "OwnerKey" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -77,12 +89,6 @@
         {
         "MsmKey" = "8:_F7500579119CF7455DC5EC3C278B6E96"
         "OwnerKey" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6B6269DF6635B5A324B3B79CDB4C243C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,6 +124,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6B6269DF6635B5A324B3B79CDB4C243C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D3D0DE95EBA9A449CD0905380CB6645E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -145,6 +157,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -161,6 +194,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -219,6 +273,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_28D307DBEF954A31A313EE1FCCBCE7B3"
+            {
+            "SourcePath" = "8:..\\App.PicDeveloper\\Resources\\Images\\Settings.ico"
+            "TargetName" = "8:Settings.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C77647B2141545A394DC651A54B3DFF0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_357C9C00EDD24413ACEBB8AD530149FB"
+            {
+            "SourcePath" = "8:..\\App.PicDeveloper\\Resources\\Images\\PictureFolder.ico"
+            "TargetName" = "8:PictureFolder.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C77647B2141545A394DC651A54B3DFF0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6B6269DF6635B5A324B3B79CDB4C243C"
@@ -413,6 +507,62 @@
         }
         "Folder"
         {
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_3630388AA7FB4A0D8DD28BE3F8DABA5C"
+            {
+            "DefaultLocation" = "8:[CommonAppDataFolder]"
+            "Name" = "8:AppDataFolder"
+            "AlwaysCreate" = "11:TRUE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:NEWPROPERTY1"
+                "Folders"
+                {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0F9CE879546F4ACD801ED81DBD722F77"
+                    {
+                    "Name" = "8:TK1"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_6059B238E3F44C8DB6B3F29312294254"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_D3379EB78F604E97A6C94C5282E24410"
+                            {
+                            "Name" = "8:PicDeveloper"
+                            "AlwaysCreate" = "11:TRUE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_3E12D10735484641A1830DBE7E0CD3E9"
+                                "Folders"
+                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3FF6199284C44884BC4D317FE0888983"
+                                    {
+                                    "Name" = "8:Pictures"
+                                    "AlwaysCreate" = "11:TRUE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_2E9D735F0785402DB5F0FA7FA410D5D9"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_BDA3DCA9312A49CC801387584DA37F7D"
+                                    {
+                                    "Name" = "8:Settings"
+                                    "AlwaysCreate" = "11:TRUE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_72AE54F66DC6492CAD586154EB90C7B4"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             "{1525181F-901A-416C-8A58-119130FE478E}:_5F46E761250F4C878AF6CCE298507120"
             {
             "Name" = "8:#1916"
@@ -433,6 +583,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A8825FDAF45045D8B7BE4C09A068553E"
+                    {
+                    "Name" = "8:TK1"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_07B4A992FCCC4550BCDC3BFB61AA48DF"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_C77647B2141545A394DC651A54B3DFF0"
@@ -464,7 +625,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PicDeveloper"
         "ProductCode" = "8:{C5F6B8AF-8607-465A-BE1F-8A22760E185E}"
-        "PackageCode" = "8:{14DB982A-08F2-4EB3-931A-5A5E55504915}"
+        "PackageCode" = "8:{4A0D2C72-BA24-46DE-9F25-AAB472D34DC6}"
         "UpgradeCode" = "8:{32D74AAB-EF5D-4B11-9135-92CC2C050A38}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -584,6 +745,76 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_054FA4BC5DFB4827AD6C1EE4FCCC0F75"
+            {
+            "Name" = "8:PicDeveloper"
+            "Arguments" = "8:"
+            "Description" = "8:TK1 Pic Developer"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
+            "Folder" = "8:_A11B4946C5AD4C79822901C93EF78FF3"
+            "WorkingFolder" = "8:_C77647B2141545A394DC651A54B3DFF0"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4AF3F2D15EE24CD78279895243591695"
+            {
+            "Name" = "8:Fotos Baixadas"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_3FF6199284C44884BC4D317FE0888983"
+            "Folder" = "8:_A8825FDAF45045D8B7BE4C09A068553E"
+            "WorkingFolder" = "8:_D3379EB78F604E97A6C94C5282E24410"
+            "Icon" = "8:_357C9C00EDD24413ACEBB8AD530149FB"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B46BBDE826D84AB5B4C15CAAA80D704A"
+            {
+            "Name" = "8:PicDeveloper"
+            "Arguments" = "8:"
+            "Description" = "8:TK1 Pic Developer"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
+            "Folder" = "8:_5F46E761250F4C878AF6CCE298507120"
+            "WorkingFolder" = "8:_C77647B2141545A394DC651A54B3DFF0"
+            "Icon" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B6904AF7005347DBB05DE3EA5091A8B7"
+            {
+            "Name" = "8:PicDeveloper"
+            "Arguments" = "8:"
+            "Description" = "8:TK1 Pic Developer"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
+            "Folder" = "8:_A8825FDAF45045D8B7BE4C09A068553E"
+            "WorkingFolder" = "8:_C77647B2141545A394DC651A54B3DFF0"
+            "Icon" = "8:_2B8DB459636A4A87A38E4E739F9F2389"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BEB908A0D1F94AE9BC346E885DB6E005"
+            {
+            "Name" = "8:Configurações"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_BDA3DCA9312A49CC801387584DA37F7D"
+            "Folder" = "8:_A8825FDAF45045D8B7BE4C09A068553E"
+            "WorkingFolder" = "8:_D3379EB78F604E97A6C94C5282E24410"
+            "Icon" = "8:_28D307DBEF954A31A313EE1FCCBCE7B3"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

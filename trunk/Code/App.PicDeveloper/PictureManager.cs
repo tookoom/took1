@@ -89,6 +89,7 @@ namespace TK1.PicDeveloper
         {
             calculateTotalPrice();
             base.ClearList();
+            Quantity = 0;
         }
         public void GetFolderPics()
         {
@@ -166,8 +167,8 @@ namespace TK1.PicDeveloper
 
             client = new PersonView();
             client.Name = "Nome";
-            client.EmailList.Add(new EmailAddress() { Address = "andre.v.mattos@gmail.com" });
-            client.PhoneList.Add(new TelephoneNumber() { Code = "051", Number = "85757025" });
+            client.EmailList.Add(new EmailAddress() { Address = "email@dominio.com" });
+            client.PhoneList.Add(new TelephoneNumber() { Code = "051", Number = "" });
         }
         private void loadPrices()
         {

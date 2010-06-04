@@ -21,18 +21,18 @@ namespace TK1.PicDeveloper.Data
             PicDirectory = AppFolder.GetAppFolder(Constraints.AppName, "Pictures");
             Prices = new List<PicturePrice>()
             {
-                new PicturePrice(){ Price= 1, Type = PaperTypes.Gloss, Size = PaperSizes._10x15},
-                new PicturePrice(){ Price= 2, Type = PaperTypes.Gloss, Size = PaperSizes._13x18},
-                new PicturePrice(){ Price= 3, Type = PaperTypes.Gloss, Size = PaperSizes._15x21},
-                new PicturePrice(){ Price= 4, Type = PaperTypes.Gloss, Size = PaperSizes._20x25},
-                new PicturePrice(){ Price= 5, Type = PaperTypes.Gloss, Size = PaperSizes._20x30},
-                new PicturePrice(){ Price= 6, Type = PaperTypes.Gloss, Size = PaperSizes._30x45},
-                new PicturePrice(){ Price= 1, Type = PaperTypes.Regular, Size = PaperSizes._10x15},
-                new PicturePrice(){ Price= 2, Type = PaperTypes.Regular, Size = PaperSizes._13x18},
-                new PicturePrice(){ Price= 3, Type = PaperTypes.Regular, Size = PaperSizes._15x21},
-                new PicturePrice(){ Price= 4, Type = PaperTypes.Regular, Size = PaperSizes._20x25},
-                new PicturePrice(){ Price= 5, Type = PaperTypes.Regular, Size = PaperSizes._20x30},
-                new PicturePrice(){ Price= 6, Type = PaperTypes.Regular, Size = PaperSizes._30x45}
+                new PicturePrice(){ Price= 0.7f, Type = PaperTypes.Gloss, Size = PaperSizes._10x15},
+                new PicturePrice(){ Price= 0.8f, Type = PaperTypes.Gloss, Size = PaperSizes._13x18},
+                new PicturePrice(){ Price= 0.9f, Type = PaperTypes.Gloss, Size = PaperSizes._15x21},
+                new PicturePrice(){ Price= 1.2f, Type = PaperTypes.Gloss, Size = PaperSizes._20x25},
+                new PicturePrice(){ Price= 1.5f, Type = PaperTypes.Gloss, Size = PaperSizes._20x30},
+                new PicturePrice(){ Price= 2.8f, Type = PaperTypes.Gloss, Size = PaperSizes._30x45},
+                new PicturePrice(){ Price= 0.7f, Type = PaperTypes.Regular, Size = PaperSizes._10x15},
+                new PicturePrice(){ Price= 0.8f, Type = PaperTypes.Regular, Size = PaperSizes._13x18},
+                new PicturePrice(){ Price= 0.9f, Type = PaperTypes.Regular, Size = PaperSizes._15x21},
+                new PicturePrice(){ Price= 1.2f, Type = PaperTypes.Regular, Size = PaperSizes._20x25},
+                new PicturePrice(){ Price= 1.5f, Type = PaperTypes.Regular, Size = PaperSizes._20x30},
+                new PicturePrice(){ Price= 2.8f, Type = PaperTypes.Regular, Size = PaperSizes._30x45}
             };
             Window = new WindowSettings();
         }

@@ -7,7 +7,7 @@
     xmlns:TK1_Media_Collection="clr-namespace:TK1.Media.Collection;assembly=TK1.Media" 
     xmlns:TK1_Data_Model_Presentation="clr-namespace:TK1.Data.Model.Presentation;assembly=TK1.Data.Model.Presentation" xmlns:TK1_PicDeveloper_Data="clr-namespace:TK1.PicDeveloper.Data" xmlns:TK1_PicDeveloper_Converter="clr-namespace:TK1.PicDeveloper.Converter" mc:Ignorable="d" 
     x:Class="TK1.PicDeveloper.MainWindow"
-    Title="PicDeveloper" Height="600" Width="850" ResizeMode="CanResize" Loaded="Window_Loaded" MinWidth="850" MinHeight="600">
+    Title="PicDeveloper" Height="600" Width="850" ResizeMode="CanResize" Loaded="Window_Loaded" MinWidth="850" MinHeight="600" Icon="/TK1.PicDeveloper;component/Personagem.ico">
     <Window.Resources>
     	<TK1_PicDeveloper_Converter:FloatToPriceConverter x:Key="FloatToPriceConverter"/>
     	<TK1_PicDeveloper_Converter:FloatToQuantityConverter x:Key="FloatToQuantityConverter"/>
