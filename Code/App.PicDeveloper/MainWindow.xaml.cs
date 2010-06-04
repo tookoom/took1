@@ -172,6 +172,7 @@ namespace TK1.PicDeveloper
 
             textBlockLoading.Text = "";
 
+            changePicInfo();
         }
         private void loadSettingsFile()
         {
@@ -258,7 +259,21 @@ namespace TK1.PicDeveloper
         }
         private void buttonSave_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            pictureManager.SavePics();
+            if (pictureManager.Quantity > 0)
+            {
+                pictureManager.SavePics();
+                string caption = "Fotos gravadas com sucesso!";
+                string message = string.Format("Foram gravadas {0} fotos, com valor total de R${1}.\nDeseja finalizar?", pictureManager.Quantity, pictureManager.TotalPrice);
+                var result = MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                    pictureManager.ClearList();
+                else
+                {
+                    caption = "Atenção";
+                    message = "Gravar novamente as fotos irá substituir as fotos previamente gravadas";
+                    MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
         }
         private void buttonSettings_Click(object sender, System.Windows.RoutedEventArgs e)
         {

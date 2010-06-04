@@ -9,8 +9,16 @@
 	d:DesignWidth="800" d:DesignHeight="445.5" MouseDown="UserControl_MouseDown">
 
 	<Grid x:Name="LayoutRoot">
-		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Margin="0,0,0,0" Opacity="0.745"/>
-		<ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" x:Name="contentPresenteMain" MouseDown="contentPresenteMain_MouseDown" Margin="50,50,50,70"/>
-		<TextBlock VerticalAlignment="Bottom" Height="Auto" Text="(Clique para retornar)" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="24" Margin="0,0,0,20" x:Name="textBlockReturnMessage"/>
+		<Rectangle Fill="#7F000000" Stroke="#FF000000" Margin="0,0,0,0" Opacity="0.745"/>
+		<Border Margin="50" BorderThickness="1" BorderBrush="{DynamicResource LightGray}" >
+			<Grid Background="White">
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition Height="Auto" MinHeight="15"/>
+				</Grid.RowDefinitions>
+				<ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" x:Name="contentPresenteMain" MouseDown="contentPresenteMain_MouseDown" Margin="16"/>
+				<TextBlock Height="Auto" Text="(Clique para retornar)" TextWrapping="Wrap" FontSize="24" x:Name="textBlockReturnMessage" Margin="8" Grid.Row="1" d:LayoutOverrides="Height" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+			</Grid>
+		</Border>
 	</Grid>
 </UserControl>

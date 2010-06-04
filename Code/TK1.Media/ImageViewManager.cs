@@ -75,13 +75,14 @@ namespace TK1.Media
         }
         public void GetFolderPics()
         {
-            //System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            //folderBrowserDialog.ShowDialog();
-            //string path = folderBrowserDialog.SelectedPath;
+            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            folderBrowserDialog.ShowDialog();
+            string path = folderBrowserDialog.SelectedPath;
 
-            string path = @"C:\Users\andre\Pictures\DJ";
+            //string path = @"C:\Users\andre\Pictures\DJ";
             //string path = @"C:\Users\andre\Pictures\Fotos";
-            loadDirectories(path);
+            if(!string.IsNullOrEmpty(path))
+                loadDirectories(path);
 
         }
         public void LoadCdromItems()
@@ -136,7 +137,11 @@ namespace TK1.Media
                         for (int i = 0; i < image.Quantity; i++)
                         {
                             imageCount++;
-                            string newFile = path + imageCount.ToString() + ".jpg";
+                            string newFile = path + imageCount.ToString(); 
+                            if (image.Quantity > 1)
+                                newFile += " - Cópia " + i.ToString();
+                            newFile += ".jpg";
+
                             try
                             {
                                 System.IO.File.Copy(image.Path, newFile);
