@@ -16,6 +16,8 @@ using TK1.Utility;
 using TK1.Dev.Data;
 using TK1.Settings;
 using TK1.Xml;
+using TK1.Diagnostics;
+using System.Globalization;
 
 namespace TK1.Dev
 {
@@ -29,7 +31,6 @@ namespace TK1.Dev
         public MainWindow()
         {
             InitializeComponent();
-            initializeUI();
             loadSettingsFile();
             //settings.Prop1 = "novo string";
             //saveSettings();
@@ -37,9 +38,37 @@ namespace TK1.Dev
 
         private void initializeUI()
         {
+            windowController.Window = this;
             modalDialog.SetParent(layoutRoot);
-        }
 
+            writeOutput1("output 1");
+            writeOutput2("output 2");
+
+            var culture = KeyboardInputLanguageManager.CultureOfCurrentLayout();
+
+            writeOutput2(DateTime.Now.ToShortDateString());
+            writeOutput2(DateTime.Now.ToShortTimeString());
+            //writeOutput2(InputLanguageManager.Current.CurrentInputLanguage.EnglishName);
+            SetLocale.SetWinCountryRegionName(InputLanguageManager.Current.CurrentInputLanguage);
+            //writeOutput2(InputLanguageManager.Current.CurrentInputLanguage.EnglishName);
+            writeOutput2(DateTime.Now.ToShortDateString());
+            writeOutput2(DateTime.Now.ToShortTimeString());
+
+            
+
+            ////var test = SetLocale.GetLocaleInfo();
+
+            //// Create a CultureInfo initialized to the neutral Arabic culture.
+            //CultureInfo ci1 = new CultureInfo(0x1);
+            //writeOutput1(string.Format("\nThe .NET Region name: {0}", SetLocale.GetNetCountryRegionName(ci1)));
+            //writeOutput1(string.Format("The Win32 Region name: {0}", SetLocale.GetWinCountryRegionName(ci1)));
+
+            //// Create a CultureInfo initialized to the specific 
+            //// culture Arabic in Algeria.
+            //CultureInfo ci2 = new CultureInfo(0x1401);
+            //writeOutput1(string.Format("\nThe .NET Region name: {0}", SetLocale.GetNetCountryRegionName(ci2)));
+            //writeOutput1(string.Format("The Win32 Region name: {0}", SetLocale.GetWinCountryRegionName(ci2)));
+        }
         private void loadSettingsFile()
         {
             try
@@ -78,6 +107,17 @@ namespace TK1.Dev
             }
         }
 
+        private void writeOutput1(string text)
+        {
+            textBlockOutput1.Text += text;
+            textBlockOutput1.Text += Environment.NewLine;
+        }
+        private void writeOutput2(string text)
+        {
+            textBlockOutput2.Text += text;
+            textBlockOutput2.Text += Environment.NewLine;
+        }
+
         #region UI EVENT HANDLERS
         private void buttonDev1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -104,6 +144,11 @@ namespace TK1.Dev
         private void buttonDev4_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             // TODO: Add event handler implementation here.
+        }
+
+        private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            initializeUI();
         }
 
         #endregion
