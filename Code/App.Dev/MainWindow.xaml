@@ -6,7 +6,10 @@
     
     xmlns:TK1_Basics_Controls="clr-namespace:TK1.Basics.Controls;assembly=TK1.Basics.Controls"    
         
-    Title="MainWindow" Height="300" Width="300" mc:Ignorable="d">
+    Title="MainWindow" Height="300" Width="500" mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" AllowsTransparency="True" BorderBrush="#FFCCCCCC" BorderThickness="2,0,0,2">
+	<Window.Resources>
+		<Color x:Key="Orange">#FFE5B266</Color>
+	</Window.Resources>
     
     <Grid Name="layoutRoot">
         
@@ -15,14 +18,47 @@
     		<RowDefinition/>
     		<RowDefinition Height="Auto" MinHeight="15"/>
     	</Grid.RowDefinitions>
+    	<TK1_Basics_Controls:WindowController x:Name="windowController" Margin="0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+        
     	<StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center">
     		<Button x:Name="buttonDev1" Content="Dev1" Click="buttonDev1_Click"/>
     		<Button x:Name="buttonDev2" Content="Dev2" Click="buttonDev2_Click"/>
     		<Button x:Name="buttonDev3" Content="Dev3" Click="buttonDev3_Click"/>
     		<Button x:Name="buttonDev4" Content="Dev4" Click="buttonDev4_Click" HorizontalContentAlignment="Stretch"/>
     	</StackPanel>
-    	<ContentPresenter x:Name="contentPresenter" Margin="0" Grid.Row="1"/>
-        <TK1_Basics_Controls:ModalDialog Name="modalDialog"></TK1_Basics_Controls:ModalDialog>
+    	<Grid Grid.Row="1">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="1*"/>
+    			<ColumnDefinition Width="3"/>
+    			<ColumnDefinition Width="1*"/>
+    		</Grid.ColumnDefinitions>
+    		<ContentPresenter x:Name="contentPresenter" Margin="0"/>
+    		<GridSplitter HorizontalAlignment="Stretch" Grid.Column="1">
+    			<GridSplitter.Background>
+    				<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ScrollBarColorKey}}"/>
+    			</GridSplitter.Background>
+    		</GridSplitter>
+    		<Grid Grid.Column="2">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="0.5*"/>
+    				<RowDefinition Height="0.5*"/>
+    			</Grid.RowDefinitions>
+    			<Border Margin="2,2,2,1" d:LayoutOverrides="Width" BorderThickness="1">
+    				<Border.BorderBrush>
+    					<SolidColorBrush Color="#FFE5B266"/>
+    				</Border.BorderBrush>
+    				<ScrollViewer BorderThickness="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
+    					<TextBlock x:Name="textBlockOutput1" TextWrapping="Wrap"><Run Text=""/></TextBlock>
+    				</ScrollViewer>
+    			</Border>
+    			<Border Margin="2,1,2,2" Grid.Row="1" d:LayoutOverrides="Width" BorderThickness="1" BorderBrush="#FFE5B266" >
+    				<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" >
+    					<TextBlock x:Name="textBlockOutput2" TextWrapping="Wrap" Text=""/>
+    				</ScrollViewer>
+    			</Border>
+    		</Grid>
+    	</Grid>
+        <TK1_Basics_Controls:ModalDialog x:Name="modalDialog" Visibility="Collapsed"/>
         
     </Grid>
 </Window>

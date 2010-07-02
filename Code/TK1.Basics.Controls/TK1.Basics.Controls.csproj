@@ -34,6 +34,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20421.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,6 +73,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WindowController.xaml.cs">
+      <DependentUpon>WindowController.xaml</DependentUpon>
+    </Compile>
     <Page Include="Dialog\SettingsDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +100,14 @@
       <DependentUpon>PropertySetter.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\Images\BasicsResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -151,7 +164,39 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\WindowClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\application.png" />
+    <Resource Include="Resources\Images\camera.png" />
+    <Resource Include="Resources\Images\coffee.png" />
+    <Resource Include="Resources\Images\computer.png" />
+    <Resource Include="Resources\Images\direction_down.png" />
+    <Resource Include="Resources\Images\direction_left.png" />
+    <Resource Include="Resources\Images\direction_right.png" />
+    <Resource Include="Resources\Images\direction_up.png" />
+    <Resource Include="Resources\Images\diskette.png" />
+    <Resource Include="Resources\Images\document.png" />
+    <Resource Include="Resources\Images\home.png" />
+    <Resource Include="Resources\Images\mail.png" />
+    <Resource Include="Resources\Images\message.png" />
+    <Resource Include="Resources\Images\notification_add.png" />
+    <Resource Include="Resources\Images\notification_done.png" />
+    <Resource Include="Resources\Images\notification_error.png" />
+    <Resource Include="Resources\Images\notification_remove.png" />
+    <Resource Include="Resources\Images\notification_warning.png" />
+    <Resource Include="Resources\Images\search.png" />
+    <Resource Include="Resources\Images\security_lock.png" />
+    <Resource Include="Resources\Images\security_unlock.png" />
+    <Resource Include="Resources\Images\star_empty.png" />
+    <Resource Include="Resources\Images\star_full.png" />
+    <Resource Include="Resources\Images\star_half.png" />
+    <Resource Include="Resources\Images\user.png" />
+    <Resource Include="Resources\Images\user_add.png" />
+    <Resource Include="Resources\Images\user_delete.png" />
+    <Resource Include="Resources\Images\user_manage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

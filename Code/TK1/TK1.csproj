@@ -78,6 +78,7 @@
     <Compile Include="Diagnostics\EventLog.cs" />
     <Compile Include="Diagnostics\EventLogEntry.cs" />
     <Compile Include="Diagnostics\EventLogEntryType.cs" />
+    <Compile Include="Diagnostics\InputLanguageManager.cs" />
     <Compile Include="Reflection\TypeLoader.cs" />
     <Compile Include="Resources\CommonStrings.Designer.cs">
       <AutoGen>True</AutoGen>
