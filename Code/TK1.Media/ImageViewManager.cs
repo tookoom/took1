@@ -30,6 +30,7 @@ namespace TK1.Media
         protected bool isLoading;
         protected bool isUsingUsbDrive = false;
         protected int imageCount = 0;
+        protected bool loadSubDirectories = false;
 
         protected string filePath = string.Empty;
         protected ImageViewCollection images;
@@ -174,7 +175,7 @@ namespace TK1.Media
 
         protected void addPicture(string path)
         {
-            ImageView imageView = new ImageView(path, thumbPixelHeigth, thumbPixelWidth) { Quantity = 1, IsSelected = true };
+            ImageView imageView = new ImageView(path, thumbPixelHeigth, thumbPixelWidth) { Quantity = 0, IsSelected = false };
             images.Add(imageView);
         }
         protected void addPicture(ImageView imageView)
@@ -275,9 +276,12 @@ namespace TK1.Media
                             addPicture(filePath);
                     }
                 }
-                foreach (string subDirectory in System.IO.Directory.GetDirectories(path))
+                if (loadSubDirectories)
                 {
-                    loadDirectories(subDirectory);
+                    foreach (string subDirectory in System.IO.Directory.GetDirectories(path))
+                    {
+                        loadDirectories(subDirectory);
+                    }
                 }
             }
             catch (Exception exception) { }

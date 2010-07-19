@@ -141,8 +141,10 @@ namespace TK1.ClassTester
             Input3 = "";
             Input4 = "";
 
-            dataContext = new DataContext();
-            loadDataContext();
+            
+
+            //dataContext = new DataContext();
+            //loadDataContext();
         }
         private void loadDataContext()
         {
@@ -173,10 +175,35 @@ namespace TK1.ClassTester
             }
         }
 
+        private InputLanguage GetFarsiLanguage()
+        {
+            //Enumerate through InstalledInputLanguages which contains
+            //all the keyboard layout you've installed in your windows.
+            foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
+            {
+                if (lang.LayoutName.ToLower() == "farsi")
+                    return lang;
+            }
+
+            return null;
+        }
+
+        public void YourMethod()
+        {
+            InputLanguage lang = GetFarsiLanguage();
+            if (lang == null)
+                throw new NotSupportedException("Farsi Language keyboard is not installed.");
+
+            //Set the current language of the system to
+            //the InputLanguage instance you need.
+            InputLanguage.CurrentInputLanguage = lang;
+        }
 
         #region BUTTON EVENTS -> ACTIONS
         private void buttonAction1_Click(object sender, EventArgs e)
         {
+            string message = string.Format("{0}",InputLanguage.CurrentInputLanguage.Culture.Name);
+            writeOutput1(message);
         }
         private void buttonAction2_Click(object sender, EventArgs e)
         {
