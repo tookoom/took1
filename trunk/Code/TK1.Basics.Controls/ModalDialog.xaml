@@ -27,7 +27,7 @@
                           Columns="2" HorizontalAlignment="Center"
                           VerticalAlignment="Bottom">
                         <Button x:Name="OkButton" Click="okButton_Click" 
-                          Content="Ok" Margin="2"  />
+                          Content="Ok" Margin="2" />
                         <Button x:Name="CancelButton" 
                           Click="cancelButton_Click" 
                           Content="Cancel" Margin="2" />

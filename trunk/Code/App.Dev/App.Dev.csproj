@@ -57,6 +57,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -77,6 +80,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DWEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DWEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="SetLocale.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -113,7 +121,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DWEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DWEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,6 +142,10 @@
     <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz.Pieta\TK1.Bizz.Pieta.csproj">
+      <Project>{3A912BDF-BFDE-4BB9-B182-6625FA40269A}</Project>
+      <Name>TK1.Bizz.Pieta</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Data.Model.Presentation\TK1.Data.Model.Presentation.csproj">
       <Project>{5A742711-0956-4D06-8544-56286E383BB8}</Project>

@@ -175,8 +175,14 @@ namespace TK1.Media
 
         protected void addPicture(string path)
         {
-            ImageView imageView = new ImageView(path, thumbPixelHeigth, thumbPixelWidth) { Quantity = 0, IsSelected = false };
-            images.Add(imageView);
+            var exists = (from el in images
+                          where el.Path == path
+                          select el).FirstOrDefault() != null;
+            if (!exists)
+            {
+                ImageView imageView = new ImageView(path, thumbPixelHeigth, thumbPixelWidth) { Quantity = 0, IsSelected = false };
+                images.Add(imageView);
+            }
         }
         protected void addPicture(ImageView imageView)
         {

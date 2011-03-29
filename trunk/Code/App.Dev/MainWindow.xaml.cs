@@ -18,6 +18,13 @@ using TK1.Settings;
 using TK1.Xml;
 using TK1.Diagnostics;
 using System.Globalization;
+//using TK1.Bizz.Pieta.Data;
+using TK1.Bizz.Pieta;
+using TK1.Bizz.Pieta.Xml;
+using TK1.Bizz.Pieta.Data;
+using TK1.Html;
+using TK1.Collection;
+using TK1.Bizz.Pieta.Const;
 
 namespace TK1.Dev
 {
@@ -31,9 +38,76 @@ namespace TK1.Dev
         public MainWindow()
         {
             InitializeComponent();
-            loadSettingsFile();
+            //loadSettingsFile();
             //settings.Prop1 = "novo string";
             //saveSettings();
+
+            //loadXml();
+            //sendMail();
+
+            //SiteController siteController = new SiteController();
+
+            //var siteAd = siteController.GetSiteAds();
+
+            //var mailContent = HtmlTemplates.GetContactMailTemplate();
+
+            //searchSite();S
+
+            var cities = SiteController.GetCities();
+            var districts = SiteController.GetDistricts();
+            var businessSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Business);
+            var residencialSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Residence);
+        }
+
+        private static void searchSite()
+        {
+            SiteSearchParameters parameters = new SiteSearchParameters();
+            parameters.AdType = SiteAdTypes.Sell;
+            var sites = SiteController.SearchSites(parameters);
+        }
+
+        private void sendMail()
+        {
+            HtmlBuilder html = new HtmlBuilder();
+            html.Head.Title("Título");
+            html.Body.Attributes.Set("style", "font-family: \"Helvetica Neue\", \"Lucida Grande\", \"Segoe UI\", Arial, Helvetica, Verdana, sans-serif");
+            html.Body.AppendDiv("Teste");
+            html.Body.AppendHeaderN(1, "Título 1");
+            html.Body.AppendHeaderN(2, "Título 1");
+            html.Body.AppendParagraph("Paragraph");
+            html.Body.AppendLiteral(HtmlBuilder.Div(HtmlBuilder.Div("inner content")));
+            string content = html.GetHtmlContent();
+
+            //MailHelper mailHelper = new MailHelper() { MailFrom = "contato@pietaimoveis.com.br", MailTo = "andre.v.mattos@gmail.com" };
+            MailHelper.SendMail("assunto", content, "contato@pietaimoveis.com.br", "andre.v.mattos@gmail.com");
+        }
+
+        private void loadXml()
+        {
+            try
+            {
+                var log = LogController.WriteXmlLoadLogEntry();
+                LogController.WriteXmlLoadMessageLogEntry(log, "Iniciando Carga de Arquivos", "", LogLevels.Info);
+                var sites = XmlSiteHelper.LoadSiteFromFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\imoveis.xml");
+                if (sites != null)
+                {
+
+                }
+                var pics = XmlSiteHelper.LoadSitePicFromFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\imoveisfoto.xml");
+                if (pics != null)
+                {
+                    SitePicHelper picHelper = new SitePicHelper(@"D:\Projetos\TK1\Projects\Pietá\Integração\TesteImportação");
+                    foreach (var pic in pics)
+                    {
+                        picHelper.Set(pic.SiteCode, pic.SitePicCode, pic.FileData);
+                        LogController.WriteXmlLoadMessageLogEntry(log, "Foto gravada", picHelper.Path + picHelper.FileName, LogLevels.Info);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                LogController.WriteAppLogEntry(exception.Message, exception.ToString(), LogLevels.Error);
+            }
         }
 
         private void initializeUI()
@@ -121,6 +195,29 @@ namespace TK1.Dev
         #region UI EVENT HANDLERS
         private void buttonDev1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            try
+            {
+                AM_DWEntities entities = new AM_DWEntities();
+                int count = 0;
+                DateTime from = new DateTime(1970, 1, 1);
+                DateTime to = new DateTime(2070, 12, 31);
+                DateTime date = from;
+                while (date <= to)
+                {
+                    count++;
+                    var exists = (from el in entities.Times
+                                  where el.TimeID == date
+                                  select el).FirstOrDefault() != null;
+                    if (!exists)
+                    {
+                        entities.Times.AddObject(new Time() { Day = date.Day, Month = date.Month, Year = date.Year, Quarter = ((date.Month - 1) / 3) + 1, TimeID = date });
+                        entities.SaveChanges();
+                    }
+                    date = date.AddDays(1);
+                }
+            }
+            catch (Exception exception) { }
+
             //SettingsFileLoader
 
             //var res = modalDialog.ShowDialog("teste");

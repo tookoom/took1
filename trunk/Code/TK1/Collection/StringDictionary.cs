@@ -77,7 +77,19 @@ namespace TK1.Collection
             return result;
         }
 
-		/// <summary>
+        /// <summary>
+        /// Transforma dicionário em string na forma [key1="value1" key2="value2"]
+        /// </summary>
+        public string ToHtmlAttributeString()
+        {
+            string result = string.Empty;
+            foreach (StringPair stringPair in this)
+            {
+                result += string.Format(" {0}=\"{1}\"", stringPair.Key, stringPair.Value);
+            }
+            return result;
+        }
+        /// <summary>
 		/// Transforma dicionário em string na forma "key1=value1;key2=value2"
 		/// </summary>
         public string ToKeyValueString()

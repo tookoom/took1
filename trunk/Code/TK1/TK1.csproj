@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TK1</RootNamespace>
     <AssemblyName>TK1</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>Svn</SccProjectName>
     <SccLocalPath>Svn</SccLocalPath>
@@ -20,7 +20,8 @@
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -59,6 +60,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -72,6 +74,7 @@
     <Compile Include="AppFolder.cs" />
     <Compile Include="Collection\StringDictionary.cs" />
     <Compile Include="Collection\StringPair.cs" />
+    <Compile Include="Data\Converter\Base64Converter.cs" />
     <Compile Include="Diagnostics\ErrorManager.cs" />
     <Compile Include="Diagnostics\ErrorManagerEventArgs.cs" />
     <Compile Include="Diagnostics\EventFileLog.cs" />
@@ -79,6 +82,11 @@
     <Compile Include="Diagnostics\EventLogEntry.cs" />
     <Compile Include="Diagnostics\EventLogEntryType.cs" />
     <Compile Include="Diagnostics\InputLanguageManager.cs" />
+    <Compile Include="Html\Const.cs" />
+    <Compile Include="Html\HtmlBase.cs" />
+    <Compile Include="Html\HtmlBody.cs" />
+    <Compile Include="Html\HtmlBuilder.cs" />
+    <Compile Include="Html\HtmlHead.cs" />
     <Compile Include="Reflection\TypeLoader.cs" />
     <Compile Include="Resources\CommonStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -124,6 +132,7 @@
       <LastGenOutput>CommonStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

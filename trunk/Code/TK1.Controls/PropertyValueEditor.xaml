@@ -5,26 +5,26 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 	Loaded="UserControl_Loaded" MinWidth="200" MinHeight="15" Background="White">
     <Grid>
-    	<Expander x:Name="expanderContent" Margin="0" d:LayoutOverrides="Width, Height" >
+    	<Expander x:Name="expanderContent" Margin="0" d:LayoutOverrides="Width, Height">
     		<Expander.Header>
     			<Grid VerticalAlignment="Center">
     				<Grid.ColumnDefinitions>
-    					<ColumnDefinition Width="1*"/>
-    					<ColumnDefinition Width="1*" MinWidth="10"/>
-    					<ColumnDefinition Width="Auto" MinWidth="10"/>
+    					<ColumnDefinition Width="1*" />
+    					<ColumnDefinition Width="1*" MinWidth="10" />
+    					<ColumnDefinition Width="Auto" MinWidth="10" />
     				</Grid.ColumnDefinitions>
-    				<TextBlock x:Name="textBlockName" Margin="4,2,0,2" VerticalAlignment="Center" FontWeight="Bold" Text="Name" TextWrapping="Wrap"/>
-    				<Grid x:Name="gridValue" Margin="4,2,2,2" Grid.Column="1"/>
+    				<TextBlock x:Name="textBlockName" Margin="4,2,0,2" VerticalAlignment="Center" FontWeight="Bold" Text="Name" TextWrapping="Wrap" />
+    				<Grid x:Name="gridValue" Margin="4,2,2,2" Grid.Column="1" />
     				<StackPanel Margin="0" VerticalAlignment="Center" Grid.Column="2" Orientation="Horizontal">
-    					<Button x:Name="buttonCollectionItemAdd" Margin="0" Click="buttonCollectionItemAdd_Click" HorizontalAlignment="Center" VerticalAlignment="Center" >
-    						<Image Width="16" Height="16" Source="Resources/Images/add.png" Stretch="Fill"/>
+    					<Button x:Name="buttonCollectionItemAdd" Margin="0" Click="buttonCollectionItemAdd_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
+    						<Image Width="16" Height="16" Source="Resources/Images/add.png" Stretch="Fill" />
     					</Button>
     				</StackPanel>
     			</Grid>
     		</Expander.Header>
     		<Grid x:Name="gridPropertyEditor">
     			<ScrollViewer Margin="4" d:LayoutOverrides="Height" VerticalScrollBarVisibility="Auto">
-    				<StackPanel x:Name="stackPanelPropertyEditor" Orientation="Vertical"/>
+    				<StackPanel x:Name="stackPanelPropertyEditor" Orientation="Vertical" />
     			</ScrollViewer>
     		</Grid>
     	</Expander>

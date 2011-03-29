@@ -1,0 +1,64 @@
+﻿/* SEARCH   
+----------------------------------------------------------*/
+
+div.search
+{
+    /*margin-left: 9px;
+    margin-right: 9px;
+    background-color:#465c71;
+    width:942px;*/
+    min-height: 200px
+}
+
+.search h3
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    /*color: #f9f9f9;*/
+    border: none;
+    line-height: 2em;
+    /*font-size: 2em;*/
+}
+
+/* SEARCH RESULTS
+----------------------------------------------------------*/
+
+div.searchResult
+{
+    /*margin-left: 9px;
+    margin-right: 9px;
+    background-color:#465c71;
+    width:942px;*/
+    min-height: 100px
+}
+.searchResult h3
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #3d3d3d;
+    border: none;
+    line-height: 2em;
+    /*font-size: 2em;*/
+}
+
+/* SEARCH RELEASES
+----------------------------------------------------------*/
+
+div.releases
+{
+    background-color:#ffffff;
+    width:100%;
+    min-height: 100px
+}
+.releases h3
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #3d3d3d;
+    border: none;
+    line-height: 2em;
+    /*font-size: 2em;*/
+}

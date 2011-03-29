@@ -10,13 +10,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TK1.Media</RootNamespace>
     <AssemblyName>TK1.Media</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UpgradeBackupLocation />
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -109,46 +110,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\accept.png" />
+    <Resource Include="Resources\Images\IconPictureInc.png" />
+    <Resource Include="Resources\Images\IconSelected.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\add.png" />
+    <Resource Include="Resources\Images\IconPictureDec.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Check-256x256.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Icon-Disk02-Green.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\maximize04.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\minimize01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Symbol-check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\x01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\xmag.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\zoom.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\zoom_in.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\zoom_out.png" />
+    <Resource Include="Resources\Images\IconPictureZoom.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TK1.Controls\TK1.Controls.csproj">
