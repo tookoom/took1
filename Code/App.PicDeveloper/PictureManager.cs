@@ -15,7 +15,7 @@ namespace TK1.PicDeveloper
     {
         #region CONST
         #endregion
-        #region EVENTS        
+        #region EVENTS
         public event EventHandler TotalPriceChanged;
         private void onTotalPriceChanged(EventArgs e)
         {
@@ -39,6 +39,9 @@ namespace TK1.PicDeveloper
         private PersonView client = null;
         private List<PicturePrice> prices;
         private PicDeveloperSettings settings = null;
+
+        private bool autoLoad = false;
+        private string autoLoadPath = @"C:\Users\Andre\Desktop\Cadeiras";
 
         #endregion
         #region PUBLIC ACTIONS
@@ -91,6 +94,14 @@ namespace TK1.PicDeveloper
             base.ClearList();
             Quantity = 0;
         }
+        public void ClearSelection()
+        {
+            foreach (var item in Images)
+                item.Quantity = 0;
+
+            calculateTotalPrice();
+            Quantity = 0;
+        }
         public void GetFolderPics()
         {
             base.GetFolderPics();
@@ -110,6 +121,15 @@ namespace TK1.PicDeveloper
             string info = createInfoFile();
             System.IO.File.WriteAllText(path + "Info.txt", info);
 
+        }
+        public void SelectAll()
+        {
+            foreach (var item in Images)
+                if (item.Quantity == 0)
+                    item.Quantity = 1;
+
+            calculateTotalPrice();
+            Quantity = 0;
         }
 
 
@@ -144,9 +164,22 @@ namespace TK1.PicDeveloper
         {
             string info = "";
             string newline = Environment.NewLine;
+            string emailAddress = "Não informado";
+            string phoneNumber = "Não informado";
+
+            var email = client.EmailList.FirstOrDefault();
+            if (email != null)
+                emailAddress = email.Address;
+
+            var phone = client.PhoneList.FirstOrDefault();
+            if (phone != null)
+                phoneNumber = phone.Code + " - " + phone.Number;
+
+
             info += string.Format("Registro {0} " + newline, DateTime.Now);
-            //info += string.Format("Nome do cliente: {0} " + newline, textBoxClientName.Text);
-            //info += string.Format("Telefone do cliente: {0} " + newline, textBoxClientPhone.Text);
+            info += string.Format("Nome do cliente: {0} " + newline, client.Name);
+            info += string.Format("Telefone do cliente: {0} " + newline, phoneNumber);
+            info += string.Format("E-mail do cliente: {0} " + newline, emailAddress);
             info += string.Format("Tamanho de foto: {0} " + newline, selectedPicSize);
             info += string.Format("Tipo do papel: {0} " + newline, selectedPicType);
             info += string.Format("Total de fotos: {0} " + newline, imageCount);
@@ -169,6 +202,9 @@ namespace TK1.PicDeveloper
             client.Name = "Nome";
             client.EmailList.Add(new EmailAddress() { Address = "email@dominio.com" });
             client.PhoneList.Add(new TelephoneNumber() { Code = "051", Number = "" });
+
+            if (autoLoad)
+                loadDirectories(autoLoadPath);
         }
         private void loadPrices()
         {

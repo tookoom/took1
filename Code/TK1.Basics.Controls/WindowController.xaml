@@ -7,37 +7,37 @@
     <Grid>
     	<Border BorderThickness="0,2,2,0" Margin="0" CornerRadius="0,16,0,0">
     		<Border.BorderBrush>
-    			<SolidColorBrush Color="#FFCCCCCC"/>
+    			<SolidColorBrush Color="#FFCCCCCC" />
     		</Border.BorderBrush>
     		<Grid>
     			<Grid.ColumnDefinitions>
-    				<ColumnDefinition Width="Auto" MinWidth="20"/>
-    				<ColumnDefinition/>
-    				<ColumnDefinition Width="80"/>
-    				<ColumnDefinition Width="Auto" MinWidth="32"/>
+    				<ColumnDefinition Width="Auto" MinWidth="20" />
+    				<ColumnDefinition />
+    				<ColumnDefinition Width="80" />
+    				<ColumnDefinition Width="Auto" MinWidth="32" />
     			</Grid.ColumnDefinitions>
-    			<Rectangle Height="18" VerticalAlignment="Top" Margin="0,2,18,0" MouseLeftButtonDown="rectGrip_MouseLeftButtonDown" Grid.ColumnSpan="4" Fill="#FFA7A7A7"/>
+    			<Rectangle Height="18" VerticalAlignment="Top" Margin="0,2,18,0" MouseLeftButtonDown="rectGrip_MouseLeftButtonDown" Grid.ColumnSpan="4" Fill="#FFA7A7A7" />
     			<StackPanel Margin="0,2,0,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.Column="1">
-    				<TextBlock x:Name="textBlockTitle" Margin="4,0,8,0" TextWrapping="Wrap" d:LayoutOverrides="Width" FontWeight="Bold"><Run Text="appName"/></TextBlock>
-    				<TextBlock x:Name="textBlockX" TextWrapping="Wrap" Text="TextBlock" Margin="4,0" d:LayoutOverrides="Width" Visibility="Collapsed"/>
-    				<TextBlock x:Name="textBlockY" TextWrapping="Wrap" Margin="4,0" d:LayoutOverrides="Width" Visibility="Collapsed"><Run Text="TextBlock"/></TextBlock>
+    				<TextBlock x:Name="textBlockTitle" Margin="4,0,8,0" TextWrapping="Wrap" d:LayoutOverrides="Width" FontWeight="Bold"><Run Text="appName" /></TextBlock>
+    				<TextBlock x:Name="textBlockX" TextWrapping="Wrap" Text="TextBlock" Margin="4,0" d:LayoutOverrides="Width" Visibility="Collapsed" />
+    				<TextBlock x:Name="textBlockY" TextWrapping="Wrap" Margin="4,0" d:LayoutOverrides="Width" Visibility="Collapsed"><Run Text="TextBlock" /></TextBlock>
     			</StackPanel>
     			<Grid x:Name="gridGrip" VerticalAlignment="Top" Grid.ColumnSpan="4" Margin="0,0,4,0">
-    				<Rectangle x:Name="rectGrip" Height="18" VerticalAlignment="Top" Margin="0,2,14,0" MouseLeftButtonDown="rectGrip_MouseLeftButtonDown" Fill="#32FFFFFF"/>
-    				<TextBlock Margin="0,0,63,0" TextWrapping="Wrap" Text="[grip]" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Black"/>
+    				<Rectangle x:Name="rectGrip" Height="18" VerticalAlignment="Top" Margin="0,2,14,0" MouseLeftButtonDown="rectGrip_MouseLeftButtonDown" Fill="#32FFFFFF" />
+    				<TextBlock Margin="0,0,63,0" TextWrapping="Wrap" Text="[grip]" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Black" />
     			</Grid>
-    			<Image x:Name="imageAppIcon" Margin="2,3,2,0" Source="Resources/Images/application.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Width="16" Height="16"/>
+    			<Image x:Name="imageAppIcon" Margin="2,3,2,0" Source="Resources/Images/application.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Width="16" Height="16" />
     			<Grid x:Name="gridButtons" Margin="0" d:LayoutOverrides="Height" Grid.Column="3">
     				<Grid.ColumnDefinitions>
-    					<ColumnDefinition Width="0.371*"/>
-    					<ColumnDefinition Width="0.629*"/>
-    					<ColumnDefinition Width="Auto" MinWidth="5"/>
+    					<ColumnDefinition Width="0.371*" />
+    					<ColumnDefinition Width="0.629*" />
+    					<ColumnDefinition Width="Auto" MinWidth="5" />
     				</Grid.ColumnDefinitions>
     				<Button x:Name="buttonClose" Margin="0" d:LayoutOverrides="Height" Click="buttonClose_Click" Grid.Column="2">
-    					<Image Source="Resources/Images/WindowClose.png" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Right"/>
+    					<Image Source="Resources/Images/WindowClose.png" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Right" />
     				</Button>
-    				<Button x:Name="buttonMaximize" Margin="0" d:LayoutOverrides="Height" Click="buttonMaximize_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Content="#" FontWeight="Bold"/>
-    				<Button x:Name="buttonMinimize" Margin="0" d:LayoutOverrides="Height" Click="buttonMinimize_Click" VerticalAlignment="Top" HorizontalAlignment="Center" Content="_" FontWeight="Bold"/>
+    				<Button x:Name="buttonMaximize" Margin="0" d:LayoutOverrides="Height" Click="buttonMaximize_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Content="#" FontWeight="Bold" />
+    				<Button x:Name="buttonMinimize" Margin="0" d:LayoutOverrides="Height" Click="buttonMinimize_Click" VerticalAlignment="Top" HorizontalAlignment="Center" Content="_" FontWeight="Bold" />
             
     			</Grid>
     		</Grid>

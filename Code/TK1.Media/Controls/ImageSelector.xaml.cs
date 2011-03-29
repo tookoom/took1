@@ -88,6 +88,11 @@ namespace TK1.Media.Controls
             updateUI();
 		}
 
+        public void Update()
+        {
+            updateUI();
+        }
+
         private void setPicture()
         {
             if (imageView == null)
@@ -120,14 +125,14 @@ namespace TK1.Media.Controls
                 }
             }
         }
-        private void updateFadeElement()
+        private void updateSelectedHighlightElement()
         {
             if (imageView != null)
             {
                 if (imageView.Quantity > 0)
-                    borderFadeElement.Visibility = Visibility.Collapsed;
+                    borderSelectedHighlight.Visibility = Visibility.Visible;
                 else
-                    borderFadeElement.Visibility = Visibility.Visible;
+                    borderSelectedHighlight.Visibility = Visibility.Collapsed;
             }
         }
         private void updateUI()
@@ -137,7 +142,7 @@ namespace TK1.Media.Controls
             else
                 gridQuantity.Visibility = Visibility.Collapsed;
 
-            updateFadeElement();
+            updateSelectedHighlightElement();
 
 
             BindingHelper.UpdateIsCheckedBindingTarget(checkBoxIsSelected);
@@ -177,13 +182,13 @@ namespace TK1.Media.Controls
             }
         }
 
-        private void borderFadeElement_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void borderSelectedHighlight_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             togleQuantity();
         }
         private void imageCheck_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            togleQuantity();
+            //togleQuantity();
         }
 
         private void CheckBox_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -217,6 +222,8 @@ namespace TK1.Media.Controls
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             BindingHelper.UpdateTextBindingSource(sender as TextBox);
+            imageView.IsSelected = imageView.Quantity > 0;
+            updateUI();
             onQuantityChanged(new EventArgs());
         }
 

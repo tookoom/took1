@@ -208,7 +208,7 @@ namespace TK1.PicDeveloper
                 this.Dispatcher.Invoke(callback, imageView);
             }
         }
-        protected void reset()
+        private void reset()
         {
             if (this.Dispatcher.CheckAccess())
             {
@@ -235,6 +235,17 @@ namespace TK1.PicDeveloper
                 MessageBox.Show(message, caption);
             }
         }
+        private void updateSelector()
+        {
+            foreach (var item in wrapPanelPictures.Children.Cast<ImageSelector>())
+            {
+                if (item != null)
+                {
+                    item.Update();
+                }
+            }
+
+        }
 
 
         #region EVENT HANDLERS
@@ -252,6 +263,11 @@ namespace TK1.PicDeveloper
         private void buttonClear_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             pictureManager.ClearList();
+        }
+        private void buttonClearSelection_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            pictureManager.ClearSelection();
+            updateSelector();
         }
         private void buttonLoad_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -274,6 +290,11 @@ namespace TK1.PicDeveloper
                     MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
+        }
+        private void buttonSelectAll_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            pictureManager.SelectAll();
+            updateSelector();
         }
         private void buttonSettings_Click(object sender, System.Windows.RoutedEventArgs e)
         {

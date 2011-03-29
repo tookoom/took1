@@ -1,0 +1,88 @@
+﻿
+/* CONTACT   
+----------------------------------------------------------*/
+
+
+div.contact
+{
+    width:100%;
+    min-height: 440px;
+    margin:9px;
+}
+div.contactLeft
+{
+    width:40%;
+    min-height: 300px;
+    float:left;
+    
+}
+div.contactRight
+{
+    width:50%;
+    min-height: 300px;
+    float:right;
+}
+
+div.contactFormLeft
+{
+    width:40%;
+    float:left;
+    
+}
+div.contactFormRight
+{
+    width:50%;
+    float:right;
+}
+
+
+/*
+.contact h2
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+}
+.contact h3
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 1.5em;
+}
+.contact h4
+{
+    font-weight: 300;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 1.2em;
+    font-size: 1.2em;
+}
+.contact h5
+{
+    font-weight: 200;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 1.2em;
+    font-size: 0.8em;
+}
+*/
+div.map
+{
+    background-color:#465c71;
+    margin: 10px;
+    width:300px;
+    height: 200px;
+    
+}

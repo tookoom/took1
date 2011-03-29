@@ -1,26 +1,25 @@
-﻿<UserControl
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 	x:Class="TK1.Controls.PropertyEditor"
-    Loaded="UserControl_Loaded" MinHeight="15" MinWidth="200" Background="White" >
+    Loaded="UserControl_Loaded" MinHeight="15" MinWidth="200" Background="White">
     <Grid>
     	<Expander x:Name="expander" d:LayoutOverrides="Height">
 			<Expander.Header>
     			<Grid Margin="0" VerticalAlignment="Center">
     				<Grid.ColumnDefinitions>
-    					<ColumnDefinition/>
-    					<ColumnDefinition MinWidth="10" Width="Auto"/>
+    					<ColumnDefinition />
+    					<ColumnDefinition MinWidth="10" Width="Auto" />
     				</Grid.ColumnDefinitions>
-    				<TextBlock x:Name="textBlockPropertyName" Margin="4,2" VerticalAlignment="Center" FontWeight="Bold" Text="PropertyName" TextWrapping="Wrap" d:LayoutOverrides="Width"/>
+    				<TextBlock x:Name="textBlockPropertyName" Margin="4,2" VerticalAlignment="Center" FontWeight="Bold" Text="PropertyName" TextWrapping="Wrap" d:LayoutOverrides="Width" />
     				<Button VerticalAlignment="Center" x:Name="buttonDelete" HorizontalAlignment="Center" Click="buttonDelete_Click" Grid.Column="1">
-    					<Image Width="16" Height="16" Source="Resources/Images/delete.png" Stretch="Fill"/>
+    					<Image Width="16" Height="16" Source="Resources/Images/delete.png" Stretch="Fill" />
     				</Button>
     			</Grid>
     		</Expander.Header>    		
     		<ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0" MaxHeight="400">
-    			<StackPanel x:Name="stackPanelProperties"/>
+    			<StackPanel x:Name="stackPanelProperties" />
     		</ScrollViewer>
     	</Expander>
     </Grid>
