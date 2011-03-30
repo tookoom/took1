@@ -93,10 +93,21 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             parameters.PriceFrom = StringConverter.ToFloat(dropDownPriceFrom.SelectedItem.Value, 0);
         if (dropDownPriceTo.SelectedItem != null)
             parameters.PriceTo = StringConverter.ToFloat(dropDownPriceTo.SelectedItem.Value, float.MaxValue);
-        if(dropDownRoomNumber.SelectedItem!= null)
-            parameters.RoomsFrom = StringConverter.ToInt(dropDownRoomNumber.SelectedItem.Value,int.MaxValue);
+        if (dropDownRoomNumber.SelectedItem != null)
+        {
+            parameters.RoomsFrom = StringConverter.ToInt(dropDownRoomNumber.SelectedItem.Value, int.MinValue);
+            if (dropDownRoomNumber.SelectedItem.Value.Contains("+"))
+                parameters.RoomsTo = int.MaxValue;
+            else
+                parameters.RoomsTo = StringConverter.ToInt(dropDownRoomNumber.SelectedItem.Value, int.MaxValue);
+        }
         if (dropDownSiteType.SelectedItem != null)
             parameters.SiteType = dropDownSiteType.SelectedItem.Text;
+
+        foreach (ListItem item in checkBoxListDistricts.Items)
+            if (item.Selected)
+                parameters.Districts.Add(item.Text);
+
 
         var searchResult = SiteController.SearchSites(parameters);
 

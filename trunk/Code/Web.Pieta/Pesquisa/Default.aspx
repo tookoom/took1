@@ -128,7 +128,7 @@
                 Description:
                 <asp:Label ID="DescriptionLabel" runat="server" 
                     Text='<%# Eval("Description") %>' />
-                <a target="_top" href="http//www.pietaimoveis.com.br/Imovel/Default.aspx?ID=<%# Eval("SiteAdID") %>&AdType=<%# Eval("AdType.AdTypeID") %>">Detalhes</a>
+                <a target="_top" href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID") %>&AdType=<%# Eval("AdType.AdTypeID") %>">Detalhes</a>
                 
                 <br />
 <br /></span>
