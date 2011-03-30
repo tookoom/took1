@@ -123,10 +123,10 @@ namespace TK1.Bizz.Pieta.Data
             {
                 using (PietaEntities entities = BaseController.GetPietaEntities())
                 {
-                    var query = entities.SiteAds as IQueryable<SiteAd>;
+                    //var query = entities.SiteAds as IQueryable<SiteAd>;
                     if (parameters != null)
                     {
-                        query = query.FilterAdType(parameters.AdType);
+                        //query = query.FilterAdType(parameters.AdType);
                         //query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
                         //query = query.FilterCategory(parameters.Category);
                         //query = query.FilterCity(parameters.CityName);
@@ -134,7 +134,7 @@ namespace TK1.Bizz.Pieta.Data
                         //query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
                         //query = query.FilterSiteRegion(parameters.RegionID);
                         //query = query.FilterSiteType(parameters.AdType, parameters.SiteType);
-                        result = query.ToList();
+                        result = entities.SiteAds.ToList();
 
                         foreach (var ad in result)
                         {
@@ -150,6 +150,16 @@ namespace TK1.Bizz.Pieta.Data
                                 ad.Site.SiteTypeReference.Load();
                             }
                         }
+
+                        result = result.FilterAdType(parameters.AdType);
+                        //query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
+                        result = result.FilterCategory(parameters.Category);
+                        result = result.FilterCity(parameters.CityName);
+                        result = result.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
+                        result = result.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
+                        //query = query.FilterSiteRegion(parameters.RegionID);
+                        result = result.FilterSiteType(parameters.Category, parameters.SiteType);
+                        result = result.FilterDistrict(parameters.Districts);
                     }
                 }
 
