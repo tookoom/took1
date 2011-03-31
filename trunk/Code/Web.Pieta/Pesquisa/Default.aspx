@@ -2,6 +2,25 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
+    <table border="2" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td style="width: 80px">
+                <h3>Quero:
+                </h3>
+            </td>
+             <td style="width: 120px">
+                <asp:RadioButton ID="radioButton1" runat="server" Text="Alugar" GroupName="radioButtonAdType" />
+            </td>
+            <td style="width: 120px">
+                <asp:RadioButton ID="radioButton2" runat="server" Text="Comprar" GroupName="radioButtonAdType"/>
+            </td>
+            <td style="width: 500px">
+                <asp:DropDownList ID="DropDownList1" runat="server">
+                </asp:DropDownList>
+
+            </td>
+        </tr>
+    </table>
     <div class="clear search">
         <div style="margin:0px 0px 0px 0px; float: left; position:absolute; width: 100px;text-align: left;">
             <h3>Quero:
@@ -44,10 +63,15 @@
                 <asp:CheckBoxList ID="checkBoxListDistricts" runat="server">
                 </asp:CheckBoxList>
             </div>
-            <div>
+            <div style="margin:0px 0px 0px 0px; float: left; position:absolute; width: 130px; heigth: 22px; text-align: center;" >
+                <img src="../Images/IconSearch.png" style="float: left; width: 24px; text-align: center; margin: 4px" />
+                <asp:LinkButton ID="buttonSearch" Text="Pesquisar" runat="server"  
+                        class="buttonSearch" OnClick="buttonSearch_Click" />
+            </div>
+            <%--<div>
                 <asp:Button ID="buttonSearch" runat="server" Text="Pesquisar" 
                     onclick="buttonSearch_Click" />
-            </div>
+            </div>--%>
         </div>
 
     </div>

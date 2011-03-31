@@ -10,7 +10,7 @@ div.hideSkiplink
 div.menu
 {
     padding: 2px 0px 0px 4px;
-    font-variant: small-caps;
+    /*font-variant: small-caps;*/
     font-weight: bold;
     line-height: 1.35em;
     font-size:1.1em;
