@@ -18,8 +18,6 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#divSiteDetailPopup').hide();
-            //            $('#divSitePicGallery').animate({ heigth: '0px' });
             var dotCounter = 0;
             (function waitPicLoad() {
                 setTimeout(function () {
@@ -31,7 +29,7 @@
                             filmstrip_position: 'right',
                             panel_scale: 'nocrop',
                             panel_width: 800,
-                            panel_heigth: 500,
+                            panel_heigth: 600,
                             frame_opacity: 0.7,
                             show_panel_nav: true,
                             show_overlays: true,
@@ -56,19 +54,29 @@
     </div>
 
     <div id="divSiteDetails" runat="server">
+        <div class="headerBlueLine">
+            <h2>Detalhes</h2>
+        </div>
 
-         <asp:Repeater ID="Repeater2" runat="server" 
-            DataSourceID="objectDataSourceSiteDetail" >
-            <ItemTemplate>
-                <h2>
-                    <%# Eval("AdType.Name")%> de imóvel <%# Eval("Category.Name")%> em <%# Eval("Site.City.Name")%>, no bairro <%# Eval("Site.District.Name")%>
-                </h2>
-           </ItemTemplate>                                 
+        <div class="searchDetailHeader">
+             <asp:Repeater ID="Repeater2" runat="server" 
+                DataSourceID="objectDataSourceSiteDescription" >
+                <ItemTemplate>
+                    <div style="float:left;">
+                        <h2>
+                            <%# Eval("AdType.Name")%> de imóvel <%# Eval("Category.Name")%> em <%# Eval("Site.City.Name")%>, no bairro <%# Eval("Site.District.Name")%>
+                        </h2>
+                        Código <%# Eval("SiteAdID")%>
+                    </div>
+                    <div style="float:right;">
+                        <h1> <%# Eval("Price", "{0:c}")%> </h1>
+                    </div>
+               </ItemTemplate>                                 
 
-        </asp:Repeater>
-        <div id="divSitePics">
-            <h3>Imagens do imóvel
-            </h3>
+            </asp:Repeater>
+        </div>
+        <br />
+        <div id="divSitePics" class="divSitePics">
             <br />
             <div id="divSitePicGallery">
                 <asp:Literal id="literalSitePics" runat="server" />
@@ -76,43 +84,62 @@
             
         </div>
         
-        <asp:Repeater ID="Repeater1" runat="server" 
-            DataSourceID="objectDataSourceSiteDetail" >
-            <ItemTemplate>
-                <h3>Detalhes do imóvel
-                </h3>
+        <div class="headerBlueLine">
+            <h3>Descrição</h3>
+        </div>
 
-                <table border="0" cellpadding="0" cellspacing="0" width="98%">
-                    <tr>
-                        <td>
-                               <h4> <%# Eval("Title")%> </h4>
+        <table border="0" cellpadding="0" cellspacing="0" width="932px">
+            <tr>
+                <td style="width: 50%; vertical-align: top;">
+                    <asp:Repeater ID="Repeater1" runat="server" 
+                        DataSourceID="objectDataSourceSiteDescription" >
+                        <ItemTemplate>
+                            <h4> <%# Eval("Title")%> </h4>
                             <p> <%# Eval("Description")%> </p>
-                            <a id="linkSiteDetailPopup"> Conheça as características do imóvel</a>
-                        </td>
-                        <td style="text-align: right; font-size:1.7em; font-weight:bold">
-                                <h1> R$ <%# Eval("Price")%> </h1>
-                        </td>
-                    </tr>
-                </table>
+                        </ItemTemplate>                                 
+                    </asp:Repeater>
 
-                <div id="divSiteDetailPopup" style="position:relative; width: 600px;text-align: left; border:2px solid Gray; min-height: 120px;" >
-                    Mais detalhes do imóvel, de acordo com o cadastro
-                </div>
-<%--                <div style="float: left; margin:0px 0px 0px 0px; position:relative; width: 600px;text-align: left" >
-                </div>
-                <div style="float: right; margin:0px 0px 0px 700px; position:absolute; width: 200px;text-align: right; font-size:1.5em; font-weight:bold">
-                </div>
-                <br />--%>
-
-           </ItemTemplate>                                 
-
-        </asp:Repeater>
+                </td>
+                <td style="width: 30%; vertical-align: top;">
+                    <asp:Repeater ID="Repeater3" runat="server" 
+                        DataSourceID="objectDataSourceSiteDetail" >
+                        <ItemTemplate>
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td><img src="http://www.pietaimoveis.com.br/Images/Check.png" style="vertical-align:middle;"/>
+                                    </td>
+                                    <td><p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ItemTemplate>                                 
+                    </asp:Repeater>
+                </td>
+                <td style="width: 20%; ">
+                    <img src="http://www.pietaimoveis.com.br/Images/CallNow.png" style="float:right; margin-top: 8px;"/>
+                </td>
+            </tr>
+        </table>
+        <br />
     </div>
-
+    <br />
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDetail" runat="server" 
+        SelectMethod="GetSiteDetail" TypeName="TK1.Bizz.Pieta.Data.SiteController" >
+
+        <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
+                QueryStringField="ID" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="0" Name="siteAdType" 
+                QueryStringField="AdType" Type="Int32" />
+        </SelectParameters>
+
+    </asp:ObjectDataSource>
+
+
+    <asp:ObjectDataSource ID="objectDataSourceSiteDescription" runat="server" 
         SelectMethod="GetSiteAd" TypeName="TK1.Bizz.Pieta.Data.SiteController" 
-        onselected="objectDataSourceSiteDetail_Selected">
+        onselected="objectDataSourceSiteDescription_Selected">
 
         <SelectParameters>
             <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
@@ -130,16 +157,6 @@
             <asp:Parameter DefaultValue="AdType" Name="siteAdType" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
-
-    <script type="text/javascript">
-        $('#linkSiteDetailPopup').hover(function () {
-            $('#divSiteDetailPopup').fadeIn('slow');
-        });
-        $('#linkSiteDetailPopup').mouseleave(function () {
-            $('#divSiteDetailPopup').fadeOut('slow');
-        });
-
-    </script>
 
 </asp:Content>
 

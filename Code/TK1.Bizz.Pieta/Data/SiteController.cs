@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TK1.Bizz.Pieta.Data.Extension;
+using TK1.Bizz.Pieta.Data.Presentation;
 
 namespace TK1.Bizz.Pieta.Data
 {
@@ -88,6 +89,40 @@ namespace TK1.Bizz.Pieta.Data
                             siteAd.Site.DistrictReference.Load();
                         result = siteAd;
                     }
+                }
+
+            }
+            catch (Exception exception)
+            {
+                LogController.WriteException("SiteController.GetSiteAd", exception);
+            }
+            return result;
+        }
+        public static List<SiteDetail> GetSiteDetail(int siteAdID, int siteAdType)
+        {
+            List<SiteDetail> result = new List<SiteDetail>();
+            try
+            {
+                using (PietaEntities entities = BaseController.GetPietaEntities())
+                {
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Frente", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Porteiro Eletrônico", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Playground", Value = "Sim", ImageUrl = "Check.png" });
+                    //var siteAd = entities.SiteAds.Get(siteAdID, siteAdType);
+                    //if (siteAd != null)
+                    //{
+                    //    siteAd.AdTypeReference.Load();
+                    //    siteAd.CategoryReference.Load();
+                    //    siteAd.SiteReference.Load();
+                    //    if (siteAd.Site != null)
+                    //        siteAd.Site.AddressInfoReference.Load();
+                    //    if (siteAd.Site != null)
+                    //        siteAd.Site.CityReference.Load();
+                    //    if (siteAd.Site != null)
+                    //        siteAd.Site.DistrictReference.Load();
+                    //    result = siteAd;
+                    //}
                 }
 
             }

@@ -18,7 +18,7 @@ public partial class Imovel_Default : System.Web.UI.Page
         }
     }
 
-    protected void objectDataSourceSiteDetail_Selected(object sender, ObjectDataSourceStatusEventArgs e)
+    protected void objectDataSourceSiteDescription_Selected(object sender, ObjectDataSourceStatusEventArgs e)
     {
         if (e != null)
         {

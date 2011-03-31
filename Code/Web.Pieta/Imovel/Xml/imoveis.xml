@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO8859-1"?>
+<dadosimovel>
+  <imovel>
+    <codigoimovel>1870</codigoimovel>
+    <tipoimovel>Apartamento</tipoimovel>
+    <endereco>SANDALNHA MARINHO</endereco>
+    <numero>165</numero>
+    <bairro>CENTRO</bairro>
+    <cidade>NOVO HAMBURGO</cidade>
+    <uf>RS</uf>
+    <cep> 9356-455</cep>
+    <descricaointernet>5 Dorm., Frente, Piso de Assoalho.</descricaointernet>
+    <valoraluguel>999999</valoraluguel>
+    <imoveldestaque>S</imoveldestaque>
+    <excluir>N</excluir>
+    <tipo>ALUGUEL</tipo>
+    <dormitorio></dormitorio>
+    <edificio>ACAPULCO</edificio>
+    <area>500</area>
+    <Banner>S</Banner>
+    <ImovelExclusivo>S</ImovelExclusivo>
+    <fichaimovel>
+      <caracteristica>
+        <descricao>Dorm.</descricao>
+        <conteudo>5</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Frente</descricao>
+        <conteudo>Sim</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Piso de Assoalho</descricao>
+        <conteudo>Sim</conteudo>
+      </caracteristica>
+    </fichaimovel>
+  </imovel>
+  <imovel>
+    <codigoimovel>1871</codigoimovel>
+    <tipoimovel>Casa</tipoimovel>
+    <endereco>Presidente lucena</endereco>
+    <numero>399</numero>
+    <bairro>CENTRO</bairro>
+    <cidade>IVOTI</cidade>
+    <uf>RS</uf>
+    <cep>93900-000</cep>
+    <descricaointernet>5 Dorm., Cond. Isento, 2 Elevador(s), 2 Espera(s) p  ar Cond., Despensa, 2 Entrada (s), 1 Dormitório(s).</descricaointernet>
+    <valoraluguel>99999999</valoraluguel>
+    <imoveldestaque>N</imoveldestaque>
+    <excluir>S</excluir>
+    <tipo>ALUGUEL</tipo>
+    <dormitorio>1</dormitorio>
+    <edificio></edificio>
+    <area>50,25</area>
+    <Banner>N</Banner>
+    <ImovelExclusivo>N</ImovelExclusivo>
+    <fichaimovel>
+      <caracteristica>
+        <descricao>Dorm.</descricao>
+        <conteudo>5</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Cond. Isento</descricao>
+        <conteudo>Sim</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Elevador(s)</descricao>
+        <conteudo>2</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Espera(s) p/ ar Cond.</descricao>
+        <conteudo>2</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Despensa</descricao>
+        <conteudo>Sim</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Entrada (s)</descricao>
+        <conteudo>2</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Dormitório(s)</descricao>
+        <conteudo>1</conteudo>
+      </caracteristica>
+    </fichaimovel>
+  </imovel>
+</dadosimovel>

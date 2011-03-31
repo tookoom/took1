@@ -1,13 +1,48 @@
 ﻿/* SEARCH   
 ----------------------------------------------------------*/
+.buttonSearch
+{
+    color: #ffffff;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 2px 0px 0px 4px;
+    font-variant: small-caps;
+    font-weight: bold;
+    line-height: 1.35em;
+    font-size:1.1em;
+
+    /*background-image: url('http://www.pietaimoveis.com.br/Images/MenuItem.png');*/
+    background-image: url('/Images/ButtonSearch.png');
+    margin-left: 2px;
+    margin-right: 2px;
+    
+}
+.buttonSearch:hover
+{
+    /*background-image: url('http://www.pietaimoveis.com.br/Images/MenuItemHover.png');*/
+    background-image: url('/Images/ButtonSearchHover.png');
+    margin-left: 2px;
+    margin-right: 2px;
+}
 
 div.search
 {
-    /*margin-left: 9px;
-    margin-right: 9px;
-    background-color:#465c71;
-    width:942px;*/
-    min-height: 200px
+    padding: 2px 0px 0px 4px;
+    line-height: 1.35em;
+    font-size:1.1em;
+    min-height:120px;
+}
+div.search a, div.search a:visited
+{
+    color: #ffffff;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 .search h3
@@ -32,6 +67,14 @@ div.searchResult
     width:942px;*/
     min-height: 100px
 }
+div.searchResult
+{
+    /*margin-left: 9px;
+    margin-right: 9px;
+    background-color:#465c71;
+    width:942px;*/
+    min-height: 100px
+}
 .searchResult h3
 {
     font-weight: 700;
@@ -42,6 +85,45 @@ div.searchResult
     line-height: 2em;
     /*font-size: 2em;*/
 }
+
+div.searchDetailHeader
+{
+    color: #23669A;
+    /*vertical-align: top;*/
+    width: 916px;
+    height:38px;
+    /*margin: 0px auto 0px auto;*/
+    background-color: #23669A;
+    padding: 0px 8px 0px 8px;
+}
+div.searchDetailHeader h1
+{
+    font-weight: 700;
+    margin: 0px;
+    /*padding: 0px 8px 0px 8px;*/
+    color: White;
+    border: none;
+    line-height: 2em;
+    /*font-size: 2em;*/
+}
+div.searchDetailHeader h2
+{
+    font-weight: 700;
+    margin: 0px;
+    /*padding: 0px 0px 0px 8px;*/
+    color: White;
+    border: none;
+    line-height: 2em;
+    /*font-size: 2em;*/
+}
+
+.divSitePics
+{
+    background-color: #efefef;
+    width: 932px;
+    height:432px;
+}
+
 
 /* SEARCH RELEASES
 ----------------------------------------------------------*/
