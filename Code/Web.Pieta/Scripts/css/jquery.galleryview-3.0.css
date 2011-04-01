@@ -106,13 +106,7 @@
 	height: 22px;
 	width: 22px;
 	cursor: pointer;
-	background: url(themes/pieta/IconRight.png) top left no-repeat;
-}
-.gv-nav-prev {
-	height: 22px;
-	width: 22px;
-	cursor: pointer;
-	background: url(themes/pieta/IconLeft.png) top right no-repeat;
+	background: url(themes/und: und: url(themes/pieta/IconLeft.png) top right no-repeat;
 }
 .gv-panel-nav-next {
 	height: 42px;
@@ -125,6 +119,12 @@
 	width: 42px;
 	cursor: pointer;
 	background: url(themes/pieta/IconLeft.png) top right no-repeat;
+}
+
+/* TRANSPARENT BORDER FIX FOR IE6 */
+/* NOTE - DO NOT CHANGE THIS RULE */
+*html .gv-pointer {
+	f ./panel-nav-prev.png) top right no-repeat;
 }
 
 /* TRANSPARENT BORDER FIX FOR IE6 */

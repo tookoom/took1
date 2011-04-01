@@ -200,10 +200,10 @@
           <Property Name="CityName" Type="varchar" Nullable="false" MaxLength="32" />
           <Property Name="DistrictName" Type="varchar" Nullable="false" MaxLength="64" />
           <Property Name="SiteTypeID" Type="int" Nullable="false" />
-          <Property Name="TotalArea" Type="float" />
-          <Property Name="TotalRooms" Type="int" />
-          <Property Name="InternalArea" Type="float" />
-          <Property Name="ExternalArea" Type="float" />
+          <Property Name="TotalArea" Type="float" Nullable="false" />
+          <Property Name="TotalRooms" Type="int" Nullable="false" />
+          <Property Name="InternalArea" Type="float" Nullable="false" />
+          <Property Name="ExternalArea" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="SiteAd">
           <Key>
@@ -217,6 +217,7 @@
           <Property Name="Price" Type="float" />
           <Property Name="Title" Type="varchar" MaxLength="256" />
           <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="SiteDescription">
           <Key>
@@ -702,10 +703,10 @@
           <NavigationProperty Name="SiteType" Relationship="TK1_PietaModel.FK_Site_SiteType" FromRole="Site" ToRole="SiteType" />
           <NavigationProperty Name="SiteDescriptions" Relationship="TK1_PietaModel.FK_SiteDescription_Site" FromRole="Site" ToRole="SiteDescription" />
           <NavigationProperty Name="SiteAd" Relationship="TK1_PietaModel.FK_SiteAd_Site1" FromRole="Site" ToRole="SiteAd" />
-          <Property Type="Double" Name="TotalArea" />
-          <Property Type="Int32" Name="TotalRooms" />
-          <Property Type="Double" Name="InternalArea" />
-          <Property Type="Double" Name="ExternalArea" />
+          <Property Type="Double" Name="TotalArea" Nullable="false" />
+          <Property Type="Int32" Name="TotalRooms" Nullable="false" />
+          <Property Type="Double" Name="InternalArea" Nullable="false" />
+          <Property Type="Double" Name="ExternalArea" Nullable="false" />
         </EntityType>
         <EntityType Name="SiteAd">
           <Key>
@@ -721,6 +722,7 @@
           <NavigationProperty Name="Site" Relationship="TK1_PietaModel.FK_SiteAd_Site1" FromRole="SiteAd" ToRole="Site" />
           <NavigationProperty Name="UserAdList" Relationship="TK1_PietaModel.FK_UserAdList_SiteAd1" FromRole="SiteAd" ToRole="UserAdList" />
           <NavigationProperty Name="AdType" Relationship="TK1_PietaModel.FK_SiteAd_AdType" FromRole="SiteAd" ToRole="AdType" />
+          <Property Type="String" Name="ImageUrl" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SiteDescription">
           <Key>
@@ -933,7 +935,8 @@
                 <ScalarProperty Name="SiteID" ColumnName="SiteID" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SiteAds"><EntityTypeMapping TypeName="TK1_PietaModel.SiteAd"><MappingFragment StoreEntitySet="SiteAd">
-            <ScalarProperty Name="AdTypeID" ColumnName="AdTypeID" />
+            <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="AdTypeID" ColumnName="AdTypeID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="SiteAdID" ColumnName="SiteAdID" />
