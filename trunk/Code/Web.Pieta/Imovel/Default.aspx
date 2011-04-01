@@ -62,13 +62,14 @@
              <asp:Repeater ID="Repeater2" runat="server" 
                 DataSourceID="objectDataSourceSiteDescription" >
                 <ItemTemplate>
-                    <div style="float:left;">
+                    <div style="float:left; padding-top: 2px;">
                         <h2>
-                            <%# Eval("AdType.Name")%> de imóvel <%# Eval("Category.Name")%> em <%# Eval("Site.City.Name")%>, no bairro <%# Eval("Site.District.Name")%>
+                            <%# Eval("Site.SiteType.Name")%> - <%# Eval("AdType.Name")%> 
                         </h2>
+                        <h3><%# Eval("Site.City.Name")%>, bairro <%# Eval("Site.District.Name")%></h3>
                         Código <%# Eval("SiteAdID")%>
                     </div>
-                    <div style="float:right;">
+                    <div style="float:right; padding-top: 10px;">
                         <h1> <%# Eval("Price", "{0:c}")%> </h1>
                     </div>
                </ItemTemplate>                                 
@@ -104,19 +105,20 @@
                     <asp:Repeater ID="Repeater3" runat="server" 
                         DataSourceID="objectDataSourceSiteDetail" >
                         <ItemTemplate>
-                            <table border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td><img src="http://www.pietaimoveis.com.br/Images/Check.png" style="vertical-align:middle;"/>
+                            <table border="0" cellpadding="0" cellspacing="0" >
+                                <tr style="height: 26px">
+                                    <td><img src="http://www.pietaimoveis.com.br/Images/Check.png" style="vertical-align:middle; padding: 2px 3px 5px 0px;"/>
                                     </td>
-                                    <td><p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>
+                                    <td><%--<p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>--%>
+                                    <%# Eval("Name")%>
                                     </td>
                                 </tr>
                             </table>
                         </ItemTemplate>                                 
                     </asp:Repeater>
                 </td>
-                <td style="width: 20%; ">
-                    <img src="http://www.pietaimoveis.com.br/Images/CallNow.png" style="float:right; margin-top: 8px;"/>
+                <td style="width: 20%; vertical-align: top;">
+                    <img src="http://www.pietaimoveis.com.br/Images/CallNow.png" style="float:right; margin-top: 8px; margin-bottom: auto; vertical-align:top;display: block;"/>
                 </td>
             </tr>
         </table>

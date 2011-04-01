@@ -15,7 +15,7 @@ namespace TK1.Bizz.Pieta.Data
 
         public static List<string> GetCities()
         {
-            List<string> result = null;
+            List<string> result = new List<string>();
             try
             {
                 using (PietaEntities entities = BaseController.GetPietaEntities())
@@ -33,7 +33,7 @@ namespace TK1.Bizz.Pieta.Data
         }
         public static List<string> GetDistricts()
         {
-            List<string> result = null;
+            List<string> result = new List<string>();
             try
             {
                 using (PietaEntities entities = BaseController.GetPietaEntities())
@@ -87,6 +87,9 @@ namespace TK1.Bizz.Pieta.Data
                             siteAd.Site.CityReference.Load();
                         if (siteAd.Site != null)
                             siteAd.Site.DistrictReference.Load();
+                        if (siteAd.Site != null)
+                            siteAd.Site.SiteTypeReference.Load();
+                        //siteAd.Site.SiteType.Name
                         result = siteAd;
                     }
                 }
@@ -109,6 +112,17 @@ namespace TK1.Bizz.Pieta.Data
                     result.Add(new SiteDetail() { Name = "Frente", Value = "Sim", ImageUrl = "Check.png" });
                     result.Add(new SiteDetail() { Name = "Porteiro Eletrônico", Value = "Sim", ImageUrl = "Check.png" });
                     result.Add(new SiteDetail() { Name = "Playground", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Algum item que venha descrito e que possua vários caracteres, de forma a forçar a existência de duas linhas na listagem de características do imóvel", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
+                    result.Add(new SiteDetail() { Name = "Garagem", Value = "Sim", ImageUrl = "Check.png" });
                     //var siteAd = entities.SiteAds.Get(siteAdID, siteAdType);
                     //if (siteAd != null)
                     //{
@@ -184,6 +198,8 @@ namespace TK1.Bizz.Pieta.Data
                                 ad.Site.SiteDescriptions.Load();
                                 ad.Site.SiteTypeReference.Load();
                             }
+                            if (string.IsNullOrEmpty(ad.ImageUrl))
+                                ad.ImageUrl = "Images/PicNotFound.jpg";
                         }
 
                         result = result.FilterAdType(parameters.AdType);

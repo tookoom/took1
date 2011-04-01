@@ -29,7 +29,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteAd_AdType", "AdType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.AdType), "SiteAd", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteAd))]
 
 // Original file name:
-// Generation date: 26/03/2011 14:07:16
+// Generation date: 01/04/2011 00:01:43
 namespace TK1.Bizz.Pieta.Data
 {
     
@@ -2105,11 +2105,19 @@ namespace TK1.Bizz.Pieta.Data
         /// Create a new Site object.
         /// </summary>
         /// <param name="siteID">Initial value of SiteID.</param>
+        /// <param name="totalArea">Initial value of TotalArea.</param>
+        /// <param name="totalRooms">Initial value of TotalRooms.</param>
+        /// <param name="internalArea">Initial value of InternalArea.</param>
+        /// <param name="externalArea">Initial value of ExternalArea.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Site CreateSite(int siteID)
+        public static Site CreateSite(int siteID, double totalArea, int totalRooms, double internalArea, double externalArea)
         {
             Site site = new Site();
             site.SiteID = siteID;
+            site.TotalArea = totalArea;
+            site.TotalRooms = totalRooms;
+            site.InternalArea = internalArea;
+            site.ExternalArea = externalArea;
             return site;
         }
         /// <summary>
@@ -2142,10 +2150,10 @@ namespace TK1.Bizz.Pieta.Data
         /// <summary>
         /// There are no comments for property TotalArea in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<double> TotalArea
+        public double TotalArea
         {
             get
             {
@@ -2161,18 +2169,18 @@ namespace TK1.Bizz.Pieta.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<double> _TotalArea;
+        private double _TotalArea;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTotalAreaChanging(global::System.Nullable<double> value);
+        partial void OnTotalAreaChanging(double value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTotalAreaChanged();
         /// <summary>
         /// There are no comments for property TotalRooms in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> TotalRooms
+        public int TotalRooms
         {
             get
             {
@@ -2188,18 +2196,18 @@ namespace TK1.Bizz.Pieta.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _TotalRooms;
+        private int _TotalRooms;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTotalRoomsChanging(global::System.Nullable<int> value);
+        partial void OnTotalRoomsChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTotalRoomsChanged();
         /// <summary>
         /// There are no comments for property InternalArea in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<double> InternalArea
+        public double InternalArea
         {
             get
             {
@@ -2215,18 +2223,18 @@ namespace TK1.Bizz.Pieta.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<double> _InternalArea;
+        private double _InternalArea;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnInternalAreaChanging(global::System.Nullable<double> value);
+        partial void OnInternalAreaChanging(double value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnInternalAreaChanged();
         /// <summary>
         /// There are no comments for property ExternalArea in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<double> ExternalArea
+        public double ExternalArea
         {
             get
             {
@@ -2242,9 +2250,9 @@ namespace TK1.Bizz.Pieta.Data
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<double> _ExternalArea;
+        private double _ExternalArea;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnExternalAreaChanging(global::System.Nullable<double> value);
+        partial void OnExternalAreaChanging(double value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnExternalAreaChanged();
         /// <summary>
@@ -2608,6 +2616,33 @@ namespace TK1.Bizz.Pieta.Data
         partial void OnAdTypeIDChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnAdTypeIDChanged();
+        /// <summary>
+        /// There are no comments for property ImageUrl in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ImageUrl
+        {
+            get
+            {
+                return this._ImageUrl;
+            }
+            set
+            {
+                this.OnImageUrlChanging(value);
+                this.ReportPropertyChanging("ImageUrl");
+                this._ImageUrl = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ImageUrl");
+                this.OnImageUrlChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ImageUrl;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnImageUrlChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnImageUrlChanged();
         /// <summary>
         /// There are no comments for Category in the schema.
         /// </summary>

@@ -32,14 +32,14 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         foreach(var siteType in siteTypes)
             dropDownSiteType.Items.Add(new ListItem(siteType));
 
-        dropDownRoomNumber.Items.Add(new ListItem("1", "1"));
-        dropDownRoomNumber.Items.Add(new ListItem("1 ou mais", "1+"));
-        dropDownRoomNumber.Items.Add(new ListItem("2", "2"));
-        dropDownRoomNumber.Items.Add(new ListItem("2 ou mais", "2+"));
-        dropDownRoomNumber.Items.Add(new ListItem("3", "3"));
-        dropDownRoomNumber.Items.Add(new ListItem("3 ou mais", "3+"));
-        dropDownRoomNumber.Items.Add(new ListItem("4", "4"));
-        dropDownRoomNumber.Items.Add(new ListItem("4 ou mais", "4+"));
+        dropDownRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
+        dropDownRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+"));
+        dropDownRoomNumber.Items.Add(new ListItem("2 dormitórios", "2"));
+        dropDownRoomNumber.Items.Add(new ListItem("2 dormitórios ou mais", "2+"));
+        dropDownRoomNumber.Items.Add(new ListItem("3 dormitórios", "3"));
+        dropDownRoomNumber.Items.Add(new ListItem("3 dormitórios ou mais", "3+"));
+        dropDownRoomNumber.Items.Add(new ListItem("4 dormitórios", "4"));
+        dropDownRoomNumber.Items.Add(new ListItem("4 dormitórios ou mais", "4+"));
 
         dropDownPriceFrom.Items.Add(new ListItem("R$0,00", "0"));
         dropDownPriceFrom.Items.Add(new ListItem("R$500,00", "500"));
@@ -54,7 +54,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceFrom.Items.Add(new ListItem("R$300.000,00", "300000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$400.000,00", "400000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$500.000,00", "500000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$1000.000,00", "1000000"));
+        dropDownPriceFrom.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
 
         dropDownPriceTo.Items.Add(new ListItem("R$500,00", "500"));
         dropDownPriceTo.Items.Add(new ListItem("R$1.000,00", "1000"));
@@ -68,8 +68,8 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceTo.Items.Add(new ListItem("R$300.000,00", "300000"));
         dropDownPriceTo.Items.Add(new ListItem("R$400.000,00", "400000"));
         dropDownPriceTo.Items.Add(new ListItem("R$500.000,00", "500000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$1000.000,00", "1000000"));
-        dropDownPriceTo.Items.Add(new ListItem("Acima de R$1000.000,00", "1000000+"));
+        dropDownPriceTo.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
+        dropDownPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+"));
 
         base.OnPreInit(e);
     }
@@ -111,6 +111,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
 
         var searchResult = SiteController.SearchSites(parameters);
 
+        listViewSearchResults.DataSourceID = null;
         listViewSearchResults.DataSource = searchResult;
         listViewSearchResults.DataBind();
     }
