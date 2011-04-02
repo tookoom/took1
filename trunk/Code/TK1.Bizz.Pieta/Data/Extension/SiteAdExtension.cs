@@ -88,9 +88,6 @@ namespace TK1.Bizz.Pieta.Data.Extension
                 return new List<SiteAd>();
             else
             {
-                if (districtNames.Contains("Todos"))
-                    return siteAds;
-
                 return (from o in siteAds
                         where districtNames.Contains(o.Site.District.Name)
                         select o).ToList();

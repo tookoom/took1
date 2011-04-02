@@ -3,64 +3,53 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
 <div style="min-height:190px;">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" >
-        <tr>
-            <td style="width: 80px; vertical-align:top;">
-                <h3>Quero:
-                </h3>
-            </td>
-             <td style="width: 120px; vertical-align:top;">
-                <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar" GroupName="radioButtonAdType" />
-            </td>
-            <td style="width: 220px; vertical-align:top;">
-                <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" GroupName="radioButtonAdType"/>
-            </td>
-            <td style="width: 30px; vertical-align:top;"><h3>Em:</h3></td>
-            <td style="width: auto; vertical-align:top;">
-                <asp:DropDownList ID="dropDownCities" runat="server">
-                </asp:DropDownList>
-            </td>
-        </tr>
-    </table>
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-            <td style="width: 450px; vertical-align:top;">
-                <table border="0">
+            <td style="width: 650px; vertical-align:top;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" >
+                    <tr>
+                        <td style="width: 60px; vertical-align:middle; padding-left:8px;"><p>Quero:</p></td>
+                         <td style="width: 80px; vertical-align:middle; padding-top:7px; font-size:1.3em;">
+                            <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar" GroupName="radioButtonAdType" /></td>
+                        <td style="width: 100px; vertical-align:middle; padding-top:7px; font-size:1.3em;">
+                            <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" GroupName="radioButtonAdType"/></td>
+                        <td style="width: 40px; vertical-align:middle; padding-left:8px;"><p>Em:</p></td>
+                        <td style="width: 290px; vertical-align:middle; padding-top:8px;">
+                            <asp:DropDownList ID="dropDownCities" runat="server" Width="280px"></asp:DropDownList></td>
+                        <td style="width: auto; vertical-align:middle; padding-left:8px;"><p>Bairros:</p></td>
+                    </tr>
+                </table>
+                <%--<table border="0">
                     <tr>
                         <td style="width: 72px"></td>
                         <td style="width: 120px"><asp:RadioButton ID="radioButtonSiteBusiness" runat="server" Text="Comercial" GroupName="radioButtonSiteCategory" /></td>
                         <td style="width: 216px"><asp:RadioButton ID="radioButtonSiteResidence" runat="server" Text="Residencial" GroupName="radioButtonSiteCategory"/></td>
                     </tr>
+                </table>--%>
+                <table  border="0" cellpadding="0" cellspacing="0" width="100%" >
+                    <tr>
+                        <td style="width: 60px; vertical-align:middle; padding-left:8px;"><p>Tipo:</p></td>
+                        <td style="width: 228px; padding-top:8px;">
+                            <asp:DropDownList ID="dropDownSiteType" runat="server" Width="210px"></asp:DropDownList></td>
+                        <td style="width: 290px; padding-top:8px;">
+                            <asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="280px"></asp:DropDownList></td>
+                        <td style="width: auto; vertical-align:middle; padding-left:8px;"></td>
+                    </tr>
                 </table>
-                <table border="0">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" >
                     <tr>
-                        <td style="width: 80px"><h3>Tipo:</h3></td>
-                         <td style="width: 220px"><asp:DropDownList ID="dropDownSiteType" runat="server" Width="100%"></asp:DropDownList></td>
-                        <td style="width: 220px"><asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="100%"></asp:DropDownList></td>
+                        <td style="width: 100px; vertical-align:middle; padding-left:8px;"><p>Preço entre:</p></td>
+                        <td style="width: 140px; vertical-align:middle; padding-top:8px;">
+                            <asp:DropDownList ID="dropDownPriceFrom" runat="server" Width="130px"></asp:DropDownList></td>
+                        <td style="width: 30px; vertical-align:middle; padding-left:8px;"><p>e</p></td>
+                        <td style="width: 220px; vertical-align:middle; padding-top:8px;">
+                            <asp:DropDownList ID="dropDownPriceTo" runat="server" Width="210px"></asp:DropDownList></td>
+                        <td style="width: auto; vertical-align:middle; padding-left:8px;"></td>
                     </tr>
-                    <tr>
-                        <td style="width: 72px"><h3>Valor:</h3></td>
-                        <td style="width: 220px">
-                            <p style="float:left">De:</p>
-                            <asp:DropDownList ID="dropDownPriceFrom" runat="server" style="float:left; ">
-                            </asp:DropDownList>
-                        </td>
-                        <td style="width: 220px">
-                            <p style="float:left">Até:</p>
-                            <asp:DropDownList ID="dropDownPriceTo" runat="server" style="float:left">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-<%--                    <tr>
-                        <td style="width: 80px"></td>
-                         <td style="width: 120px"></td>
-                        <td style="width: 120px"></td>
-                    </tr>
---%>
                 </table>
             </td>
-            <td style="width: auto">
-                <div style="OVERFLOW-Y:scroll; float:left; height:120px; background-color: White; color: Black">
+            <td style="width: auto; padding:12px">
+                <div style="OVERFLOW-Y:scroll; float:left; width:100%; height:140px; background-color: White; color: Black;">
                     <asp:CheckBoxList ID="checkBoxListDistricts" runat="server">
                     </asp:CheckBoxList>
                 </div>
@@ -69,10 +58,10 @@
         <tr>
             <td style="width: 450px"></td>
             <td style="width: auto">
-                <div style="margin:0px 0px 0px 0px; float: right; width: 130px; height:32px; text-align: center;" >
-                    <img src="../Images/IconSearch.png" style="float: left; width: 24px; text-align: center; margin: 4px" />
-                    <asp:LinkButton ID="buttonSearch" Text="Pesquisar" runat="server"  
-                        class="buttonSearch" OnClick="buttonSearch_Click" />
+                <div class="buttonSearch">
+                    <asp:LinkButton ID="buttonSearch" Text="Pesquisar" runat="server" 
+                        style="margin: 2px 0px 2px 8px;"
+                         OnClick="buttonSearch_Click" />
                 </div>
             </td>
         </tr>
@@ -121,15 +110,15 @@
             <ItemTemplate>
                 <table border="0" cellpadding="0" cellspacing="0" width="932px" style="border-bottom:2px solid #23669A; ">
                     <tr class="center">
-                        <td style="vertical-align: middle;">
-                            <img src="../<%# Eval("ImageUrl") %>" height="100px" />
+                        <td style="vertical-align: middle; width:170px;">
+                            <img src="../<%# Eval("ImageUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
                         </td>
-                        <td style="vertical-align: middle;">Código <%# Eval("SiteAdID")%></td>
-                        <td style="vertical-align: middle;"><%# Eval("Site.SiteType.Name")%></td>
-                        <td style="vertical-align: middle;"><%# Eval("Site.TotalRooms")%> dormitório(s)</td>
-                        <td style="vertical-align: middle;">Bairro <%# Eval("Site.District.Name")%></td>
-                        <td class="center"><h1> <%# Eval("Price", "{0:c}")%> </h1></td>
-                        <td style="vertical-align: middle;"><a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&AdType=<%# Eval("AdTypeID")%>">Detalhes</a></td>
+                        <td style="vertical-align: middle; width:70px; text-align:center;">Código <%# Eval("SiteAdID")%></td>
+                        <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
+                        <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.TotalRooms")%> dormitório(s)</td>
+                        <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("Site.District.Name")%></td>
+                        <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Price", "{0:c}")%></td>
+                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&AdType=<%# Eval("AdTypeID")%>">Detalhes</a></td>
                     </tr>
                     
                 </table>
