@@ -161,7 +161,7 @@ namespace TK1.Bizz.Pieta.Data
             }
             catch (Exception exception)
             {
-                LogController.WriteException("SiteController.GetCities", exception);
+                LogController.WriteException("SiteController.GetSiteTypes", exception);
             }
             return result;
         }
@@ -198,8 +198,8 @@ namespace TK1.Bizz.Pieta.Data
                                 ad.Site.SiteDescriptions.Load();
                                 ad.Site.SiteTypeReference.Load();
                             }
-                            if (string.IsNullOrEmpty(ad.ImageUrl))
-                                ad.ImageUrl = "Images/PicNotFound.jpg";
+                            //if (string.IsNullOrEmpty(ad.ImageUrl))
+                            //    ad.ImageUrl = "Images/PicNotFound.jpg";
                         }
 
                         result = result.FilterAdType(parameters.AdType);
@@ -209,8 +209,10 @@ namespace TK1.Bizz.Pieta.Data
                         result = result.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
                         result = result.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
                         //query = query.FilterSiteRegion(parameters.RegionID);
-                        result = result.FilterSiteType(parameters.Category, parameters.SiteType);
-                        result = result.FilterDistrict(parameters.Districts);
+                        if(parameters.SiteType != "*")
+                            result = result.FilterSiteType(parameters.Category, parameters.SiteType);
+                        if(!parameters.Districts.Contains("Todos"))
+                            result = result.FilterDistrict(parameters.Districts);
                     }
                 }
 
