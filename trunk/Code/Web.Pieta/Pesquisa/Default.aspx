@@ -13,7 +13,7 @@
                             <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar" GroupName="radioButtonAdType" /></td>
                         <td style="width: 100px; vertical-align:middle; padding-top:7px; font-size:1.3em;">
                             <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" GroupName="radioButtonAdType"/></td>
-                        <td style="width: 40px; vertical-align:middle; padding-left:8px;"><p>Em:</p></td>
+                        <td style="width: 40px; vertical-align:middle; padding-left:8px;"><p>em:</p></td>
                         <td style="width: 290px; vertical-align:middle; padding-top:8px;">
                             <asp:DropDownList ID="dropDownCities" runat="server" Width="280px"></asp:DropDownList></td>
                         <td style="width: auto; vertical-align:middle; padding-left:8px;"><p>Bairros:</p></td>
@@ -142,7 +142,7 @@
         </asp:ObjectDataSource>
 
         <asp:DataPager ID="DataPager1" runat="server" PagedControlID="listViewSearchResults" 
-            PageSize="5">
+            PageSize="10">
             <Fields>
                 <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
                     LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 

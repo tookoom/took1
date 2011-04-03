@@ -30,6 +30,7 @@
                             panel_scale: 'nocrop',
                             panel_width: 800,
                             panel_heigth: 600,
+                            panel_animation: 'none',
                             frame_opacity: 0.7,
                             show_panel_nav: true,
                             show_overlays: true,
