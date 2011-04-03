@@ -18,7 +18,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     protected override void OnInit(EventArgs e)
     {
-        radioButtonRent.Checked = true;
+        radioButtonBuy.Checked = true;
         //radioButtonSiteResidence.Checked = true;
 
         var cities = SiteController.GetCities();
@@ -33,12 +33,12 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Business + "*"));
         var siteComercialTypes = SiteController.GetSiteTypes(SiteAdCategories.Business);
         foreach (var siteType in siteComercialTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Business));
+            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Business + siteType));
 
         dropDownSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residence + "*") { Selected = true });
         var siteResidenceTypes = SiteController.GetSiteTypes(SiteAdCategories.Residence);
         foreach (var siteType in siteResidenceTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residence.ToString()));
+            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residence + siteType));
 
         dropDownRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
         dropDownRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
@@ -56,6 +56,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceFrom.Items.Add(new ListItem("R$3.000,00", "3000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$4.000,00", "4000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$5.000,00", "5000"));
+        dropDownPriceFrom.Items.Add(new ListItem("R$10.000,00", "5000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$50.000,00", "50000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$100.000,00", "100000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$200.000,00", "200000"));
@@ -70,6 +71,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceTo.Items.Add(new ListItem("R$3.000,00", "3000"));
         dropDownPriceTo.Items.Add(new ListItem("R$4.000,00", "4000"));
         dropDownPriceTo.Items.Add(new ListItem("R$5.000,00", "5000"));
+        dropDownPriceTo.Items.Add(new ListItem("R$10.000,00", "5000"));
         dropDownPriceTo.Items.Add(new ListItem("R$50.000,00", "50000"));
         dropDownPriceTo.Items.Add(new ListItem("R$100.000,00", "100000"));
         dropDownPriceTo.Items.Add(new ListItem("R$200.000,00", "200000"));
@@ -77,7 +79,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceTo.Items.Add(new ListItem("R$400.000,00", "400000"));
         dropDownPriceTo.Items.Add(new ListItem("R$500.000,00", "500000"));
         dropDownPriceTo.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
-        dropDownPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+"));
+        dropDownPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+") { Selected = true });
 
         base.OnPreInit(e);
     }
@@ -120,7 +122,12 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             if (value.Contains("*"))
                 parameters.SiteType = "*";
             else
-                parameters.SiteType = dropDownSiteType.SelectedItem.Text;
+            {
+                string siteType = dropDownSiteType.SelectedItem.Text;
+                if(siteType.Contains("- "))
+                    siteType = siteType.Replace("- ","");
+                parameters.SiteType = siteType;
+            }
         }
 
         foreach (ListItem item in checkBoxListDistricts.Items)
