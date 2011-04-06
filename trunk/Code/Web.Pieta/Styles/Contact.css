@@ -86,3 +86,30 @@ div.map
     height: 200px;
     
 }
+
+.buttonSend a, buttonSend a:visited
+{
+    color: #ffffff;
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 5px 0px 0px 2px;
+    font-weight: bold;
+    line-height: 1.35em;
+    font-size:1.25em;
+
+}
+.buttonSend
+{
+    background-image: url('http://www.pietaimoveis.com.br/Images/ButtonSendMessage.png');
+    /*background-image: url('/Images/ButtonSearch.png');*/
+    height:35px;
+    width:98px;
+    float:right;
+    margin: 4px 0px 4px 4px;
+}
+.buttonSend:hover
+{
+    background-image: url('http://www.pietaimoveis.com.br/Images/ButtonSendMEssagehover.png');
+    /*background-image: url('/Images/ButtonSearchHover.png');*/
+}

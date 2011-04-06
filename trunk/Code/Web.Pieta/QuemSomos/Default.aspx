@@ -5,9 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <div>
-        <h2>
-            Sobre a Pietá Imóveis
-        </h2>
+        <div class="headerBlueLine"><h2>Sobre a Pietá Imóveis</h2></div>
         <p>
             Somos uma empresa formada por profissionais com larga experiência no mercado imobiliário, focados na intermediação imobiliária e atuando há mais de 20 anos no segmento de aluguel e venda de imóveis.
         </p>
@@ -21,17 +19,18 @@
 	        Voltada para o ramo de intermediação na locação, compra, venda e avaliação imobiliária, a empresa conta com uma estrutura organizacional altamente informatizada e capacitada para atender de forma ágil segura aos seus clientes
         </p>
 
-        <h3>Missão</h3>
+        <div class="headerBlueLine"><h3>Missão</h3></div>
+        
         <p>
             Oferecer soluções em intermediação imobiliária com transparência, ética e rentabilidade, sempre comprometidos com o bem estar dos clientes e colaboradores.
         </p>
 
-        <h3>Visão</h3>
+        <div class="headerBlueLine"><h3>Visão</h3></div>
         <p>
             Ser referência em serviços de intermediação imobiliária com credibilidade e excelência em tudo o que fazemos.    
         </p>
 
-        <h3>Valores</h3>
+        <div class="headerBlueLine"><h3>Valores</h3></div>
         <p>
             Transparência <br />
             Ética <br />

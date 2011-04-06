@@ -82,36 +82,18 @@
         <div class="headerBlueLine">
             <h2>Resultado da Pesquisa</h2>
         </div>
-        <%--<asp:GridView ID="gridViewSearchResult" runat="server" 
-            DataSourceID="objectDataSourceSiteSearch" AllowPaging="True" 
-            AllowSorting="True" AutoGenerateColumns="False" EnableModelValidation="True">
-            <Columns>
-                <asp:ImageField DataImageUrlField="ImageUrl" 
-                    NullImageUrl="~/Images/PicNotFound.jpg">
-                </asp:ImageField>
-                <asp:BoundField DataField="SiteAdID" HeaderText="Código" 
-                    SortExpression="SiteAdID" Visible="False" />
-                <asp:BoundField DataField="Title" HeaderText="Anúncio" SortExpression="Title" />
-                <asp:BoundField DataField="Price" DataFormatString="{0:C}" 
-                    HeaderText="Price" SortExpression="Price" />
-                <asp:TemplateField>
-                    <ItemTemplate><img src="../Images/PicNotFound.jpg" height="100px" /></ItemTemplate>
-                    
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>--%>
-
-        <%--DataSourceID="objectDataSourceSiteSearch" --%>
         <asp:ListView ID="listViewSearchResults" runat="server" 
             EnableModelValidation="True">
             <EmptyDataTemplate>
-                <span>Nenhum resultado encontrado.</span>
+                <h3>Nenhum resultado encontrado.</h3>
             </EmptyDataTemplate>
             <ItemTemplate>
                 <table border="0" cellpadding="0" cellspacing="0" width="932px" style="border-bottom:2px solid #23669A; ">
                     <tr class="center">
                         <td style="vertical-align: middle; width:170px;">
-                            <img src="../<%# Eval("ImageUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&AdType=<%# Eval("AdTypeID")%>">
+                                <img src="../<%# Eval("ImageUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
+                            </a>
                         </td>
                         <td style="vertical-align: middle; width:70px; text-align:center;">Código <%# Eval("SiteAdID")%></td>
                         <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
