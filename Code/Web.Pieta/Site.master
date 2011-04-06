@@ -23,8 +23,8 @@
     <link href="~/Styles/Contact.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Location.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Search.css" rel="stylesheet" type="text/css" />
-    <link href="~/Scripts/css/jquery.galleryview-3.0.css" rel="stylesheet" type="text/css" />--%>
-    
+    <link href="~/Scripts/css/jquery.galleryview-3.0.css" rel="stylesheet" type="text/css" />
+    --%>
 </head>
 <body>
     <form runat="server">

@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <div>
-        <h2>
-            Documentação
-        </h2>
+        <div class="headerBlueLine">
+            <h2>Documentação</h2>
+        </div>
         <p>
             Visando facilitar o processo de compra e venda de imóveis, a Pietá Imóveis disponibiliza listas com os documentos necessários
         </p>
@@ -17,9 +17,9 @@
         <br />
         <a href="../Download/DOCUMENTAÇÃO NECESSÁRIA PARA VENDA DE IMÓVEL.doc">Documentação necessária para venda de imóveis</a>
         <br />
-        <h2>
-            Legislação
-        </h2>
+        <div class="headerBlueLine">
+            <h2>Legislação</h2>
+        </div>
         <p>
             Confira no link abaixo a Lei do Inquilinato atualizada, que rege os contratos de locação de imóveis:
         </p>

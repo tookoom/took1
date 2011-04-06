@@ -14,7 +14,7 @@
     <br />
     <br />
     <br />
-        <img src="http://www.pietaimoveis.com.br/Images/Convite.jpg" class="center" />
+        <a href="http://www.pietaimoveis.com.br/Pesquisa/Default.aspx"><img src="http://www.pietaimoveis.com.br/Images/Convite.png" class="center" /></a>
         <br />
         <br />
     </div>

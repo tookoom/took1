@@ -28,15 +28,16 @@
                         $('#picGallery').galleryView({ pause_on_hover: true,
                             filmstrip_position: 'right',
                             panel_scale: 'nocrop',
-                            panel_width: 800,
-                            panel_heigth: 600,
+                            panel_width: 754,
+                            panel_heigth: 620,
                             panel_animation: 'none',
-                            frame_opacity: 0.7,
+                            frame_opacity: 0.4,
                             show_panel_nav: true,
                             show_overlays: true,
-                            frame_width: 120,
-                            frame_height: 80,
-                            show_filmstrip_nav: false
+                            frame_width: 160,
+                            frame_height: 61,
+                            show_filmstrip_nav: false,
+                            frame_gap: 6
                         });
                         //$('#divSitePicGallery').show('slow');
                     }
@@ -70,7 +71,7 @@
                         <h3><%# Eval("Site.City.Name")%>, bairro <%# Eval("Site.District.Name")%></h3>
                         Código <%# Eval("SiteAdID")%>
                     </div>
-                    <div style="float:right; padding-top: 10px;">
+                    <div style="float:right; padding-top: 14px;">
                         <h1> <%# Eval("Price", "{0:c}")%> </h1>
                     </div>
                </ItemTemplate>                                 
@@ -123,6 +124,10 @@
                 </td>
             </tr>
         </table>
+        <div class="buttonSearchBack">
+            <a href="javascript: history.go(-1)" style="margin-left:26px; margin-top:3px">Retornar à pesquisa</a>
+        </div>
+
         <br />
     </div>
     <br />
