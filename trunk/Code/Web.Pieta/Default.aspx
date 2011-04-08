@@ -17,6 +17,11 @@
         <a href="http://www.pietaimoveis.com.br/Pesquisa/Default.aspx"><img src="http://www.pietaimoveis.com.br/Images/Convite.png" class="center" /></a>
         <br />
         <br />
+        <div style="width:932px; height:100px;">
+            <img src="Images/CaixaAqui.jpg" style="float:left; margin-left: 120px" />
+            <h1 class="center" style="float:left; margin:36px 0px 0px 8px;" >Somos correspondentes Caixa Aqui, da Caixa Econômica Federal</h1>
+        </div>
+        <br />
     </div>
 
 <%--    <p>
