@@ -124,7 +124,7 @@
         </asp:ObjectDataSource>
 
         <asp:DataPager ID="DataPager1" runat="server" PagedControlID="listViewSearchResults" 
-            PageSize="10">
+            PageSize="20">
             <Fields>
                 <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
                     LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 
