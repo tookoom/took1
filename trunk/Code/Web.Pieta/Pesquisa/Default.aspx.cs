@@ -12,11 +12,39 @@ using System.IO;
 
 public partial class Pesquisa_Default : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
+    #region PRIVATE MEMBERS
+    private static string searchResultSessionKey = "SearchResult";
+    
+    #endregion
 
+    private string getSiteMainPic(int siteAdType, int siteAdID)
+    {
+        string result = string.Empty;
+
+        string baseUrl = string.Empty;
+        if (siteAdType == 1)
+            baseUrl = string.Format("Imovel/Fotos/Aluguel/{0}/", siteAdID);
+        if (siteAdType == 2)
+            baseUrl = string.Format("Imovel/Fotos/Venda/{0}/", siteAdID);
+        string relUrl = string.Format("~/{0}", baseUrl);
+        if (!string.IsNullOrEmpty(baseUrl))
+        {
+            relUrl = this.ResolveUrl(relUrl);
+            string path = Server.MapPath(relUrl);
+            if (Directory.Exists(path))
+            {
+                string items = string.Empty;
+                foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                {
+                    result = baseUrl + Path.GetFileName(file);
+                    break;
+                }
+
+            }
+        }
+        return result;
     }
-    protected override void OnInit(EventArgs e)
+    private void loadSearchParameter()
     {
         radioButtonBuy.Checked = true;
         //radioButtonSiteResidence.Checked = true;
@@ -80,10 +108,8 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceTo.Items.Add(new ListItem("R$500.000,00", "500000"));
         dropDownPriceTo.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
         dropDownPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+") { Selected = true });
-
-        base.OnPreInit(e);
     }
-    protected void buttonSearch_Click(object sender, EventArgs e)
+    private void searchSite()
     {
         SiteSearchParameters parameters = new SiteSearchParameters();
 
@@ -92,6 +118,13 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         else
             parameters.AdType = SiteAdTypes.Rent;
 
+        if (!string.IsNullOrEmpty(textBoxSiteCode.Text))
+        {
+            int siteCode = 0;
+            if (int.TryParse(textBoxSiteCode.Text, out siteCode))
+                parameters.Code = siteCode;
+            textBoxSiteCode.Text = string.Empty;
+        }
         //if (radioButtonSiteBusiness.Checked)
         //    parameters.Category = SiteAdCategories.Business;
         //else
@@ -99,7 +132,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
 
         if (dropDownCities.SelectedItem != null)
             parameters.CityName = dropDownCities.SelectedItem.Text;
-        if(dropDownPriceFrom.SelectedItem!= null)
+        if (dropDownPriceFrom.SelectedItem != null)
             parameters.PriceFrom = StringConverter.ToFloat(dropDownPriceFrom.SelectedItem.Value, 0);
         if (dropDownPriceTo.SelectedItem != null)
             parameters.PriceTo = StringConverter.ToFloat(dropDownPriceTo.SelectedItem.Value, float.MaxValue);
@@ -115,7 +148,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         {
             string text = dropDownSiteType.SelectedItem.Text;
             string value = dropDownSiteType.SelectedItem.Value;
-            if(value.Contains(SiteAdCategories.Business.ToString()))
+            if (value.Contains(SiteAdCategories.Business.ToString()))
                 parameters.Category = SiteAdCategories.Business;
             else
                 parameters.Category = SiteAdCategories.Residence;
@@ -124,8 +157,8 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             else
             {
                 string siteType = dropDownSiteType.SelectedItem.Text;
-                if(siteType.Contains("- "))
-                    siteType = siteType.Replace("- ","");
+                if (siteType.Contains("- "))
+                    siteType = siteType.Replace("- ", "");
                 parameters.SiteType = siteType;
             }
         }
@@ -138,7 +171,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         var searchResult = SiteController.SearchSites(parameters);
         foreach (var siteAd in searchResult)
         {
-            string imageUrl = "Images/PicNotFound.jpg";
+            string imageUrl = "Images/ImageNotFound.png";
             if (string.IsNullOrEmpty(siteAd.ImageUrl))
             {
                 string mainPic = getSiteMainPic(siteAd.AdTypeID, siteAd.SiteAdID);
@@ -147,37 +180,54 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             }
             siteAd.ImageUrl = imageUrl;
         }
+        setDataBinding(searchResult);
+    }
+    private void setDataBinding(object dataToBind)
+    {
+        if (Page.Session[searchResultSessionKey] != null)
+            Page.Session.Remove(searchResultSessionKey);
+        Page.Session.Add(searchResultSessionKey,dataToBind);
 
         listViewSearchResults.DataSourceID = null;
-        listViewSearchResults.DataSource = searchResult;
+        listViewSearchResults.DataSource = dataToBind;
         listViewSearchResults.DataBind();
     }
-    private string getSiteMainPic(int siteAdType, int siteAdID)
+
+    protected bool getSiteRoomNameVisibility(string adType)
     {
-        string result = string.Empty;
-
-        string baseUrl = string.Empty;
-        if (siteAdType == 1)
-            baseUrl = string.Format("Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        if (siteAdType == 2)
-            baseUrl = string.Format("Imovel/Fotos/Venda/{0}/", siteAdID);
-        string relUrl = string.Format("~/{0}", baseUrl);
-        if (!string.IsNullOrEmpty(baseUrl))
+        bool result = false;
+        switch (adType)
         {
-            relUrl = this.ResolveUrl(relUrl);
-            string path = Server.MapPath(relUrl);
-            if (Directory.Exists(path))
-            {
-                string items = string.Empty;
-                foreach (var file in Directory.GetFiles(path, "*.jpg"))
-                {
-                    result = baseUrl + Path.GetFileName(file);
-                    break;
-                }
+            case "1":
+                result = true;
+                break;
 
-            }
+            default:
+                result = false;
+                break;
         }
         return result;
     }
 
+    #region EVENTS
+    protected override void OnInit(EventArgs e)
+    {
+        loadSearchParameter();
+        base.OnPreInit(e);
+    }
+    
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void buttonSearch_Click(object sender, EventArgs e)
+    {
+        searchSite();
+    }
+    protected void listViewSearchResults_PagePropertiesChanged(object sender, EventArgs e)
+    {
+        setDataBinding(Page.Session[searchResultSessionKey]);
+    }
+    
+    #endregion
 }

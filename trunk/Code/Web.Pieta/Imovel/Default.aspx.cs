@@ -46,7 +46,21 @@ public partial class Imovel_Default : System.Web.UI.Page
             }
         }
     }
+    protected bool getRentDivVisibility(string adType)
+    {
+        bool result = false;
+        switch (adType)
+        {
+            case "1":
+                result = true;
+                break;
 
+            default:
+                result = false;
+                break;
+        }
+        return result;
+    }
     private string getSitePicGallery(int siteAdType, int siteAdID)
     {
         string result = string.Empty;
@@ -70,15 +84,24 @@ public partial class Imovel_Default : System.Web.UI.Page
                     string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
                     items += li + Environment.NewLine;
                 }
-                if(!string.IsNullOrEmpty(items))
+                if (!string.IsNullOrEmpty(items))
                 {
                     string ul = "<ul id=\"picGallery\">" + Environment.NewLine
                         + "{0}"
                         + "</ul>";
-                    result = string.Format(ul,items);
+                    result = string.Format(ul, items);
+                }
+                else
+                {
+                    result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
                 }
 
             }
+            else
+            {
+                result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
+            }
+
             //result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", baseUrl));
         }
         //result.Add("~/Images/PicNotFound.jpg");

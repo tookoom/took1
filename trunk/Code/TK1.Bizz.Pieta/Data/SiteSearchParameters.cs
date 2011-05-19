@@ -14,6 +14,7 @@ namespace TK1.Bizz.Pieta.Data
         public float AreaTo { get; set; }
         public string Category { get; set; }
         public string CityName { get; set; }
+        public int Code { get; set; }
         public List<string> Districts { get; set; }
         public string SiteType { get; set; }
         public int RoomsFrom { get; set; }
@@ -29,6 +30,7 @@ namespace TK1.Bizz.Pieta.Data
             AreaFrom = float.MinValue;
             Category = SiteAdCategories.Residence;
             CityName = "Porto Alegre";
+            Code = 0;
             Districts = new List<string>();
             SiteType = "Apartamento";
             RoomsFrom = int.MinValue;

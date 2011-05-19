@@ -47,6 +47,14 @@
                         <td style="width: auto; vertical-align:middle; padding-left:8px;"></td>
                     </tr>
                 </table>
+                <table  border="0" cellpadding="0" cellspacing="0" width="100%" >
+                    <tr>
+                        <td style="width: 150px; vertical-align:middle; padding-left:8px;"><p>Código do anúncio:</p></td>
+                        <td style="width: 90px; padding-top:8px;">
+                            <asp:TextBox ID="textBoxSiteCode" runat="server" Width="70px"></asp:TextBox></td>
+                        <td style="width: 340px; padding-top:8px;"></td>
+                        <td style="width: auto; vertical-align:middle; padding-left:8px;"></td>                         </tr>
+                </table>
             </td>
             <td style="width: auto; padding:12px">
                 <div style="OVERFLOW-Y:scroll; float:left; width:100%; height:140px; background-color: White; color: Black;">
@@ -83,7 +91,8 @@
             <h2>Resultado da Pesquisa</h2>
         </div>
         <asp:ListView ID="listViewSearchResults" runat="server" 
-            EnableModelValidation="True">
+            EnableModelValidation="True" 
+            onpagepropertieschanged="listViewSearchResults_PagePropertiesChanged">
             <EmptyDataTemplate>
                 <h3>Nenhum resultado encontrado.</h3>
             </EmptyDataTemplate>
@@ -95,9 +104,13 @@
                                 <img src="../<%# Eval("ImageUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
                             </a>
                         </td>
-                        <td style="vertical-align: middle; width:70px; text-align:center;">Código <%# Eval("SiteAdID")%></td>
+                        <td style="vertical-align: middle; width:70px; text-align:center;"><b>Código <%# Eval("SiteAdID")%></b></td>
                         <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
-                        <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.TotalRooms")%> dormitório(s)</td>
+                        <td style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>
+                            <%--<div runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>--%>
+                               <%# Eval("Site.TotalRooms")%>  <%# Eval("Site.SiteType.RoomDisplayName")%>
+                           <%-- </div>--%>
+                        </td>
                         <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("Site.District.Name")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Price", "{0:c}")%></td>
                         <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&AdType=<%# Eval("AdTypeID")%>">Detalhes</a></td>
@@ -123,15 +136,18 @@
             </SelectParameters>
         </asp:ObjectDataSource>
 
-        <asp:DataPager ID="DataPager1" runat="server" PagedControlID="listViewSearchResults" 
-            PageSize="20">
-            <Fields>
-                <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
-                    LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 
-                    ShowFirstPageButton="True" ShowLastPageButton="True" />
-                <asp:NumericPagerField />
-            </Fields>
-        </asp:DataPager>
+        <div style="height: 50px;">
+            <asp:DataPager ID="siteSearchDataPager" style="float: right; padding:10px;"
+                runat="server" PagedControlID="listViewSearchResults" PageSize="20">
+                <Fields>
+                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
+                        LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 
+                        NextPageImageUrl="~/Images/IconRight.png" 
+                        PreviousPageImageUrl="~/Images/IconLeft.png" />
+                    <asp:NumericPagerField />
+                </Fields>
+            </asp:DataPager>
+        </div>
     </div>
 
 </asp:Content>

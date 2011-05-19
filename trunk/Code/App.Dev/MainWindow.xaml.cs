@@ -38,11 +38,23 @@ namespace TK1.Dev
         public MainWindow()
         {
             InitializeComponent();
+
+
+            try
+            {
+                //var xml = XmlHelper.NormatizeFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\20110512\VisVenlcto.xml");
+                loadXml(@"D:\Projetos\TK1\Projects\Pietá\Integração\20110516\VisVen.xml");
+
+            }
+            catch (Exception exception)
+            {
+                
+            }
             //loadSettingsFile();
             //settings.Prop1 = "novo string";
             //saveSettings();
 
-            //loadXml();
+            //
             //sendMail();
 
             //SiteController siteController = new SiteController();
@@ -53,10 +65,10 @@ namespace TK1.Dev
 
             //searchSite();S
 
-            var cities = SiteController.GetCities();
-            var districts = SiteController.GetDistricts();
-            var businessSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Business);
-            var residencialSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Residence);
+            //var cities = SiteController.GetCities();
+            //var districts = SiteController.GetDistricts();
+            //var businessSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Business);
+            //var residencialSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Residence);
         }
 
         private static void searchSite()
@@ -82,27 +94,29 @@ namespace TK1.Dev
             MailHelper.SendMail("assunto", content, "contato@pietaimoveis.com.br", "andre.v.mattos@gmail.com");
         }
 
-        private void loadXml()
+        private void loadXml(string path)
         {
             try
             {
                 var log = LogController.WriteXmlLoadLogEntry();
                 LogController.WriteXmlLoadMessageLogEntry(log, "Iniciando Carga de Arquivos", "", LogLevels.Info);
-                var sites = XmlSiteHelper.LoadSiteFromFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\imoveis.xml");
+
+                var sites = XmlSiteHelper.LoadSiteFromFile(path);
                 if (sites != null)
                 {
-
+                    SiteController siteController = new SiteController();
+                    siteController.AddSalesSiteAds(sites);
                 }
-                var pics = XmlSiteHelper.LoadSitePicFromFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\imoveisfoto.xml");
-                if (pics != null)
-                {
-                    SitePicHelper picHelper = new SitePicHelper(@"D:\Projetos\TK1\Projects\Pietá\Integração\TesteImportação");
-                    foreach (var pic in pics)
-                    {
-                        picHelper.Set(pic.SiteCode, pic.SitePicCode, pic.FileData);
-                        LogController.WriteXmlLoadMessageLogEntry(log, "Foto gravada", picHelper.Path + picHelper.FileName, LogLevels.Info);
-                    }
-                }
+                //var pics = XmlSiteHelper.LoadSitePicFromFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\imoveisfoto.xml");
+                //if (pics != null)
+                //{
+                //    SitePicHelper picHelper = new SitePicHelper(@"D:\Projetos\TK1\Projects\Pietá\Integração\Aluguel");
+                //    foreach (var pic in pics)
+                //    {
+                //        picHelper.Set(pic.SiteCode, pic.SitePicCode, pic.FileData);
+                //        LogController.WriteXmlLoadMessageLogEntry(log, "Foto gravada", picHelper.Path + picHelper.FileName, LogLevels.Info);
+                //    }
+                //}
             }
             catch (Exception exception)
             {

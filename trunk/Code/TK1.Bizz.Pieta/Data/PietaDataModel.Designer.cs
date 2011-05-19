@@ -18,18 +18,16 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_Parameter_ParameterGroup", "ParameterGroup", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TK1.Bizz.Pieta.Data.ParameterGroup), "Parameter", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.Parameter))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_UserData_Person", "Person", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TK1.Bizz.Pieta.Data.Person), "User", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.User))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_Site_SiteType", "SiteType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.SiteType), "Site", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.Site))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteDescription_Site", "Site", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.Site), "SiteDescription", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteDescription))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteDescription_SiteDescription", "SiteDescription", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TK1.Bizz.Pieta.Data.SiteDescription), "SiteDescription1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteDescription))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteDescription_SiteType", "SiteType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.SiteType), "SiteDescription", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteDescription))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_UserAdList_User", "User", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.User), "UserAdList", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.UserAdList))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_XmlLoadMessageLog_XmlLoadLog", "XmlLoadLog", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.XmlLoadLog), "XmlLoadMessageLog", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.XmlLoadMessageLog))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteAd_Category1", "Category", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.Category), "SiteAd", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteAd))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteAd_Site1", "Site", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.Site), "SiteAd", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteAd))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_UserAdList_SiteAd1", "SiteAd", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.SiteAd), "UserAdList", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.UserAdList))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteAd_AdType", "AdType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.AdType), "SiteAd", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteAd))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteDescription_Site", "Site", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.Site), "SiteDescription", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteDescription))]
 
 // Original file name:
-// Generation date: 01/04/2011 00:01:43
+// Generation date: 15/05/2011 23:43:12
 namespace TK1.Bizz.Pieta.Data
 {
     
@@ -2412,28 +2410,6 @@ namespace TK1.Bizz.Pieta.Data
             }
         }
         /// <summary>
-        /// There are no comments for SiteDescriptions in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteDescription_Site", "SiteDescription")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SiteDescription> SiteDescriptions
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_Site", "SiteDescription");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_Site", "SiteDescription", value);
-                }
-            }
-        }
-        /// <summary>
         /// There are no comments for SiteAd in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteAd_Site1", "SiteAd")]
@@ -2452,6 +2428,28 @@ namespace TK1.Bizz.Pieta.Data
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SiteAd>("TK1_PietaModel.FK_SiteAd_Site1", "SiteAd", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for SiteDescriptions in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteDescription_Site", "SiteDescription")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<SiteDescription> SiteDescriptions
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_Site", "SiteDescription");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_Site", "SiteDescription", value);
                 }
             }
         }
@@ -2644,6 +2642,60 @@ namespace TK1.Bizz.Pieta.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnImageUrlChanged();
         /// <summary>
+        /// There are no comments for property IPTU in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<double> IPTU
+        {
+            get
+            {
+                return this._IPTU;
+            }
+            set
+            {
+                this.OnIPTUChanging(value);
+                this.ReportPropertyChanging("IPTU");
+                this._IPTU = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("IPTU");
+                this.OnIPTUChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<double> _IPTU;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIPTUChanging(global::System.Nullable<double> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIPTUChanged();
+        /// <summary>
+        /// There are no comments for property Cond in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Nullable<double> Cond
+        {
+            get
+            {
+                return this._Cond;
+            }
+            set
+            {
+                this.OnCondChanging(value);
+                this.ReportPropertyChanging("Cond");
+                this._Cond = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Cond");
+                this.OnCondChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Nullable<double> _Cond;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCondChanging(global::System.Nullable<double> value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCondChanged();
+        /// <summary>
         /// There are no comments for Category in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteAd_Category1", "Category")]
@@ -2798,11 +2850,15 @@ namespace TK1.Bizz.Pieta.Data
         /// Create a new SiteDescription object.
         /// </summary>
         /// <param name="siteDescriptionID">Initial value of SiteDescriptionID.</param>
+        /// <param name="description">Initial value of Description.</param>
+        /// <param name="value">Initial value of Value.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SiteDescription CreateSiteDescription(int siteDescriptionID)
+        public static SiteDescription CreateSiteDescription(int siteDescriptionID, string description, string value)
         {
             SiteDescription siteDescription = new SiteDescription();
             siteDescription.SiteDescriptionID = siteDescriptionID;
+            siteDescription.Description = description;
+            siteDescription.Value = value;
             return siteDescription;
         }
         /// <summary>
@@ -2832,6 +2888,87 @@ namespace TK1.Bizz.Pieta.Data
         partial void OnSiteDescriptionIDChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnSiteDescriptionIDChanged();
+        /// <summary>
+        /// There are no comments for property Description in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this.ReportPropertyChanging("Description");
+                this._Description = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Description");
+                this.OnDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Description;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for property Value in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Value
+        {
+            get
+            {
+                return this._Value;
+            }
+            set
+            {
+                this.OnValueChanging(value);
+                this.ReportPropertyChanging("Value");
+                this._Value = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Value");
+                this.OnValueChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Value;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnValueChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnValueChanged();
+        /// <summary>
+        /// There are no comments for property Type in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Type
+        {
+            get
+            {
+                return this._Type;
+            }
+            set
+            {
+                this.OnTypeChanging(value);
+                this.ReportPropertyChanging("Type");
+                this._Type = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Type");
+                this.OnTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Type;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTypeChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTypeChanged();
         /// <summary>
         /// There are no comments for Site in the schema.
         /// </summary>
@@ -2871,106 +3008,6 @@ namespace TK1.Bizz.Pieta.Data
                 }
             }
         }
-        /// <summary>
-        /// There are no comments for SiteDescription1 in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteDescription_SiteDescription", "SiteDescription1")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SiteDescription> SiteDescription1
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteDescription", "SiteDescription1");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteDescription", "SiteDescription1", value);
-                }
-            }
-        }
-        /// <summary>
-        /// There are no comments for SiteDescription2 in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteDescription_SiteDescription", "SiteDescription")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public SiteDescription SiteDescription2
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteDescription", "SiteDescription").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteDescription", "SiteDescription").Value = value;
-            }
-        }
-        /// <summary>
-        /// There are no comments for SiteDescription2 in the schema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<SiteDescription> SiteDescription2Reference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteDescription", "SiteDescription");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteDescription", "SiteDescription", value);
-                }
-            }
-        }
-        /// <summary>
-        /// There are no comments for SiteType in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteDescription_SiteType", "SiteType")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public SiteType SiteType
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SiteType>("TK1_PietaModel.FK_SiteDescription_SiteType", "SiteType").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SiteType>("TK1_PietaModel.FK_SiteDescription_SiteType", "SiteType").Value = value;
-            }
-        }
-        /// <summary>
-        /// There are no comments for SiteType in the schema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<SiteType> SiteTypeReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SiteType>("TK1_PietaModel.FK_SiteDescription_SiteType", "SiteType");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SiteType>("TK1_PietaModel.FK_SiteDescription_SiteType", "SiteType", value);
-                }
-            }
-        }
     }
     /// <summary>
     /// There are no comments for TK1_PietaModel.SiteType in the schema.
@@ -2988,12 +3025,14 @@ namespace TK1.Bizz.Pieta.Data
         /// </summary>
         /// <param name="siteTypeID">Initial value of SiteTypeID.</param>
         /// <param name="name">Initial value of Name.</param>
+        /// <param name="roomDisplayName">Initial value of RoomDisplayName.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SiteType CreateSiteType(int siteTypeID, string name)
+        public static SiteType CreateSiteType(int siteTypeID, string name, string roomDisplayName)
         {
             SiteType siteType = new SiteType();
             siteType.SiteTypeID = siteTypeID;
             siteType.Name = name;
+            siteType.RoomDisplayName = roomDisplayName;
             return siteType;
         }
         /// <summary>
@@ -3050,6 +3089,33 @@ namespace TK1.Bizz.Pieta.Data
         partial void OnNameChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for property RoomDisplayName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string RoomDisplayName
+        {
+            get
+            {
+                return this._RoomDisplayName;
+            }
+            set
+            {
+                this.OnRoomDisplayNameChanging(value);
+                this.ReportPropertyChanging("RoomDisplayName");
+                this._RoomDisplayName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("RoomDisplayName");
+                this.OnRoomDisplayNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _RoomDisplayName;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnRoomDisplayNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnRoomDisplayNameChanged();
         /// <summary>
         /// There are no comments for Category in the schema.
         /// </summary>
@@ -3108,28 +3174,6 @@ namespace TK1.Bizz.Pieta.Data
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Site>("TK1_PietaModel.FK_Site_SiteType", "Site", value);
-                }
-            }
-        }
-        /// <summary>
-        /// There are no comments for SiteDescriptions in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SiteDescription_SiteType", "SiteDescription")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SiteDescription> SiteDescriptions
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteType", "SiteDescription");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SiteDescription>("TK1_PietaModel.FK_SiteDescription_SiteType", "SiteDescription", value);
                 }
             }
         }
