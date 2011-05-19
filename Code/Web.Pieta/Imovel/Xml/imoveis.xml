@@ -1,85 +1,74 @@
 <?xml version="1.0" encoding="ISO8859-1"?>
 <dadosimovel>
   <imovel>
-    <codigoimovel>1870</codigoimovel>
+    <codigoimovel>2</codigoimovel>
     <tipoimovel>Apartamento</tipoimovel>
-    <endereco>SANDALNHA MARINHO</endereco>
-    <numero>165</numero>
-    <bairro>CENTRO</bairro>
-    <cidade>NOVO HAMBURGO</cidade>
+    <endereco>R Doutor Mário Totta</endereco>
+    <numero>1100</numero>
+    <bairro>Tristeza</bairro>
+    <cidade>Porto Alegre</cidade>
     <uf>RS</uf>
-    <cep> 9356-455</cep>
-    <descricaointernet>5 Dorm., Frente, Piso de Assoalho.</descricaointernet>
-    <valoraluguel>999999</valoraluguel>
-    <imoveldestaque>S</imoveldestaque>
+    <cep>91920-130</cep>
+    <descricaointernet></descricaointernet>
+    <valoraluguel>1750</valoraluguel>
+    <imoveldestaque>N</imoveldestaque>
     <excluir>N</excluir>
     <tipo>ALUGUEL</tipo>
-    <dormitorio></dormitorio>
-    <edificio>ACAPULCO</edificio>
-    <area>500</area>
-    <Banner>S</Banner>
-    <ImovelExclusivo>S</ImovelExclusivo>
-    <fichaimovel>
-      <caracteristica>
-        <descricao>Dorm.</descricao>
-        <conteudo>5</conteudo>
-      </caracteristica>
-      <caracteristica>
-        <descricao>Frente</descricao>
-        <conteudo>Sim</conteudo>
-      </caracteristica>
-      <caracteristica>
-        <descricao>Piso de Assoalho</descricao>
-        <conteudo>Sim</conteudo>
-      </caracteristica>
-    </fichaimovel>
-  </imovel>
-  <imovel>
-    <codigoimovel>1871</codigoimovel>
-    <tipoimovel>Casa</tipoimovel>
-    <endereco>Presidente lucena</endereco>
-    <numero>399</numero>
-    <bairro>CENTRO</bairro>
-    <cidade>IVOTI</cidade>
-    <uf>RS</uf>
-    <cep>93900-000</cep>
-    <descricaointernet>5 Dorm., Cond. Isento, 2 Elevador(s), 2 Espera(s) p  ar Cond., Despensa, 2 Entrada (s), 1 Dormitório(s).</descricaointernet>
-    <valoraluguel>99999999</valoraluguel>
-    <imoveldestaque>N</imoveldestaque>
-    <excluir>S</excluir>
-    <tipo>ALUGUEL</tipo>
-    <dormitorio>1</dormitorio>
+    <dormitorio>3</dormitorio>
     <edificio></edificio>
-    <area>50,25</area>
+    <area>0</area>
     <Banner>N</Banner>
     <ImovelExclusivo>N</ImovelExclusivo>
     <fichaimovel>
       <caracteristica>
-        <descricao>Dorm.</descricao>
-        <conteudo>5</conteudo>
+        <descricao>Cozinha</descricao>
+        <conteudo>1</conteudo>
       </caracteristica>
       <caracteristica>
-        <descricao>Cond. Isento</descricao>
+        <descricao>Banheiro</descricao>
+        <conteudo>1</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Área de Serviço</descricao>
+        <conteudo>1</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Suite</descricao>
+        <conteudo>1</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Garagem</descricao>
+        <conteudo>2</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Cond. c/salão festas</descricao>
         <conteudo>Sim</conteudo>
       </caracteristica>
       <caracteristica>
-        <descricao>Elevador(s)</descricao>
-        <conteudo>2</conteudo>
-      </caracteristica>
-      <caracteristica>
-        <descricao>Espera(s) p/ ar Cond.</descricao>
-        <conteudo>2</conteudo>
-      </caracteristica>
-      <caracteristica>
-        <descricao>Despensa</descricao>
+        <descricao>Churrasqueira</descricao>
         <conteudo>Sim</conteudo>
       </caracteristica>
       <caracteristica>
-        <descricao>Entrada (s)</descricao>
-        <conteudo>2</conteudo>
+        <descricao>Cond. c/vigilância</descricao>
+        <conteudo>Sim</conteudo>
       </caracteristica>
       <caracteristica>
-        <descricao>Dormitório(s)</descricao>
+        <descricao>Elevador</descricao>
+        <conteudo>Sim</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Portão Eletrônico</descricao>
+        <conteudo>Sim</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Gás Central</descricao>
+        <conteudo>Sim</conteudo>
+      </caracteristica><caracteristica>
+        <descricao>Dormitório</descricao>
+        <conteudo>3</conteudo>
+      </caracteristica>
+      <caracteristica>
+        <descricao>Living</descricao>
         <conteudo>1</conteudo>
       </caracteristica>
     </fichaimovel>

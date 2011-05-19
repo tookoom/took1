@@ -69,14 +69,6 @@
             <End Role="Site" EntitySet="Site" />
             <End Role="SiteDescription" EntitySet="SiteDescription" />
           </AssociationSet>
-          <AssociationSet Name="FK_SiteDescription_SiteDescription" Association="TK1_PietaModel.Store.FK_SiteDescription_SiteDescription">
-            <End Role="SiteDescription" EntitySet="SiteDescription" />
-            <End Role="SiteDescription1" EntitySet="SiteDescription" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SiteDescription_SiteType" Association="TK1_PietaModel.Store.FK_SiteDescription_SiteType">
-            <End Role="SiteType" EntitySet="SiteType" />
-            <End Role="SiteDescription" EntitySet="SiteDescription" />
-          </AssociationSet>
           <AssociationSet Name="FK_SiteType_Category" Association="TK1_PietaModel.Store.FK_SiteType_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="SiteType" EntitySet="SiteType" />
@@ -218,15 +210,18 @@
           <Property Name="Title" Type="varchar" MaxLength="256" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="ImageUrl" Type="varchar" MaxLength="256" />
+          <Property Name="IPTU" Type="float" />
+          <Property Name="Cond" Type="float" />
         </EntityType>
         <EntityType Name="SiteDescription">
           <Key>
             <PropertyRef Name="SiteDescriptionID" />
           </Key>
           <Property Name="SiteDescriptionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SIteID" Type="int" Nullable="false" />
-          <Property Name="SiteTypeID" Type="int" Nullable="false" />
-          <Property Name="SiteDescriptionTypeID" Type="int" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="SiteType">
           <Key>
@@ -235,6 +230,7 @@
           <Property Name="SiteTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="RoomDisplayName" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -402,31 +398,7 @@
               <PropertyRef Name="SiteID" />
             </Principal>
             <Dependent Role="SiteDescription">
-              <PropertyRef Name="SIteID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SiteDescription_SiteDescription">
-          <End Role="SiteDescription" Type="TK1_PietaModel.Store.SiteDescription" Multiplicity="0..1" />
-          <End Role="SiteDescription1" Type="TK1_PietaModel.Store.SiteDescription" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SiteDescription">
-              <PropertyRef Name="SiteDescriptionID" />
-            </Principal>
-            <Dependent Role="SiteDescription1">
-              <PropertyRef Name="SiteDescriptionTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SiteDescription_SiteType">
-          <End Role="SiteType" Type="TK1_PietaModel.Store.SiteType" Multiplicity="1" />
-          <End Role="SiteDescription" Type="TK1_PietaModel.Store.SiteDescription" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SiteType">
-              <PropertyRef Name="SiteTypeID" />
-            </Principal>
-            <Dependent Role="SiteDescription">
-              <PropertyRef Name="SiteTypeID" />
+              <PropertyRef Name="SiteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -552,18 +524,6 @@
             <End Role="SiteType" EntitySet="SiteTypes" />
             <End Role="Site" EntitySet="Sites" />
           </AssociationSet>
-          <AssociationSet Name="FK_SiteDescription_Site" Association="TK1_PietaModel.FK_SiteDescription_Site">
-            <End Role="Site" EntitySet="Sites" />
-            <End Role="SiteDescription" EntitySet="SiteDescriptions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SiteDescription_SiteDescription" Association="TK1_PietaModel.FK_SiteDescription_SiteDescription">
-            <End Role="SiteDescription" EntitySet="SiteDescriptions" />
-            <End Role="SiteDescription1" EntitySet="SiteDescriptions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SiteDescription_SiteType" Association="TK1_PietaModel.FK_SiteDescription_SiteType">
-            <End Role="SiteType" EntitySet="SiteTypes" />
-            <End Role="SiteDescription" EntitySet="SiteDescriptions" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserAdList_User" Association="TK1_PietaModel.FK_UserAdList_User">
             <End Role="User" EntitySet="Users" />
             <End Role="UserAdList" EntitySet="UserAdLists" />
@@ -587,6 +547,10 @@
           <AssociationSet Name="FK_SiteAd_AdType" Association="TK1_PietaModel.FK_SiteAd_AdType">
             <End Role="AdType" EntitySet="AdTypes" />
             <End Role="SiteAd" EntitySet="SiteAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteDescription_Site" Association="TK1_PietaModel.FK_SiteDescription_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="SiteDescription" EntitySet="SiteDescriptions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AddressInfo">
@@ -701,12 +665,12 @@
           <NavigationProperty Name="City" Relationship="TK1_PietaModel.FK_Site_City" FromRole="Site" ToRole="City" />
           <NavigationProperty Name="District" Relationship="TK1_PietaModel.FK_Site_District" FromRole="Site" ToRole="District" />
           <NavigationProperty Name="SiteType" Relationship="TK1_PietaModel.FK_Site_SiteType" FromRole="Site" ToRole="SiteType" />
-          <NavigationProperty Name="SiteDescriptions" Relationship="TK1_PietaModel.FK_SiteDescription_Site" FromRole="Site" ToRole="SiteDescription" />
           <NavigationProperty Name="SiteAd" Relationship="TK1_PietaModel.FK_SiteAd_Site1" FromRole="Site" ToRole="SiteAd" />
           <Property Type="Double" Name="TotalArea" Nullable="false" />
           <Property Type="Int32" Name="TotalRooms" Nullable="false" />
           <Property Type="Double" Name="InternalArea" Nullable="false" />
           <Property Type="Double" Name="ExternalArea" Nullable="false" />
+          <NavigationProperty Name="SiteDescriptions" Relationship="TK1_PietaModel.FK_SiteDescription_Site" FromRole="Site" ToRole="SiteDescription" />
         </EntityType>
         <EntityType Name="SiteAd">
           <Key>
@@ -723,16 +687,18 @@
           <NavigationProperty Name="UserAdList" Relationship="TK1_PietaModel.FK_UserAdList_SiteAd1" FromRole="SiteAd" ToRole="UserAdList" />
           <NavigationProperty Name="AdType" Relationship="TK1_PietaModel.FK_SiteAd_AdType" FromRole="SiteAd" ToRole="AdType" />
           <Property Type="String" Name="ImageUrl" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="IPTU" />
+          <Property Type="Double" Name="Cond" />
         </EntityType>
         <EntityType Name="SiteDescription">
           <Key>
             <PropertyRef Name="SiteDescriptionID" />
           </Key>
           <Property Name="SiteDescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Site" Relationship="TK1_PietaModel.FK_SiteDescription_Site" FromRole="SiteDescription" ToRole="Site" />
-          <NavigationProperty Name="SiteDescription1" Relationship="TK1_PietaModel.FK_SiteDescription_SiteDescription" FromRole="SiteDescription" ToRole="SiteDescription1" />
-          <NavigationProperty Name="SiteDescription2" Relationship="TK1_PietaModel.FK_SiteDescription_SiteDescription" FromRole="SiteDescription1" ToRole="SiteDescription" />
-          <NavigationProperty Name="SiteType" Relationship="TK1_PietaModel.FK_SiteDescription_SiteType" FromRole="SiteDescription" ToRole="SiteType" />
         </EntityType>
         <EntityType Name="SiteType">
           <Key>
@@ -742,7 +708,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Category" Relationship="TK1_PietaModel.FK_SiteType_Category" FromRole="SiteType" ToRole="Category" />
           <NavigationProperty Name="Sites" Relationship="TK1_PietaModel.FK_Site_SiteType" FromRole="SiteType" ToRole="Site" />
-          <NavigationProperty Name="SiteDescriptions" Relationship="TK1_PietaModel.FK_SiteDescription_SiteType" FromRole="SiteType" ToRole="SiteDescription" />
+          <Property Type="String" Name="RoomDisplayName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -819,18 +785,6 @@
           <End Role="SiteType" Type="TK1_PietaModel.SiteType" Multiplicity="1" />
           <End Role="Site" Type="TK1_PietaModel.Site" Multiplicity="*" />
         </Association>
-        <Association Name="FK_SiteDescription_Site">
-          <End Role="Site" Type="TK1_PietaModel.Site" Multiplicity="1" />
-          <End Role="SiteDescription" Type="TK1_PietaModel.SiteDescription" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_SiteDescription_SiteDescription">
-          <End Role="SiteDescription" Type="TK1_PietaModel.SiteDescription" Multiplicity="0..1" />
-          <End Role="SiteDescription1" Type="TK1_PietaModel.SiteDescription" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_SiteDescription_SiteType">
-          <End Role="SiteType" Type="TK1_PietaModel.SiteType" Multiplicity="1" />
-          <End Role="SiteDescription" Type="TK1_PietaModel.SiteDescription" Multiplicity="*" />
-        </Association>
         <Association Name="FK_UserAdList_User">
           <End Role="User" Type="TK1_PietaModel.User" Multiplicity="1" />
           <End Role="UserAdList" Type="TK1_PietaModel.UserAdList" Multiplicity="*" />
@@ -863,6 +817,10 @@
             </Dependent>
           </ReferentialConstraint>
           
+        </Association>
+        <Association Name="FK_SiteDescription_Site">
+          <End Type="TK1_PietaModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="TK1_PietaModel.SiteDescription" Role="SiteDescription" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -935,7 +893,9 @@
                 <ScalarProperty Name="SiteID" ColumnName="SiteID" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SiteAds"><EntityTypeMapping TypeName="TK1_PietaModel.SiteAd"><MappingFragment StoreEntitySet="SiteAd">
-            <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+            <ScalarProperty Name="Cond" ColumnName="Cond" />
+                <ScalarProperty Name="IPTU" ColumnName="IPTU" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="AdTypeID" ColumnName="AdTypeID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -943,10 +903,14 @@
             <ScalarProperty Name="Price" ColumnName="Price" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SiteDescriptions"><EntityTypeMapping TypeName="TK1_PietaModel.SiteDescription"><MappingFragment StoreEntitySet="SiteDescription">
-            <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionID" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionID" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SiteTypes"><EntityTypeMapping TypeName="TK1_PietaModel.SiteType"><MappingFragment StoreEntitySet="SiteType">
-            <ScalarProperty Name="SiteTypeID" ColumnName="SiteTypeID" />
+            <ScalarProperty Name="RoomDisplayName" ColumnName="RoomDisplayName" />
+                <ScalarProperty Name="SiteTypeID" ColumnName="SiteTypeID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="TK1_PietaModel.User"><MappingFragment StoreEntitySet="User">
@@ -1045,31 +1009,6 @@
               <ScalarProperty Name="SiteID" ColumnName="SiteID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SiteDescription_Site" TypeName="TK1_PietaModel.FK_SiteDescription_Site" StoreEntitySet="SiteDescription">
-            <EndProperty Name="Site">
-              <ScalarProperty Name="SiteID" ColumnName="SIteID" />
-            </EndProperty>
-            <EndProperty Name="SiteDescription">
-              <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SiteDescription_SiteDescription" TypeName="TK1_PietaModel.FK_SiteDescription_SiteDescription" StoreEntitySet="SiteDescription">
-            <EndProperty Name="SiteDescription">
-              <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionTypeID" />
-            </EndProperty>
-            <EndProperty Name="SiteDescription1">
-              <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionID" />
-            </EndProperty>
-            <Condition ColumnName="SiteDescriptionTypeID" IsNull="false" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SiteDescription_SiteType" TypeName="TK1_PietaModel.FK_SiteDescription_SiteType" StoreEntitySet="SiteDescription">
-            <EndProperty Name="SiteType">
-              <ScalarProperty Name="SiteTypeID" ColumnName="SiteTypeID" />
-            </EndProperty>
-            <EndProperty Name="SiteDescription">
-              <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="FK_UserAdList_User" TypeName="TK1_PietaModel.FK_UserAdList_User" StoreEntitySet="UserAdList">
             <EndProperty Name="User">
               <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -1122,6 +1061,14 @@
               <ScalarProperty Name="AdTypeID" ColumnName="AdTypeID" />
             </EndProperty>
           </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SiteDescription_Site" TypeName="TK1_PietaModel.FK_SiteDescription_Site" StoreEntitySet="SiteDescription">
+            <EndProperty Name="SiteDescription">
+              <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionID" />
+            </EndProperty>
+            <EndProperty Name="Site">
+              <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1136,7 +1083,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
       </DesignerInfoPropertySet>
     </Options>
@@ -1156,7 +1103,7 @@
         <EntityTypeShape EntityType="TK1_PietaModel.Region" Width="1.5" PointX="0.75" PointY="12.625" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="TK1_PietaModel.Site" Width="1.5" PointX="5.25" PointY="6.75" Height="2.3648893229166665" IsExpanded="true" />
         <EntityTypeShape EntityType="TK1_PietaModel.SiteAd" Width="1.5" PointX="3" PointY="3.25" Height="3.3263964843749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="TK1_PietaModel.SiteDescription" Width="1.5" PointX="7.5" PointY="7" Height="1.9802864583333379" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1_PietaModel.SiteDescription" Width="1.5" PointX="7.5" PointY="7" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="TK1_PietaModel.SiteType" Width="1.5" PointX="3" PointY="7.5" Height="1.9802864583333379" IsExpanded="true" />
         <EntityTypeShape EntityType="TK1_PietaModel.User" Width="1.5" PointX="3" PointY="16" Height="2.1725878906249978" IsExpanded="true" />
         <EntityTypeShape EntityType="TK1_PietaModel.UserAdList" Width="1.5" PointX="5.875" PointY="4.125" Height="1.7879850260416665" IsExpanded="true" />
@@ -1168,8 +1115,8 @@
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_Site_AddressInfo" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="1.7401432291666668" />
-          <ConnectorPoint PointX="5.4316396875000006" PointY="1.7401432291666668" />
-          <ConnectorPoint PointX="5.4316396875000006" PointY="6.75" />
+          <ConnectorPoint PointX="5.4481514794921875" PointY="1.7401432291666668" />
+          <ConnectorPoint PointX="5.4481514794921875" PointY="6.75" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_SiteType_Category" ManuallyRouted="false">
           <ConnectorPoint PointX="2.2500000000000009" PointY="6.3071907552083326" />
@@ -1178,10 +1125,10 @@
           <ConnectorPoint PointX="3" PointY="8.49014322916667" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_Site_City" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.562611434895834" />
-          <ConnectorPoint PointX="4.9375" PointY="10.125111434895834" />
-          <ConnectorPoint PointX="4.9375" PointY="8.6991450664062491" />
-          <ConnectorPoint PointX="5.25" PointY="8.6991450664062491" />
+          <ConnectorPoint PointX="4.5" PointY="10.501078524739583" />
+          <ConnectorPoint PointX="4.875" PointY="10.126078524739583" />
+          <ConnectorPoint PointX="4.875" PointY="10.452549330528846" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="10.076396484375" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_District_Region" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="13.422841796875" />
@@ -1189,8 +1136,8 @@
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_Site_District" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="13.422841796875" />
-          <ConnectorPoint PointX="5.46875" PointY="13.422841796875" />
-          <ConnectorPoint PointX="5.46875" PointY="9.3071907552083335" />
+          <ConnectorPoint PointX="5.5005789230769224" PointY="13.422841796875" />
+          <ConnectorPoint PointX="5.5005789230769224" PointY="10.076396484375" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_Parameter_ParameterGroup" ManuallyRouted="false">
           <ConnectorPoint PointX="7.25" PointY="11.172841796875" />
@@ -1203,38 +1150,13 @@
           <ConnectorPoint PointX="3" PointY="17.086293945312498" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_Site_SiteType" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="9.06566791080729" />
-          <ConnectorPoint PointX="4.854166666666667" PointY="9.06566791080729" />
-          <ConnectorPoint PointX="5.020833333333333" PointY="9.06566791080729" />
-          <ConnectorPoint PointX="5.25" PointY="9.06566791080729" />
-        </AssociationConnector>
-        <AssociationConnector Association="TK1_PietaModel.FK_SiteDescription_Site" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="7.9901432291666694" />
-          <ConnectorPoint PointX="7.260416666666667" PointY="7.9901432291666685" />
-          <ConnectorPoint PointX="7.427083333333333" PointY="7.9901432291666694" />
-          <ConnectorPoint PointX="7.5" PointY="7.9901432291666694" />
-        </AssociationConnector>
-        <AssociationConnector Association="TK1_PietaModel.FK_SiteDescription_SiteDescription" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.0319230769230767" PointY="8.9802864583333388" />
-          <ConnectorPoint PointX="8.0319230769230767" PointY="9.2302864583333388" />
-          <ConnectorPoint PointX="8.47846153846154" PointY="9.2302864583333388" />
-          <ConnectorPoint PointX="8.47846153846154" PointY="8.9802864583333388" />
-        </AssociationConnector>
-        <AssociationConnector Association="TK1_PietaModel.FK_SiteDescription_SiteType" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="4.854166666666667" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="5.020833333333333" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="5.385416666666667" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="5.552083333333333" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="7.260416666666667" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="7.427083333333333" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="7.7347090384615385" PointY="9.4249886067708353" />
-          <ConnectorPoint PointX="7.7347090384615385" PointY="8.9802864583333388" />
+          <ConnectorPoint PointX="4.5" PointY="8.7845530364583375" />
+          <ConnectorPoint PointX="5.25" PointY="8.7845530364583375" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_UserAdList_User" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="17.086293945312498" />
           <ConnectorPoint PointX="7.34375" PointY="17.086293945312498" />
-          <ConnectorPoint PointX="7.34375" PointY="5.9129850260416665" />
+          <ConnectorPoint PointX="7.34375" PointY="5.72068359375" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_XmlLoadMessageLog_XmlLoadLog" ManuallyRouted="false">
           <ConnectorPoint PointX="9.25" PointY="3.3939925130208337" />
@@ -1247,18 +1169,18 @@
           <ConnectorPoint PointX="3" PointY="4.87474609375" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_SiteAd_Site1" >
-          <ConnectorPoint PointX="5.65332234375" PointY="6.75" />
-          <ConnectorPoint PointX="5.65332234375" PointY="3.65625" />
-          <ConnectorPoint PointX="5.5149730208333336" PointY="3.6562499999999996" />
-          <ConnectorPoint PointX="5.3483063541666676" PointY="3.65625" />
+          <ConnectorPoint PointX="5.6615782397460936" PointY="6.75" />
+          <ConnectorPoint PointX="5.6615782397460936" PointY="3.65625" />
+          <ConnectorPoint PointX="5.5314848128255205" PointY="3.6562499999999996" />
+          <ConnectorPoint PointX="5.3648181461588544" PointY="3.65625" />
           <ConnectorPoint PointX="4.5" PointY="3.65625" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_UserAdList_SiteAd1" >
           <ConnectorPoint PointX="4.5" PointY="4.922841796875" />
-          <ConnectorPoint PointX="5.3483063541666676" PointY="4.9228417968749989" />
-          <ConnectorPoint PointX="5.5149730208333336" PointY="4.922841796875" />
-          <ConnectorPoint PointX="5.5699890104166672" PointY="4.9228417968749989" />
-          <ConnectorPoint PointX="5.7366556770833332" PointY="4.922841796875" />
+          <ConnectorPoint PointX="5.3342675846354171" PointY="4.9228417968749989" />
+          <ConnectorPoint PointX="5.5009342513020831" PointY="4.922841796875" />
+          <ConnectorPoint PointX="5.5629696256510419" PointY="4.9228417968749989" />
+          <ConnectorPoint PointX="5.729636292317708" PointY="4.922841796875" />
           <ConnectorPoint PointX="5.875" PointY="4.922841796875" />
         </AssociationConnector>
         <AssociationConnector Association="TK1_PietaModel.FK_SiteAd_AdType" >
@@ -1268,6 +1190,12 @@
           <ConnectorPoint PointX="2.6875" PointY="6.9998066923076934" />
           <ConnectorPoint PointX="2.6875" PointY="4.0311210468750058" />
           <ConnectorPoint PointX="3" PointY="4.0311210468750058" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1_PietaModel.FK_SiteDescription_Site" >
+          <ConnectorPoint PointX="6.75" PointY="7.6672351653849278" />
+          <ConnectorPoint PointX="7.260416666666667" PointY="7.6672351653849269" />
+          <ConnectorPoint PointX="7.427083333333333" PointY="7.6672351653849278" />
+          <ConnectorPoint PointX="7.5" PointY="7.6672351653849278" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

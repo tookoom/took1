@@ -30,20 +30,13 @@ namespace TK1.Bizz.Pieta.Data.Extension
         //{
         //    return siteAds.Where(o => o.Site.City.Name == cityName);
         //}
-        ////public static IQueryable<SiteAd> FilterDistrict(this IQueryable<SiteAd> siteAds, PietaEntities entities, List<string> districtNames)
-        ////{
-        ////    if (entities != null)
-        ////    {
-        ////        List<District> districts = new List<District>();
-        ////        foreach (var name in districtNames)
-        ////        {
-        ////            var district = entities.Districts.Where(o => o.Name == name).FirstOrDefault();
-        ////            if (district != null)
-        ////                districts.Add(district);
-        ////        }
-        ////        return siteAds.All();
-        ////    }
-        ////}
+        //public static IQueryable<SiteAd> FilterDistrict(this IQueryable<SiteAd> siteAds, List<string> districtNames)
+        //{
+        //    return (from o in siteAds
+        //            where districtNames.Contains(o.Site.District.Name)
+        //            select o);
+
+        //}
         //public static IQueryable<SiteAd> FilterPrice(this IQueryable<SiteAd> siteAds, float priceFrom, float priceTo)
         //{
         //    return siteAds.Where(o => (o.Price >= priceFrom & o.Price <= priceTo));
@@ -81,6 +74,10 @@ namespace TK1.Bizz.Pieta.Data.Extension
         public static List<SiteAd> FilterCity(this List<SiteAd> siteAds, string cityName)
         {
             return siteAds.Where(o => o.Site.City.Name == cityName).ToList();
+        }
+        public static List<SiteAd> FilterCode(this List<SiteAd> siteAds, int siteCode)
+        {
+            return siteAds.Where(o => o.SiteAdID == siteCode).ToList();
         }
         public static List<SiteAd> FilterDistrict(this List<SiteAd> siteAds, List<string> districtNames)
         {

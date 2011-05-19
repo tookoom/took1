@@ -146,7 +146,7 @@ div.searchDetailHeader h3
     /*padding: 0px 0px 0px 8px;*/
     color: White;
     border: none;
-    line-height: 1.5em;
+    line-height: 1.4em;
     font-size: 1.4em;
 }
 .divSitePics
@@ -154,6 +154,7 @@ div.searchDetailHeader h3
     background-color: #efefef;
     width: 932px;
     height:432px;
+    margin-top:4px;
     /*border: 1px solid #efefef;*/
 }
 

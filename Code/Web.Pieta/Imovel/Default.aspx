@@ -5,16 +5,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-
+<%--
     <script src="http://www.pietaimoveis.com.br/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="http://www.pietaimoveis.com.br/Scripts/js/jquery.easing.1.3.js" type="text/javascript"></script>
     <script src="http://www.pietaimoveis.com.br/Scripts/js/jquery.timers-1.2.js" type="text/javascript"></script>
     <script src="http://www.pietaimoveis.com.br/Scripts/js/jquery.galleryview-3.0.js" type="text/javascript"></script>
-    <%--
-    <script src="~/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
-    <script src="~/Scripts/js/jquery.easing.1.3.js" type="text/javascript"></script>
-    <script src="~/Scripts/js/jquery.timers-1.2.js" type="text/javascript"></script>
-    <script src="~/Scripts/js/jquery.galleryview-3.0.js" type="text/javascript"></script>--%>
+    --%>
+
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.timers-1.2.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.galleryview-3.0.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -26,7 +27,6 @@
                     }
                     else {
                         $('#picGallery').galleryView({ pause_on_hover: true,
-                            filmstrip_position: 'right',
                             panel_scale: 'nocrop',
                             panel_width: 754,
                             panel_heigth: 620,
@@ -35,7 +35,9 @@
                             show_panel_nav: true,
                             show_overlays: true,
                             frame_width: 160,
-                            frame_height: 61,
+                            frame_height: 50,
+                            filmstrip_size: 1,
+                            filmstrip_position: 'right',
                             show_filmstrip_nav: false,
                             frame_gap: 6
                         });
@@ -69,7 +71,8 @@
                             <%# Eval("Site.SiteType.Name")%> - <%# Eval("AdType.Name")%> 
                         </h2>
                         <h3><%# Eval("Site.City.Name")%>, bairro <%# Eval("Site.District.Name")%></h3>
-                        Código <%# Eval("SiteAdID")%>
+                        <b style="line-height: 1.5em;">Código do anúncio: <%# Eval("SiteAdID")%></b>
+                        <br />
                     </div>
                     <div style="float:right; padding-top: 14px;">
                         <h1> <%# Eval("Price", "{0:c}")%> </h1>
@@ -98,6 +101,11 @@
                         DataSourceID="objectDataSourceSiteDescription" >
                         <ItemTemplate>
                             <h4> <%# Eval("Title")%> </h4>
+                            <div runat="server" visible='<%#getRentDivVisibility(Eval("AdType.AdTypeID").ToString())%>'>
+                                <p> Aluguel: <%# Eval("Price", "{0:c}")%> </p>
+                                <p> IPTU: <%# Eval("IPTU", "{0:c}")%> </p>
+                                <p> Condomínio: <%# Eval("Cond", "{0:c}")%> </p>
+                            </div>
                             <p> <%# Eval("Description")%> </p>
                         </ItemTemplate>                                 
                     </asp:Repeater>
