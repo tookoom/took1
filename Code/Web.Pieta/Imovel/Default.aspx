@@ -101,12 +101,12 @@
                         DataSourceID="objectDataSourceSiteDescription" >
                         <ItemTemplate>
                             <h4> <%# Eval("Title")%> </h4>
+                            <p> <%# Eval("Description")%> </p>
                             <div runat="server" visible='<%#getRentDivVisibility(Eval("AdType.AdTypeID").ToString())%>'>
                                 <p> Aluguel: <%# Eval("Price", "{0:c}")%> </p>
                                 <p> IPTU: <%# Eval("IPTU", "{0:c}")%> </p>
                                 <p> Condomínio: <%# Eval("Cond", "{0:c}")%> </p>
                             </div>
-                            <p> <%# Eval("Description")%> </p>
                         </ItemTemplate>                                 
                     </asp:Repeater>
 
