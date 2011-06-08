@@ -8,7 +8,7 @@ using TK1.Bizz.Pieta.Data;
 using TK1.Bizz.Pieta;
 using System.IO;
 
-public partial class Imovel_Default : System.Web.UI.Page
+public partial class Imovel_Novo_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -80,13 +80,28 @@ public partial class Imovel_Default : System.Web.UI.Page
                 foreach (var file in Directory.GetFiles(path,"*.jpg"))
                 {
                     string fileName = Path.GetFileName(file);
-                    string imageSource = baseUrl + fileName;
-                    string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
+                    string imageSource = baseUrl + "resized//" + fileName;
+                    string imageThumbSource = baseUrl + "thumbs//" + fileName;
+                    string imageTitle = fileName;
+                    string imageDescription = baseUrl + fileName;
+                    string li = "<li>"
+                            + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
+                            + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
+							+ "</a>"
+							+ "<div class=\"caption\">"
+                            //+ "<div class=\"download\">"
+                            //+ "<a href=\"" + imageSource + "\">Download Original </a>"
+                            //+ "</div>"
+							+ "<div class=\"image-title\">" + imageTitle + "</div>"
+							+ "<div class=\"image-desc\">" + imageDescription + "</div>"
+							+ "</div>"
+						    + "</li>";
+                    //string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
                     items += li + Environment.NewLine;
                 }
                 if (!string.IsNullOrEmpty(items))
                 {
-                    string ul = "<ul id=\"picGallery\">" + Environment.NewLine
+                    string ul = "<ul class=\"thumbs noscript\">"
                         + "{0}"
                         + "</ul>";
                     result = string.Format(ul, items);

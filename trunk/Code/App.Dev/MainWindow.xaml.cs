@@ -25,6 +25,7 @@ using TK1.Bizz.Pieta.Data;
 using TK1.Html;
 using TK1.Collection;
 using TK1.Bizz.Pieta.Const;
+using TK1.Media.Imaging;
 
 namespace TK1.Dev
 {
@@ -42,8 +43,10 @@ namespace TK1.Dev
 
             try
             {
-                //var xml = XmlHelper.NormatizeFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\20110512\VisVenlcto.xml");
-                loadXml(@"D:\Projetos\TK1\Projects\Pietá\Integração\20110516\VisVen.xml");
+                //SitePicHelper.ResizeSitePics(@"D:\Projetos\TK1\Code\Web.Pieta\Imovel\Fotos\Venda", 500, 100);
+                //ImageHelperTestUnit.Resize();
+                //var xml = XmlHelper.NormatizeFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\20110518\VisVen.xml");
+                loadXml(@"D:\Projetos\TK1\Code\Web.Pieta\Imovel\Xml\VisVen.xml");
 
             }
             catch (Exception exception)
@@ -94,7 +97,7 @@ namespace TK1.Dev
             MailHelper.SendMail("assunto", content, "contato@pietaimoveis.com.br", "andre.v.mattos@gmail.com");
         }
 
-        private void loadXml(string path)
+        private void loadXml_OLD(string path)
         {
             try
             {
@@ -120,6 +123,31 @@ namespace TK1.Dev
             }
             catch (Exception exception)
             {
+                LogController.WriteAppLogEntry(exception.Message, exception.ToString(), LogLevels.Error);
+            }
+        }
+        private void loadXml(string path)
+        {
+            XmlLoadLog log = null;
+
+            try
+            {
+                log = LogController.WriteXmlLoadLogEntry();
+                LogController.WriteXmlLoadMessageLogEntry(log, "Iniciando Carga de Arquivos DEBUG", "", LogLevels.Info);
+
+                var sites = XmlSiteHelper.LoadSiteFromFile(path);
+                if (sites != null)
+                {
+                    SiteController siteController = new SiteController();
+                    siteController.AddSalesSiteAds(sites);
+                }
+                LogController.WriteXmlLoadMessageLogEntry(log, "Finalizando Carga de Arquivos DEBUG", "Sucesso", LogLevels.Info);
+
+            }
+            catch (Exception exception)
+            {
+                if (log != null)
+                    LogController.WriteXmlLoadMessageLogEntry(log, "Finalizando Carga de Arquivos DEBUG", "Falha", LogLevels.Info);
                 LogController.WriteAppLogEntry(exception.Message, exception.ToString(), LogLevels.Error);
             }
         }

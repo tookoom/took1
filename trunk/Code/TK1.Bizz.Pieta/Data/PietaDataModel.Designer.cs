@@ -25,9 +25,10 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_UserAdList_SiteAd1", "SiteAd", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.SiteAd), "UserAdList", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.UserAdList))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteAd_AdType", "AdType", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.AdType), "SiteAd", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteAd))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SiteDescription_Site", "Site", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.Site), "SiteDescription", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SiteDescription))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("TK1_PietaModel", "FK_SitePic_Site", "Site", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Pieta.Data.Site), "SitePic", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Pieta.Data.SitePic))]
 
 // Original file name:
-// Generation date: 15/05/2011 23:43:12
+// Generation date: 31/05/2011 00:28:20
 namespace TK1.Bizz.Pieta.Data
 {
     
@@ -385,6 +386,23 @@ namespace TK1.Bizz.Pieta.Data
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<XmlLoadMessageLog> _XmlLoadMessageLogs;
         /// <summary>
+        /// There are no comments for SitePics in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<SitePic> SitePics
+        {
+            get
+            {
+                if ((this._SitePics == null))
+                {
+                    this._SitePics = base.CreateQuery<SitePic>("[SitePics]");
+                }
+                return this._SitePics;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<SitePic> _SitePics;
+        /// <summary>
         /// There are no comments for AddressInfoes in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
@@ -535,6 +553,14 @@ namespace TK1.Bizz.Pieta.Data
         public void AddToXmlLoadMessageLogs(XmlLoadMessageLog xmlLoadMessageLog)
         {
             base.AddObject("XmlLoadMessageLogs", xmlLoadMessageLog);
+        }
+        /// <summary>
+        /// There are no comments for SitePics in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddToSitePics(SitePic sitePic)
+        {
+            base.AddObject("SitePics", sitePic);
         }
     }
     /// <summary>
@@ -2453,6 +2479,28 @@ namespace TK1.Bizz.Pieta.Data
                 }
             }
         }
+        /// <summary>
+        /// There are no comments for SitePics in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SitePic_Site", "SitePic")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<SitePic> SitePics
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SitePic>("TK1_PietaModel.FK_SitePic_Site", "SitePic");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SitePic>("TK1_PietaModel.FK_SitePic_Site", "SitePic", value);
+                }
+            }
+        }
     }
     /// <summary>
     /// There are no comments for TK1_PietaModel.SiteAd in the schema.
@@ -2695,6 +2743,87 @@ namespace TK1.Bizz.Pieta.Data
         partial void OnCondChanging(global::System.Nullable<double> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCondChanged();
+        /// <summary>
+        /// There are no comments for property ShortDescription in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ShortDescription
+        {
+            get
+            {
+                return this._ShortDescription;
+            }
+            set
+            {
+                this.OnShortDescriptionChanging(value);
+                this.ReportPropertyChanging("ShortDescription");
+                this._ShortDescription = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ShortDescription");
+                this.OnShortDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ShortDescription;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnShortDescriptionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnShortDescriptionChanged();
+        /// <summary>
+        /// There are no comments for property AreaDescription in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string AreaDescription
+        {
+            get
+            {
+                return this._AreaDescription;
+            }
+            set
+            {
+                this.OnAreaDescriptionChanging(value);
+                this.ReportPropertyChanging("AreaDescription");
+                this._AreaDescription = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("AreaDescription");
+                this.OnAreaDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _AreaDescription;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnAreaDescriptionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnAreaDescriptionChanged();
+        /// <summary>
+        /// There are no comments for property CondDescription in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string CondDescription
+        {
+            get
+            {
+                return this._CondDescription;
+            }
+            set
+            {
+                this.OnCondDescriptionChanging(value);
+                this.ReportPropertyChanging("CondDescription");
+                this._CondDescription = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("CondDescription");
+                this.OnCondDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _CondDescription;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCondDescriptionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCondDescriptionChanged();
         /// <summary>
         /// There are no comments for Category in the schema.
         /// </summary>
@@ -3827,6 +3956,179 @@ namespace TK1.Bizz.Pieta.Data
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<XmlLoadLog>("TK1_PietaModel.FK_XmlLoadMessageLog_XmlLoadLog", "XmlLoadLog", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for TK1_PietaModel.SitePic in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// SiteID
+    /// PicID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="TK1_PietaModel", Name="SitePic")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class SitePic : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new SitePic object.
+        /// </summary>
+        /// <param name="siteID">Initial value of SiteID.</param>
+        /// <param name="picID">Initial value of PicID.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static SitePic CreateSitePic(int siteID, int picID)
+        {
+            SitePic sitePic = new SitePic();
+            sitePic.SiteID = siteID;
+            sitePic.PicID = picID;
+            return sitePic;
+        }
+        /// <summary>
+        /// There are no comments for property SiteID in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int SiteID
+        {
+            get
+            {
+                return this._SiteID;
+            }
+            set
+            {
+                this.OnSiteIDChanging(value);
+                this.ReportPropertyChanging("SiteID");
+                this._SiteID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SiteID");
+                this.OnSiteIDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _SiteID;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSiteIDChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSiteIDChanged();
+        /// <summary>
+        /// There are no comments for property PicID in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int PicID
+        {
+            get
+            {
+                return this._PicID;
+            }
+            set
+            {
+                this.OnPicIDChanging(value);
+                this.ReportPropertyChanging("PicID");
+                this._PicID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("PicID");
+                this.OnPicIDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _PicID;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPicIDChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPicIDChanged();
+        /// <summary>
+        /// There are no comments for property FileName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string FileName
+        {
+            get
+            {
+                return this._FileName;
+            }
+            set
+            {
+                this.OnFileNameChanging(value);
+                this.ReportPropertyChanging("FileName");
+                this._FileName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("FileName");
+                this.OnFileNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _FileName;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnFileNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnFileNameChanged();
+        /// <summary>
+        /// There are no comments for property Description in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this.ReportPropertyChanging("Description");
+                this._Description = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Description");
+                this.OnDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Description;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for Site in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("TK1_PietaModel", "FK_SitePic_Site", "Site")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Site Site
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Site>("TK1_PietaModel.FK_SitePic_Site", "Site").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Site>("TK1_PietaModel.FK_SitePic_Site", "Site").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Site in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Site> SiteReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Site>("TK1_PietaModel.FK_SitePic_Site", "Site");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Site>("TK1_PietaModel.FK_SitePic_Site", "Site", value);
                 }
             }
         }

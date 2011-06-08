@@ -36,6 +36,7 @@ namespace TK1.Bizz.Pieta.Xml
         //public static string Description = "caracteristica";
         //public static string DescriptionName = "descricao";
         public static string DescriptionValue = "conteudo";
+        public static string Pictures = "imagens"; 
 
     }
 }

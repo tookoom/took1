@@ -60,6 +60,7 @@ namespace TK1.Bizz.Pieta.Data
                 };
                 entities.AddToXmlLoadLogs(result);
                 entities.SaveChanges();
+                //entities.Detach(result);
                 return result;
             }
         }
@@ -70,17 +71,20 @@ namespace TK1.Bizz.Pieta.Data
                 XmlLoadMessageLog result = null;
                 if (xmlLoadLog != null)
                 {
-                    entities.Attach(xmlLoadLog);
-                    result = new XmlLoadMessageLog()
+                    var xmlLoadLogAttached = entities.XmlLoadLogs.Where(o => o.XmlLoadLogID == xmlLoadLog.XmlLoadLogID).FirstOrDefault();
+                    if (xmlLoadLogAttached != null)
                     {
-                        Data = data,
-                        Level = (int)level,
-                        LogTimestamp = DateTime.Now,
-                        Message = message,
-                        XmlLoadLog = xmlLoadLog
-                    };
-                    entities.AddToXmlLoadMessageLogs(result);
-                    entities.SaveChanges();
+                        result = new XmlLoadMessageLog()
+                        {
+                            Data = data,
+                            Level = (int)level,
+                            LogTimestamp = DateTime.Now,
+                            Message = message,
+                            XmlLoadLog = xmlLoadLogAttached
+                        };
+                        entities.AddToXmlLoadMessageLogs(result);
+                        entities.SaveChanges();
+                    }
                 }
                 return result;
             }

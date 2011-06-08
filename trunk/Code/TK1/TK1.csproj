@@ -106,6 +106,7 @@
     <Compile Include="Settings\SettingsLoader.cs" />
     <Compile Include="Reflection\AssemblyLoader.cs" />
     <Compile Include="Utility\ErrorMessageBuilder.cs" />
+    <Compile Include="Utility\StringHelper.cs" />
     <Compile Include="Xml\XmlHelper.cs" />
     <Compile Include="Xml\XmlLoader.cs" />
     <Compile Include="Xml\XmlSerializer.cs" />

@@ -33,28 +33,34 @@ namespace TK1.Bizz.Pieta.Xml
                                 {
                                     XmlSite xmlSite = new XmlSite();
                                     xmlSite.Address = XmlLoader.GetElementValue(element, XmlSiteTags.Address);
+                                    if (xmlSite.Address != null)
+                                        xmlSite.Address = xmlSite.Address.Trim();
                                     xmlSite.AddressNumber = XmlLoader.GetElementValue(element, XmlSiteTags.AddressNumber);
                                     xmlSite.AdType = XmlLoader.GetElementValue(element, XmlSiteTags.AdType);
-                                    xmlSite.Area = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Area), -1);
+                                    xmlSite.Area = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Area), 0);
                                     xmlSite.BuildingName = XmlLoader.GetElementValue(element, XmlSiteTags.BuildingName);
                                     xmlSite.City = XmlLoader.GetElementValue(element, XmlSiteTags.City);
+                                    if (xmlSite.City != null)
+                                        xmlSite.City = xmlSite.City.Trim();
                                     xmlSite.District = XmlLoader.GetElementValue(element, XmlSiteTags.District);
+                                    if (xmlSite.District != null)
+                                        xmlSite.District = xmlSite.District.Trim();
                                     xmlSite.ExcludeSite = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.ExcludeSite), "N").ToUpper() == "S";
                                     xmlSite.HasBanner = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.HasBanner), "N").ToUpper() == "S";
                                     xmlSite.InternetDescription = XmlLoader.GetElementValue(element, XmlSiteTags.Description);
                                     xmlSite.IsExclusive = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsExclusive), "N").ToUpper() == "S";
                                     xmlSite.IsHighlighted = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsHighlighted), "N").ToUpper() == "S";
-                                    xmlSite.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber), -1);
-                                    xmlSite.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.SiteCode), -1);
+                                    xmlSite.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber), 0);
+                                    xmlSite.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.SiteCode), 0);
                                     xmlSite.SiteType = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.SiteType), "Não Cadastrado");
                                     xmlSite.UF = XmlLoader.GetElementValue(element, XmlSiteTags.UF);
-                                    xmlSite.Value = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Value), -1);
+                                    xmlSite.Value = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Value), 0);
                                     xmlSite.ZipCode = XmlLoader.GetElementValue(element, XmlSiteTags.ZipCode);
                                     xmlSite.DescriptionCollection = new StringDictionary();
-                                    //var details = element.Element(XmlSiteTags.DescriptionCollection);
-                                    //if (details != null)
+                                    //var pictures = element.Element(XmlSiteTags.Pictures);
+                                    //if (pictures != null)
                                     //{
-                                    //    var descriptionCollection = details.Elements(XmlSiteTags.Description);
+                                    //    var descriptionCollection = pictures.Elements(XmlSiteTags.Description);
                                     //    if (descriptionCollection != null)
                                     //    {
                                     //        foreach (var description in descriptionCollection)

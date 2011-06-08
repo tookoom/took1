@@ -153,12 +153,12 @@ namespace TK1.Bizz.Pieta.Data
                         {
                             var descriptions = siteAd.Site.SiteDescriptions;
                             var query = from o in descriptions
-                                        where o.Value.ToUpper() == "SIM"
+                                        //where o.Value.ToUpper() == "SIM"
                                         select o;
                             foreach (var detail in query)
                                 result.Add(new SiteDetail()
                                 {
-                                    Name = detail.Description,
+                                    Name = detail.Value + " " + detail.Description,
                                     Value = detail.Value,
                                     ImageUrl = "Check.png"
                                 });
@@ -325,8 +325,11 @@ namespace TK1.Bizz.Pieta.Data
             {
                 if (sites != null)
                 {
-                    foreach (var item in Entities.SiteAds.Where(o=>o.AdType.Name == "Venda"))
+                    foreach (var item in Entities.SiteAds.Where(o => o.AdType.Name == "Venda"))
+                    {
                         Entities.DeleteObject(item);
+                        //Entities.SaveChanges();
+                    }
                     foreach (var site in sites)
                     {
                         AdType adType = Entities.AdTypes.Where(o => o.Name == "Venda").FirstOrDefault();
@@ -398,7 +401,7 @@ namespace TK1.Bizz.Pieta.Data
             }
             catch (Exception exception)
             {
-                LogController.WriteException("SiteController.AddSiteAds", exception);
+                LogController.WriteException("SiteController.AddSiteAds", exception, true);
             }
         }
     }

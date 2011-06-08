@@ -8,15 +8,17 @@
 <head runat="server">
     <title></title>
 
-    <%--
-    <link href="http://www.pietaimoveis.com.br/Styles/Site.css" rel="stylesheet" type="text/css" />
+    
+    <%--<link href="http://www.pietaimoveis.com.br/Styles/Site.css" rel="stylesheet" type="text/css" />
     <link href="http://www.pietaimoveis.com.br/Styles/Menu.css" rel="stylesheet" type="text/css" />
     <link href="http://www.pietaimoveis.com.br/Styles/HeadContent.css" rel="stylesheet" type="text/css" />
     <link href="http://www.pietaimoveis.com.br/Styles/Contact.css" rel="stylesheet" type="text/css" />
     <link href="http://www.pietaimoveis.com.br/Styles/Location.css" rel="stylesheet" type="text/css" />
     <link href="http://www.pietaimoveis.com.br/Styles/Search.css" rel="stylesheet" type="text/css" />
+
     <link href="http://www.pietaimoveis.com.br/Scripts/css/jquery.galleryview-3.0.css" rel="stylesheet" type="text/css" />
     --%>
+    
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Menu.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/HeadContent.css" rel="stylesheet" type="text/css" />
@@ -24,6 +26,7 @@
     <link href="~/Styles/Location.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Search.css" rel="stylesheet" type="text/css" />
     <link href="~/Scripts/css/jquery.galleryview-3.0.css" rel="stylesheet" type="text/css" />
+
     
 </head>
 <body>

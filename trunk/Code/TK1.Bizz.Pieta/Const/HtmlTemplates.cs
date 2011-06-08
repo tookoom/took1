@@ -31,41 +31,21 @@ namespace TK1.Bizz.Pieta.Const
 
             return html.GetHtmlContent();
         }
-//        public static string GetContactMailTemplate()
-//        {
-//            string result = "<head>    <title></title></head>";
-//            result += "<body style='font-family: \"Helvetica Neue\", \"Lucida Grande\", \"Segoe UI\", Arial, Helvetica, Verdana, sans-serif'>";
-//            result += @"<h4>        Mensagem enviada através do site Pietá Imóveis:    </h4>
-//    
-//    <p>
-//        Tipo de contato: #TK1_TAG_CONTACT_TYPE#<br />
-//        Data do envio: #TK1_TAG_TIMESTAMP#<br />
-//    </p>
-//
-//    <h4>
-//        Informações para contato:
-//    </h4>
-//
-//    <p>
-//        Nome: #TK1_TAG_NAME#<br />
-//        E-mail: #TK1_TAG_MAIL#<br />
-//        Telefone: #TK1_TAG_PHONE#<br />
-//        Forma de contato preferida: #TK1_TAG_CONTACT#<br />
-//    </p>
-//
-//
-//    <h4>
-//        Mensagem:<br />
-//    </h4>
-//
-//    <p>
-//        #TK1_TAG_MESSAGE#<br />
-//    </p>
-//
-//</body>
-//</html>
-//";
-//            return result;
-//        }
+        public static string GetXmlSalesFileLoadTemplate()
+        {
+            HtmlBuilder html = new HtmlBuilder();
+            html.Head.Title("Carga de Arquivos");
+            html.Body.Attributes.Set("style", "font-family: \"Helvetica Neue\", \"Lucida Grande\", \"Segoe UI\", Arial, Helvetica, Verdana, sans-serif");
+
+            html.Body.AppendHeaderN(4, "Carga de arquivos do cadastro de imóveis a venda");
+            html.Body.AppendParagraph("Data da carga: " + MailTemplateTags.General.Timestamp);
+            html.Body.AppendParagraph("Resultado: " + MailTemplateTags.General.Result);
+            html.Body.AppendBlankRow();
+            html.Body.AppendHeaderN(4, "Mensagens geradas:");
+            html.Body.AppendLiteral(MailTemplateTags.General.Message);
+
+            return html.GetHtmlContent();
+        }
+
     }
 }

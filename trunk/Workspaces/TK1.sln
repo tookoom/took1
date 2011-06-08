@@ -47,6 +47,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup.PicDeveloper", "..\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Pieta", "..\Code\TK1.Bizz.Pieta\TK1.Bizz.Pieta.csproj", "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Wpf", "..\Code\TK1.Wpf\TK1.Wpf.csproj", "{7D5EA24E-D83C-4EA4-8ADA-54D340C4AD23}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -147,6 +149,10 @@ Global
 		{3A912BDF-BFDE-4BB9-B182-6625FA40269A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A912BDF-BFDE-4BB9-B182-6625FA40269A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A912BDF-BFDE-4BB9-B182-6625FA40269A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D5EA24E-D83C-4EA4-8ADA-54D340C4AD23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D5EA24E-D83C-4EA4-8ADA-54D340C4AD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D5EA24E-D83C-4EA4-8ADA-54D340C4AD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D5EA24E-D83C-4EA4-8ADA-54D340C4AD23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

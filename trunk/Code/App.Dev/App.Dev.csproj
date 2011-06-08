@@ -155,6 +155,10 @@
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
       <Name>TK1.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TK1.Media\TK1.Media.csproj">
+      <Project>{2B1DC70C-89E1-46F4-96C7-03BD38D80330}</Project>
+      <Name>TK1.Media</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
       <Name>TK1</Name>

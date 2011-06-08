@@ -7,13 +7,23 @@ namespace TK1.Bizz.Pieta.Const
 {
     public class MailTemplateTags
     {
-        public const string ContactType = "#TK1_TAG_CONTACT_TYPE#";
-        public const string Timestamp = "#TK1_TAG_TIMESTAMP#";
-        public const string Name = "#TK1_TAG_NAME#";
-        public const string Mail = "#TK1_TAG_MAIL#";
-        public const string Phone = "#TK1_TAG_PHONE#";
-        public const string Contact = "#TK1_TAG_CONTACT#";
-        public const string Message = "#TK1_TAG_MESSAGE#";
+        public class General
+        {
+            public const string Mail = "#TK1_TAG_MAIL#";
+            public const string Message = "#TK1_TAG_MESSAGE#";
+            public const string Name = "#TK1_TAG_NAME#";
+            public const string Result = "#TK1_TAG_RESULT#";
+            public const string Timestamp = "#TK1_TAG_TIMESTAMP#";
+        }
 
+        public class SiteContact
+        {
+            public const string ContactType = "#TK1_TAG_CONTACT_TYPE#";
+            public const string Phone = "#TK1_TAG_PHONE#";
+            public const string Contact = "#TK1_TAG_CONTACT#";
+        }
+        public class XmlFileLoad
+        {
+        }
     }
 }
