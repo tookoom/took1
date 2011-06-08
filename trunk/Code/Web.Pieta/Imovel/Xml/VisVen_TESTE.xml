@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<imoveis>
+  <imovel>
+    <codigo>6</codigo>
+    <endereco />
+    <bairro>BELEM NOVO</bairro>
+    <cidade>PORTO ALEGRE                                      </cidade>
+    <descricao>Área Serviço, Lareira, Teto Rebaixado, Living c/sacada, Depósito, Cozinha, Dep. Empregada, Bar</descricao>
+    <area_metragem_imovel> - Área total: 315 m²</area_metragem_imovel>
+    <area_metragem_terreno />
+    <Dormitorios>3 sendo 1 suítes</Dormitorios>
+    <infra_estrutura_bairro />
+    <infra_estrutura_condominio />
+    <valor>520000</valor>
+    <tipo>Casa</tipo>
+    <imagens>
+      <codigo_imovel>0006</codigo_imovel>
+      <arquivo_foto>foto_00006_01_____________________.jpg</arquivo_foto>
+      <descricao_foto />
+      <codigo_imovel>0006</codigo_imovel>
+      <foto_00006_02__arquivo_foto>___________________.jpg</arquivo_foto>
+      <descricao_foto />
+      <codigo_imovel>0006</codigo_imovel>
+      <arquivo_foto>foto_00006_03_____________________.jpg</arquivo_foto><descricao_foto />
+      <codigo_imovel>0006</codigo_imovel>
+      <arquivo_foto>foto_00006_04_____________________.jpg</arquivo_foto>
+      <descricao_foto />
+      <codigo_imovel>0006</codigo_imovel>
+      <arquivo_foto>foto_00006_05_____________________.jpg</arquivo_foto>
+      <descricao_foto />
+      <codigo_imovel>0006</codigo_imovel>
+      <arquivo_foto>foto_00006_06_____________________.jpg</arquivo_foto>
+      <descricao_foto />
+      <codigo_imovel>0006</codigo_imovel>
+      <arquivo_foto>foto_00006_07_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0006</codigo_imovel><arquivo_foto>foto_00006_08_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0006</codigo_imovel><arquivo_foto>foto_00006_09_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0006</codigo_imovel><arquivo_foto>foto_00006_10_____________________.jpg</arquivo_foto><descricao_foto /></imagens>
+  </imovel>
+  <imovel>
+    <codigo>1</codigo>
+    <endereco />
+    <bairro>CAVALHADA</bairro>
+    <cidade>PORTO ALEGRE                                      </cidade>
+    <descricao />
+    <area_metragem_imovel /><area_metragem_terreno />
+    <Dormitorios>3</Dormitorios>
+    <infra_estrutura_bairro />
+    <infra_estrutura_condominio />
+    <valor>144000</valor>
+    <tipo>Apartamento</tipo>
+    <imagens><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_01_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_02_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_03_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_04_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_05_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_06_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_07_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_08_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_09_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_10_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_11_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_12_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_13_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0001</codigo_imovel><arquivo_foto>foto_00001_14_____________________.jpg</arquivo_foto><descricao_foto /></imagens>
+  </imovel>
+  <imovel>
+    <codigo>2</codigo>
+    <endereco />
+    <bairro>TRISTEZA</bairro>
+    <cidade>PORTO ALEGRE                                      </cidade>
+    <descricao>Ar Condicionado, Área de Serviço, Churrasqueira, Cozinha c/ armários, Lareira, Living, FOGÃO, DEPÓSITO</descricao>
+    <area_metragem_imovel />
+    <area_metragem_terreno />
+    <Dormitorios>3 sendo 1 suítes</Dormitorios>
+    <infra_estrutura_bairro />
+    <infra_estrutura_condominio>Salão de festas, Segurança 24 horas, Play-ground</infra_estrutura_condominio>
+    <valor>425000</valor>
+    <tipo>Apartamento</tipo>
+    <imagens><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_01_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_02_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_03_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_04_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_05_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_06_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_07_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_08_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_09_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_10_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_11_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_12_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_13_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_14_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_15_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0002</codigo_imovel><arquivo_foto>foto_00002_16_____________________.jpg</arquivo_foto><descricao_foto />
+    </imagens>
+  </imovel>
+  <imovel>
+    <codigo>3</codigo>
+    <endereco />
+    <bairro>TRISTEZA</bairro>
+    <cidade>PORTO ALEGRE                                      </cidade>
+    <descricao>Churrasqueira, Hall, Lareira, Lavabo, COZINHA</descricao>
+    <area_metragem_imovel> - Área de uso comum : 219,61 m² - Área de uso privativo: 120 m²</area_metragem_imovel>
+    <area_metragem_terreno />
+    <Dormitorios />
+    <infra_estrutura_bairro />
+    <infra_estrutura_condominio />
+    <valor>350000</valor>
+    <tipo>Casa</tipo>
+    <imagens>
+      <codigo_imovel>0003</codigo_imovel>
+      <arquivo_foto>foto_00003_01_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_02_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_03_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_04_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_05_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_06_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_07_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_08_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_09_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_10_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_11_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_12_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_13_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_14_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_15_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0003</codigo_imovel><arquivo_foto>foto_00003_16_____________________.jpg</arquivo_foto><descricao_foto />
+    </imagens>
+  </imovel>
+  <imovel>
+    <codigo>5</codigo>
+    <endereco />
+    <bairro>TRISTEZA</bairro>
+    <cidade>PORTO ALEGRE                                      </cidade>
+    <descricao>Área de Serviço, Churrasqueira, Cozinha, Lareira, Living, Web office, Depósito, Closet, Hidro</descricao>
+    <area_metragem_imovel />
+    <area_metragem_terreno />
+    <Dormitorios>1 sendo 1 suítes</Dormitorios>
+    <infra_estrutura_bairro />
+    <infra_estrutura_condominio />
+    <valor>495000</valor>
+    <tipo>Apartamento</tipo>
+    <imagens>
+      <codigo_imovel>0005</codigo_imovel>
+      <arquivo_foto>foto_00005_01_____________________.jpg</arquivo_foto>
+      <descricao_foto />
+      <codigo_imovel>0005</codigo_imovel>
+      <arquivo_foto>foto_00005_02_____________________.jpg</arquivo_foto>
+      <descricao_foto /><codigo_imovel>0005</codigo_imovel><arquivo_foto>foto_00005_03_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0005</codigo_imovel><arquivo_foto>foto_00005_04_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0005</codigo_imovel><arquivo_foto>foto_00005_05_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0005</codigo_imovel><arquivo_foto>foto_00005_06_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0005</codigo_imovel><arquivo_foto>foto_00005_07_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0005</codigo_imovel><arquivo_foto>foto_00005_08_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0005</codigo_imovel><arquivo_foto>foto_00005_09_____________________.jpg</arquivo_foto><descricao_foto />
+    </imagens>
+  </imovel>
+  <imovel>
+    <codigo>4</codigo>
+    <endereco />
+    <bairro>SANTA TEREZA</bairro>
+    <cidade>PORTO ALEGRE                                      </cidade>
+    <descricao>Churrasqueira, Cozinha c/armarios, Gabinete, Hall, Lareira, Lavabo, Exaustor, Closet</descricao>
+    <area_metragem_imovel />
+    <area_metragem_terreno />
+    <Dormitorios>3 sendo 2 suítes</Dormitorios>
+    <infra_estrutura_bairro />
+    <infra_estrutura_condominio>Segurança 24 horas</infra_estrutura_condominio>
+    <valor>1480000</valor>
+    <tipo>Casa</tipo>
+    <imagens>
+      <codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_01_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_02_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_03_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_04_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_05_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_06_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_07_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_08_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_09_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_10_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_11_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_12_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_13_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_14_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_15_____________________.jpg</arquivo_foto><descricao_foto /><codigo_imovel>0004</codigo_imovel><arquivo_foto>foto_00004_16_____________________.jpg</arquivo_foto><descricao_foto />
+    </imagens>
+  </imovel>
+</imoveis>
