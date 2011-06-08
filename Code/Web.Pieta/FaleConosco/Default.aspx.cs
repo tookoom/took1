@@ -14,23 +14,11 @@ public partial class FaleConosco_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-    protected void buttonSendMessage_OnClick(object sender, EventArgs e)
-    {
-        sendMessage();
-    }
-
-    private void sendMessage()
-    {
-        string subject = "Mensagem enviada através do site Pietá Imóveis";
-        string body = createMailBody();
-        MailHelper.SendContactMail(subject, body);
-        CreateMessageAlert(this, "Mensagem enviada", "");
-    }
 
     private string createMailBody()
     {
         string result = string.Empty;
-        string contactType = radioButtonListContactType.SelectedValue; 
+        string contactType = radioButtonListContactType.SelectedValue;
         string timestamp = DateTime.Now.ToString();
         string name = textBoxContactName.Text;
         string mail = textBoxContactMail.Text;
@@ -38,43 +26,35 @@ public partial class FaleConosco_Default : System.Web.UI.Page
         string contact = radioButtonListResponseType.SelectedValue;
         string message = textBoxContactMessage.Text;
 
-        
+
 
         try
         {
-            //if (File.Exists(Paths.ContactMailTemplate))
-            //{
-                string body = HtmlTemplates.GetContactMailTemplate();
-                //string body = File.ReadAllText(Paths.ContactMailTemplate);
-                //if (!string.IsNullOrEmpty(body))
-                //{
-                    if (body.Contains(MailTemplateTags.Contact))
-                        body = body.Replace(MailTemplateTags.Contact, contact);
-                    if (body.Contains(MailTemplateTags.ContactType))
-                        body = body.Replace(MailTemplateTags.ContactType, contactType);
-                    if (body.Contains(MailTemplateTags.Mail))
-                        body = body.Replace(MailTemplateTags.Mail, mail);
-                    if (body.Contains(MailTemplateTags.Message))
-                        body = body.Replace(MailTemplateTags.Message, message);
-                    if (body.Contains(MailTemplateTags.Name))
-                        body = body.Replace(MailTemplateTags.Name, name);
-                    if (body.Contains(MailTemplateTags.Phone))
-                        body = body.Replace(MailTemplateTags.Phone, phone);
-                    if (body.Contains(MailTemplateTags.Timestamp))
-                        body = body.Replace(MailTemplateTags.Timestamp, timestamp);
+            string body = HtmlTemplates.GetContactMailTemplate();
+            if (body.Contains(MailTemplateTags.SiteContact.Contact))
+                body = body.Replace(MailTemplateTags.SiteContact.Contact, contact);
+            if (body.Contains(MailTemplateTags.SiteContact.ContactType))
+                body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
+            if (body.Contains(MailTemplateTags.General.Mail))
+                body = body.Replace(MailTemplateTags.General.Mail, mail);
+            if (body.Contains(MailTemplateTags.General.Message))
+                body = body.Replace(MailTemplateTags.General.Message, message);
+            if (body.Contains(MailTemplateTags.General.Name))
+                body = body.Replace(MailTemplateTags.General.Name, name);
+            if (body.Contains(MailTemplateTags.SiteContact.Phone))
+                body = body.Replace(MailTemplateTags.SiteContact.Phone, phone);
+            if (body.Contains(MailTemplateTags.General.Timestamp))
+                body = body.Replace(MailTemplateTags.General.Timestamp, timestamp);
 
-                    result = body;
-                //}
-            //}
+            result = body;
         }
         catch (Exception exception)
         {
-            LogController.WriteException("FaleConosco_Default.createMailBody", exception);
+            LogController.WriteException("FaleConosco_Default.createMailBody", exception, true);
         }
         return result;
     }
-
-    public  void CreateMessageAlert(System.Web.UI.Page senderPage, string alertMsg, string alertKey)
+    private void createMessageAlert(System.Web.UI.Page senderPage, string alertMsg, string alertKey)
     {
         string strScript = "<script language=JavaScript>alert('" + alertMsg + "')</script>";
 
@@ -82,6 +62,19 @@ public partial class FaleConosco_Default : System.Web.UI.Page
         //    senderPage.RegisterStartupScript(alertKey, strScript);
 
         this.ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", strScript);
+    }
+    private void sendMessage()
+    {
+        string subject = "Mensagem enviada através do site Pietá Imóveis";
+        string body = createMailBody();
+        MailHelper.SendContactMail(subject, body);
+        createMessageAlert(this, "Mensagem enviada", "");
+    }
+
+
+    protected void buttonSendMessage_OnClick(object sender, EventArgs e)
+    {
+        sendMessage();
     }
 
 }

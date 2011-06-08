@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
-    <p>Carga de cadastros de imóveis para venda realizada.</p>
+    <p>Processo de carga de cadastros executado</p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 </asp:Content>
