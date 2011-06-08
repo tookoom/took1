@@ -1,0 +1,2123 @@
+<?xml version="1.0"?>
+<vendas>
+  <imoveis>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>9</codigo>
+      <endereco />
+      <bairro>JARDIM DO SALSO</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  2 dormitórios, Área de Serv.Fechada, Banheiro social, Cozinha tipo americana c/ armários, Gradil, Living 2 amb., Vaga 1 carro, 83,13 m². Condomínio com: Portaria 24 hs, Salão de Festas</descricao>
+      <descricaoresumida>
+        Apartamento com  2 dormitórios, Área de Serv.Fechada, Banheiro social, Cozinha tipo americana c/ armários, Gradil, Living 2 amb., Vaga 1 carro, 83,13 m². Condomínio com: Portaria 24 hs, Salão de Festas
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>72,7</area_uso_privativo>
+      <area_total_imovel>83,13</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>2</dormitorios>
+      <suites />
+      <garagens />
+      <valor>185000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0009</codigo_imovel>
+        <arquivo_foto>foto_00009_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>29</codigo>
+      <endereco />
+      <bairro>ABERTA DOS MORROS</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>2 Dormitórios, Área Serviço, Cozinha, Living 2 ambientes</descricao>
+      <descricaoresumida>
+        2 Dormitórios, Área Serviço, Cozinha, Living 2 ambientes
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>2</dormitorios>
+      <suites />
+      <garagens>1</garagens>
+      <valor>212000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_16_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0029</codigo_imovel>
+        <arquivo_foto>foto_00029_17_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>6</codigo>
+      <endereco />
+      <bairro>BELEM NOVO</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Casa com 3 dormitórios sendo 1 suíte, Área Serviço, Cozinha c/armários, Hall, Lareira, Lavabo, Living c/sacada, Depósito, Dep. Empregada, Bar, Sala de jantar, Terreno com 6.300mt área total, Mata Nativa, Vista para o Guaíba</descricao>
+      <descricaoresumida>
+        Casa com 3 dormitórios sendo 1 suíte, Área Serviço, Cozinha c/armários, Hall, Lareira, Lavabo, Living c/sacada, Depósito, Dep. Empregada, Bar, Sala de jantar, Terreno com 6.300mt área total, Mata Nativa, Vista para o Guaíba
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>315</area_uso_privativo>
+      <area_total_imovel>6300</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens />
+      <valor>520000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_16_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_17_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_18_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_19_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_20_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_21_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_22_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_23_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_24_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0006</codigo_imovel>
+        <arquivo_foto>foto_00006_25_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>12</codigo>
+      <endereco />
+      <bairro>PARTENON</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com 2 dormitórios sendo 1 suíte, Área de Serviço, Living, Cozinha Americana, 90,12m². Condomínio com: Piscina, Play Ground, Quadra Esportiva, Salão de Festas, Segurança 24 horas, Zeladoria, Churrasq., Mata Nativa, Quisque, Fitness</descricao>
+      <descricaoresumida>
+        Apartamento com 2 dormitórios sendo 1 suíte, Área de Serviço, Living, Cozinha Americana, 90,12m². Condomínio com: Piscina, Play Ground, Quadra Esportiva, Salão de Festas, Segurança 24 horas, Zeladoria, Churrasq., Mata Nativa, Quisque, Fitness
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>66,51</area_uso_privativo>
+      <area_total_imovel>77,09</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>2</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>206700</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0012</codigo_imovel>
+        <arquivo_foto>foto_00012_16_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>33</codigo>
+      <endereco />
+      <bairro>CAMAQUA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  1 dormitório, Área de Serviço, Esp.p/Máq.Lavar Roup, Living, Banheiro, Cozinha, Piso em cerâmica, 67,76 m².</descricao>
+      <descricaoresumida>
+        Apartamento com  1 dormitório, Área de Serviço, Esp.p/Máq.Lavar Roup, Living, Banheiro, Cozinha, Piso em cerâmica, 67,76 m².
+      </descricaoresumida>
+      <area_uso_comum>67,76</area_uso_comum>
+      <area_uso_privativo>40,81</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>1</dormitorios>
+      <suites />
+      <garagens />
+      <valor>99000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0033</codigo_imovel>
+        <arquivo_foto>foto_00033_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>38</codigo>
+      <endereco />
+      <bairro>PETROPOLIS</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Sala comercial com banheiro, 45,60 m². Condomínio com: Salão de Festas, Portaria 24 horas, Cir.Int.TV</descricao>
+      <descricaoresumida>
+        Sala comercial com banheiro, 45,60 m². Condomínio com: Salão de Festas, Portaria 24 horas, Cir.Int.TV
+      </descricaoresumida>
+      <area_uso_comum>45,6</area_uso_comum>
+      <area_uso_privativo>30,52</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios />
+      <suites />
+      <garagens />
+      <valor>220000</valor>
+      <tipo>Sala comercial</tipo>
+      <imagens>
+        <codigo_imovel>0038</codigo_imovel>
+        <arquivo_foto>foto_00038_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0038</codigo_imovel>
+        <arquivo_foto>foto_00038_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0038</codigo_imovel>
+        <arquivo_foto>foto_00038_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0038</codigo_imovel>
+        <arquivo_foto>foto_00038_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0038</codigo_imovel>
+        <arquivo_foto>foto_00038_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0038</codigo_imovel>
+        <arquivo_foto>foto_00038_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>1</codigo>
+      <endereco />
+      <bairro>CAVALHADA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  3 dormitórios, Área de Serv.Fechada, Banheiro social, Cozinha, Hall, Living 2 amb., box para um carro, Elevador, Elevador de serviços, Play Ground, Portaria, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Zeladoria, Jardim. Próximo a Otto Niemeyer.</descricao>
+      <descricaoresumida>
+        Apartamento com  3 dormitórios, Área de Serv.Fechada, Banheiro social, Cozinha, Hall, Living 2 amb., box para um carro, Elevador, Elevador de serviços, Play Ground, Portaria, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Zeladoria, Jardim. Próximo a Otto Niemeyer.
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>70,47</area_uso_privativo>
+      <area_total_imovel>88,54</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>3</dormitorios>
+      <suites />
+      <garagens>1</garagens>
+      <valor>170000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_01_Fachada_____________.jpg</arquivo_foto>
+        <descricao_foto>Fachada</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_02_Entrada_do_préd_____.jpg</arquivo_foto>
+        <descricao_foto>Entrada do préd</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_03_Living______________.jpg</arquivo_foto>
+        <descricao_foto>Living</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_04_Living______________.jpg</arquivo_foto>
+        <descricao_foto>Living</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_05_Banheiro_social_____.jpg</arquivo_foto>
+        <descricao_foto>Banheiro social</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_06_Dorm_1______________.jpg</arquivo_foto>
+        <descricao_foto>Dorm 1</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_07_Dorm2_______________.jpg</arquivo_foto>
+        <descricao_foto>Dorm2</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_09_Fachada_____________.jpg</arquivo_foto>
+        <descricao_foto>Fachada</descricao_foto>
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0001</codigo_imovel>
+        <arquivo_foto>foto_00001_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>27</codigo>
+      <endereco />
+      <bairro>CAVALHADA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  1 dormitório, Banheiro social, Cozinha, Living, Espera p/Ar Cond, Piso cerâmica, 51 m². Condomínio com: Elevador, Interfone, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Portaria 24 horas</descricao>
+      <descricaoresumida>
+        Apartamento com  1 dormitório, Banheiro social, Cozinha, Living, Espera p/Ar Cond, Piso cerâmica, 51 m². Condomínio com: Elevador, Interfone, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Portaria 24 horas
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>40,66</area_uso_privativo>
+      <area_total_imovel>51</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>1</dormitorios>
+      <suites />
+      <garagens>1</garagens>
+      <valor>130000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_01_Fachada_____________.jpg</arquivo_foto>
+        <descricao_foto>Fachada</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_02_Hall_do_prédio______.jpg</arquivo_foto>
+        <descricao_foto>Hall do prédio</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_03_Sala________________.jpg</arquivo_foto>
+        <descricao_foto>Sala</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_04_Sala________________.jpg</arquivo_foto>
+        <descricao_foto>Sala</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_05_Vista_______________.jpg</arquivo_foto>
+        <descricao_foto>Vista</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_06_Vista_______________.jpg</arquivo_foto>
+        <descricao_foto>Vista</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_07_Dormitório__________.jpg</arquivo_foto>
+        <descricao_foto>Dormitório</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_08_Dormitório__________.jpg</arquivo_foto>
+        <descricao_foto>Dormitório</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_09_Banheiro____________.jpg</arquivo_foto>
+        <descricao_foto>Banheiro</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_10_Banheiro____________.jpg</arquivo_foto>
+        <descricao_foto>Banheiro</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_11_Playground__________.jpg</arquivo_foto>
+        <descricao_foto>Playground</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_12_Garagem_____________.jpg</arquivo_foto>
+        <descricao_foto>Garagem</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_13_Cozinha_____________.jpg</arquivo_foto>
+        <descricao_foto>Cozinha</descricao_foto>
+        <codigo_imovel>0027</codigo_imovel>
+        <arquivo_foto>foto_00027_14_Área_de_Serviço_____.jpg</arquivo_foto>
+        <descricao_foto>Área de Serviço</descricao_foto>
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>8</codigo>
+      <endereco />
+      <bairro>TERESOPOLIS</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento de  2 dormitórios (1 dormitório c/ sacada aberta), Área de Serv.Fechada, Banheiro social, Cozinha, Living,  Piso Cerâmica, 77,30 m². Condomínio com:Salão de Festas</descricao>
+      <descricaoresumida>
+        Apartamento de  2 dormitórios (1 dormitório c/ sacada aberta), Área de Serv.Fechada, Banheiro social, Cozinha, Living,  Piso Cerâmica, 77,30 m². Condomínio com:Salão de Festas
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>65</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>2</dormitorios>
+      <suites />
+      <garagens />
+      <valor>148000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_01_Fachada_____________.jpg</arquivo_foto>
+        <descricao_foto>Fachada</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_02_Living_1____________.jpg</arquivo_foto>
+        <descricao_foto>Living 1</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_03_Living_2____________.jpg</arquivo_foto>
+        <descricao_foto>Living 2</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_04_Dorm_1______________.jpg</arquivo_foto>
+        <descricao_foto>Dorm 1</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_05_Banheiro_social_____.jpg</arquivo_foto>
+        <descricao_foto>Banheiro social</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_06_Banheiro_social_____.jpg</arquivo_foto>
+        <descricao_foto>Banheiro social</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_07_Dormitório_2________.jpg</arquivo_foto>
+        <descricao_foto>Dormitório 2</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_08_Dormitório_2________.jpg</arquivo_foto>
+        <descricao_foto>Dormitório 2</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_09_Sacada______________.jpg</arquivo_foto>
+        <descricao_foto>Sacada</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_10_Vista_______________.jpg</arquivo_foto>
+        <descricao_foto>Vista</descricao_foto>
+        <codigo_imovel>0008</codigo_imovel>
+        <arquivo_foto>foto_00008_11_Cozinha_____________.jpg</arquivo_foto>
+        <descricao_foto>Cozinha</descricao_foto>
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>10</codigo>
+      <endereco />
+      <bairro>IPANEMA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Casa com 4 dormitórios sendo  1 suíte, Boiler, Cozinha c/armarios, Dep Empr., Gabinete, Hall, Lareira, Lavabo, Living 2 ambientes, 3 Ar Condicionados, Dep.Empr.c/banh aux, Fundos pátio todo em lajota, Churrasqueira coberta, 250 m²
+
+
+        INFRA-ESTRUTURA BAIRRO:
+
+        Valor à Vista: 450.000,00
+      </descricao>
+      <descricaoresumida>
+        Casa com 4 dormitórios sendo  1 suíte, Boiler, Cozinha c/armarios, Dep Empr., Gabinete, Hall, Lareira, Lavabo, Living 2 ambientes, 3 Ar Condicionados, Dep.Empr.c/banh aux, Fundos pátio todo em lajota, Churrasqueira coberta, 250 m²
+
+
+        INFRA-ESTRUTURA BAIRRO:
+
+        Valor à Vista: 450.000,00
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel>250</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>4</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>420000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0010</codigo_imovel>
+        <arquivo_foto>foto_00010_16_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>21</codigo>
+      <endereco />
+      <bairro>PETROPOLIS</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  2 dormitórios sendo 1 suíte, Área de Serv.Fechada, Banheiro social, Churrasqueira, Gradil, Living 2 amb., Wc. auxiliar, Cozinha Americana, Água quente, Esp. Máquinas, 104,89 m². Condomínio com: Piscina, Sala de Ginástica, Salão de Festas, Zeladoria, Churrasqueira, Fitness</descricao>
+      <descricaoresumida>
+        Apartamento com  2 dormitórios sendo 1 suíte, Área de Serv.Fechada, Banheiro social, Churrasqueira, Gradil, Living 2 amb., Wc. auxiliar, Cozinha Americana, Água quente, Esp. Máquinas, 104,89 m². Condomínio com: Piscina, Sala de Ginástica, Salão de Festas, Zeladoria, Churrasqueira, Fitness
+
+
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>61,91</area_uso_privativo>
+      <area_total_imovel>72,49</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>2</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>290000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0021</codigo_imovel>
+        <arquivo_foto>foto_00021_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>25</codigo>
+      <endereco />
+      <bairro>CRISTAL</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com 3 dormitórios sendo 1 suíte, Área de Serviço, Churrasqueira, Hall, Living 2 amb., Copa/Cozinha, Água Quente, Esp. Máquina, Água Quente. Condomínio com: Salão de Festas</descricao>
+      <descricaoresumida>
+        Apartamento com 3 dormitórios sendo 1 suíte, Área de Serviço, Churrasqueira, Hall, Living 2 amb., Copa/Cozinha, Água Quente, Esp. Máquina, Água Quente. Condomínio com: Salão de Festas
+
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>90</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>2</garagens>
+      <valor>330000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0025</codigo_imovel>
+        <arquivo_foto>foto_00025_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>11</codigo>
+      <endereco />
+      <bairro>SANTO ANTONIO</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Apartamento com 1 dormitório, Ar Cond .de parede, Área de Serv.Fechada, Cozinha c/ armários, Hall, Living c/ sacada, Box coberto, 70,07 m²
+
+
+        INFRA-ESTRUTURA BAIRRO:
+
+        Valor à Vista: 167.000,00
+      </descricao>
+      <descricaoresumida>
+        Apartamento com 1 dormitório, Ar Cond .de parede, Área de Serv.Fechada, Cozinha c/ armários, Hall, Living c/ sacada, Box coberto, 70,07 m²
+
+
+        INFRA-ESTRUTURA BAIRRO:
+
+        Valor à Vista: 167.000,00
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel>70,07</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno />
+      <dormitorios>1</dormitorios>
+      <suites />
+      <garagens>1</garagens>
+      <valor>167000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0011</codigo_imovel>
+        <arquivo_foto>foto_00011_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>14</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com 2 dormitórios sendo 1 suite, Área de Serviço, Esp.p/Máq.Lavar Roup, Living 2 amb., Living c/ sacada, Cozinha Americana, 82,95 m². Condomínio com: Piscina, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Churrasq., Quisque, Fitness, Esp.Gourmet</descricao>
+      <descricaoresumida>
+        Apartamento com 2 dormitórios sendo 1 suite, Área de Serviço, Esp.p/Máq.Lavar Roup, Living 2 amb., Living c/ sacada, Cozinha Americana, 82,95 m². Condomínio com: Piscina, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Churrasq., Quisque, Fitness, Esp.Gourmet
+
+
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>54,62</area_uso_privativo>
+      <area_total_imovel>66,03</area_total_imovel>
+      <area_terreno>82,95</area_terreno>
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>189800</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0014</codigo_imovel>
+        <arquivo_foto>foto_00014_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>3</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Casa com 3 pavimentos, 3 dormitórios sendo  2 suítes c/sacada, Área Serviço, Churrasqueira, Cozinha, Cozinha c/armários, Hall, Lareira, Lavabo, Living 2 ambientes, Sacada, Gradil, Hidro, Água Quente, Aquecedor, Salão de Festas, 339,60m²
+
+
+        Valor à Vista: 372.000,00
+      </descricao>
+      <descricaoresumida>
+        Casa com 3 pavimentos, 3 dormitórios sendo  2 suítes c/sacada, Área Serviço, Churrasqueira, Cozinha, Cozinha c/armários, Hall, Lareira, Lavabo, Living 2 ambientes, Sacada, Gradil, Hidro, Água Quente, Aquecedor, Salão de Festas, 339,60m²
+
+
+        Valor à Vista: 372.000,00
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>339,61</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>2</suites>
+      <garagens>1</garagens>
+      <valor>372000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_01_Fachada_____________.jpg</arquivo_foto>
+        <descricao_foto>Fachada</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_02_Living______________.jpg</arquivo_foto>
+        <descricao_foto>Living</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_03_Living_1____________.jpg</arquivo_foto>
+        <descricao_foto>Living 1</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_04_Living_2____________.jpg</arquivo_foto>
+        <descricao_foto>Living 2</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_05_Lavabo______________.jpg</arquivo_foto>
+        <descricao_foto>Lavabo</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_06_suíte1______________.jpg</arquivo_foto>
+        <descricao_foto>suíte1</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_07_Banheiro_suíte______.jpg</arquivo_foto>
+        <descricao_foto>Banheiro suíte</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_08_Suíte_2_____________.jpg</arquivo_foto>
+        <descricao_foto>Suíte 2</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_09_Circulação__________.jpg</arquivo_foto>
+        <descricao_foto>Circulação</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_10_Suíte_3_____________.jpg</arquivo_foto>
+        <descricao_foto>Suíte 3</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_11_Casa_fundos_________.jpg</arquivo_foto>
+        <descricao_foto>Casa fundos</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_12_Casa_fundos_________.jpg</arquivo_foto>
+        <descricao_foto>Casa fundos</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_13_Garagem_2_carro_____.jpg</arquivo_foto>
+        <descricao_foto>Garagem 2 carro</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_14_Salão_de_festas_____.jpg</arquivo_foto>
+        <descricao_foto>Salão de festas</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_15_Salão_de_festas_____.jpg</arquivo_foto>
+        <descricao_foto>Salão de festas</descricao_foto>
+        <codigo_imovel>0003</codigo_imovel>
+        <arquivo_foto>foto_00003_16_Vista_______________.jpg</arquivo_foto>
+        <descricao_foto>Vista</descricao_foto>
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>7</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Apartamento com 3 dormitórios sendo 1 suíte, Área de Serv.Fechada, Banheiro social, Churrasqueira, Cozinha c/ armários, Gás central, Hall, Lareira, Living 2 amb., Sacada, Vaga 2 carros, Aquecedor, 175,93 m². Condomínio com Elevador, Interfone, Play Ground, Portaria, Salão de Festas, Segurança 24 horas, Zeladoria
+        Saneamento, Shopping, Supermercado
+      </descricao>
+      <descricaoresumida>
+        Apartamento com 3 dormitórios sendo 1 suíte, Área de Serv.Fechada, Banheiro social, Churrasqueira, Cozinha c/ armários, Gás central, Hall, Lareira, Living 2 amb., Sacada, Vaga 2 carros, Aquecedor, 175,93 m². Condomínio com Elevador, Interfone, Play Ground, Portaria, Salão de Festas, Segurança 24 horas, Zeladoria
+        Saneamento, Shopping, Supermercado
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>116,53</area_uso_privativo>
+      <area_total_imovel>175,96</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens />
+      <valor>360000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_01_Fachada_____________.jpg</arquivo_foto>
+        <descricao_foto>Fachada</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_02_Living______________.jpg</arquivo_foto>
+        <descricao_foto>Living</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_03_Living______________.jpg</arquivo_foto>
+        <descricao_foto>Living</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_04_Dorm_1______________.jpg</arquivo_foto>
+        <descricao_foto>Dorm 1</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_05_Banheiro_social_____.jpg</arquivo_foto>
+        <descricao_foto>Banheiro social</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_06_Dorm_2______________.jpg</arquivo_foto>
+        <descricao_foto>Dorm 2</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_07_Suíte_______________.jpg</arquivo_foto>
+        <descricao_foto>Suíte</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_08_Banheiro_suíte______.jpg</arquivo_foto>
+        <descricao_foto>Banheiro suíte</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_09_Banheiro_suíte______.jpg</arquivo_foto>
+        <descricao_foto>Banheiro suíte</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_10_Cozinha_____________.jpg</arquivo_foto>
+        <descricao_foto>Cozinha</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_11_Área_de_serviço_____.jpg</arquivo_foto>
+        <descricao_foto>Área de serviço</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_12_Área_de_serviço_____.jpg</arquivo_foto>
+        <descricao_foto>Área de serviço</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_13_Vaga_dupla_cob______.jpg</arquivo_foto>
+        <descricao_foto>Vaga dupla cob</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_14_Vista_______________.jpg</arquivo_foto>
+        <descricao_foto>Vista</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_15_Salão_de_festas_____.jpg</arquivo_foto>
+        <descricao_foto>Salão de festas</descricao_foto>
+        <codigo_imovel>0007</codigo_imovel>
+        <arquivo_foto>foto_00007_16_Playgound___________.jpg</arquivo_foto>
+        <descricao_foto>Playgound</descricao_foto>
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>32</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Apartamento com  3 dormitórios sendo 1 suíte, Área de Serv.Fechada, Cozinha c/ armários, Lareira, Living, Cozinha Americana, Piso laminado, 172,94 m². Condomínio com: Brinquedoteca, Fitness, Piscina Adulto e Infantil, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Sauna, Segurança 24 horas, Quiosque, Piscina Aquecida
+        INFRA-ESTRUTURA BAIRRO:
+        Ag.Bancária, Creche, Escola, Farmácia, Igreja, Lotação, Lotérica, Ônibus, Ponto de Taxi, Posto de Saúde, Praças, Ruas Asfaltadas, Saneamento, Shopping, Supermercado
+        Valor à Vista: 600.000,00
+      </descricao>
+      <descricaoresumida>
+        Apartamento com  3 dormitórios sendo 1 suíte, Área de Serv.Fechada, Cozinha c/ armários, Lareira, Living, Cozinha Americana, Piso laminado, 172,94 m². Condomínio com: Brinquedoteca, Fitness, Piscina Adulto e Infantil, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Sauna, Segurança 24 horas, Quiosque, Piscina Aquecida
+        INFRA-ESTRUTURA BAIRRO:
+        Ag.Bancária, Creche, Escola, Farmácia, Igreja, Lotação, Lotérica, Ônibus, Ponto de Taxi, Posto de Saúde, Praças, Ruas Asfaltadas, Saneamento, Shopping, Supermercado
+        Valor à Vista: 600.000,00
+      </descricaoresumida>
+      <area_uso_comum>172,94</area_uso_comum>
+      <area_uso_privativo>94,64</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>2</garagens>
+      <valor>600000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens />
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>34</codigo>
+      <endereco />
+      <bairro>JARDIM ITU SABARA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com 2 dormitórios, Aquecedor, Área de Serviço, Cozinha, Living 2 amb., Piso parquet c/sinteco novo, Ventiladores de Teto, 76,08 m². Condomínio com: Churrasqueira, Play Ground, Quadra Esportiva, Salão de Festas, Zelador Residente</descricao>
+      <descricaoresumida>
+        Apartamento com 2 dormitórios, Aquecedor, Área de Serviço, Cozinha, Living 2 amb., Piso parquet c/sinteco novo, Ventiladores de Teto, 76,08 m². Condomínio com: Churrasqueira, Play Ground, Quadra Esportiva, Salão de Festas, Zelador Residente
+      </descricaoresumida>
+      <area_uso_comum>76,08</area_uso_comum>
+      <area_uso_privativo>58,57</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites />
+      <garagens />
+      <valor>145000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0034</codigo_imovel>
+        <arquivo_foto>foto_00034_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>5</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Casa com 3 dormitórios sendo 1 Suíte c/ espera para Closet e Hidro,  Área de Serv fechada, Churrasqueira, Cozinha americana ampla ,  Lavabo, Living 3 ambientes c/ Lareira, Pátio, Vaga 4 carros,  Aberturas em madeira de Lei, Espera para piscina, Câmeras de vigilância, 360 m²
+
+
+        INFRA-ESTRUTURA BAIRRO:
+        Escola, Ônibus, Praças, Supermercado
+        Valor à Vista: 495.000,00
+      </descricao>
+      <descricaoresumida>
+        Casa com 3 dormitórios sendo 1 Suíte c/ espera para Closet e Hidro,  Área de Serv fechada, Churrasqueira, Cozinha americana ampla ,  Lavabo, Living 3 ambientes c/ Lareira, Pátio, Vaga 4 carros,  Aberturas em madeira de Lei, Espera para piscina, Câmeras de vigilância, 360 m²
+
+
+        INFRA-ESTRUTURA BAIRRO:
+        Escola, Ônibus, Praças, Supermercado
+        Valor à Vista: 495.000,00
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>220</area_uso_privativo>
+      <area_total_imovel>360</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>4</garagens>
+      <valor>495000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_01_Fachada_____________.jpg</arquivo_foto>
+        <descricao_foto>Fachada</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_02_Living1_____________.jpg</arquivo_foto>
+        <descricao_foto>Living1</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_03_Living2_____________.jpg</arquivo_foto>
+        <descricao_foto>Living2</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_04_Living3_____________.jpg</arquivo_foto>
+        <descricao_foto>Living3</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_05_Dorm1_______________.jpg</arquivo_foto>
+        <descricao_foto>Dorm1</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_06_Banheirosocial______.jpg</arquivo_foto>
+        <descricao_foto>Banheirosocial</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_07_Dorm2_______________.jpg</arquivo_foto>
+        <descricao_foto>Dorm2</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_08_Suíte_______________.jpg</arquivo_foto>
+        <descricao_foto>Suíte</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_09_Suítecloset_________.jpg</arquivo_foto>
+        <descricao_foto>Suítecloset</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_10_Banheirosuíte_______.jpg</arquivo_foto>
+        <descricao_foto>Banheirosuíte</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_11_Churrasqueira_______.jpg</arquivo_foto>
+        <descricao_foto>Churrasqueira</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_12_Vaga2carros_________.jpg</arquivo_foto>
+        <descricao_foto>Vaga2carros</descricao_foto>
+        <codigo_imovel>0005</codigo_imovel>
+        <arquivo_foto>foto_00005_13_Jardim______________.jpg</arquivo_foto>
+        <descricao_foto>Jardim</descricao_foto>
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>19</codigo>
+      <endereco />
+      <bairro>NONOAI</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Casa com 4 dormitórios sendo 1 suíte, Ar Split, Área Serviço, Churrasqueira, Cozinha c/armarios, Hall, Lareira, Lavabo, Living 3 ambientes, Pátio, Sacada, Sala de jantar, Suíte, Terraço, Wc auxiliar, Piscina, Cozinha Montada, Esp. Máquina, Piscina, Salão de Festas c/ Terraço, Mata Nativa, 720 m²</descricao>
+      <descricaoresumida>
+        Casa com 4 dormitórios sendo 1 suíte, Ar Split, Área Serviço, Churrasqueira, Cozinha c/armarios, Hall, Lareira, Lavabo, Living 3 ambientes, Pátio, Sacada, Sala de jantar, Suíte, Terraço, Wc auxiliar, Piscina, Cozinha Montada, Esp. Máquina, Piscina, Salão de Festas c/ Terraço, Mata Nativa, 720 m²
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>350</area_uso_privativo>
+      <area_total_imovel>350</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>4</dormitorios>
+      <suites>1</suites>
+      <garagens>3</garagens>
+      <valor>692000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0019</codigo_imovel>
+        <arquivo_foto>foto_00019_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>35</codigo>
+      <endereco />
+      <bairro>NONOAI</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  2 dormitórios, Área de Serv.Fechada, Cozinha, Living, Sala de Jantar, Piso Carpete, 87,25 m². Condomínio com: Quiosque c/Churrasq, Salão de Festas, Portaria 24 horas, Zeladoria</descricao>
+      <descricaoresumida>
+        Apartamento com  2 dormitórios, Área de Serv.Fechada, Cozinha, Living, Sala de Jantar, Piso Carpete, 87,25 m². Condomínio com: Quiosque c/Churrasq, Salão de Festas, Portaria 24 horas, Zeladoria
+      </descricaoresumida>
+      <area_uso_comum>87,25</area_uso_comum>
+      <area_uso_privativo>59,45</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites />
+      <garagens />
+      <valor>120000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens />
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>26</codigo>
+      <endereco />
+      <bairro>VILA NOVA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Casa com 3 dormitóriossen do 1 suíte, Ar Condicionado de parede, Área de Serv fechada, Churrasqueira, Cozinha c/armarios, Junkers, Lavabo, Living 2 ambientes, Vaga 1 carro,  Espera para lareira, estacionamento rotativo, 254,72 m². Condomíio: Lago, Piscina, Play Ground, Portaria 24 horas, Quadra Esportiva, Sala de Ginástica, Salão de Festas,  Zeladoria, Bosque, Mata Nativa
+        INFRA-ESTRUTURA BAIRRO:
+        Escola, Farmácia, Internet Rápida, Lotação, Ônibus, Padaria, Ponto de Taxi, Posto de Combustível, Posto Policial, Praças, Ruas Asfaltadas, Saneamento, Supermercado, Tv a Cabo, FACULDADE, ZAFFARI, BIG
+        Valor à Vista: 250.000,00
+      </descricao>
+      <descricaoresumida>
+        Casa com 3 dormitóriossen do 1 suíte, Ar Condicionado de parede, Área de Serv fechada, Churrasqueira, Cozinha c/armarios, Junkers, Lavabo, Living 2 ambientes, Vaga 1 carro,  Espera para lareira, estacionamento rotativo, 254,72 m². Condomíio: Lago, Piscina, Play Ground, Portaria 24 horas, Quadra Esportiva, Sala de Ginástica, Salão de Festas,  Zeladoria, Bosque, Mata Nativa
+        INFRA-ESTRUTURA BAIRRO:
+        Escola, Farmácia, Internet Rápida, Lotação, Ônibus, Padaria, Ponto de Taxi, Posto de Combustível, Posto Policial, Praças, Ruas Asfaltadas, Saneamento, Supermercado, Tv a Cabo, FACULDADE, ZAFFARI, BIG
+        Valor à Vista: 250.000,00
+      </descricaoresumida>
+      <area_uso_comum>107,77</area_uso_comum>
+      <area_uso_privativo>146,95</area_uso_privativo>
+      <area_total_imovel>254,72</area_total_imovel>
+      <area_terreno>254,72</area_terreno>
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>250000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_01_frente______________.jpg</arquivo_foto>
+        <descricao_foto>frente</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_02_living______________.jpg</arquivo_foto>
+        <descricao_foto>living</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_03_living_entrada______.jpg</arquivo_foto>
+        <descricao_foto>living entrada</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_04_living_lateral______.jpg</arquivo_foto>
+        <descricao_foto>living lateral</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_05_living_cont_________.jpg</arquivo_foto>
+        <descricao_foto>living cont</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_06_cozinha_mont________.jpg</arquivo_foto>
+        <descricao_foto>cozinha mont</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_07_cozinha_cont._______.jpg</arquivo_foto>
+        <descricao_foto>cozinha cont.</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_08_churrasqueira_______.jpg</arquivo_foto>
+        <descricao_foto>churrasqueira</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_09_corredor____________.jpg</arquivo_foto>
+        <descricao_foto>corredor</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_10_quarto_1____________.jpg</arquivo_foto>
+        <descricao_foto>quarto 1</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_11_quarto_2____________.jpg</arquivo_foto>
+        <descricao_foto>quarto 2</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_12_suite_frente________.jpg</arquivo_foto>
+        <descricao_foto>suite frente</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_13_suite_cont._________.jpg</arquivo_foto>
+        <descricao_foto>suite cont.</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_14_banheiro_suite______.jpg</arquivo_foto>
+        <descricao_foto>banheiro suite</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_15_box_suite___________.jpg</arquivo_foto>
+        <descricao_foto>box suite</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_16_banheiro_social_____.jpg</arquivo_foto>
+        <descricao_foto>banheiro social</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_17_box_social__________.jpg</arquivo_foto>
+        <descricao_foto>box social</descricao_foto>
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_18_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_19_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_20_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_21_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_22_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_23_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_24_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_25_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0026</codigo_imovel>
+        <arquivo_foto>foto_00026_26_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>15</codigo>
+      <endereco />
+      <bairro>MEDIANEIRA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Excelente Casa no centro do Terreno com 2 dormitórios, Ar Condicionado de parede, Área Serviço, Cozinha c/armários, Dep Empr., Living 2 ambientes, Dorm.c/armários, Garagem para 02 carros, Churrasqueira. 149 m²</descricao>
+      <descricaoresumida>
+        Excelente Casa no centro do Terreno com 2 dormitórios, Ar Condicionado de parede, Área Serviço, Cozinha c/armários, Dep Empr., Living 2 ambientes, Dorm.c/armários, Garagem para 02 carros, Churrasqueira. 149 m²
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel>149,06</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites />
+      <garagens>1</garagens>
+      <valor>280000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0015</codigo_imovel>
+        <arquivo_foto>foto_00015_16_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>31</codigo>
+      <endereco />
+      <bairro>CAMAQUA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Prédio com 195,95 m²</descricao>
+      <descricaoresumida>Prédio com 195,95 m²</descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel>195,95</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios />
+      <suites />
+      <garagens />
+      <valor>750000</valor>
+      <tipo>Prédio</tipo>
+      <imagens>
+        <codigo_imovel>0031</codigo_imovel>
+        <arquivo_foto>foto_00031_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0031</codigo_imovel>
+        <arquivo_foto>foto_00031_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0031</codigo_imovel>
+        <arquivo_foto>foto_00031_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0031</codigo_imovel>
+        <arquivo_foto>foto_00031_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0031</codigo_imovel>
+        <arquivo_foto>foto_00031_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>17</codigo>
+      <endereco />
+      <bairro>VILA NOVA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com 3 dormitórios sendo 1 suíte, Área de Serviço, Banheiro social, Churrasqueira, Cozinha c/ armários, Dep Empregada, Lareira, Lavado, Living 3 amb c/ sacada e mesanino, Vaga 2 carros, 219,85m²</descricao>
+      <descricaoresumida>
+        Apartamento com 3 dormitórios sendo 1 suíte, Área de Serviço, Banheiro social, Churrasqueira, Cozinha c/ armários, Dep Empregada, Lareira, Lavado, Living 3 amb c/ sacada e mesanino, Vaga 2 carros, 219,85m²
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>188,02</area_uso_privativo>
+      <area_total_imovel>200,02</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>320000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0017</codigo_imovel>
+        <arquivo_foto>foto_00017_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>13</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  2 dormitórios sendo 1 suíte, Área de Serviço, Churrasqueira, Esp.p/Máq.Lavar Roup, Living 2 amb., Living c/ sacada, 91,37 m². Condomínio: Piscina, Play Ground, Portaria 24 hs, Quadra Esportiva, Sala de Ginástica, Salão de Festas, Churrasq., Quisque, Fitness</descricao>
+      <descricaoresumida>
+        Apartamento com  2 dormitórios sendo 1 suíte, Área de Serviço, Churrasqueira, Esp.p/Máq.Lavar Roup, Living 2 amb., Living c/ sacada, 91,37 m². Condomínio: Piscina, Play Ground, Portaria 24 hs, Quadra Esportiva, Sala de Ginástica, Salão de Festas, Churrasq., Quisque, Fitness
+
+
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>56,87</area_uso_privativo>
+      <area_total_imovel>67,45</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>192900</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0013</codigo_imovel>
+        <arquivo_foto>foto_00013_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>18</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>
+        Apartamento com  2 dormitórios, Área de Serviço, Cozinha, Living 2 amb., 69,32m²
+        Condomínio com: Play Ground, Quadra Esportiva, Salão de Festas, Segurança 24 horas
+      </descricao>
+      <descricaoresumida>
+        Apartamento com  2 dormitórios, Área de Serviço, Cozinha, Living 2 amb., 69,32m²
+        Condomínio com: Play Ground, Quadra Esportiva, Salão de Festas, Segurança 24 horas
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>56,25</area_uso_privativo>
+      <area_total_imovel>56,25</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites />
+      <garagens />
+      <valor>169000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0018</codigo_imovel>
+        <arquivo_foto>foto_00018_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>20</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  2 dormitórios sendo 1 suíte, Área de Serviço, Living 2 amb.c/ churrasqueira, Cozinha Americana, Esp. Máquina, Box para 01 carro, 91,37 m². Condomínio: Piscina, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Churrasquei, Fitness, Espaço Gour</descricao>
+      <descricaoresumida>
+        Apartamento com  2 dormitórios sendo 1 suíte, Área de Serviço, Living 2 amb.c/ churrasqueira, Cozinha Americana, Esp. Máquina, Box para 01 carro, 91,37 m². Condomínio: Piscina, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Churrasquei, Fitness, Espaço Gour
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>56,27</area_uso_privativo>
+      <area_total_imovel>66,85</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>195000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0020</codigo_imovel>
+        <arquivo_foto>foto_00020_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>22</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com  3 dormitórios sendo 1 suíte, Churrasqueira, , Espera p/Split, Lavado, Living 2 amb., Cozinha Americana c/ armários, Área de serviço integrada à cozinha,  109,77 m². Condomínio com: Piscina, Quadra Esportiva, Salão de Festas, Segurança 24 horas, Churrasq, Fitness, Esp Gourmet, Praça Centr, Pergolados, Brinquedoteca, Home Theater</descricao>
+      <descricaoresumida>
+        Apartamento com  3 dormitórios sendo 1 suíte, Churrasqueira, , Espera p/Split, Lavado, Living 2 amb., Cozinha Americana c/ armários, Área de serviço integrada à cozinha,  109,77 m². Condomínio com: Piscina, Quadra Esportiva, Salão de Festas, Segurança 24 horas, Churrasq, Fitness, Esp Gourmet, Praça Centr, Pergolados, Brinquedoteca, Home Theater
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>67,54</area_uso_privativo>
+      <area_total_imovel>78,12</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>195000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0022</codigo_imovel>
+        <arquivo_foto>foto_00022_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>23</codigo>
+      <endereco />
+      <bairro>TRISTEZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento  3 dormitórios sendo 1 suíte, Banheiro social, Cozinha/área serviço, Living 2 amb. c/sacada, 109,77 m². Condomínio com: Piscina, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Churrasq, Quiosque, Fitness, Espaço Gourmet, Praça Central, Brinquedoteca, Home Teater</descricao>
+      <descricaoresumida>
+        Apartamento  3 dormitórios sendo 1 suíte, Banheiro social, Cozinha/área serviço, Living 2 amb. c/sacada, 109,77 m². Condomínio com: Piscina, Play Ground, Quadra Esportiva, Sala de Jogos, Salão de Festas, Segurança 24 horas, Churrasq, Quiosque, Fitness, Espaço Gourmet, Praça Central, Brinquedoteca, Home Teater
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo>67,54</area_uso_privativo>
+      <area_total_imovel>78,12</area_total_imovel>
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>195000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0023</codigo_imovel>
+        <arquivo_foto>foto_00023_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>37</codigo>
+      <endereco />
+      <bairro>CRISTAL</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Terreno com 1.500 m²</descricao>
+      <descricaoresumida>
+        Terreno com 1.500 m²
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel />
+      <area_terreno>1500</area_terreno>
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios />
+      <suites />
+      <garagens />
+      <valor>2400000</valor>
+      <tipo>Terreno</tipo>
+      <imagens />
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>30</codigo>
+      <endereco />
+      <bairro>SANTA TEREZA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Casa  2 dormitórios, 2 suites sendo uma Master, Área Serviço, Banheiro Auxiliar, Gabinete, Lareira, Sala de jantar, Hidro, Closet, Living Amplo, Copa/Cozinha, Estar Íntimo, Jardim com Piscina e Vista Panorâmica. Prédio em anexo com Salão de Festas, Dependência de Empregados, espaço para Fitness, Depósito e Banheiro Auxiliar.</descricao>
+      <descricaoresumida>
+        Casa  2 dormitórios, 2 suites sendo uma Master, Área Serviço, Banheiro Auxiliar, Gabinete, Lareira, Sala de jantar, Hidro, Closet, Living Amplo, Copa/Cozinha, Estar Íntimo, Jardim com Piscina e Vista Panorâmica. Prédio em anexo com Salão de Festas, Dependência de Empregados, espaço para Fitness, Depósito e Banheiro Auxiliar.
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>2</dormitorios>
+      <suites>2</suites>
+      <garagens />
+      <valor>1350000</valor>
+      <tipo>Casa</tipo>
+      <imagens>
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0030</codigo_imovel>
+        <arquivo_foto>foto_00030_16_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>36</codigo>
+      <endereco />
+      <bairro>JARDIM VILA NOVA</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com 1 dormitório, Área de Serviço, Esp.p/Máq.Lavar Roup, Living 2 amb., Piso Cerâmica e Decorflex, 41,07 m². Condomínio com: Churrasqueira, Play Ground, Quadra Esportiva, Salão de Festas, Portaria 24 horas, Zelador Residente</descricao>
+      <descricaoresumida>
+        Apartamento com 1 dormitório, Área de Serviço, Esp.p/Máq.Lavar Roup, Living 2 amb., Piso Cerâmica e Decorflex, 41,07 m². Condomínio com: Churrasqueira, Play Ground, Quadra Esportiva, Salão de Festas, Portaria 24 horas, Zelador Residente
+      </descricaoresumida>
+      <area_uso_comum>41,07</area_uso_comum>
+      <area_uso_privativo>45,91</area_uso_privativo>
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>1</dormitorios>
+      <suites />
+      <garagens />
+      <valor>86000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0036</codigo_imovel>
+        <arquivo_foto>foto_00036_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+    <imovel>
+      <destaque>N</destaque>
+      <codigo>39</codigo>
+      <endereco />
+      <bairro>MENINO DEUS</bairro>
+      <cidade>PORTO ALEGRE                                      </cidade>
+      <descricao>Apartamento com 3 dormitórios sendo 1 suíte, Área de Serv.Fechada, Ban.Soc.c/Arm e Box, Banheiro social, Churrasqueira, Cozinha c/ armários, Dep.Emp.c/Armário, Esp.p/Máq.Lavar Louç, Esp.p/Máq.Lavar Roup, Gás central, Hall de Entrada, Living c/ sacada, Dependência de Empregada. Condomínio com: Depósito, Elevador, Fitness, Play Ground, Portaria, Salão de Festas, Segurança 24 horas, Zeladoria</descricao>
+      <descricaoresumida>
+        Apartamento com 3 dormitórios sendo 1 suíte, Área de Serv.Fechada, Ban.Soc.c/Arm e Box, Banheiro social, Churrasqueira, Cozinha c/ armários, Dep.Emp.c/Armário, Esp.p/Máq.Lavar Louç, Esp.p/Máq.Lavar Roup, Gás central, Hall de Entrada, Living c/ sacada, Dependência de Empregada. Condomínio com: Depósito, Elevador, Fitness, Play Ground, Portaria, Salão de Festas, Segurança 24 horas, Zeladoria
+      </descricaoresumida>
+      <area_uso_comum />
+      <area_uso_privativo />
+      <area_total_imovel />
+      <area_terreno />
+      <tipo_area_terreno> m²</tipo_area_terreno>
+      <dormitorios>3</dormitorios>
+      <suites>1</suites>
+      <garagens>1</garagens>
+      <valor>600000</valor>
+      <tipo>Apartamento</tipo>
+      <imagens>
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_01_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_02_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_03_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_04_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_05_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_06_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_07_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_08_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_09_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_10_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_11_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_12_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_13_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_14_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_15_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_16_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_17_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_18_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_19_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_20_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_21_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_22_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+        <codigo_imovel>0039</codigo_imovel>
+        <arquivo_foto>foto_00039_23_____________________.jpg</arquivo_foto>
+        <descricao_foto />
+      </imagens>
+    </imovel>
+  </imoveis>
+</vendas>
