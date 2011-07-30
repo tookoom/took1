@@ -82,11 +82,25 @@
     <Compile Include="Diagnostics\EventLogEntry.cs" />
     <Compile Include="Diagnostics\EventLogEntryType.cs" />
     <Compile Include="Diagnostics\InputLanguageManager.cs" />
-    <Compile Include="Html\Const.cs" />
+    <Compile Include="Html\Collection\HtmlAttributeCollection.cs" />
+    <Compile Include="Html\Collection\HtmlElementCollection.cs" />
+    <Compile Include="Html\Elements\HtmlBlankRow.cs" />
+    <Compile Include="Html\Elements\HtmlBody.cs" />
+    <Compile Include="Html\Elements\HtmlContainer.cs" />
+    <Compile Include="Html\Elements\HtmlDiv.cs" />
+    <Compile Include="Html\Elements\HtmlElement.cs" />
+    <Compile Include="Html\Elements\HtmlHead.cs" />
+    <Compile Include="Html\Elements\HtmlHeading.cs" />
+    <Compile Include="Html\Elements\HtmlLiteral.cs" />
+    <Compile Include="Html\Elements\HtmlParagraph.cs" />
+    <Compile Include="Html\Elements\HtmlTable.cs" />
+    <Compile Include="Html\Elements\HtmlTableDivision.cs" />
+    <Compile Include="Html\Elements\HtmlTableRow.cs" />
+    <Compile Include="Html\Elements\HtmlText.cs" />
+    <Compile Include="Html\Elements\IHtmlElement.cs" />
+    <Compile Include="Html\HtmlAttribute.cs" />
     <Compile Include="Html\HtmlBase.cs" />
-    <Compile Include="Html\HtmlBody.cs" />
-    <Compile Include="Html\HtmlBuilder.cs" />
-    <Compile Include="Html\HtmlHead.cs" />
+    <Compile Include="Html\HtmlDocument.cs" />
     <Compile Include="Reflection\TypeLoader.cs" />
     <Compile Include="Resources\CommonStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -106,6 +120,7 @@
     <Compile Include="Settings\SettingsLoader.cs" />
     <Compile Include="Reflection\AssemblyLoader.cs" />
     <Compile Include="Utility\ErrorMessageBuilder.cs" />
+    <Compile Include="Utility\FileHelper.cs" />
     <Compile Include="Utility\StringHelper.cs" />
     <Compile Include="Xml\XmlHelper.cs" />
     <Compile Include="Xml\XmlLoader.cs" />
@@ -134,7 +149,6 @@
       <LastGenOutput>CommonStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

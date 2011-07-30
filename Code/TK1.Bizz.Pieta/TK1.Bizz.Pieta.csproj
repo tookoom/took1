@@ -64,6 +64,7 @@
     <Compile Include="Data\SiteController.cs" />
     <Compile Include="Data\SiteSearchParameters.cs" />
     <Compile Include="MailHelper.cs" />
+    <Compile Include="SiteHelper.cs" />
     <Compile Include="Xml\XmlSitePicTags.cs" />
     <Compile Include="Xml\XmlSitePic.cs" />
     <Compile Include="Xml\XmlSite.cs" />

@@ -10,10 +10,46 @@ namespace TK1.Utility
         /// <summary>
         /// Converts the phrase to specified convention.
         /// </summary>
+        /// <param name="value"></param>
+        /// <param name="cases">The cases.</param>
+        /// <returns>string</returns>
+        public static string ConvertCaseString(string value, UpperCase upperCase)
+        {
+            char[] chars = value.ToCharArray();
+            StringBuilder stringBuilder = new StringBuilder();
+
+            bool toUpper = true;
+            bool autoUpper = upperCase == UpperCase.UpperFirstWord;
+            foreach (char c in chars)
+            {
+                if (toUpper)
+                {
+                    if (char.IsUpper(c))
+                        stringBuilder.Append(c);
+                    else
+                        stringBuilder.Append(char.ToUpper(c));
+                    toUpper = false;
+                }
+                else 
+                {
+                    if (char.IsUpper(c))
+                        stringBuilder.Append(char.ToLower(c));
+                    else
+                        stringBuilder.Append(c);
+                }
+                if (c == ' ')
+                    if(autoUpper)
+                        toUpper = true;
+            }
+            return stringBuilder.ToString();
+        }
+        /// <summary>
+        /// Converts the phrase to specified convention.
+        /// </summary>
         /// <param name="phrase"></param>
         /// <param name="cases">The cases.</param>
         /// <returns>string</returns>
-        static string ConvertCaseString(string phrase, Case cases)
+        public static string ConvertCaseString(string phrase, Case cases)
         {
             char splitter = ' ';//, '-', '.'
 
@@ -40,10 +76,16 @@ namespace TK1.Utility
             return stringBuilder.ToString();
         }
 
-        enum Case
+        public enum Case
         {
             PascalCase,
-            CamelCase
+            CamelCase,
+
+        }
+        public enum UpperCase
+        {
+            UpperFirstWord,
+            UpperFirstParagraph
         }
     }
 }

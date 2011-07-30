@@ -9,10 +9,11 @@ namespace TK1.Bizz.Pieta.Xml
     public class XmlSitePic
     {
         public int SiteCode { get; set; }
-        public int SitePicCode { get; set; }
+        public int Index { get; set; }
         public string FileType { get; set; }
-        public string FileData { get; set; }
-        public bool ExcludeSitePic { get; set; }
+        public string FileName { get; set; }
+        public string Description { get; set; }
 
     }
 }
+

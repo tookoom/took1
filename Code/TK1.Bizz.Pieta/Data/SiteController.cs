@@ -5,6 +5,7 @@ using System.Text;
 using TK1.Bizz.Pieta.Data.Extension;
 using TK1.Bizz.Pieta.Data.Presentation;
 using TK1.Bizz.Pieta.Xml;
+using TK1.Utility;
 
 namespace TK1.Bizz.Pieta.Data
 {
@@ -12,6 +13,135 @@ namespace TK1.Bizz.Pieta.Data
     {
         public SiteController()
         {
+        }
+
+        public void AddSalesSiteAds(List<XmlSite> xmlSiteAds)
+        {
+            try
+            {
+                if (xmlSiteAds != null)
+                {
+                    foreach (var item in Entities.SiteAds.Where(o => o.AdType.Name == "Venda"))
+                    {
+                        Entities.DeleteObject(item);
+                        //Entities.SaveChanges();
+                    }
+                    foreach (var xmlSiteAd in xmlSiteAds)
+                    {
+                        AdType adType = Entities.AdTypes.Where(o => o.Name == "Venda").FirstOrDefault();
+                        if (adType == null)
+                        {
+                            adType = new AdType() { Name = "Venda" };
+                            Entities.AddToAdTypes(adType);
+                        }
+                        SiteType siteType = Entities.SiteTypes.Where(o => o.Name == xmlSiteAd.SiteType).FirstOrDefault();
+                        if (siteType == null)
+                        {
+                            string categoryName = string.Empty;
+                            string roomDisplayName = string.Empty;
+                            switch (xmlSiteAd.Category)
+                            {
+                                case "C":
+                                    categoryName = "Comercial";
+                                    break;
+                                case "I":
+                                    categoryName = "Industrial";
+                                    break;
+                                case "R":
+                                    categoryName = "Residencial";
+                                    roomDisplayName = "dormitório(s)";
+                                    break;
+                            }
+
+
+                            Category category = Entities.Categories.Where(o => o.Name == categoryName).FirstOrDefault();
+                            if (category != null)
+                            {
+                                siteType = new SiteType() { Category = category, Name = xmlSiteAd.SiteType, RoomDisplayName = roomDisplayName };
+                                Entities.AddToSiteTypes(siteType);
+                            }
+
+                        }
+                        else
+                        {
+                            siteType.CategoryReference.Load();
+                            Category category = siteType.Category;
+                            City city = Entities.Cities.Where(o => o.Name == xmlSiteAd.City).FirstOrDefault();
+                            if (city == null)
+                            {
+                                city = new City() { Name = StringHelper.ConvertCaseString(xmlSiteAd.City, StringHelper.UpperCase.UpperFirstWord) };
+                                Entities.AddToCities(city);
+                            }
+                            District district = Entities.Districts.Where(o => o.Name == xmlSiteAd.District).FirstOrDefault();
+                            if (district == null)
+                            {
+                                district = new District() { Name = StringHelper.ConvertCaseString(xmlSiteAd.District, StringHelper.UpperCase.UpperFirstWord), Region = Entities.Regions.FirstOrDefault() };
+                                Entities.AddToDistricts(district);
+                            }
+                            Site dbSite = new Site()
+                            {
+                                City = city,
+                                District = district,
+                                ExternalArea = xmlSiteAd.ExternalArea,
+                                InternalArea = xmlSiteAd.InternalArea,
+                                TotalArea = xmlSiteAd.TotalArea,
+                                TotalRooms = xmlSiteAd.RoomNumber,
+                                SiteType = siteType
+                            };
+                            foreach (var pic in xmlSiteAd.Pictures)
+                            {
+                                SitePic sitePic = new SitePic()
+                                {
+                                    Description = pic.Description,
+                                    FileName = pic.FileName,
+                                    Site = dbSite,
+                                    PicID = pic.Index
+                                };
+                                Entities.AddToSitePics(sitePic);
+                            }
+
+                            foreach (var description in xmlSiteAd.Details)
+                            {
+                                SiteDescription siteDescription = new SiteDescription()
+                                {
+                                    Description = description.Key,
+                                    Value = description.Value,
+                                    Site = dbSite
+                                };
+                            }
+                            SiteAd siteAd = new SiteAd()
+                            {
+                                AdType = adType,
+                                Category = category,
+                                Description = xmlSiteAd.InternetDescription,
+                                Price = xmlSiteAd.Value,
+                                Site = dbSite,
+                                SiteAdID = xmlSiteAd.SiteCode,
+                            };
+                            Entities.AddToSiteAds(siteAd);
+                            Entities.SaveChanges();
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exception)
+            {
+                LogController.WriteException("SiteController.AddSiteAds", exception, true);
+            }
+        }
+
+        public static void CleanUpDatabase()
+        {
+            try
+            {
+                clearUnusedSiteChildren();
+                clearUnusedSites();
+            }
+            catch (Exception exception)
+            {
+                LogController.WriteException("SiteController.CleanUpDatabase", exception);
+            }
         }
 
         public static List<string> GetCities()
@@ -173,6 +303,28 @@ namespace TK1.Bizz.Pieta.Data
             }
             return result;
         }
+        public static string GetSitePicDescription(string fileName)
+        {
+            string result = null;
+            if (fileName != null)
+            {
+                try
+                {
+                    using (PietaEntities entities = BaseController.GetPietaEntities())
+                    {
+                        result = (from o in entities.SitePics
+                                  where o.FileName == fileName
+                                  select o.Description).FirstOrDefault();
+                    }
+
+                }
+                catch (Exception exception)
+                {
+                    LogController.WriteException("SiteController.GetSiteAd", exception);
+                }
+            }
+            return result;
+        }
         public static List<string> GetSiteTypes(string category)
         {
             List<string> result = null;
@@ -190,6 +342,8 @@ namespace TK1.Bizz.Pieta.Data
             {
                 LogController.WriteException("SiteController.GetSiteTypes", exception);
             }
+            if (result == null)
+                result = new List<string>();
             return result;
         }
         //public static List<SiteAd> SearchSites_NEW(SiteSearchParameters parameters)
@@ -319,90 +473,48 @@ namespace TK1.Bizz.Pieta.Data
             }
             return result;
         }
-        public void AddSalesSiteAds(List<XmlSite> sites)
+
+        private static void clearUnusedSites()
         {
-            try
+            using (PietaEntities entities = BaseController.GetPietaEntities())
             {
-                if (sites != null)
-                {
-                    foreach (var item in Entities.SiteAds.Where(o => o.AdType.Name == "Venda"))
-                    {
-                        Entities.DeleteObject(item);
-                        //Entities.SaveChanges();
-                    }
-                    foreach (var site in sites)
-                    {
-                        AdType adType = Entities.AdTypes.Where(o => o.Name == "Venda").FirstOrDefault();
-                        if (adType == null)
-                        {
-                            adType = new AdType() { Name = "Venda" };
-                            Entities.AddToAdTypes(adType);
-                        }
-                        SiteType siteType = Entities.SiteTypes.Where(o => o.Name == site.SiteType).FirstOrDefault();
-                        if (siteType == null)
-                        {
-                            //siteType = new SiteType() { Category = category, Name = site.SiteType };
-                            //Entities.AddToSiteTypes(siteType);
-                        }
-                        else
-                        {
-                            siteType.CategoryReference.Load();
-                            Category category = siteType.Category;
-                            //Category category = Entities.Categories.Where(o => o.Name == "Residencial").FirstOrDefault();
-                            //if (category == null)
-                            //{
-                            //    category = new Category() { Name = "Residencial" };
-                            //    Entities.AddToCategories(category);
-                            //}
-                            City city = Entities.Cities.Where(o => o.Name == site.City).FirstOrDefault();
-                            if (city == null)
-                            {
-                                city = new City() { Name = site.City };
-                                Entities.AddToCities(city);
-                            }
-                            District district = Entities.Districts.Where(o => o.Name == site.District).FirstOrDefault();
-                            if (district == null)
-                            {
-                                district = new District() { Name = site.District, Region = Entities.Regions.FirstOrDefault() };
-                                Entities.AddToDistricts(district);
-                            }
-                            Site dbSite = new Site()
-                            {
-                                City = city,
-                                District = district,
-                                InternalArea = site.Area,
-                                TotalRooms = site.RoomNumber,
-                                SiteType = siteType
-                            };
-                            //foreach (var description in site.DescriptionCollection)
-                            //{
-                            //    SiteDescription siteDescription = new SiteDescription()
-                            //    {
-                            //        Description = description.Key,
-                            //        Value = description.Value,
-                            //        Site = dbSite
-                            //    };
-                            //}
-                            SiteAd siteAd = new SiteAd()
-                            {
-                                AdType = adType,
-                                Category = category,
-                                Description = site.InternetDescription,
-                                Price = site.Value,
-                                Site = dbSite,
-                                SiteAdID = site.SiteCode,
-                            };
-                            Entities.AddToSiteAds(siteAd);
-                            Entities.SaveChanges();
-                        }
-                    }
-                }
-                        
-            }
-            catch (Exception exception)
-            {
-                LogController.WriteException("SiteController.AddSiteAds", exception, true);
+
+                var unusedSites = from o in entities.Sites
+                                  where o.SiteAd.Count() == 0
+                                  select o;
+                //foreach (var site in unusedSites)
+                //    entities.DeleteObject(site);
+                unusedSites.ToList().ForEach(o => entities.DeleteObject(o));
+                entities.SaveChanges();
             }
         }
+        private static void clearUnusedSiteChildren()
+        {
+            using (PietaEntities entities = BaseController.GetPietaEntities())
+            {
+
+                var unusedSites = from o in entities.Sites
+                                  where o.SiteAd.Count() == 0
+                                  select o;
+                foreach (var site in unusedSites)
+                {
+                    site.SitePics.Load();
+                    var unusedPics = from o in site.SitePics
+                                     select o;
+                    //foreach (var pic in unusedPics)
+                    //    entities.DeleteObject(pic);
+                    unusedPics.ToList().ForEach(o => entities.DeleteObject(o));
+
+                    site.SiteDescriptions.Load();
+                    var unusedDescription = from o in site.SiteDescriptions
+                                            select o;
+                    //foreach (var description in unusedDescription)
+                    //    entities.DeleteObject(description);
+                    unusedDescription.ToList().ForEach(o => entities.DeleteObject(o));
+                }
+                entities.SaveChanges();
+            }
+        }
+
     }
 }
