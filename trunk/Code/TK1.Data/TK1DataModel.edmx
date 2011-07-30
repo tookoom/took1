@@ -1,0 +1,1603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TK1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TK1ModelStoreContainer">
+          <EntitySet Name="EventLog" EntityType="TK1Model.Store.EventLog" store:Type="Tables" Schema="Audit" />
+          <EntitySet Name="EventType" EntityType="TK1Model.Store.EventType" store:Type="Tables" Schema="Audit" />
+          <EntitySet Name="ProcExec" EntityType="TK1Model.Store.ProcExec" store:Type="Tables" Schema="Audit" />
+          <EntitySet Name="ProcExecStatus" EntityType="TK1Model.Store.ProcExecStatus" store:Type="Tables" Schema="Audit" />
+          <EntitySet Name="XmlFiles" EntityType="TK1Model.Store.XmlFiles" store:Type="Tables" Schema="DataLoad" />
+          <EntitySet Name="AddressData" EntityType="TK1Model.Store.AddressData" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="AddressType" EntityType="TK1Model.Store.AddressType" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="App" EntityType="TK1Model.Store.App" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="AppLog" EntityType="TK1Model.Store.AppLog" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="Category" EntityType="TK1Model.Store.Category" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="ContactData" EntityType="TK1Model.Store.ContactData" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="ContactType" EntityType="TK1Model.Store.ContactType" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="Context" EntityType="TK1Model.Store.Context" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="Customer" EntityType="TK1Model.Store.Customer" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="CustomerContactData" EntityType="TK1Model.Store.CustomerContactData" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="CustomerPerson" EntityType="TK1Model.Store.CustomerPerson" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="Parameter" EntityType="TK1Model.Store.Parameter" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="ParameterGroup" EntityType="TK1Model.Store.ParameterGroup" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="Person" EntityType="TK1Model.Store.Person" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="PersonAddressData" EntityType="TK1Model.Store.PersonAddressData" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="PersonContactData" EntityType="TK1Model.Store.PersonContactData" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="Process" EntityType="TK1Model.Store.Process" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="User" EntityType="TK1Model.Store.User" store:Type="Tables" Schema="TK1" />
+          <AssociationSet Name="FK_AddressData_AddressType" Association="TK1Model.Store.FK_AddressData_AddressType">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="AddressData" EntitySet="AddressData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_App_Context" Association="TK1Model.Store.FK_App_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="App" EntitySet="App" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Context" Association="TK1Model.Store.FK_Category_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContactData_ContactData" Association="TK1Model.Store.FK_CompanyContactData_ContactData">
+            <End Role="ContactData" EntitySet="ContactData" />
+            <End Role="CustomerContactData" EntitySet="CustomerContactData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactData_ContactDataType" Association="TK1Model.Store.FK_ContactData_ContactDataType">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="ContactData" EntitySet="ContactData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Context" Association="TK1Model.Store.FK_Customer_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerContactData_Customer" Association="TK1Model.Store.FK_CustomerContactData_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerContactData" EntitySet="CustomerContactData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerPerson_Customer" Association="TK1Model.Store.FK_CustomerPerson_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerPerson" EntitySet="CustomerPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerPerson_Person" Association="TK1Model.Store.FK_CustomerPerson_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="CustomerPerson" EntitySet="CustomerPerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventLog_EventType" Association="TK1Model.Store.FK_EventLog_EventType">
+            <End Role="EventType" EntitySet="EventType" />
+            <End Role="EventLog" EntitySet="EventLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventLog_ProcExec" Association="TK1Model.Store.FK_EventLog_ProcExec">
+            <End Role="ProcExec" EntitySet="ProcExec" />
+            <End Role="EventLog" EntitySet="EventLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameter_ParameterGroup" Association="TK1Model.Store.FK_Parameter_ParameterGroup">
+            <End Role="ParameterGroup" EntitySet="ParameterGroup" />
+            <End Role="Parameter" EntitySet="Parameter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_AddressData" Association="TK1Model.Store.FK_PersonAddress_AddressData">
+            <End Role="AddressData" EntitySet="AddressData" />
+            <End Role="PersonAddressData" EntitySet="PersonAddressData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_Person" Association="TK1Model.Store.FK_PersonAddress_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonAddressData" EntitySet="PersonAddressData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonContactData_ContactData" Association="TK1Model.Store.FK_PersonContactData_ContactData">
+            <End Role="ContactData" EntitySet="ContactData" />
+            <End Role="PersonContactData" EntitySet="PersonContactData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonContactData_Person" Association="TK1Model.Store.FK_PersonContactData_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonContactData" EntitySet="PersonContactData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_App" Association="TK1Model.Store.FK_Process_App">
+            <End Role="App" EntitySet="App" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Customer" Association="TK1Model.Store.FK_Process_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcExec_Process" Association="TK1Model.Store.FK_ProcExec_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="ProcExec" EntitySet="ProcExec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcExec_ProcExecStatus" Association="TK1Model.Store.FK_ProcExec_ProcExecStatus">
+            <End Role="ProcExecStatus" EntitySet="ProcExecStatus" />
+            <End Role="ProcExec" EntitySet="ProcExec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_Context" Association="TK1Model.Store.FK_UserData_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_Person" Association="TK1Model.Store.FK_UserData_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XmlFiles_Context" Association="TK1Model.Store.FK_XmlFiles_Context">
+            <End Role="Context" EntitySet="Context" />
+            <End Role="XmlFiles" EntitySet="XmlFiles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcExecID" Type="int" Nullable="false" />
+          <Property Name="EventTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="EventTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="Assembly" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="Source" Type="varchar" Nullable="false" MaxLength="70" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Data" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="EventTypeID" />
+          </Key>
+          <Property Name="EventTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="ProcExec">
+          <Key>
+            <PropertyRef Name="ProcExecID" />
+          </Key>
+          <Property Name="ProcExecID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="int" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="BeginTimestamp" Type="datetime" />
+          <Property Name="EndTimestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProcExecStatus">
+          <Key>
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Status" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="XmlFiles">
+          <Key>
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ContextID" Type="int" Nullable="false" />
+          <Property Name="LoadTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="ProcessTimestamp" Type="datetime" />
+          <Property Name="Data" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="AddressData">
+          <Key>
+            <PropertyRef Name="AddressDataID" />
+          </Key>
+          <Property Name="AddressDataID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AddressTypeID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="App">
+          <Key>
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="AppID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AppLog">
+          <Key>
+            <PropertyRef Name="AppLogID" />
+          </Key>
+          <Property Name="AppLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="smalldatetime" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Data" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="64" />
+          <Property Name="Caption" Type="varchar" MaxLength="64" />
+          <Property Name="Description" Type="varchar" MaxLength="64" />
+          <Property Name="CustomData" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ContactData">
+          <Key>
+            <PropertyRef Name="ContactDataID" />
+          </Key>
+          <Property Name="ContactDataID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContactTypeID" Type="int" Nullable="false" />
+          <Property Name="Data" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="64" />
+          <Property Name="Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ContactTypeID" />
+          </Key>
+          <Property Name="ContactTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="CustomData" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Context">
+          <Key>
+            <PropertyRef Name="ContextID" />
+          </Key>
+          <Property Name="ContextID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="32" />
+          <Property Name="CustomData" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="FullName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CustomerContactData">
+          <Key>
+            <PropertyRef Name="CustomerContactInfoID" />
+          </Key>
+          <Property Name="CustomerContactInfoID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="ContactDataID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerPerson">
+          <Key>
+            <PropertyRef Name="CustomerPersonID" />
+          </Key>
+          <Property Name="CustomerPersonID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParameterID" />
+          </Key>
+          <Property Name="ParameterID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterGroupID" Type="int" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="Value" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="ParameterGroup">
+          <Key>
+            <PropertyRef Name="ParameterGroupID" />
+          </Key>
+          <Property Name="ParameterGroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" MaxLength="64" />
+          <Property Name="LastName" Type="varchar" MaxLength="64" />
+          <Property Name="NickName" Type="varchar" MaxLength="64" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="CustomSettings" Type="varchar(max)" />
+          <Property Name="CustomData" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PersonAddressData">
+          <Key>
+            <PropertyRef Name="PersonAddressID" />
+          </Key>
+          <Property Name="PersonAddressID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="AddressDataID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonContactData">
+          <Key>
+            <PropertyRef Name="PersonContactDataID" />
+          </Key>
+          <Property Name="PersonContactDataID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="ContactDataID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ProcessID" />
+          </Key>
+          <Property Name="ProcessID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="ContextID" Type="int" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <Association Name="FK_AddressData_AddressType">
+          <End Role="AddressType" Type="TK1Model.Store.AddressType" Multiplicity="1" />
+          <End Role="AddressData" Type="TK1Model.Store.AddressData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="AddressData">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_App_Context">
+          <End Role="Context" Type="TK1Model.Store.Context" Multiplicity="0..1" />
+          <End Role="App" Type="TK1Model.Store.App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="App">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Context">
+          <End Role="Context" Type="TK1Model.Store.Context" Multiplicity="0..1" />
+          <End Role="Category" Type="TK1Model.Store.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContactData_ContactData">
+          <End Role="ContactData" Type="TK1Model.Store.ContactData" Multiplicity="1" />
+          <End Role="CustomerContactData" Type="TK1Model.Store.CustomerContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Principal>
+            <Dependent Role="CustomerContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactData_ContactDataType">
+          <End Role="ContactType" Type="TK1Model.Store.ContactType" Multiplicity="1" />
+          <End Role="ContactData" Type="TK1Model.Store.ContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeID" />
+            </Principal>
+            <Dependent Role="ContactData">
+              <PropertyRef Name="ContactTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Context">
+          <End Role="Context" Type="TK1Model.Store.Context" Multiplicity="1" />
+          <End Role="Customer" Type="TK1Model.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerContactData_Customer">
+          <End Role="Customer" Type="TK1Model.Store.Customer" Multiplicity="1" />
+          <End Role="CustomerContactData" Type="TK1Model.Store.CustomerContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerContactData">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerPerson_Customer">
+          <End Role="Customer" Type="TK1Model.Store.Customer" Multiplicity="1" />
+          <End Role="CustomerPerson" Type="TK1Model.Store.CustomerPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerPerson">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerPerson_Person">
+          <End Role="Person" Type="TK1Model.Store.Person" Multiplicity="1" />
+          <End Role="CustomerPerson" Type="TK1Model.Store.CustomerPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="CustomerPerson">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventLog_EventType">
+          <End Role="EventType" Type="TK1Model.Store.EventType" Multiplicity="1" />
+          <End Role="EventLog" Type="TK1Model.Store.EventLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="EventTypeID" />
+            </Principal>
+            <Dependent Role="EventLog">
+              <PropertyRef Name="EventTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventLog_ProcExec">
+          <End Role="ProcExec" Type="TK1Model.Store.ProcExec" Multiplicity="1" />
+          <End Role="EventLog" Type="TK1Model.Store.EventLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcExec">
+              <PropertyRef Name="ProcExecID" />
+            </Principal>
+            <Dependent Role="EventLog">
+              <PropertyRef Name="ProcExecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameter_ParameterGroup">
+          <End Role="ParameterGroup" Type="TK1Model.Store.ParameterGroup" Multiplicity="0..1" />
+          <End Role="Parameter" Type="TK1Model.Store.Parameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroup">
+              <PropertyRef Name="ParameterGroupID" />
+            </Principal>
+            <Dependent Role="Parameter">
+              <PropertyRef Name="ParameterGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_AddressData">
+          <End Role="AddressData" Type="TK1Model.Store.AddressData" Multiplicity="1" />
+          <End Role="PersonAddressData" Type="TK1Model.Store.PersonAddressData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressData">
+              <PropertyRef Name="AddressDataID" />
+            </Principal>
+            <Dependent Role="PersonAddressData">
+              <PropertyRef Name="AddressDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_Person">
+          <End Role="Person" Type="TK1Model.Store.Person" Multiplicity="1" />
+          <End Role="PersonAddressData" Type="TK1Model.Store.PersonAddressData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonAddressData">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonContactData_ContactData">
+          <End Role="ContactData" Type="TK1Model.Store.ContactData" Multiplicity="1" />
+          <End Role="PersonContactData" Type="TK1Model.Store.PersonContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Principal>
+            <Dependent Role="PersonContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonContactData_Person">
+          <End Role="Person" Type="TK1Model.Store.Person" Multiplicity="1" />
+          <End Role="PersonContactData" Type="TK1Model.Store.PersonContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonContactData">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_App">
+          <End Role="App" Type="TK1Model.Store.App" Multiplicity="1" />
+          <End Role="Process" Type="TK1Model.Store.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="App">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Customer">
+          <End Role="Customer" Type="TK1Model.Store.Customer" Multiplicity="1" />
+          <End Role="Process" Type="TK1Model.Store.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcExec_Process">
+          <End Role="Process" Type="TK1Model.Store.Process" Multiplicity="0..1" />
+          <End Role="ProcExec" Type="TK1Model.Store.ProcExec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessID" />
+            </Principal>
+            <Dependent Role="ProcExec">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcExec_ProcExecStatus">
+          <End Role="ProcExecStatus" Type="TK1Model.Store.ProcExecStatus" Multiplicity="0..1" />
+          <End Role="ProcExec" Type="TK1Model.Store.ProcExec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcExecStatus">
+              <PropertyRef Name="Status" />
+            </Principal>
+            <Dependent Role="ProcExec">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_Context">
+          <End Role="Context" Type="TK1Model.Store.Context" Multiplicity="0..1" />
+          <End Role="User" Type="TK1Model.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_Person">
+          <End Role="Person" Type="TK1Model.Store.Person" Multiplicity="0..1" />
+          <End Role="User" Type="TK1Model.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XmlFiles_Context">
+          <End Role="Context" Type="TK1Model.Store.Context" Multiplicity="1" />
+          <End Role="XmlFiles" Type="TK1Model.Store.XmlFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="XmlFiles">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TK1Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TK1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProcExecs" EntityType="TK1Model.ProcExec" />
+          <EntitySet Name="ProcExecStatus" EntityType="TK1Model.ProcExecStatu" />
+          <EntitySet Name="XmlFiles" EntityType="TK1Model.XmlFile" />
+          <EntitySet Name="AddressDatas" EntityType="TK1Model.AddressData" />
+          <EntitySet Name="AddressTypes" EntityType="TK1Model.AddressType" />
+          <EntitySet Name="Apps" EntityType="TK1Model.App" />
+          <EntitySet Name="Categories" EntityType="TK1Model.Category" />
+          <EntitySet Name="ContactDatas" EntityType="TK1Model.ContactData" />
+          <EntitySet Name="ContactTypes" EntityType="TK1Model.ContactType" />
+          <EntitySet Name="Contexts" EntityType="TK1Model.Context" />
+          <EntitySet Name="Customers" EntityType="TK1Model.Customer" />
+          <EntitySet Name="CustomerContactDatas" EntityType="TK1Model.CustomerContactData" />
+          <EntitySet Name="CustomerPersons" EntityType="TK1Model.CustomerPerson" />
+          <EntitySet Name="Parameters" EntityType="TK1Model.Parameter" />
+          <EntitySet Name="ParameterGroups" EntityType="TK1Model.ParameterGroup" />
+          <EntitySet Name="People" EntityType="TK1Model.Person" />
+          <EntitySet Name="PersonAddressDatas" EntityType="TK1Model.PersonAddressData" />
+          <EntitySet Name="PersonContactDatas" EntityType="TK1Model.PersonContactData" />
+          <EntitySet Name="Processes" EntityType="TK1Model.Process" />
+          <EntitySet Name="Users" EntityType="TK1Model.User" />
+          <AssociationSet Name="FK_ProcExec_Process" Association="TK1Model.FK_ProcExec_Process">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="ProcExec" EntitySet="ProcExecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcExec_ProcExecStatus" Association="TK1Model.FK_ProcExec_ProcExecStatus">
+            <End Role="ProcExecStatus" EntitySet="ProcExecStatus" />
+            <End Role="ProcExec" EntitySet="ProcExecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XmlFiles_Context" Association="TK1Model.FK_XmlFiles_Context">
+            <End Role="Context" EntitySet="Contexts" />
+            <End Role="XmlFiles" EntitySet="XmlFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressData_AddressType" Association="TK1Model.FK_AddressData_AddressType">
+            <End Role="AddressType" EntitySet="AddressTypes" />
+            <End Role="AddressData" EntitySet="AddressDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_AddressData" Association="TK1Model.FK_PersonAddress_AddressData">
+            <End Role="AddressData" EntitySet="AddressDatas" />
+            <End Role="PersonAddressData" EntitySet="PersonAddressDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_App_Context" Association="TK1Model.FK_App_Context">
+            <End Role="Context" EntitySet="Contexts" />
+            <End Role="App" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_App" Association="TK1Model.FK_Process_App">
+            <End Role="App" EntitySet="Apps" />
+            <End Role="Process" EntitySet="Processes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Context" Association="TK1Model.FK_Category_Context">
+            <End Role="Context" EntitySet="Contexts" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyContactData_ContactData" Association="TK1Model.FK_CompanyContactData_ContactData">
+            <End Role="ContactData" EntitySet="ContactDatas" />
+            <End Role="CustomerContactData" EntitySet="CustomerContactDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactData_ContactDataType" Association="TK1Model.FK_ContactData_ContactDataType">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="ContactData" EntitySet="ContactDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonContactData_ContactData" Association="TK1Model.FK_PersonContactData_ContactData">
+            <End Role="ContactData" EntitySet="ContactDatas" />
+            <End Role="PersonContactData" EntitySet="PersonContactDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Context" Association="TK1Model.FK_Customer_Context">
+            <End Role="Context" EntitySet="Contexts" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_Context" Association="TK1Model.FK_UserData_Context">
+            <End Role="Context" EntitySet="Contexts" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerContactData_Customer" Association="TK1Model.FK_CustomerContactData_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerContactData" EntitySet="CustomerContactDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerPerson_Customer" Association="TK1Model.FK_CustomerPerson_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerPerson" EntitySet="CustomerPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Customer" Association="TK1Model.FK_Process_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Process" EntitySet="Processes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerPerson_Person" Association="TK1Model.FK_CustomerPerson_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="CustomerPerson" EntitySet="CustomerPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameter_ParameterGroup" Association="TK1Model.FK_Parameter_ParameterGroup">
+            <End Role="ParameterGroup" EntitySet="ParameterGroups" />
+            <End Role="Parameter" EntitySet="Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_Person" Association="TK1Model.FK_PersonAddress_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonAddressData" EntitySet="PersonAddressDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonContactData_Person" Association="TK1Model.FK_PersonContactData_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonContactData" EntitySet="PersonContactDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserData_Person" Association="TK1Model.FK_UserData_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="EventLogs" EntityType="TK1Model.EventLog" />
+          <EntitySet Name="EventTypes" EntityType="TK1Model.EventType" />
+          <AssociationSet Name="FK_EventLog_EventType" Association="TK1Model.FK_EventLog_EventType">
+            <End Role="EventType" EntitySet="EventTypes" />
+            <End Role="EventLog" EntitySet="EventLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventLog_ProcExec" Association="TK1Model.FK_EventLog_ProcExec">
+            <End Role="ProcExec" EntitySet="ProcExecs" />
+            <End Role="EventLog" EntitySet="EventLogs" />
+          </AssociationSet>
+          <EntitySet Name="AppLogs" EntityType="TK1Model.AppLog" />
+          </EntityContainer>
+        <EntityType Name="ProcExec">
+          <Key>
+            <PropertyRef Name="ProcExecID" />
+          </Key>
+          <Property Name="ProcExecID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="BeginTimestamp" Type="DateTime" />
+          <Property Name="EndTimestamp" Type="DateTime" />
+          <NavigationProperty Name="Process" Relationship="TK1Model.FK_ProcExec_Process" FromRole="ProcExec" ToRole="Process" />
+          <NavigationProperty Name="ProcExecStatus" Relationship="TK1Model.FK_ProcExec_ProcExecStatus" FromRole="ProcExec" ToRole="ProcExecStatus" />
+          <NavigationProperty Name="EventLogs" Relationship="TK1Model.FK_EventLog_ProcExec" FromRole="ProcExec" ToRole="EventLog" />
+        </EntityType>
+        <EntityType Name="ProcExecStatu">
+          <Key>
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="70" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ProcExecs" Relationship="TK1Model.FK_ProcExec_ProcExecStatus" FromRole="ProcExecStatus" ToRole="ProcExec" />
+        </EntityType>
+        <EntityType Name="XmlFile">
+          <Key>
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ContextID" Type="Int32" Nullable="false" />
+          <Property Name="LoadTimestamp" Type="DateTime" Nullable="false" />
+          <Property Name="ProcessTimestamp" Type="DateTime" />
+          <Property Name="Data" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Context" Relationship="TK1Model.FK_XmlFiles_Context" FromRole="XmlFiles" ToRole="Context" />
+        </EntityType>
+        <EntityType Name="AddressData">
+          <Key>
+            <PropertyRef Name="AddressDataID" />
+          </Key>
+          <Property Name="AddressDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressType" Relationship="TK1Model.FK_AddressData_AddressType" FromRole="AddressData" ToRole="AddressType" />
+          <NavigationProperty Name="PersonAddressDatas" Relationship="TK1Model.FK_PersonAddress_AddressData" FromRole="AddressData" ToRole="PersonAddressData" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="AddressDatas" Relationship="TK1Model.FK_AddressData_AddressType" FromRole="AddressType" ToRole="AddressData" />
+        </EntityType>
+        <EntityType Name="App">
+          <Key>
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="AppID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="Int32" />
+          <NavigationProperty Name="Context" Relationship="TK1Model.FK_App_Context" FromRole="App" ToRole="Context" />
+          <NavigationProperty Name="Processes" Relationship="TK1Model.FK_Process_App" FromRole="App" ToRole="Process" />
+          <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="Caption" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="CustomData" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Context" Relationship="TK1Model.FK_Category_Context" FromRole="Category" ToRole="Context" />
+        </EntityType>
+        <EntityType Name="ContactData">
+          <Key>
+            <PropertyRef Name="ContactDataID" />
+          </Key>
+          <Property Name="ContactDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CustomerContactDatas" Relationship="TK1Model.FK_CompanyContactData_ContactData" FromRole="ContactData" ToRole="CustomerContactData" />
+          <NavigationProperty Name="ContactType" Relationship="TK1Model.FK_ContactData_ContactDataType" FromRole="ContactData" ToRole="ContactType" />
+          <NavigationProperty Name="PersonContactDatas" Relationship="TK1Model.FK_PersonContactData_ContactData" FromRole="ContactData" ToRole="PersonContactData" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ContactTypeID" />
+          </Key>
+          <Property Name="ContactTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="CustomData" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ContactDatas" Relationship="TK1Model.FK_ContactData_ContactDataType" FromRole="ContactType" ToRole="ContactData" />
+        </EntityType>
+        <EntityType Name="Context">
+          <Key>
+            <PropertyRef Name="ContextID" />
+          </Key>
+          <Property Name="ContextID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="CustomData" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="XmlFiles" Relationship="TK1Model.FK_XmlFiles_Context" FromRole="Context" ToRole="XmlFiles" />
+          <NavigationProperty Name="Apps" Relationship="TK1Model.FK_App_Context" FromRole="Context" ToRole="App" />
+          <NavigationProperty Name="Categories" Relationship="TK1Model.FK_Category_Context" FromRole="Context" ToRole="Category" />
+          <NavigationProperty Name="Customers" Relationship="TK1Model.FK_Customer_Context" FromRole="Context" ToRole="Customer" />
+          <NavigationProperty Name="Users" Relationship="TK1Model.FK_UserData_Context" FromRole="Context" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Context" Relationship="TK1Model.FK_Customer_Context" FromRole="Customer" ToRole="Context" />
+          <NavigationProperty Name="CustomerContactDatas" Relationship="TK1Model.FK_CustomerContactData_Customer" FromRole="Customer" ToRole="CustomerContactData" />
+          <NavigationProperty Name="CustomerPersons" Relationship="TK1Model.FK_CustomerPerson_Customer" FromRole="Customer" ToRole="CustomerPerson" />
+          <NavigationProperty Name="Processes" Relationship="TK1Model.FK_Process_Customer" FromRole="Customer" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="CustomerContactData">
+          <Key>
+            <PropertyRef Name="CustomerContactInfoID" />
+          </Key>
+          <Property Name="CustomerContactInfoID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="ContactDataID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContactData" Relationship="TK1Model.FK_CompanyContactData_ContactData" FromRole="CustomerContactData" ToRole="ContactData" />
+          <NavigationProperty Name="Customer" Relationship="TK1Model.FK_CustomerContactData_Customer" FromRole="CustomerContactData" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="CustomerPerson">
+          <Key>
+            <PropertyRef Name="CustomerPersonID" />
+          </Key>
+          <Property Name="CustomerPersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="TK1Model.FK_CustomerPerson_Customer" FromRole="CustomerPerson" ToRole="Customer" />
+          <NavigationProperty Name="Person" Relationship="TK1Model.FK_CustomerPerson_Person" FromRole="CustomerPerson" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="ParameterID" />
+          </Key>
+          <Property Name="ParameterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterGroupID" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" MaxLength="1024" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ParameterGroup" Relationship="TK1Model.FK_Parameter_ParameterGroup" FromRole="Parameter" ToRole="ParameterGroup" />
+        </EntityType>
+        <EntityType Name="ParameterGroup">
+          <Key>
+            <PropertyRef Name="ParameterGroupID" />
+          </Key>
+          <Property Name="ParameterGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Parameters" Relationship="TK1Model.FK_Parameter_ParameterGroup" FromRole="ParameterGroup" ToRole="Parameter" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="NickName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" />
+          <Property Name="CustomSettings" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CustomData" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CustomerPersons" Relationship="TK1Model.FK_CustomerPerson_Person" FromRole="Person" ToRole="CustomerPerson" />
+          <NavigationProperty Name="PersonAddressDatas" Relationship="TK1Model.FK_PersonAddress_Person" FromRole="Person" ToRole="PersonAddressData" />
+          <NavigationProperty Name="PersonContactDatas" Relationship="TK1Model.FK_PersonContactData_Person" FromRole="Person" ToRole="PersonContactData" />
+          <NavigationProperty Name="Users" Relationship="TK1Model.FK_UserData_Person" FromRole="Person" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PersonAddressData">
+          <Key>
+            <PropertyRef Name="PersonAddressID" />
+          </Key>
+          <Property Name="PersonAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="AddressDataID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressData" Relationship="TK1Model.FK_PersonAddress_AddressData" FromRole="PersonAddressData" ToRole="AddressData" />
+          <NavigationProperty Name="Person" Relationship="TK1Model.FK_PersonAddress_Person" FromRole="PersonAddressData" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="PersonContactData">
+          <Key>
+            <PropertyRef Name="PersonContactDataID" />
+          </Key>
+          <Property Name="PersonContactDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="ContactDataID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContactData" Relationship="TK1Model.FK_PersonContactData_ContactData" FromRole="PersonContactData" ToRole="ContactData" />
+          <NavigationProperty Name="Person" Relationship="TK1Model.FK_PersonContactData_Person" FromRole="PersonContactData" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ProcessID" />
+          </Key>
+          <Property Name="ProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProcExecs" Relationship="TK1Model.FK_ProcExec_Process" FromRole="Process" ToRole="ProcExec" />
+          <NavigationProperty Name="App" Relationship="TK1Model.FK_Process_App" FromRole="Process" ToRole="App" />
+          <NavigationProperty Name="Customer" Relationship="TK1Model.FK_Process_Customer" FromRole="Process" ToRole="Customer" />
+          <Property Type="String" Name="Status" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="ContextID" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Context" Relationship="TK1Model.FK_UserData_Context" FromRole="User" ToRole="Context" />
+          <NavigationProperty Name="Person" Relationship="TK1Model.FK_UserData_Person" FromRole="User" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_ProcExec_Process">
+          <End Role="Process" Type="TK1Model.Process" Multiplicity="0..1" />
+          <End Role="ProcExec" Type="TK1Model.ProcExec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessID" />
+            </Principal>
+            <Dependent Role="ProcExec">
+              <PropertyRef Name="ProcessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcExec_ProcExecStatus">
+          <End Role="ProcExecStatus" Type="TK1Model.ProcExecStatu" Multiplicity="0..1" />
+          <End Role="ProcExec" Type="TK1Model.ProcExec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcExecStatus">
+              <PropertyRef Name="Status" />
+            </Principal>
+            <Dependent Role="ProcExec">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XmlFiles_Context">
+          <End Role="Context" Type="TK1Model.Context" Multiplicity="1" />
+          <End Role="XmlFiles" Type="TK1Model.XmlFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="XmlFiles">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressData_AddressType">
+          <End Role="AddressType" Type="TK1Model.AddressType" Multiplicity="1" />
+          <End Role="AddressData" Type="TK1Model.AddressData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="AddressData">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_AddressData">
+          <End Role="AddressData" Type="TK1Model.AddressData" Multiplicity="1" />
+          <End Role="PersonAddressData" Type="TK1Model.PersonAddressData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressData">
+              <PropertyRef Name="AddressDataID" />
+            </Principal>
+            <Dependent Role="PersonAddressData">
+              <PropertyRef Name="AddressDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_App_Context">
+          <End Role="Context" Type="TK1Model.Context" Multiplicity="0..1" />
+          <End Role="App" Type="TK1Model.App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="App">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_App">
+          <End Role="App" Type="TK1Model.App" Multiplicity="1" />
+          <End Role="Process" Type="TK1Model.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="App">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Context">
+          <End Role="Context" Type="TK1Model.Context" Multiplicity="0..1" />
+          <End Role="Category" Type="TK1Model.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyContactData_ContactData">
+          <End Role="ContactData" Type="TK1Model.ContactData" Multiplicity="1" />
+          <End Role="CustomerContactData" Type="TK1Model.CustomerContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Principal>
+            <Dependent Role="CustomerContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactData_ContactDataType">
+          <End Role="ContactType" Type="TK1Model.ContactType" Multiplicity="1" />
+          <End Role="ContactData" Type="TK1Model.ContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ContactTypeID" />
+            </Principal>
+            <Dependent Role="ContactData">
+              <PropertyRef Name="ContactTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonContactData_ContactData">
+          <End Role="ContactData" Type="TK1Model.ContactData" Multiplicity="1" />
+          <End Role="PersonContactData" Type="TK1Model.PersonContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Principal>
+            <Dependent Role="PersonContactData">
+              <PropertyRef Name="ContactDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Context">
+          <End Role="Context" Type="TK1Model.Context" Multiplicity="1" />
+          <End Role="Customer" Type="TK1Model.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_Context">
+          <End Role="Context" Type="TK1Model.Context" Multiplicity="0..1" />
+          <End Role="User" Type="TK1Model.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Context">
+              <PropertyRef Name="ContextID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ContextID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerContactData_Customer">
+          <End Role="Customer" Type="TK1Model.Customer" Multiplicity="1" />
+          <End Role="CustomerContactData" Type="TK1Model.CustomerContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerContactData">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerPerson_Customer">
+          <End Role="Customer" Type="TK1Model.Customer" Multiplicity="1" />
+          <End Role="CustomerPerson" Type="TK1Model.CustomerPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerPerson">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Customer">
+          <End Role="Customer" Type="TK1Model.Customer" Multiplicity="1" />
+          <End Role="Process" Type="TK1Model.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerPerson_Person">
+          <End Role="Person" Type="TK1Model.Person" Multiplicity="1" />
+          <End Role="CustomerPerson" Type="TK1Model.CustomerPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="CustomerPerson">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameter_ParameterGroup">
+          <End Role="ParameterGroup" Type="TK1Model.ParameterGroup" Multiplicity="0..1" />
+          <End Role="Parameter" Type="TK1Model.Parameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroup">
+              <PropertyRef Name="ParameterGroupID" />
+            </Principal>
+            <Dependent Role="Parameter">
+              <PropertyRef Name="ParameterGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_Person">
+          <End Role="Person" Type="TK1Model.Person" Multiplicity="1" />
+          <End Role="PersonAddressData" Type="TK1Model.PersonAddressData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonAddressData">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonContactData_Person">
+          <End Role="Person" Type="TK1Model.Person" Multiplicity="1" />
+          <End Role="PersonContactData" Type="TK1Model.PersonContactData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonContactData">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserData_Person">
+          <End Role="Person" Type="TK1Model.Person" Multiplicity="0..1" />
+          <End Role="User" Type="TK1Model.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Type="Int32" Name="EventID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProcExecID" Nullable="false" />
+          <Property Type="DateTime" Name="EventTimestamp" Nullable="false" />
+          <Property Type="Byte" Name="EventTypeID" Nullable="false" />
+          <Property Type="String" Name="Assembly" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Source" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EventType" Relationship="TK1Model.FK_EventLog_EventType" FromRole="EventLog" ToRole="EventType" />
+          <NavigationProperty Name="ProcExec" Relationship="TK1Model.FK_EventLog_ProcExec" FromRole="EventLog" ToRole="ProcExec" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="EventTypeID" />
+          </Key>
+          <Property Type="Byte" Name="EventTypeID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EventLogs" Relationship="TK1Model.FK_EventLog_EventType" FromRole="EventType" ToRole="EventLog" />
+        </EntityType>
+        <Association Name="FK_EventLog_EventType">
+          <End Type="TK1Model.EventType" Role="EventType" Multiplicity="1" />
+          <End Type="TK1Model.EventLog" Role="EventLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="EventTypeID" />
+            </Principal>
+            <Dependent Role="EventLog">
+              <PropertyRef Name="EventTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventLog_ProcExec">
+          <End Type="TK1Model.ProcExec" Role="ProcExec" Multiplicity="1" />
+          <End Type="TK1Model.EventLog" Role="EventLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcExec">
+              <PropertyRef Name="ProcExecID" />
+            </Principal>
+            <Dependent Role="EventLog">
+              <PropertyRef Name="ProcExecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AppLog">
+          <Key>
+            <PropertyRef Name="AppLogID" />
+          </Key>
+          <Property Type="Int32" Name="AppLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="LogTimestamp" Nullable="false" />
+          <Property Type="Int32" Name="Level" Nullable="false" />
+          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TK1ModelStoreContainer" CdmEntityContainer="TK1Entities">
+          <EntitySetMapping Name="ProcExecs"><EntityTypeMapping TypeName="TK1Model.ProcExec"><MappingFragment StoreEntitySet="ProcExec">
+            <ScalarProperty Name="ProcExecID" ColumnName="ProcExecID" />
+            <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="BeginTimestamp" ColumnName="BeginTimestamp" />
+            <ScalarProperty Name="EndTimestamp" ColumnName="EndTimestamp" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ProcExecStatus"><EntityTypeMapping TypeName="TK1Model.ProcExecStatu"><MappingFragment StoreEntitySet="ProcExecStatus">
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="XmlFiles"><EntityTypeMapping TypeName="TK1Model.XmlFile"><MappingFragment StoreEntitySet="XmlFiles">
+            <ScalarProperty Name="FileName" ColumnName="FileName" />
+            <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+            <ScalarProperty Name="LoadTimestamp" ColumnName="LoadTimestamp" />
+            <ScalarProperty Name="ProcessTimestamp" ColumnName="ProcessTimestamp" />
+            <ScalarProperty Name="Data" ColumnName="Data" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AddressDatas"><EntityTypeMapping TypeName="TK1Model.AddressData"><MappingFragment StoreEntitySet="AddressData">
+            <ScalarProperty Name="AddressDataID" ColumnName="AddressDataID" />
+            <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="Index" ColumnName="Index" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AddressTypes"><EntityTypeMapping TypeName="TK1Model.AddressType"><MappingFragment StoreEntitySet="AddressType">
+            <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Apps"><EntityTypeMapping TypeName="TK1Model.App"><MappingFragment StoreEntitySet="App">
+            <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+            <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Categories"><EntityTypeMapping TypeName="TK1Model.Category"><MappingFragment StoreEntitySet="Category">
+            <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+            <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Caption" ColumnName="Caption" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="CustomData" ColumnName="CustomData" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ContactDatas"><EntityTypeMapping TypeName="TK1Model.ContactData"><MappingFragment StoreEntitySet="ContactData">
+            <ScalarProperty Name="ContactDataID" ColumnName="ContactDataID" />
+            <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
+            <ScalarProperty Name="Data" ColumnName="Data" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Index" ColumnName="Index" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ContactTypes"><EntityTypeMapping TypeName="TK1Model.ContactType"><MappingFragment StoreEntitySet="ContactType">
+            <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="CustomData" ColumnName="CustomData" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Contexts"><EntityTypeMapping TypeName="TK1Model.Context"><MappingFragment StoreEntitySet="Context">
+            <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="CustomData" ColumnName="CustomData" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Customers"><EntityTypeMapping TypeName="TK1Model.Customer"><MappingFragment StoreEntitySet="Customer">
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="FullName" ColumnName="FullName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CustomerContactDatas"><EntityTypeMapping TypeName="TK1Model.CustomerContactData"><MappingFragment StoreEntitySet="CustomerContactData">
+            <ScalarProperty Name="CustomerContactInfoID" ColumnName="CustomerContactInfoID" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="ContactDataID" ColumnName="ContactDataID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CustomerPersons"><EntityTypeMapping TypeName="TK1Model.CustomerPerson"><MappingFragment StoreEntitySet="CustomerPerson">
+            <ScalarProperty Name="CustomerPersonID" ColumnName="CustomerPersonID" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Parameters"><EntityTypeMapping TypeName="TK1Model.Parameter"><MappingFragment StoreEntitySet="Parameter">
+            <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+            <ScalarProperty Name="ParameterGroupID" ColumnName="ParameterGroupID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ParameterGroups"><EntityTypeMapping TypeName="TK1Model.ParameterGroup"><MappingFragment StoreEntitySet="ParameterGroup">
+            <ScalarProperty Name="ParameterGroupID" ColumnName="ParameterGroupID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="People"><EntityTypeMapping TypeName="TK1Model.Person"><MappingFragment StoreEntitySet="Person">
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="NickName" ColumnName="NickName" />
+            <ScalarProperty Name="FullName" ColumnName="FullName" />
+            <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+            <ScalarProperty Name="CustomSettings" ColumnName="CustomSettings" />
+            <ScalarProperty Name="CustomData" ColumnName="CustomData" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PersonAddressDatas"><EntityTypeMapping TypeName="TK1Model.PersonAddressData"><MappingFragment StoreEntitySet="PersonAddressData">
+            <ScalarProperty Name="PersonAddressID" ColumnName="PersonAddressID" />
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+            <ScalarProperty Name="AddressDataID" ColumnName="AddressDataID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PersonContactDatas"><EntityTypeMapping TypeName="TK1Model.PersonContactData"><MappingFragment StoreEntitySet="PersonContactData">
+            <ScalarProperty Name="PersonContactDataID" ColumnName="PersonContactDataID" />
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+            <ScalarProperty Name="ContactDataID" ColumnName="ContactDataID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Processes"><EntityTypeMapping TypeName="TK1Model.Process"><MappingFragment StoreEntitySet="Process">
+            <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+            <ScalarProperty Name="AppID" ColumnName="AppID" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="TK1Model.User"><MappingFragment StoreEntitySet="User">
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+            <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EventLogs">
+            <EntityTypeMapping TypeName="TK1Model.EventLog">
+              <MappingFragment StoreEntitySet="EventLog">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Assembly" ColumnName="Assembly" />
+                <ScalarProperty Name="EventTypeID" ColumnName="EventTypeID" />
+                <ScalarProperty Name="EventTimestamp" ColumnName="EventTimestamp" />
+                <ScalarProperty Name="ProcExecID" ColumnName="ProcExecID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTypes">
+            <EntityTypeMapping TypeName="TK1Model.EventType">
+              <MappingFragment StoreEntitySet="EventType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EventTypeID" ColumnName="EventTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppLogs">
+            <EntityTypeMapping TypeName="TK1Model.AppLog">
+              <MappingFragment StoreEntitySet="AppLog">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="AppLogID" ColumnName="AppLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="TK1DataModel" ZoomLevel="86">
+        <EntityTypeShape EntityType="TK1Model.ProcExec" Width="1.75" PointX="7.5" PointY="10.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.ProcExecStatu" Width="1.5" PointX="5.25" PointY="20.125" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.XmlFile" Width="1.5" PointX="3" PointY="4.875" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.AddressData" Width="1.5" PointX="3.75" PointY="23.375" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.AddressType" Width="1.5" PointX="1.5" PointY="23.625" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.App" Width="1.5" PointX="3" PointY="7.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.Category" Width="1.5" PointX="3" PointY="10.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.ContactData" Width="1.5" PointX="3" PointY="17.5" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.ContactType" Width="1.5" PointX="0.75" PointY="17.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.Context" Width="1.5" PointX="0.75" PointY="9.25" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.Customer" Width="1.5" PointX="3" PointY="13.5" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.CustomerContactData" Width="1.5" PointX="5.25" PointY="13.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.CustomerPerson" Width="1.5" PointX="5.25" PointY="16.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.Parameter" Width="1.5" PointX="11" PointY="0.875" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.ParameterGroup" Width="1.5" PointX="8.75" PointY="1.125" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.Person" Width="1.5" PointX="3.75" PointY="0.875" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.PersonAddressData" Width="1.5" PointX="6" PointY="1.5" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.PersonContactData" Width="1.5" PointX="9" PointY="7.5" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.Process" Width="1.5" PointX="5.25" PointY="10.875" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.User" Width="1.5" PointX="6" PointY="7.25" Height="2.3648893229166674" IsExpanded="true" />
+        <AssociationConnector Association="TK1Model.FK_ProcExec_Process" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="11.961293945312502" />
+          <ConnectorPoint PointX="7.5" PointY="11.961293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_ProcExec_ProcExecStatus" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="20.922841796874998" />
+          <ConnectorPoint PointX="7.59375" PointY="20.922841796874998" />
+          <ConnectorPoint PointX="7.59375" PointY="13.182190755208334" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_XmlFiles_Context" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="9.25" />
+          <ConnectorPoint PointX="1.5" PointY="5.9612939453125" />
+          <ConnectorPoint PointX="3" PointY="5.9612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_AddressData_AddressType" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="24.422841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="24.422841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_PersonAddress_AddressData" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.4999994999999995" PointY="23.375" />
+          <ConnectorPoint PointX="4.4999994999999995" PointY="20.307190755208339" />
+          <ConnectorPoint PointX="4.75" PointY="20.307190755208339" />
+          <ConnectorPoint PointX="4.75" PointY="4.4513964843750031" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="4.4513964843750022" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="4.4513964843750031" />
+          <ConnectorPoint PointX="5.5" PointY="4.4513964843750031" />
+          <ConnectorPoint PointX="5.5" PointY="2.4901432291666694" />
+          <ConnectorPoint PointX="6" PointY="2.4901432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_App_Context" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.4564925130208337" />
+          <ConnectorPoint PointX="3" PointY="9.4564925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_Process_App" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.6629850260416674" />
+          <ConnectorPoint PointX="4.5973244349011217" PointY="9.7603094609427874" />
+          <ConnectorPoint PointX="4.8089255650988791" PointY="9.9719105911405457" />
+          <ConnectorPoint PointX="4.875" PointY="10.037985026041667" />
+          <ConnectorPoint PointX="4.875" PointY="11.961293945312502" />
+          <ConnectorPoint PointX="5.25" PointY="11.961293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_Category_Context" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="11.091095377604166" />
+          <ConnectorPoint PointX="3" PointY="11.091095377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_CompanyContactData_ContactData" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="17.501152846153843" />
+          <ConnectorPoint PointX="4.6910744349011209" PointY="17.310078411252722" />
+          <ConnectorPoint PointX="4.8089255650988791" PointY="17.192227281054965" />
+          <ConnectorPoint PointX="4.875" PointY="17.126152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="14.740143229166669" />
+          <ConnectorPoint PointX="5.25" PointY="14.740143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_ContactData_ContactDataType" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="18.768992513020834" />
+          <ConnectorPoint PointX="3" PointY="18.768992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_PersonContactData_ContactData" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="19.424988606770839" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="19.424988606770839" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="19.424988606770839" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="19.424988606770839" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="19.424988606770839" />
+          <ConnectorPoint PointX="9.625" PointY="19.424988606770839" />
+          <ConnectorPoint PointX="9.625" PointY="9.4802864583333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_Customer_Context" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="11.807190755208332" />
+          <ConnectorPoint PointX="1.5" PointY="14.778595377604169" />
+          <ConnectorPoint PointX="3" PointY="14.778595377604169" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_UserData_Context" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.018992513020834" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="10.018992513020832" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="10.018992513020834" />
+          <ConnectorPoint PointX="7.125" PointY="10.018992513020834" />
+          <ConnectorPoint PointX="7.125" PointY="9.6148893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_CustomerContactData_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="14.182571614583335" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="14.182571614583333" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="14.182571614583335" />
+          <ConnectorPoint PointX="5.25" PointY="14.182571614583335" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_CustomerPerson_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="15.994882062900647" />
+          <ConnectorPoint PointX="4.5973244349011217" PointY="16.092206497801769" />
+          <ConnectorPoint PointX="4.8089255650988791" PointY="16.303807627999525" />
+          <ConnectorPoint PointX="4.8160744349011217" PointY="16.310956497801769" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="16.428807627999525" />
+          <ConnectorPoint PointX="5.1875" PointY="16.682382062900647" />
+          <ConnectorPoint PointX="5.1875" PointY="16.375" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="16.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_Process_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="13.501152846153847" />
+          <ConnectorPoint PointX="4.59732443490112" PointY="13.403828411252725" />
+          <ConnectorPoint PointX="4.8089255650988791" PointY="13.192227281054969" />
+          <ConnectorPoint PointX="4.875" PointY="13.126152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="13.42374073677885" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="13.047587890625003" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_CustomerPerson_Person" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.65625" PointY="4.2013964843750031" />
+          <ConnectorPoint PointX="4.65625" PointY="17.09375" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="17.09375" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="17.09375" />
+          <ConnectorPoint PointX="5.25" PointY="17.09375" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_Parameter_ParameterGroup" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.25" PointY="1.9228417968750016" />
+          <ConnectorPoint PointX="11" PointY="1.9228417968750016" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_PersonAddress_Person" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="1.9325716145833347" />
+          <ConnectorPoint PointX="6" PointY="1.9325716145833347" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_PersonContactData_Person" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="3.872091471354171" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="3.8720914713541705" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="3.872091471354171" />
+          <ConnectorPoint PointX="10.40625" PointY="3.872091471354171" />
+          <ConnectorPoint PointX="10.40625" PointY="7.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_UserData_Person" ManuallyRouted="false">
+          <ConnectorPoint PointX="5" PointY="4.2013964843750031" />
+          <ConnectorPoint PointX="5" PointY="7.53125" />
+          <ConnectorPoint PointX="6" PointY="7.53125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TK1Model.EventLog" Width="1.5" PointX="10" PointY="10.375" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="TK1Model.EventType" Width="1.5" PointX="7.75" PointY="14.125" Height="1.595683593749996" />
+        <AssociationConnector Association="TK1Model.FK_EventLog_EventType" >
+          <ConnectorPoint PointX="9.25" PointY="14.922841796874998" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="14.922841796874998" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="14.922841796874998" />
+          <ConnectorPoint PointX="10.75" PointY="14.922841796874998" />
+          <ConnectorPoint PointX="10.75" PointY="13.316793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_EventLog_ProcExec" >
+          <ConnectorPoint PointX="9.25" PointY="11.903595377604166" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="11.903595377604166" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="11.903595377604166" />
+          <ConnectorPoint PointX="10" PointY="11.903595377604166" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="TK1Model.AppLog" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333246" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
