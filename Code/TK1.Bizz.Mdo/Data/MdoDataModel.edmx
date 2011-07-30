@@ -1,0 +1,896 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MdoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MdoModelStoreContainer">
+          <EntitySet Name="XmlFiles" EntityType="MdoModel.Store.XmlFiles" store:Type="Tables" Schema="DataLoad" />
+          <EntitySet Name="City" EntityType="MdoModel.Store.City" store:Type="Tables" Schema="Mdo" />
+          <EntitySet Name="CustomerData" EntityType="MdoModel.Store.CustomerData" store:Type="Tables" Schema="Mdo" />
+          <EntitySet Name="District" EntityType="MdoModel.Store.District" store:Type="Tables" Schema="Mdo" />
+          <EntitySet Name="Region" EntityType="MdoModel.Store.Region" store:Type="Tables" Schema="Mdo" />
+          <EntitySet Name="SiteType" EntityType="MdoModel.Store.SiteType" store:Type="Tables" Schema="Mdo" />
+          <EntitySet Name="Category" EntityType="MdoModel.Store.Category" store:Type="Tables" Schema="MdoSelling" />
+          <EntitySet Name="Site" EntityType="MdoModel.Store.Site" store:Type="Tables" Schema="MdoSelling" />
+          <EntitySet Name="SiteAd" EntityType="MdoModel.Store.SiteAd" store:Type="Tables" Schema="MdoSelling" />
+          <EntitySet Name="SiteDescription" EntityType="MdoModel.Store.SiteDescription" store:Type="Tables" Schema="MdoSelling" />
+          <EntitySet Name="SitePic" EntityType="MdoModel.Store.SitePic" store:Type="Tables" Schema="MdoSelling" />
+          <EntitySet Name="Customer" EntityType="MdoModel.Store.Customer" store:Type="Tables" Schema="TK1" />
+          <AssociationSet Name="FK_CustomerData_Customer" Association="MdoModel.Store.FK_CustomerData_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerData" EntitySet="CustomerData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Region" Association="MdoModel.Store.FK_District_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="District" EntitySet="District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_City" Association="MdoModel.Store.FK_Site_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Site" EntitySet="Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_District" Association="MdoModel.Store.FK_Site_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Site" EntitySet="Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_SiteType" Association="MdoModel.Store.FK_Site_SiteType">
+            <End Role="SiteType" EntitySet="SiteType" />
+            <End Role="Site" EntitySet="Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAd_Category" Association="MdoModel.Store.FK_SiteAd_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SiteAd" EntitySet="SiteAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAd_Customer" Association="MdoModel.Store.FK_SiteAd_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="SiteAd" EntitySet="SiteAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAd_Site" Association="MdoModel.Store.FK_SiteAd_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="SiteAd" EntitySet="SiteAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteDescription_Site" Association="MdoModel.Store.FK_SiteDescription_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="SiteDescription" EntitySet="SiteDescription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitePic_Site" Association="MdoModel.Store.FK_SitePic_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="SitePic" EntitySet="SitePic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteType_Category" Association="MdoModel.Store.FK_SiteType_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SiteType" EntitySet="SiteType" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="XmlFiles">
+          <Key>
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ContextID" Type="int" Nullable="false" />
+          <Property Name="LoadTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="ProcessTimestamp" Type="datetime" />
+          <Property Name="Data" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="CustomerData">
+          <Key>
+            <PropertyRef Name="CustomerDataID" />
+          </Key>
+          <Property Name="CustomerDataID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="MdoCode" Type="int" Nullable="false" />
+          <Property Name="MdoAcronym" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="XmlSellingEmail" Type="varchar(max)" />
+          <Property Name="NavLogoUrl" Type="varchar(max)" />
+          <Property Name="NavContactMail" Type="varchar(max)" />
+          <Property Name="NavContactPhone" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="RegionID" Type="int" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="SiteType">
+          <Key>
+            <PropertyRef Name="SiteTypeID" />
+          </Key>
+          <Property Name="SiteTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="RoomDisplayName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="64" />
+          <Property Name="Caption" Type="varchar" MaxLength="64" />
+          <Property Name="Description" Type="varchar" MaxLength="64" />
+          <Property Name="CustomData" Type="text" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteID" />
+          </Key>
+          <Property Name="SiteID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AddressInfoID" Type="int" />
+          <Property Name="CityName" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="DistrictName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="SiteTypeID" Type="int" Nullable="false" />
+          <Property Name="TotalArea" Type="float" Nullable="false" />
+          <Property Name="TotalRooms" Type="int" Nullable="false" />
+          <Property Name="InternalArea" Type="float" Nullable="false" />
+          <Property Name="ExternalArea" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SiteAd">
+          <Key>
+            <PropertyRef Name="SiteAdID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="SiteAdID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Title" Type="varchar" MaxLength="256" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="256" />
+          <Property Name="IPTU" Type="float" />
+          <Property Name="Cond" Type="float" />
+          <Property Name="ShortDescription" Type="varchar(max)" />
+          <Property Name="AreaDescription" Type="varchar(max)" />
+          <Property Name="CondDescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SiteDescription">
+          <Key>
+            <PropertyRef Name="SiteDescriptionID" />
+          </Key>
+          <Property Name="SiteDescriptionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SitePic">
+          <Key>
+            <PropertyRef Name="SiteID" />
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="PicID" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="256" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="FullName" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_CustomerData_Customer">
+          <End Role="Customer" Type="MdoModel.Store.Customer" Multiplicity="1" />
+          <End Role="CustomerData" Type="MdoModel.Store.CustomerData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerData">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Region">
+          <End Role="Region" Type="MdoModel.Store.Region" Multiplicity="0..1" />
+          <End Role="District" Type="MdoModel.Store.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_City">
+          <End Role="City" Type="MdoModel.Store.City" Multiplicity="1" />
+          <End Role="Site" Type="MdoModel.Store.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="CityName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_District">
+          <End Role="District" Type="MdoModel.Store.District" Multiplicity="1" />
+          <End Role="Site" Type="MdoModel.Store.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="DistrictName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_SiteType">
+          <End Role="SiteType" Type="MdoModel.Store.SiteType" Multiplicity="1" />
+          <End Role="Site" Type="MdoModel.Store.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteType">
+              <PropertyRef Name="SiteTypeID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="SiteTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAd_Category">
+          <End Role="Category" Type="MdoModel.Store.Category" Multiplicity="1" />
+          <End Role="SiteAd" Type="MdoModel.Store.SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAd_Customer">
+          <End Role="Customer" Type="MdoModel.Store.Customer" Multiplicity="1" />
+          <End Role="SiteAd" Type="MdoModel.Store.SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAd_Site">
+          <End Role="Site" Type="MdoModel.Store.Site" Multiplicity="1" />
+          <End Role="SiteAd" Type="MdoModel.Store.SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteDescription_Site">
+          <End Role="Site" Type="MdoModel.Store.Site" Multiplicity="1" />
+          <End Role="SiteDescription" Type="MdoModel.Store.SiteDescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteDescription">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitePic_Site">
+          <End Role="Site" Type="MdoModel.Store.Site" Multiplicity="1" />
+          <End Role="SitePic" Type="MdoModel.Store.SitePic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SitePic">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteType_Category">
+          <End Role="Category" Type="MdoModel.Store.Category" Multiplicity="1" />
+          <End Role="SiteType" Type="MdoModel.Store.SiteType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="SiteType">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MdoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MdoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="MdoModel.City" />
+          <EntitySet Name="Districts" EntityType="MdoModel.District" />
+          <EntitySet Name="Regions" EntityType="MdoModel.Region" />
+          <EntitySet Name="SiteTypes" EntityType="MdoModel.SiteType" />
+          <EntitySet Name="Categories" EntityType="MdoModel.Category" />
+          <EntitySet Name="Sites" EntityType="MdoModel.Site" />
+          <EntitySet Name="SiteAds" EntityType="MdoModel.SiteAd" />
+          <EntitySet Name="SiteDescriptions" EntityType="MdoModel.SiteDescription" />
+          <EntitySet Name="SitePics" EntityType="MdoModel.SitePic" />
+          <EntitySet Name="Customers" EntityType="MdoModel.Customer" />
+          <AssociationSet Name="FK_Site_City" Association="MdoModel.FK_Site_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Site" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Region" Association="MdoModel.FK_District_Region">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_District" Association="MdoModel.FK_Site_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Site" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_SiteType" Association="MdoModel.FK_Site_SiteType">
+            <End Role="SiteType" EntitySet="SiteTypes" />
+            <End Role="Site" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteType_Category" Association="MdoModel.FK_SiteType_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SiteType" EntitySet="SiteTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAd_Category" Association="MdoModel.FK_SiteAd_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SiteAd" EntitySet="SiteAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAd_Site" Association="MdoModel.FK_SiteAd_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="SiteAd" EntitySet="SiteAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteDescription_Site" Association="MdoModel.FK_SiteDescription_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="SiteDescription" EntitySet="SiteDescriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitePic_Site" Association="MdoModel.FK_SitePic_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="SitePic" EntitySet="SitePics" />
+          </AssociationSet>
+          <EntitySet Name="XmlFiles" EntityType="MdoModel.XmlFile" />
+          <AssociationSet Name="FK_SiteAd_Customer" Association="MdoModel.FK_SiteAd_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="SiteAd" EntitySet="SiteAds" />
+          </AssociationSet>
+          <EntitySet Name="CustomerDatas" EntityType="MdoModel.CustomerData" />
+          <AssociationSet Name="FK_CustomerData_Customer" Association="MdoModel.FK_CustomerData_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerData" EntitySet="CustomerDatas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sites" Relationship="MdoModel.FK_Site_City" FromRole="City" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RegionID" Nullable="false" />
+          <NavigationProperty Name="Region" Relationship="MdoModel.FK_District_Region" FromRole="District" ToRole="Region" />
+          <NavigationProperty Name="Sites" Relationship="MdoModel.FK_Site_District" FromRole="District" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Type="Int32" Name="RegionID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="32" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Districts" Relationship="MdoModel.FK_District_Region" FromRole="Region" ToRole="District" />
+        </EntityType>
+        <EntityType Name="SiteType">
+          <Key>
+            <PropertyRef Name="SiteTypeID" />
+          </Key>
+          <Property Type="Int32" Name="SiteTypeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RoomDisplayName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sites" Relationship="MdoModel.FK_Site_SiteType" FromRole="SiteType" ToRole="Site" />
+          <NavigationProperty Name="Category" Relationship="MdoModel.FK_SiteType_Category" FromRole="SiteType" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Type="Int32" Name="CategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ContextID" />
+          <Property Type="String" Name="Name" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Caption" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomData" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SiteTypes" Relationship="MdoModel.FK_SiteType_Category" FromRole="Category" ToRole="SiteType" />
+          <NavigationProperty Name="SiteAds" Relationship="MdoModel.FK_SiteAd_Category" FromRole="Category" ToRole="SiteAd" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteID" />
+          </Key>
+          <Property Type="Int32" Name="SiteID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AddressInfoID" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DistrictName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SiteTypeID" Nullable="false" />
+          <Property Type="Double" Name="TotalArea" Nullable="false" />
+          <Property Type="Int32" Name="TotalRooms" Nullable="false" />
+          <Property Type="Double" Name="InternalArea" Nullable="false" />
+          <Property Type="Double" Name="ExternalArea" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="MdoModel.FK_Site_City" FromRole="Site" ToRole="City" />
+          <NavigationProperty Name="District" Relationship="MdoModel.FK_Site_District" FromRole="Site" ToRole="District" />
+          <NavigationProperty Name="SiteType" Relationship="MdoModel.FK_Site_SiteType" FromRole="Site" ToRole="SiteType" />
+          <NavigationProperty Name="SiteAds" Relationship="MdoModel.FK_SiteAd_Site" FromRole="Site" ToRole="SiteAd" />
+          <NavigationProperty Name="SiteDescriptions" Relationship="MdoModel.FK_SiteDescription_Site" FromRole="Site" ToRole="SiteDescription" />
+          <NavigationProperty Name="SitePics" Relationship="MdoModel.FK_SitePic_Site" FromRole="Site" ToRole="SitePic" />
+        </EntityType>
+        <EntityType Name="SiteAd">
+          <Key>
+            <PropertyRef Name="SiteAdID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Type="Int32" Name="SiteAdID" Nullable="false" />
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="Double" Name="Price" />
+          <Property Type="String" Name="Title" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="IPTU" />
+          <Property Type="Double" Name="Cond" />
+          <Property Type="String" Name="ShortDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CondDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="MdoModel.FK_SiteAd_Category" FromRole="SiteAd" ToRole="Category" />
+          <NavigationProperty Name="Site" Relationship="MdoModel.FK_SiteAd_Site" FromRole="SiteAd" ToRole="Site" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="MdoModel.FK_SiteAd_Customer" FromRole="SiteAd" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="SiteDescription">
+          <Key>
+            <PropertyRef Name="SiteDescriptionID" />
+          </Key>
+          <Property Type="Int32" Name="SiteDescriptionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Site" Relationship="MdoModel.FK_SiteDescription_Site" FromRole="SiteDescription" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="SitePic">
+          <Key>
+            <PropertyRef Name="SiteID" />
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="Int32" Name="PicID" Nullable="false" />
+          <Property Type="String" Name="FileName" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Site" Relationship="MdoModel.FK_SitePic_Site" FromRole="SitePic" ToRole="Site" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ContextID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullName" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SiteAds" Relationship="MdoModel.FK_SiteAd_Customer" FromRole="Customer" ToRole="SiteAd" />
+          <NavigationProperty Name="CustomerDatas" Relationship="MdoModel.FK_CustomerData_Customer" FromRole="Customer" ToRole="CustomerData" />
+        </EntityType>
+        <Association Name="FK_Site_City">
+          <End Type="MdoModel.City" Role="City" Multiplicity="1" />
+          <End Type="MdoModel.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="CityName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Region">
+          <End Type="MdoModel.Region" Role="Region" Multiplicity="1" />
+          <End Type="MdoModel.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_District">
+          <End Type="MdoModel.District" Role="District" Multiplicity="1" />
+          <End Type="MdoModel.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="DistrictName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_SiteType">
+          <End Type="MdoModel.SiteType" Role="SiteType" Multiplicity="1" />
+          <End Type="MdoModel.Site" Role="Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteType">
+              <PropertyRef Name="SiteTypeID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="SiteTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteType_Category">
+          <End Type="MdoModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="MdoModel.SiteType" Role="SiteType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="SiteType">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAd_Category">
+          <End Type="MdoModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="MdoModel.SiteAd" Role="SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAd_Site">
+          <End Type="MdoModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="MdoModel.SiteAd" Role="SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteDescription_Site">
+          <End Type="MdoModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="MdoModel.SiteDescription" Role="SiteDescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteDescription">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitePic_Site">
+          <End Type="MdoModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="MdoModel.SitePic" Role="SitePic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SitePic">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="XmlFile">
+          <Key>
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Type="String" Name="FileName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ContextID" Nullable="false" />
+          <Property Type="DateTime" Name="LoadTimestamp" Nullable="false" />
+          <Property Type="DateTime" Name="ProcessTimestamp" />
+          <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_SiteAd_Customer">
+          <End Type="MdoModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MdoModel.SiteAd" Role="SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CustomerData">
+          <Key>
+            <PropertyRef Name="CustomerDataID" />
+          </Key>
+          <Property Type="Int32" Name="CustomerDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="MdoCode" Nullable="false" />
+          <Property Type="String" Name="MdoAcronym" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="XmlSellingEmail" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NavLogoUrl" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NavContactMail" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NavContactPhone" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="MdoModel.FK_CustomerData_Customer" FromRole="CustomerData" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_CustomerData_Customer">
+          <End Type="MdoModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MdoModel.CustomerData" Role="CustomerData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="CustomerData">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MdoModelStoreContainer" CdmEntityContainer="MdoEntities">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="MdoModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="MdoModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="MdoModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteTypes">
+            <EntityTypeMapping TypeName="MdoModel.SiteType">
+              <MappingFragment StoreEntitySet="SiteType">
+                <ScalarProperty Name="RoomDisplayName" ColumnName="RoomDisplayName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SiteTypeID" ColumnName="SiteTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="MdoModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CustomData" ColumnName="CustomData" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="MdoModel.Site">
+              <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="ExternalArea" ColumnName="ExternalArea" />
+                <ScalarProperty Name="InternalArea" ColumnName="InternalArea" />
+                <ScalarProperty Name="TotalRooms" ColumnName="TotalRooms" />
+                <ScalarProperty Name="TotalArea" ColumnName="TotalArea" />
+                <ScalarProperty Name="SiteTypeID" ColumnName="SiteTypeID" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="AddressInfoID" ColumnName="AddressInfoID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteAds">
+            <EntityTypeMapping TypeName="MdoModel.SiteAd">
+              <MappingFragment StoreEntitySet="SiteAd">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CondDescription" ColumnName="CondDescription" />
+                <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Cond" ColumnName="Cond" />
+                <ScalarProperty Name="IPTU" ColumnName="IPTU" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="SiteAdID" ColumnName="SiteAdID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteDescriptions">
+            <EntityTypeMapping TypeName="MdoModel.SiteDescription">
+              <MappingFragment StoreEntitySet="SiteDescription">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="SiteDescriptionID" ColumnName="SiteDescriptionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SitePics">
+            <EntityTypeMapping TypeName="MdoModel.SitePic">
+              <MappingFragment StoreEntitySet="SitePic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="PicID" ColumnName="PicID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MdoModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XmlFiles">
+            <EntityTypeMapping TypeName="MdoModel.XmlFile">
+              <MappingFragment StoreEntitySet="XmlFiles">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ProcessTimestamp" ColumnName="ProcessTimestamp" />
+                <ScalarProperty Name="LoadTimestamp" ColumnName="LoadTimestamp" />
+                <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDatas">
+            <EntityTypeMapping TypeName="MdoModel.CustomerData">
+              <MappingFragment StoreEntitySet="CustomerData">
+                <ScalarProperty Name="NavContactPhone" ColumnName="NavContactPhone" />
+                <ScalarProperty Name="NavContactMail" ColumnName="NavContactMail" />
+                <ScalarProperty Name="NavLogoUrl" ColumnName="NavLogoUrl" />
+                <ScalarProperty Name="XmlSellingEmail" ColumnName="XmlSellingEmail" />
+                <ScalarProperty Name="MdoAcronym" ColumnName="MdoAcronym" />
+                <ScalarProperty Name="MdoCode" ColumnName="MdoCode" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerDataID" ColumnName="CustomerDataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MdoDataModel" ZoomLevel="81">
+        <EntityTypeShape EntityType="MdoModel.City" Width="1.5" PointX="3" PointY="2.125" Height="1.4033821614583353" />
+        <EntityTypeShape EntityType="MdoModel.District" Width="1.5" PointX="3" PointY="8.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MdoModel.Region" Width="1.5" PointX="0.75" PointY="8.375" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="MdoModel.SiteType" Width="1.5" PointX="3" PointY="5" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="MdoModel.Category" Width="1.5" PointX="0.75" PointY="4.75" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="MdoModel.Site" Width="1.5" PointX="5.25" PointY="4.125" Height="3.9033007812500031" />
+        <EntityTypeShape EntityType="MdoModel.SiteAd" Width="1.5" PointX="7.5" PointY="3.125" Height="4.0956022135416656" />
+        <EntityTypeShape EntityType="MdoModel.SiteDescription" Width="1.5" PointX="7.5" PointY="8.25" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="MdoModel.SitePic" Width="1.5" PointX="7.5" PointY="11.25" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MdoModel.Customer" Width="1.5" PointX="9.75" PointY="0.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="MdoModel.FK_Site_City" >
+          <ConnectorPoint PointX="4.5" PointY="2.8266910807291676" />
+          <ConnectorPoint PointX="6" PointY="2.8266910807291676" />
+          <ConnectorPoint PointX="6" PointY="4.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_District_Region" >
+          <ConnectorPoint PointX="2.25" PointY="9.1728417968750016" />
+          <ConnectorPoint PointX="3" PointY="9.1728417968750016" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_Site_District" >
+          <ConnectorPoint PointX="4.5" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6" PointY="9.1439925130208337" />
+          <ConnectorPoint PointX="6" PointY="8.0283007812500031" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_Site_SiteType" >
+          <ConnectorPoint PointX="4.5" PointY="6.086293945312498" />
+          <ConnectorPoint PointX="5.25" PointY="6.086293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_SiteType_Category" >
+          <ConnectorPoint PointX="2.25" PointY="6.086293945312498" />
+          <ConnectorPoint PointX="3" PointY="6.086293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_SiteAd_Category" >
+          <ConnectorPoint PointX="1.5" PointY="4.75" />
+          <ConnectorPoint PointX="1.5" PointY="3.8266910807291676" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="3.8266910807291672" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="3.8266910807291676" />
+          <ConnectorPoint PointX="7.5" PointY="3.8266910807291676" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_SiteAd_Site" >
+          <ConnectorPoint PointX="6.75" PointY="5.6728011067708328" />
+          <ConnectorPoint PointX="7.5" PointY="5.6728011067708328" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_SiteDescription_Site" >
+          <ConnectorPoint PointX="6.4062525" PointY="8.0283007812500031" />
+          <ConnectorPoint PointX="6.4062525" PointY="9.7832902018229184" />
+          <ConnectorPoint PointX="7.5" PointY="9.7832902018229184" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_SitePic_Site" >
+          <ConnectorPoint PointX="5.5937475" PointY="8.0283007812500031" />
+          <ConnectorPoint PointX="5.5937475" PointY="12.240143229166669" />
+          <ConnectorPoint PointX="7.5" PointY="12.240143229166669" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MdoModel.XmlFile" Width="1.5" PointX="10.375" PointY="3.75" Height="1.9802864583333353" />
+        <AssociationConnector Association="MdoModel.FK_SiteAd_Customer" >
+          <ConnectorPoint PointX="9.75" PointY="1.8362939453125" />
+          <ConnectorPoint PointX="8.25" PointY="1.8362939453125" />
+          <ConnectorPoint PointX="8.25" PointY="3.125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MdoModel.CustomerData" Width="1.5" PointX="12" PointY="6.625" Height="2.7494921875000031" />
+        <AssociationConnector Association="MdoModel.FK_CustomerData_Customer" >
+          <ConnectorPoint PointX="10.03125" PointY="2.922587890625" />
+          <ConnectorPoint PointX="10.03125" PointY="7.9997460937500016" />
+          <ConnectorPoint PointX="12" PointY="7.9997460937500016" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
