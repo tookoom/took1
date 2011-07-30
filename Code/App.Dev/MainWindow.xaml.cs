@@ -26,6 +26,7 @@ using TK1.Html;
 using TK1.Collection;
 using TK1.Bizz.Pieta.Const;
 using TK1.Media.Imaging;
+using TK1.Dev.UnitTest;
 
 namespace TK1.Dev
 {
@@ -34,123 +35,16 @@ namespace TK1.Dev
     /// </summary>
     public partial class MainWindow : Window
     {
-        DevSettings settings;
 
         public MainWindow()
         {
             InitializeComponent();
 
-
-            try
-            {
-                //SitePicHelper.ResizeSitePics(@"D:\Projetos\TK1\Code\Web.Pieta\Imovel\Fotos\Venda", 500, 100);
-                //ImageHelperTestUnit.Resize();
-                //var xml = XmlHelper.NormatizeFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\20110518\VisVen.xml");
-                loadXml(@"D:\Projetos\TK1\Code\Web.Pieta\Imovel\Xml\VisVen.xml");
-
-            }
-            catch (Exception exception)
-            {
-                
-            }
-            //loadSettingsFile();
-            //settings.Prop1 = "novo string";
-            //saveSettings();
-
-            //
-            //sendMail();
-
-            //SiteController siteController = new SiteController();
-
-            //var siteAd = siteController.GetSiteAds();
-
-            //var mailContent = HtmlTemplates.GetContactMailTemplate();
-
-            //searchSite();S
-
-            //var cities = SiteController.GetCities();
-            //var districts = SiteController.GetDistricts();
-            //var businessSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Business);
-            //var residencialSiteTypes = SiteController.GetSiteTypes(SiteAdCategories.Residence);
+            //PietaUnitTest.TestXmlLoad();
+            //TK1DataUnitTest.TestAudit();
+            MdoUnitTest.LoadXmlFile();
         }
 
-        private static void searchSite()
-        {
-            SiteSearchParameters parameters = new SiteSearchParameters();
-            parameters.AdType = SiteAdTypes.Sell;
-            var sites = SiteController.SearchSites(parameters);
-        }
-
-        private void sendMail()
-        {
-            HtmlBuilder html = new HtmlBuilder();
-            html.Head.Title("Título");
-            html.Body.Attributes.Set("style", "font-family: \"Helvetica Neue\", \"Lucida Grande\", \"Segoe UI\", Arial, Helvetica, Verdana, sans-serif");
-            html.Body.AppendDiv("Teste");
-            html.Body.AppendHeaderN(1, "Título 1");
-            html.Body.AppendHeaderN(2, "Título 1");
-            html.Body.AppendParagraph("Paragraph");
-            html.Body.AppendLiteral(HtmlBuilder.Div(HtmlBuilder.Div("inner content")));
-            string content = html.GetHtmlContent();
-
-            //MailHelper mailHelper = new MailHelper() { MailFrom = "contato@pietaimoveis.com.br", MailTo = "andre.v.mattos@gmail.com" };
-            MailHelper.SendMail("assunto", content, "contato@pietaimoveis.com.br", "andre.v.mattos@gmail.com");
-        }
-
-        private void loadXml_OLD(string path)
-        {
-            try
-            {
-                var log = LogController.WriteXmlLoadLogEntry();
-                LogController.WriteXmlLoadMessageLogEntry(log, "Iniciando Carga de Arquivos", "", LogLevels.Info);
-
-                var sites = XmlSiteHelper.LoadSiteFromFile(path);
-                if (sites != null)
-                {
-                    SiteController siteController = new SiteController();
-                    siteController.AddSalesSiteAds(sites);
-                }
-                //var pics = XmlSiteHelper.LoadSitePicFromFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\imoveisfoto.xml");
-                //if (pics != null)
-                //{
-                //    SitePicHelper picHelper = new SitePicHelper(@"D:\Projetos\TK1\Projects\Pietá\Integração\Aluguel");
-                //    foreach (var pic in pics)
-                //    {
-                //        picHelper.Set(pic.SiteCode, pic.SitePicCode, pic.FileData);
-                //        LogController.WriteXmlLoadMessageLogEntry(log, "Foto gravada", picHelper.Path + picHelper.FileName, LogLevels.Info);
-                //    }
-                //}
-            }
-            catch (Exception exception)
-            {
-                LogController.WriteAppLogEntry(exception.Message, exception.ToString(), LogLevels.Error);
-            }
-        }
-        private void loadXml(string path)
-        {
-            XmlLoadLog log = null;
-
-            try
-            {
-                log = LogController.WriteXmlLoadLogEntry();
-                LogController.WriteXmlLoadMessageLogEntry(log, "Iniciando Carga de Arquivos DEBUG", "", LogLevels.Info);
-
-                var sites = XmlSiteHelper.LoadSiteFromFile(path);
-                if (sites != null)
-                {
-                    SiteController siteController = new SiteController();
-                    siteController.AddSalesSiteAds(sites);
-                }
-                LogController.WriteXmlLoadMessageLogEntry(log, "Finalizando Carga de Arquivos DEBUG", "Sucesso", LogLevels.Info);
-
-            }
-            catch (Exception exception)
-            {
-                if (log != null)
-                    LogController.WriteXmlLoadMessageLogEntry(log, "Finalizando Carga de Arquivos DEBUG", "Falha", LogLevels.Info);
-                LogController.WriteAppLogEntry(exception.Message, exception.ToString(), LogLevels.Error);
-            }
-        }
 
         private void initializeUI()
         {
@@ -184,43 +78,6 @@ namespace TK1.Dev
             //CultureInfo ci2 = new CultureInfo(0x1401);
             //writeOutput1(string.Format("\nThe .NET Region name: {0}", SetLocale.GetNetCountryRegionName(ci2)));
             //writeOutput1(string.Format("The Win32 Region name: {0}", SetLocale.GetWinCountryRegionName(ci2)));
-        }
-        private void loadSettingsFile()
-        {
-            try
-            {
-                DevSettings ds = new DevSettings();
-                string test = XmlSerializer<DevSettings>.Save(ds);
-                DevSettings ds2 = XmlSerializer<DevSettings>.Load(test);
-                //settings = SettingsFileLoader.Load<DevSettings>(Constraints.AppName);
-                settings = SettingsFileLoader.LoadGeneric(Constraints.AppName, typeof(DevSettings)) as DevSettings;
-                //object obj = SettingsLoader.Load(Constraints.AppName) as DevSettings;
-                //settings = SettingsLoader.Load(Constraints.AppName) as DevSettings;
-                if (settings == null)
-                    saveSettings();
-            }
-            catch (Exception exception)
-            {
-                string caption = "loadConfigFile";
-                string message = ErrorMessageBuilder.CreateMessage(exception);
-                MessageBox.Show(message, caption);
-            }
-        }
-        private void saveSettings()
-        {
-            try
-            {
-                if (settings == null)
-                    settings = new DevSettings();
-                //SettingsFileLoader.Save<DevSettings>(Constraints.AppName, settings);
-                SettingsFileLoader.SaveGeneric(Constraints.AppName, typeof(DevSettings), settings);
-            }
-            catch (Exception exception)
-            {
-                string caption = "loadConfigFile";
-                string message = ErrorMessageBuilder.CreateMessage(exception);
-                MessageBox.Show(message, caption);
-            }
         }
 
         private void writeOutput1(string text)
@@ -292,10 +149,4 @@ namespace TK1.Dev
 
         #endregion
     }
-    public class foo
-    {
-        public EnvironmentVariableTarget Target { get; set; }
-        public string Name { get; set; }
-    }
-
 }
