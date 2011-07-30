@@ -1,0 +1,431 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+
+body   
+{
+    background: #FFF;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: #696969;
+}
+
+a:link, a:visited
+{
+    color: #333333;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #333333;
+    
+}
+
+a:active
+{
+    color: #333333;
+}
+
+p
+{
+    margin-bottom: 10px;
+    line-height: 1.6em;
+}
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #666666;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+h1
+{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+
+h4
+{
+    font-size: 1.1em;
+}
+
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h1> and <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0px;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.page
+{
+    width: 960px;
+    background-color: #fff;
+    margin: 20px auto 0px auto;
+    border: 0px solid #496077;
+}
+
+.header
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #fff
+    width: 100%;
+}
+
+.header h1
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+}
+
+.main
+{
+    padding: 0px 12px;
+    margin: 12px 8px 8px 8px;
+    min-height: 420px;
+}
+
+.leftCol
+{
+    padding: 6px 0px;
+    margin: 12px 8px 8px 8px;
+    width: 200px;
+    min-height: 200px;
+}
+
+.footer
+{
+    color: #4e5766;
+    padding: 8px 0px 0px 0px;
+    margin: 0px auto;
+    text-align: center;
+    line-height: normal;
+}
+
+
+
+/* FORM ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset
+{
+    margin: 1em 0px;
+    padding: 1.2em;
+    border: 1px solid #ccc;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+fieldset.login label, fieldset.register label, fieldset.changePassword label
+{
+    display: block;
+}
+
+fieldset label.inline 
+{
+    display: inline;
+}
+
+legend 
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input.textEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+input.passwordEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+div.accountInfo
+{
+    width: 42%;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+
+.clear
+{
+    clear: both;
+}
+
+.title
+{
+    display: block;
+    /*float: left;*/
+    text-align: center;
+    width: auto;
+    
+}
+
+.loginDisplay
+{
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    color: White;
+}
+
+.loginDisplay a:link
+{
+    color: white;
+}
+
+.loginDisplay a:visited
+{
+    color: white;
+}
+
+.loginDisplay a:hover
+{
+    color: white;
+}
+
+.failureNotification
+{
+    font-size: 1.2em;
+    color: Red;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.submitButton
+{
+    text-align: right;
+    padding-right: 10px;
+}
+
+/* MDO  
+----------------------------------------------------------*/
+.headContent
+{
+    background-color:#dedede;
+    width:942px;
+    color:#333333;
+    
+}
+.headContent h1
+{
+    font-size:20px;
+    color:#fff;
+    padding: 0px 0px 0px 0px;
+    /*font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;*/
+}
+
+.headContent h3
+{
+    color:#fff;
+    padding: 0px 0px 0px 0px;
+/*    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #3b3b3b;
+    border: none;
+    line-height: 2em;*/
+    /*font-size: 2em;*/
+}
+.headContent p
+{
+    /*margin-bottom: 10px;*/
+    line-height: 1em;
+    font-size:16px;
+}
+
+.headContent a, .headContent a:visited
+{
+    color:#333;
+}
+/*a:link, a:visited
+{
+    color: #333333;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #333333;
+    
+}
+
+a:active
+{
+    color: #333333;
+}*/
+
+div.headContent
+{
+    margin: 9px;
+}
+
+.searchBar
+{
+    font-size: 1.4em; 
+    padding: 8px;
+}
+
+.mainContent
+{
+    background-color:#fff;
+    width:942px;
+    color:#333333;
+    
+}
+div.mainContent
+{
+    margin: 9px;
+}
+
+
+
+div.searchResult
+{
+    /*margin-left: 9px;
+    margin-right: 9px;
+    background-color:#465c71;
+    width:942px;*/
+    min-height: 100px;
+    font-size: 1.2em; 
+    
+}
+.searchResult h3
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #3d3d3d;
+    border: none;
+    line-height: 2em;
+    /*font-size: 2em;*/
+}
+
+div.searchDetailHeader
+{
+    color: #333333;
+    width: 916px;
+    height:54px;
+    background-color: #dedede;
+    padding: 0px 8px 0px 8px;
+}
+div.searchDetailHeader h1
+{
+    font-weight: bold;
+    margin: 0px;
+    border: none;
+    font-size: 2em;
+}
+div.searchDetailHeader h2
+{
+    font-weight: normal;
+    margin: 0px;
+    border: none;
+    font-size: 1.8em;
+}
+div.searchDetailHeader h3
+{
+    font-weight: normal;
+    margin: 0px;
+    border: none;
+    line-height: 1.4em;
+    font-size: 1.4em;
+}
+.divSitePics
+{
+    background-color: #efefef;
+    width: 932px;
+    height:632px;
+    margin-top:4px;
+    /*border: 1px solid #efefef;*/
+    font-size:medium;
+}
+.sitePrice
+{
+    float:right; 
+    padding: 8px;
+    background-color:#dedede;
+    font-size:xx-large;
+    font-weight:bold;
+}
+.navData
+{
+    padding-top: 20px;
+    /*background-color:#dedede;*/
+    font-size:large;
+    font-weight:bold;
+    text-align:center;
+    vertical-align:top;
+}
+.siteDescription
+{
+    font-size:medium;
+}
+
+#buttonSearch
+{
+    float:right;
+}
+
+.center
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
