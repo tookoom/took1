@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TK1.Html;
+using TK1.Html.Elements;
 
 namespace TK1.Bizz.Pieta.Const
 {
@@ -10,41 +11,41 @@ namespace TK1.Bizz.Pieta.Const
     {
         public static string GetContactMailTemplate()
         {
-            HtmlBuilder html = new HtmlBuilder();
-            html.Head.Title("Mensagem");
+            HtmlDocument html = new HtmlDocument();
+            html.Head.Title = "Mensagem";
             html.Body.Attributes.Set("style", "font-family: \"Helvetica Neue\", \"Lucida Grande\", \"Segoe UI\", Arial, Helvetica, Verdana, sans-serif");
             
-            html.Body.AppendHeaderN(4, "Mensagem enviada através do site Pietá Imóveis:");
-            html.Body.AppendParagraph("Tipo de contato: #TK1_TAG_CONTACT_TYPE#");
-            html.Body.AppendParagraph("Data do envio: #TK1_TAG_TIMESTAMP#");
-            html.Body.AppendBlankRow();
+            html.Body.Children.Add(new HtmlHeading(4,"Mensagem enviada através do site Pietá Imóveis:"));
+            html.Body.Children.Add(new HtmlParagraph("Tipo de contato: #TK1_TAG_CONTACT_TYPE#"));
+            html.Body.Children.Add(new HtmlParagraph("Data do envio: #TK1_TAG_TIMESTAMP#"));
+            html.Body.Children.Add(new HtmlBlankRow());
 
-            html.Body.AppendHeaderN(4, "Informações para contato:");
-            html.Body.AppendParagraph("Nome: #TK1_TAG_NAME#");
-            html.Body.AppendParagraph("E-mail: #TK1_TAG_MAIL#");
-            html.Body.AppendParagraph("Telefone: #TK1_TAG_PHONE#");
-            html.Body.AppendParagraph("Forma de contato preferida: #TK1_TAG_CONTACT#");
-            html.Body.AppendBlankRow();
+            html.Body.Children.Add(new HtmlHeading(4,"Informações para contato:"));
+            html.Body.Children.Add(new HtmlParagraph("Nome: #TK1_TAG_NAME#"));
+            html.Body.Children.Add(new HtmlParagraph("E-mail: #TK1_TAG_MAIL#"));
+            html.Body.Children.Add(new HtmlParagraph("Telefone: #TK1_TAG_PHONE#"));
+            html.Body.Children.Add(new HtmlParagraph("Forma de contato preferida: #TK1_TAG_CONTACT#"));
+            html.Body.Children.Add(new HtmlBlankRow());
 
-            html.Body.AppendHeaderN(4, "Mensagem:");
-            html.Body.AppendParagraph("#TK1_TAG_MESSAGE#");
+            html.Body.Children.Add(new HtmlHeading(4, "Mensagem:"));
+            html.Body.Children.Add(new HtmlParagraph("#TK1_TAG_MESSAGE#"));
 
-            return html.GetHtmlContent();
+            return html.GetHtml();
         }
         public static string GetXmlSalesFileLoadTemplate()
         {
-            HtmlBuilder html = new HtmlBuilder();
-            html.Head.Title("Carga de Arquivos");
+            HtmlDocument html = new HtmlDocument();
+            html.Head.Title = "Carga de Arquivos";
             html.Body.Attributes.Set("style", "font-family: \"Helvetica Neue\", \"Lucida Grande\", \"Segoe UI\", Arial, Helvetica, Verdana, sans-serif");
 
-            html.Body.AppendHeaderN(4, "Carga de arquivos do cadastro de imóveis a venda");
-            html.Body.AppendParagraph("Data da carga: " + MailTemplateTags.General.Timestamp);
-            html.Body.AppendParagraph("Resultado: " + MailTemplateTags.General.Result);
-            html.Body.AppendBlankRow();
-            html.Body.AppendHeaderN(4, "Mensagens geradas:");
-            html.Body.AppendLiteral(MailTemplateTags.General.Message);
+            html.Body.Children.Add(new HtmlHeading(4, "Carga de arquivos do cadastro de imóveis a venda"));
+            html.Body.Children.Add(new HtmlParagraph("Data da carga: " + MailTemplateTags.General.Timestamp));
+            html.Body.Children.Add(new HtmlParagraph("Resultado: " + MailTemplateTags.General.Result));
+            html.Body.Children.Add(new HtmlBlankRow());
+            html.Body.Children.Add(new HtmlHeading(4, "Mensagens geradas:"));
+            html.Body.Children.Add(new HtmlLiteral(MailTemplateTags.General.Message));
 
-            return html.GetHtmlContent();
+            return html.GetHtml();
         }
 
     }

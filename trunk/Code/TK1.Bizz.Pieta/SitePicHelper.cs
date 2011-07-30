@@ -117,7 +117,7 @@ namespace TK1.Bizz.Pieta
 
                                     try
                                     {
-                                        ImageHelper.Resize(filePath, thumbnailFilePath, thumbSize, thumbSize);
+                                        ImageHelper.CreateThumbnail(filePath, thumbnailFilePath, thumbSize, thumbSize);
                                         ImageHelper.Resize(filePath, resizedFilePath, picSize, picSize);
 
                                     }
