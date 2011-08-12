@@ -459,6 +459,22 @@ namespace TK1.Data
             }
         }
         private ObjectSet<AppLog> _AppLogs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<WebSession> WebSessions
+        {
+            get
+            {
+                if ((_WebSessions == null))
+                {
+                    _WebSessions = base.CreateObjectSet<WebSession>("WebSessions");
+                }
+                return _WebSessions;
+            }
+        }
+        private ObjectSet<WebSession> _WebSessions;
 
         #endregion
         #region AddTo Methods
@@ -645,6 +661,14 @@ namespace TK1.Data
         public void AddToAppLogs(AppLog appLog)
         {
             base.AddObject("AppLogs", appLog);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the WebSessions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToWebSessions(WebSession webSession)
+        {
+            base.AddObject("WebSessions", webSession);
         }
 
         #endregion
@@ -4896,6 +4920,164 @@ namespace TK1.Data
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="WebSession")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class WebSession : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new WebSession object.
+        /// </summary>
+        /// <param name="webSessionID">Initial value of the WebSessionID property.</param>
+        /// <param name="key">Initial value of the Key property.</param>
+        /// <param name="creationTimestamp">Initial value of the CreationTimestamp property.</param>
+        public static WebSession CreateWebSession(global::System.String webSessionID, global::System.String key, global::System.DateTime creationTimestamp)
+        {
+            WebSession webSession = new WebSession();
+            webSession.WebSessionID = webSessionID;
+            webSession.Key = key;
+            webSession.CreationTimestamp = creationTimestamp;
+            return webSession;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String WebSessionID
+        {
+            get
+            {
+                return _WebSessionID;
+            }
+            set
+            {
+                if (_WebSessionID != value)
+                {
+                    OnWebSessionIDChanging(value);
+                    ReportPropertyChanging("WebSessionID");
+                    _WebSessionID = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("WebSessionID");
+                    OnWebSessionIDChanged();
+                }
+            }
+        }
+        private global::System.String _WebSessionID;
+        partial void OnWebSessionIDChanging(global::System.String value);
+        partial void OnWebSessionIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Key
+        {
+            get
+            {
+                return _Key;
+            }
+            set
+            {
+                if (_Key != value)
+                {
+                    OnKeyChanging(value);
+                    ReportPropertyChanging("Key");
+                    _Key = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Key");
+                    OnKeyChanged();
+                }
+            }
+        }
+        private global::System.String _Key;
+        partial void OnKeyChanging(global::System.String value);
+        partial void OnKeyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private global::System.String _Value;
+        partial void OnValueChanging(global::System.String value);
+        partial void OnValueChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreationTimestamp
+        {
+            get
+            {
+                return _CreationTimestamp;
+            }
+            set
+            {
+                OnCreationTimestampChanging(value);
+                ReportPropertyChanging("CreationTimestamp");
+                _CreationTimestamp = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreationTimestamp");
+                OnCreationTimestampChanged();
+            }
+        }
+        private global::System.DateTime _CreationTimestamp;
+        partial void OnCreationTimestampChanging(global::System.DateTime value);
+        partial void OnCreationTimestampChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> UpdateTimestamp
+        {
+            get
+            {
+                return _UpdateTimestamp;
+            }
+            set
+            {
+                OnUpdateTimestampChanging(value);
+                ReportPropertyChanging("UpdateTimestamp");
+                _UpdateTimestamp = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdateTimestamp");
+                OnUpdateTimestampChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _UpdateTimestamp;
+        partial void OnUpdateTimestampChanging(Nullable<global::System.DateTime> value);
+        partial void OnUpdateTimestampChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using TK1.Xml;
+using TK1.Html.Elements;
 
 namespace TK1.Collection
 {
@@ -86,6 +87,32 @@ namespace TK1.Collection
             foreach (StringPair stringPair in this)
             {
                 result += string.Format(" {0}=\"{1}\"", stringPair.Key, stringPair.Value);
+            }
+            return result;
+        }
+        /// <summary>
+        /// Transforma dicionário em string na forma [key1="value1" key2="value2"]
+        /// </summary>
+        public HtmlTable ToHtmlTable()
+        {
+            return ToHtmlTable("Key","Value");
+        }
+        /// <summary>
+        /// Transforma dicionário em string na forma [key1="value1" key2="value2"]
+        /// </summary>
+        public HtmlTable ToHtmlTable(string keyColumnName, string valueColumnName)
+        {
+            HtmlTable result = new HtmlTable();
+            HtmlTableRow tableHeader = new HtmlTableRow();
+            tableHeader.Children.Add(new HtmlTableDivision(new Html.Collection.HtmlElementCollection() { new HtmlLiteral(string.Format("<b>{0}<\b>", keyColumnName)) }));
+            tableHeader.Children.Add(new HtmlTableDivision(new Html.Collection.HtmlElementCollection() { new HtmlLiteral(string.Format("<b>{0}<\b>", valueColumnName)) }));
+            result.Children.Add(tableHeader);
+            foreach (StringPair stringPair in this)
+            {
+                HtmlTableRow tableRow = new HtmlTableRow();
+                tableRow.Children.Add(new HtmlTableDivision(new Html.Collection.HtmlElementCollection() { new HtmlLiteral(stringPair.Key) }));
+                tableRow.Children.Add(new HtmlTableDivision(new Html.Collection.HtmlElementCollection() { new HtmlLiteral(stringPair.Value) }));
+                result.Children.Add(tableRow);
             }
             return result;
         }
