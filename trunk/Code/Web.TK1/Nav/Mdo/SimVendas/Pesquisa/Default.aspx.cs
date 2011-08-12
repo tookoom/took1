@@ -11,18 +11,71 @@ using TK1.Bizz.Mdo;
 using System.IO;
 using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Collection;
+using TK1.Html;
+using TK1.Html.Elements;
+using TK1.Data.Controller;
+using TK1.Xml;
 
 public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
 {
     #region PRIVATE MEMBERS
-    private static string searchResultSessionKey = "MdoSellingSearchResult";
-
+    //private static string searchResultSessionKey = "MdoSellingSearchResult";
+    private static string debugMessage = string.Empty;
     #endregion
 
+    private List<SiteAd> getSearchResult()
+    {
+        List<SiteAd> result = null;
+
+        var searchResultSessionKey = getSearchResultSessionKey();
+        var searchParameterSessionKey = getSearchParameterSessionKey();
+
+        var webSessionID = string.Empty;
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        webSessionID = dictionary.Get("WebSessionID") ?? string.Empty;
+
+        if (string.IsNullOrEmpty(webSessionID))
+        {
+            result = Page.Session[searchResultSessionKey] as List<SiteAd>;
+        }
+        else
+        {
+            var xml = WebSessionController.Get(webSessionID, searchParameterSessionKey);
+            if (!string.IsNullOrEmpty(xml))
+            {
+                var searchParameters = XmlSerializer<MdoSiteSearchParameters>.Load(xml);
+                MdoSiteController siteController = new MdoSiteController();
+                result = siteController.SearchSites(searchParameters);
+                setSiteAdMainPic(siteController, result);
+                setDataBinding(result);
+            }
+
+        }
+        if (result == null)
+            result = new List<SiteAd>();
+        return result;
+    }
+    public string getSearchParameterSessionKey()
+    {
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        var clientAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
+
+        return string.Format("MdoSellingSearchParameter_{0}", clientAcronym);
+    }
+    public string getSearchResultSessionKey()
+    {
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        var clientAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
+
+        return string.Format("MdoSellingSearchResult_{0}", clientAcronym);
+    }
     protected bool getSearchResultVisibility(object parameter)
     {
         bool result = true;
-        if (Page.Session[searchResultSessionKey] != null)
+        if (getSearchResult() != null)
             result = true;
         return result;
     }
@@ -115,7 +168,7 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     }
     private void orderSearchResultsByArea(bool descendingOrder)
     {
-        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAd>;
+        var searchResult = getSearchResult();
         if (searchResult != null)
         {
             if (descendingOrder)
@@ -126,7 +179,7 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     }
     private void orderSearchResultsByValue(bool descendingOrder)
     {
-        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAd>;
+        var searchResult = getSearchResult();
         if (searchResult != null)
         {
             if (descendingOrder)
@@ -191,30 +244,106 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
                 searchParameters.Districts.Add(item.Text);
 
         var searchResult = siteController.SearchSites(searchParameters);
-        foreach (var siteAd in searchResult)
-        {
-            string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
-            if (string.IsNullOrEmpty(siteAd.ImageUrl))
-            {
-                var mdoCode = siteController.GetMdoCode(siteAd.CustomerID);
-                string mainPic = getSiteMainPic(mdoCode, siteAd.SiteAdID);
-                if (!string.IsNullOrEmpty(mainPic))
-                    imageUrl = mainPic;
-            }
-            siteAd.ImageUrl = imageUrl;
-        }
+        setSiteAdMainPic(siteController, searchResult);
+        setSearchParameters(searchParameters);
         setDataBinding(searchResult);
     }
-    private void setDataBinding(object dataToBind)
+    private void setDataBinding(List<SiteAd> dataToBind)
     {
-        if (Page.Session[searchResultSessionKey] != null)
-            Page.Session.Remove(searchResultSessionKey);
-        Page.Session.Add(searchResultSessionKey, dataToBind);
+        var searchSessionKey = getSearchResultSessionKey();
 
+        var webSessionID = string.Empty;
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        webSessionID = dictionary.Get("WebSessionID") ?? string.Empty;
+
+        if (string.IsNullOrEmpty(webSessionID))
+        {
+            if (Page.Session[searchSessionKey] != null)
+                Page.Session.Remove(searchSessionKey);
+            Page.Session.Add(searchSessionKey, dataToBind);
+        }
+        //else
+        //{
+        //    WebSessionController.Set(webSessionID, searchSessionKey, XmlSerializer<List<SiteAd>>.Save(dataToBind ?? new List<SiteAd>()));
+        //}
         listViewSearchResults.DataSourceID = null;
         listViewSearchResults.DataSource = dataToBind;
         listViewSearchResults.DataBind();
+        debugMessage = string.Format("Binding NULL data: {0}", (dataToBind == null).ToString());
+        setDebugContent();
 
+    }
+    private void setDebugContent()
+    {
+        bool debugMode = false;
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        debugMode = dictionary.Get("DebugMode") != null;
+        //debugMode = true;
+        if (debugMode)
+        {
+            HtmlDiv div = new HtmlDiv();
+            div.Children.Add(new HtmlHeading(2, "Dados Debug"));
+            div.Children.Add(new HtmlParagraph(string.Format("Debug Message: {0}", debugMessage)));
+
+            div.Children.Add(new HtmlHeading(2, "Dados Query String"));
+            div.Children.Add(StringDictionary.LoadFromQueryString(queryString).ToHtmlTable());
+
+            div.Children.Add(new HtmlHeading(2, "Dados Sessão"));
+            div.Children.Add(new HtmlParagraph(string.Format("Session ID: {0}", Session.SessionID))); 
+            
+            var searchKey = getSearchResultSessionKey();
+            div.Children.Add(new HtmlParagraph(string.Format("Session Search Key: {0}", searchKey)));
+
+            //List<SiteAd> searchResult = null;
+            //searchResult = getSearchResult();
+
+            //if (searchResult == null)
+            //{
+            //    div.Children.Add(new HtmlParagraph(string.Format("Session Search Result = NULL", searchKey)));
+            //}
+            //else
+            //{
+            //    div.Children.Add(new HtmlParagraph(string.Format("Session Search Result Count: {0}", searchResult.Count)));
+            //}
+
+
+            literalDebugResult.Text = div.GetHtml();
+            literalDebugResult.Visible = true;
+        }
+        else
+        {
+            literalDebugResult.Visible = false;
+        }
+    }
+    private void setSearchParameters(MdoSiteSearchParameters searchParameters)
+    {
+        var searchParameterSessionKey = getSearchParameterSessionKey();
+        var webSessionID = string.Empty;
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        webSessionID = dictionary.Get("WebSessionID") ?? string.Empty;
+        if(!string.IsNullOrEmpty(webSessionID))
+            WebSessionController.Set(webSessionID, searchParameterSessionKey, XmlSerializer<MdoSiteSearchParameters>.Save(searchParameters ?? new MdoSiteSearchParameters()));
+    }
+    private void setSiteAdMainPic(MdoSiteController siteController, List<SiteAd> searchResult)
+    {
+        if (siteController != null & searchResult != null)
+        {
+            foreach (var siteAd in searchResult)
+            {
+                string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
+                if (string.IsNullOrEmpty(siteAd.ImageUrl))
+                {
+                    var mdoCode = siteController.GetMdoCode(siteAd.CustomerID);
+                    string mainPic = getSiteMainPic(mdoCode, siteAd.SiteAdID);
+                    if (!string.IsNullOrEmpty(mainPic))
+                        imageUrl = mainPic;
+                }
+                siteAd.ImageUrl = imageUrl;
+            }
+        }
     }
 
 
@@ -225,10 +354,16 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         base.OnPreInit(e);
     }
 
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        setDebugContent();
     }
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        return;
+    }
+
     protected void buttonSearch_Click(object sender, EventArgs e)
     {
         searchSite();
@@ -251,11 +386,9 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     }
     protected void listViewSearchResults_PagePropertiesChanged(object sender, EventArgs e)
     {
-        setDataBinding(Page.Session[searchResultSessionKey]);
+
+        setDataBinding(getSearchResult());
     }
-    public override void VerifyRenderingInServerForm(Control control)
-    {
-        return;
-    }
+
     #endregion
 }

@@ -79,6 +79,7 @@
         
         <div runat="server" visible="<%#getSearchResultVisibility(1)%>" > 
             <h2>Resultados</h2>
+
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>Ordem de exibição:</td>
@@ -92,7 +93,16 @@
                 </tr>
             </table>
         </div>
-
+        <div style="height: 30px; float: right; padding:10px; font-size:medium; font-weight: bold;">
+            <asp:DataPager ID="siteSearchDataPagerTop" 
+                runat="server" PagedControlID="listViewSearchResults" PageSize="20">
+                <Fields>
+                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
+                        LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" />
+                    <asp:NumericPagerField />
+                </Fields>
+            </asp:DataPager>
+        </div>
 
         <asp:ListView ID="listViewSearchResults" runat="server" 
             onpagepropertieschanged="listViewSearchResults_PagePropertiesChanged">
@@ -131,7 +141,7 @@
         </asp:ListView>
         <hr />
         <div style="height: 50px;">
-            <asp:DataPager ID="siteSearchDataPager" style="float: right; padding:10px; font-size:medium; font-weight: bold;"
+            <asp:DataPager ID="siteSearchDataPagerBottom" style="float: right; padding:10px; font-size:medium; font-weight: bold;"
                 runat="server" PagedControlID="listViewSearchResults" PageSize="20">
                 <Fields>
                     <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
@@ -140,6 +150,10 @@
                 </Fields>
             </asp:DataPager>
         </div>
+    </div>
+
+    <div>
+        <asp:Literal ID="literalDebugResult" Text="Debug" runat="server"/>
     </div>
 
 </asp:Content>
