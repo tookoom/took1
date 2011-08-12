@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pieta", "D:\Projetos\TK1\Code\Web.Pieta\", "{9557E413-0289-469F-80C6-4016AEA2F1FE}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pieta", "..\Code\Web.Pieta", "{9557E413-0289-469F-80C6-4016AEA2F1FE}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
-		ProjectReferences = "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}|TK1.Bizz.Pieta.dll;"
+		ProjectReferences = "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}|TK1.Bizz.Pieta.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Web.Pieta"
 		Debug.AspNetCompiler.PhysicalPath = "..\Code\Web.Pieta\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.Pieta\"
@@ -25,6 +25,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pieta", "D:\Projetos\TK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Pieta", "..\Code\TK1.Bizz.Pieta\TK1.Bizz.Pieta.csproj", "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3A912BDF-BFDE-4BB9-B182-6625FA40269A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A912BDF-BFDE-4BB9-B182-6625FA40269A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A912BDF-BFDE-4BB9-B182-6625FA40269A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

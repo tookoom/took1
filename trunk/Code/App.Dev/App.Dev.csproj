@@ -60,6 +60,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -85,7 +86,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DWEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\TK1IntegraService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="SetLocale.cs" />
+    <Compile Include="UnitTest\TK1ServicesUnitTest.cs" />
     <Compile Include="UnitTest\MdoUnitTest.cs" />
     <Compile Include="UnitTest\PietaUnitTest.cs" />
     <Compile Include="UnitTest\SettingsUnitTest.cs" />
@@ -137,6 +144,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\TK1IntegraService\Integra.wsdl" />
+    <None Include="Service References\TK1IntegraService\Integra.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TK1.Basics.Controls\TK1.Basics.Controls.csproj">
@@ -192,6 +203,27 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TK1IntegraService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TK1IntegraService\Integra.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TK1IntegraService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TK1IntegraService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TK1IntegraService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

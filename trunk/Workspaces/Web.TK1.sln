@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.TK1", "..\Code\Web.TK1", "{C483E23A-3C31-46F8-86D3-A1805B4A7D97}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{07143283-7469-446F-A469-86F64C5CB61F}|TK1.Bizz.Mdo.dll;{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}|TK1.Basics.dll;{AB2EC906-93AE-4F64-B71D-E04C88036D7D}|TK1.Bizz.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;{2484CD63-A0B0-46AE-A423-B32E6A6AD279}|TK1.Data.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/Web.TK1"
+		Debug.AspNetCompiler.PhysicalPath = "..\Code\Web.TK1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.TK1\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Web.TK1"
+		Release.AspNetCompiler.PhysicalPath = "..\Code\Web.TK1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.TK1\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62418"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Mdo", "..\Code\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj", "{07143283-7469-446F-A469-86F64C5CB61F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Basics", "..\Code\TK1.Basics\TK1.Basics.csproj", "{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz", "..\Code\TK1.Bizz\TK1.Bizz.csproj", "{AB2EC906-93AE-4F64-B71D-E04C88036D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data", "..\Code\TK1.Data\TK1.Data.csproj", "{2484CD63-A0B0-46AE-A423-B32E6A6AD279}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C483E23A-3C31-46F8-86D3-A1805B4A7D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C483E23A-3C31-46F8-86D3-A1805B4A7D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C483E23A-3C31-46F8-86D3-A1805B4A7D97}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{C483E23A-3C31-46F8-86D3-A1805B4A7D97}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -29,6 +29,7 @@
           <EntitySet Name="PersonContactData" EntityType="TK1Model.Store.PersonContactData" store:Type="Tables" Schema="TK1" />
           <EntitySet Name="Process" EntityType="TK1Model.Store.Process" store:Type="Tables" Schema="TK1" />
           <EntitySet Name="User" EntityType="TK1Model.Store.User" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="WebSession" EntityType="TK1Model.Store.WebSession" store:Type="Tables" Schema="TK1" />
           <AssociationSet Name="FK_AddressData_AddressType" Association="TK1Model.Store.FK_AddressData_AddressType">
             <End Role="AddressType" EntitySet="AddressType" />
             <End Role="AddressData" EntitySet="AddressData" />
@@ -328,6 +329,17 @@
           <Property Name="ContextID" Type="int" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="32" />
           <Property Name="Password" Type="varchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="WebSession">
+          <Key>
+            <PropertyRef Name="WebSessionID" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="WebSessionID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Key" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Value" Type="varchar(max)" />
+          <Property Name="CreationTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTimestamp" Type="datetime" />
         </EntityType>
         <Association Name="FK_AddressData_AddressType">
           <End Role="AddressType" Type="TK1Model.Store.AddressType" Multiplicity="1" />
@@ -725,6 +737,7 @@
             <End Role="EventLog" EntitySet="EventLogs" />
           </AssociationSet>
           <EntitySet Name="AppLogs" EntityType="TK1Model.AppLog" />
+          <EntitySet Name="WebSessions" EntityType="TK1Model.WebSession" />
           </EntityContainer>
         <EntityType Name="ProcExec">
           <Key>
@@ -1255,6 +1268,17 @@
           <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="WebSession">
+          <Key>
+            <PropertyRef Name="WebSessionID" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Type="String" Name="WebSessionID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Key" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Value" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreationTimestamp" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTimestamp" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1411,6 +1435,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WebSessions">
+            <EntityTypeMapping TypeName="TK1Model.WebSession">
+              <MappingFragment StoreEntitySet="WebSession">
+                <ScalarProperty Name="UpdateTimestamp" ColumnName="UpdateTimestamp" />
+                <ScalarProperty Name="CreationTimestamp" ColumnName="CreationTimestamp" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="WebSessionID" ColumnName="WebSessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1563,6 +1598,8 @@
         </AssociationConnector>
         <AssociationConnector Association="TK1Model.FK_Parameter_ParameterGroup" ManuallyRouted="false">
           <ConnectorPoint PointX="10.25" PointY="1.9228417968750016" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="1.9228417968750009" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="1.9228417968750016" />
           <ConnectorPoint PointX="11" PointY="1.9228417968750016" />
         </AssociationConnector>
         <AssociationConnector Association="TK1Model.FK_PersonAddress_Person" ManuallyRouted="false">
@@ -1570,10 +1607,8 @@
           <ConnectorPoint PointX="6" PointY="1.9325716145833347" />
         </AssociationConnector>
         <AssociationConnector Association="TK1Model.FK_PersonContactData_Person" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.25" PointY="3.872091471354171" />
-          <ConnectorPoint PointX="5.416666666666667" PointY="3.8720914713541705" />
-          <ConnectorPoint PointX="5.583333333333333" PointY="3.872091471354171" />
-          <ConnectorPoint PointX="10.40625" PointY="3.872091471354171" />
+          <ConnectorPoint PointX="5.25" PointY="0.96875" />
+          <ConnectorPoint PointX="10.40625" PointY="0.96875" />
           <ConnectorPoint PointX="10.40625" PointY="7.5" />
         </AssociationConnector>
         <AssociationConnector Association="TK1Model.FK_UserData_Person" ManuallyRouted="false">
@@ -1597,6 +1632,7 @@
           <ConnectorPoint PointX="10" PointY="11.903595377604166" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TK1Model.AppLog" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="TK1Model.WebSession" Width="1.5" PointX="8.375" PointY="3.75" Height="1.9802864583333246" />
       </Diagram>
     </Diagrams>
   </Designer>

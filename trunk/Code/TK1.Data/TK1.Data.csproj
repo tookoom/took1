@@ -72,6 +72,7 @@
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\AuditController.cs" />
     <Compile Include="Controller\AppLogController.cs" />
+    <Compile Include="Controller\WebSessionController.cs" />
     <Compile Include="Controller\ParameterController.cs" />
     <Compile Include="Const\EventTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
