@@ -39,8 +39,8 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
                 string report = SellingSiteHelper.LoadXmlSiteAd(item, true);
                 literalResponse.Text = report;
             }     
-            if(!loadFileOnly)
-                SellingSitePicHelper.ResizeSitePics(picturesPath, 500, 70);
+            //if(!loadFileOnly)
+            //    SellingSitePicHelper.ResizeSitePics(picturesPath, 500, 70);
 
             //ImageHelperTestUnit.Resize();
             //
@@ -61,6 +61,7 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
 
         }
     }
+
 
     private void createMessageAlert(System.Web.UI.Page senderPage, string alertMsg, string alertKey)
     {
