@@ -77,13 +77,15 @@ public partial class Imovel_Novo_Default : System.Web.UI.Page
             if(Directory.Exists(path))
             {
                 string items = string.Empty;
+                int index = 0;
                 foreach (var file in Directory.GetFiles(path,"*.jpg"))
                 {
+                    index++;
                     string fileName = Path.GetFileName(file);
                     string imageSource = baseUrl + "resized//" + fileName;
                     string imageThumbSource = baseUrl + "thumbs//" + fileName;
-                    string imageTitle = fileName;
-                    string imageDescription = baseUrl + fileName;
+                    string imageTitle = string.Format("Foto {0}", index);
+                    string imageDescription = SiteController.GetSitePicDescription(fileName) ?? string.Empty;
                     string li = "<li>"
                             + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
                             + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
@@ -93,7 +95,7 @@ public partial class Imovel_Novo_Default : System.Web.UI.Page
                             //+ "<a href=\"" + imageSource + "\">Download Original </a>"
                             //+ "</div>"
 							+ "<div class=\"image-title\">" + imageTitle + "</div>"
-							+ "<div class=\"image-desc\">" + imageDescription + "</div>"
+                            + "<div class=\"image-desc\">" + imageDescription + "</div>"
 							+ "</div>"
 						    + "</li>";
                     //string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
@@ -121,19 +123,6 @@ public partial class Imovel_Novo_Default : System.Web.UI.Page
         }
         //result.Add("~/Images/PicNotFound.jpg");
 
-        return result;
-    }
-    private static List<string> getSitePics(int siteAdID, int siteAdType)
-    {
-        List<string> result = new List<string>();// "~/Images/PicNotFound.jpg";
-        string url = string.Empty;
-        if (siteAdType == 1)
-            url = string.Format("../Imovel/Fotos/Aluguel/{0}/1.jpg", siteAdID);
-        if (siteAdType == 2)
-            url = string.Format("../Imovel/Fotos/Venda/{0}/1.jpg", siteAdID);
-        if (!string.IsNullOrEmpty(url))
-            result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", url));
-        //result.Add("~/Images/PicNotFound.jpg");
         return result;
     }
 

@@ -53,7 +53,7 @@
             </asp:Repeater>
         </div>
         <br />
-        <div id="divSitePics" class="divSitePics">
+        <div id="divSitePics" class="divSitePics" style="height:650px">
             
 		    <div id="page">
 			    <div id="container">
@@ -125,7 +125,9 @@
                     </asp:Repeater>
 
                 </td>
-                <td style="width: 30%; vertical-align: top;">
+                <td style="width: 5%; vertical-align: top;"></td>
+                <td style="width: 25%; vertical-align: top;">
+                    <p> <b>Detalhes:</b></p>
                     <asp:Repeater ID="Repeater3" runat="server" 
                         DataSourceID="objectDataSourceSiteDetail" >
                         <ItemTemplate>

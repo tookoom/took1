@@ -17,6 +17,13 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     
     #endregion
 
+    protected bool getSearchResultVisibility()
+    {
+        bool result = true;
+        //if (Page.Session[searchResultSessionKey] != null)
+        //    result = true;
+        return result;
+    }
     private string getSiteMainPic(int siteAdType, int siteAdID)
     {
         string result = string.Empty;
@@ -41,6 +48,36 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 }
 
             }
+        }
+        return result;
+    }
+    protected bool getSiteAreaVisibility(string adType)
+    {
+        bool result = false;
+        switch (adType)
+        {
+            case "1":
+                result = true;
+                break;
+
+            default:
+                result = false;
+                break;
+        }
+        return result;
+    }
+    protected bool getSiteRoomNameVisibility(string adType)
+    {
+        bool result = false;
+        switch (adType)
+        {
+            case "1":
+                result = true;
+                break;
+
+            default:
+                result = false;
+                break;
         }
         return result;
     }
@@ -108,6 +145,28 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceTo.Items.Add(new ListItem("R$500.000,00", "500000"));
         dropDownPriceTo.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
         dropDownPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+") { Selected = true });
+    }
+    private void orderSearchResultsByArea(bool descendingOrder)
+    {
+        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAd>;
+        if (searchResult != null)
+        {
+            if (descendingOrder)
+                setDataBinding(searchResult.OrderByDescending(o => o.Site.TotalArea).ToList());
+            else
+                setDataBinding(searchResult.OrderBy(o => o.Site.TotalArea).ToList());
+        }
+    }
+    private void orderSearchResultsByValue(bool descendingOrder)
+    {
+        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAd>;
+        if (searchResult != null)
+        {
+            if(descendingOrder)
+                setDataBinding(searchResult.OrderByDescending(o => o.Price).ToList());
+            else
+                setDataBinding(searchResult.OrderBy(o => o.Price).ToList());
+        }
     }
     private void searchSite()
     {
@@ -193,21 +252,6 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         listViewSearchResults.DataBind();
     }
 
-    protected bool getSiteRoomNameVisibility(string adType)
-    {
-        bool result = false;
-        switch (adType)
-        {
-            case "1":
-                result = true;
-                break;
-
-            default:
-                result = false;
-                break;
-        }
-        return result;
-    }
 
     #region EVENTS
     protected override void OnInit(EventArgs e)
@@ -223,6 +267,22 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     protected void buttonSearch_Click(object sender, EventArgs e)
     {
         searchSite();
+    }
+    protected void linkButtonOrderAreaAsc_Click(object sender, EventArgs e)
+    {
+        orderSearchResultsByArea(false);
+    }
+    protected void linkButtonOrdeAreaDesc_Click(object sender, EventArgs e)
+    {
+        orderSearchResultsByArea(true);
+    }
+    protected void linkButtonOrderPriceAsc_Click(object sender, EventArgs e)
+    {
+        orderSearchResultsByValue(false);
+    }
+    protected void linkButtonOrderPriceDesc_Click(object sender, EventArgs e)
+    {
+        orderSearchResultsByValue(true);
     }
     protected void listViewSearchResults_PagePropertiesChanged(object sender, EventArgs e)
     {
