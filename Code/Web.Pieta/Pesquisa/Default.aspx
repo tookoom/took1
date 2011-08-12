@@ -87,8 +87,22 @@
 
 
     <div class="clear searchResult">
-        <div class="headerBlueLine">
-            <h2>Resultado da Pesquisa</h2>
+        <div runat="server" visible="<%#getSearchResultVisibility()%>" > <%--visible='<%#getSearchResultVisibility("bla")%>'--%>
+            <div id="Div1" class="headerBlueLine" >
+                <h2>Resultado da Pesquisa</h2>
+            </div>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>Ordem de exibição:</td>
+                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceAsc" runat="server" OnClick="linkButtonOrderPriceAsc_Click">Menores valores primeiro</asp:LinkButton></td>
+                    <td>|</td>
+                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceDec" runat="server" OnClick="linkButtonOrderPriceDesc_Click" >Maiores valores primeiro</asp:LinkButton></td>
+                    <td>|</td>
+                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaAsc" runat="server" OnClick="linkButtonOrderAreaAsc_Click" >Menores áreas primeiro</asp:LinkButton></td>
+                    <td>|</td>
+                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaDec" runat="server" OnClick="linkButtonOrdeAreaDesc_Click" >Maiores áreas primeiro</asp:LinkButton></td>
+                </tr>
+            </table>
         </div>
         <asp:ListView ID="listViewSearchResults" runat="server" 
             EnableModelValidation="True" 
@@ -107,9 +121,10 @@
                         <td style="vertical-align: middle; width:70px; text-align:center;"><b>Código <%# Eval("SiteAdID")%></b></td>
                         <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
                         <td style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>
-                            <%--<div runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>--%>
                                <%# Eval("Site.TotalRooms")%>  <%# Eval("Site.SiteType.RoomDisplayName")%>
-                           <%-- </div>--%>
+                        </td>
+                        <td id="Td1" style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#getSiteAreaVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>
+                               <%# Eval("Site.TotalArea", "{0:0.##}")%>  m²
                         </td>
                         <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("Site.District.Name")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Price", "{0:c}")%></td>
