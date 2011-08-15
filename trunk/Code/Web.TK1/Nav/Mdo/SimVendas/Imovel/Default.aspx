@@ -69,7 +69,7 @@
 
         </div>
         
-        <table border="0" cellpadding="0" cellspacing="0" width="932px" class="siteDescription">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="siteDescription">
             <tr>
                 <td class="navData">
                     <asp:Repeater ID="repeaterNavData" runat="server" DataSourceID="navDataSource">

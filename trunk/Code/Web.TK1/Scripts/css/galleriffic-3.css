@@ -2,7 +2,7 @@ div.content {
 	/* The display of content is enabled using jQuery so that the slideshow content won't display unless javascript is enabled. */
 	display: none;
 	float: right;
-	width: 550px; 
+	width: 500px; 
 }
 div.content a, div.navigation a {
 	text-decoration: none;
@@ -14,15 +14,19 @@ div.content a:focus, div.content a:hover, div.content a:active {
 div.controls {
 	margin-top: 5px;
 	height: 23px;
+	margin-left:-150px;
 }
 div.controls a {
 	padding: 5px;
+    
 }
 div.ss-controls {
 	float: left;
 }
-div.nav-controls {
-	float: right;
+div.nav-controls 
+{
+	/*float: right;*/
+	margin-left:300px;
 }
 div.slideshow-container {
 	position: relative;
@@ -36,21 +40,22 @@ div.loader {
 	background-image: url('loader.gif');
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 550px;
+	width: 500px;
 	height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
+	margin-left:-150px;
 }
 div.slideshow {
-
 }
 div.slideshow span.image-wrapper {
 	display: block;
 	position: absolute;
 	top: 0;
-	left: 0;
+	left:0;
+	margin-left: -150px;
 }
 div.slideshow a.advance-link {
 	display: block;
-	width: 550px;
+	width: 500px;
 	height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
 	line-height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
 	text-align: center;
@@ -61,6 +66,8 @@ div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.sli
 div.slideshow img {
 	vertical-align: middle;
 	border: 1px solid #ccc;
+    max-height:490px;
+    max-width:490px;
 }
 div.download {
 	float: right;
@@ -69,11 +76,12 @@ div.caption-container {
 	position: relative;
 	clear: left;
 	height: 75px;
+    margin-left: -150px;
 }
 span.image-caption {
 	display: block;
 	position: absolute;
-	width: 550px;
+	width: 500px;
 	top: 0;
 	left: 0;
 }
@@ -88,13 +96,15 @@ div.image-desc {
 	line-height: 1.3em;
 	padding-top: 12px;
 }
-div.navigation {
+div.navigation 
+{
 	/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */
 }
 ul.thumbs {
 	clear: both;
 	margin: 0;
 	padding: 0;
+
 }
 ul.thumbs li {
 	float: left;
@@ -116,8 +126,11 @@ a.thumb:focus {
 ul.thumbs img {
 	border: none;
 	display: block;
+		width:50px;
+	height:50px;
 }
-div.pagination {
+div.pagination 
+{
 	clear: both;
 }
 div.navigation div.top {

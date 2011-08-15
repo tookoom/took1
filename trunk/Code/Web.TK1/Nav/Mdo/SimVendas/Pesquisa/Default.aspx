@@ -55,12 +55,22 @@
             <tr>
                 <td>Preço Máximo:</td>                            
                 <td>
-                    <asp:DropDownList ID="dropDownPriceTo" runat="server" Width="280px" Font-Size="Medium"></asp:DropDownList></td>
+                    <asp:DropDownList ID="dropDownPriceTo" runat="server" Width="280px" Font-Size="Medium"></asp:DropDownList>
+                    </td>
                 <td></td>
             </tr>
 
         </table> 
-        <asp:Button ID="buttonSearch" Text="Pesquisar" runat="server" OnClick="buttonSearch_Click"  Font-Size="Medium" Width="200px"/>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td>
+                     <asp:Button ID="buttonSearch" Text="Pesquisar" runat="server" 
+                        OnClick="buttonSearch_Click"  Font-Size="Medium" 
+                        style="float:right;width: 280px; margin-right:8px; margin-top:4px;"/>
+                </td>
+            </tr>
+        </table>
+       
     </div>
 
 </asp:Content>
@@ -80,29 +90,46 @@
         <div runat="server" visible="<%#getSearchResultVisibility(1)%>" > 
             <h2>Resultados</h2>
 
-            <table border="0" cellpadding="0" cellspacing="0">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" runat="server">
                 <tr>
-                    <td>Ordem de exibição:</td>
-                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceAsc" runat="server" OnClick="linkButtonOrderPriceAsc_Click">Menores valores primeiro</asp:LinkButton></td>
+                    <td style="padding: 2px 4px 2px 4px; width:150px;">Ordem de exibição:</td>
+                    <td style="padding: 2px 4px 2px 4px; width:150px;">
+                        <asp:DropDownList ID="dropDownListResultOrdering" runat="server" AutoPostBack="true" Font-Size="Medium"
+                            OnSelectedIndexChanged="dropDownListResultOrdering_SelectedIndexChanged">
+                            <asp:ListItem Text="Escolha" Value="NONE"/>
+                            <asp:ListItem Text="Menores valores primeiro" Value="PRICE_ASC"/>
+                            <asp:ListItem Text="Maiores valores primeiro" Value="PRICE_DESC" />
+                            <asp:ListItem Text="Menores áreas primeiro"  Value="AREA_ASC"/>
+                            <asp:ListItem Text="Maiores áreas primeiro" Value="AREA_DESC" />
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <div style="float: right; padding:10px; background-color: #efefef;" >
+                            <asp:DataPager ID="siteSearchDataPagerTop" 
+                                runat="server" PagedControlID="listViewSearchResults" PageSize="20">
+                                <Fields>
+                                    <asp:NumericPagerField ButtonCount="10" 
+                                        CurrentPageLabelCssClass="searchResultPagerActiveButton" 
+                                        NextPageText="&gt;&gt;" NumericButtonCssClass="searchResultPagerButton" 
+                                        PreviousPageText="&lt;&lt;" />
+                                    <asp:NextPreviousPagerField FirstPageText="Primeira" 
+                                        LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 
+                                        ButtonCssClass="searchResultPagerNestPrevButton" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                    </td>
+                    <%--<td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceAsc" runat="server" OnClick="linkButtonOrderPriceAsc_Click">Menores valores primeiro</asp:LinkButton></td>
                     <td>|</td>
                     <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceDec" runat="server" OnClick="linkButtonOrderPriceDesc_Click" >Maiores valores primeiro</asp:LinkButton></td>
                     <td>|</td>
                     <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaAsc" runat="server" OnClick="linkButtonOrderAreaAsc_Click" >Menores áreas primeiro</asp:LinkButton></td>
                     <td>|</td>
-                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaDec" runat="server" OnClick="linkButtonOrdeAreaDesc_Click" >Maiores áreas primeiro</asp:LinkButton></td>
+                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaDec" runat="server" OnClick="linkButtonOrdeAreaDesc_Click" >Maiores áreas primeiro</asp:LinkButton></td>--%>
                 </tr>
             </table>
         </div>
-        <div style="height: 30px; float: right; padding:10px; font-size:medium; font-weight: bold;">
-            <asp:DataPager ID="siteSearchDataPagerTop" 
-                runat="server" PagedControlID="listViewSearchResults" PageSize="20">
-                <Fields>
-                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
-                        LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" />
-                    <asp:NumericPagerField />
-                </Fields>
-            </asp:DataPager>
-        </div>
+        
 
         <asp:ListView ID="listViewSearchResults" runat="server" 
             onpagepropertieschanged="listViewSearchResults_PagePropertiesChanged">
@@ -110,23 +137,31 @@
                 <h3>Nenhum resultado encontrado.</h3>
             </EmptyDataTemplate>
             <ItemTemplate>
-                <table border="0" cellpadding="0" cellspacing="0" width="932px" style="border-bottom:0px solid #23669A; ">
+                <table class="searchResultTable" border="0" cellpadding="0px 0px 4px 0px;" cellspacing="0" width="100%">
                     <tr class="center">
-                        <td style="vertical-align: middle; width:170px;">
+                        <td style="vertical-align: middle;">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&CustomerID=<%# Eval("CustomerID")%>">
-                                <img src="<%# Eval("ImageUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
+                                <img src="<%# Eval("ImageUrl") %>" height="110px" width="120px" style="margin: 4px 0px 4px 0px;" />
                             </a>
-                        <td style="vertical-align: middle; width:70px; text-align:center;"><b>Código <%# Eval("SiteAdID")%></b></td>
-                        <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
-                        <td style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>
-                               <%# Eval("Site.TotalRooms")%>  <%# Eval("Site.SiteType.RoomDisplayName")%>
+                        <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("SiteAdID")%></b></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="vertical-align: middle; width:140px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
+                                </tr>
+                                <tr>
+                                    <td id="Td2" style="vertical-align: middle; width:140px; text-align:center;" runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.RoomDisplayName").ToString())%>'>
+                                           <%# Eval("Site.TotalRooms")%>  <%# Eval("Site.SiteType.RoomDisplayName")%>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
-                        <td id="Td1" style="vertical-align: middle; width:130px; text-align:center;" runat="server">
+                        <td id="Td1" style="vertical-align: middle; width:80px; text-align:center;" runat="server">
                                <%# Eval("Site.TotalArea", "{0:0.##}")%>  m²
                         </td>
-                        <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("Site.District.Name")%></td>
+                        <td style="vertical-align: middle; width:100px; text-align:center;">Bairro <%# Eval("Site.District.Name")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Price", "{0:c}")%></td>
-                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&CustomerID=<%# Eval("CustomerID")%>">Detalhes</a></td>
+                        <td style="vertical-align: middle; text-align:center; width:80px;"><a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&CustomerID=<%# Eval("CustomerID")%>">Detalhes</a></td>
                     </tr>
                     <hr />
                 </table>
@@ -140,13 +175,27 @@
             </LayoutTemplate>
         </asp:ListView>
         <hr />
-        <div style="height: 50px;">
+<%--        <div style="height: 50px;">
             <asp:DataPager ID="siteSearchDataPagerBottom" style="float: right; padding:10px; font-size:medium; font-weight: bold;"
                 runat="server" PagedControlID="listViewSearchResults" PageSize="20">
                 <Fields>
                     <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
                         LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" />
                     <asp:NumericPagerField />
+                </Fields>
+            </asp:DataPager>
+        </div>--%>
+        <div style="float: right; padding:10px; background-color: #efefef;" >
+            <asp:DataPager ID="siteSearchDataPagerBottom" 
+                runat="server" PagedControlID="listViewSearchResults" PageSize="20">
+                <Fields>
+                    <asp:NumericPagerField ButtonCount="10" 
+                        CurrentPageLabelCssClass="searchResultPagerActiveButton" 
+                        NextPageText="&gt;&gt;" NumericButtonCssClass="searchResultPagerButton" 
+                        PreviousPageText="&lt;&lt;" />
+                    <asp:NextPreviousPagerField FirstPageText="Primeira" 
+                        LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 
+                        ButtonCssClass="searchResultPagerNestPrevButton" />
                 </Fields>
             </asp:DataPager>
         </div>

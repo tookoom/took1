@@ -89,9 +89,10 @@ first child of the left and right table columns */
 
 .page
 {
-    width: 960px;
+    min-width: 800px;
+    max-width: 960px;
     background-color: #fff;
-    margin: 20px auto 0px auto;
+    margin: 0px auto 0px auto;
     border: 0px solid #496077;
 }
 
@@ -100,7 +101,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #fff
+    background: #fff;
     width: 100%;
 }
 
@@ -253,7 +254,7 @@ div.accountInfo
 .headContent
 {
     background-color:#dedede;
-    width:942px;
+    width:100%;
     color:#333333;
     
 }
@@ -324,7 +325,7 @@ div.headContent
 .mainContent
 {
     background-color:#fff;
-    width:942px;
+    width:100%;
     color:#333333;
     
 }
@@ -355,11 +356,29 @@ div.searchResult
     line-height: 2em;
     /*font-size: 2em;*/
 }
+.searchResult a:link, .searchResult a:visited
+{
+    color: #333333;
+    text-decoration: none;
+}
+
+.searchResult a:hover
+{
+    color: #111;
+    text-decoration:underline;
+}
+
+.searchResulta:active
+{
+    color: #333333;
+}
 
 div.searchDetailHeader
 {
     color: #333333;
-    width: 916px;
+    min-width: 800px;
+    max-width:960px;
+    width:auto;
     height:54px;
     background-color: #dedede;
     padding: 0px 8px 0px 8px;
@@ -389,10 +408,11 @@ div.searchDetailHeader h3
 .divSitePics
 {
     background-color: #efefef;
-    width: 932px;
+    max-width:960px;
+    width: auto;
     height:632px;
     margin-top:4px;
-    /*border: 1px solid #efefef;*/
+    /*border: 1px solid Blue;*/
     font-size:medium;
 }
 .sitePrice
@@ -428,4 +448,45 @@ div.searchDetailHeader h3
     margin-left: auto;
     margin-right: auto;
     vertical-align: middle;
+}
+
+/*table.searchResultTable {
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: none;
+	border-color: white;
+	border-collapse: collapse;
+	background-color: white;
+}
+table.searchResultTable th {
+	border-width: 0px;
+	padding: 2px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: 0;
+}
+table.searchResultTable td 
+{
+    vertical-align: middle; 
+	border-width: 0px;
+	padding: 2px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius: 0;
+}*/
+
+.searchResultPagerButton
+{
+}
+.searchResultPagerActiveButton
+{
+    font-weight:bold;
+    font-size:large;
+}
+.searchResultPagerNestPrevButton
+{
+     padding: 4px;
+     cursor:pointer;
 }

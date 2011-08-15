@@ -23,6 +23,36 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     private static string debugMessage = string.Empty;
     #endregion
 
+    private MdoSiteSearchParameters getSearchParameters()
+    {
+        var searchParameterSessionKey = getSearchParameterSessionKey();
+        var webSessionID = string.Empty;
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        webSessionID = dictionary.Get("WebSessionID") ?? string.Empty;
+        return getSearchParameters(searchParameterSessionKey, webSessionID);
+    }
+    private static MdoSiteSearchParameters getSearchParameters(string searchParameterSessionKey, string webSessionID)
+    {
+        MdoSiteSearchParameters searchParameters = null;
+        if (!string.IsNullOrEmpty(searchParameterSessionKey) & !string.IsNullOrEmpty(webSessionID))
+        {
+            var xml = WebSessionController.Get(webSessionID, searchParameterSessionKey);
+            if (!string.IsNullOrEmpty(xml))
+            {
+                searchParameters = XmlSerializer<MdoSiteSearchParameters>.Load(xml);
+            }
+        }
+        return searchParameters;
+    }
+    public string getSearchParameterSessionKey()
+    {
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        var clientAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
+
+        return string.Format("MdoSellingSearchParameter_{0}", clientAcronym);
+    }
     private List<SiteAd> getSearchResult()
     {
         List<SiteAd> result = null;
@@ -41,10 +71,9 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         }
         else
         {
-            var xml = WebSessionController.Get(webSessionID, searchParameterSessionKey);
-            if (!string.IsNullOrEmpty(xml))
+            MdoSiteSearchParameters searchParameters = getSearchParameters(searchParameterSessionKey, webSessionID);
+            if (searchParameters != null)
             {
-                var searchParameters = XmlSerializer<MdoSiteSearchParameters>.Load(xml);
                 MdoSiteController siteController = new MdoSiteController();
                 result = siteController.SearchSites(searchParameters);
                 setSiteAdMainPic(siteController, result);
@@ -55,14 +84,6 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         if (result == null)
             result = new List<SiteAd>();
         return result;
-    }
-    public string getSearchParameterSessionKey()
-    {
-        var queryString = Page.ClientQueryString;
-        var dictionary = StringDictionary.LoadFromQueryString(queryString);
-        var clientAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
-
-        return string.Format("MdoSellingSearchParameter_{0}", clientAcronym);
     }
     public string getSearchResultSessionKey()
     {
@@ -97,12 +118,13 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         }
         return result;
     }
-    protected bool getSiteRoomNameVisibility(string categoryID)
+    protected bool getSiteRoomNameVisibility(string roomName)
     {
+        return !string.IsNullOrEmpty(roomName);
         bool result = false;
-        switch (categoryID)
+        switch (roomName)
         {
-            case "1":
+            case "Residencial":
                 result = true;
                 break;
 
@@ -172,9 +194,9 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         if (searchResult != null)
         {
             if (descendingOrder)
-                setDataBinding(searchResult.OrderByDescending(o => o.Site.TotalArea).ToList());
+                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.AreaDescending));
             else
-                setDataBinding(searchResult.OrderBy(o => o.Site.TotalArea).ToList());
+                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.AreaAscending));
         }
     }
     private void orderSearchResultsByValue(bool descendingOrder)
@@ -183,9 +205,9 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         if (searchResult != null)
         {
             if (descendingOrder)
-                setDataBinding(searchResult.OrderByDescending(o => o.Price).ToList());
+                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.PriceDescending));
             else
-                setDataBinding(searchResult.OrderBy(o => o.Price).ToList());
+                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.PriceAscending));
         }
     }
     private void searchSite()
@@ -368,21 +390,35 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     {
         searchSite();
     }
-    protected void linkButtonOrderAreaAsc_Click(object sender, EventArgs e)
+    protected void dropDownListResultOrdering_SelectedIndexChanged(object sender, EventArgs e)
     {
-        orderSearchResultsByArea(false);
-    }
-    protected void linkButtonOrdeAreaDesc_Click(object sender, EventArgs e)
-    {
-        orderSearchResultsByArea(true);
-    }
-    protected void linkButtonOrderPriceAsc_Click(object sender, EventArgs e)
-    {
-        orderSearchResultsByValue(false);
-    }
-    protected void linkButtonOrderPriceDesc_Click(object sender, EventArgs e)
-    {
-        orderSearchResultsByValue(true);
+        var selectedValue = dropDownListResultOrdering.SelectedValue ?? string.Empty;
+        MdoSiteSearchResultOrder resultOrder = MdoSiteSearchResultOrder._Undefined;
+        switch (selectedValue)
+        {
+            case "PRICE_ASC":
+                resultOrder = MdoSiteSearchResultOrder.PriceAscending;
+                orderSearchResultsByValue(false);
+                break;
+            case "PRICE_DESC":
+                resultOrder = MdoSiteSearchResultOrder.PriceDescending;
+                orderSearchResultsByValue(true);
+                break;
+            case "AREA_ASC":
+                resultOrder = MdoSiteSearchResultOrder.AreaAscending;
+                orderSearchResultsByArea(false);
+                break;
+            case "AREA_DESC":
+                resultOrder = MdoSiteSearchResultOrder.AreaDescending;
+                orderSearchResultsByArea(true);
+                break;
+        }
+        var searchParameters = getSearchParameters();
+        if (searchParameters != null)
+        {
+            searchParameters.ResultOrdering = resultOrder;
+            setSearchParameters(searchParameters);
+        }
     }
     protected void listViewSearchResults_PagePropertiesChanged(object sender, EventArgs e)
     {
@@ -390,5 +426,30 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         setDataBinding(getSearchResult());
     }
 
+
+
     #endregion
+
+
+    #region OLD
+    //protected void linkButtonOrderAreaAsc_Click(object sender, EventArgs e)
+    //{
+    //    orderSearchResultsByArea(false);
+    //}
+    //protected void linkButtonOrdeAreaDesc_Click(object sender, EventArgs e)
+    //{
+    //    orderSearchResultsByArea(true);
+    //}
+    //protected void linkButtonOrderPriceAsc_Click(object sender, EventArgs e)
+    //{
+    //    orderSearchResultsByValue(false);
+    //}
+    //protected void linkButtonOrderPriceDesc_Click(object sender, EventArgs e)
+    //{
+    //    orderSearchResultsByValue(true);
+    //}
+
+    
+    #endregion
+
 }
