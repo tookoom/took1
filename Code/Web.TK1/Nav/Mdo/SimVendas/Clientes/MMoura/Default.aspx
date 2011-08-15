@@ -7,11 +7,8 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-    
-        </div>
-        <iframe id="navigationFrame" runat="server" src="http://www.tk1.net.br/Nav/Mdo/SimVendas/Clientes/" width="100%" height="1000px" scrolling="auto" frameborder="0"></iframe>
+    <form id="form1" runat="server" >
+        <iframe id="navigationFrame" runat="server" src="http://www.tk1.net.br/Nav/Mdo/SimVendas/Clientes/" marginwidth="auto" width="800px" height="3300px" scrolling="no" frameborder="0"></iframe>
     </form>
 </body>
 </html>

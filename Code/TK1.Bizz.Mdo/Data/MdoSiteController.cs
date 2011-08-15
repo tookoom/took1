@@ -391,8 +391,6 @@ namespace TK1.Bizz.Mdo.Data.Controller
                             ad.Site.SiteTypeReference.Load();
                         }
                     }
-
-                    //result = result.FilterAdType(parameters.AdType);
                     if (parameters.Code > 0)
                     {
                         result = result.FilterCode(parameters.Code);
@@ -410,12 +408,48 @@ namespace TK1.Bizz.Mdo.Data.Controller
                         if (!parameters.Districts.Contains("Todos"))
                             result = result.FilterDistrict(parameters.Districts);
                     }
+
+                    if (parameters.ResultOrdering != MdoSiteSearchResultOrder._Undefined)
+                        result = OrderResults(result, parameters.ResultOrdering);
                 }
             }
             catch (Exception exception)
             {
                 audit.WriteException("SiteController.SearchSites", exception);
             }
+            return result;
+        }
+
+        public static List<SiteAd> OrderResults(List<SiteAd> siteAds, MdoSiteSearchResultOrder resultOrder)
+        {
+            List<SiteAd> result = null;
+            if (siteAds != null & resultOrder != MdoSiteSearchResultOrder._Undefined)
+            {
+                try
+                {
+                    switch (resultOrder)
+                    {
+                        case MdoSiteSearchResultOrder.AreaAscending:
+                            result = siteAds.OrderBy(o => o.Site.TotalArea).ToList();
+                            break;
+                        case MdoSiteSearchResultOrder.AreaDescending:
+                            result = siteAds.OrderByDescending(o => o.Site.TotalArea).ToList();
+                            break;
+                        case MdoSiteSearchResultOrder.PriceAscending:
+                            result = siteAds.OrderBy(o => o.Price).ToList();
+                            break;
+                        case MdoSiteSearchResultOrder.PriceDescending:
+                            result = siteAds.OrderByDescending(o => o.Price).ToList();
+                            break;
+                    }
+                }
+                catch
+                {
+                    result = siteAds;
+                }
+            }
+            if (result == null)
+                result = new List<SiteAd>();
             return result;
         }
 

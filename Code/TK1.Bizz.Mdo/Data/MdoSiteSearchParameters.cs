@@ -18,6 +18,7 @@ namespace TK1.Bizz.Mdo.Data
         public string MdoAcronym { get; set; }
         public int MdoCode { get; set; }
         public string SiteType { get; set; }
+        public MdoSiteSearchResultOrder ResultOrdering { get; set; }
         public int RoomsFrom { get; set; }
         public int RoomsTo { get; set; }
         public float PriceTo { get; set; }
@@ -35,6 +36,7 @@ namespace TK1.Bizz.Mdo.Data
             MdoAcronym = string.Empty;
             MdoCode = 0;
             SiteType = "Apartamento";
+            ResultOrdering = MdoSiteSearchResultOrder._Undefined;
             RoomsFrom = int.MinValue;
             RoomsTo = int.MaxValue;
             PriceTo = float.MaxValue;

@@ -58,8 +58,8 @@ public partial class Nav_Mdo_SimVendas_Imovel_Default : System.Web.UI.Page
                 {
                     index++;
                     string fileName = Path.GetFileName(file);
-                    string imageSource = baseUrl + "resized\\" + fileName;
-                    string imageThumbSource = baseUrl + "thumbs\\" + fileName;
+                    string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
+                    string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
                     string imageTitle = string.Format("Foto {0}", index);
                     string imageDescription = siteController.GetSitePicDescription(fileName) ?? string.Empty;
 
