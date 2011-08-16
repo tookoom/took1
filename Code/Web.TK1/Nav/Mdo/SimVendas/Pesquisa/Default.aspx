@@ -3,8 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="SimVendasHeadContent" Runat="Server">
 
-    <div class="searchBar" Runat="Server">
-        <table border="0" cellpadding="4" cellspacing="0">
+    <div Runat="Server">
+        <table border="0" cellpadding="0" cellspacing="0" class="searchBarTop">
             <tr>
                 <td style="padding-right:16px">
                     <asp:RadioButton ID="radioButtonComercial" runat="server" Text="Comercial" GroupName="radioButtonSearchType" />
@@ -12,16 +12,16 @@
                 <td style="padding-right:16px">
                     <asp:RadioButton ID="radioButtonResidencial" runat="server" Text="Residencial" GroupName="radioButtonSearchType" />
                 </td>
-                <td>
+                <td style="padding-right:16px">
                     <asp:RadioButton ID="radioButtonCode" runat="server" Text="Busca pelo Código:" GroupName="radioButtonSearchType" />
                 </td>
                 <td>
-                    <asp:TextBox ID="textBoxSiteCode" runat="server" Width="100%" Font-Size="Medium"></asp:TextBox>
+                    <asp:TextBox ID="textBoxSiteCode" runat="server" Width="100%" Font-Size="Large"></asp:TextBox>
                 </td>
             </tr>
         </table>
         <hr />
-        <table  border="0" cellpadding="4" cellspacing="0" width="100%" >
+        <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBar">
             <tr>
                 <td>Tipo de Imóvel:</td>
                 <td>
@@ -38,8 +38,8 @@
                     <asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="280px" Font-Size="Medium"></asp:DropDownList></td>
                 <td></td>
                 <td>Bairros:</td>
-                <td rowspan="3" style="width: 280px; padding-right:8px;">
-                    <div style="overflow-y: scroll; float: left; width: 100%; height: 140px; background-color: White;
+                <td rowspan="3" style="width: 280px; padding-top:16px;">
+                    <div style="overflow-y: scroll; float: left; width: 100%; height: 150px; background-color: White;
                         color: Black;">
                         <asp:CheckBoxList ID="checkBoxListDistricts" runat="server">
                         </asp:CheckBoxList>
@@ -61,12 +61,12 @@
             </tr>
 
         </table> 
-        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBar">
             <tr>
                 <td>
                      <asp:Button ID="buttonSearch" Text="Pesquisar" runat="server" 
                         OnClick="buttonSearch_Click"  Font-Size="Medium" 
-                        style="float:right;width: 280px; margin-right:8px; margin-top:4px;"/>
+                        style="float:right;width: 280px; "/>
                 </td>
             </tr>
         </table>

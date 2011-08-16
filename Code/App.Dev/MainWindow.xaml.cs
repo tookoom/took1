@@ -41,8 +41,8 @@ namespace TK1.Dev
             InitializeComponent();
 
             //PietaUnitTest.TestXmlLoad();
-            TK1ServicesUnitTest.Test();
-            //MdoUnitTest.LoadXmlFile();
+            //TK1ServicesUnitTest.Test();
+            MdoUnitTest.LoadXmlFile();
         }
 
 
