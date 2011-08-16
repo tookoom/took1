@@ -311,14 +311,19 @@ a:active
     color: #333333;
 }*/
 
-div.headContent
+/*div.headContent
 {
     margin: 9px;
-}
+}*/
 
 .searchBar
 {
-    font-size: 1.4em; 
+    font-size: medium; 
+    padding: 8px;
+}
+.searchBarTop
+{
+    font-size: large; 
     padding: 8px;
 }
 
@@ -328,10 +333,6 @@ div.headContent
     width:100%;
     color:#333333;
     
-}
-div.mainContent
-{
-    margin: 9px;
 }
 
 

@@ -10,6 +10,7 @@ using TK1.Data;
 using TK1.Data.Controller;
 using TK1.Bizz.Mdo.Selling.Xml;
 using TK1.Bizz.Mdo.Selling.Data;
+using System.Threading;
 
 namespace TK1.Bizz.Mdo.Data.Controller
 {
@@ -77,6 +78,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                 Entities.SaveChanges();
 
                             }
+                            Thread.Sleep(10);
                         }
                     }
                 }

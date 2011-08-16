@@ -5,10 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
+    <link href="../../../../../Nav/Mdo/SimVendas/Style/MdoDefault.css" rel="stylesheet"
+        type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div style="font-family:'Verdana Tahoma'; font-size: medium;">
     <p>Processo de carga de cadastros executado</p>
     <asp:Literal ID="literalResponse" runat="server"></asp:Literal>
     </div>

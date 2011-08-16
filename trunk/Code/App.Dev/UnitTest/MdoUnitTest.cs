@@ -26,12 +26,12 @@ namespace TK1.Dev.UnitTest
                 string sourceDir = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Xml";
                 string fileFilter = "VisVen*";
 
-                foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
-                {
-                    SellingSiteHelper.LoadXmlSiteAd(item, false);
-                }
+                //foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
+                //{
+                    var report = SellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter, false);
+                //}
 
-                string picturesPath = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Fotos\3";
+                //string picturesPath = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Fotos\3";
                 //SellingSitePicHelper.ResizeSitePics(picturesPath, 500, 70);
                 
                 //ImageHelperTestUnit.Resize();

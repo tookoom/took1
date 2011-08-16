@@ -34,11 +34,15 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
 
             string fileFilter = "VisVen*";
 
-            foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
-            {
-                string report = SellingSiteHelper.LoadXmlSiteAd(item, true);
-                literalResponse.Text = report;
-            }     
+            string report = SellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter, true);
+            literalResponse.Text = report;
+
+            //foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
+            //{
+            //    string report = SellingSiteHelper.LoadXmlSiteAd(item, true);
+            //    literalResponse.Text = report;
+            //}     
+
             //if(!loadFileOnly)
             //    SellingSitePicHelper.ResizeSitePics(picturesPath, 500, 70);
 
