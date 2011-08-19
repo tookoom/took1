@@ -1,0 +1,105 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<%@ Register Assembly="DevExpress.Web.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+
+    
+    <%--<link href="http://www.pietaimoveis.com.br/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.pietaimoveis.com.br/Styles/Menu.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.pietaimoveis.com.br/Styles/HeadContent.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.pietaimoveis.com.br/Styles/Contact.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.pietaimoveis.com.br/Styles/Location.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.pietaimoveis.com.br/Styles/Search.css" rel="stylesheet" type="text/css" />
+
+    <link href="http://www.pietaimoveis.com.br/Scripts/css/jquery.galleryview-3.0.css" rel="stylesheet" type="text/css" />
+    --%>
+    
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Menu.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/HeadContent.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Contact.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Location.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Search.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/css/jquery.galleryview-3.0.css" rel="stylesheet" type="text/css" />
+
+    
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+
+        <div class="header">
+            <div class="clear hideSkiplink">
+
+                <div class="clear menu">
+
+                    <div style="margin:242px 0px 0px 0px; float: left; position:absolute; width: 60px;text-align: center;" >
+                        <asp:LinkButton ID="linkButtonHome" Text="Home" runat="server"  
+                                class="menuItem" PostBackUrl="~/" />
+                    </div>
+
+                    <div style="margin:240px 0px 0px 62px; float: left; position:absolute; width: 186px;text-align: center; font-size:1.2em">
+                        <asp:LinkButton ID="linkButtonSearch" Text="Pesquisa de Imóveis" 
+                            runat="server"  class="menuItem" PostBackUrl="~/Pesquisa/Default.aspx" />
+                    </div>
+                    
+                    <div style="margin:242px 0px 0px 250px; float: left; position:absolute; width: 162px;text-align: center;">
+                        <asp:LinkButton ID="linkButtonSiteRegistry" Text="Cadastre seu Imóvel" 
+                            runat="server"  class="menuItem" PostBackUrl="~/CadastreSeuImovel/Default.aspx" />
+                    </div>
+
+                    <div style="margin:242px 0px 0px 414px; float: left; position:absolute; width: 170px;text-align: center;">
+                        <asp:LinkButton ID="linkButtonUtil" Text="Serviços e Utilidades" 
+                            runat="server"  class="menuItem" PostBackUrl="~/Utilidades/Default.aspx" />
+                    </div>
+
+                    <div style="margin:242px 0px 0px 586px; float: left; position:absolute; width: 114px;text-align: center;">
+                        <asp:LinkButton ID="linkButtonAbout" Text="Quem Somos" 
+                            runat="server"  class="menuItem" PostBackUrl="~/QuemSomos/Default.aspx" />
+                    </div>
+
+                    <div style="margin:242px 0px 0px 702px; float: left; position:absolute; width: 124px;text-align: center;">
+                        <asp:LinkButton ID="linkButtonLocation" Text="Onde Estamos" 
+                            runat="server"  class="menuItem" PostBackUrl="~/OndeEstamos/Default.aspx" />
+                    </div>
+
+                    <div style="margin:242px 0px 0px 828px; float: left; position:absolute; width: 124px;text-align: center;">
+                        <asp:LinkButton ID="linkButtonContact" Text="Fale Conosco" 
+                            runat="server"  class="menuItem" PostBackUrl="~/FaleConosco/Default.aspx" />
+                    </div>
+                </div>           
+            </div>
+
+        </div>
+
+        <div class="headContent">
+            <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <br />
+    </div>
+    <div class="footer">
+        <div style="float: left; margin:2px 0 0 8px">                
+            <img src="http://www.pietaimoveis.com.br/Images/LogoFooter.png"/>
+            <%--<img src="~/Images/LogoFooter.png"/>--%>
+        </div>
+        <div style="float: left; font-size:1em; margin:4px 0 0 4px">
+            Pietá Intermediação Imobiliária Ltda. - Rua Armando Barbedo, 480 - loja 101 • Porto Alegre - RS • Fone: (51) 3085.6003
+        </div>
+            
+        <div style="float: right; font-size:1em; margin:4px 8px 0 4px">CRECI 22999J</div>
+
+    </div>
+
+    </form>
+</body>
+</html>
