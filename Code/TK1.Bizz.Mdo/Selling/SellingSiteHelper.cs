@@ -17,20 +17,32 @@ namespace TK1.Bizz.Mdo.Selling
 {
     public class SellingSiteHelper
     {
-        public static string LoadXmlSiteAd(string sourceDir, string fileFilter, bool sendMail)
+        #region PUBLIC PROPERTIES
+        public string MdoAcronym { get; set; }
+        public bool SendReportMail { get; set; }
+
+        #endregion
+
+        public SellingSiteHelper()
+        {
+            SendReportMail = true;
+        }
+
+        public string LoadXmlSiteAd(string sourceDir, string fileFilter)
         {
             string result = string.Empty;
             AuditController audit = null;
             bool loadResult = false;
             int errorCount = 0;
             int successCount = 0;
+            MdoSiteController siteController = null;
             try
             {
                 audit = new AuditController(AppNames.IntegraMdoSelling.ToString(), CustomerNames.Pietá.ToString());
                 audit.StartProcessExecution();
                 audit.WriteEvent("Iniciando processo de carga de cadastro de imóveis", sourceDir ?? "[NULL DIR]");
 
-                MdoSiteController siteController = new MdoSiteController(audit);
+                siteController = new MdoSiteController(audit);
                 var files = FileHelper.GetFiles(sourceDir, fileFilter);
                 audit.WriteEvent("Total de arquivos a carregar ", files.Count.ToString());
                 foreach (var filePath in files)
@@ -73,8 +85,13 @@ namespace TK1.Bizz.Mdo.Selling
                     audit.FinishProcessExecution(loadResult);
                 result = audit.GenerateHtmlReport();
 
-                if (sendMail)
-                    sendReportMail(result);
+                if (SendReportMail)
+                {
+                    string mailTo = string.Empty;
+                    if (siteController != null)
+                        mailTo = siteController.GetXmlSellingLoadEmail(MdoAcronym);
+                    sendReportMail(result, mailTo);
+                }
             }
             return result;
         }
@@ -99,11 +116,18 @@ namespace TK1.Bizz.Mdo.Selling
                 }
             }
         }
-        private static void sendReportMail(string body)
+        private static void sendReportMail(string body, string mailTo)
         {
-            string subject = "Relatório de carga de cadastros IMÓVEIS VENDA";
-            AdminHelper.SendMail(subject, body);
-            //MailHelper.SendMail(subject, body, MailAdresses.WebMaster, MailAdresses.Vendas);
+
+            try
+            {
+                string subject = "Relatório de carga de cadastros IMÓVEIS VENDA";
+                AdminHelper.SendMail(subject, body);
+                AdminHelper.SendMail(subject, body, mailTo);
+            }
+            catch (Exception)
+            {
+            }
         }
 
 
