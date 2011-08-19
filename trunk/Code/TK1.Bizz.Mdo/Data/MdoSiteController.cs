@@ -360,6 +360,21 @@ namespace TK1.Bizz.Mdo.Data.Controller
                 result = new List<string>();
             return result;
         }
+        public string GetXmlSellingLoadEmail(string clientAcronym)
+        {
+            string result = string.Empty;
+            try
+            {
+                var customerData = Entities.CustomerDatas.Where(o => o.MdoAcronym == clientAcronym).FirstOrDefault();
+                if (customerData != null)
+                    result = customerData.XmlSellingEmail;
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("MdoSiteController.GetXmlSellingLoadEmail", exception);
+            }
+            return result;
+        }
         public List<SiteAd> SearchSites(MdoSiteSearchParameters parameters)
         {
             List<SiteAd> result = new List<SiteAd>();

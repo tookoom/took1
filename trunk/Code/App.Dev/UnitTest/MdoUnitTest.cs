@@ -28,7 +28,9 @@ namespace TK1.Dev.UnitTest
 
                 //foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
                 //{
-                    var report = SellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter, false);
+                SellingSiteHelper sellingSiteHelper = new SellingSiteHelper();
+                sellingSiteHelper.MdoAcronym = "mmoura";
+                var report = sellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
                 //}
 
                 //string picturesPath = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Fotos\3";

@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
+      <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
+      <Name>TK1.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
       <Name>TK1</Name>
