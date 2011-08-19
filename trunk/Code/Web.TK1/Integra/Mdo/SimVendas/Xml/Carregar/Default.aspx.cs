@@ -23,18 +23,21 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
             var queryString = Page.ClientQueryString;
             var dictionary = StringDictionary.LoadFromQueryString(queryString);
 
-            var clientAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
+            var mdoAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
             var loadFileOnly = dictionary.Get("XmlOnly") != null;
 
             MdoSiteController controller = new MdoSiteController();
-            int mdoCode = controller.GetMdoCode(clientAcronym);
+            int mdoCode = controller.GetMdoCode(mdoAcronym);
 
             string sourceDir = getXmlFilePath();
             string picturesPath = getPictureFilesPath(mdoCode);
 
             string fileFilter = "VisVen*";
 
-            string report = SellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter, true);
+            SellingSiteHelper sellingSiteHelper = new SellingSiteHelper();
+            sellingSiteHelper.MdoAcronym = mdoAcronym;
+            var report = sellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
+            //string report = SellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter, true);
             literalResponse.Text = report;
 
             //foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
