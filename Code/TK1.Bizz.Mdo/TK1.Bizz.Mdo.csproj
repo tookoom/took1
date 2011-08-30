@@ -46,20 +46,17 @@
   <ItemGroup>
     <Compile Include="Const\ParameterGroupNames.cs" />
     <Compile Include="Const\ParameterNames.cs" />
-    <Compile Include="Const\SiteAdCategories.cs" />
+    <Compile Include="Data\Extension\SiteAdListExtension.cs" />
     <Compile Include="Data\MdoBaseController.cs" />
     <Compile Include="Data\MdoDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MdoDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\MdoSiteSearchResultOrder.cs" />
-    <Compile Include="MailHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Extension\SiteAdExtension.cs" />
-    <Compile Include="Data\Presentation\SiteDetail.cs" />
-    <Compile Include="Data\MdoSiteController.cs" />
-    <Compile Include="Data\MdoSiteSearchParameters.cs" />
+    <Compile Include="Data\MdoSiteAdController.cs" />
+    <Compile Include="Data\MdoSiteAdSearchParameters.cs" />
     <Compile Include="Selling\Data\NavData.cs" />
     <Compile Include="Selling\SellingSiteHelper.cs" />
     <Compile Include="Selling\SellingSitePicHelper.cs" />
@@ -114,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Presentation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

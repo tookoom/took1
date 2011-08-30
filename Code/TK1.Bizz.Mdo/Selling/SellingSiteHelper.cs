@@ -35,14 +35,14 @@ namespace TK1.Bizz.Mdo.Selling
             bool loadResult = false;
             int errorCount = 0;
             int successCount = 0;
-            MdoSiteController siteController = null;
+            MdoSiteAdController siteController = null;
             try
             {
                 audit = new AuditController(AppNames.IntegraMdoSelling.ToString(), CustomerNames.Pietá.ToString());
                 audit.StartProcessExecution();
                 audit.WriteEvent("Iniciando processo de carga de cadastro de imóveis", sourceDir ?? "[NULL DIR]");
 
-                siteController = new MdoSiteController(audit);
+                siteController = new MdoSiteAdController(audit);
                 var files = FileHelper.GetFiles(sourceDir, fileFilter);
                 audit.WriteEvent("Total de arquivos a carregar ", files.Count.ToString());
                 foreach (var filePath in files)
