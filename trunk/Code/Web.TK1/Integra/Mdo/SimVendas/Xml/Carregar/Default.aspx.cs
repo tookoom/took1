@@ -26,7 +26,7 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
             var mdoAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
             var loadFileOnly = dictionary.Get("XmlOnly") != null;
 
-            MdoSiteController controller = new MdoSiteController();
+            MdoSiteAdController controller = new MdoSiteAdController();
             int mdoCode = controller.GetMdoCode(mdoAcronym);
 
             string sourceDir = getXmlFilePath();
