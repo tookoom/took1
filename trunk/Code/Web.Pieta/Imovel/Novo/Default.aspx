@@ -157,7 +157,7 @@
     <br />
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDetail" runat="server" 
-        SelectMethod="GetSiteDetail" TypeName="TK1.Bizz.Pieta.Data.SiteController" >
+        SelectMethod="GetSiteDetail" TypeName="TK1.Bizz.Mdo.Data.SiteController" >
 
         <SelectParameters>
             <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
@@ -170,7 +170,7 @@
 
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDescription" runat="server" 
-        SelectMethod="GetSiteAd" TypeName="TK1.Bizz.Pieta.Data.SiteController" 
+        SelectMethod="GetSiteAd" TypeName="TK1.Bizz.Mdo.Data.SiteController" 
         onselected="objectDataSourceSiteDescription_Selected">
 
         <SelectParameters>

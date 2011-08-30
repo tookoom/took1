@@ -23,13 +23,14 @@ namespace TK1.Dev.UnitTest
         {
             try
             {
-                string sourceDir = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Xml";
+                string sourceDir = @"C:\Users\andre\Desktop\Temp\Pieta";
+                //string sourceDir = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Xml";
                 string fileFilter = "VisVen*";
 
                 //foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
                 //{
                 SellingSiteHelper sellingSiteHelper = new SellingSiteHelper();
-                sellingSiteHelper.MdoAcronym = "mmoura";
+                sellingSiteHelper.MdoAcronym = "pieta";
                 var report = sellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
                 //}
 

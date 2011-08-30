@@ -4,59 +4,63 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TK1.Bizz.Pieta.Data;
+using TK1.Bizz.Mdo.Data;
 using TK1.Bizz.Pieta.Const;
 using TK1.Data.Converter;
 using TK1.Bizz.Pieta;
 using System.IO;
+using TK1.Bizz.Mdo.Data.Controller;
+using TK1.Bizz.Data.Presentation;
+using TK1.Bizz.Pieta.Data.Controller;
 
 public partial class Pesquisa_Default : System.Web.UI.Page
 {
     #region PRIVATE MEMBERS
-    private static string searchResultSessionKey = "SearchResult";
+    private static string searchResultSessionKey = "PietaSearchResult";
     
     #endregion
 
     protected bool getSearchResultVisibility()
     {
         bool result = true;
-        //if (Page.Session[searchResultSessionKey] != null)
-        //    result = true;
+        if (Page.Session[searchResultSessionKey] != null)
+            result = true;
         return result;
     }
-    private string getSiteMainPic(int siteAdType, int siteAdID)
-    {
-        string result = string.Empty;
+    //private string getSiteMainPic(SiteAdTypes siteAdType, int siteAdID)
+    //{
+    //    string result = string.Empty;
 
-        string baseUrl = string.Empty;
-        if (siteAdType == 1)
-            baseUrl = string.Format("Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        if (siteAdType == 2)
-            baseUrl = string.Format("Imovel/Fotos/Venda/{0}/", siteAdID);
-        string relUrl = string.Format("~/{0}", baseUrl);
-        if (!string.IsNullOrEmpty(baseUrl))
-        {
-            relUrl = this.ResolveUrl(relUrl);
-            string path = Server.MapPath(relUrl);
-            if (Directory.Exists(path))
-            {
-                string items = string.Empty;
-                foreach (var file in Directory.GetFiles(path, "*.jpg"))
-                {
-                    result = baseUrl + Path.GetFileName(file);
-                    break;
-                }
+    //    string baseUrl = string.Empty;
+    //    if (siteAdType == SiteAdTypes.Rent)
+    //        baseUrl = string.Format("Imovel/Fotos/Aluguel/{0}/", siteAdID);
+    //    if (siteAdType == SiteAdTypes.Sell)
+    //        baseUrl = string.Format("Imovel/Fotos/Venda/{0}/", siteAdID);
+    //    string relUrl = string.Format("~/{0}", baseUrl);
+    //    if (!string.IsNullOrEmpty(baseUrl))
+    //    {
+    //        relUrl = this.ResolveUrl(relUrl);
+    //        string path = Server.MapPath(relUrl);
+    //        if (Directory.Exists(path))
+    //        {
+    //            string items = string.Empty;
+    //            foreach (var file in Directory.GetFiles(path, "*.jpg"))
+    //            {
+    //                result = baseUrl + Path.GetFileName(file);
+    //                break;
+    //            }
 
-            }
-        }
-        return result;
-    }
-    protected bool getSiteAreaVisibility(string adType)
+    //        }
+    //    }
+    //    return result;
+    //}
+    protected bool getSiteAreaVisibility(SiteAdCategories siteAdCategory)
     {
+        return true;
         bool result = false;
-        switch (adType)
+        switch (siteAdCategory)
         {
-            case "1":
+            case SiteAdCategories.Comercial:
                 result = true;
                 break;
 
@@ -66,12 +70,12 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         }
         return result;
     }
-    protected bool getSiteRoomNameVisibility(string adType)
+    protected bool getSiteRoomNameVisibility(SiteAdCategories siteAdCategory)
     {
         bool result = false;
-        switch (adType)
+        switch (siteAdCategory)
         {
-            case "1":
+            case SiteAdCategories.Residencial:
                 result = true;
                 break;
 
@@ -85,25 +89,26 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     {
         radioButtonBuy.Checked = true;
         //radioButtonSiteResidence.Checked = true;
+        MdoSiteAdController siteController = new MdoSiteAdController();
 
-        var cities = SiteController.GetCities();
+        var cities = siteController.GetCities();
         foreach (var city in cities)
             dropDownCities.Items.Add(new ListItem(city));
 
         checkBoxListDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
-        var districts = SiteController.GetDistricts();
+        var districts = siteController.GetDistricts();
         foreach (var district in districts)
             checkBoxListDistricts.Items.Add(new ListItem(district));
 
-        dropDownSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Business + "*"));
-        var siteComercialTypes = SiteController.GetSiteTypes(SiteAdCategories.Business);
+        dropDownSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Comercial.ToString() + "*"));
+        var siteComercialTypes = siteController.GetSiteTypes(SiteAdCategories.Comercial.ToString());
         foreach (var siteType in siteComercialTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Business + siteType));
+            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Comercial.ToString() + siteType));
 
-        dropDownSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residence + "*") { Selected = true });
-        var siteResidenceTypes = SiteController.GetSiteTypes(SiteAdCategories.Residence);
+        dropDownSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residencial.ToString() + "*") { Selected = true });
+        var siteResidenceTypes = siteController.GetSiteTypes(SiteAdCategories.Residencial.ToString());
         foreach (var siteType in siteResidenceTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residence + siteType));
+            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residencial.ToString() + siteType));
 
         dropDownRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
         dropDownRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
@@ -148,34 +153,33 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     private void orderSearchResultsByArea(bool descendingOrder)
     {
-        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAd>;
+        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAdView>;
         if (searchResult != null)
         {
             if (descendingOrder)
-                setDataBinding(searchResult.OrderByDescending(o => o.Site.TotalArea).ToList());
+                setDataBinding(searchResult.OrderByDescending(o => o.SiteTotalArea).ToList());
             else
-                setDataBinding(searchResult.OrderBy(o => o.Site.TotalArea).ToList());
+                setDataBinding(searchResult.OrderBy(o => o.SiteTotalArea).ToList());
         }
     }
     private void orderSearchResultsByValue(bool descendingOrder)
     {
-        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAd>;
+        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAdView>;
         if (searchResult != null)
         {
             if(descendingOrder)
-                setDataBinding(searchResult.OrderByDescending(o => o.Price).ToList());
+                setDataBinding(searchResult.OrderByDescending(o => o.Value).ToList());
             else
-                setDataBinding(searchResult.OrderBy(o => o.Price).ToList());
+                setDataBinding(searchResult.OrderBy(o => o.Value).ToList());
         }
     }
     private void searchSite()
     {
-        SiteSearchParameters parameters = new SiteSearchParameters();
+        MdoSiteAdSearchParameters parameters = new MdoSiteAdSearchParameters() { CustomerCodename = "pieta", MdoCode = 4 };
 
+        parameters.AdType = SiteAdTypes.Rent;
         if (radioButtonBuy.Checked)
             parameters.AdType = SiteAdTypes.Sell;
-        else
-            parameters.AdType = SiteAdTypes.Rent;
 
         if (!string.IsNullOrEmpty(textBoxSiteCode.Text))
         {
@@ -207,10 +211,10 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         {
             string text = dropDownSiteType.SelectedItem.Text;
             string value = dropDownSiteType.SelectedItem.Value;
-            if (value.Contains(SiteAdCategories.Business.ToString()))
-                parameters.Category = SiteAdCategories.Business;
+            if (value.Contains(SiteAdCategories.Residencial.ToString()))
+                parameters.Category = SiteAdCategories.Residencial.ToString();
             else
-                parameters.Category = SiteAdCategories.Residence;
+                parameters.Category = SiteAdCategories.Comercial.ToString();
             if (value.Contains("*"))
                 parameters.SiteType = "*";
             else
@@ -226,18 +230,17 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             if (item.Selected)
                 parameters.Districts.Add(item.Text);
 
-
-        var searchResult = SiteController.SearchSites(parameters);
-        foreach (var siteAd in searchResult)
+        PietaSiteAdController siteController = new PietaSiteAdController();
+        List<SiteAdView> searchResult = new List<SiteAdView>();
+        searchResult = siteController.SearchSites(parameters);
+        foreach (var siteAdView in searchResult)
         {
-            string imageUrl = "Images/ImageNotFound.png";
-            if (string.IsNullOrEmpty(siteAd.ImageUrl))
-            {
-                string mainPic = getSiteMainPic(siteAd.AdTypeID, siteAd.SiteAdID);
-                if (!string.IsNullOrEmpty(mainPic))
-                    imageUrl = mainPic;
-            }
-            siteAd.ImageUrl = imageUrl;
+            siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
+            siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
+            if (string.IsNullOrEmpty(siteAdView.MainPicUrl))
+                siteAdView.MainPicUrl = "Images/ImageNotFound.png";
+            else
+                siteAdView.MainPicUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/{1}", siteAdView.Code, siteAdView.MainPicUrl);
         }
         setDataBinding(searchResult);
     }

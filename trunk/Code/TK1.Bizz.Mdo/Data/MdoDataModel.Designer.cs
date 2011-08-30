@@ -1838,13 +1838,15 @@ namespace TK1.Bizz.Mdo.Data
         /// <param name="siteID">Initial value of the SiteID property.</param>
         /// <param name="categoryID">Initial value of the CategoryID property.</param>
         /// <param name="customerID">Initial value of the CustomerID property.</param>
-        public static SiteAd CreateSiteAd(global::System.Int32 siteAdID, global::System.Int32 siteID, global::System.Int32 categoryID, global::System.Int32 customerID)
+        /// <param name="isFeatured">Initial value of the IsFeatured property.</param>
+        public static SiteAd CreateSiteAd(global::System.Int32 siteAdID, global::System.Int32 siteID, global::System.Int32 categoryID, global::System.Int32 customerID, global::System.Boolean isFeatured)
         {
             SiteAd siteAd = new SiteAd();
             siteAd.SiteAdID = siteAdID;
             siteAd.SiteID = siteID;
             siteAd.CategoryID = categoryID;
             siteAd.CustomerID = customerID;
+            siteAd.IsFeatured = isFeatured;
             return siteAd;
         }
 
@@ -2168,6 +2170,30 @@ namespace TK1.Bizz.Mdo.Data
         private global::System.Int32 _CustomerID;
         partial void OnCustomerIDChanging(global::System.Int32 value);
         partial void OnCustomerIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsFeatured
+        {
+            get
+            {
+                return _IsFeatured;
+            }
+            set
+            {
+                OnIsFeaturedChanging(value);
+                ReportPropertyChanging("IsFeatured");
+                _IsFeatured = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsFeatured");
+                OnIsFeaturedChanged();
+            }
+        }
+        private global::System.Boolean _IsFeatured;
+        partial void OnIsFeaturedChanging(global::System.Boolean value);
+        partial void OnIsFeaturedChanged();
 
         #endregion
     

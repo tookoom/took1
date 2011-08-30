@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TK1.Bizz.Pieta;
-using TK1.Bizz.Pieta.Data;
 using System.IO;
 using TK1.Bizz.Pieta.Const;
+using TK1.Data;
+using TK1.Bizz.Mdo;
+using TK1.Bizz;
 
 public partial class FaleConosco_Default : System.Web.UI.Page
 {
@@ -50,7 +52,7 @@ public partial class FaleConosco_Default : System.Web.UI.Page
         }
         catch (Exception exception)
         {
-            LogController.WriteException("FaleConosco_Default.createMailBody", exception, true);
+            AppLogController.WriteException("FaleConosco_Default.createMailBody", exception, true);
         }
         return result;
     }
@@ -67,7 +69,7 @@ public partial class FaleConosco_Default : System.Web.UI.Page
     {
         string subject = "Mensagem enviada através do site Pietá Imóveis";
         string body = createMailBody();
-        MailHelper.SendContactMail(subject, body);
+        AdminHelper.SendMail(subject, body, "emailContato");
         createMessageAlert(this, "Mensagem enviada", "");
     }
 
