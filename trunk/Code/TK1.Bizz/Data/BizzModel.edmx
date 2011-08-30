@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TK1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TK1ModelStoreContainer">
+          <EntitySet Name="SiteAd" EntityType="TK1Model.Store.SiteAd" store:Type="Tables" Schema="Bizz" />
+          <EntitySet Name="SiteAdDetail" EntityType="TK1Model.Store.SiteAdDetail" store:Type="Tables" Schema="Bizz" />
+          <EntitySet Name="SiteAdPic" EntityType="TK1Model.Store.SiteAdPic" store:Type="Tables" Schema="Bizz" />
+          <EntitySet Name="SiteAdType" EntityType="TK1Model.Store.SiteAdType" store:Type="Tables" Schema="Bizz" />
+          <AssociationSet Name="FK_SiteAd_SiteAdType" Association="TK1Model.Store.FK_SiteAd_SiteAdType">
+            <End Role="SiteAdType" EntitySet="SiteAdType" />
+            <End Role="SiteAd" EntitySet="SiteAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAdDetail_SiteAd" Association="TK1Model.Store.FK_SiteAdDetail_SiteAd">
+            <End Role="SiteAd" EntitySet="SiteAd" />
+            <End Role="SiteAdDetail" EntitySet="SiteAdDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAdPic_SiteAd" Association="TK1Model.Store.FK_SiteAdPic_SiteAd">
+            <End Role="SiteAd" EntitySet="SiteAd" />
+            <End Role="SiteAdPic" EntitySet="SiteAdPic" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SiteAd">
+          <Key>
+            <PropertyRef Name="SiteAdID" />
+            <PropertyRef Name="SiteAdTypeID" />
+            <PropertyRef Name="CustomerCodename" />
+          </Key>
+          <Property Name="SiteAdID" Type="int" Nullable="false" />
+          <Property Name="SiteAdTypeID" Type="int" Nullable="false" />
+          <Property Name="CustomerCodename" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CategoryName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SiteTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="CityName" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="DistrictName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="TotalArea" Type="float" Nullable="false" />
+          <Property Name="TotalRooms" Type="int" Nullable="false" />
+          <Property Name="InternalArea" Type="float" Nullable="false" />
+          <Property Name="ExternalArea" Type="float" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="CityTaxes" Type="float" />
+          <Property Name="CondoTaxes" Type="float" />
+          <Property Name="Title" Type="varchar" MaxLength="256" />
+          <Property Name="ShortDescription" Type="varchar(max)" />
+          <Property Name="FullDescription" Type="varchar(max)" />
+          <Property Name="AreaDescription" Type="varchar(max)" />
+          <Property Name="CondoDescription" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="SiteAdDetail">
+          <Key>
+            <PropertyRef Name="SiteAdDetailID" />
+          </Key>
+          <Property Name="SiteAdDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SiteAdID" Type="int" Nullable="false" />
+          <Property Name="SiteAdTypeID" Type="int" Nullable="false" />
+          <Property Name="CustomerCodename" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Value" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SiteAdPic">
+          <Key>
+            <PropertyRef Name="SiteAdID" />
+            <PropertyRef Name="SiteAdTypeID" />
+            <PropertyRef Name="CustomerCodename" />
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Name="SiteAdID" Type="int" Nullable="false" />
+          <Property Name="SiteAdTypeID" Type="int" Nullable="false" />
+          <Property Name="CustomerCodename" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PicID" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="256" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SiteAdType">
+          <Key>
+            <PropertyRef Name="SiteAdTypeID" />
+          </Key>
+          <Property Name="SiteAdTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_SiteAd_SiteAdType">
+          <End Role="SiteAdType" Type="TK1Model.Store.SiteAdType" Multiplicity="1" />
+          <End Role="SiteAd" Type="TK1Model.Store.SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteAdType">
+              <PropertyRef Name="SiteAdTypeID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="SiteAdTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAdDetail_SiteAd">
+          <End Role="SiteAd" Type="TK1Model.Store.SiteAd" Multiplicity="1" />
+          <End Role="SiteAdDetail" Type="TK1Model.Store.SiteAdDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteAd">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Principal>
+            <Dependent Role="SiteAdDetail">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAdPic_SiteAd">
+          <End Role="SiteAd" Type="TK1Model.Store.SiteAd" Multiplicity="1" />
+          <End Role="SiteAdPic" Type="TK1Model.Store.SiteAdPic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteAd">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Principal>
+            <Dependent Role="SiteAdPic">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TK1Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BizzEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SiteAdTypes" EntityType="TK1Model.SiteAdType" />
+          <EntitySet Name="SiteAds" EntityType="TK1Model.SiteAd" />
+          <EntitySet Name="SiteAdDetails" EntityType="TK1Model.SiteAdDetail" />
+          <EntitySet Name="SiteAdPics" EntityType="TK1Model.SiteAdPic" />
+          <AssociationSet Name="FK_SiteAd_SiteAdType" Association="TK1Model.FK_SiteAd_SiteAdType">
+            <End Role="SiteAdType" EntitySet="SiteAdTypes" />
+            <End Role="SiteAd" EntitySet="SiteAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAdDetail_SiteAd" Association="TK1Model.FK_SiteAdDetail_SiteAd">
+            <End Role="SiteAd" EntitySet="SiteAds" />
+            <End Role="SiteAdDetail" EntitySet="SiteAdDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAdPic_SiteAd" Association="TK1Model.FK_SiteAdPic_SiteAd">
+            <End Role="SiteAd" EntitySet="SiteAds" />
+            <End Role="SiteAdPic" EntitySet="SiteAdPics" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="SiteAdType">
+          <Key>
+            <PropertyRef Name="SiteAdTypeID" />
+          </Key>
+          <Property Name="SiteAdTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SiteAds" Relationship="TK1Model.FK_SiteAd_SiteAdType" FromRole="SiteAdType" ToRole="SiteAd" />
+        </EntityType>
+        <EntityType Name="SiteAd">
+          <Key>
+            <PropertyRef Name="SiteAdID" />
+            <PropertyRef Name="SiteAdTypeID" />
+            <PropertyRef Name="CustomerCodename" />
+          </Key>
+          <Property Type="Int32" Name="SiteAdID" Nullable="false" />
+          <Property Type="Int32" Name="SiteAdTypeID" Nullable="false" />
+          <Property Type="String" Name="CustomerCodename" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SiteTypeName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DistrictName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="TotalArea" Nullable="false" />
+          <Property Type="Int32" Name="TotalRooms" Nullable="false" />
+          <Property Type="Double" Name="InternalArea" Nullable="false" />
+          <Property Type="Double" Name="ExternalArea" Nullable="false" />
+          <Property Type="Double" Name="Value" Nullable="false" />
+          <Property Type="Double" Name="CityTaxes" />
+          <Property Type="Double" Name="CondoTaxes" />
+          <Property Type="String" Name="Title" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShortDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CondoDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SiteAdType" Relationship="TK1Model.FK_SiteAd_SiteAdType" FromRole="SiteAd" ToRole="SiteAdType" />
+          <NavigationProperty Name="SiteAdDetails" Relationship="TK1Model.FK_SiteAdDetail_SiteAd" FromRole="SiteAd" ToRole="SiteAdDetail" />
+          <NavigationProperty Name="SiteAdPics" Relationship="TK1Model.FK_SiteAdPic_SiteAd" FromRole="SiteAd" ToRole="SiteAdPic" />
+        </EntityType>
+        <EntityType Name="SiteAdDetail">
+          <Key>
+            <PropertyRef Name="SiteAdDetailID" />
+          </Key>
+          <Property Type="Int32" Name="SiteAdDetailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SiteAdID" Nullable="false" />
+          <Property Type="Int32" Name="SiteAdTypeID" Nullable="false" />
+          <Property Type="String" Name="CustomerCodename" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SiteAd" Relationship="TK1Model.FK_SiteAdDetail_SiteAd" FromRole="SiteAdDetail" ToRole="SiteAd" />
+        </EntityType>
+        <EntityType Name="SiteAdPic">
+          <Key>
+            <PropertyRef Name="SiteAdID" />
+            <PropertyRef Name="SiteAdTypeID" />
+            <PropertyRef Name="CustomerCodename" />
+            <PropertyRef Name="PicID" />
+          </Key>
+          <Property Type="Int32" Name="SiteAdID" Nullable="false" />
+          <Property Type="Int32" Name="SiteAdTypeID" Nullable="false" />
+          <Property Type="String" Name="CustomerCodename" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PicID" Nullable="false" />
+          <Property Type="String" Name="FileName" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SiteAd" Relationship="TK1Model.FK_SiteAdPic_SiteAd" FromRole="SiteAdPic" ToRole="SiteAd" />
+        </EntityType>
+        <Association Name="FK_SiteAd_SiteAdType">
+          <End Type="TK1Model.SiteAdType" Role="SiteAdType" Multiplicity="1" />
+          <End Type="TK1Model.SiteAd" Role="SiteAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteAdType">
+              <PropertyRef Name="SiteAdTypeID" />
+            </Principal>
+            <Dependent Role="SiteAd">
+              <PropertyRef Name="SiteAdTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAdDetail_SiteAd">
+          <End Type="TK1Model.SiteAd" Role="SiteAd" Multiplicity="1" />
+          <End Type="TK1Model.SiteAdDetail" Role="SiteAdDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteAd">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Principal>
+            <Dependent Role="SiteAdDetail">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAdPic_SiteAd">
+          <End Type="TK1Model.SiteAd" Role="SiteAd" Multiplicity="1" />
+          <End Type="TK1Model.SiteAdPic" Role="SiteAdPic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteAd">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Principal>
+            <Dependent Role="SiteAdPic">
+              <PropertyRef Name="SiteAdID" />
+              <PropertyRef Name="SiteAdTypeID" />
+              <PropertyRef Name="CustomerCodename" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TK1ModelStoreContainer" CdmEntityContainer="BizzEntities">
+          <EntitySetMapping Name="SiteAdTypes"><EntityTypeMapping TypeName="TK1Model.SiteAdType"><MappingFragment StoreEntitySet="SiteAdType">
+            <ScalarProperty Name="SiteAdTypeID" ColumnName="SiteAdTypeID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SiteAds">
+            <EntityTypeMapping TypeName="TK1Model.SiteAd">
+              <MappingFragment StoreEntitySet="SiteAd">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CondoDescription" ColumnName="CondoDescription" />
+                <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CondoTaxes" ColumnName="CondoTaxes" />
+                <ScalarProperty Name="CityTaxes" ColumnName="CityTaxes" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ExternalArea" ColumnName="ExternalArea" />
+                <ScalarProperty Name="InternalArea" ColumnName="InternalArea" />
+                <ScalarProperty Name="TotalRooms" ColumnName="TotalRooms" />
+                <ScalarProperty Name="TotalArea" ColumnName="TotalArea" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="SiteTypeName" ColumnName="SiteTypeName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CustomerCodename" ColumnName="CustomerCodename" />
+                <ScalarProperty Name="SiteAdTypeID" ColumnName="SiteAdTypeID" />
+                <ScalarProperty Name="SiteAdID" ColumnName="SiteAdID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteAdDetails">
+            <EntityTypeMapping TypeName="TK1Model.SiteAdDetail">
+              <MappingFragment StoreEntitySet="SiteAdDetail">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CustomerCodename" ColumnName="CustomerCodename" />
+                <ScalarProperty Name="SiteAdTypeID" ColumnName="SiteAdTypeID" />
+                <ScalarProperty Name="SiteAdID" ColumnName="SiteAdID" />
+                <ScalarProperty Name="SiteAdDetailID" ColumnName="SiteAdDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteAdPics">
+            <EntityTypeMapping TypeName="TK1Model.SiteAdPic">
+              <MappingFragment StoreEntitySet="SiteAdPic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="PicID" ColumnName="PicID" />
+                <ScalarProperty Name="CustomerCodename" ColumnName="CustomerCodename" />
+                <ScalarProperty Name="SiteAdTypeID" ColumnName="SiteAdTypeID" />
+                <ScalarProperty Name="SiteAdID" ColumnName="SiteAdID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="BizzModel">
+        <EntityTypeShape EntityType="TK1Model.SiteAdType" Width="1.5" PointX="1" PointY="5.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1Model.SiteAd" Width="1.5" PointX="3.875" PointY="4" Height="5.4417122395833317" />
+        <EntityTypeShape EntityType="TK1Model.SiteAdDetail" Width="1.5" PointX="6.75" PointY="4.5" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="TK1Model.SiteAdPic" Width="1.5" PointX="6.375" PointY="8.25" Height="2.3648893229166674" />
+        <AssociationConnector Association="TK1Model.FK_SiteAd_SiteAdType" >
+          <ConnectorPoint PointX="2.5" PointY="6.547841796875" />
+          <ConnectorPoint PointX="3.875" PointY="6.547841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_SiteAdDetail_SiteAd" >
+          <ConnectorPoint PointX="5.375" PointY="5.7785953776041659" />
+          <ConnectorPoint PointX="6.75" PointY="5.7785953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1Model.FK_SiteAdPic_SiteAd" >
+          <ConnectorPoint PointX="5.375" PointY="8.8458561197916659" />
+          <ConnectorPoint PointX="6.375" PointY="8.8458561197916659" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

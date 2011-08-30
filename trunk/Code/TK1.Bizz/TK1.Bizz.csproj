@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +46,21 @@
     <Compile Include="AdminHelper.cs" />
     <Compile Include="Const\AppNames.cs" />
     <Compile Include="Const\CustomerNames.cs" />
+    <Compile Include="Data\BizzModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BizzModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Extension\SiteAdExtension.cs" />
+    <Compile Include="Data\BizzBaseController.cs" />
+    <Compile Include="Data\Presentation\SiteAdPicView.cs" />
+    <Compile Include="Data\SiteAdController.cs" />
+    <Compile Include="Data\SiteAdSearchParameters.cs" />
+    <Compile Include="Data\SiteAdSearchResultOrders.cs" />
+    <Compile Include="Data\Presentation\SiteAdCategories.cs" />
+    <Compile Include="Data\Presentation\SiteAdTypes.cs" />
+    <Compile Include="Data\Presentation\SiteAdView.cs" />
+    <Compile Include="Data\Presentation\SiteAdDetail.cs" />
     <Compile Include="Integra\FileLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +73,15 @@
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
       <Name>TK1</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\BizzModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BizzModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

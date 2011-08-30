@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TK1.Bizz
+namespace TK1.Bizz.Data.Presentation
 {
-    public enum AppNames
+    public enum SiteAdTypes : int
     {
-        BizzSites,
-        IntegraMdoSelling
+        Rent = 1,
+        Sell = 2
     }
 }
