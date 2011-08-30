@@ -21,7 +21,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
         public float InternalArea { get; set; }
         public string InternetDescription { get; set; }
         public bool IsExclusive { get; set; }
-        public bool IsHighlighted { get; set; }
+        public bool IsFeatured { get; set; }
         public int RoomNumber { get; set; }
         public int SiteCode { get; set; }
         public string SiteType { get; set; }

@@ -33,7 +33,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
         public static string GarageNumber = "garagens";
         public static string HasBanner = "Banner";
         public static string InternalArea = "area_uso_privativo";
-        public static string IsHighlighted = "imoveldestaque";
+        public static string IsFeatured = "destaque";
         public static string Pictures = "imagens";
         public static string Picture = "imagem";
         public static string PictureDescription = "descricao_foto";

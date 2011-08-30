@@ -55,7 +55,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                                     xmlSite.ExternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.ExternalArea), 0);
                                     xmlSite.InternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.InternalArea), 0);
                                     xmlSite.InternetDescription = XmlLoader.GetElementValue(element, XmlSiteTags.Description);
-                                    xmlSite.IsHighlighted = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsHighlighted), "N").ToUpper() == "S";
+                                    xmlSite.IsFeatured = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsFeatured), "N").ToUpper() == "S";
                                     xmlSite.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber), 0);
                                     xmlSite.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.SiteCode), 0);
                                     xmlSite.SiteType = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.SiteType), "Não Cadastrado");

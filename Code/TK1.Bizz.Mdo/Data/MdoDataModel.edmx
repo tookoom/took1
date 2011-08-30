@@ -158,6 +158,7 @@
           <Property Name="ShortDescription" Type="varchar(max)" />
           <Property Name="AreaDescription" Type="varchar(max)" />
           <Property Name="CondDescription" Type="varchar(max)" />
+          <Property Name="IsFeatured" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SiteDescription">
           <Key>
@@ -471,6 +472,7 @@
           <NavigationProperty Name="Site" Relationship="MdoModel.FK_SiteAd_Site" FromRole="SiteAd" ToRole="Site" />
           <Property Type="Int32" Name="CustomerID" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="MdoModel.FK_SiteAd_Customer" FromRole="SiteAd" ToRole="Customer" />
+          <Property Type="Boolean" Name="IsFeatured" Nullable="false" />
         </EntityType>
         <EntityType Name="SiteDescription">
           <Key>
@@ -730,6 +732,7 @@
           <EntitySetMapping Name="SiteAds">
             <EntityTypeMapping TypeName="MdoModel.SiteAd">
               <MappingFragment StoreEntitySet="SiteAd">
+                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="CondDescription" ColumnName="CondDescription" />
                 <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TK1.Bizz.Pieta.Data;
 using TK1.Bizz.Pieta;
 using System.IO;
+using TK1.Bizz.Mdo.Data;
+using TK1.Bizz.Mdo.Data.Controller;
 
 public partial class Imovel_Novo_Default : System.Web.UI.Page
 {
@@ -33,7 +34,8 @@ public partial class Imovel_Novo_Default : System.Web.UI.Page
                 divSiteNotFound.Visible = false;
                 divSiteDetails.Visible = true;
 
-                string literal = getSitePicGallery(siteAd.AdTypeID, siteAd.SiteAdID);
+                string literal = getSitePicGallery(siteAd.CustomerID, siteAd.SiteAdID);
+
 
                 //literal = "<ul id=\"picGallery\">"
                 //    + "<li><img src=\"../Imovel/Fotos/Aluguel/5/1.jpg\" title=\"1\" /></li>"
@@ -61,43 +63,43 @@ public partial class Imovel_Novo_Default : System.Web.UI.Page
         }
         return result;
     }
-    private string getSitePicGallery(int siteAdType, int siteAdID)
+    private string getSitePicGallery(int customerID, int siteAdID)
     {
-        string result = string.Empty;
+        MdoSiteAdController siteController = new MdoSiteAdController();
+        var mdoCode = siteController.GetMdoCode(customerID);
 
-        string baseUrl = string.Empty;
-        if (siteAdType == 1)
-            baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        if (siteAdType == 2)
-            baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
+        string result = string.Empty;
+        string baseUrl = string.Format("~\\Integra\\Mdo\\SimVendas\\Fotos\\{0}\\{1}\\", mdoCode, siteAdID);
+
         if (!string.IsNullOrEmpty(baseUrl))
         {
             baseUrl = this.ResolveUrl(baseUrl);
             string path = Server.MapPath(baseUrl);
-            if(Directory.Exists(path))
+            if (Directory.Exists(path))
             {
                 string items = string.Empty;
                 int index = 0;
-                foreach (var file in Directory.GetFiles(path,"*.jpg"))
+                foreach (var file in Directory.GetFiles(path, "*.jpg"))
                 {
                     index++;
                     string fileName = Path.GetFileName(file);
-                    string imageSource = baseUrl + "resized//" + fileName;
-                    string imageThumbSource = baseUrl + "thumbs//" + fileName;
+                    string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
+                    string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
                     string imageTitle = string.Format("Foto {0}", index);
-                    string imageDescription = SiteController.GetSitePicDescription(fileName) ?? string.Empty;
+                    string imageDescription = siteController.GetSitePicDescription(fileName) ?? string.Empty;
+
                     string li = "<li>"
                             + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
                             + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-							+ "</a>"
-							+ "<div class=\"caption\">"
-                            //+ "<div class=\"download\">"
-                            //+ "<a href=\"" + imageSource + "\">Download Original </a>"
-                            //+ "</div>"
-							+ "<div class=\"image-title\">" + imageTitle + "</div>"
+                            + "</a>"
+                            + "<div class=\"caption\">"
+                        //+ "<div class=\"download\">"
+                        //+ "<a href=\"" + imageSource + "\">Download Original </a>"
+                        //+ "</div>"
+                            + "<div class=\"image-title\">" + imageTitle + "</div>"
                             + "<div class=\"image-desc\">" + imageDescription + "</div>"
-							+ "</div>"
-						    + "</li>";
+                            + "</div>"
+                            + "</li>";
                     //string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
                     items += li + Environment.NewLine;
                 }
@@ -110,13 +112,13 @@ public partial class Imovel_Novo_Default : System.Web.UI.Page
                 }
                 else
                 {
-                    result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
+                    result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
                 }
 
             }
             else
             {
-                result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
+                result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
             }
 
             //result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", baseUrl));
@@ -125,5 +127,6 @@ public partial class Imovel_Novo_Default : System.Web.UI.Page
 
         return result;
     }
+
 
 }

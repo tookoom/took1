@@ -5,50 +5,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-<%--
+    <%--
     <script src="http://www.pietaimoveis.com.br/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="http://www.pietaimoveis.com.br/Scripts/js/jquery.easing.1.3.js" type="text/javascript"></script>
     <script src="http://www.pietaimoveis.com.br/Scripts/js/jquery.timers-1.2.js" type="text/javascript"></script>
     <script src="http://www.pietaimoveis.com.br/Scripts/js/jquery.galleryview-3.0.js" type="text/javascript"></script>
     --%>
-
-    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
-    <script src="../Scripts/js/jquery.easing.1.3.js" type="text/javascript"></script>
-    <script src="../Scripts/js/jquery.timers-1.2.js" type="text/javascript"></script>
-    <script src="../Scripts/js/jquery.galleryview-3.0.js" type="text/javascript"></script>
+    <link href="../Scripts/css/basic.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/css/galleriffic-3.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/js/jquery-1.3.2.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.galleriffic.js" type="text/javascript"></script>
+    <script src="../Scripts/js/jquery.opacityrollover.js" type="text/javascript"></script>
+    <script src="../Scripts/PicGallery.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            var dotCounter = 0;
-            (function waitPicLoad() {
-                setTimeout(function () {
-                    if (dotCounter++ < 5) {
-                        waitPicLoad();
-                    }
-                    else {
-                        $('#picGallery').galleryView({ pause_on_hover: true,
-                            panel_scale: 'nocrop',
-                            panel_width: 754,
-                            panel_heigth: 620,
-                            panel_animation: 'none',
-                            frame_opacity: 0.4,
-                            show_panel_nav: true,
-                            show_overlays: true,
-                            frame_width: 160,
-                            frame_height: 50,
-                            filmstrip_size: 1,
-                            filmstrip_position: 'right',
-                            show_filmstrip_nav: false,
-                            frame_gap: 6
-                        });
-                        //$('#divSitePicGallery').show('slow');
-                    }
-                }, 100);
-            })();
-
-        });
-
-    </script>
+            document.write('<style>.noscript { display: none; }</style>');
+	</script>
 
 
     <div id="divSiteNotFound" runat="server" class="center">
@@ -68,27 +40,49 @@
                 <ItemTemplate>
                     <div style="float:left; padding-top: 2px;">
                         <h2>
-                            <%# Eval("Site.SiteType.Name")%> - <%# Eval("AdType.Name")%> 
+                            <%# Eval("SiteType")%> - <%# Eval("AdTypeName")%> 
                         </h2>
-                        <h3><%# Eval("Site.City.Name")%>, bairro <%# Eval("Site.District.Name")%></h3>
-                        <b style="line-height: 1.5em;">Código do anúncio: <%# Eval("SiteAdID")%></b>
+                        <h3><%# Eval("City")%>, bairro <%# Eval("District")%></h3>
+                        <b style="line-height: 1.5em;">Código do anúncio: <%# Eval("Code")%></b>
                         <br />
                     </div>
                     <div style="float:right; padding-top: 14px;">
-                        <h1> <%# Eval("Price", "{0:c}")%> </h1>
+                        <h1> <%# Eval("Value", "{0:c}")%> </h1>
                     </div>
                </ItemTemplate>                                 
 
             </asp:Repeater>
         </div>
         <br />
-        <div id="divSitePics" class="divSitePics">
+        <div id="divSitePics" class="divSitePics" style="height:650px">
+		    <div id="page">
+			    <div id="container">
+				    <!-- Start Advanced Gallery Html Containers -->
+				    <div id="gallery" class="content">
+					    <div id="controls" class="controls"></div>
+					    <div class="slideshow-container">
+						    <div id="loading" class="loader"></div>
+						    <div id="slideshow" class="slideshow"></div>
+					    </div>
+					    <div id="caption" class="caption-container"></div>
+				    </div>
+				    <div id="thumbs" class="navigation">
+
+                        <asp:Literal id="literalSitePics" runat="server" />
+				    </div>
+				    <div style="clear: both;"></div>
+			    </div>
+		    </div>
+
+        </div>
+
+        <%--<div id="divSitePics" class="divSitePics">
             <br />
             <div id="divSitePicGallery">
                 <asp:Literal id="literalSitePics" runat="server" />
             </div>
             
-        </div>
+        </div>--%>
         
         <div class="headerBlueLine">
             <h3>Descrição</h3>
@@ -102,15 +96,15 @@
                         <ItemTemplate>
                             <b><h4> <%# Eval("Title")%> </h4></b>
                             <p> <b>Características do Imóvel: </b></p>
-                            <p> <%# Eval("Description")%> </p>
+                            <p> <%# Eval("FullDescription")%> </p>
                             <p> <b>Infraestrutura do Condomínio: </b></p>
-                            <p> Informações sobre o condomínio </p>
+                            <p> <%# Eval("CondoDescription")%> </p>
                             <p> <b>Infraestrutura do Bairro: </b></p>
-                            <p> Informações sobre o bairro </p>
-                            <div runat="server" visible='<%#getRentDivVisibility(Eval("AdType.AdTypeID").ToString())%>'>
-                                <p> Aluguel: <%# Eval("Price", "{0:c}")%> </p>
-                                <p> IPTU: <%# Eval("IPTU", "{0:c}")%> </p>
-                                <p> Condomínio: <%# Eval("Cond", "{0:c}")%> </p>
+                            <p> <%# Eval("AreaDescription")%> </p>
+                            <div runat="server" visible='<%#Eval("IsTaxVisible")%>'>
+                                <p> Aluguel: <%# Eval("Value", "{0:c}")%> </p>
+                                <p> IPTU: <%# Eval("CityTaxes", "{0:c}")%> </p>
+                                <p> Condomínio: <%# Eval("CondoTaxes", "{0:c}")%> </p>
                             </div>
                             <br />
                         </ItemTemplate>                                 
@@ -147,38 +141,49 @@
     <br />
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDetail" runat="server" 
-        SelectMethod="GetSiteDetail" TypeName="TK1.Bizz.Pieta.Data.SiteController" >
+        SelectMethod="GetSiteDetail" 
+        TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController" >
 
         <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="0" Name="adType" 
+                QueryStringField="AdTypeID" Type="Int32" />
             <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
                 QueryStringField="ID" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="0" Name="siteAdType" 
-                QueryStringField="AdType" Type="Int32" />
         </SelectParameters>
 
     </asp:ObjectDataSource>
 
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDescription" runat="server" 
-        SelectMethod="GetSiteAd" TypeName="TK1.Bizz.Pieta.Data.SiteController" 
+        SelectMethod="GetSiteAd" TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController" 
         onselected="objectDataSourceSiteDescription_Selected">
 
         <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="0" Name="adType" 
+                QueryStringField="AdTypeID" Type="Int32" />
             <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
                 QueryStringField="ID" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="0" Name="siteAdType" 
-                QueryStringField="AdType" Type="Int32" />
         </SelectParameters>
 
     </asp:ObjectDataSource>
 
-    <asp:ObjectDataSource ID="objectDataSourceSitePics" runat="server" 
-        SelectMethod="GetSitePics" TypeName="TK1.Bizz.Pieta.SitePicHelper">
-        <SelectParameters>
-            <asp:QueryStringParameter Name="siteAdID" QueryStringField="ID" Type="Int32" />
-            <asp:Parameter DefaultValue="AdType" Name="siteAdType" Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var dotCounter = 0;
+                (function waitPicLoad() {
+                    setTimeout(function () {
+                        if (dotCounter++ < 10) {
+                            waitPicLoad();
+                        }
+                        else {
+                            jQuery(document).ready(loadGallery($));
+                        }
+                    }, 100);
+                })();
+
+            });
+		    </script>
+
 
 </asp:Content>
 

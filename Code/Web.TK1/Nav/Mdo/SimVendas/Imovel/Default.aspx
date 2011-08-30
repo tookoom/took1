@@ -174,15 +174,6 @@
 
     </asp:ObjectDataSource>
 
-<%--    <asp:ObjectDataSource ID="objectDataSourceSitePics" runat="server" 
-        SelectMethod="GetSitePics" TypeName="TK1.Bizz.Mdo.Selling.SellingSitePicHelper">
-        <SelectParameters>
-            <asp:QueryStringParameter Name="siteAdID" QueryStringField="ID" Type="Int32" />
-            <asp:Parameter DefaultValue="AdType" Name="siteAdType" Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>--%>
-
-
         <script type="text/javascript">
             $(document).ready(function () {
                 var dotCounter = 0;

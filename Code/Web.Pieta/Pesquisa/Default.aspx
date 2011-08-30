@@ -114,21 +114,21 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="932px" style="border-bottom:2px solid #23669A; ">
                     <tr class="center">
                         <td style="vertical-align: middle; width:170px;">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&AdType=<%# Eval("AdTypeID")%>">
-                                <img src="../<%# Eval("ImageUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
+                                <img src="<%# Eval("MainPicUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
                             </a>
                         </td>
-                        <td style="vertical-align: middle; width:70px; text-align:center;"><b>Código <%# Eval("SiteAdID")%></b></td>
-                        <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
-                        <td style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>
-                               <%# Eval("Site.TotalRooms")%>  <%# Eval("Site.SiteType.RoomDisplayName")%>
+                        <td style="vertical-align: middle; width:70px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
+                        <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("SiteType")%></td>
+                        <td style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#Eval("IsRoomNameVisible")%>'>
+                               <%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%>
                         </td>
-                        <td id="Td1" style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#getSiteAreaVisibility(Eval("Site.SiteType.Category.CategoryID").ToString())%>'>
-                               <%# Eval("Site.TotalArea", "{0:0.##}")%>  m²
+                        <td id="Td1" style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#Eval("IsAreaNameVisible")%>'>
+                               <%# Eval("SiteTotalArea", "{0:0.##}")%>  m²
                         </td>
-                        <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("Site.District.Name")%></td>
-                        <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Price", "{0:c}")%></td>
-                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&AdType=<%# Eval("AdTypeID")%>">Detalhes</a></td>
+                        <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("District")%></td>
+                        <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Value", "{0:c}")%></td>
+                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">Detalhes</a></td>
                     </tr>
                     
                 </table>
@@ -145,7 +145,7 @@
 
 
         <asp:ObjectDataSource ID="objectDataSourceSiteSearch" runat="server" 
-            SelectMethod="SearchSites" TypeName="TK1.Bizz.Pieta.Data.SiteController" >
+            SelectMethod="SearchSites" TypeName="TK1.Bizz.Mdo.Data.SiteController" >
             <SelectParameters>
                 <asp:Parameter Name="parameters" Type="Object" />
             </SelectParameters>

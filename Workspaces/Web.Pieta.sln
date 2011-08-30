@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pieta", "..\Code\Web.Pieta", "{9557E413-0289-469F-80C6-4016AEA2F1FE}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pieta", "..\Code\Web.Pieta\", "{9557E413-0289-469F-80C6-4016AEA2F1FE}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
-		ProjectReferences = "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}|TK1.Bizz.Pieta.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}|TK1.Bizz.Pieta.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;{AB2EC906-93AE-4F64-B71D-E04C88036D7D}|TK1.Bizz.dll;{2484CD63-A0B0-46AE-A423-B32E6A6AD279}|TK1.Data.dll;{07143283-7469-446F-A469-86F64C5CB61F}|TK1.Bizz.Mdo.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Web.Pieta"
 		Debug.AspNetCompiler.PhysicalPath = "..\Code\Web.Pieta\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.Pieta\"
@@ -19,13 +19,19 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pieta", "..\Code\Web.Pi
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "62127"
+		VWDPort = "57694"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Pieta", "..\Code\TK1.Bizz.Pieta\TK1.Bizz.Pieta.csproj", "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz", "..\Code\TK1.Bizz\TK1.Bizz.csproj", "{AB2EC906-93AE-4F64-B71D-E04C88036D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Mdo", "..\Code\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj", "{07143283-7469-446F-A469-86F64C5CB61F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data", "..\Code\TK1.Data\TK1.Data.csproj", "{2484CD63-A0B0-46AE-A423-B32E6A6AD279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07143283-7469-446F-A469-86F64C5CB61F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

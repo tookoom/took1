@@ -22,7 +22,7 @@ function loadGallery($) {
     //                test();
     //                alert('2');
     // We only want these styles applied when javascript is enabled
-    $('div.navigation').css({ 'width': '300px', 'float': 'left' });
+    $('div.navigation').css({ 'width': '150px', 'float': 'left' });
     $('div.content').css('display', 'block');
 
     // Initially set opacity on thumbs and add
@@ -38,7 +38,7 @@ function loadGallery($) {
     // Initialize Advanced Galleriffic Gallery
     var gallery = $('#thumbs').galleriffic({
         delay: 2500,
-        numThumbs: 15,
+        numThumbs: 10,
         preloadAhead: 10,
         enableTopPager: true,
         enableBottomPager: true,
@@ -51,10 +51,10 @@ function loadGallery($) {
         renderNavControls: true,
         playLinkText: 'Iniciar troca automática de fotos',
         pauseLinkText: 'Pausar troca automática de fotos',
-        prevLinkText: '&lsaquo; Foto Anterior',
-        nextLinkText: 'Próxima Foto &rsaquo;',
-        nextPageLinkText: 'Próxima &rsaquo;',
-        prevPageLinkText: '&lsaquo; Anterior',
+        prevLinkText: '&lsaquo;&lsaquo; Foto Anterior',
+        nextLinkText: 'Próxima Foto &rsaquo;&rsaquo;',
+        nextPageLinkText: 'Próxima &rsaquo;&rsaquo;',
+        prevPageLinkText: '&lsaquo;&lsaquo; Anterior',
         enableHistory: true,
         autoStart: false,
         syncTransitions: true,

@@ -20,8 +20,6 @@ using TK1.Diagnostics;
 using System.Globalization;
 //using TK1.Bizz.Pieta.Data;
 using TK1.Bizz.Pieta;
-using TK1.Bizz.Pieta.Xml;
-using TK1.Bizz.Pieta.Data;
 using TK1.Html;
 using TK1.Collection;
 using TK1.Bizz.Pieta.Const;

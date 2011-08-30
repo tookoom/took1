@@ -70,6 +70,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                     CondDescription = xmlSiteAd.CondDescription,
                                     Customer = customer,
                                     Description = xmlSiteAd.InternetDescription,
+                                    IsFeatured = xmlSiteAd.IsFeatured,
                                     Price = xmlSiteAd.Value,
                                     Site = site,
                                     SiteAdID = xmlSiteAd.SiteCode,
@@ -194,6 +195,58 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             return result;
         }
+        public List<SiteAdView> GetFeaturedSiteAds(string mdoAcronym)
+        {
+            List<SiteAdView> result = new List<SiteAdView>();
+            try
+            {
+                var customerID = Entities.CustomerDatas.Where(o => o.MdoAcronym == mdoAcronym).Select(o => o.CustomerID).FirstOrDefault();
+                var query = Entities.SiteAds.Where(o => o.Customer.CustomerID == customerID & o.IsFeatured == true);
+                var list = query.ToList();
+                foreach (var siteAd in query)
+                {
+                    var siteCategory = SiteAdCategories.Residencial;
+                    siteAd.CategoryReference.Load();
+                    if (siteAd.Category.Name != SiteAdCategories.Residencial.ToString())
+                        siteCategory = SiteAdCategories.Comercial;
+                    siteAd.SiteReference.Load();
+                    if (siteAd.Site != null)
+                    {
+                        //ad.Site.AddressInfoReference.Load();
+                        siteAd.Site.CityReference.Load();
+                        siteAd.Site.DistrictReference.Load();
+                        siteAd.Site.SiteDescriptions.Load();
+                        siteAd.Site.SitePics.Load();
+                        string mainPicName = string.Empty;
+                        if (siteAd.Site.SitePics.Count > 0)
+                            mainPicName = siteAd.Site.SitePics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+                        siteAd.Site.SiteTypeReference.Load();
+
+                        SiteAdView siteAdView = new SiteAdView()
+                        {
+                            AdCategory = siteCategory,
+                            AdType = SiteAdTypes.Sell,
+                            Code = siteAd.SiteAdID,
+                            District = siteAd.Site.DistrictName,
+                            MainPicUrl = mainPicName,
+                            SiteTotalArea = (float)siteAd.Site.TotalArea,
+                            SiteTotalRooms = siteAd.Site.TotalRooms,
+                            SiteType = siteAd.Site.SiteType.Name,
+                            SiteTypeRoomName = siteAd.Site.SiteType.RoomDisplayName,
+                            Value = (float)(siteAd.Price.HasValue ? siteAd.Price.Value : 0)
+
+                        };
+                        result.Add(siteAdView);
+                    }
+                }
+
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.SearchSites", exception);
+            }
+            return result;
+        }
         public int GetMdoCode(string clientAcronym)
         {
             int result = 0;
@@ -205,7 +258,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             catch (Exception exception)
             {
-                audit.WriteException("MdoSiteController.GetMdoCode", exception);
+                audit.WriteException("MdoSiteController.GetFeaturedSiteAds", exception);
             }
             return result;
         }
