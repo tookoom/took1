@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TK1.Bizz.Pieta</RootNamespace>
     <AssemblyName>TK1.Bizz.Pieta</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,44 +48,30 @@
     <Compile Include="Const\ParameterNames.cs" />
     <Compile Include="Const\ParameterGroupNames.cs" />
     <Compile Include="Const\Paths.cs" />
-    <Compile Include="Const\SiteAdCategories.cs" />
-    <Compile Include="Const\SiteAdTypes.cs" />
     <Compile Include="Const\Tags.cs" />
     <Compile Include="Const\HtmlTemplates.cs" />
-    <Compile Include="Data\BaseController.cs" />
-    <Compile Include="Data\Extension\SiteAdExtension.cs" />
-    <Compile Include="Data\LogController.cs" />
-    <Compile Include="Data\LogLevels.cs" />
-    <Compile Include="Data\PietaDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PietaDataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Presentation\SiteDetail.cs" />
-    <Compile Include="Data\SiteController.cs" />
-    <Compile Include="Data\SiteSearchParameters.cs" />
-    <Compile Include="MailHelper.cs" />
-    <Compile Include="SiteHelper.cs" />
-    <Compile Include="Xml\XmlSitePicTags.cs" />
-    <Compile Include="Xml\XmlSitePic.cs" />
-    <Compile Include="Xml\XmlSite.cs" />
-    <Compile Include="Xml\XmlSiteDescription.cs" />
-    <Compile Include="Xml\XmlSiteHelper.cs" />
-    <Compile Include="Xml\XmlSiteTags.cs" />
+    <Compile Include="Data\Controller\PietaSiteAdController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SitePicHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Data\PietaDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PietaDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj">
+      <Project>{07143283-7469-446F-A469-86F64C5CB61F}</Project>
+      <Name>TK1.Bizz.Mdo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
+      <Project>{AB2EC906-93AE-4F64-B71D-E04C88036D7D}</Project>
+      <Name>TK1.Bizz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
+      <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
+      <Name>TK1.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Media\TK1.Media.csproj">
       <Project>{2B1DC70C-89E1-46F4-96C7-03BD38D80330}</Project>
