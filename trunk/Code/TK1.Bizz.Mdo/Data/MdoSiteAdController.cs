@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TK1.Bizz.Mdo.Data.Extension;
-using TK1.Bizz.Mdo.Data.Presentation;
 using TK1.Bizz.Mdo.Xml;
 using TK1.Utility;
 using TK1.Data;
@@ -11,21 +10,23 @@ using TK1.Data.Controller;
 using TK1.Bizz.Mdo.Selling.Xml;
 using TK1.Bizz.Mdo.Selling.Data;
 using System.Threading;
+using TK1.Bizz.Data.Presentation;
+using TK1.Bizz.Data;
 
 namespace TK1.Bizz.Mdo.Data.Controller
 {
-    public class MdoSiteController : MdoBaseController
+    public class MdoSiteAdController : MdoBaseController
     {
         #region PRIVATE MEMBERS
         private AuditController audit;
 
         #endregion
 
-        public MdoSiteController()
+        public MdoSiteAdController()
         {
             audit = new AuditController(AppNames.IntegraMdoSelling.ToString(), CustomerNames.Mdo.ToString());
         }
-        public MdoSiteController(AuditController audit)
+        public MdoSiteAdController(AuditController audit)
         {
             this.audit = audit;
         }
@@ -250,36 +251,77 @@ namespace TK1.Bizz.Mdo.Data.Controller
                 var siteAd = Entities.SiteAds.Get(customerID, siteAdID);
                 if (siteAd != null)
                 {
+                    var siteCategory = SiteAdCategories.Residencial;
                     siteAd.CategoryReference.Load();
+                    if (siteAd.Category.Name != SiteAdCategories.Residencial.ToString())
+                        siteCategory = SiteAdCategories.Comercial;
                     siteAd.SiteReference.Load();
-                    //if (siteAd.Site != null)
-                    //    siteAd.Site.AddressInfoReference.Load();
                     if (siteAd.Site != null)
-                        siteAd.Site.CityReference.Load();
-                    if (siteAd.Site != null)
-                        siteAd.Site.DistrictReference.Load();
-                    if (siteAd.Site != null)
-                        siteAd.Site.SiteTypeReference.Load();
-                    if (string.IsNullOrEmpty(siteAd.Description))
                     {
-                        if (siteAd.Site != null)
-                            siteAd.Site.SiteDescriptions.Load();
-                        if (siteAd.Site.SiteDescriptions != null)
-                        {
-                            var descriptions = siteAd.Site.SiteDescriptions;
-                            var query = from o in descriptions
-                                        where o.Value.ToUpper() != "SIM"
-                                        select o;
-                            string text = string.Empty;
-                            foreach (var detail in query)
-                                text += string.Format("{0} {1}, ", detail.Value, detail.Description);
+                        //ad.Site.AddressInfoReference.Load();
+                        siteAd.Site.CityReference.Load();
+                        siteAd.Site.DistrictReference.Load();
+                        siteAd.Site.SiteDescriptions.Load();
+                        siteAd.Site.SitePics.Load();
+                        string mainPicName = string.Empty;
+                        if (siteAd.Site.SitePics.Count > 0)
+                            mainPicName = siteAd.Site.SitePics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+                        siteAd.Site.SiteTypeReference.Load();
 
-                            siteAd.Description = text;
-                        }
+                        result = siteAd;
                     }
+                }
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetSiteAd", exception);
+            }
+            return result;
+        }
+        public SiteAdView GetSiteAdView(int customerID, int siteAdID)
+        {
+            SiteAdView result = null;
+            try
+            {
+                var siteAd = Entities.SiteAds.Get(customerID, siteAdID);
+                if (siteAd != null)
+                {
+                    var siteCategory = SiteAdCategories.Residencial;
+                    siteAd.CategoryReference.Load();
+                    if (siteAd.Category.Name != SiteAdCategories.Residencial.ToString())
+                        siteCategory = SiteAdCategories.Comercial;
+                    siteAd.SiteReference.Load();
+                    if (siteAd.Site != null)
+                    {
+                        //ad.Site.AddressInfoReference.Load();
+                        siteAd.Site.CityReference.Load();
+                        siteAd.Site.DistrictReference.Load();
+                        siteAd.Site.SiteDescriptions.Load();
+                        siteAd.Site.SitePics.Load();
+                        string mainPicName = string.Empty;
+                        if (siteAd.Site.SitePics.Count > 0)
+                            mainPicName = siteAd.Site.SitePics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+                        siteAd.Site.SiteTypeReference.Load();
 
-                    //siteAd.Site.SiteType.Name
-                    result = siteAd;
+                        result = new SiteAdView()
+                        {
+                            AdCategory = siteCategory,
+                            AdType = SiteAdTypes.Sell,
+                            AdTypeName = "Venda",
+                            City = siteAd.Site.CityName,
+                            Code = siteAd.SiteAdID,
+                            District = siteAd.Site.DistrictName,
+                            FullDescription = siteAd.Description,
+                            MainPicUrl = mainPicName,
+                            SiteTotalArea = (float)siteAd.Site.TotalArea,
+                            SiteTotalRooms = siteAd.Site.TotalRooms,
+                            SiteType = siteAd.Site.SiteType.Name,
+                            SiteTypeRoomName = siteAd.Site.SiteType.RoomDisplayName,
+                            ShortDescription = siteAd.ShortDescription,
+                            Value = (float)(siteAd.Price.HasValue ? siteAd.Price.Value : 0)
+
+                        };
+                    }
                 }
             }
             catch (Exception exception)
@@ -375,58 +417,75 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             return result;
         }
-        public List<SiteAd> SearchSites(MdoSiteSearchParameters parameters)
+        public List<SiteAdView> SearchSites(MdoSiteAdSearchParameters parameters)
         {
-            List<SiteAd> result = new List<SiteAd>();
+            List<SiteAdView> result = new List<SiteAdView>();
             try
             {
-                //var query = entities.SiteAds as IQueryable<SiteAd>;
                 if (parameters != null)
                 {
-                    ////query = query.FilterAdType(parameters.AdType);
-                    ////query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
-                    ////query = query.FilterCategory(parameters.Category);
-                    ////query = query.FilterCity(parameters.CityName);
-                    ////query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
-                    ////query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
-                    ////query = query.FilterSiteRegion(parameters.RegionID);
-                    ////query = query.FilterSiteType(parameters.AdType, parameters.SiteType);
-
-                    var customerID = Entities.CustomerDatas.Where(o=>o.MdoAcronym == parameters.MdoAcronym).Select(o=>o.CustomerID).FirstOrDefault();
-                    result = Entities.SiteAds.Where(o => o.Customer.CustomerID == customerID).ToList();
-
-                    foreach (var ad in result)
-                    {
-                        ad.CategoryReference.Load();
-                        ad.SiteReference.Load();
-                        if (ad.Site != null)
-                        {
-                            //ad.Site.AddressInfoReference.Load();
-                            ad.Site.CityReference.Load();
-                            ad.Site.DistrictReference.Load();
-                            ad.Site.SiteDescriptions.Load();
-                            ad.Site.SiteTypeReference.Load();
-                        }
-                    }
+                    var customerID = Entities.CustomerDatas.Where(o => o.MdoAcronym == parameters.CustomerCodename).Select(o => o.CustomerID).FirstOrDefault();
+                    var query = Entities.SiteAds.Where(o => o.Customer.CustomerID == customerID);
+                    var list = query.ToList();
                     if (parameters.Code > 0)
                     {
-                        result = result.FilterCode(parameters.Code);
+                        query = query.FilterCode(parameters.Code);
                     }
                     else
                     {
-                        //query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
-                        result = result.FilterCategory(parameters.Category);
-                        result = result.FilterCity(parameters.CityName);
-                        result = result.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
-                        result = result.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
-                        //query = query.FilterSiteRegion(parameters.RegionID);
+                        query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
+                        list = query.ToList();
+                        query = query.FilterCategory(parameters.Category);
+                        list = query.ToList();
+                        query = query.FilterCity(parameters.CityName);
+                        list = query.ToList();
+                        query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
+                        list = query.ToList();
+                        query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
+                        list = query.ToList();
                         if (parameters.SiteType != "*")
-                            result = result.FilterSiteType(parameters.Category, parameters.SiteType);
+                            query = query.FilterSiteType(parameters.Category, parameters.SiteType);
                         if (!parameters.Districts.Contains("Todos"))
-                            result = result.FilterDistrict(parameters.Districts);
-                    }
+                            query = query.FilterDistrict(parameters.Districts);
 
-                    if (parameters.ResultOrdering != MdoSiteSearchResultOrder._Undefined)
+
+                    }
+                    foreach (var siteAd in query)
+                    {
+                        var siteCategory = SiteAdCategories.Residencial;
+                        siteAd.CategoryReference.Load();
+                        if (siteAd.Category.Name != SiteAdCategories.Residencial.ToString())
+                            siteCategory = SiteAdCategories.Comercial;
+                        siteAd.SiteReference.Load();
+                        if (siteAd.Site != null)
+                        {
+                            //ad.Site.AddressInfoReference.Load();
+                            siteAd.Site.CityReference.Load();
+                            siteAd.Site.DistrictReference.Load();
+                            siteAd.Site.SiteDescriptions.Load();
+                            siteAd.Site.SitePics.Load();
+                            string mainPicName = string.Empty;
+                            if (siteAd.Site.SitePics.Count > 0)
+                                mainPicName = siteAd.Site.SitePics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+                            siteAd.Site.SiteTypeReference.Load();
+
+                            SiteAdView siteAdView = new SiteAdView() {
+                                AdCategory = siteCategory,
+                                AdType = SiteAdTypes.Sell,
+                                Code = siteAd.SiteAdID,
+                                District = siteAd.Site.DistrictName,
+                                MainPicUrl = mainPicName,
+                                SiteTotalArea = (float)siteAd.Site.TotalArea,
+                                SiteTotalRooms = siteAd.Site.TotalRooms,
+                                SiteType = siteAd.Site.SiteType.Name,
+                                SiteTypeRoomName = siteAd.Site.SiteType.RoomDisplayName,
+                                Value = (float)(siteAd.Price.HasValue ? siteAd.Price.Value : 0)
+
+                            };
+                            result.Add(siteAdView);
+                        }
+                    }
+                    if (parameters.ResultOrdering != SiteAdSearchResultOrders._Undefined)
                         result = OrderResults(result, parameters.ResultOrdering);
                 }
             }
@@ -437,25 +496,25 @@ namespace TK1.Bizz.Mdo.Data.Controller
             return result;
         }
 
-        public static List<SiteAd> OrderResults(List<SiteAd> siteAds, MdoSiteSearchResultOrder resultOrder)
+        public static List<SiteAd> OrderResults(List<SiteAd> siteAds, SiteAdSearchResultOrders resultOrder)
         {
             List<SiteAd> result = null;
-            if (siteAds != null & resultOrder != MdoSiteSearchResultOrder._Undefined)
+            if (siteAds != null & resultOrder != SiteAdSearchResultOrders._Undefined)
             {
                 try
                 {
                     switch (resultOrder)
                     {
-                        case MdoSiteSearchResultOrder.AreaAscending:
+                        case SiteAdSearchResultOrders.AreaAscending:
                             result = siteAds.OrderBy(o => o.Site.TotalArea).ToList();
                             break;
-                        case MdoSiteSearchResultOrder.AreaDescending:
+                        case SiteAdSearchResultOrders.AreaDescending:
                             result = siteAds.OrderByDescending(o => o.Site.TotalArea).ToList();
                             break;
-                        case MdoSiteSearchResultOrder.PriceAscending:
+                        case SiteAdSearchResultOrders.PriceAscending:
                             result = siteAds.OrderBy(o => o.Price).ToList();
                             break;
-                        case MdoSiteSearchResultOrder.PriceDescending:
+                        case SiteAdSearchResultOrders.PriceDescending:
                             result = siteAds.OrderByDescending(o => o.Price).ToList();
                             break;
                     }
@@ -467,6 +526,38 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             if (result == null)
                 result = new List<SiteAd>();
+            return result;
+        }
+        public static List<SiteAdView> OrderResults(List<SiteAdView> siteAds, SiteAdSearchResultOrders resultOrder)
+        {
+            List<SiteAdView> result = null;
+            if (siteAds != null & resultOrder != SiteAdSearchResultOrders._Undefined)
+            {
+                try
+                {
+                    switch (resultOrder)
+                    {
+                        case SiteAdSearchResultOrders.AreaAscending:
+                            result = siteAds.OrderBy(o => o.SiteTotalArea).ToList();
+                            break;
+                        case SiteAdSearchResultOrders.AreaDescending:
+                            result = siteAds.OrderByDescending(o => o.SiteTotalArea).ToList();
+                            break;
+                        case SiteAdSearchResultOrders.PriceAscending:
+                            result = siteAds.OrderBy(o => o.Value).ToList();
+                            break;
+                        case SiteAdSearchResultOrders.PriceDescending:
+                            result = siteAds.OrderByDescending(o => o.Value).ToList();
+                            break;
+                    }
+                }
+                catch
+                {
+                    result = siteAds;
+                }
+            }
+            if (result == null)
+                result = new List<SiteAdView>();
             return result;
         }
 
@@ -671,6 +762,70 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
         }
 
+
+        #region OLD
+        //public List<SiteAd> _SearchSites(MdoSiteSearchParameters parameters)
+        //{
+        //    List<SiteAd> result = new List<SiteAd>();
+        //    try
+        //    {
+        //        //var query = entities.SiteAds as IQueryable<SiteAd>;
+        //        if (parameters != null)
+        //        {
+        //            ////query = query.FilterAdType(parameters.AdType);
+        //            ////query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
+        //            ////query = query.FilterCategory(parameters.Category);
+        //            ////query = query.FilterCity(parameters.CityName);
+        //            ////query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
+        //            ////query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
+        //            ////query = query.FilterSiteRegion(parameters.RegionID);
+        //            ////query = query.FilterSiteType(parameters.AdType, parameters.SiteType);
+
+        //            var customerID = Entities.CustomerDatas.Where(o => o.MdoAcronym == parameters.MdoAcronym).Select(o => o.CustomerID).FirstOrDefault();
+        //            result = Entities.SiteAds.Where(o => o.Customer.CustomerID == customerID).ToList();
+
+        //            foreach (var ad in result)
+        //            {
+        //                ad.CategoryReference.Load();
+        //                ad.SiteReference.Load();
+        //                if (ad.Site != null)
+        //                {
+        //                    //ad.Site.AddressInfoReference.Load();
+        //                    ad.Site.CityReference.Load();
+        //                    ad.Site.DistrictReference.Load();
+        //                    ad.Site.SiteDescriptions.Load();
+        //                    ad.Site.SiteTypeReference.Load();
+        //                }
+        //            }
+        //            if (parameters.Code > 0)
+        //            {
+        //                result = result.FilterCode(parameters.Code);
+        //            }
+        //            else
+        //            {
+        //                //query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
+        //                result = result.FilterCategory(parameters.Category);
+        //                result = result.FilterCity(parameters.CityName);
+        //                result = result.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
+        //                result = result.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
+        //                //query = query.FilterSiteRegion(parameters.RegionID);
+        //                if (parameters.SiteType != "*")
+        //                    result = result.FilterSiteType(parameters.Category, parameters.SiteType);
+        //                if (!parameters.Districts.Contains("Todos"))
+        //                    result = result.FilterDistrict(parameters.Districts);
+        //            }
+
+        //            if (parameters.ResultOrdering != SiteSearchResultOrders._Undefined)
+        //                result = OrderResults(result, parameters.ResultOrdering);
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        audit.WriteException("SiteController.SearchSites", exception);
+        //    }
+        //    return result;
+        //} 
+        #endregion
 
     }
 }
