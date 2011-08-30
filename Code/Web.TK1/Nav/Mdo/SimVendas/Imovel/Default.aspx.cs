@@ -40,7 +40,7 @@ public partial class Nav_Mdo_SimVendas_Imovel_Default : System.Web.UI.Page
     //}
     private string getSitePicGallery(int customerID, int siteAdID)
     {
-        MdoSiteController siteController = new MdoSiteController();
+        MdoSiteAdController siteController = new MdoSiteAdController();
         var mdoCode = siteController.GetMdoCode(customerID);
 
         string result = string.Empty;
