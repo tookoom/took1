@@ -23,33 +23,14 @@ namespace TK1.Dev.UnitTest
         {
             try
             {
-                string sourceDir = @"C:\Users\andre\Desktop\Temp\Pieta";
+                string sourceDir = @"F:\Projetos\TK1\Testes\Lançamentos MDO";
+                //string sourceDir = @"C:\Users\andre\Desktop\Temp\Pieta";
                 //string sourceDir = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Xml";
                 string fileFilter = "VisVen*";
 
-                //foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
-                //{
                 SellingSiteHelper sellingSiteHelper = new SellingSiteHelper();
                 sellingSiteHelper.MdoAcronym = "pieta";
                 var report = sellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
-                //}
-
-                //string picturesPath = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Fotos\3";
-                //SellingSitePicHelper.ResizeSitePics(picturesPath, 500, 70);
-                
-                //ImageHelperTestUnit.Resize();
-                //
-
-                //if (sourceDirectory == null)
-                //    sourceDirectory = string.Empty;
-                //string destinationDirectory = @"\Carregados";
-                //string errorDirectory = @"\Erro";
-                //FileLoader loader = new FileLoader(sourceDirectory, destinationDirectory, errorDirectory);
-                //loader.LoadFiles(fileFilter);
-                //while (loader.ReadFile())
-                //{
-                //    SellingSiteHelper.LoadXmlSiteAd(loader.CurrentFile, false);
-                //}
             }
             catch (Exception exception)
             {

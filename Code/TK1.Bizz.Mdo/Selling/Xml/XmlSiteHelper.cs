@@ -29,89 +29,9 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                         xmlHeader.CustomerName = XmlLoader.GetElementValue(header, XmlSiteTags.Header.CustomerName);
 
                         result.Header = xmlHeader;
-                        result.Sites = new List<XmlSite>();
-                        var sites = root.Element(XmlSiteTags.Sites);
-                        if (sites != null)
-                        {
-                            var siteCollection = sites.Elements(XmlSiteTags.Site);
-                            if (siteCollection != null)
-                            {
-                                foreach (var element in siteCollection)
-                                {
-                                    XmlSite xmlSite = new XmlSite();
-                                    xmlSite.Address = XmlLoader.GetElementValue(element, XmlSiteTags.Address);
-                                    if (xmlSite.Address != null)
-                                        xmlSite.Address = xmlSite.Address.Trim();
-                                    xmlSite.AddressNumber = XmlLoader.GetElementValue(element, XmlSiteTags.AddressNumber);
-                                    xmlSite.AreaDescription = XmlLoader.GetElementValue(element, XmlSiteTags.AreaDescription);
-                                    xmlSite.Category = XmlLoader.GetElementValue(element, XmlSiteTags.Category);
-                                    xmlSite.City = XmlLoader.GetElementValue(element, XmlSiteTags.City);
-                                    if (xmlSite.City != null)
-                                        xmlSite.City = xmlSite.City.Trim();
-                                    xmlSite.CondDescription = XmlLoader.GetElementValue(element, XmlSiteTags.CondDescription);
-                                    xmlSite.District = XmlLoader.GetElementValue(element, XmlSiteTags.District);
-                                    if (xmlSite.District != null)
-                                        xmlSite.District = xmlSite.District.Trim();
-                                    xmlSite.ExternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.ExternalArea), 0);
-                                    xmlSite.InternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.InternalArea), 0);
-                                    xmlSite.InternetDescription = XmlLoader.GetElementValue(element, XmlSiteTags.Description);
-                                    xmlSite.IsFeatured = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsFeatured), "N").ToUpper() == "S";
-                                    xmlSite.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber), 0);
-                                    xmlSite.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.SiteCode), 0);
-                                    xmlSite.SiteType = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.SiteType), "Não Cadastrado");
-                                    if (xmlSite.SiteType != null)
-                                        xmlSite.SiteType = xmlSite.SiteType.Trim();
-                                    xmlSite.ShortDescription = XmlLoader.GetElementValue(element, XmlSiteTags.ShortDescription);
-                                    xmlSite.TotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.TotalArea), 0);
-                                    xmlSite.UF = XmlLoader.GetElementValue(element, XmlSiteTags.UF);
-                                    xmlSite.Value = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Value), 0);
-                                    xmlSite.ZipCode = XmlLoader.GetElementValue(element, XmlSiteTags.ZipCode);
+                        result.Sites = getXmlSites(root);
+                        result.SiteReleases = getXmlSiteReleases(root); 
 
-                                    xmlSite.Details = new StringDictionary();
-                                    string auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber);
-                                    if (!string.IsNullOrEmpty(auxValue))
-                                        xmlSite.Details.Set("Dormitórios", auxValue);
-                                    auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.SuiteNumber);
-                                    if (!string.IsNullOrEmpty(auxValue))
-                                        xmlSite.Details.Set("Suítes", auxValue);
-                                    auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.GarageNumber);
-                                    if (!string.IsNullOrEmpty(auxValue))
-                                        xmlSite.Details.Set("Garagens", auxValue);
-
-                                    xmlSite.Pictures = new List<XmlSitePic>();
-                                    var pictures = element.Element(XmlSiteTags.Pictures);
-                                    if (pictures != null)
-                                    {
-                                        var pictureCollection = pictures.Elements(XmlSiteTags.Picture);
-                                        if (pictureCollection != null)
-                                        {
-                                            int index = 0;
-                                            foreach (var picture in pictureCollection)
-                                            {
-                                                index++;
-                                                string fileName = XmlLoader.GetElementValue(picture, XmlSiteTags.PictureFileName);
-                                                string description = XmlLoader.GetElementValue(picture, XmlSiteTags.PictureDescription);
-                                                xmlSite.Pictures.Add(new XmlSitePic()
-                                                {
-                                                    Description = description,
-                                                    FileName = fileName,
-                                                    SiteCode = xmlSite.SiteCode,
-                                                    Index = index
-                                                });
-                                            }
-                                        }
-                                    }
-                                    result.Sites.Add(xmlSite);
-
-                                    //xmlSite.AdType = XmlLoader.GetElementValue(element, XmlSiteTags.AdType);
-                                    //xmlSite.BuildingName = XmlLoader.GetElementValue(element, XmlSiteTags.BuildingName);
-                                    //xmlSite.ExcludeSite = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.ExcludeSite), "N").ToUpper() == "S";
-                                    //xmlSite.HasBanner = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.HasBanner), "N").ToUpper() == "S";
-                                    //xmlSite.IsExclusive = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsExclusive), "N").ToUpper() == "S";
-
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -128,5 +48,152 @@ namespace TK1.Bizz.Mdo.Selling.Xml
             }
             return result;
         }
+
+        private static List<XmlSite> getXmlSites(XElement root)
+        {
+            var xmlSites = new List<XmlSite>();
+            var sites = root.Element(XmlSiteTags.Sites);
+            if (sites != null)
+            {
+                var siteCollection = sites.Elements(XmlSiteTags.Site);
+                if (siteCollection != null)
+                {
+                    foreach (var element in siteCollection)
+                    {
+                        XmlSite xmlSite = new XmlSite();
+                        xmlSite.Address = XmlLoader.GetElementValue(element, XmlSiteTags.Address);
+                        if (xmlSite.Address != null)
+                            xmlSite.Address = xmlSite.Address.Trim();
+                        xmlSite.AddressNumber = XmlLoader.GetElementValue(element, XmlSiteTags.AddressNumber);
+                        xmlSite.AreaDescription = XmlLoader.GetElementValue(element, XmlSiteTags.AreaDescription);
+                        xmlSite.Category = XmlLoader.GetElementValue(element, XmlSiteTags.Category);
+                        xmlSite.City = XmlLoader.GetElementValue(element, XmlSiteTags.City);
+                        if (xmlSite.City != null)
+                            xmlSite.City = xmlSite.City.Trim();
+                        xmlSite.CondDescription = XmlLoader.GetElementValue(element, XmlSiteTags.CondDescription);
+                        xmlSite.District = XmlLoader.GetElementValue(element, XmlSiteTags.District);
+                        if (xmlSite.District != null)
+                            xmlSite.District = xmlSite.District.Trim();
+                        xmlSite.ExternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.ExternalArea), 0);
+                        xmlSite.InternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.InternalArea), 0);
+                        xmlSite.InternetDescription = XmlLoader.GetElementValue(element, XmlSiteTags.Description);
+                        xmlSite.IsFeatured = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsFeatured), "N").ToUpper() == "S";
+                        xmlSite.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber), 0);
+                        xmlSite.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.SiteCode), 0);
+                        xmlSite.SiteType = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.SiteType), "Não Cadastrado");
+                        if (xmlSite.SiteType != null)
+                            xmlSite.SiteType = xmlSite.SiteType.Trim();
+                        xmlSite.ShortDescription = XmlLoader.GetElementValue(element, XmlSiteTags.ShortDescription);
+                        xmlSite.TotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.TotalArea), 0);
+                        xmlSite.UF = XmlLoader.GetElementValue(element, XmlSiteTags.UF);
+                        xmlSite.Value = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Value), 0);
+                        xmlSite.ZipCode = XmlLoader.GetElementValue(element, XmlSiteTags.ZipCode);
+
+                        xmlSite.Details = new StringDictionary();
+                        string auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber);
+                        if (!string.IsNullOrEmpty(auxValue))
+                            xmlSite.Details.Set("Dormitórios", auxValue);
+                        auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.SuiteNumber);
+                        if (!string.IsNullOrEmpty(auxValue))
+                            xmlSite.Details.Set("Suítes", auxValue);
+                        auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.GarageNumber);
+                        if (!string.IsNullOrEmpty(auxValue))
+                            xmlSite.Details.Set("Garagens", auxValue);
+
+                        xmlSite.Pictures = new List<XmlSitePic>();
+                        var pictures = element.Element(XmlSiteTags.Pictures);
+                        if (pictures != null)
+                        {
+                            var pictureCollection = pictures.Elements(XmlSiteTags.Picture);
+                            if (pictureCollection != null)
+                            {
+                                int index = 0;
+                                foreach (var picture in pictureCollection)
+                                {
+                                    index++;
+                                    string fileName = XmlLoader.GetElementValue(picture, XmlSiteTags.PictureFileName);
+                                    string description = XmlLoader.GetElementValue(picture, XmlSiteTags.PictureDescription);
+                                    xmlSite.Pictures.Add(new XmlSitePic()
+                                    {
+                                        Description = description,
+                                        FileName = fileName,
+                                        SiteCode = xmlSite.SiteCode,
+                                        Index = index
+                                    });
+                                }
+                            }
+                        }
+                        xmlSites.Add(xmlSite);
+
+                        //xmlSite.AdType = XmlLoader.GetElementValue(element, XmlSiteTags.AdType);
+                        //xmlSite.BuildingName = XmlLoader.GetElementValue(element, XmlSiteTags.BuildingName);
+                        //xmlSite.ExcludeSite = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.ExcludeSite), "N").ToUpper() == "S";
+                        //xmlSite.HasBanner = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.HasBanner), "N").ToUpper() == "S";
+                        //xmlSite.IsExclusive = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsExclusive), "N").ToUpper() == "S";
+
+                    }
+                }
+            }
+            return xmlSites;
+        }
+        private static List<XmlSiteRelease> getXmlSiteReleases(XElement root)
+        {
+            var result = new List<XmlSiteRelease>();
+            var releaseRoot = root.Element(XmlSiteReleaseTags.Releases);
+            if (releaseRoot != null)
+            {
+                var releases = releaseRoot.Elements(XmlSiteReleaseTags.Release);
+                if (releases != null)
+                {
+                    foreach (var element in releases)
+                    {
+                        XmlSiteRelease xmlSiteRelease = new XmlSiteRelease();
+                        xmlSiteRelease.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.Code), 0);
+                        xmlSiteRelease.Name = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.Name);
+                        xmlSiteRelease.Address = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.Address);
+                        if (xmlSiteRelease.Address != null)
+                            xmlSiteRelease.Address = xmlSiteRelease.Address.Trim();
+                        xmlSiteRelease.AddressNumber = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.AddressNumber);
+                        xmlSiteRelease.District = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.District);
+                        if (xmlSiteRelease.District != null)
+                            xmlSiteRelease.District = xmlSiteRelease.District.Trim();
+                        xmlSiteRelease.City = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.City);
+                        if (xmlSiteRelease.City != null)
+                            xmlSiteRelease.City = xmlSiteRelease.City.Trim();
+                        xmlSiteRelease.AddressComplement = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.AddressComplement);
+                        if (xmlSiteRelease.AddressComplement != null)
+                            xmlSiteRelease.AddressComplement = xmlSiteRelease.AddressComplement.Trim();
+                        xmlSiteRelease.ConstructorName = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.ConstructorName);
+                        if (xmlSiteRelease.ConstructorName != null)
+                            xmlSiteRelease.ConstructorName = xmlSiteRelease.ConstructorName.Trim();
+                        xmlSiteRelease.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinRoomNumber), 0);
+                        xmlSiteRelease.MaxRoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxRoomNumber), 0);
+                        xmlSiteRelease.SuiteNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinSuiteNumber), 0);
+                        xmlSiteRelease.MaxSuiteNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxSuiteNumber), 0);
+                        xmlSiteRelease.GarageNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinGarageNumber), 0);
+                        xmlSiteRelease.MaxGarageNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxGarageNumber), 0);
+                        xmlSiteRelease.Value = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinValue), 0);
+                        xmlSiteRelease.MaxValue = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxValue), 0);
+                        xmlSiteRelease.InternalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinInternalArea), 0);
+                        xmlSiteRelease.MaxInternalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxInternalArea), 0);
+                        xmlSiteRelease.TotalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinTotalArea), 0);
+                        xmlSiteRelease.MaxTotalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxTotalArea), 0);
+
+                        
+                        xmlSiteRelease.AreaDescription = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.AreaDescription);
+                        xmlSiteRelease.CondDescription = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.CondoDescription);
+                        xmlSiteRelease.SiteType = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.UnitName), "Não Cadastrado");
+                        if (xmlSiteRelease.SiteType != null)
+                            xmlSiteRelease.SiteType = xmlSiteRelease.SiteType.Trim();
+                        xmlSiteRelease.AdText = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.AdText);
+                        xmlSiteRelease.ShortAdText = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.ShortAdText);
+
+                        result.Add(xmlSiteRelease);
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 }

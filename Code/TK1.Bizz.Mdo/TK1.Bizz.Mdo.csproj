@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Const\ParameterGroupNames.cs" />
     <Compile Include="Const\ParameterNames.cs" />
+    <Compile Include="Data\Extension\SiteReleaseAdExtension.cs" />
     <Compile Include="Data\Extension\SiteAdListExtension.cs" />
     <Compile Include="Data\MdoBaseController.cs" />
     <Compile Include="Data\MdoDataModel.Designer.cs">
@@ -60,6 +61,8 @@
     <Compile Include="Selling\Data\NavData.cs" />
     <Compile Include="Selling\SellingSiteHelper.cs" />
     <Compile Include="Selling\SellingSitePicHelper.cs" />
+    <Compile Include="Selling\Xml\XmlSiteReleaseTags.cs" />
+    <Compile Include="Selling\Xml\XmlSiteRelease.cs" />
     <Compile Include="Selling\Xml\XmlSite.cs">
       <SubType>Code</SubType>
     </Compile>

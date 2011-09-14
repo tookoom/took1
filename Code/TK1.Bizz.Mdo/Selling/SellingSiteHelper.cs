@@ -56,6 +56,7 @@ namespace TK1.Bizz.Mdo.Selling
                         {
                             siteController.CheckDataIntegrity(sites);
                             siteController.AddSalesSiteAds(sites);
+                            siteController.AddSalesSiteReleaseAds(sites);
                         }
                         moveXmlFile(filePath);
                         successCount++;

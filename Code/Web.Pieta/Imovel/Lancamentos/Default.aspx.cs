@@ -10,7 +10,7 @@ using System.IO;
 using TK1.Bizz.Data.Presentation;
 using TK1.Bizz.Pieta.Data.Controller;
 
-public partial class Imovel_Default : System.Web.UI.Page
+public partial class Imovel_Lancamento_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

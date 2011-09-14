@@ -19,6 +19,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
             public static string ItemCount = "quant_registros";
         }
 
+
         public static string Address = "endereco";
         public static string AddressNumber = "numero";
         public static string AreaDescription = "infra_estrutura_bairro";

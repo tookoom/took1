@@ -17,6 +17,7 @@
           <EntitySet Name="SiteAd" EntityType="MdoModel.Store.SiteAd" store:Type="Tables" Schema="MdoSelling" />
           <EntitySet Name="SiteDescription" EntityType="MdoModel.Store.SiteDescription" store:Type="Tables" Schema="MdoSelling" />
           <EntitySet Name="SitePic" EntityType="MdoModel.Store.SitePic" store:Type="Tables" Schema="MdoSelling" />
+          <EntitySet Name="SiteReleaseAd" EntityType="MdoModel.Store.SiteReleaseAd" store:Type="Tables" Schema="MdoSelling" />
           <EntitySet Name="Customer" EntityType="MdoModel.Store.Customer" store:Type="Tables" Schema="TK1" />
           <AssociationSet Name="FK_CustomerData_Customer" Association="MdoModel.Store.FK_CustomerData_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -57,6 +58,18 @@
           <AssociationSet Name="FK_SitePic_Site" Association="MdoModel.Store.FK_SitePic_Site">
             <End Role="Site" EntitySet="Site" />
             <End Role="SitePic" EntitySet="SitePic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteReleaseAD_Category" Association="MdoModel.Store.FK_SiteReleaseAD_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SiteReleaseAd" EntitySet="SiteReleaseAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteReleaseAD_Customer" Association="MdoModel.Store.FK_SiteReleaseAD_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="SiteReleaseAd" EntitySet="SiteReleaseAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteReleaseAD_Site" Association="MdoModel.Store.FK_SiteReleaseAD_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="SiteReleaseAd" EntitySet="SiteReleaseAd" />
           </AssociationSet>
           <AssociationSet Name="FK_SiteType_Category" Association="MdoModel.Store.FK_SiteType_Category">
             <End Role="Category" EntitySet="Category" />
@@ -179,6 +192,47 @@
           <Property Name="PicID" Type="int" Nullable="false" />
           <Property Name="FileName" Type="varchar" MaxLength="256" />
           <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SiteReleaseAd">
+          <Key>
+            <PropertyRef Name="SiteReleaseAdID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="SiteReleaseAdID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="ConstructorName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="AddressComplement" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="AddressNumber" Type="int" Nullable="false" />
+          <Property Name="MinTotalArea" Type="float" Nullable="false" />
+          <Property Name="MaxTotalArea" Type="float" Nullable="false" />
+          <Property Name="MinTotalRooms" Type="int" Nullable="false" />
+          <Property Name="MaxTotalRooms" Type="int" Nullable="false" />
+          <Property Name="MinSuites" Type="int" Nullable="false" />
+          <Property Name="MaxSuites" Type="int" Nullable="false" />
+          <Property Name="MinInternalArea" Type="float" Nullable="false" />
+          <Property Name="MaxInternalArea" Type="float" Nullable="false" />
+          <Property Name="MinExternalArea" Type="float" Nullable="false" />
+          <Property Name="MaxExternalArea" Type="float" Nullable="false" />
+          <Property Name="MinValue" Type="float" Nullable="false" />
+          <Property Name="MaxValue" Type="float" Nullable="false" />
+          <Property Name="ElevatorNumber" Type="int" Nullable="false" />
+          <Property Name="MinGarageNumber" Type="int" Nullable="false" />
+          <Property Name="MaxGarageNumber" Type="int" Nullable="false" />
+          <Property Name="TotalFloorUnitNumber" Type="int" Nullable="false" />
+          <Property Name="TotalUnitNumber" Type="int" Nullable="false" />
+          <Property Name="TowerNumber" Type="int" Nullable="false" />
+          <Property Name="TowerFloorNumber" Type="int" Nullable="false" />
+          <Property Name="CityTaxes" Type="float" />
+          <Property Name="CondoTaxes" Type="float" />
+          <Property Name="Title" Type="varchar" MaxLength="256" />
+          <Property Name="ShortDescription" Type="varchar(max)" />
+          <Property Name="FullDescription" Type="varchar(max)" />
+          <Property Name="AreaDescription" Type="varchar(max)" />
+          <Property Name="CondoDescription" Type="varchar(max)" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -309,6 +363,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SiteReleaseAD_Category">
+          <End Role="Category" Type="MdoModel.Store.Category" Multiplicity="1" />
+          <End Role="SiteReleaseAd" Type="MdoModel.Store.SiteReleaseAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="SiteReleaseAd">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteReleaseAD_Customer">
+          <End Role="Customer" Type="MdoModel.Store.Customer" Multiplicity="1" />
+          <End Role="SiteReleaseAd" Type="MdoModel.Store.SiteReleaseAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="SiteReleaseAd">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteReleaseAD_Site">
+          <End Role="Site" Type="MdoModel.Store.Site" Multiplicity="1" />
+          <End Role="SiteReleaseAd" Type="MdoModel.Store.SiteReleaseAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteReleaseAd">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SiteType_Category">
           <End Role="Category" Type="MdoModel.Store.Category" Multiplicity="1" />
           <End Role="SiteType" Type="MdoModel.Store.SiteType" Multiplicity="*" />
@@ -382,6 +472,19 @@
             <End Role="Customer" EntitySet="Customers" />
             <End Role="CustomerData" EntitySet="CustomerDatas" />
           </AssociationSet>
+          <EntitySet Name="SiteReleaseAds" EntityType="MdoModel.SiteReleaseAd" />
+          <AssociationSet Name="FK_SiteReleaseAD_Category" Association="MdoModel.FK_SiteReleaseAD_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SiteReleaseAd" EntitySet="SiteReleaseAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteReleaseAD_Site" Association="MdoModel.FK_SiteReleaseAD_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="SiteReleaseAd" EntitySet="SiteReleaseAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteReleaseAD_Customer" Association="MdoModel.FK_SiteReleaseAD_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="SiteReleaseAd" EntitySet="SiteReleaseAds" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -430,6 +533,7 @@
           <Property Type="String" Name="CustomData" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SiteTypes" Relationship="MdoModel.FK_SiteType_Category" FromRole="Category" ToRole="SiteType" />
           <NavigationProperty Name="SiteAds" Relationship="MdoModel.FK_SiteAd_Category" FromRole="Category" ToRole="SiteAd" />
+          <NavigationProperty Name="SiteReleaseAds" Relationship="MdoModel.FK_SiteReleaseAD_Category" FromRole="Category" ToRole="SiteReleaseAd" />
         </EntityType>
         <EntityType Name="Site">
           <Key>
@@ -450,6 +554,7 @@
           <NavigationProperty Name="SiteAds" Relationship="MdoModel.FK_SiteAd_Site" FromRole="Site" ToRole="SiteAd" />
           <NavigationProperty Name="SiteDescriptions" Relationship="MdoModel.FK_SiteDescription_Site" FromRole="Site" ToRole="SiteDescription" />
           <NavigationProperty Name="SitePics" Relationship="MdoModel.FK_SitePic_Site" FromRole="Site" ToRole="SitePic" />
+          <NavigationProperty Name="SiteReleaseAds" Relationship="MdoModel.FK_SiteReleaseAD_Site" FromRole="Site" ToRole="SiteReleaseAd" />
         </EntityType>
         <EntityType Name="SiteAd">
           <Key>
@@ -506,6 +611,7 @@
           <Property Type="String" Name="FullName" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SiteAds" Relationship="MdoModel.FK_SiteAd_Customer" FromRole="Customer" ToRole="SiteAd" />
           <NavigationProperty Name="CustomerDatas" Relationship="MdoModel.FK_CustomerData_Customer" FromRole="Customer" ToRole="CustomerData" />
+          <NavigationProperty Name="SiteReleaseAds" Relationship="MdoModel.FK_SiteReleaseAD_Customer" FromRole="Customer" ToRole="SiteReleaseAd" />
         </EntityType>
         <Association Name="FK_Site_City">
           <End Type="MdoModel.City" Role="City" Multiplicity="1" />
@@ -663,6 +769,86 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SiteReleaseAd">
+          <Key>
+            <PropertyRef Name="SiteReleaseAdID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Type="Int32" Name="SiteReleaseAdID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="String" Name="ConstructorName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AddressComplement" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="AddressNumber" Nullable="false" />
+          <Property Type="Double" Name="MinTotalArea" Nullable="false" />
+          <Property Type="Double" Name="MaxTotalArea" Nullable="false" />
+          <Property Type="Int32" Name="MinTotalRooms" Nullable="false" />
+          <Property Type="Int32" Name="MaxTotalRooms" Nullable="false" />
+          <Property Type="Int32" Name="MinSuites" Nullable="false" />
+          <Property Type="Int32" Name="MaxSuites" Nullable="false" />
+          <Property Type="Double" Name="MinInternalArea" Nullable="false" />
+          <Property Type="Double" Name="MaxInternalArea" Nullable="false" />
+          <Property Type="Double" Name="MinExternalArea" Nullable="false" />
+          <Property Type="Double" Name="MaxExternalArea" Nullable="false" />
+          <Property Type="Double" Name="MinValue" Nullable="false" />
+          <Property Type="Double" Name="MaxValue" Nullable="false" />
+          <Property Type="Int32" Name="ElevatorNumber" Nullable="false" />
+          <Property Type="Int32" Name="MinGarageNumber" Nullable="false" />
+          <Property Type="Int32" Name="MaxGarageNumber" Nullable="false" />
+          <Property Type="Int32" Name="TotalFloorUnitNumber" Nullable="false" />
+          <Property Type="Int32" Name="TotalUnitNumber" Nullable="false" />
+          <Property Type="Int32" Name="TowerNumber" Nullable="false" />
+          <Property Type="Int32" Name="TowerFloorNumber" Nullable="false" />
+          <Property Type="Double" Name="CityTaxes" />
+          <Property Type="Double" Name="CondoTaxes" />
+          <Property Type="String" Name="Title" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShortDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CondoDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="MdoModel.FK_SiteReleaseAD_Category" FromRole="SiteReleaseAd" ToRole="Category" />
+          <NavigationProperty Name="Site" Relationship="MdoModel.FK_SiteReleaseAD_Site" FromRole="SiteReleaseAd" ToRole="Site" />
+          <NavigationProperty Name="Customer" Relationship="MdoModel.FK_SiteReleaseAD_Customer" FromRole="SiteReleaseAd" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_SiteReleaseAD_Category">
+          <End Type="MdoModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="MdoModel.SiteReleaseAd" Role="SiteReleaseAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="SiteReleaseAd">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteReleaseAD_Site">
+          <End Type="MdoModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="MdoModel.SiteReleaseAd" Role="SiteReleaseAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteReleaseAd">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteReleaseAD_Customer">
+          <End Type="MdoModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MdoModel.SiteReleaseAd" Role="SiteReleaseAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="SiteReleaseAd">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -805,6 +991,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SiteReleaseAds">
+            <EntityTypeMapping TypeName="MdoModel.SiteReleaseAd">
+              <MappingFragment StoreEntitySet="SiteReleaseAd">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CondoDescription" ColumnName="CondoDescription" />
+                <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CondoTaxes" ColumnName="CondoTaxes" />
+                <ScalarProperty Name="CityTaxes" ColumnName="CityTaxes" />
+                <ScalarProperty Name="TowerFloorNumber" ColumnName="TowerFloorNumber" />
+                <ScalarProperty Name="TowerNumber" ColumnName="TowerNumber" />
+                <ScalarProperty Name="TotalUnitNumber" ColumnName="TotalUnitNumber" />
+                <ScalarProperty Name="TotalFloorUnitNumber" ColumnName="TotalFloorUnitNumber" />
+                <ScalarProperty Name="MaxGarageNumber" ColumnName="MaxGarageNumber" />
+                <ScalarProperty Name="MinGarageNumber" ColumnName="MinGarageNumber" />
+                <ScalarProperty Name="ElevatorNumber" ColumnName="ElevatorNumber" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="MaxExternalArea" ColumnName="MaxExternalArea" />
+                <ScalarProperty Name="MinExternalArea" ColumnName="MinExternalArea" />
+                <ScalarProperty Name="MaxInternalArea" ColumnName="MaxInternalArea" />
+                <ScalarProperty Name="MinInternalArea" ColumnName="MinInternalArea" />
+                <ScalarProperty Name="MaxSuites" ColumnName="MaxSuites" />
+                <ScalarProperty Name="MinSuites" ColumnName="MinSuites" />
+                <ScalarProperty Name="MaxTotalRooms" ColumnName="MaxTotalRooms" />
+                <ScalarProperty Name="MinTotalRooms" ColumnName="MinTotalRooms" />
+                <ScalarProperty Name="MaxTotalArea" ColumnName="MaxTotalArea" />
+                <ScalarProperty Name="MinTotalArea" ColumnName="MinTotalArea" />
+                <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+                <ScalarProperty Name="AddressComplement" ColumnName="AddressComplement" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ConstructorName" ColumnName="ConstructorName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SiteReleaseAdID" ColumnName="SiteReleaseAdID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -835,7 +1062,7 @@
         <EntityTypeShape EntityType="MdoModel.SiteAd" Width="1.5" PointX="7.5" PointY="3.125" Height="4.0956022135416656" />
         <EntityTypeShape EntityType="MdoModel.SiteDescription" Width="1.5" PointX="7.5" PointY="8.25" Height="2.1725878906250031" />
         <EntityTypeShape EntityType="MdoModel.SitePic" Width="1.5" PointX="7.5" PointY="11.25" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="MdoModel.Customer" Width="1.5" PointX="9.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MdoModel.Customer" Width="1.5" PointX="12.25" PointY="0.5" Height="2.364889322916667" />
         <AssociationConnector Association="MdoModel.FK_Site_City" >
           <ConnectorPoint PointX="4.5" PointY="2.8266910807291676" />
           <ConnectorPoint PointX="6" PointY="2.8266910807291676" />
@@ -846,11 +1073,11 @@
           <ConnectorPoint PointX="3" PointY="9.1728417968750016" />
         </AssociationConnector>
         <AssociationConnector Association="MdoModel.FK_Site_District" >
-          <ConnectorPoint PointX="4.5" PointY="9.1439925130208337" />
-          <ConnectorPoint PointX="5.5104141666666671" PointY="9.1439925130208337" />
-          <ConnectorPoint PointX="5.6770808333333331" PointY="9.1439925130208337" />
-          <ConnectorPoint PointX="6" PointY="9.1439925130208337" />
-          <ConnectorPoint PointX="6" PointY="8.0283007812500031" />
+          <ConnectorPoint PointX="4.5" PointY="8.6845516944321481" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="8.6845516944321481" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="8.6845516944321481" />
+          <ConnectorPoint PointX="6" PointY="8.6845516944321481" />
+          <ConnectorPoint PointX="6" PointY="8.2206022135416656" />
         </AssociationConnector>
         <AssociationConnector Association="MdoModel.FK_Site_SiteType" >
           <ConnectorPoint PointX="4.5" PointY="6.086293945312498" />
@@ -868,30 +1095,58 @@
           <ConnectorPoint PointX="7.5" PointY="3.8266910807291676" />
         </AssociationConnector>
         <AssociationConnector Association="MdoModel.FK_SiteAd_Site" >
-          <ConnectorPoint PointX="6.75" PointY="5.6728011067708328" />
-          <ConnectorPoint PointX="7.5" PointY="5.6728011067708328" />
+          <ConnectorPoint PointX="6.75" PointY="5.7689518229166659" />
+          <ConnectorPoint PointX="7.5" PointY="5.7689518229166659" />
         </AssociationConnector>
         <AssociationConnector Association="MdoModel.FK_SiteDescription_Site" >
-          <ConnectorPoint PointX="6.4062525" PointY="8.0283007812500031" />
-          <ConnectorPoint PointX="6.4062525" PointY="9.7832902018229184" />
-          <ConnectorPoint PointX="7.5" PointY="9.7832902018229184" />
+          <ConnectorPoint PointX="6.4062525" PointY="8.2206022135416656" />
+          <ConnectorPoint PointX="6.4062525" PointY="9.5535697925285756" />
+          <ConnectorPoint PointX="7.5" PointY="9.5535697925285756" />
         </AssociationConnector>
         <AssociationConnector Association="MdoModel.FK_SitePic_Site" >
-          <ConnectorPoint PointX="5.5937475" PointY="8.0283007812500031" />
+          <ConnectorPoint PointX="5.5937475" PointY="8.2206022135416656" />
           <ConnectorPoint PointX="5.5937475" PointY="12.240143229166669" />
           <ConnectorPoint PointX="7.5" PointY="12.240143229166669" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="MdoModel.XmlFile" Width="1.5" PointX="10.375" PointY="3.75" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="MdoModel.XmlFile" Width="1.5" PointX="15.25" PointY="3.5" Height="1.9802864583333353" />
         <AssociationConnector Association="MdoModel.FK_SiteAd_Customer" >
-          <ConnectorPoint PointX="9.75" PointY="1.8362939453125" />
-          <ConnectorPoint PointX="8.25" PointY="1.8362939453125" />
+          <ConnectorPoint PointX="12.25" PointY="1.6824446614583337" />
+          <ConnectorPoint PointX="8.25" PointY="1.6824446614583337" />
           <ConnectorPoint PointX="8.25" PointY="3.125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="MdoModel.CustomerData" Width="1.5" PointX="12" PointY="6.625" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="MdoModel.CustomerData" Width="1.5" PointX="13.875" PointY="6.625" Height="2.7494921875000031" />
         <AssociationConnector Association="MdoModel.FK_CustomerData_Customer" >
-          <ConnectorPoint PointX="10.03125" PointY="2.922587890625" />
-          <ConnectorPoint PointX="10.03125" PointY="7.9997460937500016" />
-          <ConnectorPoint PointX="12" PointY="7.9997460937500016" />
+          <ConnectorPoint PointX="13" PointY="2.864889322916667" />
+          <ConnectorPoint PointX="13" PointY="7.9997460937500016" />
+          <ConnectorPoint PointX="13.875" PointY="7.9997460937500016" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MdoModel.SiteReleaseAd" Width="2.125" PointX="9.875" PointY="3" Height="8.3262337239583317" />
+        <AssociationConnector Association="MdoModel.FK_SiteReleaseAD_Category" >
+          <ConnectorPoint PointX="1.5" PointY="7.4994921875" />
+          <ConnectorPoint PointX="1.5" PointY="7.7494921875" />
+          <ConnectorPoint PointX="5" PointY="7.7494921875" />
+          <ConnectorPoint PointX="5" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="7.25" PointY="8.4706022135416656" />
+          <ConnectorPoint PointX="7.25" PointY="8" />
+          <ConnectorPoint PointX="9.5" PointY="8" />
+          <ConnectorPoint PointX="9.5" PointY="5.30634891145834" />
+          <ConnectorPoint PointX="9.875" PointY="5.30634891145834" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_SiteReleaseAD_Site" >
+          <ConnectorPoint PointX="6.75" PointY="7.6752018229166659" />
+          <ConnectorPoint PointX="9.4166666666666661" PointY="7.675201822916665" />
+          <ConnectorPoint PointX="9.5833333333333339" PointY="7.6752018229166659" />
+          <ConnectorPoint PointX="9.875" PointY="7.6752018229166659" />
+        </AssociationConnector>
+        <AssociationConnector Association="MdoModel.FK_SiteReleaseAD_Customer" >
+          <ConnectorPoint PointX="12.25" PointY="2.8648893229166674" />
+          <ConnectorPoint PointX="12" PointY="3" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

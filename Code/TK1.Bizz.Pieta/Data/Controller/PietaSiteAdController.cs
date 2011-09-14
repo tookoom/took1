@@ -56,6 +56,32 @@ namespace TK1.Bizz.Pieta.Data.Controller
                 result = new List<SiteDetail>();
             return result;
         }
+        public List<SiteDetail> GetSiteReleaseDetail(int siteReleaseAdID)
+        {
+            List<SiteDetail> result = null;
+            int adType = (int)SiteAdTypes.Sell;
+            var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
+            switch (adType)
+            {
+                case (int)SiteAdTypes.Rent:
+                    break;
+                case (int)SiteAdTypes.Sell:
+                    var mdoSiteAdController = new MdoSiteAdController(audit);
+                    int customerID = mdoSiteAdController.GetCustomerID(codename);
+                    var release = mdoSiteAdController.GetSiteReleaseAdView(customerID, siteReleaseAdID);
+                    result = new List<SiteDetail>();
+                    if (release != null)
+                    {
+                        result.Add(new SiteDetail() { Name = release.AreaText });
+                        result.Add(new SiteDetail() { Name = release.RoomText });
+                    }
+                    //result = mdoSiteAdController.GetSiteDetail(customerID, siteReleaseAdID);
+                    break;
+            }
+            if (result == null)
+                result = new List<SiteDetail>();
+            return result;
+        }
         public List<SiteAdPicView> GetSitePics(int adType, int siteAdID)
         {
             List<SiteAdPicView> result = new List<SiteAdPicView>();
@@ -94,6 +120,42 @@ namespace TK1.Bizz.Pieta.Data.Controller
                     }
                     break;
             }
+            return result;
+        }
+        public SiteReleaseAdView GetSiteReleaseAd(int siteReleaseAdID)
+        {
+            SiteReleaseAdView result = null;
+            int adType = (int)SiteAdTypes.Sell;
+            var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
+            switch (adType)
+            {
+                case (int)SiteAdTypes.Rent:
+                    break;
+                case (int)SiteAdTypes.Sell:
+                    var mdoSiteAdController = new MdoSiteAdController(audit);
+                    int customerID = mdoSiteAdController.GetCustomerID(codename);
+                    result = mdoSiteAdController.GetSiteReleaseAdView(customerID, siteReleaseAdID);
+                    break;
+            }
+            return result;
+        }
+        public List<SiteReleaseAdView> GetSiteReleaseAds()
+        {
+            List<SiteReleaseAdView> result = null;
+            int adType = (int)SiteAdTypes.Sell;
+            var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
+            switch (adType)
+            {
+                case (int)SiteAdTypes.Rent:
+                    break;
+                case (int)SiteAdTypes.Sell:
+                    var mdoSiteAdController = new MdoSiteAdController(audit);
+                    int customerID = mdoSiteAdController.GetCustomerID(codename);
+                    result = mdoSiteAdController.GetSiteReleaseAds(customerID);
+                    break;
+            }
+            if (result == null)
+                result = new List<SiteReleaseAdView>();
             return result;
         }
         public List<SiteAdView> SearchSites(MdoSiteAdSearchParameters mdoParameters)
