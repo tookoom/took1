@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Data\Extension\SiteAdExtension.cs" />
     <Compile Include="Data\BizzBaseController.cs" />
+    <Compile Include="Data\Presentation\SiteReleaseAdView.cs" />
     <Compile Include="Data\Presentation\SiteAdPicView.cs" />
     <Compile Include="Data\SiteAdController.cs" />
     <Compile Include="Data\SiteAdSearchParameters.cs" />

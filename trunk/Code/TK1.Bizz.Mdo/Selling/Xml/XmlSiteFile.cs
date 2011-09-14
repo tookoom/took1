@@ -10,5 +10,6 @@ namespace TK1.Bizz.Mdo.Selling.Xml
     {
         public XmlHeader Header { get; set; }
         public List<XmlSite> Sites { get; set; }
+        public List<XmlSiteRelease> SiteReleases { get; set; }
     }
 }

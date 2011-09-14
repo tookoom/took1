@@ -12,6 +12,7 @@ using TK1.Bizz.Mdo.Selling.Data;
 using System.Threading;
 using TK1.Bizz.Data.Presentation;
 using TK1.Bizz.Data;
+using TK1.Data.Converter;
 
 namespace TK1.Bizz.Mdo.Data.Controller
 {
@@ -89,6 +90,80 @@ namespace TK1.Bizz.Mdo.Data.Controller
             catch (Exception exception)
             {
                 audit.WriteException("SiteController.AddSiteAds", exception);
+            }
+        }
+        public void AddSalesSiteReleaseAds(XmlSiteFile xmlSiteFile)
+        {
+            try
+            {
+                if (xmlSiteFile != null)
+                {
+                    Customer customer = getCustomer(xmlSiteFile);
+                    if (customer != null)
+                    {
+                        removeCustomerSiteReleaseAds(customer);
+                        foreach (var xmlSiteAd in xmlSiteFile.SiteReleases)
+                        {
+                            SiteType siteType = Entities.SiteTypes.Where(o => o.Name == xmlSiteAd.SiteType).FirstOrDefault();
+                            City city = Entities.Cities.Where(o => o.Name == xmlSiteAd.City).FirstOrDefault();
+                            District district = Entities.Districts.Where(o => o.Name == xmlSiteAd.District).FirstOrDefault();
+
+                            if (city != null & district != null & siteType != null)
+                            {
+                                siteType.CategoryReference.Load();
+                                Category category = siteType.Category;
+                                Site site = new Site()
+                                {
+                                    City = city,
+                                    District = district,
+                                    ExternalArea = xmlSiteAd.ExternalArea,
+                                    InternalArea = xmlSiteAd.InternalArea,
+                                    TotalArea = xmlSiteAd.TotalArea,
+                                    TotalRooms = xmlSiteAd.RoomNumber,
+                                    SiteType = siteType
+                                };
+                                addSitePictures(site, xmlSiteAd.Pictures);
+                                addSiteDetails(site, xmlSiteAd.Details);
+                                SiteReleaseAd siteReleaseAd = new SiteReleaseAd()
+                                {
+                                    Address = xmlSiteAd.Address,
+                                    AddressComplement = xmlSiteAd.AddressComplement,
+                                    AddressNumber = StringConverter.ToInt(xmlSiteAd.AddressNumber),
+                                    AreaDescription = xmlSiteAd.AreaDescription,
+                                    Category = category,
+                                    CondoDescription = xmlSiteAd.CondDescription,
+                                    Customer = customer,
+                                    MinExternalArea = xmlSiteAd.ExternalArea,
+                                    MinInternalArea = xmlSiteAd.InternalArea,
+                                    MinGarageNumber = xmlSiteAd.GarageNumber,
+                                    MinSuites = xmlSiteAd.SuiteNumber,
+                                    MinTotalArea = xmlSiteAd.TotalArea,
+                                    MinTotalRooms = xmlSiteAd.RoomNumber,
+                                    MinValue = xmlSiteAd.Value,
+                                    MaxExternalArea = xmlSiteAd.MaxInternalArea,
+                                    MaxGarageNumber = xmlSiteAd.MaxGarageNumber,
+                                    MaxInternalArea = xmlSiteAd.MaxInternalArea,
+                                    MaxSuites= xmlSiteAd.MaxSuiteNumber,
+                                    MaxTotalArea = xmlSiteAd.MaxTotalArea,
+                                    MaxTotalRooms = xmlSiteAd.MaxRoomNumber,
+                                    MaxValue = xmlSiteAd.MaxValue,
+                                    Site = site,
+                                    SiteReleaseAdID = xmlSiteAd.SiteCode,
+                                    ShortDescription = xmlSiteAd.ShortDescription
+                                };
+                                Entities.AddToSiteReleaseAds(siteReleaseAd);
+                                Entities.SaveChanges();
+
+                            }
+                            Thread.Sleep(10);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.AddSalesSiteReleaseAds", exception);
             }
         }
         public void CheckDataIntegrity(XmlSiteFile xmlSiteFile)
@@ -202,7 +277,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
             {
                 var customerID = Entities.CustomerDatas.Where(o => o.MdoAcronym == mdoAcronym).Select(o => o.CustomerID).FirstOrDefault();
                 var query = Entities.SiteAds.Where(o => o.Customer.CustomerID == customerID & o.IsFeatured == true);
-                var list = query.ToList();
+                //var list = query.ToList();
                 foreach (var siteAd in query)
                 {
                     var siteCategory = SiteAdCategories.Residencial;
@@ -243,7 +318,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             catch (Exception exception)
             {
-                audit.WriteException("SiteController.SearchSites", exception);
+                audit.WriteException("MdoSiteAdController.GetFeaturedSiteAds", exception);
             }
             return result;
         }
@@ -438,6 +513,114 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             return result;
         }
+        public SiteReleaseAdView GetSiteReleaseAdView(int customerID, int siteReleaseAdID)
+        {
+            SiteReleaseAdView result = null;
+            try
+            {
+                var siteReleaseAd = Entities.SiteReleaseAds.Get(customerID, siteReleaseAdID);
+                if (siteReleaseAd != null)
+                {
+                    var siteCategory = SiteAdCategories.Residencial;
+                    siteReleaseAd.CategoryReference.Load();
+                    if (siteReleaseAd.Category.Name != SiteAdCategories.Residencial.ToString())
+                        siteCategory = SiteAdCategories.Comercial;
+                    siteReleaseAd.SiteReference.Load();
+                    if (siteReleaseAd.Site != null)
+                    {
+                        //ad.Site.AddressInfoReference.Load();
+                        siteReleaseAd.Site.CityReference.Load();
+                        siteReleaseAd.Site.DistrictReference.Load();
+                        siteReleaseAd.Site.SiteDescriptions.Load();
+                        siteReleaseAd.Site.SitePics.Load();
+                        string mainPicName = string.Empty;
+                        if (siteReleaseAd.Site.SitePics.Count > 0)
+                            mainPicName = siteReleaseAd.Site.SitePics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+                        siteReleaseAd.Site.SiteTypeReference.Load();
+
+                        result = new SiteReleaseAdView()
+                        {
+                            AdCategory = siteCategory,
+                            AdType = SiteAdTypes.Sell,
+                            AdTypeName = "Venda",
+                            City = siteReleaseAd.Site.CityName,
+                            Code = siteReleaseAd.SiteReleaseAdID,
+                            District = siteReleaseAd.Site.DistrictName,
+                            FullDescription = siteReleaseAd.ShortDescription,
+                            MainPicUrl = mainPicName,
+                            SiteTotalArea = (float)siteReleaseAd.Site.TotalArea,
+                            SiteTotalRooms = siteReleaseAd.Site.TotalRooms,
+                            SiteType = siteReleaseAd.Site.SiteType.Name,
+                            SiteTypeRoomName = siteReleaseAd.Site.SiteType.RoomDisplayName,
+                            ShortDescription = siteReleaseAd.ShortDescription,
+                            Value = (float)(siteReleaseAd.MinValue)
+
+                        };
+                        setReleaseText(result);
+
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetSiteAd", exception);
+            }
+            return result;
+        }
+        public List<SiteReleaseAdView> GetSiteReleaseAds(int customerID)
+        {
+            List<SiteReleaseAdView> result = new List<SiteReleaseAdView>();
+            try
+            {
+                var query = Entities.SiteReleaseAds.Where(o => o.Customer.CustomerID == customerID);
+                var list = query.ToList();
+                foreach (var siteReleaseAd in query)
+                {
+                    siteReleaseAd.CategoryReference.Load();
+                    siteReleaseAd.SiteReference.Load();
+                    if (siteReleaseAd.Site != null)
+                    {
+                        siteReleaseAd.Site.SiteTypeReference.Load();
+                        var siteCategory = SiteAdCategories.Residencial;
+                        if (siteReleaseAd.Category.Name != SiteAdCategories.Residencial.ToString())
+                            siteCategory = SiteAdCategories.Comercial;
+                        //siteAd.SiteAdDetails.Load();
+                        //siteAd.SiteAdPics.Load();
+                        //string mainPicName = string.Empty;
+                        //if (siteAd.SiteAdPics.Count > 0)
+                        //    mainPicName = siteAd.SiteAdPics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+
+                        SiteReleaseAdView siteReleaseAdView = new SiteReleaseAdView()
+                        {
+                            AdCategory = siteCategory,
+                            AdType = SiteAdTypes.Sell,
+                            Code = siteReleaseAd.SiteReleaseAdID,
+                            District = siteReleaseAd.Site.DistrictName,
+                            MainPicUrl = string.Empty,// mainPicName,
+                            SiteTotalArea = (float)siteReleaseAd.MaxTotalArea,
+                            SiteMinTotalArea = (float)siteReleaseAd.MinTotalArea,
+                            SiteTotalRooms = siteReleaseAd.MaxTotalRooms,
+                            SiteType = siteReleaseAd.Site.SiteType.Name,
+                            SiteMinTotalRooms = siteReleaseAd.MinTotalRooms,
+                            //SiteTypeRoomName = siteAd.SiteType.RoomDisplayName,
+                            Value = (float)(siteReleaseAd.MinValue)
+
+                        };
+                        setReleaseText(siteReleaseAdView);
+                        result.Add(siteReleaseAdView);
+                    }
+                }
+            }
+
+
+
+            catch (Exception exception)
+            {
+                audit.WriteException("MdoSiteAdController.GetSiteReleaseAds", exception);
+            }
+            return result;
+        }
+
         public List<string> GetSiteTypes(string category)
         {
             List<string> result = null;
@@ -616,28 +799,34 @@ namespace TK1.Bizz.Mdo.Data.Controller
 
         private static void addSiteDetails(Site site, Collection.StringDictionary details)
         {
-            foreach (var description in details)
+            if (details != null)
             {
-                SiteDescription siteDescription = new SiteDescription()
+                foreach (var description in details)
                 {
-                    Description = description.Key,
-                    Value = description.Value,
-                    Site = site
-                };
+                    SiteDescription siteDescription = new SiteDescription()
+                    {
+                        Description = description.Key,
+                        Value = description.Value,
+                        Site = site
+                    };
+                }
             }
         }
         private void addSitePictures(Site site, List<XmlSitePic> pictures)
         {
-            foreach (var pic in pictures)
+            if (pictures != null)
             {
-                SitePic sitePic = new SitePic()
+                foreach (var pic in pictures)
                 {
-                    Description = pic.Description,
-                    FileName = pic.FileName,
-                    Site = site,
-                    PicID = pic.Index
-                };
-                Entities.AddToSitePics(sitePic);
+                    SitePic sitePic = new SitePic()
+                    {
+                        Description = pic.Description,
+                        FileName = pic.FileName,
+                        Site = site,
+                        PicID = pic.Index
+                    };
+                    Entities.AddToSitePics(sitePic);
+                }
             }
         }
         private void checkCategories(List<string> categories)
@@ -814,6 +1003,34 @@ namespace TK1.Bizz.Mdo.Data.Controller
                 Entities.DeleteObject(item);
             }
         }
+        private void removeCustomerSiteReleaseAds(Customer customer)
+        {
+            customer.SiteAds.Load();
+            foreach (var item in customer.SiteReleaseAds.ToList())
+            {
+                Entities.DeleteObject(item);
+            }
+        }
+        private void setReleaseText(SiteReleaseAdView siteReleaseAdView)
+        {
+            if (siteReleaseAdView != null)
+            {
+                if (siteReleaseAdView.Value == siteReleaseAdView.MinValue)
+                    siteReleaseAdView.ValueText = string.Format("{0:c}", siteReleaseAdView.Value);
+                else
+                    siteReleaseAdView.ValueText = string.Format("De {0:c} a {1:c}", siteReleaseAdView.MinValue, siteReleaseAdView.Value);
+
+                if (siteReleaseAdView.SiteTotalArea == siteReleaseAdView.SiteMinTotalArea)
+                    siteReleaseAdView.AreaText = string.Format("{0:0.##} m²", siteReleaseAdView.SiteTotalArea);
+                else
+                    siteReleaseAdView.AreaText = string.Format("De {0:0.##} m² a {1:0.##} m²", siteReleaseAdView.SiteMinTotalArea, siteReleaseAdView.SiteTotalArea);
+
+                if (siteReleaseAdView.SiteMinTotalRooms == siteReleaseAdView.SiteTotalRooms)
+                    siteReleaseAdView.RoomText = string.Format("{0} dormitório{1}", siteReleaseAdView.SiteMinTotalRooms, siteReleaseAdView.SiteMinTotalRooms > 1 ? "" : "s");
+                else
+                    siteReleaseAdView.RoomText = string.Format("De {0} a {1} dormitórios", siteReleaseAdView.SiteMinTotalArea, siteReleaseAdView.SiteTotalArea);
+            }
+        }
 
 
         #region OLD
@@ -879,6 +1096,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
         //    return result;
         //} 
         #endregion
+
 
     }
 }
