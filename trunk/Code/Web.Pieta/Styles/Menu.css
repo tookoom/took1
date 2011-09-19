@@ -10,10 +10,9 @@ div.hideSkiplink
 div.menu
 {
     padding: 2px 0px 0px 4px;
-    /*font-variant: small-caps;*/
     font-weight: bold;
     line-height: 1.35em;
-    font-size:1.1em;
+    font-size:1.0em;
 }
 
 .menuItem
@@ -53,12 +52,3 @@ div.menu a, div.menu a:visited
     text-decoration: none;
     white-space: nowrap;
 }
-/*div.menu a:hover
-{
-    background-image: url('http://www.pietaimoveis.com.br/Images/MenuItemHover.png');
-}*/
-
-/*div.menu a:active
-{
-    background-image: url('http://www.pietaimoveis.com.br/Images/MenuItemSelected.png');
-}*/

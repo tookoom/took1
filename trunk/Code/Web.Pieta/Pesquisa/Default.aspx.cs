@@ -12,6 +12,7 @@ using System.IO;
 using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Bizz.Data.Presentation;
 using TK1.Bizz.Pieta.Data.Controller;
+using TK1.Bizz.Data;
 
 public partial class Pesquisa_Default : System.Web.UI.Page
 {
@@ -67,6 +68,36 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             default:
                 result = false;
                 break;
+        }
+        return result;
+    }
+    private bool getSearchResultAscendingOrder()
+    {
+        bool result = false;
+        var selectedValue = dropDownListResultOrdering.SelectedValue ?? string.Empty;
+        if (selectedValue == "DESC")
+            result = true;
+        return result;
+    }
+    private string getSiteMainPic(int siteAdTypeID, int siteAdID)
+    {
+        string result = string.Empty;
+        string baseUrl = string.Empty;
+        if (siteAdTypeID == 1)
+            baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
+        if (siteAdTypeID == 2)
+            baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
+        baseUrl = this.ResolveUrl(baseUrl);
+        string path = Server.MapPath(baseUrl);
+        if (Directory.Exists(path))
+        {
+            string items = string.Empty;
+            foreach (var file in Directory.GetFiles(path, "*.jpg"))
+            {
+                result = baseUrl + Path.GetFileName(file);
+                break;
+            }
+
         }
         return result;
     }
@@ -151,6 +182,23 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceTo.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
         dropDownPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+") { Selected = true });
     }
+    private void orderSearchResults()
+    {
+        bool descending = getSearchResultAscendingOrder();
+        var selectedValue = dropDownListResultOrderingType.SelectedValue ?? string.Empty;
+        switch (selectedValue)
+        {
+            case "CODE":
+                orderSearchResultsByCode(descending);
+                break;
+            case "PRICE":
+                orderSearchResultsByValue(descending);
+                break;
+            case "AREA":
+                orderSearchResultsByArea(descending);
+                break;
+        }
+    }
     private void orderSearchResultsByArea(bool descendingOrder)
     {
         var searchResult = Page.Session[searchResultSessionKey] as List<SiteAdView>;
@@ -160,6 +208,17 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 setDataBinding(searchResult.OrderByDescending(o => o.SiteTotalArea).ToList());
             else
                 setDataBinding(searchResult.OrderBy(o => o.SiteTotalArea).ToList());
+        }
+    }
+    private void orderSearchResultsByCode(bool descendingOrder)
+    {
+        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAdView>;
+        if (searchResult != null)
+        {
+            if (descendingOrder)
+                setDataBinding(searchResult.OrderByDescending(o => o.Code).ToList());
+            else
+                setDataBinding(searchResult.OrderBy(o => o.Code).ToList());
         }
     }
     private void orderSearchResultsByValue(bool descendingOrder)
@@ -237,10 +296,11 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         {
             siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
             siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
-            if (string.IsNullOrEmpty(siteAdView.MainPicUrl))
-                siteAdView.MainPicUrl = "Images/ImageNotFound.png";
-            else
-                siteAdView.MainPicUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/{1}", siteAdView.Code, siteAdView.MainPicUrl);
+            string imageUrl = "http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+            string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
+            if (!string.IsNullOrEmpty(mainPic))
+                imageUrl = mainPic;
+            siteAdView.MainPicUrl = imageUrl;
         }
         setDataBinding(searchResult);
     }
@@ -270,6 +330,14 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     protected void buttonSearch_Click(object sender, EventArgs e)
     {
         searchSite();
+    }
+    protected void dropDownListResultOrdering_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        orderSearchResults();
+    }
+    protected void dropDownListResultOrderingType_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        orderSearchResults();
     }
     protected void linkButtonOrderAreaAsc_Click(object sender, EventArgs e)
     {

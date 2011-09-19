@@ -30,10 +30,6 @@
     </div>
 
     <div id="divSiteDetails" runat="server">
-        <div class="headerBlueLine">
-            <h2>Detalhes</h2>
-        </div>
-
         <div class="searchDetailHeader">
              <asp:Repeater ID="Repeater2" runat="server" 
                 DataSourceID="objectDataSourceSiteDescription" >
@@ -43,10 +39,10 @@
                             <%# Eval("SiteType")%> - <%# Eval("AdTypeName")%> 
                         </h2>
                         <h3><%# Eval("City")%>, bairro <%# Eval("District")%></h3>
-                        <b style="line-height: 1.5em;">Código do anúncio: <%# Eval("Code")%></b>
+                        <b style="line-height: 1.8em;">Código do anúncio: <%# Eval("Code")%></b>
                         <br />
                     </div>
-                    <div style="float:right; padding-top: 14px;">
+                    <div style="float:right; padding-top: 8px;">
                         <h1> <%# Eval("Value", "{0:c}")%> </h1>
                     </div>
                </ItemTemplate>                                 
@@ -84,22 +80,24 @@
             
         </div>--%>
         
-        <div class="headerBlueLine">
+        <%--<div class="headerBlueLine">
             <h3>Descrição</h3>
-        </div>
+        </div>--%>
 
-        <table border="0" cellpadding="0" cellspacing="0" width="932px">
+        <table border="0" cellpadding="8" cellspacing="0" width="932px">
             <tr>
                 <td style="width: 50%; vertical-align: top;">
+                    <div class="headerBlueShortLine">
+                        <h1>Características</h1>
+                    </div>
                     <asp:Repeater ID="Repeater1" runat="server" 
                         DataSourceID="objectDataSourceSiteDescription" >
                         <ItemTemplate>
-                            <b><h4> <%# Eval("Title")%> </h4></b>
-                            <p> <b>Características do Imóvel: </b></p>
+                           <%-- <p> <b>Imóvel: </b></p>--%>
                             <p> <%# Eval("FullDescription")%> </p>
-                            <p> <b>Infraestrutura do Condomínio: </b></p>
+                            <p runat="server" visible='<%#Eval("IsCondoDescriptionVisible")%>'> <b>Infraestrutura do Condomínio: </b></p>
                             <p> <%# Eval("CondoDescription")%> </p>
-                            <p> <b>Infraestrutura do Bairro: </b></p>
+                            <p runat="server" visible='<%#Eval("IsAreaDescriptionVisible")%>'> <b>Infraestrutura do Bairro: </b></p>
                             <p> <%# Eval("AreaDescription")%> </p>
                             <div runat="server" visible='<%#Eval("IsTaxVisible")%>'>
                                 <p> Aluguel: <%# Eval("Value", "{0:c}")%> </p>
@@ -112,22 +110,32 @@
 
                 </td>
                 <td style="width: 30%; vertical-align: top;">
-                    <asp:Repeater ID="Repeater3" runat="server" 
-                        DataSourceID="objectDataSourceSiteDetail" >
-                        <ItemTemplate>
-                            <table border="0" cellpadding="0" cellspacing="0" >
-                                <tr style="height: 26px">
-                                    <td><img src="http://www.pietaimoveis.com.br/Images/Check.png" style="vertical-align:middle; padding: 2px 3px 5px 0px;"/>
-                                    </td>
-                                    <td><%--<p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>--%>
-                                    <%# Eval("Name")%>
-                                    </td>
-                                </tr>
-                            </table>
-                        </ItemTemplate>                                 
-                    </asp:Repeater>
+                    <div class="headerBlueShortLine">
+                        <h1>Detalhes</h1>
+                    </div>
+                    <div style="margin-top:12px;">
+                        <asp:Repeater ID="Repeater3" runat="server" DataSourceID="objectDataSourceSiteDetail">
+                            <ItemTemplate>
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr style="height: 26px">
+                                        <td>
+                                            <img src="http://www.pietaimoveis.com.br/Images/Check.png" style="vertical-align: middle;
+                                                padding: 2px 3px 5px 0px;" />
+                                        </td>
+                                        <td>
+                                            <%--<p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>--%>
+                                            <%# Eval("Name")%>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </td>
                 <td style="width: 20%; vertical-align: top;">
+                    <div class="headerBlueShortLine">
+                        <h1>Contato</h1>
+                    </div>
                     <img src="http://www.pietaimoveis.com.br/Images/CallNow.png" style="float:right; margin-top: 8px; margin-bottom: auto; vertical-align:top;display: block;"/>
                 </td>
             </tr>

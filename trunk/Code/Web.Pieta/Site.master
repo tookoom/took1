@@ -43,7 +43,7 @@
                                 class="menuItem" PostBackUrl="~/" />
                     </div>
 
-                    <div style="margin:240px 0px 0px 62px; float: left; position:absolute; width: 186px;text-align: center; font-size:1.2em">
+                    <div style="margin:240px 0px 0px 62px; float: left; position:absolute; width: 186px;text-align: center; font-size:1.1em">
                         <asp:LinkButton ID="linkButtonSearch" Text="Pesquisa de Imóveis" 
                             runat="server"  class="menuItem" PostBackUrl="~/Pesquisa/Default.aspx" />
                     </div>

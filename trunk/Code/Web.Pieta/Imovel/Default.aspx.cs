@@ -80,9 +80,9 @@ public partial class Imovel_Default : System.Web.UI.Page
         {
             baseUrl = this.ResolveUrl(baseUrl);
             string path = Server.MapPath(baseUrl);
+            string items = string.Empty;
             if (Directory.Exists(path))
             {
-                string items = string.Empty;
                 int index = 0;
                 foreach (var file in Directory.GetFiles(path, "*.jpg"))
                 {
@@ -103,28 +103,30 @@ public partial class Imovel_Default : System.Web.UI.Page
                             + "</li>";
                     items += li + Environment.NewLine;
                 }
-                if (!string.IsNullOrEmpty(items))
-                {
-                    string ul = "<ul class=\"thumbs noscript\">"
-                        + "{0}"
-                        + "</ul>";
-                    result = string.Format(ul, items);
-                }
-                else
-                {
-                    result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
-                }
-
             }
-            else
+            if (string.IsNullOrEmpty(items))
             {
-                result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
-            }
+                string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+                string li = "<li>"
+                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+                    + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+                    + "</a>"
+                    + "<div class=\"caption\">"
+                    + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+                    + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
+                    //+ "<p visible=\"false\">" + baseUrl + "</p>"
+                    //+ "<p visible=\"false\">" + path + "</p>"
+                    + "</div>"
+                    + "</div>"
+                    + "</li>";
+                        items += li + Environment.NewLine;
+                    }
+            string ul = "<ul class=\"thumbs noscript\">"
+                + "{0}"
+                + "</ul>";
+            result = string.Format(ul, items);
 
-            //result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", baseUrl));
         }
-        //result.Add("~/Images/PicNotFound.jpg");
-
         return result;
     }
 
