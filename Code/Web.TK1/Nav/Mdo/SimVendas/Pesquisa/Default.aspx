@@ -140,28 +140,28 @@
                 <table class="searchResultTable" border="0" cellpadding="0px 0px 4px 0px;" cellspacing="0" width="100%">
                     <tr class="center">
                         <td style="vertical-align: middle;">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&CustomerID=<%# Eval("CustomerID")%>">
-                                <img src="<%# Eval("ImageUrl") %>" height="110px" width="120px" style="margin: 4px 0px 4px 0px;" />
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&CustomerID=<%# Eval("CustomerID")%>">
+                                <img src="<%# Eval("MainPicUrl") %>" height="110px" width="120px" style="margin: 4px 0px 4px 0px;" />
                             </a>
-                        <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("SiteAdID")%></b></td>
+                        <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
                         <td>
                             <table>
                                 <tr>
-                                    <td style="vertical-align: middle; width:140px; text-align:center;"><%# Eval("Site.SiteType.Name")%></td>
+                                    <td style="vertical-align: middle; width:140px; text-align:center;"><%# Eval("SiteType")%></td>
                                 </tr>
                                 <tr>
-                                    <td id="Td2" style="vertical-align: middle; width:140px; text-align:center;" runat="server" visible='<%#getSiteRoomNameVisibility(Eval("Site.SiteType.RoomDisplayName").ToString())%>'>
-                                           <%# Eval("Site.TotalRooms")%>  <%# Eval("Site.SiteType.RoomDisplayName")%>
+                                    <td id="Td2" style="vertical-align: middle; width:140px; text-align:center;" runat="server" visible='<%#Eval("IsRoomNameVisible")%>'>
+                                           <%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%>
                                     </td>
                                 </tr>
                             </table>
                         </td>
                         <td id="Td1" style="vertical-align: middle; width:80px; text-align:center;" runat="server">
-                               <%# Eval("Site.TotalArea", "{0:0.##}")%>  m²
+                               <%# Eval("SiteTotalArea", "{0:0.##}")%>  m²
                         </td>
-                        <td style="vertical-align: middle; width:100px; text-align:center;">Bairro <%# Eval("Site.District.Name")%></td>
-                        <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Price", "{0:c}")%></td>
-                        <td style="vertical-align: middle; text-align:center; width:80px;"><a href="../Imovel/Default.aspx?ID=<%# Eval("SiteAdID")%>&CustomerID=<%# Eval("CustomerID")%>">Detalhes</a></td>
+                        <td style="vertical-align: middle; width:100px; text-align:center;">Bairro <%# Eval("District")%></td>
+                        <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Value", "{0:c}")%></td>
+                        <td style="vertical-align: middle; text-align:center; width:80px;"><a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&CustomerID=<%# Eval("CustomerID")%>"><b>Detalhes</b></a></td>
                     </tr>
                     <hr />
                 </table>

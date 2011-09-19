@@ -36,7 +36,7 @@
 .ppy-imglist li a img {
     display:        block;
     border:         5px;
-
+width: 10px;
 }
 
 
@@ -54,10 +54,14 @@
     height:         180px;
     overflow:       hidden;
     cursor:         pointer;
+    max-width: 200px;
+    max-height: 240px;
+    width: expression(this.width > 400 ? "400px" : true);
+    height: expression(this.height > 400 ? "400px" : true);
 }
 #ppy3 .ppy-stage img {
-    width:          40px;
-    height:         80px;
+    /*width:          40px;
+    height:         80px;*/
 }
 
 #ppy3 .ppy-stagewrap {
@@ -66,14 +70,14 @@
 
 #ppy3 .ppy-caption 
 {
-    background-color: Fuchsia;
+    background-color: #efefef;
     font-size:large;
-    margin:         -200px 0px 0px 300px ;
+    margin:         -160px 0px 0px 300px ;
     padding:        0 5px 3px 0;
     font-size:      0.9em;
     line-height:    1.3em;
     color:          #666;
-    height:         200px;
+    height:         140px;
     width: 500px;
     overflow:       auto;
     border-bottom:  1px solid #ddd;
@@ -83,8 +87,6 @@
 
 #ppy3.ppy-expanded .ppy-caption 
 {
-    background-color: Green;
-    
     margin:         0;
     padding:        10px;
     color:          #fff;

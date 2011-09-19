@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <div>
-        <div class="headerBlueLine"><h2>Pietá Intermediações Imobiliárias</h2></div>
+        <div class="headerBlueLine"><h1>Pietá Intermediações Imobiliárias</h1></div>
 
         <p>
         Rua Armando Barbedo, 480 - loja 101 - Bairro Tristeza, Porto Alegre, RS 

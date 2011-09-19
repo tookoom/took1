@@ -35,3 +35,7 @@
 .ppy-hidden {
     display:                none !important;
 }
+
+.ppy-forcedthumb {
+    display:                none !important;
+}

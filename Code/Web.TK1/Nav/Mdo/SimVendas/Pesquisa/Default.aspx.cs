@@ -15,6 +15,8 @@ using TK1.Html;
 using TK1.Html.Elements;
 using TK1.Data.Controller;
 using TK1.Xml;
+using TK1.Bizz.Data.Presentation;
+using TK1.Bizz.Data;
 
 public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
 {
@@ -23,7 +25,7 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     private static string debugMessage = string.Empty;
     #endregion
 
-    private MdoSiteSearchParameters getSearchParameters()
+    private MdoSiteAdSearchParameters getSearchParameters()
     {
         var searchParameterSessionKey = getSearchParameterSessionKey();
         var webSessionID = string.Empty;
@@ -32,15 +34,15 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         webSessionID = dictionary.Get("WebSessionID") ?? string.Empty;
         return getSearchParameters(searchParameterSessionKey, webSessionID);
     }
-    private static MdoSiteSearchParameters getSearchParameters(string searchParameterSessionKey, string webSessionID)
+    private static MdoSiteAdSearchParameters getSearchParameters(string searchParameterSessionKey, string webSessionID)
     {
-        MdoSiteSearchParameters searchParameters = null;
+        MdoSiteAdSearchParameters searchParameters = null;
         if (!string.IsNullOrEmpty(searchParameterSessionKey) & !string.IsNullOrEmpty(webSessionID))
         {
             var xml = WebSessionController.Get(webSessionID, searchParameterSessionKey);
             if (!string.IsNullOrEmpty(xml))
             {
-                searchParameters = XmlSerializer<MdoSiteSearchParameters>.Load(xml);
+                searchParameters = XmlSerializer<MdoSiteAdSearchParameters>.Load(xml);
             }
         }
         return searchParameters;
@@ -53,9 +55,9 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
 
         return string.Format("MdoSellingSearchParameter_{0}", clientAcronym);
     }
-    private List<SiteAd> getSearchResult()
+    private List<SiteAdView> getSearchResult()
     {
-        List<SiteAd> result = null;
+        List<SiteAdView> result = null;
 
         var searchResultSessionKey = getSearchResultSessionKey();
         var searchParameterSessionKey = getSearchParameterSessionKey();
@@ -67,22 +69,22 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
 
         if (string.IsNullOrEmpty(webSessionID))
         {
-            result = Page.Session[searchResultSessionKey] as List<SiteAd>;
+            result = Page.Session[searchResultSessionKey] as List<SiteAdView>;
         }
         else
         {
-            MdoSiteSearchParameters searchParameters = getSearchParameters(searchParameterSessionKey, webSessionID);
+            MdoSiteAdSearchParameters searchParameters = getSearchParameters(searchParameterSessionKey, webSessionID);
             if (searchParameters != null)
             {
-                MdoSiteController siteController = new MdoSiteController();
+                MdoSiteAdController siteController = new MdoSiteAdController();
                 result = siteController.SearchSites(searchParameters);
-                setSiteAdMainPic(siteController, result);
+                setSiteAdMainPic(siteController, result, searchParameters.CustomerCodename);
                 setDataBinding(result);
             }
 
         }
         if (result == null)
-            result = new List<SiteAd>();
+            result = new List<SiteAdView>();
         return result;
     }
     public string getSearchResultSessionKey()
@@ -136,7 +138,7 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     }
     private void loadSearchParameter()
     {
-        MdoSiteController siteController = new MdoSiteController();
+        MdoSiteAdController siteController = new MdoSiteAdController();
         radioButtonResidencial.Checked = true;
 
         var cities = siteController.GetCities();
@@ -148,15 +150,15 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         foreach (var district in districts)
             checkBoxListDistricts.Items.Add(new ListItem(district));
 
-        dropDownSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Business + "*"));
-        var siteComercialTypes = siteController.GetSiteTypes(SiteAdCategories.Business);
+        dropDownSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Comercial.ToString() + "*"));
+        var siteComercialTypes = siteController.GetSiteTypes(SiteAdCategories.Comercial.ToString());
         foreach (var siteType in siteComercialTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Business + siteType));
+            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Comercial.ToString() + siteType));
 
-        dropDownSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residence + "*") { Selected = true });
-        var siteResidenceTypes = siteController.GetSiteTypes(SiteAdCategories.Residence);
+        dropDownSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residencial.ToString() + "*") { Selected = true });
+        var siteResidenceTypes = siteController.GetSiteTypes(SiteAdCategories.Residencial.ToString());
         foreach (var siteType in siteResidenceTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residence + siteType));
+            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residencial.ToString() + siteType));
 
         dropDownRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
         dropDownRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
@@ -194,9 +196,9 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         if (searchResult != null)
         {
             if (descendingOrder)
-                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.AreaDescending));
+                setDataBinding(MdoSiteAdController.OrderResults(searchResult, SiteAdSearchResultOrders.AreaDescending));
             else
-                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.AreaAscending));
+                setDataBinding(MdoSiteAdController.OrderResults(searchResult, SiteAdSearchResultOrders.AreaAscending));
         }
     }
     private void orderSearchResultsByValue(bool descendingOrder)
@@ -205,20 +207,21 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         if (searchResult != null)
         {
             if (descendingOrder)
-                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.PriceDescending));
+                setDataBinding(MdoSiteAdController.OrderResults(searchResult, SiteAdSearchResultOrders.PriceDescending));
             else
-                setDataBinding(MdoSiteController.OrderResults(searchResult, MdoSiteSearchResultOrder.PriceAscending));
+                setDataBinding(MdoSiteAdController.OrderResults(searchResult, SiteAdSearchResultOrders.PriceAscending));
         }
     }
     private void searchSite()
     {
-        MdoSiteController siteController = new MdoSiteController();
+        MdoSiteAdController siteController = new MdoSiteAdController();
 
-        MdoSiteSearchParameters searchParameters = new MdoSiteSearchParameters();
+        MdoSiteAdSearchParameters searchParameters = new MdoSiteAdSearchParameters();
+        searchParameters.AdType = SiteAdTypes.Sell;
 
         var queryString = Page.ClientQueryString;
         var dictionary = StringDictionary.LoadFromQueryString(queryString);
-        searchParameters.MdoAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
+        searchParameters.CustomerCodename = dictionary.Get("ClienteMDO") ?? string.Empty;
 
         if (!string.IsNullOrEmpty(textBoxSiteCode.Text))
         {
@@ -246,10 +249,10 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         {
             string text = dropDownSiteType.SelectedItem.Text;
             string value = dropDownSiteType.SelectedItem.Value;
-            if (value.Contains(SiteAdCategories.Business.ToString()))
-                searchParameters.Category = SiteAdCategories.Business;
+            if (value.Contains(SiteAdCategories.Comercial.ToString()))
+                searchParameters.Category = SiteAdCategories.Comercial.ToString();
             else
-                searchParameters.Category = SiteAdCategories.Residence;
+                searchParameters.Category = SiteAdCategories.Residencial.ToString();
             if (value.Contains("*"))
                 searchParameters.SiteType = "*";
             else
@@ -266,11 +269,11 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
                 searchParameters.Districts.Add(item.Text);
 
         var searchResult = siteController.SearchSites(searchParameters);
-        setSiteAdMainPic(siteController, searchResult);
+        setSiteAdMainPic(siteController, searchResult, searchParameters.CustomerCodename);
         setSearchParameters(searchParameters);
         setDataBinding(searchResult);
     }
-    private void setDataBinding(List<SiteAd> dataToBind)
+    private void setDataBinding(List<SiteAdView> dataToBind)
     {
         var searchSessionKey = getSearchResultSessionKey();
 
@@ -339,7 +342,7 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
             literalDebugResult.Visible = false;
         }
     }
-    private void setSearchParameters(MdoSiteSearchParameters searchParameters)
+    private void setSearchParameters(MdoSiteAdSearchParameters searchParameters)
     {
         var searchParameterSessionKey = getSearchParameterSessionKey();
         var webSessionID = string.Empty;
@@ -347,23 +350,23 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
         var dictionary = StringDictionary.LoadFromQueryString(queryString);
         webSessionID = dictionary.Get("WebSessionID") ?? string.Empty;
         if(!string.IsNullOrEmpty(webSessionID))
-            WebSessionController.Set(webSessionID, searchParameterSessionKey, XmlSerializer<MdoSiteSearchParameters>.Save(searchParameters ?? new MdoSiteSearchParameters()));
+            WebSessionController.Set(webSessionID, searchParameterSessionKey, XmlSerializer<MdoSiteAdSearchParameters>.Save(searchParameters ?? new MdoSiteAdSearchParameters()));
     }
-    private void setSiteAdMainPic(MdoSiteController siteController, List<SiteAd> searchResult)
+    private void setSiteAdMainPic(MdoSiteAdController siteController, List<SiteAdView> searchResult, string mdoCodename)
     {
         if (siteController != null & searchResult != null)
         {
-            foreach (var siteAd in searchResult)
+            foreach (var siteAdView in searchResult)
             {
                 string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
-                if (string.IsNullOrEmpty(siteAd.ImageUrl))
-                {
-                    var mdoCode = siteController.GetMdoCode(siteAd.CustomerID);
-                    string mainPic = getSiteMainPic(mdoCode, siteAd.SiteAdID);
+                //if (string.IsNullOrEmpty(siteAdView.MainPicUrl))
+                //{
+                    var mdoCode = siteController.GetMdoCode(mdoCodename);
+                    string mainPic = getSiteMainPic(mdoCode, siteAdView.Code);
                     if (!string.IsNullOrEmpty(mainPic))
                         imageUrl = mainPic;
-                }
-                siteAd.ImageUrl = imageUrl;
+                //}
+                siteAdView.MainPicUrl = imageUrl;
             }
         }
     }
@@ -393,23 +396,23 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     protected void dropDownListResultOrdering_SelectedIndexChanged(object sender, EventArgs e)
     {
         var selectedValue = dropDownListResultOrdering.SelectedValue ?? string.Empty;
-        MdoSiteSearchResultOrder resultOrder = MdoSiteSearchResultOrder._Undefined;
+        SiteAdSearchResultOrders resultOrder = SiteAdSearchResultOrders._Undefined;
         switch (selectedValue)
         {
             case "PRICE_ASC":
-                resultOrder = MdoSiteSearchResultOrder.PriceAscending;
+                resultOrder = SiteAdSearchResultOrders.PriceAscending;
                 orderSearchResultsByValue(false);
                 break;
             case "PRICE_DESC":
-                resultOrder = MdoSiteSearchResultOrder.PriceDescending;
+                resultOrder = SiteAdSearchResultOrders.PriceDescending;
                 orderSearchResultsByValue(true);
                 break;
             case "AREA_ASC":
-                resultOrder = MdoSiteSearchResultOrder.AreaAscending;
+                resultOrder = SiteAdSearchResultOrders.AreaAscending;
                 orderSearchResultsByArea(false);
                 break;
             case "AREA_DESC":
-                resultOrder = MdoSiteSearchResultOrder.AreaDescending;
+                resultOrder = SiteAdSearchResultOrders.AreaDescending;
                 orderSearchResultsByArea(true);
                 break;
         }

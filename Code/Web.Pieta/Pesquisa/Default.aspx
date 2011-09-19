@@ -3,60 +3,53 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
 <div style="min-height:190px;">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBar">
         <tr>
             <td style="width: 650px; vertical-align:top;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" >
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
-                        <td style="width: 60px; vertical-align:middle; padding-left:8px;"><p>Quero:</p></td>
-                         <td style="width: 80px; vertical-align:middle; padding-top:7px; font-size:1.3em;">
+                        <td>Quero:</td>
+                         <td class="radioItem">
                             <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar" GroupName="radioButtonAdType" /></td>
-                        <td style="width: 100px; vertical-align:middle; padding-top:7px; font-size:1.3em;">
+                        <td class="radioItem">
                             <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" GroupName="radioButtonAdType"/></td>
-                        <td style="width: 40px; vertical-align:middle; padding-left:8px;"><p>em:</p></td>
-                        <td style="width: 290px; vertical-align:middle; padding-top:8px;">
-                            <asp:DropDownList ID="dropDownCities" runat="server" Width="280px"></asp:DropDownList></td>
-                        <td style="width: auto; vertical-align:middle; padding-left:8px;"><p>Bairros:</p></td>
+                        <td >em:</td>
+                        <td ">
+                            <asp:DropDownList ID="dropDownCities" runat="server" Width="280px" Font-Size="Medium"></asp:DropDownList></td>
+                        <td>Bairros:</td>
                     </tr>
                 </table>
-                <%--<table border="0">
+                <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
                     <tr>
-                        <td style="width: 72px"></td>
-                        <td style="width: 120px"><asp:RadioButton ID="radioButtonSiteBusiness" runat="server" Text="Comercial" GroupName="radioButtonSiteCategory" /></td>
-                        <td style="width: 216px"><asp:RadioButton ID="radioButtonSiteResidence" runat="server" Text="Residencial" GroupName="radioButtonSiteCategory"/></td>
-                    </tr>
-                </table>--%>
-                <table  border="0" cellpadding="0" cellspacing="0" width="100%" >
-                    <tr>
-                        <td style="width: 60px; vertical-align:middle; padding-left:8px;"><p>Tipo:</p></td>
-                        <td style="width: 228px; padding-top:8px;">
-                            <asp:DropDownList ID="dropDownSiteType" runat="server" Width="210px"></asp:DropDownList></td>
-                        <td style="width: 290px; padding-top:8px;">
-                            <asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="280px"></asp:DropDownList></td>
-                        <td style="width: auto; vertical-align:middle; padding-left:8px;"></td>
+                        <td>Tipo:</td>
+                        <td>
+                            <asp:DropDownList ID="dropDownSiteType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                        <td>
+                            <asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="260px" Font-Size="Medium"></asp:DropDownList></td>
+                        <td style="width: 80px"></td>
                     </tr>
                 </table>
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" >
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
                     <tr>
-                        <td style="width: 100px; vertical-align:middle; padding-left:8px;"><p>Preço entre:</p></td>
-                        <td style="width: 140px; vertical-align:middle; padding-top:8px;">
-                            <asp:DropDownList ID="dropDownPriceFrom" runat="server" Width="130px"></asp:DropDownList></td>
-                        <td style="width: 30px; vertical-align:middle; padding-left:8px;"><p>e</p></td>
-                        <td style="width: 220px; vertical-align:middle; padding-top:8px;">
-                            <asp:DropDownList ID="dropDownPriceTo" runat="server" Width="210px"></asp:DropDownList></td>
-                        <td style="width: auto; vertical-align:middle; padding-left:8px;"></td>
+                        <td>Preço entre:</td>
+                        <td>
+                            <asp:DropDownList ID="dropDownPriceFrom" runat="server" Width="130px" Font-Size="Medium"></asp:DropDownList></td>
+                        <td>e</td>
+                        <td>
+                            <asp:DropDownList ID="dropDownPriceTo" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                        <td style="width: 150px"></td>
                     </tr>
                 </table>
-                <table  border="0" cellpadding="0" cellspacing="0" width="100%" >
+                <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
                     <tr>
-                        <td style="width: 150px; vertical-align:middle; padding-left:8px;"><p>Código do anúncio:</p></td>
-                        <td style="width: 90px; padding-top:8px;">
-                            <asp:TextBox ID="textBoxSiteCode" runat="server" Width="70px"></asp:TextBox></td>
-                        <td style="width: 340px; padding-top:8px;"></td>
-                        <td style="width: auto; vertical-align:middle; padding-left:8px;"></td>                         </tr>
+                        <td>Código do anúncio:</td>
+                        <td>
+                            <asp:TextBox ID="textBoxSiteCode" runat="server" Width="70px" Font-Size="Medium"></asp:TextBox></td>
+                        <td style="width: 400px"></td>                         
+                        </tr>
                 </table>
             </td>
-            <td style="width: auto; padding:12px">
+            <td>
                 <div style="OVERFLOW-Y:scroll; float:left; width:100%; height:140px; background-color: White; color: Black;">
                     <asp:CheckBoxList ID="checkBoxListDistricts" runat="server">
                     </asp:CheckBoxList>
@@ -89,21 +82,57 @@
     <div class="clear searchResult">
         <div runat="server" visible="<%#getSearchResultVisibility()%>" > <%--visible='<%#getSearchResultVisibility("bla")%>'--%>
             <div id="Div1" class="headerBlueLine" >
-                <h2>Resultado da Pesquisa</h2>
+                <h1>Resultado da Pesquisa</h1>
             </div>
-            <table border="0" cellpadding="0" cellspacing="0">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                    <td>Ordem de exibição:</td>
-                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceAsc" runat="server" OnClick="linkButtonOrderPriceAsc_Click">Menores valores primeiro</asp:LinkButton></td>
+                    <td style="width:180px;">Ordem de exibição:</td>
+                    <td style="padding: 2px 4px 2px 4px; width:80px;">
+                        <asp:DropDownList ID="dropDownListResultOrderingType" runat="server" AutoPostBack="true" Font-Size="Medium"
+                            OnSelectedIndexChanged="dropDownListResultOrderingType_SelectedIndexChanged">
+                            <asp:ListItem Text="Área"  Value="AREA"/>
+                            <asp:ListItem Text="Código" Value="CODE" Selected="True"/>
+                            <asp:ListItem Text="Preço" Value="PRICE" />
+                        </asp:DropDownList>
+                    </td>
+                    <td style="padding: 2px 4px 2px 4px; width:70px;">
+                        <asp:DropDownList ID="dropDownListResultOrdering" runat="server" AutoPostBack="true" Font-Size="Medium"
+                            OnSelectedIndexChanged="dropDownListResultOrdering_SelectedIndexChanged">
+                            <asp:ListItem Text="Menor para maior"  Value="ASC"/>
+                            <asp:ListItem Text="Maior para menor" Value="DESC"/>
+                        </asp:DropDownList>
+                    </td>
+                    <td style="width:500px;"></td>
+<%--                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceAsc" runat="server" OnClick="linkButtonOrderPriceAsc_Click">Menores valores primeiro</asp:LinkButton></td>
                     <td>|</td>
                     <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderPriceDec" runat="server" OnClick="linkButtonOrderPriceDesc_Click" >Maiores valores primeiro</asp:LinkButton></td>
                     <td>|</td>
                     <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaAsc" runat="server" OnClick="linkButtonOrderAreaAsc_Click" >Menores áreas primeiro</asp:LinkButton></td>
                     <td>|</td>
-                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaDec" runat="server" OnClick="linkButtonOrdeAreaDesc_Click" >Maiores áreas primeiro</asp:LinkButton></td>
+                    <td style="padding: 2px 4px 2px 4px"> <asp:LinkButton ID="linkButtonOrderAreaDec" runat="server" OnClick="linkButtonOrdeAreaDesc_Click" >Maiores áreas primeiro</asp:LinkButton></td>--%>
+                    <td>
+                        <div style="float: right; padding:10px; margin-right:10px; background-color: #efefef;" >
+                            <asp:DataPager ID="siteSearchDataPagerTop" 
+                                runat="server" PagedControlID="listViewSearchResults" PageSize="20">
+                                <Fields>
+                                    <asp:NumericPagerField ButtonCount="10" 
+                                        CurrentPageLabelCssClass="searchResultPagerActiveButton" 
+                                        NextPageText="&gt;&gt;" NumericButtonCssClass="searchResultPagerButton" 
+                                        PreviousPageText="&lt;&lt;" />
+                                    <asp:NextPreviousPagerField FirstPageText="Primeira" 
+                                        LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 
+                                        ButtonCssClass="searchResultPagerNestPrevButton" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                    </td>
                 </tr>
             </table>
         </div>
+        <%--<div id="Div2" class="headerBlueLine" >
+        </div>--%>
+        <hr />
+
         <asp:ListView ID="listViewSearchResults" runat="server" 
             EnableModelValidation="True" 
             onpagepropertieschanged="listViewSearchResults_PagePropertiesChanged">
@@ -111,27 +140,44 @@
                 <h3>Nenhum resultado encontrado.</h3>
             </EmptyDataTemplate>
             <ItemTemplate>
-                <table border="0" cellpadding="0" cellspacing="0" width="932px" style="border-bottom:2px solid #23669A; ">
+                <table border="0" cellpadding="0" cellspacing="0" width="932px">
                     <tr class="center">
                         <td style="vertical-align: middle; width:170px;">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
                                 <img src="<%# Eval("MainPicUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
                             </a>
                         </td>
-                        <td style="vertical-align: middle; width:70px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
-                        <td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("SiteType")%></td>
+                        <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="vertical-align: middle; width: 140px; text-align: center;">
+                                        <%# Eval("SiteType")%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td id="Td2" style="vertical-align: middle; width: 140px; text-align: center;" runat="server"
+                                        visible='<%#Eval("IsRoomNameVisible")%>'>
+                                        <%# Eval("SiteTotalRooms")%>
+                                        <%# Eval("SiteTypeRoomName")%>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <%--<td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("SiteType")%></td>
                         <td style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#Eval("IsRoomNameVisible")%>'>
                                <%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%>
-                        </td>
+                        </td>--%>
                         <td id="Td1" style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#Eval("IsAreaNameVisible")%>'>
                                <%# Eval("SiteTotalArea", "{0:0.##}")%>  m²
                         </td>
                         <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("District")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Value", "{0:c}")%></td>
-                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">Detalhes</a></td>
+                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>"><b>Detalhes</b></a></td>
                     </tr>
                     
                 </table>
+                <hr />
             </ItemTemplate>
             <LayoutTemplate>
                 <div ID="itemPlaceholderContainer" runat="server" >
@@ -151,18 +197,22 @@
             </SelectParameters>
         </asp:ObjectDataSource>
 
-        <div style="height: 50px;">
-            <asp:DataPager ID="siteSearchDataPager" style="float: right; padding:10px;"
+        <div style="float: right; padding:10px; margin-right:10px; background-color: #efefef;" >
+            <asp:DataPager ID="DataPager1" 
                 runat="server" PagedControlID="listViewSearchResults" PageSize="20">
                 <Fields>
-                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="Primeira" 
+                    <asp:NumericPagerField ButtonCount="10" 
+                        CurrentPageLabelCssClass="searchResultPagerActiveButton" 
+                        NextPageText="&gt;&gt;" NumericButtonCssClass="searchResultPagerButton" 
+                        PreviousPageText="&lt;&lt;" />
+                    <asp:NextPreviousPagerField FirstPageText="Primeira" 
                         LastPageText="Última" NextPageText="Próxima" PreviousPageText="Anterior" 
-                        NextPageImageUrl="~/Images/IconRight.png" 
-                        PreviousPageImageUrl="~/Images/IconLeft.png" />
-                    <asp:NumericPagerField />
+                        ButtonCssClass="searchResultPagerNestPrevButton" />
                 </Fields>
             </asp:DataPager>
         </div>
+        <br />
+        <br />
     </div>
 
 </asp:Content>

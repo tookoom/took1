@@ -8,6 +8,7 @@ using TK1.Bizz.Mdo.Data;
 using TK1.Bizz.Mdo;
 using System.IO;
 using TK1.Bizz.Mdo.Data.Controller;
+using TK1.Bizz.Data.Presentation;
 
 public partial class Nav_Mdo_SimVendas_Imovel_Default : System.Web.UI.Page
 {
@@ -50,9 +51,9 @@ public partial class Nav_Mdo_SimVendas_Imovel_Default : System.Web.UI.Page
         {
             baseUrl = this.ResolveUrl(baseUrl);
             string path = Server.MapPath(baseUrl);
+            string items = string.Empty;
             if (Directory.Exists(path))
             {
-                string items = string.Empty;
                 int index = 0;
                 foreach (var file in Directory.GetFiles(path, "*.jpg"))
                 {
@@ -78,28 +79,41 @@ public partial class Nav_Mdo_SimVendas_Imovel_Default : System.Web.UI.Page
                     //string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
                     items += li + Environment.NewLine;
                 }
-                if (!string.IsNullOrEmpty(items))
-                {
-                    string ul = "<ul class=\"thumbs noscript\">"
-                        + "{0}"
-                        + "</ul>";
-                    result = string.Format(ul, items);
-                }
-                else
-                {
-                    result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
-                }
+                //if (!string.IsNullOrEmpty(items))
+                //{
+                //    string ul = "<ul class=\"thumbs noscript\">"
+                //        + "{0}"
+                //        + "</ul>";
+                //    result = string.Format(ul, items);
+                //}
+                //else
+                //{
+                //    result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
+                //}
 
             }
-            else
+            if (string.IsNullOrEmpty(items))
             {
-                result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
+                string imageSource = @"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
+                string li = "<li>"
+                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+                    + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+                    + "</a>"
+                    + "<div class=\"caption\">"
+                    + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+                    + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro" + "</div>"
+                    //+ "<p visible=\"false\">" + baseUrl + "</p>"
+                    //+ "<p visible=\"false\">" + path + "</p>"
+                    + "</div>"
+                    + "</li>";
+                items += li + Environment.NewLine;
             }
+            string ul = "<ul class=\"thumbs noscript\">"
+                + "{0}"
+                + "</ul>";
+            result = string.Format(ul, items);
 
-            //result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", baseUrl));
         }
-        //result.Add("~/Images/PicNotFound.jpg");
-
         return result;
     }
 
@@ -109,8 +123,8 @@ public partial class Nav_Mdo_SimVendas_Imovel_Default : System.Web.UI.Page
     {
         if (e != null)
         {
-            var siteAd = e.ReturnValue as SiteAd;
-            if (siteAd == null)
+            var siteAdView = e.ReturnValue as SiteAdView;
+            if (siteAdView == null)
             {
                 divSiteNotFound.Visible = true;
                 divSiteDetails.Visible = false;
@@ -120,7 +134,7 @@ public partial class Nav_Mdo_SimVendas_Imovel_Default : System.Web.UI.Page
                 divSiteNotFound.Visible = false;
                 divSiteDetails.Visible = true;
 
-                string literal = getSitePicGallery(siteAd.CustomerID, siteAd.SiteAdID);
+                string literal = getSitePicGallery(siteAdView.CustomerID, siteAdView.Code);
 
                 literalSitePics.Text = literal;
             }

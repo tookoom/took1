@@ -35,9 +35,9 @@
                 <ItemTemplate>
                     <div style="float:left; padding-top: 2px;">
                         <h2>
-                            <b><%# Eval("Site.SiteType.Name")%> bairro <%# Eval("Site.District.Name")%></b>
+                            <b><%# Eval("SiteType")%> bairro <%# Eval("District")%></b>
                         </h2>
-                        <b style="line-height: 1.5em;">Código do imóvel: <%# Eval("SiteAdID")%></b>
+                        <b style="line-height: 1.5em;">Código do imóvel: <%# Eval("Code")%></b>
                         <br />
                     </div>
                     
@@ -91,7 +91,7 @@
                     </asp:Repeater>
                     <asp:ObjectDataSource ID="navDataSource" runat="server" 
                         SelectMethod="GetNavData" 
-                        TypeName="TK1.Bizz.Mdo.Data.Controller.MdoSiteController">
+                        TypeName="TK1.Bizz.Mdo.Data.Controller.MdoSiteAdController">
                         <SelectParameters>
                             <asp:QueryStringParameter DefaultValue="0" Name="customerID" 
                                 QueryStringField="CustomerID" Type="Int32" />
@@ -104,10 +104,10 @@
                         <ItemTemplate>
                             <b><h4> <%# Eval("ShortDescription")%> </h4></b>
                             <p> <b>Características do Imóvel: </b></p>
-                            <p> <%# Eval("Description")%> </p>
-                            <p> <b>Infraestrutura do Condomínio: </b></p>
-                            <p> <%# Eval("CondDescription")%> </p>
-                            <p> <b>Infraestrutura do Bairro: </b></p>
+                            <p> <%# Eval("FullDescription")%> </p>
+                            <p runat="server" visible='<%#Eval("IsCondoDescriptionVisible")%>'> <b>Infraestrutura do Condomínio: </b></p>
+                            <p> <%# Eval("CondoDescription")%> </p>
+                            <p runat="server" visible='<%#Eval("IsAreaDescriptionVisible")%>'> <b>Infraestrutura do Bairro: </b></p>
                             <p> <%# Eval("AreaDescription")%> </p>
                             <%--<div id="Div1" runat="server" visible='<%#getRentDivVisibility(Eval("AdType.AdTypeID").ToString())%>'>
                                 <p> Aluguel: <%# Eval("Price", "{0:c}")%> </p>
@@ -116,7 +116,7 @@
                             </div>--%>
                             <br />
                             <div class="sitePrice">
-                                Valor: <%# Eval("Price", "{0:c}")%>
+                                Valor: <%# Eval("Value", "{0:c}")%>
                             </div>
                         </ItemTemplate>                                 
                     </asp:Repeater>
@@ -150,7 +150,7 @@
     <br />
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDetail" runat="server" 
-        SelectMethod="GetSiteDetail" TypeName="TK1.Bizz.Mdo.Data.Controller.MdoSiteController" >
+        SelectMethod="GetSiteDetail" TypeName="TK1.Bizz.Mdo.Data.Controller.MdoSiteAdController" >
 
         <SelectParameters>
             <asp:QueryStringParameter DefaultValue="0" Name="customerID" 
@@ -162,7 +162,7 @@
     </asp:ObjectDataSource>
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDescription" runat="server" 
-        SelectMethod="GetSiteAd" TypeName="TK1.Bizz.Mdo.Data.Controller.MdoSiteController" 
+        SelectMethod="GetSiteAdView" TypeName="TK1.Bizz.Mdo.Data.Controller.MdoSiteAdController" 
         onselected="objectDataSourceSiteDescription_Selected">
 
         <SelectParameters>

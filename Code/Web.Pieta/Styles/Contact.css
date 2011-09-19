@@ -36,48 +36,6 @@ div.contactFormRight
 }
 
 
-/*
-.contact h2
-{
-    font-weight: 700;
-    margin: 0px;
-    padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
-    border: none;
-    line-height: 2em;
-    font-size: 2em;
-}
-.contact h3
-{
-    font-weight: 700;
-    margin: 0px;
-    padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
-    border: none;
-    line-height: 2em;
-    font-size: 1.5em;
-}
-.contact h4
-{
-    font-weight: 300;
-    margin: 0px;
-    padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
-    border: none;
-    line-height: 1.2em;
-    font-size: 1.2em;
-}
-.contact h5
-{
-    font-weight: 200;
-    margin: 0px;
-    padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
-    border: none;
-    line-height: 1.2em;
-    font-size: 0.8em;
-}
-*/
 div.map
 {
     background-color:#465c71;
