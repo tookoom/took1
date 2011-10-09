@@ -1,0 +1,55 @@
+﻿
+/* VIEWER   
+----------------------------------------------------------*/
+.releaseViewer
+{
+    width:100%;
+    min-height: 340px;
+    background-color: #EFEFEF;
+}
+.releaseViewerImage
+{
+    position: relative;
+    float: left;
+    width:300px;
+    min-height: 340px;
+    /*background-color: Fuchsia;*/
+}
+.releaseViewerImage img
+{
+    width:240px;
+    height: 330px;
+    padding: 12px;
+}
+.releaseViewerInfo
+{
+    position: relative;
+    float: right;
+    width:600px;
+    min-height: 440px;
+    /*background-color: Orange;*/
+}
+
+.releaseViewerDetailButton
+{
+    position: relative;
+    margin-top: 105px;
+    margin-right: -15px;
+
+    background-color:#23669A;
+    position: relative;
+    float: right;
+    width:430px;
+    min-height: 40px;
+    /*background-color: Orange;*/
+}
+.releaseViewerDetailButton a
+{
+    position: relative;
+    margin-left: 60px;
+    font-size:x-large;
+    color:White;
+    text-align:center;
+}
+/* DETAILS   
+----------------------------------------------------------*/

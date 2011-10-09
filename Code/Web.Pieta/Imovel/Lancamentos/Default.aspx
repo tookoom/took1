@@ -30,10 +30,6 @@
     </div>
 
     <div id="divSiteDetails" runat="server">
-        <div class="headerBlueLine">
-            <h2>Detalhes</h2>
-        </div>
-
         <div class="searchDetailHeader">
              <asp:Repeater ID="Repeater2" runat="server" 
                 DataSourceID="objectDataSourceSiteDescription" >
@@ -45,9 +41,6 @@
                         <h3><%# Eval("City")%>, bairro <%# Eval("District")%></h3>
                         <b style="line-height: 1.5em;">Código do anúncio: <%# Eval("Code")%></b>
                         <br />
-                    </div>
-                    <div style="float:right; padding-top: 14px;">
-                        <h1> <%# Eval("ValueText")%> </h1>
                     </div>
                </ItemTemplate>                                 
 
@@ -75,65 +68,64 @@
 		    </div>
 
         </div>
-
-        <%--<div id="divSitePics" class="divSitePics">
-            <br />
-            <div id="divSitePicGallery">
-                <asp:Literal id="literalSitePics" runat="server" />
-            </div>
-            
-        </div>--%>
         
-        <div class="headerBlueLine">
-            <h3>Descrição</h3>
-        </div>
+        <p style="float:right; margin-right: 12px;">* Fotos ilustrarivas</p>
 
-        <table border="0" cellpadding="0" cellspacing="0" width="932px">
+        <table border="0" cellpadding="8" cellspacing="0" width="932px">
             <tr>
                 <td style="width: 50%; vertical-align: top;">
-                    <asp:Repeater ID="Repeater1" runat="server" 
+                    <div class="headerBlueShortLine">
+                        <h1>Características</h1>
+                    </div>
+                    <asp:Repeater ID="Repeater4" runat="server" 
                         DataSourceID="objectDataSourceSiteDescription" >
                         <ItemTemplate>
-                            <b><h4> <%# Eval("Title")%> </h4></b>
-                            <p> <b>Características do Imóvel: </b></p>
                             <p> <%# Eval("FullDescription")%> </p>
-                            <p> <b>Infraestrutura do Condomínio: </b></p>
+                            <p id="P1" runat="server" visible='<%#Eval("IsCondoDescriptionVisible")%>'> <b>Infraestrutura do Condomínio: </b></p>
                             <p> <%# Eval("CondoDescription")%> </p>
-                            <p> <b>Infraestrutura do Bairro: </b></p>
+                            <p id="P2" runat="server" visible='<%#Eval("IsAreaDescriptionVisible")%>'> <b>Infraestrutura do Bairro: </b></p>
                             <p> <%# Eval("AreaDescription")%> </p>
-                            <div runat="server" visible='<%#Eval("IsTaxVisible")%>'>
-                                <p> Aluguel: <%# Eval("Value", "{0:c}")%> </p>
-                                <p> IPTU: <%# Eval("CityTaxes", "{0:c}")%> </p>
-                                <p> Condomínio: <%# Eval("CondoTaxes", "{0:c}")%> </p>
+                            <div class="darkBlueHighlight">
+                                <h2>Consulte-nos sobre o valor</h2>
                             </div>
-                            <br />
+                            
                         </ItemTemplate>                                 
                     </asp:Repeater>
 
                 </td>
                 <td style="width: 30%; vertical-align: top;">
-                    <asp:Repeater ID="Repeater3" runat="server" 
-                        DataSourceID="objectDataSourceSiteDetail" >
-                        <ItemTemplate>
-                            <table border="0" cellpadding="0" cellspacing="0" >
-                                <tr style="height: 26px">
-                                    <td><img src="http://www.pietaimoveis.com.br/Images/Check.png" style="vertical-align:middle; padding: 2px 3px 5px 0px;"/>
-                                    </td>
-                                    <td><%--<p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>--%>
-                                    <%# Eval("Name")%>
-                                    </td>
-                                </tr>
-                            </table>
-                        </ItemTemplate>                                 
-                    </asp:Repeater>
+                    <div class="headerBlueShortLine">
+                        <h1>Detalhes</h1>
+                    </div>
+                    <div style="margin-top:12px;">
+                        <asp:Repeater ID="Repeater5" runat="server" DataSourceID="objectDataSourceSiteDetail">
+                            <ItemTemplate>
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr style="height: 26px">
+                                        <td>
+                                            <img src="http://www.pietaimoveis.com.br/Images/Check.png" style="vertical-align: middle;
+                                                padding: 2px 3px 5px 0px;" />
+                                        </td>
+                                        <td>
+                                            <%# Eval("Name")%>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </td>
                 <td style="width: 20%; vertical-align: top;">
+                    <div class="headerBlueShortLine">
+                        <h1>Contato</h1>
+                    </div>
                     <img src="http://www.pietaimoveis.com.br/Images/CallNow.png" style="float:right; margin-top: 8px; margin-bottom: auto; vertical-align:top;display: block;"/>
                 </td>
             </tr>
         </table>
+
         <div class="buttonSearchBack">
-            <a href="javascript: history.go(-1)" style="margin-left:26px; margin-top:3px">Retornar à pesquisa</a>
+            <a href="javascript: history.go(-1)" style="margin-left:26px; margin-top:3px">Retornar</a>
         </div>
 
         <br />

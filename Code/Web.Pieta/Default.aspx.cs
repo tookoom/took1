@@ -13,74 +13,111 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            //literalSitePics.Text = getSitePicGallery();
+            literalSiteReleaseAds.Text = getSiteReleaseAdsGallery();
         }
 
     }
-    //private string getSitePicGallery()
-    //{
-    //    string result = string.Empty;
+    private string getSiteReleaseAdsGallery()
+    {
+        string result = string.Empty;
 
-    //    PietaSiteAdController siteController = new PietaSiteAdController();
-    //    var siteAdPics = siteController.GetSitePics(siteAdType, siteAdID);
+        PietaSiteAdController siteController = new PietaSiteAdController();
+        var siteAdPics = siteController.GetSiteReleaseAds();
 
+        string items = string.Empty;
+        string baseUrl = string.Empty;
 
-    //    string baseUrl = string.Empty;
-    //    if (siteAdType == 1)
-    //        baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-    //    if (siteAdType == 2)
-    //        baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
-    //    if (!string.IsNullOrEmpty(baseUrl))
-    //    {
-    //        baseUrl = this.ResolveUrl(baseUrl);
-    //        string path = Server.MapPath(baseUrl);
-    //        if (Directory.Exists(path))
-    //        {
-    //            string items = string.Empty;
-    //            int index = 0;
-    //            foreach (var file in Directory.GetFiles(path, "*.jpg"))
-    //            {
-    //                index++;
-    //                string fileName = Path.GetFileName(file);
-    //                string imageSource = baseUrl + fileName;
-    //                string imageThumbSource = baseUrl + fileName;
-    //                string imageTitle = string.Format("Foto {0}", index);
-    //                string imageDescription = siteAdPics.Where(o => o.FileName == fileName).Select(o => o.Description).FirstOrDefault() ?? string.Empty;
-    //                string li = "<li>"
-    //                        + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
-    //                        + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-    //                        + "</a>"
-    //                        + "<div class=\"caption\">"
-    //                        + "<div class=\"image-title\">" + imageTitle + "</div>"
-    //                        + "<div class=\"image-desc\">" + imageDescription + "</div>"
-    //                        + "</div>"
-    //                        + "</li>";
-    //                items += li + Environment.NewLine;
-    //            }
-    //            if (!string.IsNullOrEmpty(items))
-    //            {
-    //                string ul = "<ul class=\"thumbs noscript\">"
-    //                    + "{0}"
-    //                    + "</ul>";
-    //                result = string.Format(ul, items);
-    //            }
-    //            else
-    //            {
-    //                result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
-    //            }
+        foreach (var siteReleaseAd in siteAdPics)
+        {
+            int siteReleaseAdID = siteReleaseAd.Code;
+            baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteReleaseAdID);
+            if (!string.IsNullOrEmpty(baseUrl))
+            {
+                baseUrl = this.ResolveUrl(baseUrl);
+                string imageSource = string.Empty;
+                string path = Server.MapPath(baseUrl);
+                if (Directory.Exists(path))
+                {
+                    int index = 0;
+                    foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                    {
+                        index++;
+                        string fileName = Path.GetFileName(file);
+                        imageSource = baseUrl + fileName;
+                        break;
+                    }
+                }
+                string li = "<li>"
+                                + "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"
+                                + "<tr>"
+                                    + "<td>"
+                                        + "<div class=\"releaseViewerImage\">"
+                                            + "<img src=\"" + imageSource + "\" />"
+                                        + "</div>"
+                                    + "</td>"
+                                    + "<td>"
+                                        + "<div class=\"releaseViewerInfo\">"
+                                            + "<h3>" + siteReleaseAd.Name + "</h3>"
+                                            + "<p>" + siteReleaseAd.ShortDescription + "</p>"
+                                            + "<h4>" + siteReleaseAd.AreaText + "</h4>"
+                                            + "<h4>" + siteReleaseAd.RoomText + "</h4>"
+                                            + "<div class=\"releaseViewerDetailButton\">"
+                                            + "<a href=\"/Imovel/Lancamentos/?ID=" + siteReleaseAd.Code.ToString() + "\"><b>Conheça este lançamento!</b></a>"
+                                            + "</div>"
+                                        + "</div>"
+                                    + "</td>"
+                                + "</tr>"
+                            + "</table>"
+                        + "</li>";
+                items += li + Environment.NewLine;
 
-    //        }
-    //        else
-    //        {
-    //            result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
-    //        }
+            }
+        }
+        if (string.IsNullOrEmpty(items))
+        {
+            result = string.Empty;
+        }
+        else
+        {
+            string div = "<div  id=\"slider\" class=\"releaseViewer\"> {0} </div>";
+            string ul = "<ul>{0}</ul>";
+            ul = string.Format(ul, items);
+            div = string.Format(div, ul);
+            result = div;
+        }
+        return result;
+    }
+        //<div  id="slider" class="releaseViewer">
+        //    <ul>				
+                //<li>
+                    //<table border="0" cellpadding="0" cellspacing="0">
+                    //    <tr>
+                    //        <td>
+                    //            <div class="releaseViewerImage">
+                    //                <img src="Imovel/Fotos/Venda/1/foto_00001_01_Fachada_____________.jpg" />
+                    //            </div>
+                    //        </td>
+                    //        <td>
+                    //            <div class="releaseViewerInfo">
+                    //                <div class="headerBlueShortLine">
+                    //                    <h1>Lançamento</h1>
+                    //                </div>
+                    //                <h3>Apartamento 2 - bairro Nonoai</h3>
+                    //                <p>
+                    //                    Descrição resumida do imóvel 2</p>
+                    //                <h4>
+                    //                    80m² a 100m²</h4>
+                    //                <h4>
+                    //                    2 a 3 dormitórios</h4>
+                    //                <a href="/Imovel/Lancamentos/?ID=1"><b>Detalhes</b></a>
+                    //            </div>
+                    //        </td>
+                    //    </tr>
+                    //</table>
+                //</li>
+            //</ul>
+    //</div>
 
-    //        //result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", baseUrl));
-    //    }
-    //    //result.Add("~/Images/PicNotFound.jpg");
-
-    //    return result;
-    //}
 
     protected void listViewSearchResults_PagePropertiesChanged(object sender, EventArgs e)
     {

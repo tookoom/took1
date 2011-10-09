@@ -132,6 +132,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                     AreaDescription = xmlSiteAd.AreaDescription,
                                     Category = category,
                                     CondoDescription = xmlSiteAd.CondDescription,
+                                    ConstructorName = xmlSiteAd.ConstructorName,
                                     Customer = customer,
                                     MinExternalArea = xmlSiteAd.ExternalArea,
                                     MinInternalArea = xmlSiteAd.InternalArea,
@@ -147,6 +148,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                     MaxTotalArea = xmlSiteAd.MaxTotalArea,
                                     MaxTotalRooms = xmlSiteAd.MaxRoomNumber,
                                     MaxValue = xmlSiteAd.MaxValue,
+                                    Name = xmlSiteAd.Name,
                                     Site = site,
                                     SiteReleaseAdID = xmlSiteAd.SiteCode,
                                     ShortDescription = xmlSiteAd.ShortDescription
@@ -546,10 +548,12 @@ namespace TK1.Bizz.Mdo.Data.Controller
                             AdCategory = siteCategory,
                             AdType = SiteAdTypes.Sell,
                             AdTypeName = "Venda",
+                            AreaDescription = siteReleaseAd.AreaDescription,
                             City = siteReleaseAd.Site.CityName,
                             Code = siteReleaseAd.SiteReleaseAdID,
+                            CondoDescription = siteReleaseAd.CondoDescription,
                             District = siteReleaseAd.Site.DistrictName,
-                            FullDescription = siteReleaseAd.ShortDescription,
+                            FullDescription = siteReleaseAd.FullDescription,
                             MainPicUrl = mainPicName,
                             SiteTotalArea = (float)siteReleaseAd.Site.TotalArea,
                             SiteTotalRooms = siteReleaseAd.Site.TotalRooms,
@@ -600,6 +604,8 @@ namespace TK1.Bizz.Mdo.Data.Controller
                             Code = siteReleaseAd.SiteReleaseAdID,
                             District = siteReleaseAd.Site.DistrictName,
                             MainPicUrl = string.Empty,// mainPicName,
+                            Name = siteReleaseAd.Name,
+                            ShortDescription = siteReleaseAd.ShortDescription,
                             SiteTotalArea = (float)siteReleaseAd.MaxTotalArea,
                             SiteMinTotalArea = (float)siteReleaseAd.MinTotalArea,
                             SiteTotalRooms = siteReleaseAd.MaxTotalRooms,
@@ -1030,9 +1036,9 @@ namespace TK1.Bizz.Mdo.Data.Controller
                     siteReleaseAdView.AreaText = string.Format("De {0:0.##} m² a {1:0.##} m²", siteReleaseAdView.SiteMinTotalArea, siteReleaseAdView.SiteTotalArea);
 
                 if (siteReleaseAdView.SiteMinTotalRooms == siteReleaseAdView.SiteTotalRooms)
-                    siteReleaseAdView.RoomText = string.Format("{0} dormitório{1}", siteReleaseAdView.SiteMinTotalRooms, siteReleaseAdView.SiteMinTotalRooms > 1 ? "" : "s");
+                    siteReleaseAdView.RoomText = string.Format("{0} dormitório{1}", siteReleaseAdView.SiteMinTotalRooms, siteReleaseAdView.SiteMinTotalRooms > 1 ? "s" : "");
                 else
-                    siteReleaseAdView.RoomText = string.Format("De {0} a {1} dormitórios", siteReleaseAdView.SiteMinTotalArea, siteReleaseAdView.SiteTotalArea);
+                    siteReleaseAdView.RoomText = string.Format("De {0} a {1} dormitórios", siteReleaseAdView.SiteMinTotalRooms, siteReleaseAdView.SiteTotalRooms);
             }
         }
 
