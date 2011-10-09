@@ -97,8 +97,8 @@ public partial class Imovel_Default : System.Web.UI.Page
                             + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
                             + "</a>"
                             + "<div class=\"caption\">"
-                            + "<div class=\"image-title\">" + imageTitle + "</div>"
-                            + "<div class=\"image-desc\">" + imageDescription + "</div>"
+                            //+ "<div class=\"image-title\">" + imageTitle + "</div>"
+                            + "<div class=\"image-title\">" + imageDescription + "</div>"
                             + "</div>"
                             + "</li>";
                     items += li + Environment.NewLine;
@@ -119,8 +119,8 @@ public partial class Imovel_Default : System.Web.UI.Page
                     + "</div>"
                     + "</div>"
                     + "</li>";
-                        items += li + Environment.NewLine;
-                    }
+                items += li + Environment.NewLine;
+            }
             string ul = "<ul class=\"thumbs noscript\">"
                 + "{0}"
                 + "</ul>";

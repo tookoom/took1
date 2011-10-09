@@ -202,6 +202,7 @@
           <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="SiteID" Type="int" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
           <Property Name="ConstructorName" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" Nullable="false" MaxLength="64" />
           <Property Name="AddressComplement" Type="varchar" Nullable="false" MaxLength="64" />
@@ -812,6 +813,7 @@
           <NavigationProperty Name="Category" Relationship="MdoModel.FK_SiteReleaseAD_Category" FromRole="SiteReleaseAd" ToRole="Category" />
           <NavigationProperty Name="Site" Relationship="MdoModel.FK_SiteReleaseAD_Site" FromRole="SiteReleaseAd" ToRole="Site" />
           <NavigationProperty Name="Customer" Relationship="MdoModel.FK_SiteReleaseAD_Customer" FromRole="SiteReleaseAd" ToRole="Customer" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_SiteReleaseAD_Category">
           <End Type="MdoModel.Category" Role="Category" Multiplicity="1" />
@@ -994,6 +996,7 @@
           <EntitySetMapping Name="SiteReleaseAds">
             <EntityTypeMapping TypeName="MdoModel.SiteReleaseAd">
               <MappingFragment StoreEntitySet="SiteReleaseAd">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="CondoDescription" ColumnName="CondoDescription" />
                 <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />

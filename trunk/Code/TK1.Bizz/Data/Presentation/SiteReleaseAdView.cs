@@ -7,6 +7,8 @@ namespace TK1.Bizz.Data.Presentation
 {
     public class SiteReleaseAdView : SiteAdView
     {
+        public string Name { get; set; }
+
         public string AreaText { get; set; }
         public string RoomText { get; set; }
         public string ValueText { get; set; }

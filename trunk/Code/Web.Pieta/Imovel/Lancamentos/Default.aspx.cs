@@ -80,51 +80,52 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
         {
             baseUrl = this.ResolveUrl(baseUrl);
             string path = Server.MapPath(baseUrl);
+            string items = string.Empty;
             if (Directory.Exists(path))
             {
-                string items = string.Empty;
                 int index = 0;
                 foreach (var file in Directory.GetFiles(path, "*.jpg"))
                 {
                     index++;
                     string fileName = Path.GetFileName(file);
-                    string imageSource = baseUrl  + fileName;
+                    string imageSource = baseUrl + fileName;
                     string imageThumbSource = baseUrl + fileName;
                     string imageTitle = string.Format("Foto {0}", index);
-                    string imageDescription = siteAdPics.Where(o => o.FileName == fileName).Select(o=>o.Description).FirstOrDefault() ?? string.Empty; 
+                    string imageDescription = siteAdPics.Where(o => o.FileName == fileName).Select(o => o.Description).FirstOrDefault() ?? string.Empty;
                     string li = "<li>"
                             + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
                             + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
                             + "</a>"
                             + "<div class=\"caption\">"
-                            + "<div class=\"image-title\">" + imageTitle + "</div>"
-                            + "<div class=\"image-desc\">" + imageDescription + "</div>"
+                        //+ "<div class=\"image-title\">" + imageTitle + "</div>"
+                            + "<div class=\"image-title\">" + imageDescription + "</div>"
                             + "</div>"
                             + "</li>";
                     items += li + Environment.NewLine;
                 }
-                if (!string.IsNullOrEmpty(items))
+                if (string.IsNullOrEmpty(items))
                 {
-                    string ul = "<ul class=\"thumbs noscript\">"
-                        + "{0}"
-                        + "</ul>";
-                    result = string.Format(ul, items);
+                    string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+                    string li = "<li>"
+                        + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+                        + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+                        + "</a>"
+                        + "<div class=\"caption\">"
+                        + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+                        + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
+                        //+ "<p visible=\"false\">" + baseUrl + "</p>"
+                        //+ "<p visible=\"false\">" + path + "</p>"
+                        + "</div>"
+                        + "</div>"
+                        + "</li>";
+                    items += li + Environment.NewLine;
                 }
-                else
-                {
-                    result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
-                }
-
+                string ul = "<ul class=\"thumbs noscript\">"
+                    + "{0}"
+                    + "</ul>";
+                result = string.Format(ul, items);
             }
-            else
-            {
-                result = "<img class=\"center\" src=\"http://www.pietaimoveis.com.br/Images/ImageNotFound.png\" title=\"Imagem não disponível\" />";
-            }
-
-            //result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", baseUrl));
         }
-        //result.Add("~/Images/PicNotFound.jpg");
-
         return result;
     }
 
