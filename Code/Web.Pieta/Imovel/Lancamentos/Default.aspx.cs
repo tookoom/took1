@@ -65,67 +65,121 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
     }
     private string getSitePicGallery(int siteAdType, int siteAdID)
     {
+        string result = getReleaseSitePicGallery(siteAdType, siteAdID);
+
+        #region OLD CODE
+        ////PietaSiteAdController siteController = new PietaSiteAdController();
+        ////var siteAdPics = siteController.GetSitePics(siteAdType, siteAdID);
+
+
+        ////string baseUrl = string.Empty;
+        ////if (siteAdType == 1)
+        ////    baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
+        ////if (siteAdType == 2)
+        ////    baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
+        ////if (!string.IsNullOrEmpty(baseUrl))
+        ////{
+        ////    baseUrl = this.ResolveUrl(baseUrl);
+        ////    string path = Server.MapPath(baseUrl);
+        ////    string items = string.Empty;
+        ////    if (Directory.Exists(path))
+        ////    {
+        ////        int index = 0;
+        ////        foreach (var file in Directory.GetFiles(path, "*.jpg"))
+        ////        {
+        ////            index++;
+        ////            string fileName = Path.GetFileName(file);
+        ////            string imageSource = baseUrl + fileName;
+        ////            string imageThumbSource = baseUrl + fileName;
+        ////            string imageTitle = string.Format("Foto {0}", index);
+        ////            string imageDescription = siteAdPics.Where(o => o.FileName == fileName).Select(o => o.Description).FirstOrDefault() ?? string.Empty;
+        ////            string li = "<li>"
+        ////                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
+        ////                    + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
+        ////                    + "</a>"
+        ////                    + "<div class=\"caption\">"
+        ////                //+ "<div class=\"image-title\">" + imageTitle + "</div>"
+        ////                    + "<div class=\"image-title\">" + imageDescription + "</div>"
+        ////                    + "</div>"
+        ////                    + "</li>";
+        ////            items += li + Environment.NewLine;
+        ////        }
+        ////        if (string.IsNullOrEmpty(items))
+        ////        {
+        ////            string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+        ////            string li = "<li>"
+        ////                + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+        ////                + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+        ////                + "</a>"
+        ////                + "<div class=\"caption\">"
+        ////                + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+        ////                + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
+        ////                //+ "<p visible=\"false\">" + baseUrl + "</p>"
+        ////                //+ "<p visible=\"false\">" + path + "</p>"
+        ////                + "</div>"
+        ////                + "</div>"
+        ////                + "</li>";
+        ////            items += li + Environment.NewLine;
+        ////        }
+        ////        string ul = "<ul class=\"thumbs noscript\">"
+        ////            + "{0}"
+        ////            + "</ul>";
+        ////        result = string.Format(ul, items);
+        ////    }
+        ////} 
+        #endregion
+        return result;
+    }
+    private string getReleaseSitePicGallery(int siteAdTypeID, int siteReleaseAdID)
+    {
         string result = string.Empty;
-
         PietaSiteAdController siteController = new PietaSiteAdController();
-        var siteAdPics = siteController.GetSitePics(siteAdType, siteAdID);
-
-
-        string baseUrl = string.Empty;
-        if (siteAdType == 1)
-            baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        if (siteAdType == 2)
-            baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
-        if (!string.IsNullOrEmpty(baseUrl))
+        var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/L{0}/", siteReleaseAdID);
+        var siteAdPics = siteController.GetSiteReleasePics(siteReleaseAdID);
+        string items = string.Empty;
+        int index = 0;
+        foreach (var item in siteAdPics)
         {
-            baseUrl = this.ResolveUrl(baseUrl);
-            string path = Server.MapPath(baseUrl);
-            string items = string.Empty;
-            if (Directory.Exists(path))
-            {
-                int index = 0;
-                foreach (var file in Directory.GetFiles(path, "*.jpg"))
-                {
-                    index++;
-                    string fileName = Path.GetFileName(file);
-                    string imageSource = baseUrl + fileName;
-                    string imageThumbSource = baseUrl + fileName;
-                    string imageTitle = string.Format("Foto {0}", index);
-                    string imageDescription = siteAdPics.Where(o => o.FileName == fileName).Select(o => o.Description).FirstOrDefault() ?? string.Empty;
-                    string li = "<li>"
-                            + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
-                            + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-                            + "</a>"
-                            + "<div class=\"caption\">"
-                        //+ "<div class=\"image-title\">" + imageTitle + "</div>"
-                            + "<div class=\"image-title\">" + imageDescription + "</div>"
-                            + "</div>"
-                            + "</li>";
-                    items += li + Environment.NewLine;
-                }
-                if (string.IsNullOrEmpty(items))
-                {
-                    string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
-                    string li = "<li>"
-                        + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
-                        + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
-                        + "</a>"
-                        + "<div class=\"caption\">"
-                        + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
-                        + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
-                        //+ "<p visible=\"false\">" + baseUrl + "</p>"
-                        //+ "<p visible=\"false\">" + path + "</p>"
-                        + "</div>"
-                        + "</div>"
-                        + "</li>";
-                    items += li + Environment.NewLine;
-                }
-                string ul = "<ul class=\"thumbs noscript\">"
-                    + "{0}"
-                    + "</ul>";
-                result = string.Format(ul, items);
-            }
+            index++;
+            string fileName = item.FileName;
+            string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
+            string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
+            //string imageTitle = string.Format("Foto {0}", index);
+            string imageDescription = item.Description ?? string.Empty;
+
+            string li = "<li>"
+                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageDescription + "\">"
+                    + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageDescription + "\" />"
+                    + "</a>"
+                    + "<div class=\"caption\">"
+                    + "<div class=\"image-title\">" + imageDescription + "</div>"
+                //+ "<div class=\"image-desc\">" + imageDescription + "</div>"
+                    + "</div>"
+                    + "</li>";
+            items += li + Environment.NewLine;
         }
+        if (string.IsNullOrEmpty(items))
+        {
+            string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+            string li = "<li>"
+                + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+                + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+                + "</a>"
+                + "<div class=\"caption\">"
+                + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+                + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
+                //+ "<p visible=\"false\">" + baseUrl + "</p>"
+                //+ "<p visible=\"false\">" + path + "</p>"
+                + "</div>"
+                + "</div>"
+                + "</li>";
+            items += li + Environment.NewLine;
+        }
+        string ul = "<ul class=\"thumbs noscript\">"
+            + "{0}"
+            + "</ul>";
+        result = string.Format(ul, items);
+
         return result;
     }
 

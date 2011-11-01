@@ -8,6 +8,7 @@
     <script src="Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <script src="Scripts/EasySlider/easySlider1.7.js" type="text/javascript"></script>
     <link href="Styles/Release.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Featured.css" rel="stylesheet" type="text/css" />
     <link href="Styles/EasySlider/SiteRelease.css" rel="stylesheet" type="text/css" />
 
     	<script type="text/javascript">
@@ -35,9 +36,6 @@
                             </td>
                             <td>
                                 <div class="releaseViewerInfo">
-                                    <div class="headerBlueShortLine">
-                                        <h1>Lançamento</h1>
-                                    </div>
                                     <h3>Apartamento 2 - bairro Nonoai</h3>
                                     <p>
                                         Descrição resumida do imóvel 2</p>
@@ -64,18 +62,22 @@
         <asp:DataList ID="dataListFeaturedSiteAds" runat="server" 
             DataSourceID="objectDataSourceFeaturedSites" RepeatDirection="Horizontal" RepeatLayout="Table">
             <ItemTemplate>
-                <div style="padding:8px;">
-                    <div style="padding:8px;background:#efefef;">
-                    <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                        <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("Code") %>/<%# Eval("MainPicUrl") %>"
-                            height="100px" style="margin: 6px 0px 4px 0px;" />
-                    </a>
-                    <h2><%# Eval("District")%></h2>
-                    <h3><%# Eval("SiteType")%></h3>
-                    <p><%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%></p>
-                    <p><%# Eval("SiteTotalArea")%>  m²</p>
-                    <p><%# Eval("Value", "{0:c}")%></p>
-                    <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">Detalhes</a>
+                <div class="featureViewerOuter">
+                    <div class="featureViewerInner">
+                        <div class="featureViewerImage">
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
+                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("Code") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
+                            </a>
+                        </div>
+                        <h2><%# Eval("District")%></h2>
+                        <h3><%# Eval("SiteType")%></h3>
+                        <p><%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%></p>
+                        <p><%# Eval("SiteTotalArea")%>  m²</p>
+                        <p><b><%# Eval("Value", "{0:c}")%></b></p>
+                        <div class="featureViewerDetailButton">
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
+                                Detalhes</a>
+                        </div>
 
                     </div >
                 </div>
@@ -107,7 +109,7 @@
                             </td>
                             <td style="vertical-align:top;">
                                 <p>Os correspondentes Caixa Aqui trazem várias vantagens e serviços para os usuários.</p>
-                                <a href="http://www1.caixa.gov.br/atendimento/canais_atendimento/correspondentes_bancarios.asp">Saiba mais</a>
+                                <a target="_blank" href="http://www1.caixa.gov.br/atendimento/canais_atendimento/correspondentes_bancarios.asp">Saiba mais</a>
                             </td>
                         </tr>
                     </table>
@@ -116,7 +118,7 @@
                     <table border="0" cellpadding="4" cellspacing="0">
                         <tr>
                             <td>
-                                <a href="http://www.facebook.com/profile.php?id=100002698020190">
+                                <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">
                                     <img src="Images/FacebookIcon.png" alt="Pietá no Facebook" 
                                     height="90px"/></a>
                             </td>
@@ -124,7 +126,7 @@
                                 <p>
                                     Novidades, informações e contato.
                                 </p>
-                                <a href="http://www.facebook.com/profile.php?id=100002698020190">Conheça a página da
+                                <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">Conheça a página da
                                     Pietá Imóveis no Facebook!</a>
                             </td>
                         </tr>

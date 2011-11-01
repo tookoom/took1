@@ -629,7 +629,14 @@
 				var newSlide = this.$imageContainer
 					.append('<span class="image-wrapper current"><a class="advance-link" rel="history" href="#'+this.data[nextIndex].hash+'" title="'+imageData.title+'">&nbsp;</a></span>')
 					.find('span.current').css('opacity', '0');
-				
+
+				//alert(imageData.image.width);
+                
+                if (imageData.image.height> imageData.image.width){
+                    imageData.image.width = imageData.image.width * (490/imageData.image.height);
+                    //alert(imageData.image.width);
+                }
+
 				newSlide.find('a')
 					.append(imageData.image)
 					.click(function(e) {
