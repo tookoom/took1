@@ -82,11 +82,21 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     private string getSiteMainPic(int siteAdTypeID, int siteAdID)
     {
         string result = string.Empty;
-        string baseUrl = string.Empty;
-        if (siteAdTypeID == 1)
-            baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        if (siteAdTypeID == 2)
-            baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
+        switch (siteAdTypeID)
+        {
+            case (int)SiteAdTypes.Rent:
+                result = getRentSiteMainPic(siteAdTypeID, siteAdID);
+                break;
+            case (int)SiteAdTypes.Sell:
+                result = getSellSiteMainPic(siteAdTypeID, siteAdID);
+                break;
+        }
+        return result;
+    }
+    private string getRentSiteMainPic(int siteAdTypeID, int siteAdID)
+    {
+        string result = string.Empty;
+        string baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
         baseUrl = this.ResolveUrl(baseUrl);
         string path = Server.MapPath(baseUrl);
         if (Directory.Exists(path))
@@ -98,6 +108,19 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 break;
             }
 
+        }
+        return result;
+    }
+    private string getSellSiteMainPic(int siteAdTypeID, int siteAdID)
+    {
+        string result = string.Empty;
+        PietaSiteAdController siteController = new PietaSiteAdController();
+        var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
+        var siteAdPics = siteController.GetSitePics(siteAdTypeID, siteAdID);
+        foreach (var item in siteAdPics)
+        {
+            result = baseUrl + item.FileName;
+            break;
         }
         return result;
     }
@@ -157,7 +180,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceFrom.Items.Add(new ListItem("R$3.000,00", "3000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$4.000,00", "4000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$5.000,00", "5000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$10.000,00", "5000"));
+        dropDownPriceFrom.Items.Add(new ListItem("R$10.000,00", "10000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$50.000,00", "50000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$100.000,00", "100000"));
         dropDownPriceFrom.Items.Add(new ListItem("R$200.000,00", "200000"));
@@ -172,7 +195,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         dropDownPriceTo.Items.Add(new ListItem("R$3.000,00", "3000"));
         dropDownPriceTo.Items.Add(new ListItem("R$4.000,00", "4000"));
         dropDownPriceTo.Items.Add(new ListItem("R$5.000,00", "5000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$10.000,00", "5000"));
+        dropDownPriceTo.Items.Add(new ListItem("R$10.000,00", "10000"));
         dropDownPriceTo.Items.Add(new ListItem("R$50.000,00", "50000"));
         dropDownPriceTo.Items.Add(new ListItem("R$100.000,00", "100000"));
         dropDownPriceTo.Items.Add(new ListItem("R$200.000,00", "200000"));

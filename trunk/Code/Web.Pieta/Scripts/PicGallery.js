@@ -22,7 +22,7 @@ function loadGallery($) {
     //                test();
     //                alert('2');
     // We only want these styles applied when javascript is enabled
-    $('div.navigation').css({ 'width': '150px', 'float': 'left' });
+    $('div.navigation').css({ 'width': '200px', 'float': 'left' });
     $('div.content').css('display', 'block');
 
     // Initially set opacity on thumbs and add
@@ -38,7 +38,7 @@ function loadGallery($) {
     // Initialize Advanced Galleriffic Gallery
     var gallery = $('#thumbs').galleriffic({
         delay: 2500,
-        numThumbs: 10,
+        numThumbs: 21,
         preloadAhead: 10,
         enableTopPager: true,
         enableBottomPager: true,

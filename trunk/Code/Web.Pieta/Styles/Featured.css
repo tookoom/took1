@@ -1,27 +1,32 @@
 ﻿
 /* VIEWER   
 ----------------------------------------------------------*/
-.releaseViewer
+.featureViewerInner
 {
-    width:680px;
-    min-height: 340px;
+    padding:8px;
+}
+.featureViewerOuter
+{
+    width:178px;
+    /*min-height: 340px;*/
     background-color: #EFEFEF;
     overflow: hidden;
+    margin-right:8px;
 }
-div.releaseViewerImage
+div.featureViewerImage
 {
+    height:100px;
     /*position: relative;
     float: left;*/
     /*background-color: Fuchsia;*/
     overflow: hidden;
 }
-.releaseViewerImage img
+.featureViewerImage
 {
-    /*width:240px;*/
-    height: 330px;
-    padding: 12px;
+    width:160px;
+    margin: 6px 0px 4px 0px 12px;
 }
-.releaseViewerInfo
+.featureViewerInfo
 {
     /*position: relative;
     float: right;*/
@@ -29,7 +34,7 @@ div.releaseViewerImage
     min-height: 440px;
     /*background-color: Orange;*/
 }
-.releaseViewerDescription
+.featureViewerDescription
 {
     /*position: relative;
     float: right;*/
@@ -38,24 +43,19 @@ div.releaseViewerImage
     overflow:hidden;
     /*background-color: Orange;*/
 }
-div.releaseViewerDetailButton
+div.featureViewerDetailButton
 {
-    position: relative;
-    display:block;
-    /*margin-top: 105px;
-    margin-right: 15px;*/
-    bottom: 0;
     background-color:#23669A;
-    /*float: right;*/
-    width:430px;
-    min-height: 40px;
+    width:160;
+    height: 30px;
+    text-align:center;
 }
-div.releaseViewerDetailButton a
+div.featureViewerDetailButton a
 {
-    /*display:inline;
-    position: ;*/
-    margin-left: 60px;
-    font-size:x-large;
+    margin-left: auto;
+    margin-right: auto;
+    font-size:large;
+    font-weight:bold;
     color:White;
     text-align:center;
 }

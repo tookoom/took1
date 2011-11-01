@@ -22,56 +22,58 @@ public partial class _Default : System.Web.UI.Page
         string result = string.Empty;
 
         PietaSiteAdController siteController = new PietaSiteAdController();
-        var siteAdPics = siteController.GetSiteReleaseAds();
+        var siteReleaseAdViews = siteController.GetSiteReleaseAds();
 
         string items = string.Empty;
         string baseUrl = string.Empty;
 
-        foreach (var siteReleaseAd in siteAdPics)
+        foreach (var siteReleaseAd in siteReleaseAdViews)
         {
             int siteReleaseAdID = siteReleaseAd.Code;
-            baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteReleaseAdID);
-            if (!string.IsNullOrEmpty(baseUrl))
-            {
-                baseUrl = this.ResolveUrl(baseUrl);
-                string imageSource = string.Empty;
-                string path = Server.MapPath(baseUrl);
-                if (Directory.Exists(path))
-                {
-                    int index = 0;
-                    foreach (var file in Directory.GetFiles(path, "*.jpg"))
-                    {
-                        index++;
-                        string fileName = Path.GetFileName(file);
-                        imageSource = baseUrl + fileName;
-                        break;
-                    }
-                }
-                string li = "<li>"
-                                + "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"
-                                + "<tr>"
-                                    + "<td>"
-                                        + "<div class=\"releaseViewerImage\">"
-                                            + "<img src=\"" + imageSource + "\" />"
-                                        + "</div>"
-                                    + "</td>"
-                                    + "<td>"
-                                        + "<div class=\"releaseViewerInfo\">"
+            baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/L{0}/", siteReleaseAdID);
+            string imageSource = baseUrl + siteReleaseAd.MainPicUrl;
+
+            //baseUrl = this.ResolveUrl(baseUrl);
+            //string imageSource = string.Empty;
+            //string path = Server.MapPath(baseUrl);
+            //if (Directory.Exists(path))
+            //{
+            //    //int index = 0;
+            //    //foreach (var file in Directory.GetFiles(path, "*.jpg"))
+            //    //{
+            //    //    index++;
+            //    //    string fileName = Path.GetFileName(file);
+            //    //    imageSource = baseUrl + fileName;
+            //    //    break;
+            //    //}
+            //}
+            string li = "<li>"
+                        + "<table width=100% border=\"0\" cellpadding=\"0\" cellspacing=\"0\">"
+                            + "<tr>"
+                                + "<td colspan=2 style=\"vertical-align: top;\">"
+                                    + "<div class=\"releaseViewerImage\">"
+                                        + "<img src=\"" + imageSource + "\" />"
+                                    + "</div>"
+                                + "</td>"
+                                + "<td>"
+                                    + "<div class=\"releaseViewerInfo\">"
+                                        + "<div class=\"releaseViewerDescription\">"
                                             + "<h3>" + siteReleaseAd.Name + "</h3>"
                                             + "<p>" + siteReleaseAd.ShortDescription + "</p>"
                                             + "<h4>" + siteReleaseAd.AreaText + "</h4>"
                                             + "<h4>" + siteReleaseAd.RoomText + "</h4>"
-                                            + "<div class=\"releaseViewerDetailButton\">"
-                                            + "<a href=\"/Imovel/Lancamentos/?ID=" + siteReleaseAd.Code.ToString() + "\"><b>Conheça este lançamento!</b></a>"
-                                            + "</div>"
                                         + "</div>"
-                                    + "</td>"
-                                + "</tr>"
-                            + "</table>"
-                        + "</li>";
-                items += li + Environment.NewLine;
+                                        + "<div class=\"releaseViewerDetailButton\">"
+                                        + "<a href=\"/Imovel/Lancamentos/?ID=" + siteReleaseAd.Code.ToString() + "\"><b>Conheça este lançamento!</b></a>"
+                                        + "</div>"
+                                    + "</div>"
+                                + "</td>"
+                            + "</tr>"
+                        + "</table>"
+                    + "</li>";
+            items += li + Environment.NewLine;
 
-            }
+
         }
         if (string.IsNullOrEmpty(items))
         {

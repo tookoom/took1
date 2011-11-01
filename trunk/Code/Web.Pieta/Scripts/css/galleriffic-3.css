@@ -26,7 +26,7 @@ div.ss-controls {
 div.nav-controls 
 {
 	/*float: right;*/
-	margin-left:300px;
+	margin-left:410px;
 }
 div.slideshow-container {
 	position: relative;
@@ -40,22 +40,29 @@ div.loader {
 	background-image: url('loader.gif');
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 500px;
+	/*width: 500px;*/
 	height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
 	margin-left:-150px;
 }
-div.slideshow {
+div.slideshow 
+{
+    
+    
 }
 div.slideshow span.image-wrapper {
 	display: block;
 	position: absolute;
 	top: 0;
 	left:0;
-	margin-left: -150px;
+	margin-left: -180px;
+	/*background-color: Fuchsia;*/
+	width: 700px;
+    overflow:hidden;
+    border: 1px solid #bfbfbf;
 }
 div.slideshow a.advance-link {
 	display: block;
-	width: 500px;
+	/*width: 500px;*/
 	height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
 	line-height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
 	text-align: center;
@@ -67,7 +74,7 @@ div.slideshow img {
 	vertical-align: middle;
 	border: 1px solid #ccc;
     max-height:490px;
-    max-width:490px;
+    /*max-width:490px;*/
 }
 div.download {
 	float: right;
@@ -98,7 +105,9 @@ div.image-desc {
 }
 div.navigation 
 {
-	/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */
+    
+    /*background-color: Fuchsia;*/
+    margin-left: -20px;
 }
 ul.thumbs {
 	clear: both;
@@ -153,8 +162,8 @@ div.pagination a:hover {
 }
 div.pagination span.current {
 	font-weight: bold;
-	background-color: #000;
-	border-color: #000;
+	background-color: #23669A;
+	/*border-color: #000;*/
 	color: #fff;
 }
 div.pagination span.ellipsis {
