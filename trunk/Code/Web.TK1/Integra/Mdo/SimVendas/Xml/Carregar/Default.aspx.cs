@@ -13,6 +13,7 @@ using TK1.Utility;
 using TK1.Bizz.Mdo.Selling;
 using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Collection;
+using TK1.Data;
 
 public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.Page
 {
@@ -30,7 +31,7 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
             int mdoCode = controller.GetMdoCode(mdoAcronym);
 
             string sourceDir = getXmlFilePath();
-            string picturesPath = getPictureFilesPath(mdoCode);
+            //string picturesPath = getPictureFilesPath(mdoCode);
 
             string fileFilter = "VisVen*";
 
@@ -65,7 +66,7 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
         }
         catch (Exception exception)
         {
-
+            AppLogController.WriteException("Integra_Mdo_SimVendas_Xml_Carregar_Default.Page_Load", exception);
         }
     }
 

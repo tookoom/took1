@@ -8,6 +8,7 @@ namespace TK1.Bizz
     public enum AppNames
     {
         BizzSites,
-        IntegraMdoSelling
+        IntegraMdoSelling,
+        IntegraInetsoftRent
     }
 }

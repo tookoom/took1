@@ -147,7 +147,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
 
         var cities = siteController.GetCities();
         foreach (var city in cities)
-            dropDownCities.Items.Add(new ListItem(city));
+            dropDownCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
         checkBoxListDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
         var districts = siteController.GetDistricts();
@@ -319,6 +319,8 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         {
             siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
             siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
+            if (siteAdView.IsRoomNameVisible)
+                siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
             string imageUrl = "http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
             string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
             if (!string.IsNullOrEmpty(mainPic))

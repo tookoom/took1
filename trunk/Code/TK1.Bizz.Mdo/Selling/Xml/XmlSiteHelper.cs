@@ -44,9 +44,37 @@ namespace TK1.Bizz.Mdo.Selling.Xml
             if (File.Exists(path))
             {
                 string fileContent = File.ReadAllText(path);
+                fileContent = adjustFileContent(fileContent);
                 result = LoadSite(fileContent);
             }
             return result;
+        }
+
+        private static string adjustFileContent(string fileContent)
+        {
+            if (!string.IsNullOrEmpty(fileContent))
+            {
+                fileContent = adjustFileContent(fileContent, "<FotoLanc{0}>", "<FotoLanc>");
+                fileContent = adjustFileContent(fileContent, "</FotoLanc{0}>", "</FotoLanc>");
+                fileContent = adjustFileContent(fileContent, "<FotoPlanta{0}>", "<FotoPlanta>");
+                fileContent = adjustFileContent(fileContent, "</FotoPlanta{0}>", "</FotoPlanta>");
+                fileContent = adjustFileContent(fileContent, "<FotoMapa{0}>", "<FotoMapa>");
+                fileContent = adjustFileContent(fileContent, "</FotoMapa{0}>", "</FotoMapa>");
+            }
+            return fileContent;
+        }
+
+        private static string adjustFileContent(string fileContent, string xmlTag, string xmlReplaceTag)
+        {
+            if (!string.IsNullOrEmpty(fileContent) & !string.IsNullOrEmpty(xmlTag))
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    string replacement = string.Format(xmlTag, i<10 ? "0" + i.ToString() : i.ToString());
+                    fileContent = fileContent.Replace(replacement, xmlReplaceTag);
+                }
+            }
+            return fileContent;
         }
 
         private static List<XmlSite> getXmlSites(XElement root)
@@ -172,12 +200,12 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                         xmlSiteRelease.MaxSuiteNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxSuiteNumber), 0);
                         xmlSiteRelease.GarageNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinGarageNumber), 0);
                         xmlSiteRelease.MaxGarageNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxGarageNumber), 0);
-                        xmlSiteRelease.Value = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinValue), 0);
-                        xmlSiteRelease.MaxValue = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxValue), 0);
-                        xmlSiteRelease.InternalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinInternalArea), 0);
-                        xmlSiteRelease.MaxInternalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxInternalArea), 0);
-                        xmlSiteRelease.TotalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinTotalArea), 0);
-                        xmlSiteRelease.MaxTotalArea = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxTotalArea), 0);
+                        xmlSiteRelease.Value = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinValue), 0);
+                        xmlSiteRelease.MaxValue = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxValue), 0);
+                        xmlSiteRelease.InternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinInternalArea), 0);
+                        xmlSiteRelease.MaxInternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxInternalArea), 0);
+                        xmlSiteRelease.TotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinTotalArea), 0);
+                        xmlSiteRelease.MaxTotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxTotalArea), 0);
 
                         
                         xmlSiteRelease.AreaDescription = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.AreaDescription);
@@ -187,6 +215,69 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                             xmlSiteRelease.SiteType = xmlSiteRelease.SiteType.Trim();
                         xmlSiteRelease.AdText = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.AdText);
                         xmlSiteRelease.ShortAdText = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.ShortAdText);
+
+                        xmlSiteRelease.BluePrints = new List<XmlSitePic>();
+                        xmlSiteRelease.Maps = new List<XmlSitePic>();
+                        xmlSiteRelease.Pictures = new List<XmlSitePic>();
+                        var pictures = element.Element(XmlSiteTags.Pictures);
+                        if (pictures != null)
+                        {
+                            var pictureCollection = pictures.Elements(XmlSiteReleaseTags.Picture);
+                            if (pictureCollection != null)
+                            {
+                                int index = 0;
+                                foreach (var picture in pictureCollection)
+                                {
+                                    index++;
+                                    string fileName = XmlLoader.GetElementValue(picture, XmlSiteReleaseTags.PictureFileName);
+                                    string description = XmlLoader.GetElementValue(picture, XmlSiteTags.PictureDescription);
+                                    xmlSiteRelease.Pictures.Add(new XmlSitePic()
+                                    {
+                                        Description = description,
+                                        FileName = fileName,
+                                        SiteCode = xmlSiteRelease.SiteCode,
+                                        Index = index
+                                    });
+                                }
+                            }
+
+                            var mapCollection = pictures.Elements(XmlSiteReleaseTags.Map);
+                            if (mapCollection != null)
+                            {
+                                int index = 0;
+                                foreach (var map in mapCollection)
+                                {
+                                    index++;
+                                    string fileName = XmlLoader.GetElementValue(map, XmlSiteReleaseTags.PictureFileName);
+                                    string description = XmlLoader.GetElementValue(map, XmlSiteTags.PictureDescription);
+                                    xmlSiteRelease.Maps.Add(new XmlSitePic()
+                                    {
+                                        Description = description,
+                                        FileName = fileName,
+                                        SiteCode = xmlSiteRelease.SiteCode,
+                                        Index = index
+                                    });
+                                }
+                            }
+                            var bluePrintCollection = pictures.Elements(XmlSiteReleaseTags.BluePrint);
+                            if (bluePrintCollection != null)
+                            {
+                                int index = 0;
+                                foreach (var bluePrint in bluePrintCollection)
+                                {
+                                    index++;
+                                    string fileName = XmlLoader.GetElementValue(bluePrint, XmlSiteReleaseTags.PictureFileName);
+                                    string description = XmlLoader.GetElementValue(bluePrint, XmlSiteTags.PictureDescription);
+                                    xmlSiteRelease.BluePrints.Add(new XmlSitePic()
+                                    {
+                                        Description = description,
+                                        FileName = fileName,
+                                        SiteCode = xmlSiteRelease.SiteCode,
+                                        Index = index
+                                    });
+                                }
+                            }
+                        }
 
                         result.Add(xmlSiteRelease);
                     }

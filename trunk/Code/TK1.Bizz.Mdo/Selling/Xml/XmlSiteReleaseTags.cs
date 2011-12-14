@@ -42,6 +42,14 @@ namespace TK1.Bizz.Mdo.Selling.Xml
         public static string TowerFloorNumber = "nro_andares_torre";
         public static string UnitName = "tipo_unidades";
 
+        public static string PictureFileName = "nome_arquivo";
+
+        
+
+        public static string Picture = "FotoLanc";
+        public static string Map = "FotoMapa";
+        public static string BluePrint = "FotoPlanta";
+
     }
 
 }

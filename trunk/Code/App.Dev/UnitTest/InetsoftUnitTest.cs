@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TK1.Bizz.Mdo.Data;
-using TK1.Bizz.Mdo.Xml;
-using TK1.Bizz.Mdo;
-using TK1.Bizz.Mdo.Const;
+using TK1.Bizz.Inetsoft.Data;
+//using TK1.Bizz.Inetsoft.Xml;
+using TK1.Bizz.Inetsoft;
+//using TK1.Bizz.Inetsoft.Const;
 using TK1.Xml;
-using TK1.Bizz.Mdo.Selling;
+using TK1.Bizz.Inetsoft.Rent;
 using TK1.Bizz.Integra;
 using TK1.Utility;
 using TK1.Bizz;
 
 namespace TK1.Dev.UnitTest
 {
-    public class MdoUnitTest
+    public class InetsoftUnitTest
     {
         public static void NormatizeXmlFile()
         {
@@ -24,14 +24,14 @@ namespace TK1.Dev.UnitTest
         {
             try
             {
-                //string sourceDir = @"F:\Projetos\TK1\Testes\Lançamentos MDO";
+                //string sourceDir = @"F:\Projetos\TK1\Testes\Lançamentos Inetsoft";
                 string sourceDir = @"C:\Users\andre\Desktop\Temp\Pieta";
-                //string sourceDir = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Mdo\SimVendas\Xml";
-                string fileFilter = "VisVen*";
+                //string sourceDir = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Inetsoft\SimVendas\Xml";
+                string fileFilter = "imobiliar*";
 
-                SellingSiteHelper sellingSiteHelper = new SellingSiteHelper();
-                sellingSiteHelper.MdoAcronym = "pieta";
-                var report = sellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
+                RentSiteHelper RentSiteHelper = new RentSiteHelper();
+                RentSiteHelper.InetsoftAcronym = "pieta";
+                var report = RentSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
             }
             catch (Exception exception)
             {

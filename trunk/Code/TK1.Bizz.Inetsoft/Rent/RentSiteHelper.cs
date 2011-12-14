@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TK1.Bizz.Mdo.Data;
-using TK1.Bizz.Mdo.Xml;
-using TK1.Bizz.Mdo.Const;
+using TK1.Bizz.Inetsoft.Data;
+//using TK1.Bizz.Inetsoft.Xml;
+//using TK1.Bizz.Inetsoft.Const;
 using System.IO;
 using TK1.Data.Controller;
 using TK1.Data;
-using TK1.Bizz.Mdo.Data.Controller;
-using TK1.Bizz.Mdo.Selling.Xml;
+using TK1.Bizz.Inetsoft.Data.Controller;
+using TK1.Bizz.Inetsoft.Rent.Xml;
 using TK1.Bizz.Integra;
 using TK1.Utility;
 
-namespace TK1.Bizz.Mdo.Selling
+namespace TK1.Bizz.Inetsoft.Rent
 {
-    public class SellingSiteHelper
+    public class RentSiteHelper
     {
         #region PUBLIC PROPERTIES
-        public string MdoAcronym { get; set; }
+        public string InetsoftAcronym { get; set; }
         public bool SendReportMail { get; set; }
 
         #endregion
 
-        public SellingSiteHelper()
+        public RentSiteHelper()
         {
             SendReportMail = true;
         }
@@ -35,14 +35,14 @@ namespace TK1.Bizz.Mdo.Selling
             bool loadResult = false;
             int errorCount = 0;
             int successCount = 0;
-            MdoSiteAdController siteController = null;
+            InetsoftSiteAdController siteController = null;
             try
             {
-                audit = new AuditController(AppNames.IntegraMdoSelling.ToString(), CustomerNames.Pietá.ToString());
+                audit = new AuditController(AppNames.IntegraInetsoftRent.ToString(), CustomerNames.Pietá.ToString());
                 audit.StartProcessExecution();
                 audit.WriteEvent("Iniciando processo de carga de cadastro de imóveis", sourceDir ?? "[NULL DIR]");
 
-                siteController = new MdoSiteAdController(audit);
+                siteController = new InetsoftSiteAdController(audit);
                 var files = FileHelper.GetFiles(sourceDir, fileFilter);
                 audit.WriteEvent("Total de arquivos a carregar ", files.Count.ToString());
                 foreach (var filePath in files)
@@ -54,12 +54,9 @@ namespace TK1.Bizz.Mdo.Selling
                         var sites = XmlSiteHelper.LoadSiteFromFile(filePath);
                         if (sites != null)
                         {
-                            audit.WriteEvent("Verificando integridade dos cadastros","");
                             siteController.CheckDataIntegrity(sites);
-                            audit.WriteEvent("Adicionando imóveis a venda", string.Format("{0} imóveis",sites.Sites.Count));
                             siteController.AddSalesSiteAds(sites);
-                            audit.WriteEvent("Adicionando lançamentos", string.Format("{0} imóveis", sites.SiteReleases.Count));
-                            siteController.AddSalesSiteReleaseAds(sites);
+                            //siteController.AddSalesSiteReleaseAds(sites);
                         }
                         moveXmlFile(filePath);
                         successCount++;
@@ -93,7 +90,7 @@ namespace TK1.Bizz.Mdo.Selling
                 {
                     string mailTo = string.Empty;
                     if (siteController != null)
-                        mailTo = siteController.GetXmlSellingLoadEmail(MdoAcronym);
+                        mailTo = siteController.GetXmlRentLoadEmail(InetsoftAcronym);
                     sendReportMail(result, mailTo);
                 }
             }

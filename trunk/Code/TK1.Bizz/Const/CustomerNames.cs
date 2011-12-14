@@ -7,6 +7,6 @@ namespace TK1.Bizz
 {
     public enum CustomerNames
     {
-        Mdo, Pietá, TK1
+        Inetsoft, Mdo, Pietá, TK1
     }
 }

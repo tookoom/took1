@@ -92,6 +92,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="SetLocale.cs" />
+    <Compile Include="UnitTest\InetsoftUnitTest.cs" />
     <Compile Include="UnitTest\TK1ServicesUnitTest.cs" />
     <Compile Include="UnitTest\MdoUnitTest.cs" />
     <Compile Include="UnitTest\PietaUnitTest.cs" />
@@ -157,6 +158,10 @@
     <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj">
+      <Project>{CF258131-13C0-4F5D-8657-891E00E66815}</Project>
+      <Name>TK1.Bizz.Inetsoft</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj">
       <Project>{07143283-7469-446F-A469-86F64C5CB61F}</Project>

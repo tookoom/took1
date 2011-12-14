@@ -31,7 +31,11 @@ public partial class _Default : System.Web.UI.Page
         {
             int siteReleaseAdID = siteReleaseAd.Code;
             baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/L{0}/", siteReleaseAdID);
-            string imageSource = baseUrl + siteReleaseAd.MainPicUrl;
+            string imageSource = string.Empty;
+            if(string.IsNullOrEmpty(siteReleaseAd.MainPicUrl))
+                imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+            else
+                imageSource = baseUrl + siteReleaseAd.MainPicUrl;
 
             //baseUrl = this.ResolveUrl(baseUrl);
             //string imageSource = string.Empty;
