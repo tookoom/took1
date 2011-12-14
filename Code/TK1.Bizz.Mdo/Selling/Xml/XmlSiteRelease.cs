@@ -27,5 +27,10 @@ namespace TK1.Bizz.Mdo.Selling.Xml
         public int TotalUnitNumber { get; set; }
         public int TowerNumber { get; set; }
         public int TowerFloorNumber { get; set; }
+
+        public List<XmlSitePic> Maps { get; set; }
+        public List<XmlSitePic> BluePrints { get; set; }
+
+
     }
 }

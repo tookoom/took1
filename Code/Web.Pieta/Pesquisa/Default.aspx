@@ -169,7 +169,7 @@
                                <%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%>
                         </td>--%>
                         <td id="Td1" style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#Eval("IsAreaNameVisible")%>'>
-                               <%# Eval("SiteTotalArea", "{0:0.##}")%>  m²
+                               <%# Eval("SiteInternalArea", "{0:0.##}")%>  m²
                         </td>
                         <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("District")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Value", "{0:c}")%></td>

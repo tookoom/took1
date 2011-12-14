@@ -15,8 +15,9 @@ namespace TK1.Bizz.Data.Presentation
         public bool IsAreaDescriptionVisible { get { return !string.IsNullOrEmpty(AreaDescription); } }
         public bool IsAreaNameVisible { get; set; }
         public bool IsCondoDescriptionVisible { get { return !string.IsNullOrEmpty(CondoDescription); } }
+        //public bool IsRoomNameVisible { get { return false; } }
         public bool IsRoomNameVisible { get; set; }
-        public bool IsTaxVisible { get; set; }
+        public bool IsTaxVisible { get { return CityTaxes != 0 | CondoTaxes != 0; } }
 
         public int Code { get; set; }
         public int CustomerID { get; set; }
@@ -24,6 +25,7 @@ namespace TK1.Bizz.Data.Presentation
 
         public float CityTaxes { get; set; }
         public float CondoTaxes { get; set; }
+        public float SiteInternalArea { get; set; }
         public float SiteTotalArea { get; set; }
         public float Value { get; set; }
 

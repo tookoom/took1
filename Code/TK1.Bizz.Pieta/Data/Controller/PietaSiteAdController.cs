@@ -56,32 +56,6 @@ namespace TK1.Bizz.Pieta.Data.Controller
                 result = new List<SiteDetail>();
             return result;
         }
-        public List<SiteDetail> GetSiteReleaseDetail(int siteReleaseAdID)
-        {
-            List<SiteDetail> result = null;
-            int adType = (int)SiteAdTypes.Sell;
-            var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
-            switch (adType)
-            {
-                case (int)SiteAdTypes.Rent:
-                    break;
-                case (int)SiteAdTypes.Sell:
-                    var mdoSiteAdController = new MdoSiteAdController(audit);
-                    int customerID = mdoSiteAdController.GetCustomerID(codename);
-                    var release = mdoSiteAdController.GetSiteReleaseAdView(customerID, siteReleaseAdID);
-                    result = new List<SiteDetail>();
-                    if (release != null)
-                    {
-                        result.Add(new SiteDetail() { Name = release.AreaText });
-                        result.Add(new SiteDetail() { Name = release.RoomText });
-                    }
-                    //result = mdoSiteAdController.GetSiteDetail(customerID, siteReleaseAdID);
-                    break;
-            }
-            if (result == null)
-                result = new List<SiteDetail>();
-            return result;
-        }
         public List<SiteAdPicView> GetSitePics(int adType, int siteAdID)
         {
             List<SiteAdPicView> result = new List<SiteAdPicView>();
@@ -122,6 +96,31 @@ namespace TK1.Bizz.Pieta.Data.Controller
             }
             return result;
         }
+        public List<SiteAdView> SearchSites(MdoSiteAdSearchParameters mdoParameters)
+        {
+            List<SiteAdView> result = null;
+            if (mdoParameters != null)
+            {
+                var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
+                switch (mdoParameters.AdType)
+                {
+                    case SiteAdTypes.Rent:
+                        var parameters = mdoParameters as SiteAdSearchParameters;
+                        var siteController = new SiteAdController(audit);
+                        result = siteController.SearchSites(parameters);
+                        break;
+                    case SiteAdTypes.Sell:
+                        var mdoSiteAdController = new MdoSiteAdController(audit);
+                        result = mdoSiteAdController.SearchSites(mdoParameters);
+                        break;
+                }
+            }
+            if (result == null)
+                result = new List<SiteAdView>();
+            return result;
+        }
+
+
         public SiteReleaseAdView GetSiteReleaseAd(int siteReleaseAdID)
         {
             SiteReleaseAdView result = null;
@@ -158,27 +157,51 @@ namespace TK1.Bizz.Pieta.Data.Controller
                 result = new List<SiteReleaseAdView>();
             return result;
         }
-        public List<SiteAdView> SearchSites(MdoSiteAdSearchParameters mdoParameters)
+        public List<SiteDetail> GetSiteReleaseDetail(int siteReleaseAdID)
         {
-            List<SiteAdView> result = null;
-            if (mdoParameters != null)
+            List<SiteDetail> result = null;
+            int adType = (int)SiteAdTypes.Sell;
+            var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
+            switch (adType)
             {
-                var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
-                switch (mdoParameters.AdType)
-                {
-                    case SiteAdTypes.Rent:
-                        var parameters = mdoParameters as SiteAdSearchParameters;
-                        var siteController = new SiteAdController(audit);
-                        result = siteController.SearchSites(parameters);
-                        break;
-                    case SiteAdTypes.Sell:
-                        var mdoSiteAdController = new MdoSiteAdController(audit);
-                        result = mdoSiteAdController.SearchSites(mdoParameters);
-                        break;
-                }
+                case (int)SiteAdTypes.Rent:
+                    break;
+                case (int)SiteAdTypes.Sell:
+                    var mdoSiteAdController = new MdoSiteAdController(audit);
+                    int customerID = mdoSiteAdController.GetCustomerID(codename);
+                    var release = mdoSiteAdController.GetSiteReleaseAdView(customerID, siteReleaseAdID);
+                    result = new List<SiteDetail>();
+                    if (release != null)
+                    {
+                        result.Add(new SiteDetail() { Name = release.AreaText });
+                        result.Add(new SiteDetail() { Name = release.RoomText });
+                    }
+                    //result = mdoSiteAdController.GetSiteDetail(customerID, siteReleaseAdID);
+                    break;
             }
             if (result == null)
-                result = new List<SiteAdView>();
+                result = new List<SiteDetail>();
+            return result;
+        }
+        public List<SiteAdPicView> GetSiteReleasePics(int siteReleaseAdID)
+        {
+            List<SiteAdPicView> result = new List<SiteAdPicView>();
+            var audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.Pietá.ToString());
+            var mdoSiteAdController = new MdoSiteAdController(audit);
+            int customerID = mdoSiteAdController.GetCustomerID(codename);
+            var mdoSiteAd = mdoSiteAdController.GetSiteReleaseAd(customerID, siteReleaseAdID);
+            if (mdoSiteAd != null)
+            {
+                mdoSiteAd.SiteReference.Load();
+                mdoSiteAd.Site.SitePics.Load();
+                foreach (var item in mdoSiteAd.Site.SitePics)
+                    result.Add(new SiteAdPicView()
+                    {
+                        Description = item.Description,
+                        FileName = item.FileName,
+                        Index = item.PicID
+                    });
+            }
             return result;
         }
     }
