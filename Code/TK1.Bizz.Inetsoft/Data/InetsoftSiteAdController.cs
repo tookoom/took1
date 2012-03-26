@@ -21,6 +21,7 @@ namespace TK1.Bizz.Inetsoft.Data.Controller
     {
         #region PRIVATE MEMBERS
         private AuditController audit;
+        private static string customerCodeName = "pieta";
 
         #endregion
 
@@ -33,66 +34,53 @@ namespace TK1.Bizz.Inetsoft.Data.Controller
             this.audit = audit;
         }
 
-        public void AddSalesSiteAds(XmlSiteFile xmlSiteFile)
+        public void AddRentSiteAds(XmlSiteFile xmlSiteFile)
         {
             try
             {
                 if (xmlSiteFile != null)
                 {
-                    Customer customer = getCustomer(xmlSiteFile);
-                    if (customer != null)
+                    removeCustomerSiteAds(customerCodeName);
+
+                    foreach (var xmlSiteAd in xmlSiteFile.Sites)
                     {
-                        removeCustomerSiteAds(customer);
-                        foreach (var xmlSiteAd in xmlSiteFile.Sites)
+                        SiteAd siteAd = new SiteAd()
                         {
-                            //SiteType siteType = Entities.SiteTypes.Where(o => o.Name == xmlSiteAd.SiteType).FirstOrDefault();
-                            //City city = Entities.Cities.Where(o => o.Name == xmlSiteAd.City).FirstOrDefault();
-                            //District district = Entities.Districts.Where(o => o.Name == xmlSiteAd.District).FirstOrDefault();
+                            AreaDescription = StringHelper.ConvertCaseString(xmlSiteAd.AreaDescription.Trim(), StringHelper.UpperCase.UpperFirstParagraph),
+                            CategoryName = "",
+                            CityName = StringHelper.ConvertCaseString(xmlSiteAd.City.Trim(), StringHelper.UpperCase.UpperFirstWord),
+                            CityTaxes = xmlSiteAd.CityTaxes,
+                            CondoTaxes = xmlSiteAd.CondoTaxes,
+                            DistrictName = StringHelper.ConvertCaseString(xmlSiteAd.District.Trim(), StringHelper.UpperCase.UpperFirstWord),
+                            ExternalArea = xmlSiteAd.ExternalArea,
+                            FullDescription = StringHelper.ConvertCaseString(xmlSiteAd.InternetDescription.Trim(), StringHelper.UpperCase.UpperFirstParagraph),
+                            InternalArea = xmlSiteAd.InternalArea,
+                            SiteAdTypeID = (int)SiteAdTypes.Rent,
+                            SiteTypeName = StringHelper.ConvertCaseString(xmlSiteAd.SiteType.Trim(), StringHelper.UpperCase.UpperFirstWord),
+                            CondoDescription = StringHelper.ConvertCaseString(xmlSiteAd.CondDescription.Trim(), StringHelper.UpperCase.UpperFirstParagraph),
+                            CustomerCodename = customerCodeName,
+                            Value = xmlSiteAd.Value,
+                            SiteAdID = xmlSiteAd.SiteCode,
+                            ShortDescription = StringHelper.ConvertCaseString(xmlSiteAd.ShortDescription.Trim(), StringHelper.UpperCase.UpperFirstParagraph)
+                        };
+                        Entities.AddToSiteAds(siteAd);
+                        addSiteAdPictures(siteAd, xmlSiteAd.Pictures);
+                        addSiteAdDetails(siteAd, xmlSiteAd.Details);
+                        Entities.SaveChanges();
 
-                            //if (city != null & district != null & siteType != null)
-                            //{
-                            //    siteType.CategoryReference.Load();
-                            //    Category category = siteType.Category;
-                            //    Site site = new Site()
-                            //    {
-                            //        City = city,
-                            //        District = district,
-                            //        ExternalArea = xmlSiteAd.ExternalArea,
-                            //        InternalArea = xmlSiteAd.InternalArea,
-                            //        TotalArea = xmlSiteAd.TotalArea,
-                            //        TotalRooms = xmlSiteAd.RoomNumber,
-                            //        SiteType = siteType
-                            //    };
-                            //    addSitePictures(site, xmlSiteAd.Pictures);
-                            //    addSiteDetails(site, xmlSiteAd.Details);
-                            //    SiteAd siteAd = new SiteAd()
-                            //    {
-                            //        AreaDescription = xmlSiteAd.AreaDescription,
-                            //        Category = category,
-                            //        CondDescription = xmlSiteAd.CondDescription,
-                            //        Customer = customer,
-                            //        Description = xmlSiteAd.InternetDescription,
-                            //        IsFeatured = xmlSiteAd.IsFeatured,
-                            //        Price = xmlSiteAd.Value,
-                            //        Site = site,
-                            //        SiteAdID = xmlSiteAd.SiteCode,
-                            //        ShortDescription = xmlSiteAd.ShortDescription
-                            //    };
-                            //    Entities.AddToSiteAds(siteAd);
-                            //    Entities.SaveChanges();
-
-                            //}
-                            Thread.Sleep(10);
-                        }
+                        Thread.Sleep(10);
                     }
                 }
-
             }
+
+
+
             catch (Exception exception)
             {
                 audit.WriteException("SiteController.AddSiteAds", exception);
             }
         }
+
         public void CheckDataIntegrity(XmlSiteFile xmlSiteFile)
         {
             try
@@ -625,38 +613,40 @@ namespace TK1.Bizz.Inetsoft.Data.Controller
             return result;
         }
 
-        //private static void addSiteDetails(Site site, Collection.StringDictionary details)
-        //{
-        //    if (details != null)
-        //    {
-        //        foreach (var description in details)
-        //        {
-        //            SiteDescription siteDescription = new SiteDescription()
-        //            {
-        //                Description = description.Key,
-        //                Value = description.Value,
-        //                Site = site
-        //            };
-        //        }
-        //    }
-        //}
-        //private void addSitePictures(Site site, List<XmlSitePic> pictures)
-        //{
-        //    if (pictures != null)
-        //    {
-        //        foreach (var pic in pictures)
-        //        {
-        //            SitePic sitePic = new SitePic()
-        //            {
-        //                Description = pic.Description,
-        //                FileName = pic.FileName,
-        //                Site = site,
-        //                PicID = pic.Index
-        //            };
-        //            Entities.AddToSitePics(sitePic);
-        //        }
-        //    }
-        //}
+        private void addSiteAdDetails(SiteAd siteAd, Collection.StringDictionary details)
+        {
+            if (details != null)
+            {
+                foreach (var description in details)
+                {
+
+                    SiteAdDetail siteAdDetail = new SiteAdDetail()
+                    {
+                        Description = description.Key,
+                        Value = description.Value,
+                        SiteAd = siteAd
+                    };
+                    Entities.AddToSiteAdDetails(siteAdDetail);
+                }
+            }
+        }
+        private void addSiteAdPictures(SiteAd siteAd, List<XmlSitePic> pictures)
+        {
+            if (pictures != null)
+            {
+                foreach (var pic in pictures)
+                {
+                    SiteAdPic siteAdPic = new SiteAdPic()
+                    {
+                        Description = pic.Description,
+                        FileName = pic.FileName,
+                        SiteAd = siteAd,
+                        PicID = pic.Index
+                    };
+                    Entities.AddToSiteAdPics(siteAdPic);
+                }
+            }
+        }
         private void checkCategories(List<string> categories)
         {
             if (categories != null)
@@ -798,104 +788,24 @@ namespace TK1.Bizz.Inetsoft.Data.Controller
             //}
             //Entities.SaveChanges();
         }
-        private Customer getCustomer(XmlSiteFile xmlSiteFile)
+        private void removeCustomerSiteAds(string customerCodeName)
         {
-            Customer result = null;
-            //if (xmlSiteFile.Header == null)
-            //{
-            //    audit.WriteEvent("Cadastro de imóveis sem cabeçalho", "");
-            //}
-            //else
-            //{
-            //    int InetsoftCode = 0;
-            //    if (int.TryParse(xmlSiteFile.Header.CustomerCode, out InetsoftCode))
-            //    {
-            //        var customerData = Entities.CustomerDatas.Where(o => o.InetsoftCode == InetsoftCode).FirstOrDefault();
-            //        if (customerData != null)
-            //        {
-            //            customerData.CustomerReference.Load();
-            //            result = customerData.Customer;
-            //        }
-            //    }
-            //    if (result == null)
-            //        audit.WriteEvent("Cliente não cadastrado", xmlSiteFile.Header.CustomerCode);
+            try
+            {
+                foreach (var item in Entities.SiteAdPics.ToList())
+                    Entities.DeleteObject(item);
+                foreach (var item in Entities.SiteAdDetails.ToList())
+                    Entities.DeleteObject(item);
 
-            //}
-            return result;
+                foreach (var item in Entities.SiteAds.ToList())
+                    Entities.DeleteObject(item);
+                Entities.SaveChanges();
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.removeCustomerSiteAds", exception);
+            }
         }
-        private void removeCustomerSiteAds(Customer customer)
-        {
-            //customer.SiteAds.Load();
-            //foreach (var item in customer.SiteAds.ToList())
-            //{
-            //    Entities.DeleteObject(item);
-            //}
-        }
-
-
-        #region OLD
-        //public List<SiteAd> _SearchSites(InetsoftSiteSearchParameters parameters)
-        //{
-        //    List<SiteAd> result = new List<SiteAd>();
-        //    try
-        //    {
-        //        //var query = entities.SiteAds as IQueryable<SiteAd>;
-        //        if (parameters != null)
-        //        {
-        //            ////query = query.FilterAdType(parameters.AdType);
-        //            ////query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
-        //            ////query = query.FilterCategory(parameters.Category);
-        //            ////query = query.FilterCity(parameters.CityName);
-        //            ////query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
-        //            ////query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
-        //            ////query = query.FilterSiteRegion(parameters.RegionID);
-        //            ////query = query.FilterSiteType(parameters.AdType, parameters.SiteType);
-
-        //            var customerID = Entities.CustomerDatas.Where(o => o.InetsoftAcronym == parameters.InetsoftAcronym).Select(o => o.CustomerID).FirstOrDefault();
-        //            result = Entities.SiteAds.Where(o => o.Customer.CustomerID == customerID).ToList();
-
-        //            foreach (var ad in result)
-        //            {
-        //                ad.CategoryReference.Load();
-        //                ad.SiteReference.Load();
-        //                if (ad.Site != null)
-        //                {
-        //                    //ad.Site.AddressInfoReference.Load();
-        //                    ad.Site.CityReference.Load();
-        //                    ad.Site.DistrictReference.Load();
-        //                    ad.Site.SiteDescriptions.Load();
-        //                    ad.Site.SiteTypeReference.Load();
-        //                }
-        //            }
-        //            if (parameters.Code > 0)
-        //            {
-        //                result = result.FilterCode(parameters.Code);
-        //            }
-        //            else
-        //            {
-        //                //query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
-        //                result = result.FilterCategory(parameters.Category);
-        //                result = result.FilterCity(parameters.CityName);
-        //                result = result.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
-        //                result = result.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
-        //                //query = query.FilterSiteRegion(parameters.RegionID);
-        //                if (parameters.SiteType != "*")
-        //                    result = result.FilterSiteType(parameters.Category, parameters.SiteType);
-        //                if (!parameters.Districts.Contains("Todos"))
-        //                    result = result.FilterDistrict(parameters.Districts);
-        //            }
-
-        //            if (parameters.ResultOrdering != SiteSearchResultOrders._Undefined)
-        //                result = OrderResults(result, parameters.ResultOrdering);
-        //        }
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        audit.WriteException("SiteController.SearchSites", exception);
-        //    }
-        //    return result;
-        //} 
-        #endregion
 
 
     }

@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Mdo", "..\Code\TK1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz", "..\Code\TK1.Bizz\TK1.Bizz.csproj", "{AB2EC906-93AE-4F64-B71D-E04C88036D7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Inetsoft", "..\Code\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj", "{CF258131-13C0-4F5D-8657-891E00E66815}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF258131-13C0-4F5D-8657-891E00E66815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF258131-13C0-4F5D-8657-891E00E66815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF258131-13C0-4F5D-8657-891E00E66815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF258131-13C0-4F5D-8657-891E00E66815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

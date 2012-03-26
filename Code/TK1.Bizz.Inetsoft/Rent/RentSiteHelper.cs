@@ -55,8 +55,7 @@ namespace TK1.Bizz.Inetsoft.Rent
                         if (sites != null)
                         {
                             siteController.CheckDataIntegrity(sites);
-                            siteController.AddSalesSiteAds(sites);
-                            //siteController.AddSalesSiteReleaseAds(sites);
+                            siteController.AddRentSiteAds(sites);
                         }
                         moveXmlFile(filePath);
                         successCount++;

@@ -22,6 +22,38 @@
 			});
 		});	
 	</script>
+
+    <div class="headerBlueLine"><h1>Destaques Vendas</h1></div>
+    <div class="featuredSites">
+
+        <asp:DataList ID="dataListFeaturedSiteAds" runat="server" 
+            DataSourceID="objectDataSourceFeaturedSites" RepeatDirection="Horizontal" RepeatLayout="Table">
+            <ItemTemplate>
+                <div class="featureViewerOuter">
+                    <div class="featureViewerInner">
+                        <div class="featureViewerImage">
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
+                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("Code") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
+                            </a>
+                        </div>
+                        <h2><%# Eval("District")%></h2>
+                        <h3><%# Eval("SiteType")%></h3>
+                        <p><%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%></p>
+                        <p><%# Eval("SiteTotalArea")%>  m²</p>
+                        <p><b><%# Eval("Value", "{0:c}")%></b></p>
+                        <div class="featureViewerDetailButton">
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
+                                Detalhes</a>
+                        </div>
+
+                    </div >
+                </div>
+            </ItemTemplate>
+        </asp:DataList>
+
+
+    </div>
+
     <div class="headerBlueLine"><h1>Lançamentos</h1></div>
 
 <%--    <div  id="slider" class="releaseViewer">
@@ -56,36 +88,6 @@
    <asp:Literal id="literalSiteReleaseAds" runat="server" />
 
 <br />
-    <div class="headerBlueLine"><h1>Destaques Vendas</h1></div>
-    <div class="featuredSites">
-
-        <asp:DataList ID="dataListFeaturedSiteAds" runat="server" 
-            DataSourceID="objectDataSourceFeaturedSites" RepeatDirection="Horizontal" RepeatLayout="Table">
-            <ItemTemplate>
-                <div class="featureViewerOuter">
-                    <div class="featureViewerInner">
-                        <div class="featureViewerImage">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("Code") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
-                            </a>
-                        </div>
-                        <h2><%# Eval("District")%></h2>
-                        <h3><%# Eval("SiteType")%></h3>
-                        <p><%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%></p>
-                        <p><%# Eval("SiteTotalArea")%>  m²</p>
-                        <p><b><%# Eval("Value", "{0:c}")%></b></p>
-                        <div class="featureViewerDetailButton">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                                Detalhes</a>
-                        </div>
-
-                    </div >
-                </div>
-            </ItemTemplate>
-        </asp:DataList>
-
-
-    </div>
 
         <table border="0" cellpadding="0" cellspacing="0" width="932px">
             <tr>
@@ -94,11 +96,16 @@
                         <h1>Vantagens Pietá Imóveis</h1>
                     </div>
                 </td>
-                <td style="width: 40%; vertical-align: top;">
+                <td style="width: 40%; vertical-align: top; padding-right:16px;">
                     <div class="headerBlueShortLine">
                         <h1>Redes Sociais</h1>
                     </div>
                 </td>
+                <%--<td style="width: 30%; vertical-align: top;">
+                    <div class="headerBlueShortLine">
+                        <h1>Avisos</h1>
+                    </div>
+                </td>--%>
             </tr>
             <tr>
                 <td style="vertical-align:top;">
@@ -114,13 +121,13 @@
                         </tr>
                     </table>
                 </td>
-                <td>
+                <td style="vertical-align:top;">
                     <table border="0" cellpadding="4" cellspacing="0">
                         <tr>
                             <td>
                                 <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">
                                     <img src="Images/FacebookIcon.png" alt="Pietá no Facebook" 
-                                    height="90px"/></a>
+                                    height="70px"/></a>
                             </td>
                             <td style="vertical-align:top; ">
                                 <p>
@@ -129,9 +136,15 @@
                                 <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">Conheça a página da
                                     Pietá Imóveis no Facebook!</a>
                             </td>
+
                         </tr>
                     </table>
                 </td>
+                <%--<td style="vertical-align:top;">
+                    <b><p>Prezados clientes,</p></b>
+                    <p>Informamos que em razão das festas de fim de ano não haverá expediente nos dias 24 e 25 de dezembro de 2011 e nos dias 30, 31 de dezembro e 1º de janeiro de 2012.</p>
+                    <b><p> Feliz Natal e Próspero Ano Novo!</p></b>
+                </td>--%>
             </tr>
         </table>
 

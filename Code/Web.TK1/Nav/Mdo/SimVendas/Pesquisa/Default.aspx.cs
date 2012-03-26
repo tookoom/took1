@@ -138,26 +138,30 @@ public partial class Nav_Mdo_SimVendas_Pesquisa_Default : System.Web.UI.Page
     }
     private void loadSearchParameter()
     {
+        var queryString = Page.ClientQueryString;
+        var dictionary = StringDictionary.LoadFromQueryString(queryString);
+        var clientAcronym = dictionary.Get("ClienteMDO") ?? string.Empty;
+
         MdoSiteAdController siteController = new MdoSiteAdController();
         radioButtonResidencial.Checked = true;
 
-        var cities = siteController.GetCities();
-        foreach (var city in cities)
+        var cities = siteController.GetCities(clientAcronym);
+        foreach (var city in cities.OrderBy(o => o))
             dropDownCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
         checkBoxListDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
-        var districts = siteController.GetDistricts();
-        foreach (var district in districts)
+        var districts = siteController.GetDistricts(clientAcronym);
+        foreach (var district in districts.OrderBy(o => o))
             checkBoxListDistricts.Items.Add(new ListItem(district));
 
         dropDownSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Comercial.ToString() + "*"));
         var siteComercialTypes = siteController.GetSiteTypes(SiteAdCategories.Comercial.ToString());
-        foreach (var siteType in siteComercialTypes)
+        foreach (var siteType in siteComercialTypes.OrderBy(o => o))
             dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Comercial.ToString() + siteType));
 
         dropDownSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residencial.ToString() + "*") { Selected = true });
         var siteResidenceTypes = siteController.GetSiteTypes(SiteAdCategories.Residencial.ToString());
-        foreach (var siteType in siteResidenceTypes)
+        foreach (var siteType in siteResidenceTypes.OrderBy(o => o))
             dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residencial.ToString() + siteType));
 
         dropDownRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));

@@ -45,6 +45,8 @@ namespace TK1.Bizz.Mdo.Selling
                 siteController = new MdoSiteAdController(audit);
                 var files = FileHelper.GetFiles(sourceDir, fileFilter);
                 audit.WriteEvent("Total de arquivos a carregar ", files.Count.ToString());
+                if (files.Count == 0)
+                    SendReportMail = false;
                 foreach (var filePath in files)
                 {
                     try
