@@ -34,7 +34,8 @@ namespace TK1.Bizz
                     Port = smtpPort
                 };
 
-                MailMessage.Send(mailFrom, mailTo, subject, body, true, smtpClient);
+                if(!string.IsNullOrEmpty(mailTo))
+                    MailMessage.Send(mailFrom, mailTo, subject, body, true, smtpClient);
             }
             catch (Exception exception)
             {

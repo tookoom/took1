@@ -25,7 +25,7 @@ namespace TK1.Dev.UnitTest
             try
             {
                 //string sourceDir = @"F:\Projetos\TK1\Testes\Lançamentos Inetsoft";
-                string sourceDir = @"C:\Users\andre\Desktop\Temp\Pieta";
+                string sourceDir = @"C:\Users\andre\Desktop\Temp\Pieta\Temp";
                 //string sourceDir = @"F:\Projetos\TK1\Code\Web.TK1\Integra\Inetsoft\SimVendas\Xml";
                 string fileFilter = "imobiliar*";
 

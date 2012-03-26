@@ -31,38 +31,14 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
             int mdoCode = controller.GetMdoCode(mdoAcronym);
 
             string sourceDir = getXmlFilePath();
-            //string picturesPath = getPictureFilesPath(mdoCode);
 
-            string fileFilter = "VisVen*";
+            string fileFilter = "vendaweb*";
 
             SellingSiteHelper sellingSiteHelper = new SellingSiteHelper();
             sellingSiteHelper.MdoAcronym = mdoAcronym;
             var report = sellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
-            //string report = SellingSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter, true);
             literalResponse.Text = report;
 
-            //foreach (var item in FileHelper.GetFiles(sourceDir, fileFilter))
-            //{
-            //    string report = SellingSiteHelper.LoadXmlSiteAd(item, true);
-            //    literalResponse.Text = report;
-            //}     
-
-            //if(!loadFileOnly)
-            //    SellingSitePicHelper.ResizeSitePics(picturesPath, 500, 70);
-
-            //ImageHelperTestUnit.Resize();
-            //
-
-            //if (sourceDirectory == null)
-            //    sourceDirectory = string.Empty;
-            //string destinationDirectory = @"\Carregados";
-            //string errorDirectory = @"\Erro";
-            //FileLoader loader = new FileLoader(sourceDirectory, destinationDirectory, errorDirectory);
-            //loader.LoadFiles(fileFilter);
-            //while (loader.ReadFile())
-            //{
-            //    SellingSiteHelper.LoadXmlSiteAd(loader.CurrentFile, false);
-            //}
         }
         catch (Exception exception)
         {

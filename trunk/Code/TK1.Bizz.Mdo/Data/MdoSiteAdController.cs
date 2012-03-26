@@ -234,6 +234,28 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             return result;
         }
+        public List<string> GetCities(string clientAcronym)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+
+                int customerID = GetCustomerID(clientAcronym);
+                var customer = (from o in Entities.Customers
+                                where o.CustomerID == customerID
+                                select o).FirstOrDefault();
+                if (customer != null)
+                {
+                    result = (from o in customer.SiteAds
+                                          select o.Site.CityName).Distinct().ToList();
+                }
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetCities", exception);
+            }
+            return result;
+        }
         public int GetCustomerID(string clientAcronym)
         {
             int result = 0;
@@ -274,6 +296,28 @@ namespace TK1.Bizz.Mdo.Data.Controller
                 result = (from o in Entities.Districts
                           select o.Name).ToList();
 
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetDistricts", exception);
+            }
+            return result;
+        }
+        public List<string> GetDistricts(string clientAcronym)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+
+                int customerID = GetCustomerID(clientAcronym);
+                var customer = (from o in Entities.Customers
+                                where o.CustomerID == customerID
+                                select o).FirstOrDefault();
+                if (customer != null)
+                {
+                    result = (from o in customer.SiteAds
+                              select o.Site.DistrictName).Distinct().ToList();
+                }
             }
             catch (Exception exception)
             {
@@ -606,9 +650,11 @@ namespace TK1.Bizz.Mdo.Data.Controller
                             District = siteReleaseAd.Site.DistrictName,
                             FullDescription = siteReleaseAd.FullDescription,
                             MainPicUrl = mainPicName,
-                            SiteInternalArea = (float)siteReleaseAd.Site.InternalArea,
-                            SiteTotalArea = (float)siteReleaseAd.Site.TotalArea,
-                            SiteTotalRooms = siteReleaseAd.Site.TotalRooms,
+                            SiteInternalArea = (float)siteReleaseAd.MaxInternalArea,
+                            SiteMinInternalArea = (float)siteReleaseAd.MinInternalArea,
+                            SiteTotalArea = (float)siteReleaseAd.MaxTotalArea,
+                            SiteTotalRooms = siteReleaseAd.MaxTotalRooms,
+                            SiteMinTotalRooms = siteReleaseAd.MinTotalRooms,
                             SiteType = siteReleaseAd.Site.SiteType.Name,
                             SiteTypeRoomName = siteReleaseAd.Site.SiteType.RoomDisplayName,
                             ShortDescription = siteReleaseAd.ShortDescription,
@@ -658,8 +704,9 @@ namespace TK1.Bizz.Mdo.Data.Controller
                             MainPicUrl = mainPicName,
                             Name = siteReleaseAd.Name,
                             ShortDescription = siteReleaseAd.ShortDescription,
-                            SiteInternalArea = (float)siteReleaseAd.Site.InternalArea,
+                            SiteInternalArea = (float)siteReleaseAd.MaxInternalArea,
                             SiteTotalArea = (float)siteReleaseAd.MaxTotalArea,
+                            SiteMinInternalArea = (float)siteReleaseAd.MinInternalArea,
                             SiteMinTotalArea = (float)siteReleaseAd.MinTotalArea,
                             SiteTotalRooms = siteReleaseAd.MaxTotalRooms,
                             SiteType = siteReleaseAd.Site.SiteType.Name,
@@ -1084,10 +1131,10 @@ namespace TK1.Bizz.Mdo.Data.Controller
                 else
                     siteReleaseAdView.ValueText = string.Format("De {0:c} a {1:c}", siteReleaseAdView.MinValue, siteReleaseAdView.Value);
 
-                if (siteReleaseAdView.SiteTotalArea == siteReleaseAdView.SiteMinTotalArea)
-                    siteReleaseAdView.AreaText = string.Format("{0:0.##} m²", siteReleaseAdView.SiteTotalArea);
+                if (siteReleaseAdView.SiteInternalArea == siteReleaseAdView.SiteMinInternalArea)
+                    siteReleaseAdView.AreaText = string.Format("{0:0.##} m²", siteReleaseAdView.SiteInternalArea);
                 else
-                    siteReleaseAdView.AreaText = string.Format("De {0:0.##} m² a {1:0.##} m²", siteReleaseAdView.SiteMinTotalArea, siteReleaseAdView.SiteTotalArea);
+                    siteReleaseAdView.AreaText = string.Format("De {0:0.##} m² a {1:0.##} m²", siteReleaseAdView.SiteMinInternalArea, siteReleaseAdView.SiteInternalArea);
 
                 if (siteReleaseAdView.SiteMinTotalRooms == siteReleaseAdView.SiteTotalRooms)
                     siteReleaseAdView.RoomText = string.Format("{0} dormitório{1}", siteReleaseAdView.SiteMinTotalRooms, siteReleaseAdView.SiteMinTotalRooms > 1 ? "s" : "");

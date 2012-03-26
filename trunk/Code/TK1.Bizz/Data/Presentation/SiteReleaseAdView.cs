@@ -15,6 +15,7 @@ namespace TK1.Bizz.Data.Presentation
 
 
         public int SiteMinTotalRooms { get; set; }
+        public float SiteMinInternalArea { get; set; }
 
         public float SiteMinTotalArea { get; set; }
         public float MinValue { get; set; }

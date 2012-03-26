@@ -2,6 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
+    <script src="../Scripts/js/jquery-1.3.2.js" type="text/javascript"></script>
+
+
 <div style="min-height:190px;">
     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBar">
         <tr>
@@ -10,49 +13,98 @@
                     <tr>
                         <td>Quero:</td>
                          <td class="radioItem">
-                            <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar" GroupName="radioButtonAdType" /></td>
+                            <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar" 
+                                 GroupName="radioButtonAdType"  /></td>
                         <td class="radioItem">
-                            <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" GroupName="radioButtonAdType"/></td>
+                            <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" 
+                                GroupName="radioButtonAdType" /></td>
                         <td >em:</td>
-                        <td ">
-                            <asp:DropDownList ID="dropDownCities" runat="server" Width="280px" Font-Size="Medium"></asp:DropDownList></td>
+                        <td>
+                            <div id="divRentCities">
+                                <asp:DropDownList ID="dropDownRentCities" runat="server" Width="280px" Font-Size="Medium">
+                                </asp:DropDownList>
+                            </div>
+                            <div id="divSellingCities">
+                                <asp:DropDownList ID="dropDownSellingCities" runat="server" Width="280px" Font-Size="Medium">
+                                </asp:DropDownList>
+                            </div>
+                        </td>                        
                         <td>Bairros:</td>
                     </tr>
                 </table>
-                <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
-                    <tr>
-                        <td>Tipo:</td>
-                        <td>
-                            <asp:DropDownList ID="dropDownSiteType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
-                        <td>
-                            <asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="260px" Font-Size="Medium"></asp:DropDownList></td>
-                        <td style="width: 80px"></td>
-                    </tr>
-                </table>
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
-                    <tr>
-                        <td>Preço entre:</td>
-                        <td>
-                            <asp:DropDownList ID="dropDownPriceFrom" runat="server" Width="130px" Font-Size="Medium"></asp:DropDownList></td>
-                        <td>e</td>
-                        <td>
-                            <asp:DropDownList ID="dropDownPriceTo" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
-                        <td style="width: 150px"></td>
-                    </tr>
-                </table>
-                <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
-                    <tr>
-                        <td>Código do anúncio:</td>
-                        <td>
-                            <asp:TextBox ID="textBoxSiteCode" runat="server" Width="70px" Font-Size="Medium"></asp:TextBox></td>
-                        <td style="width: 400px"></td>                         
+                <div id="divSellingParameters">
+                    <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
+                        <tr>
+                            <td>Tipo:</td>
+                            <td>
+                                <asp:DropDownList ID="dropDownSellingSiteType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td>
+                                <asp:DropDownList ID="dropDownSellingRoomNumber" runat="server" Width="260px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td style="width: 80px"></td>
                         </tr>
-                </table>
+                    </table>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
+                        <tr>
+                            <td>Preço entre:</td>
+                            <td>
+                                <asp:DropDownList ID="dropDownSellingPriceFrom" runat="server" Width="130px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td>e</td>
+                            <td>
+                                <asp:DropDownList ID="dropDownSellingPriceTo" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td style="width: 150px"></td>
+                        </tr>
+                    </table>
+                    <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
+                        <tr>
+                            <td>Código do anúncio:</td>
+                            <td>
+                                <asp:TextBox ID="textBoxSellingSiteCode" runat="server" Width="70px" Font-Size="Medium"></asp:TextBox></td>
+                            <td style="width: 400px"></td>                         
+                            </tr>
+                    </table>
+                </div>
+                <div id="divRentParameters">
+                    <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
+                        <tr>
+                            <td>Tipo:</td>
+                            <td>
+                                <asp:DropDownList ID="dropDownRentSiteType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td>
+                                <asp:DropDownList ID="dropDownRentRoomNumber" runat="server" Width="260px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td style="width: 80px"></td>
+                        </tr>
+                    </table>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
+                        <tr>
+                            <td>Preço entre:</td>
+                            <td>
+                                <asp:DropDownList ID="dropDownRentPriceFrom" runat="server" Width="130px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td>e</td>
+                            <td>
+                                <asp:DropDownList ID="dropDownRentPriceTo" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                            <td style="width: 150px"></td>
+                        </tr>
+                    </table>
+                    <table  border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBarInternal">
+                        <tr>
+                            <td>Código do anúncio:</td>
+                            <td>
+                                <asp:TextBox ID="textBoxRentSiteCode" runat="server" Width="70px" Font-Size="Medium"></asp:TextBox></td>
+                            <td style="width: 400px"></td>                         
+                            </tr>
+                    </table>
+                </div>
             </td>
             <td>
                 <div style="OVERFLOW-Y:scroll; float:left; width:100%; height:140px; background-color: White; color: Black;">
-                    <asp:CheckBoxList ID="checkBoxListDistricts" runat="server">
-                    </asp:CheckBoxList>
+                    <div id="divRentDistricts">
+                        <asp:CheckBoxList ID="checkBoxListRentDistricts" runat="server">
+                        </asp:CheckBoxList>
+                    </div>
+                    <div id="divSellingDistricts">
+                        <asp:CheckBoxList ID="checkBoxListSellingDistricts" runat="server">
+                        </asp:CheckBoxList>
+                    </div>
                 </div>
             </td>
         </tr>
@@ -68,6 +120,65 @@
         </tr>
     </table>
 </div>
+
+    <script type="text/javascript">
+        $("input:radio").click(function () {
+            if ($('input[id*=radioButtonRent]').is(":checked")) {
+                //alert('rent');
+                $("#divRentParameters").show();
+                $("#divSellingParameters").hide();
+
+                $("#divRentCities").show();
+                $("#divSellingCities").hide();
+
+                $("#divRentDistricts").show();
+                $("#divSellingDistricts").hide();
+            }
+            else {
+                //alert('selling');
+                $("#divRentParameters").hide();
+                $("#divSellingParameters").show();
+
+                $("#divRentCities").hide();
+                $("#divSellingCities").show();
+
+                $("#divRentDistricts").hide();
+                $("#divSellingDistricts").show();
+            }
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //alert("test2");
+            if ($('input[id*=radioButtonRent]').is(":checked")) {
+                //alert('rent');
+                $("#divRentParameters").show();
+                $("#divSellingParameters").hide();
+
+                $("#divRentCities").show();
+                $("#divSellingCities").hide();
+
+                $("#divRentDistricts").show();
+                $("#divSellingDistricts").hide();
+            }
+            else {
+                //alert('selling');
+                $("#divRentParameters").hide();
+                $("#divSellingParameters").show();
+
+                $("#divRentCities").hide();
+                $("#divSellingCities").show();
+
+                $("#divRentDistricts").hide();
+                $("#divSellingDistricts").show();
+            } 
+        });
+    </script>
+
+
+
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -214,7 +325,6 @@
         <br />
         <br />
     </div>
-
 </asp:Content>
 
 

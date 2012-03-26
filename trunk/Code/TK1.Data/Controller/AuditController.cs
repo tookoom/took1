@@ -119,7 +119,7 @@ namespace TK1.Data.Controller
 
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 
             }

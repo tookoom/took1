@@ -13,6 +13,7 @@ using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Bizz.Data.Presentation;
 using TK1.Bizz.Pieta.Data.Controller;
 using TK1.Bizz.Data;
+using TK1.Bizz.Data.Controller;
 
 public partial class Pesquisa_Default : System.Web.UI.Page
 {
@@ -28,33 +29,6 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             result = true;
         return result;
     }
-    //private string getSiteMainPic(SiteAdTypes siteAdType, int siteAdID)
-    //{
-    //    string result = string.Empty;
-
-    //    string baseUrl = string.Empty;
-    //    if (siteAdType == SiteAdTypes.Rent)
-    //        baseUrl = string.Format("Imovel/Fotos/Aluguel/{0}/", siteAdID);
-    //    if (siteAdType == SiteAdTypes.Sell)
-    //        baseUrl = string.Format("Imovel/Fotos/Venda/{0}/", siteAdID);
-    //    string relUrl = string.Format("~/{0}", baseUrl);
-    //    if (!string.IsNullOrEmpty(baseUrl))
-    //    {
-    //        relUrl = this.ResolveUrl(relUrl);
-    //        string path = Server.MapPath(relUrl);
-    //        if (Directory.Exists(path))
-    //        {
-    //            string items = string.Empty;
-    //            foreach (var file in Directory.GetFiles(path, "*.jpg"))
-    //            {
-    //                result = baseUrl + Path.GetFileName(file);
-    //                break;
-    //            }
-
-    //        }
-    //    }
-    //    return result;
-    //}
     protected bool getSiteAreaVisibility(SiteAdCategories siteAdCategory)
     {
         return true;
@@ -82,40 +56,17 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     private string getSiteMainPic(int siteAdTypeID, int siteAdID)
     {
         string result = string.Empty;
+        string baseUrl = string.Empty;
+        PietaSiteAdController siteController = new PietaSiteAdController();
         switch (siteAdTypeID)
         {
             case (int)SiteAdTypes.Rent:
-                result = getRentSiteMainPic(siteAdTypeID, siteAdID);
+                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", siteAdID);
                 break;
             case (int)SiteAdTypes.Sell:
-                result = getSellSiteMainPic(siteAdTypeID, siteAdID);
+                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
                 break;
         }
-        return result;
-    }
-    private string getRentSiteMainPic(int siteAdTypeID, int siteAdID)
-    {
-        string result = string.Empty;
-        string baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        baseUrl = this.ResolveUrl(baseUrl);
-        string path = Server.MapPath(baseUrl);
-        if (Directory.Exists(path))
-        {
-            string items = string.Empty;
-            foreach (var file in Directory.GetFiles(path, "*.jpg"))
-            {
-                result = baseUrl + Path.GetFileName(file);
-                break;
-            }
-
-        }
-        return result;
-    }
-    private string getSellSiteMainPic(int siteAdTypeID, int siteAdID)
-    {
-        string result = string.Empty;
-        PietaSiteAdController siteController = new PietaSiteAdController();
-        var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
         var siteAdPics = siteController.GetSitePics(siteAdTypeID, siteAdID);
         foreach (var item in siteAdPics)
         {
@@ -139,71 +90,117 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         }
         return result;
     }
-    private void loadSearchParameter()
+    private void loadRentSearchParameter()
     {
-        radioButtonBuy.Checked = true;
-        //radioButtonSiteResidence.Checked = true;
+        SiteAdController siteController = new SiteAdController();
+
+        var cities = siteController.GetCities("pieta");
+        foreach (var city in cities.OrderBy(o => o))
+            dropDownRentCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+
+        checkBoxListRentDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
+        var districts = siteController.GetDistricts("pieta");
+        foreach (var district in districts.OrderBy(o => o))
+            checkBoxListRentDistricts.Items.Add(new ListItem(district));
+
+        var siteTypes = siteController.GetSiteTypes("pieta", 1);
+        foreach (var siteType in siteTypes.OrderBy(o => o))
+            dropDownRentSiteType.Items.Add(new ListItem(siteType, siteType));
+
+        dropDownRentRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
+        dropDownRentRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
+        dropDownRentRoomNumber.Items.Add(new ListItem("2 dormitórios", "2"));
+        dropDownRentRoomNumber.Items.Add(new ListItem("2 dormitórios ou mais", "2+"));
+        dropDownRentRoomNumber.Items.Add(new ListItem("3 dormitórios", "3"));
+        dropDownRentRoomNumber.Items.Add(new ListItem("3 dormitórios ou mais", "3+"));
+        dropDownRentRoomNumber.Items.Add(new ListItem("4 dormitórios", "4"));
+        dropDownRentRoomNumber.Items.Add(new ListItem("4 dormitórios ou mais", "4+"));
+
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$0,00", "0"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$250,00", "250"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$500,00", "500"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$750,00", "750"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$1.000,00", "1000"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$2.000,00", "2000"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$3.000,00", "3000"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$4.000,00", "4000"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$5.000,00", "5000"));
+        dropDownRentPriceFrom.Items.Add(new ListItem("R$10.000,00", "10000"));
+
+        dropDownRentPriceTo.Items.Add(new ListItem("R$250,00", "250"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$500,00", "500"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$750,00", "750"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$1.000,00", "1000"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$2.000,00", "2000"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$3.000,00", "3000"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$4.000,00", "4000"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$5.000,00", "5000"));
+        dropDownRentPriceTo.Items.Add(new ListItem("R$10.000,00", "10000"));
+        dropDownRentPriceTo.Items.Add(new ListItem("Acima de R$10.000,00", "1000000+") { Selected = true });
+    }
+    private void loadSellingSearchParameter()
+    {
         MdoSiteAdController siteController = new MdoSiteAdController();
 
-        var cities = siteController.GetCities();
-        foreach (var city in cities)
-            dropDownCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+        var cities = siteController.GetCities("pieta");
+        foreach (var city in cities.OrderBy(o => o))
+            dropDownSellingCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
-        checkBoxListDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
-        var districts = siteController.GetDistricts();
-        foreach (var district in districts)
-            checkBoxListDistricts.Items.Add(new ListItem(district));
+        checkBoxListSellingDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
+        var districts = siteController.GetDistricts("pieta");
+        foreach (var district in districts.OrderBy(o => o))
+            checkBoxListSellingDistricts.Items.Add(new ListItem(district));
 
-        dropDownSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Comercial.ToString() + "*"));
+        dropDownSellingSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Comercial.ToString() + "*"));
         var siteComercialTypes = siteController.GetSiteTypes(SiteAdCategories.Comercial.ToString());
-        foreach (var siteType in siteComercialTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Comercial.ToString() + siteType));
+        foreach (var siteType in siteComercialTypes.OrderBy(o => o))
+            dropDownSellingSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Comercial.ToString() + siteType));
 
-        dropDownSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residencial.ToString() + "*") { Selected = true });
+        dropDownSellingSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residencial.ToString() + "*") { Selected = true });
         var siteResidenceTypes = siteController.GetSiteTypes(SiteAdCategories.Residencial.ToString());
-        foreach (var siteType in siteResidenceTypes)
-            dropDownSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residencial.ToString() + siteType));
+        foreach (var siteType in siteResidenceTypes.OrderBy(o => o))
+            dropDownSellingSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residencial.ToString() + siteType));
 
-        dropDownRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
-        dropDownRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
-        dropDownRoomNumber.Items.Add(new ListItem("2 dormitórios", "2"));
-        dropDownRoomNumber.Items.Add(new ListItem("2 dormitórios ou mais", "2+"));
-        dropDownRoomNumber.Items.Add(new ListItem("3 dormitórios", "3"));
-        dropDownRoomNumber.Items.Add(new ListItem("3 dormitórios ou mais", "3+"));
-        dropDownRoomNumber.Items.Add(new ListItem("4 dormitórios", "4"));
-        dropDownRoomNumber.Items.Add(new ListItem("4 dormitórios ou mais", "4+"));
+        dropDownSellingRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
+        dropDownSellingRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
+        dropDownSellingRoomNumber.Items.Add(new ListItem("2 dormitórios", "2"));
+        dropDownSellingRoomNumber.Items.Add(new ListItem("2 dormitórios ou mais", "2+"));
+        dropDownSellingRoomNumber.Items.Add(new ListItem("3 dormitórios", "3"));
+        dropDownSellingRoomNumber.Items.Add(new ListItem("3 dormitórios ou mais", "3+"));
+        dropDownSellingRoomNumber.Items.Add(new ListItem("4 dormitórios", "4"));
+        dropDownSellingRoomNumber.Items.Add(new ListItem("4 dormitórios ou mais", "4+"));
 
-        dropDownPriceFrom.Items.Add(new ListItem("R$0,00", "0"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$500,00", "500"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$1.000,00", "1000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$2.000,00", "2000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$3.000,00", "3000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$4.000,00", "4000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$5.000,00", "5000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$10.000,00", "10000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$50.000,00", "50000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$100.000,00", "100000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$200.000,00", "200000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$300.000,00", "300000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$400.000,00", "400000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$500.000,00", "500000"));
-        dropDownPriceFrom.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$0,00", "0"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$500,00", "500"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$1.000,00", "1000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$2.000,00", "2000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$3.000,00", "3000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$4.000,00", "4000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$5.000,00", "5000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$10.000,00", "10000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$50.000,00", "50000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$100.000,00", "100000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$200.000,00", "200000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$300.000,00", "300000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$400.000,00", "400000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$500.000,00", "500000"));
+        dropDownSellingPriceFrom.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
 
-        dropDownPriceTo.Items.Add(new ListItem("R$500,00", "500"));
-        dropDownPriceTo.Items.Add(new ListItem("R$1.000,00", "1000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$2.000,00", "2000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$3.000,00", "3000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$4.000,00", "4000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$5.000,00", "5000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$10.000,00", "10000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$50.000,00", "50000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$100.000,00", "100000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$200.000,00", "200000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$300.000,00", "300000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$400.000,00", "400000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$500.000,00", "500000"));
-        dropDownPriceTo.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
-        dropDownPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+") { Selected = true });
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$500,00", "500"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$1.000,00", "1000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$2.000,00", "2000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$3.000,00", "3000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$4.000,00", "4000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$5.000,00", "5000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$10.000,00", "10000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$50.000,00", "50000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$100.000,00", "100000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$200.000,00", "200000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$300.000,00", "300000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$400.000,00", "400000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$500.000,00", "500000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("R$1.000.000,00", "1000000"));
+        dropDownSellingPriceTo.Items.Add(new ListItem("Acima de R$1.000.000,00", "1000000+") { Selected = true });
     }
     private void orderSearchResults()
     {
@@ -255,44 +252,37 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 setDataBinding(searchResult.OrderBy(o => o.Value).ToList());
         }
     }
-    private void searchSite()
+    private void searchRentSite()
     {
         MdoSiteAdSearchParameters parameters = new MdoSiteAdSearchParameters() { CustomerCodename = "pieta", MdoCode = 4 };
 
         parameters.AdType = SiteAdTypes.Rent;
-        if (radioButtonBuy.Checked)
-            parameters.AdType = SiteAdTypes.Sell;
 
-        if (!string.IsNullOrEmpty(textBoxSiteCode.Text))
+        if (!string.IsNullOrEmpty(textBoxRentSiteCode.Text))
         {
             int siteCode = 0;
-            if (int.TryParse(textBoxSiteCode.Text, out siteCode))
+            if (int.TryParse(textBoxRentSiteCode.Text, out siteCode))
                 parameters.Code = siteCode;
-            textBoxSiteCode.Text = string.Empty;
+            textBoxRentSiteCode.Text = string.Empty;
         }
-        //if (radioButtonSiteBusiness.Checked)
-        //    parameters.Category = SiteAdCategories.Business;
-        //else
-        //    parameters.Category = SiteAdCategories.Residence;
-
-        if (dropDownCities.SelectedItem != null)
-            parameters.CityName = dropDownCities.SelectedItem.Text;
-        if (dropDownPriceFrom.SelectedItem != null)
-            parameters.PriceFrom = StringConverter.ToFloat(dropDownPriceFrom.SelectedItem.Value, 0);
-        if (dropDownPriceTo.SelectedItem != null)
-            parameters.PriceTo = StringConverter.ToFloat(dropDownPriceTo.SelectedItem.Value, float.MaxValue);
-        if (dropDownRoomNumber.SelectedItem != null)
+        if (dropDownRentCities.SelectedItem != null)
+            parameters.CityName = dropDownRentCities.SelectedItem.Text;
+        if (dropDownRentPriceFrom.SelectedItem != null)
+            parameters.PriceFrom = StringConverter.ToFloat(dropDownRentPriceFrom.SelectedItem.Value, 0);
+        if (dropDownRentPriceTo.SelectedItem != null)
+            parameters.PriceTo = StringConverter.ToFloat(dropDownRentPriceTo.SelectedItem.Value, float.MaxValue);
+        if (dropDownRentRoomNumber.SelectedItem != null)
         {
-            parameters.RoomsFrom = StringConverter.ToInt(dropDownRoomNumber.SelectedItem.Value, int.MinValue);
-            if (dropDownRoomNumber.SelectedItem.Value.Contains("+"))
+            parameters.RoomsFrom = StringConverter.ToInt(dropDownRentRoomNumber.SelectedItem.Value, int.MinValue);
+            if (dropDownRentRoomNumber.SelectedItem.Value.Contains("+"))
                 parameters.RoomsTo = int.MaxValue;
             else
-                parameters.RoomsTo = StringConverter.ToInt(dropDownRoomNumber.SelectedItem.Value, int.MaxValue);
+                parameters.RoomsTo = StringConverter.ToInt(dropDownRentRoomNumber.SelectedItem.Value, int.MaxValue);
         }
-        if (dropDownSiteType.SelectedItem != null)
+        if (dropDownRentSiteType.SelectedItem != null)
         {
-            string text = dropDownSiteType.SelectedItem.Text;
-            string value = dropDownSiteType.SelectedItem.Value;
+            string text = dropDownRentSiteType.SelectedItem.Text;
+            string value = dropDownRentSiteType.SelectedItem.Value;
             if (value.Contains(SiteAdCategories.Residencial.ToString()))
                 parameters.Category = SiteAdCategories.Residencial.ToString();
             else
@@ -301,33 +291,94 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 parameters.SiteType = "*";
             else
             {
-                string siteType = dropDownSiteType.SelectedItem.Text;
+                string siteType = dropDownRentSiteType.SelectedItem.Text;
                 if (siteType.Contains("- "))
                     siteType = siteType.Replace("- ", "");
                 parameters.SiteType = siteType;
             }
         }
 
-        foreach (ListItem item in checkBoxListDistricts.Items)
+        foreach (ListItem item in checkBoxListRentDistricts.Items)
             if (item.Selected)
                 parameters.Districts.Add(item.Text);
 
-        PietaSiteAdController siteController = new PietaSiteAdController();
-        List<SiteAdView> searchResult = new List<SiteAdView>();
-        searchResult = siteController.SearchSites(parameters);
-        foreach (var siteAdView in searchResult)
+        searchSite(parameters);
+    }
+    private void searchSellingSite()
+    {
+        MdoSiteAdSearchParameters parameters = new MdoSiteAdSearchParameters() { CustomerCodename = "pieta", MdoCode = 4 };
+
+        parameters.AdType = SiteAdTypes.Rent;
+        if (radioButtonBuy.Checked)
+            parameters.AdType = SiteAdTypes.Sell;
+
+        if (!string.IsNullOrEmpty(textBoxSellingSiteCode.Text))
         {
-            siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
-            siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
-            if (siteAdView.IsRoomNameVisible)
-                siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
-            string imageUrl = "http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
-            string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
-            if (!string.IsNullOrEmpty(mainPic))
-                imageUrl = mainPic;
-            siteAdView.MainPicUrl = imageUrl;
+            int siteCode = 0;
+            if (int.TryParse(textBoxSellingSiteCode.Text, out siteCode))
+                parameters.Code = siteCode;
+            textBoxSellingSiteCode.Text = string.Empty;
         }
-        setDataBinding(searchResult);
+        if (dropDownSellingCities.SelectedItem != null)
+            parameters.CityName = dropDownSellingCities.SelectedItem.Text;
+        if (dropDownSellingPriceFrom.SelectedItem != null)
+            parameters.PriceFrom = StringConverter.ToFloat(dropDownSellingPriceFrom.SelectedItem.Value, 0);
+        if (dropDownSellingPriceTo.SelectedItem != null)
+            parameters.PriceTo = StringConverter.ToFloat(dropDownSellingPriceTo.SelectedItem.Value, float.MaxValue);
+        if (dropDownSellingRoomNumber.SelectedItem != null)
+        {
+            parameters.RoomsFrom = StringConverter.ToInt(dropDownSellingRoomNumber.SelectedItem.Value, int.MinValue);
+            if (dropDownSellingRoomNumber.SelectedItem.Value.Contains("+"))
+                parameters.RoomsTo = int.MaxValue;
+            else
+                parameters.RoomsTo = StringConverter.ToInt(dropDownSellingRoomNumber.SelectedItem.Value, int.MaxValue);
+        }
+        if (dropDownSellingSiteType.SelectedItem != null)
+        {
+            string text = dropDownSellingSiteType.SelectedItem.Text;
+            string value = dropDownSellingSiteType.SelectedItem.Value;
+            if (value.Contains(SiteAdCategories.Residencial.ToString()))
+                parameters.Category = SiteAdCategories.Residencial.ToString();
+            else
+                parameters.Category = SiteAdCategories.Comercial.ToString();
+            if (value.Contains("*"))
+                parameters.SiteType = "*";
+            else
+            {
+                string siteType = dropDownSellingSiteType.SelectedItem.Text;
+                if (siteType.Contains("- "))
+                    siteType = siteType.Replace("- ", "");
+                parameters.SiteType = siteType;
+            }
+        }
+
+        foreach (ListItem item in checkBoxListSellingDistricts.Items)
+            if (item.Selected)
+                parameters.Districts.Add(item.Text);
+
+        searchSite(parameters);
+    }
+    private void searchSite(MdoSiteAdSearchParameters parameters)
+    {
+        if (parameters != null)
+        {
+            PietaSiteAdController siteController = new PietaSiteAdController();
+            List<SiteAdView> searchResult = new List<SiteAdView>();
+            searchResult = siteController.SearchSites(parameters);
+            foreach (var siteAdView in searchResult)
+            {
+                siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
+                siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
+                if (siteAdView.IsRoomNameVisible)
+                    siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
+                string imageUrl = "http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+                string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
+                if (!string.IsNullOrEmpty(mainPic))
+                    imageUrl = mainPic;
+                siteAdView.MainPicUrl = imageUrl;
+            }
+            setDataBinding(searchResult);
+        }
     }
     private void setDataBinding(object dataToBind)
     {
@@ -344,7 +395,9 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     #region EVENTS
     protected override void OnInit(EventArgs e)
     {
-        loadSearchParameter();
+        radioButtonBuy.Checked = true;
+        loadSellingSearchParameter();
+        loadRentSearchParameter();
         base.OnPreInit(e);
     }
     
@@ -354,7 +407,10 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     protected void buttonSearch_Click(object sender, EventArgs e)
     {
-        searchSite();
+        if (radioButtonBuy.Checked)
+            searchSellingSite();
+        else
+            searchRentSite();
     }
     protected void dropDownListResultOrdering_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -384,6 +440,5 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     {
         setDataBinding(Page.Session[searchResultSessionKey]);
     }
-    
     #endregion
 }

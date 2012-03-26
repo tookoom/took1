@@ -30,7 +30,7 @@ namespace TK1.Bizz.Data.Controller
             {
                 result = (from o in Entities.SiteAds
                           where o.CustomerCodename == customerCodename
-                          select o.CityName).ToList();
+                          select o.CityName).Distinct().ToList();
             }
             catch (Exception exception)
             {
@@ -45,7 +45,7 @@ namespace TK1.Bizz.Data.Controller
             {
                 result = (from o in Entities.SiteAds
                           where o.CustomerCodename == customerCodename
-                          select o.DistrictName).ToList();
+                          select o.DistrictName).Distinct().ToList();
             }
             catch (Exception exception)
             {
@@ -172,7 +172,7 @@ namespace TK1.Bizz.Data.Controller
             }
             return result;
         }
-        public List<string> GetSiteTypes(string customerCodename, int siteAdTypeID, string categoryName)
+        public List<string> GetSiteTypes(string customerCodename, int siteAdTypeID)
         {
             List<string> result = new List<string>();
             try
@@ -180,8 +180,7 @@ namespace TK1.Bizz.Data.Controller
                 result = (from o in Entities.SiteAds
                           where o.CustomerCodename == customerCodename
                             & o.SiteAdTypeID == siteAdTypeID    
-                            & o.CategoryName == categoryName
-                          select o.DistrictName).ToList();
+                          select o.SiteTypeName).Distinct().ToList();
             }
             catch (Exception exception)
             {
@@ -197,7 +196,7 @@ namespace TK1.Bizz.Data.Controller
                 if (parameters != null)
                 {
                     var query = Entities.SiteAds.Where(o => o.CustomerCodename == parameters.CustomerCodename);
-                    var list = query.ToList();
+                    //var list = query.ToList();
                     if (parameters.Code > 0)
                     {
                         query = query.FilterCode(parameters.Code);
@@ -205,17 +204,17 @@ namespace TK1.Bizz.Data.Controller
                     else
                     {
                         query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
-                        list = query.ToList();
-                        query = query.FilterCategory(parameters.Category);
-                        list = query.ToList();
+                        //list = query.ToList();
+                        //query = query.FilterCategory(parameters.Category);
+                        //list = query.ToList();
                         query = query.FilterCity(parameters.CityName);
-                        list = query.ToList();
+                        //list = query.ToList();
                         query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
-                        list = query.ToList();
+                        //list = query.ToList();
                         query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
-                        list = query.ToList();
+                       // list = query.ToList();
                         if (parameters.SiteType != "*")
-                            query = query.FilterSiteType(parameters.Category, parameters.SiteType);
+                            query = query.FilterSiteType(parameters.SiteType);
                         if (!parameters.Districts.Contains("Todos"))
                             query = query.FilterDistrict(parameters.Districts);
 

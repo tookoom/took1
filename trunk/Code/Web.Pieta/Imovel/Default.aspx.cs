@@ -66,144 +66,17 @@ public partial class Imovel_Default : System.Web.UI.Page
     private string getSitePicGallery(int siteAdTypeID, int siteAdID)
     {
         string result = string.Empty;
-
+        string baseUrl = string.Empty;
+        PietaSiteAdController siteController = new PietaSiteAdController();
         switch (siteAdTypeID)
         {
             case (int)SiteAdTypes.Rent:
-                result = getRentSitePicGallery(siteAdTypeID, siteAdID);
+                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", siteAdID);
                 break;
             case (int)SiteAdTypes.Sell:
-                result = getSellSitePicGallery(siteAdTypeID, siteAdID);
+                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
                 break;
         }
-        return result;
-
-        #region OLD CODE
-        //PietaSiteAdController siteController = new PietaSiteAdController();
-        //var siteAdPics = siteController.GetSitePics(siteAdType, siteAdID);
-
-
-        //string baseUrl = string.Empty;
-        //if (siteAdType == 1)
-        //    baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        //if (siteAdType == 2)
-        //    //baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
-        //    baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
-        //if (!string.IsNullOrEmpty(baseUrl))
-        //{
-        //    baseUrl = this.ResolveUrl(baseUrl);
-        //    string path = Server.MapPath(baseUrl);
-        //    string items = string.Empty;
-        //    if (Directory.Exists(path))
-        //    {
-        //        int index = 0;
-        //        foreach (var file in Directory.GetFiles(path, "*.jpg"))
-        //        {
-        //            index++;
-        //            string fileName = Path.GetFileName(file);
-        //            string imageSource = baseUrl  + fileName;
-        //            string imageThumbSource = baseUrl + fileName;
-        //            string imageTitle = string.Format("Foto {0}", index);
-        //            string imageDescription = siteAdPics.Where(o => o.FileName == fileName).Select(o=>o.Description).FirstOrDefault() ?? string.Empty; 
-        //            string li = "<li>"
-        //                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
-        //                    + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-        //                    + "</a>"
-        //                    + "<div class=\"caption\">"
-        //                    //+ "<div class=\"image-title\">" + imageTitle + "</div>"
-        //                    + "<div class=\"image-title\">" + imageDescription + "</div>"
-        //                    + "</div>"
-        //                    + "</li>";
-        //            items += li + Environment.NewLine;
-        //        }
-        //    }
-        //    if (string.IsNullOrEmpty(items))
-        //    {
-        //        string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
-        //        string li = "<li>"
-        //            + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
-        //            + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
-        //            + "</a>"
-        //            + "<div class=\"caption\">"
-        //            + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
-        //            + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
-        //            //+ "<p visible=\"false\">" + baseUrl + "</p>"
-        //            //+ "<p visible=\"false\">" + path + "</p>"
-        //            + "</div>"
-        //            + "</div>"
-        //            + "</li>";
-        //        items += li + Environment.NewLine;
-        //    }
-        //    string ul = "<ul class=\"thumbs noscript\">"
-        //        + "{0}"
-        //        + "</ul>";
-        //    result = string.Format(ul, items);
-
-        //}
-        //return result; 
-        #endregion
-    }
-
-    private string getRentSitePicGallery(int siteAdTypeID, int siteAdID)
-    {
-        string result = string.Empty;
-        string baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        baseUrl = this.ResolveUrl(baseUrl);
-        string path = Server.MapPath(baseUrl);
-        string items = string.Empty;
-        if (Directory.Exists(path))
-        {
-            int index = 0;
-            foreach (var file in Directory.GetFiles(path, "*.jpg"))
-            {
-                index++;
-                string fileName = Path.GetFileName(file);
-                string imageSource = baseUrl + fileName;
-                string imageThumbSource = baseUrl + fileName;
-                //string imageTitle = string.Format("Foto {0}", index);
-                string imageDescription = string.Format("Foto {0}", index);// siteAdPics.Where(o => o.FileName == fileName).Select(o => o.Description).FirstOrDefault() ?? string.Empty;
-                string li = "<li>"
-                        + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageDescription + "\">"
-                        + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageDescription + "\" />"
-                        + "</a>"
-                        + "<div class=\"caption\">"
-                    //+ "<div class=\"image-title\">" + imageTitle + "</div>"
-                        + "<div class=\"image-title\">" + imageDescription + "</div>"
-                        + "</div>"
-                        + "</li>";
-                items += li + Environment.NewLine;
-            }
-        }
-        if (string.IsNullOrEmpty(items))
-        {
-            string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
-            string li = "<li>"
-                + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
-                + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
-                + "</a>"
-                + "<div class=\"caption\">"
-                + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
-                + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
-                //+ "<p visible=\"false\">" + baseUrl + "</p>"
-                //+ "<p visible=\"false\">" + path + "</p>"
-                + "</div>"
-                + "</div>"
-                + "</li>";
-            items += li + Environment.NewLine;
-        }
-        string ul = "<ul class=\"thumbs noscript\">"
-            + "{0}"
-            + "</ul>";
-        result = string.Format(ul, items);
-
-
-        return result;
-    }
-    private string getSellSitePicGallery(int siteAdTypeID, int siteAdID)
-    {
-        string result = string.Empty;
-        PietaSiteAdController siteController = new PietaSiteAdController();
-        var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
         var siteAdPics = siteController.GetSitePics(siteAdTypeID, siteAdID);
         string items = string.Empty;
         int index = 0;
@@ -222,7 +95,7 @@ public partial class Imovel_Default : System.Web.UI.Page
                     + "</a>"
                     + "<div class=\"caption\">"
                     + "<div class=\"image-title\">" + imageDescription + "</div>"
-                    //+ "<div class=\"image-desc\">" + imageDescription + "</div>"
+                //+ "<div class=\"image-desc\">" + imageDescription + "</div>"
                     + "</div>"
                     + "</li>";
             items += li + Environment.NewLine;
@@ -248,9 +121,131 @@ public partial class Imovel_Default : System.Web.UI.Page
             + "{0}"
             + "</ul>";
         result = string.Format(ul, items);
-
         return result;
+
     }
+    //private string _getSitePicGallery(int siteAdTypeID, int siteAdID)
+    //{
+    //    string result = string.Empty;
+
+    //    switch (siteAdTypeID)
+    //    {
+    //        case (int)SiteAdTypes.Rent:
+    //            result = getRentSitePicGallery(siteAdTypeID, siteAdID);
+    //            break;
+    //        case (int)SiteAdTypes.Sell:
+    //            result = getSellSitePicGallery(siteAdTypeID, siteAdID);
+    //            break;
+    //    }
+    //    return result;
+    //}
+    //private string _getRentSitePicGallery(int siteAdTypeID, int siteAdID)
+    //{
+    //    string result = string.Empty;
+    //    string baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
+    //    baseUrl = this.ResolveUrl(baseUrl);
+    //    string path = Server.MapPath(baseUrl);
+    //    string items = string.Empty;
+    //    if (Directory.Exists(path))
+    //    {
+    //        int index = 0;
+    //        foreach (var file in Directory.GetFiles(path, "*.jpg"))
+    //        {
+    //            index++;
+    //            string fileName = Path.GetFileName(file);
+    //            string imageSource = baseUrl + fileName;
+    //            string imageThumbSource = baseUrl + fileName;
+    //            //string imageTitle = string.Format("Foto {0}", index);
+    //            string imageDescription = string.Format("Foto {0}", index);// siteAdPics.Where(o => o.FileName == fileName).Select(o => o.Description).FirstOrDefault() ?? string.Empty;
+    //            string li = "<li>"
+    //                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageDescription + "\">"
+    //                    + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageDescription + "\" />"
+    //                    + "</a>"
+    //                    + "<div class=\"caption\">"
+    //                //+ "<div class=\"image-title\">" + imageTitle + "</div>"
+    //                    + "<div class=\"image-title\">" + imageDescription + "</div>"
+    //                    + "</div>"
+    //                    + "</li>";
+    //            items += li + Environment.NewLine;
+    //        }
+    //    }
+    //    if (string.IsNullOrEmpty(items))
+    //    {
+    //        string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+    //        string li = "<li>"
+    //            + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+    //            + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+    //            + "</a>"
+    //            + "<div class=\"caption\">"
+    //            + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+    //            + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
+    //            //+ "<p visible=\"false\">" + baseUrl + "</p>"
+    //            //+ "<p visible=\"false\">" + path + "</p>"
+    //            + "</div>"
+    //            + "</div>"
+    //            + "</li>";
+    //        items += li + Environment.NewLine;
+    //    }
+    //    string ul = "<ul class=\"thumbs noscript\">"
+    //        + "{0}"
+    //        + "</ul>";
+    //    result = string.Format(ul, items);
+
+
+    //    return result;
+    //}
+    //private string _getSellSitePicGallery(int siteAdTypeID, int siteAdID)
+    //{
+    //    string result = string.Empty;
+    //    PietaSiteAdController siteController = new PietaSiteAdController();
+    //    var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
+    //    var siteAdPics = siteController.GetSitePics(siteAdTypeID, siteAdID);
+    //    string items = string.Empty;
+    //    int index = 0;
+    //    foreach (var item in siteAdPics)
+    //    {
+    //        index++;
+    //        string fileName = item.FileName;
+    //        string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
+    //        string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
+    //        //string imageTitle = string.Format("Foto {0}", index);
+    //        string imageDescription = item.Description ?? string.Empty;
+
+    //        string li = "<li>"
+    //                + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageDescription + "\">"
+    //                + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageDescription + "\" />"
+    //                + "</a>"
+    //                + "<div class=\"caption\">"
+    //                + "<div class=\"image-title\">" + imageDescription + "</div>"
+    //                //+ "<div class=\"image-desc\">" + imageDescription + "</div>"
+    //                + "</div>"
+    //                + "</li>";
+    //        items += li + Environment.NewLine;
+    //    }
+    //    if (string.IsNullOrEmpty(items))
+    //    {
+    //        string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
+    //        string li = "<li>"
+    //            + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+    //            + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+    //            + "</a>"
+    //            + "<div class=\"caption\">"
+    //            + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+    //            + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
+    //            //+ "<p visible=\"false\">" + baseUrl + "</p>"
+    //            //+ "<p visible=\"false\">" + path + "</p>"
+    //            + "</div>"
+    //            + "</div>"
+    //            + "</li>";
+    //        items += li + Environment.NewLine;
+    //    }
+    //    string ul = "<ul class=\"thumbs noscript\">"
+    //        + "{0}"
+    //        + "</ul>";
+    //    result = string.Format(ul, items);
+
+    //    return result;
+    //}
     //private string getSaleSitePicGallery(int siteAdType, int siteAdID)
     //{
     //    PietaSiteAdController siteController = new PietaSiteAdController();
