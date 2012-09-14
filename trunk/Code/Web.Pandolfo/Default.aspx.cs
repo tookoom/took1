@@ -1,0 +1,157 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using TK1.Bizz.Data;
+using TK1.Bizz.Data.Controller;
+using TK1.Bizz.Data.Presentation;
+using TK1.Bizz;
+
+public partial class _Default : System.Web.UI.Page
+{
+    #region PRIVATE MEMBERS
+    private static string searchParametersSessionKey = "PandolfoQuickSearchParameter";
+    private static string customerName = CustomerNames.Pandolfo.ToString();
+
+    #endregion
+
+    private void loadRentSearchParameter()
+    {
+        SiteAdController siteController = new SiteAdController();
+
+        var cities = siteController.GetCities(customerName);
+        foreach (var city in cities.OrderBy(o => o))
+            dropDownRentCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+
+        dropDownRentDistricts.Items.Add(new ListItem("Todos os bairros", "All") { Selected = true });
+        var districts = siteController.GetDistricts(customerName);
+        foreach (var district in districts.OrderBy(o => o))
+            dropDownRentDistricts.Items.Add(new ListItem(district));
+
+        dropDownRentSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
+        var siteTypes = siteController.GetSiteTypes(customerName, 1);
+        foreach (var siteType in siteTypes.OrderBy(o => o))
+            dropDownRentSiteType.Items.Add(new ListItem(siteType, siteType));
+    }
+    private void loadSellingSearchParameter()
+    {
+        SiteAdController siteController = new SiteAdController();
+
+        var cities = siteController.GetCities(customerName);
+        foreach (var city in cities.OrderBy(o => o))
+            dropDownSellingCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+
+        dropDownSellingDistricts.Items.Add(new ListItem("Todos os bairros", "All") { Selected = true });
+        var districts = siteController.GetDistricts(customerName);
+        foreach (var district in districts.OrderBy(o => o))
+            dropDownSellingDistricts.Items.Add(new ListItem(district));
+
+        dropDownSellingSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
+        var siteTypes = siteController.GetSiteTypes(customerName, 1);
+        foreach (var siteType in siteTypes.OrderBy(o => o))
+            dropDownSellingSiteType.Items.Add(new ListItem(siteType, siteType));
+
+    }
+
+    private void searchRentSite()
+    {
+        SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName, Code = 4 };
+
+        parameters.AdType = SiteAdTypes.Rent;
+
+        if (dropDownRentCities.SelectedItem != null)
+            parameters.CityName = dropDownRentCities.SelectedItem.Text;
+        if (dropDownRentSiteType.SelectedItem != null)
+        {
+            string text = dropDownRentSiteType.SelectedItem.Text;
+            string value = dropDownRentSiteType.SelectedItem.Value;
+            //if (value.Contains(SiteAdCategories.Residencial.ToString()))
+            //    parameters.Category = SiteAdCategories.Residencial.ToString();
+            //else
+            //    parameters.Category = SiteAdCategories.Comercial.ToString();
+            if (value.Contains("*"))
+                parameters.SiteType = "*";
+            else
+            {
+                string siteType = dropDownRentSiteType.SelectedItem.Text;
+                if (siteType.Contains("- "))
+                    siteType = siteType.Replace("- ", "");
+                parameters.SiteType = siteType;
+            }
+        }
+        if (dropDownRentDistricts.SelectedItem != null)
+            parameters.Districts.Add(dropDownRentDistricts.SelectedItem.Text);
+
+        setSearchSiteParameters(parameters);
+    }
+    private void searchSellingSite()
+    {
+        SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName, Code = 4 };
+
+        parameters.AdType = SiteAdTypes.Rent;
+        if (radioButtonBuy.Checked)
+            parameters.AdType = SiteAdTypes.Sell;
+
+        if (dropDownSellingCities.SelectedItem != null)
+            parameters.CityName = dropDownSellingCities.SelectedItem.Text;
+        if (dropDownSellingSiteType.SelectedItem != null)
+        {
+            string text = dropDownSellingSiteType.SelectedItem.Text;
+            string value = dropDownSellingSiteType.SelectedItem.Value;
+            if (value.Contains(SiteAdCategories.Residencial.ToString()))
+                parameters.Category = SiteAdCategories.Residencial.ToString();
+            else
+                parameters.Category = SiteAdCategories.Comercial.ToString();
+            if (value.Contains("*"))
+                parameters.SiteType = "*";
+            else
+            {
+                string siteType = dropDownSellingSiteType.SelectedItem.Text;
+                if (siteType.Contains("- "))
+                    siteType = siteType.Replace("- ", "");
+                parameters.SiteType = siteType;
+            }
+        }
+
+        if (dropDownSellingDistricts.SelectedItem != null)
+            parameters.Districts.Add(dropDownSellingDistricts.SelectedItem.Text);
+
+
+        setSearchSiteParameters(parameters);
+    }
+    private void setSearchSiteParameters(SiteAdSearchParameters parameters)
+    {
+        if (parameters != null)
+        {
+            if (Page.Session[searchParametersSessionKey] != null)
+                Page.Session.Remove(searchParametersSessionKey);
+            Page.Session.Add(searchParametersSessionKey, parameters);
+
+        }
+    }
+
+    #region EVENTS
+    protected override void OnInit(EventArgs e)
+    {
+        radioButtonBuy.Checked = true;
+        loadSellingSearchParameter();
+        loadRentSearchParameter();
+        base.OnPreInit(e);
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+    }
+    protected void buttonSearch_Click(object sender, EventArgs e)
+    {
+        if (radioButtonBuy.Checked)
+            searchSellingSite();
+        else
+            searchRentSite();
+        var searchType = radioButtonBuy.Checked ? "selling" : "rent";
+        Response.Redirect("Pesquisa/Default.aspx?quickSearch=" + searchType);
+    }
+    #endregion
+}
