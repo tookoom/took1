@@ -1,0 +1,57 @@
+﻿
+/* VIEWER   
+----------------------------------------------------------*/
+.quickSearch
+{
+    padding:8px;
+    font-size:large;
+    font-weight:bold;
+}
+div.quickSearchImage
+{
+    height:100px;
+    /*position: relative;
+    float: left;*/
+    /*background-color: Fuchsia;*/
+    overflow: hidden;
+}
+.quickSearchImage
+{
+    width:160px;
+    margin: 6px 0px 4px 0px 12px;
+}
+.quickSearchInfo
+{
+    /*position: relative;
+    float: right;*/
+    /*width: 700px;*/
+    min-height: 440px;
+    /*background-color: Orange;*/
+}
+.quickSearchDescription
+{
+    /*position: relative;
+    float: right;*/
+    /*width: 700px;*/
+    height: 280px;
+    overflow:hidden;
+    /*background-color: Orange;*/
+}
+div.quickSearchButton
+{
+    /*background-color:#23669A;*/
+    width:160;
+    height: 30px;
+    text-align:center;
+}
+div.quickSearchButton a
+{
+    margin-left: auto;
+    margin-right: auto;
+    font-size:large;
+    font-weight:bold;
+    color:#00458b;
+    text-align:center;
+}
+/* DETAILS   
+----------------------------------------------------------*/
