@@ -3,66 +3,36 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="headerBlueLine">
-        <h1>Envio de Mensagem</h1>
-    </div>
-    <img src="http://www.pietaimoveis.com.br/Images/FaleConosco.png" style="float:right; position:absolute; margin-left:456px; margin-top:120px; " />
+    <h1>Contato</h1>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" >
+        <tr>
+            <td width="10%">Nome:</td>
+            <td width="30%"><asp:TextBox ID="textBoxContactName" runat="server" TextMode="SingleLine" Width="100%"  ToolTip="Nome para contato" ></asp:TextBox></td>
+            <td width="50%" rowspan="3"><asp:TextBox ID="textBoxContactMessage" Width="100%" Height="100%" runat="server" TextMode="MultiLine" Text="" ToolTip="Digite aqui a sua mensagem para a Pietá Imóveis"></asp:TextBox></td>
+            <td rowspan="3"><asp:LinkButton ID="buttonSendMessage"  CssClass="lnkButton" runat="server" Height="100%" Width="100%" OnClick="buttonSendMessage_OnClick">
+                        Enviar
+                        <img src="../Imagens/MailSmall.png" />
+                </asp:LinkButton></td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td><asp:TextBox ID="textBoxContactMail" runat="server" TextMode="SingleLine" Width="100%"  ToolTip="Nome para contato" ></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td>Telefone:</td>
+            <td><asp:TextBox ID="textBoxContactPhone" runat="server" TextMode="SingleLine" Width="100%"  ToolTip="Nome para contato" ></asp:TextBox></td>
+        </tr>
+    </table>
+    <br />
+    <h1>Localização</h1>
+    <p>
+    Av Getúlio Vargas, 202, Bairro Menino Deus, Porto Alegre
+    </p>
+    <p>Fones: (51) 3221.9869 e (51) 3225.7116</p>
+    <br />
+    <iframe width="940" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?q=Av+Get%C3%BAlio+Vargas,+202&amp;ie=UTF8&amp;hq=&amp;hnear=Av.+Get%C3%BAlio+Vargas,+202+-+Menino+Deus,+Porto+Alegre+-+Rio+Grande+do+Sul&amp;gl=br&amp;t=m&amp;ll=-30.041347,-51.222124&amp;spn=0.01486,0.04034&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+    <a href="https://maps.google.com.br/maps?q=Av+Get%C3%BAlio+Vargas,+202&amp;ie=UTF8&amp;hq=&amp;hnear=Av.+Get%C3%BAlio+Vargas,+202+-+Menino+Deus,+Porto+Alegre+-+Rio+Grande+do+Sul&amp;gl=br&amp;t=m&amp;ll=-30.041347,-51.222124&amp;spn=0.01486,0.04034&amp;z=15&amp;iwloc=A&amp;source=embed"  target="_new" >Crie seu itinerário</a>
 
-        <table border="0" cellpadding="0" cellspacing="0" width="480px" >
-            <tr>
-                <td style="vertical-align:top;"><p>Quero:</p></td>
-                <td style="padding-top:16px;">
-                    <asp:RadioButtonList ID="radioButtonListContactType" runat="server">
-                        <asp:ListItem Text="Informações gerais" Value="Informações gerais" Selected="True" class="radioItem"></asp:ListItem>
-                        <asp:ListItem Text="Informações sobre venda de imóveis" Value="Vendas" class="radioItem"></asp:ListItem>
-                        <asp:ListItem Text="Informações sobre locação de imóveis" Value="Aluguel" class="radioItem"></asp:ListItem>
-                        <asp:ListItem Text="Trabalhar na Pietá" Value="Trabalhar na Pietá" class="radioItem"></asp:ListItem>
-                        <asp:ListItem Text="Deixar uma sugestão ou reclamação" Value="Sugestão/Reclamação" class="radioItem"></asp:ListItem>
-                    </asp:RadioButtonList>
-                </td>
-            </tr>
-            <tr>
-                <td><p>Nome:</p></td>
-                <td>
-                    <asp:TextBox ID="textBoxContactName" runat="server" TextMode="SingleLine" 
-                        Width="100%"  ToolTip="Nome para contato" ></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td><p>E-mail:</p></td>
-                <td>
-                    <asp:TextBox ID="textBoxContactMail" runat="server" TextMode="SingleLine" Width="100%"  ToolTip="E-mail para contato"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td><p>Telefone:</p></td>
-                <td>
-                    <asp:TextBox ID="textBoxContactPhone" runat="server" TextMode="SingleLine" Width="100%" ToolTip="Telefone para contato" ></asp:TextBox>
-                </td>
-            </tr>
-        </table>
-        <br />
-        <table  border="0" cellpadding="0" cellspacing="0" width="480px" >
-            <tr>
-                <asp:TextBox ID="textBoxContactMessage"  class="input" runat="server" TextMode="MultiLine" Width="480px" Text="Digite aqui a sua mensagem" ToolTip="Digite aqui a sua mensagem para a Pietá Imóveis" Height="100px" ></asp:TextBox>
-            </tr>
-            <tr>
-                <td style="width: 150px; vertical-align:top;"><p>Prefiro ser contactado:</p></td>
-                <td style="width: 180px; vertical-align:top;padding-top:16px;">
-                    <asp:RadioButtonList ID="radioButtonListResponseType" runat="server">
-                        <asp:ListItem Text="Indiferente" Value="Indiferente" Selected="True" class="radioItem"></asp:ListItem>
-                        <asp:ListItem Text="Por telefone" Value="Telefone" class="radioItem"></asp:ListItem>
-                        <asp:ListItem Text="Por e-mail" Value="E-mail" class="radioItem"></asp:ListItem>
-                    </asp:RadioButtonList>
-                </td>
-                <td style="vertical-align:top; padding-left:8px; padding-top:12px; width:98px">
-                    <div class="buttonSend" ><asp:LinkButton ID="buttonSendMessage" Text="Enviar" runat="server" 
-                        style="margin: -4px 0px 0px 8px;"
-                            OnClick="buttonSendMessage_OnClick" /></div>
-                    
-                </td>
-            </tr>
-        </table>
-        <br />
+    <br />
 </asp:Content>
 

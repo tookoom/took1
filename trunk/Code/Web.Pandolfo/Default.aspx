@@ -26,7 +26,11 @@
                         </asp:DropDownList>
                     </div>
                 </td>
-                <td width="30%">
+                <td width=20%" rowspan=3>
+                    <asp:LinkButton ID="buttonSearch" CssClass="lnkButton" runat="server"  Height="100%" Width="100%" OnClick="buttonSearch_Click" >
+                        Pesquisar
+                        <img src="Imagens/SearchSmall.png" />
+                    </asp:LinkButton>
                 </td>
             </tr>
             <tr>
@@ -45,14 +49,6 @@
                         </asp:DropDownList>
                     </div>
                 </td>
-                <td>
-                    <div class="quickSearchButton">
-                                <a href="Pesquisa/Default.aspx">
-                                    Pesquisar</a>
-                    </div>
-<%--                    <asp:LinkButton ID="buttonSearch" runat="server"  OnClick="buttonSearch_Click" >Pesquisar</asp:LinkButton>
---%>                
-                </td>
             </tr>
             <tr>
                 <td> </td>
@@ -64,8 +60,6 @@
                     <div id="divSellingSiteTypes">
                         <asp:DropDownList ID="dropDownSellingSiteType" runat="server"  Font-Size="Medium" Width="100%"></asp:DropDownList>
                     </div>
-                </td>
-                <td>
                 </td>
             </tr>
         </table>
@@ -79,7 +73,7 @@
     <div class="featuredSites">
 
         <asp:DataList ID="dataListFeaturedSiteAds" runat="server" 
-            DataSourceID="objectDataSourceFeaturedSites" RepeatDirection="Horizontal">
+            DataSourceID="objectDataSourceFeaturedSellingSites" RepeatDirection="Horizontal">
             <ItemTemplate>
                 <div class="featureViewerOuter">
                     <div class="featureViewerInner">
@@ -105,6 +99,7 @@
 
 
     </div>
+    <br />
 
     <h1>
         Destaques Aluguel
@@ -112,7 +107,7 @@
     <div class="featuredSites">
 
         <asp:DataList ID="dataList1" runat="server" 
-            DataSourceID="objectDataSourceFeaturedSites" RepeatDirection="Horizontal">
+            DataSourceID="objectDataSourceFeaturedRentSites" RepeatDirection="Horizontal">
             <ItemTemplate>
                 <div class="featureViewerOuter">
                     <div class="featureViewerInner">
@@ -135,11 +130,19 @@
                 </div>
             </ItemTemplate>
         </asp:DataList>
+        <br />
 
     </div>
 
-    <asp:ObjectDataSource ID="objectDataSourceFeaturedSites" runat="server" 
-        SelectMethod="GetFeaturedSiteAds" 
+    <asp:ObjectDataSource ID="objectDataSourceFeaturedRentSites" runat="server" 
+        SelectMethod="GetFeaturedRentSiteAds" 
+        TypeName="TK1.Bizz.Data.Controller.SiteAdController">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="Pandolfo" Name="customerName" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="objectDataSourceFeaturedSellingSites" runat="server" 
+        SelectMethod="GetFeaturedSellingSiteAds" 
         TypeName="TK1.Bizz.Data.Controller.SiteAdController">
         <SelectParameters>
             <asp:Parameter DefaultValue="Pandolfo" Name="customerName" Type="String" />

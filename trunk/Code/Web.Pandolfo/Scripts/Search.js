@@ -3,25 +3,19 @@ alert('teste');
 };
 
 function setSearchType() {
-    //alert('teste');
-//    var pathname = window.location;
-//    alert(pathname);
-    var quickSearch = $.url().param('quickSearch');
+    //alert('1');
+    var quickSearch = $.url().param('searchType');
+    //alert(quickSearch);
     if (quickSearch == 'rent') {
         $('input[id*=radioButtonRent]')[0].checked = true;
-        //        window.location = window.location.pathname;
-        alert('1');
-//        window.location.search = 'quickSearch=no';
     }
     if (quickSearch == 'selling') {
         $('input[id*=radioButtonBuy]')[0].checked = true;
-        //        window.location = window.location.pathname;
-//        window.location.search = 'quickSearch=no';
     }
-//    window.location.search = 'param=value';
 };
 
 function setSearchFieldsVisibility() {
+    //alert('2');
     if ($('input[id*=radioButtonRent]').is(":checked")) {
         //alert('rent');
         $("#divRentPriceFrom").show();
