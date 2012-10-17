@@ -38,81 +38,71 @@ public partial class Imovel_Default : System.Web.UI.Page
     //    }
     //    return result;
     //}
-    private string getSitePicGallery(int customerID, int siteAdID)
+    private string getSitePicGallery(int siteAdTypeID, int siteAdID)
     {
         SiteAdController siteController = new SiteAdController();
         var customerName = CustomerNames.Pandolfo.ToString();
 
         string result = string.Empty;
-        string baseUrl = string.Format("~\\Integra\\Mdo\\SimVendas\\Fotos\\{0}\\{1}\\", customerName, siteAdID);
+        string baseUrl = baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Bizz/Broker/RealEstate/pandolfo/{0}/{1}/", siteAdTypeID == 1 ? "Rent" : "Sell", siteAdID);
 
-        if (!string.IsNullOrEmpty(baseUrl))
+        var siteAd = siteController.GetSiteAd(customerName, siteAdTypeID, siteAdID);
+        var siteAdPics = new List<SiteAdPicView>();
+        if (siteAd != null)
         {
-            baseUrl = this.ResolveUrl(baseUrl);
-            string path = Server.MapPath(baseUrl);
-            string items = string.Empty;
-            if (Directory.Exists(path))
+            foreach (var item in siteAd.SiteAdPics)
             {
-                int index = 0;
-                foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                siteAdPics.Add(new SiteAdPicView()
                 {
-                    index++;
-                    string fileName = Path.GetFileName(file);
-                    string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
-                    string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
-                    string imageTitle = string.Format("Foto {0}", index);
-                    string imageDescription = siteController.GetSitePicDescription("pandolfo",fileName) ?? string.Empty;
-
-                    string li = "<li>"
-                            + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
-                            + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-                            + "</a>"
-                            + "<div class=\"caption\">"
-                        //+ "<div class=\"download\">"
-                        //+ "<a href=\"" + imageSource + "\">Download Original </a>"
-                        //+ "</div>"
-                            + "<div class=\"image-title\">" + imageTitle + "</div>"
-                            + "<div class=\"image-desc\">" + imageDescription + "</div>"
-                            + "</div>"
-                            + "</li>";
-                    //string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
-                    items += li + Environment.NewLine;
-                }
-                //if (!string.IsNullOrEmpty(items))
-                //{
-                //    string ul = "<ul class=\"thumbs noscript\">"
-                //        + "{0}"
-                //        + "</ul>";
-                //    result = string.Format(ul, items);
-                //}
-                //else
-                //{
-                //    result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
-                //}
-
+                    Description = item.Description,
+                    FileName = item.FileName,
+                    Index = item.PicID
+                });
             }
-            if (string.IsNullOrEmpty(items))
-            {
-                string imageSource = @"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
-                string li = "<li>"
-                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
-                    + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+        }
+        string items = string.Empty;
+        int index = 0;
+        foreach (var item in siteAdPics)
+        {
+            index++;
+            string fileName = item.FileName;
+            string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
+            string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
+            //string imageTitle = string.Format("Foto {0}", index);
+            string imageDescription = item.Description ?? string.Empty;
+
+            string li = "<li>"
+                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageDescription + "\">"
+                    + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageDescription + "\" />"
                     + "</a>"
                     + "<div class=\"caption\">"
-                    + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
-                    + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro" + "</div>"
-                    //+ "<p visible=\"false\">" + baseUrl + "</p>"
-                    //+ "<p visible=\"false\">" + path + "</p>"
+                    + "<div class=\"image-title\">" + imageDescription + "</div>"
+                //+ "<div class=\"image-desc\">" + imageDescription + "</div>"
                     + "</div>"
                     + "</li>";
-                items += li + Environment.NewLine;
-            }
-            string ul = "<ul class=\"thumbs noscript\">"
-                + "{0}"
-                + "</ul>";
-            result = string.Format(ul, items);
-
+            items += li + Environment.NewLine;
         }
+        if (string.IsNullOrEmpty(items))
+        {
+            string imageSource = @"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
+            string li = "<li>"
+                + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
+                + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+                + "</a>"
+                + "<div class=\"caption\">"
+                + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
+                + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
+                //+ "<p visible=\"false\">" + baseUrl + "</p>"
+                //+ "<p visible=\"false\">" + path + "</p>"
+                + "</div>"
+                + "</div>"
+                + "</li>";
+            items += li + Environment.NewLine;
+        }
+        string ul = "<ul class=\"thumbs noscript\">"
+            + "{0}"
+            + "</ul>";
+        result = string.Format(ul, items);
         return result;
     }
 

@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using TK1.Bizz.Pandolfo.Const;
 using TK1.Data;
 using TK1.Bizz;
+using TK1.Bizz.Pandolfo;
+using TK1.Bizz.Net;
 
 public partial class Contato_Default : System.Web.UI.Page
 {
@@ -18,12 +20,12 @@ public partial class Contato_Default : System.Web.UI.Page
     private string createMailBody()
     {
         string result = string.Empty;
-        string contactType = radioButtonListContactType.SelectedValue;
+        //string contactType = radioButtonListContactType.SelectedValue;
         string timestamp = DateTime.Now.ToString();
         string name = textBoxContactName.Text;
         string mail = textBoxContactMail.Text;
         string phone = textBoxContactPhone.Text;
-        string contact = radioButtonListResponseType.SelectedValue;
+        //string contact = radioButtonListResponseType.SelectedValue;
         string message = textBoxContactMessage.Text;
 
 
@@ -31,10 +33,10 @@ public partial class Contato_Default : System.Web.UI.Page
         try
         {
             string body = HtmlTemplates.GetContactMailTemplate();
-            if (body.Contains(MailTemplateTags.SiteContact.Contact))
-                body = body.Replace(MailTemplateTags.SiteContact.Contact, contact);
-            if (body.Contains(MailTemplateTags.SiteContact.ContactType))
-                body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
+            //if (body.Contains(MailTemplateTags.SiteContact.Contact))
+            //    body = body.Replace(MailTemplateTags.SiteContact.Contact, contact);
+            //if (body.Contains(MailTemplateTags.SiteContact.ContactType))
+            //    body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
             if (body.Contains(MailTemplateTags.General.Mail))
                 body = body.Replace(MailTemplateTags.General.Mail, mail);
             if (body.Contains(MailTemplateTags.General.Message))
@@ -57,17 +59,14 @@ public partial class Contato_Default : System.Web.UI.Page
     private void createMessageAlert(System.Web.UI.Page senderPage, string alertMsg, string alertKey)
     {
         string strScript = "<script language=JavaScript>alert('" + alertMsg + "')</script>";
-
-        //if (!(senderPage.IsStartupScriptRegistered(alertKey)))
-        //    senderPage.RegisterStartupScript(alertKey, strScript);
-
         this.ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", strScript);
     }
     private void sendMessage()
     {
         string subject = "Mensagem enviada através do site Pandolfo Imóveis";
         string body = createMailBody();
-        AdminHelper.SendMail(subject, body, "andre@tk1.net.br");
+        var mailHelper = new MailHelper();
+        mailHelper.SendMail(subject, body, MailAdresses.Contato, true);
         createMessageAlert(this, "Mensagem enviada", "");
     }
 

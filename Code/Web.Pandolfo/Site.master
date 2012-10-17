@@ -11,53 +11,51 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <img src="http://pandolfo.tk1.net.br/Imagens/Header.png" />
+                <img src="http://pandolfo.tk1.net.br/Imagens/Header3.png" />
             </div>
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Destaques"/>
                         <asp:MenuItem NavigateUrl="~/Pesquisa/Default.aspx" Text="Pesquisa de Imóveis"/>
-                        <asp:MenuItem NavigateUrl="~/Documentos/Default.aspx" Text="Documentos"/>
                         <asp:MenuItem NavigateUrl="~/Contato/Default.aspx" Text="Contato e Localização"/>
+                        <asp:MenuItem NavigateUrl="~/Documentos/Default.aspx" Text="Documentos"/>
                         <asp:MenuItem NavigateUrl="~/Sobre/Default.aspx" Text="Conheça a Pandolfo Imóveis"/>
                     </Items>
                 </asp:Menu>
             </div>
         </div>
-        <div class="highlight">
-            <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-            </asp:ContentPlaceHolder>
+        <div class="mainContent">
+            <div class="highlight">
+                <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+            <br />
+            <div class="footer">
+                <br />
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td>
+                            Pandolfo Imóveis
+                        </td>
+                        <td>
+                            Av Getúlio Vargas, 202, Porto Alegre, Fones: (51) 3221.9869 e (51) 3225.7116
+                        </td>
+                        <td>
+                            CRECI 14882
+                        </td>
+                    </tr>
+                </table>
+                <br />
+            </div>
+            <div class="clear">
+            </div>
+        </div >    
         </div>
 
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-        </div>
-        <br />
-
-        <div class="footer">
-            <br />
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                    <td>
-                    Pandolfo Imóveis
-                    </td>
-                    <td>
-                    Av Getúlio Vargas, 202, Porto Alegre, Fone: 3221.9869 3225.7116
-                    </td>
-                    <td>
-                    CRECI 14882
-                    </td>
-                </tr>
-            </table>
-            <br />
-        </div>
-        <div class="clear">
-        </div>
-    </div>
-<%--    <div class="footer">
-        
-    </div>--%>
     </form>
 </body>
 </html>

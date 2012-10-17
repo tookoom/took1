@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.url.js" type="text/javascript"></script>
     <script src="../Scripts/Search.js" type="text/javascript"></script>
     <link href="../Styles/QuickSearch.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/Featured.css" rel="stylesheet" type="text/css" />
@@ -25,8 +26,8 @@
                         </asp:DropDownList>
                     </div>
                 </td>
-                <td width="15%" rowspan="5">
-                    <div style="overflow-y: scroll; float: left; width: 100%;  background-color: White;
+                <td width="15%" rowspan="4">
+                    <div style="overflow-y: scroll; float: left; width: 100%; height:120px; background-color: White;
                         color: Black;">
                         <div id="divRentDistricts">
                             <asp:CheckBoxList ID="checkBoxListRentDistricts" runat="server">
@@ -94,21 +95,23 @@
                         </asp:DropDownList>
                     </div>
                 </td>
+                <td rowspan="2"><asp:LinkButton ID="buttonSearch" CssClass="lnkButton" runat="server" Height="100%" Width="100%" OnClick="buttonSearch_Click">
+                        Pesquisar
+                        <img src="../Imagens/SearchSmall.png" />
+                </asp:LinkButton>
+                            <%--<div class="quickSearchButton">
+                                <a href="Pesquisa/Default.aspx">
+                                    Pesquisar</a>
+                                </div>--%>
+                </td>
             </tr>
             <tr>
                 <%--<td></td>--%>
                 <td></td>
                 <td>Busca pelo código:</td>
                 <td><asp:TextBox ID="textBoxSiteCode" runat="server" Width="100%" Font-Size="Large"></asp:TextBox></td>
-                <td><asp:Button ID="buttonSearch" Text="Pesquisar" runat="server" width="100%"
-                        OnClick="buttonSearch_Click" Font-Size="Medium"/>
-                            <%--<div class="quickSearchButton">
-                                <a href="Pesquisa/Default.aspx">
-                                    Pesquisar</a>
-                                </div>--%></td>
             </tr>
-
-        </table>
+            </table>
     </div>
 
 
@@ -120,6 +123,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            setSearchType();
             setSearchFieldsVisibility();
         });
     </script>

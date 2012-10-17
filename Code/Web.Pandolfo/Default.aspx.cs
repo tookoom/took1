@@ -12,8 +12,8 @@ using TK1.Bizz;
 public partial class _Default : System.Web.UI.Page
 {
     #region PRIVATE MEMBERS
-    private static string searchParametersSessionKey = "PandolfoQuickSearchParameter";
-    private static string customerName = CustomerNames.Pandolfo.ToString();
+    private string searchParametersSessionKey = "PandolfoSearchParameter";
+    private string customerName = CustomerNames.Pandolfo.ToString();
 
     #endregion
 
@@ -25,13 +25,13 @@ public partial class _Default : System.Web.UI.Page
         foreach (var city in cities.OrderBy(o => o))
             dropDownRentCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
-        dropDownRentDistricts.Items.Add(new ListItem("Todos os bairros", "All") { Selected = true });
+        dropDownRentDistricts.Items.Add(new ListItem("Todos os bairros", "*") { Selected = true });
         var districts = siteController.GetDistricts(customerName);
         foreach (var district in districts.OrderBy(o => o))
-            dropDownRentDistricts.Items.Add(new ListItem(district));
+            dropDownRentDistricts.Items.Add(new ListItem(district, district));
 
-        dropDownRentSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
-        var siteTypes = siteController.GetSiteTypes(customerName, 1);
+        dropDownRentSiteType.Items.Add(new ListItem("Todos os tipos de imóvel", "*") { Selected = true });
+        var siteTypes = siteController.GetSiteTypes(customerName, SiteAdTypes.Rent);
         foreach (var siteType in siteTypes.OrderBy(o => o))
             dropDownRentSiteType.Items.Add(new ListItem(siteType, siteType));
     }
@@ -43,13 +43,13 @@ public partial class _Default : System.Web.UI.Page
         foreach (var city in cities.OrderBy(o => o))
             dropDownSellingCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
-        dropDownSellingDistricts.Items.Add(new ListItem("Todos os bairros", "All") { Selected = true });
+        dropDownSellingDistricts.Items.Add(new ListItem("Todos os bairros", "*") { Selected = true });
         var districts = siteController.GetDistricts(customerName);
         foreach (var district in districts.OrderBy(o => o))
-            dropDownSellingDistricts.Items.Add(new ListItem(district));
+            dropDownSellingDistricts.Items.Add(new ListItem(district, district));
 
         dropDownSellingSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
-        var siteTypes = siteController.GetSiteTypes(customerName, 1);
+        var siteTypes = siteController.GetSiteTypes(customerName, SiteAdTypes.Sell);
         foreach (var siteType in siteTypes.OrderBy(o => o))
             dropDownSellingSiteType.Items.Add(new ListItem(siteType, siteType));
 
@@ -57,7 +57,7 @@ public partial class _Default : System.Web.UI.Page
 
     private void searchRentSite()
     {
-        SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName, Code = 4 };
+        SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName };
 
         parameters.AdType = SiteAdTypes.Rent;
 
@@ -82,13 +82,13 @@ public partial class _Default : System.Web.UI.Page
             }
         }
         if (dropDownRentDistricts.SelectedItem != null)
-            parameters.Districts.Add(dropDownRentDistricts.SelectedItem.Text);
+            parameters.Districts.Add(dropDownRentDistricts.SelectedItem.Value);
 
         setSearchSiteParameters(parameters);
     }
     private void searchSellingSite()
     {
-        SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName, Code = 4 };
+        SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName };
 
         parameters.AdType = SiteAdTypes.Rent;
         if (radioButtonBuy.Checked)
@@ -100,10 +100,10 @@ public partial class _Default : System.Web.UI.Page
         {
             string text = dropDownSellingSiteType.SelectedItem.Text;
             string value = dropDownSellingSiteType.SelectedItem.Value;
-            if (value.Contains(SiteAdCategories.Residencial.ToString()))
-                parameters.Category = SiteAdCategories.Residencial.ToString();
-            else
-                parameters.Category = SiteAdCategories.Comercial.ToString();
+            //if (value.Contains(SiteAdCategories.Residencial.ToString()))
+            //    parameters.Category = SiteAdCategories.Residencial.ToString();
+            //else
+            //    parameters.Category = SiteAdCategories.Comercial.ToString();
             if (value.Contains("*"))
                 parameters.SiteType = "*";
             else
@@ -116,7 +116,7 @@ public partial class _Default : System.Web.UI.Page
         }
 
         if (dropDownSellingDistricts.SelectedItem != null)
-            parameters.Districts.Add(dropDownSellingDistricts.SelectedItem.Text);
+            parameters.Districts.Add(dropDownSellingDistricts.SelectedItem.Value);
 
 
         setSearchSiteParameters(parameters);
@@ -151,7 +151,7 @@ public partial class _Default : System.Web.UI.Page
         else
             searchRentSite();
         var searchType = radioButtonBuy.Checked ? "selling" : "rent";
-        Response.Redirect("Pesquisa/Default.aspx?quickSearch=" + searchType);
+        Response.Redirect("Pesquisa/Default.aspx?searchType=" + searchType);
     }
     #endregion
 }
