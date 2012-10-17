@@ -14,6 +14,7 @@ using TK1.Bizz.Mdo.Selling;
 using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Collection;
 using TK1.Data;
+using TK1.Bizz.Inetsoft.Rent;
 
 public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.Page
 {
@@ -30,7 +31,7 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
             MdoSiteAdController controller = new MdoSiteAdController();
             int mdoCode = controller.GetMdoCode(mdoAcronym);
 
-            string sourceDir = getXmlFilePath();
+            string sourceDir = getMdoXmlFilePath();
 
             string fileFilter = "vendaweb*";
 
@@ -44,6 +45,31 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
         {
             AppLogController.WriteException("Integra_Mdo_SimVendas_Xml_Carregar_Default.Page_Load", exception);
         }
+
+        try
+        {
+            var queryString = Page.ClientQueryString;
+            var dictionary = StringDictionary.LoadFromQueryString(queryString);
+
+            var mdoAcronym = dictionary.Get("ClienteISoft") ?? string.Empty;
+            var loadFileOnly = dictionary.Get("XmlOnly") != null;
+
+            string sourceDir = getISoftXmlFilePath();
+
+            string fileFilter = "imobiliar*";
+
+            RentSiteHelper RentSiteHelper = new RentSiteHelper();
+            RentSiteHelper.InetsoftAcronym = "pieta";
+            var report = RentSiteHelper.LoadXmlSiteAd(sourceDir, fileFilter);
+            literalResponse.Text = report;
+
+
+        }
+        catch (Exception exception)
+        {
+            AppLogController.WriteException("Integra_Inetsoft_Xml_Carregar_Default.Page_Load", exception);
+        }
+
     }
 
 
@@ -65,7 +91,7 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
         result = Server.MapPath(relUrl) + string.Format("{0}\\", mdoCode);
         return result;
     }
-    private string getXmlFilePath()
+    private string getMdoXmlFilePath()
     {
         string result = string.Empty;
         string relUrl = "~\\Integra\\Mdo\\SimVendas\\Xml\\";
@@ -76,5 +102,14 @@ public partial class Integra_Mdo_SimVendas_Xml_Carregar_Default : System.Web.UI.
         return result;
     }
 
+    private string getISoftXmlFilePath()
+    {
+        string result = string.Empty;
+        string relUrl = "~\\Integra\\Arquivos\\Inetsoft\\Xml\\";
+        relUrl = this.ResolveUrl(relUrl);
+        result = Server.MapPath(relUrl);
+
+        return result;
+    }
 
 }

@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="BizzApp.master.cs" Inherits="Bizz_BizzApp" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>TK1 Bizz App</title>
+    <link href="../Styles/Bizz.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="header">
+        <div class="headerMenu">
+            <table>
+                <tr>
+                    <td><asp:Label ID="labelCustomerName" Text="Customer Name" runat="server" Font-Size="X-Large"></asp:Label></td>
+                    <%--<td width="50%">
+                        <asp:Menu ID="menuBizzApp" runat="server"
+                            DynamicHorizontalOffset="2" Font-Names="Verdana" StaticSubMenuIndent="10px" Orientation="Horizontal">
+                            <DynamicHoverStyle BackColor="#666666" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <DynamicMenuStyle BackColor="#E3EAEB" />
+                            <DynamicSelectedStyle BackColor="#1C5E55" />
+                            <StaticHoverStyle BackColor="#666666" ForeColor="White" />
+                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <StaticSelectedStyle BackColor="#1C5E55" />
+                            <Items>
+                                <asp:MenuItem NavigateUrl="~/Bizz/Broker/RealEstate/Default.aspx" Text="Broker RE"/>
+                            </Items>
+
+                        </asp:Menu>
+                    </td>--%>
+                    <td style="text-align:right"><asp:Label ID="labelUserName" Text="User Name" runat="server"></asp:Label></td>
+                    <td width="40px"><img src="http://tk1.net.br/Images/Icon_Logout.png" alt="TK1"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="content">
+        <asp:ContentPlaceHolder id="BizzContentPlaceHolder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="footer">
+        <div class="footerContent">
+            <table width="100%">
+                <tr>
+                    <td></td>
+                    <td style="text-align:right"></td>
+                    <td width="40px"><img src="http://tk1.net.br/Images/LogoTK1_Icon.png" alt="TK1"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
