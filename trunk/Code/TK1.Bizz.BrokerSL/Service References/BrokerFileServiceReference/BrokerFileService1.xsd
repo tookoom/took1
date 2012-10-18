@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TK1.Bizz.Data.Presentation" />
+  <xs:import schemaLocation="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:element name="DoWork">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoWorkResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogCustomerAccess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerCodename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogCustomerAccessResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveBrokerSiteAdPic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerCodename" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TK1.Bizz.Data.Presentation" minOccurs="0" name="adType" type="q1:SiteAdTypes" />
+        <xs:element minOccurs="0" name="siteAdID" type="xs:int" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="uploadPicture" nillable="true" type="q2:UploadPicture" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveBrokerSiteAdPicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="SaveBrokerSiteAdPicResult" nillable="true" type="q3:PictureInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="26d9d52f-feb9-4e46-b330-602247cc1c7c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://tk1.net.br/services/BrokerFileService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BrokerFileService.wsdl" MetadataType="Wsdl" ID="ba231c1c-9749-4df4-a9c7-fe323393bc67" SourceId="1" SourceUrl="http://tk1.net.br/services/BrokerFileService.svc?wsdl" />
+    <MetadataFile FileName="BrokerFileService.xsd" MetadataType="Schema" ID="ae1585b8-9ed2-4b1e-a4f3-817580f81f78" SourceId="1" SourceUrl="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BrokerFileService1.xsd" MetadataType="Schema" ID="572f6370-0ac1-4701-bc40-b8117badba33" SourceId="1" SourceUrl="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BrokerFileService.disco" MetadataType="Disco" ID="5edd3c26-6a59-4bf8-8bb8-e752bd615bca" SourceId="1" SourceUrl="http://tk1.net.br/services/BrokerFileService.svc?disco" />
+    <MetadataFile FileName="BrokerFileService1.wsdl" MetadataType="Wsdl" ID="e2a204e4-cbe6-46bf-b330-2ff0e20e5dcf" SourceId="1" SourceUrl="http://tk1.net.br/services/BrokerFileService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="BrokerFileService2.xsd" MetadataType="Schema" ID="ea7b5693-bae7-4f46-8459-f5848c50af90" SourceId="1" SourceUrl="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BrokerFileService3.xsd" MetadataType="Schema" ID="461cb26f-c3e7-426b-b853-7d3b75cf0687" SourceId="1" SourceUrl="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
