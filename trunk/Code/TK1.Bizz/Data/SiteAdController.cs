@@ -18,18 +18,38 @@ namespace TK1.Bizz.Data.Controller
         {
             audit = new AuditController(AppNames.BizzSites.ToString(), CustomerNames.TK1.ToString());
         }
+        public SiteAdController(string customerName)
+        {
+            audit = new AuditController(AppNames.BizzSites.ToString(), string.IsNullOrEmpty(customerName) ? CustomerNames.TK1.ToString() : customerName);
+        }
         public SiteAdController(AuditController audit)
         {
             this.audit = audit;
         }
 
+        #region MASTER DATA METHODS
         public List<string> GetCities(string customerCodename)
         {
             List<string> result = new List<string>();
             try
             {
                 result = (from o in Entities.SiteAds
-                          where o.CustomerCodename == customerCodename
+                          where o.CustomerCodename == customerCodename & o.Visible
+                          select o.CityName).Distinct().ToList();
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetCities", exception);
+            }
+            return result;
+        }
+        public List<string> GetCities(string customerCodename, SiteAdTypes siteAdType)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                result = (from o in Entities.SiteAds
+                          where o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)siteAdType & o.Visible
                           select o.CityName).Distinct().ToList();
             }
             catch (Exception exception)
@@ -44,7 +64,7 @@ namespace TK1.Bizz.Data.Controller
             try
             {
                 result = (from o in Entities.SiteAds
-                          where o.CustomerCodename == customerCodename
+                          where o.CustomerCodename == customerCodename & o.Visible
                           select o.DistrictName).Distinct().ToList();
             }
             catch (Exception exception)
@@ -53,6 +73,108 @@ namespace TK1.Bizz.Data.Controller
             }
             return result;
         }
+        public List<string> GetDistricts(string customerCodename, SiteAdTypes siteAdType)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                result = (from o in Entities.SiteAds
+                          where o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)siteAdType & o.Visible
+                          select o.DistrictName).Distinct().ToList();
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetDistricts", exception);
+            }
+            return result;
+        }
+        public List<string> GetSiteTypes(string customerCodename)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                result = (from o in Entities.SiteAds
+                          where o.CustomerCodename == customerCodename & o.Visible
+                          select o.SiteTypeName).Distinct().ToList();
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetDistricts", exception);
+            }
+            return result;
+        }
+        public List<string> GetSiteTypes(string customerCodename, SiteAdTypes siteAdType)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                result = (from o in Entities.SiteAds
+                          where o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)siteAdType & o.Visible
+                          select o.SiteTypeName).Distinct().ToList();
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetSiteTypes", exception);
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region DATA BINDING METHODS
+        public List<SiteAdView> GetFeaturedSiteAds(string customerName, SiteAdTypes siteAdType, int count)
+        {
+            List<SiteAdView> result = new List<SiteAdView>();
+            try
+            {
+                var query = Entities.SiteAds.Where(o => o.CustomerCodename == customerName & o.SiteAdTypeID == (int)siteAdType & o.FeaturedAd == true & o.Visible).Take(count);
+                foreach (var siteAd in query)
+                {
+                    var siteCategory = SiteAdCategories.Residencial;
+                    if (siteAd.CategoryName != SiteAdCategories.Residencial.ToString())
+                        siteCategory = SiteAdCategories.Comercial;
+                    siteAd.SiteAdDetails.Load();
+                    siteAd.SiteAdPics.Load();
+                    string mainPicName = string.Empty;
+                    if (siteAd.SiteAdPics.Count > 0)
+                        mainPicName = siteAd.SiteAdPics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+
+                    SiteAdView siteAdView = new SiteAdView()
+                    {
+                        AdCategory = siteCategory,
+                        AdType = SiteAdTypes.Sell,
+                        CityTaxes = (float)(siteAd.CityTaxes ?? 0),
+                        Code = siteAd.SiteAdID,
+                        CondoTaxes = (float)(siteAd.CondoTaxes ?? 0),
+                        District = siteAd.DistrictName,
+                        MainPicUrl = mainPicName,
+                        SiteInternalArea = (float)siteAd.InternalArea,
+                        SiteTotalArea = (float)siteAd.TotalArea,
+                        SiteTotalRooms = siteAd.TotalRooms,
+                        SiteType = siteAd.SiteTypeName,
+                        Value = (float)(siteAd.Value)
+                    };
+                    result.Add(siteAdView);
+
+                }
+
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteAdController.GetFeaturedSiteAds", exception);
+            }
+            return result;
+        }
+        public List<SiteAdView> GetFeaturedRentSiteAds(string customerName)
+        {
+            return GetFeaturedSiteAds(customerName, SiteAdTypes.Rent, 5);
+        }
+        public List<SiteAdView> GetFeaturedSellingSiteAds(string customerName)
+        {
+            return GetFeaturedSiteAds(customerName, SiteAdTypes.Sell, 5);
+        }
+        #endregion
+
         public SiteAd GetSiteAd(string customerCodename, int siteAdTypeID, int siteAdID)
         {
             SiteAd result = null;
@@ -172,22 +294,6 @@ namespace TK1.Bizz.Data.Controller
             }
             return result;
         }
-        public List<string> GetSiteTypes(string customerCodename, int siteAdTypeID)
-        {
-            List<string> result = new List<string>();
-            try
-            {
-                result = (from o in Entities.SiteAds
-                          where o.CustomerCodename == customerCodename
-                            & o.SiteAdTypeID == siteAdTypeID    
-                          select o.SiteTypeName).Distinct().ToList();
-            }
-            catch (Exception exception)
-            {
-                audit.WriteException("SiteController.GetDistricts", exception);
-            }
-            return result;
-        }
         public List<SiteAdView> SearchSites(SiteAdSearchParameters parameters)
         {
             List<SiteAdView> result = new List<SiteAdView>();
@@ -195,7 +301,7 @@ namespace TK1.Bizz.Data.Controller
             {
                 if (parameters != null)
                 {
-                    var query = Entities.SiteAds.Where(o => o.CustomerCodename == parameters.CustomerCodename);
+                    var query = Entities.SiteAds.Where(o => o.CustomerCodename == parameters.CustomerCodename & o.Visible);
                     //var list = query.ToList();
                     if (parameters.Code > 0)
                     {
@@ -215,7 +321,7 @@ namespace TK1.Bizz.Data.Controller
                        // list = query.ToList();
                         if (parameters.SiteType != "*")
                             query = query.FilterSiteType(parameters.SiteType);
-                        if (!parameters.Districts.Contains("Todos"))
+                        if (!parameters.Districts.Contains("*"))
                             query = query.FilterDistrict(parameters.Districts);
 
 
@@ -295,9 +401,6 @@ namespace TK1.Bizz.Data.Controller
                 result = new List<SiteAdView>();
             return result;
         }
-
-        #region OLD
-        #endregion
 
     }
 }
