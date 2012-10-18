@@ -5,11 +5,8 @@ using System.Text;
 
 namespace TK1.Bizz
 {
-    public enum AppNames
+    public enum AppRoles
     {
-        BizzSites,
-        IntegraMdoSelling,
-        IntegraInetsoftRent,
-        RealEstateBroker
+        Admin
     }
 }

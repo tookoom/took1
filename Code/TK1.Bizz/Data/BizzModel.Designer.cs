@@ -21,6 +21,14 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("TK1Model", "FK_SiteAd_SiteAdType", "SiteAdType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.SiteAdType), "SiteAd", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.SiteAd), true)]
 [assembly: EdmRelationshipAttribute("TK1Model", "FK_SiteAdDetail_SiteAd", "SiteAd", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.SiteAd), "SiteAdDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.SiteAdDetail), true)]
 [assembly: EdmRelationshipAttribute("TK1Model", "FK_SiteAdPic_SiteAd", "SiteAd", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.SiteAd), "SiteAdPic", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.SiteAdPic), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_AppRole_App", "App", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.App), "AppRole", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.AppRole), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_CustomerData_Customer", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.Customer), "CustomerData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.CustomerData), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_CustomerApp_App", "App", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.App), "CustomerApp", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.CustomerApp), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_CustomerApp_Customer", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.Customer), "CustomerApp", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.CustomerApp), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_UserCustomerApp_AppRole", "AppRole", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.AppRole), "UserCustomerApp", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.UserCustomerApp), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_UserCustomerApp_CustomerApp", "CustomerApp", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.CustomerApp), "UserCustomerApp", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.UserCustomerApp), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_SiteAd_SiteAdStatus", "SiteAdStatu", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.SiteAdStatu), "SiteAd", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.SiteAd), true)]
+[assembly: EdmRelationshipAttribute("TK1Model", "FK_SiteAdIDGenerator_SiteAdType", "SiteAdType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Data.SiteAdType), "SiteAdIDGenerator", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Data.SiteAdIDGenerator), true)]
 
 #endregion
 
@@ -135,6 +143,134 @@ namespace TK1.Bizz.Data
             }
         }
         private ObjectSet<SiteAdPic> _SiteAdPics;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CustomerData> CustomerDatas
+        {
+            get
+            {
+                if ((_CustomerDatas == null))
+                {
+                    _CustomerDatas = base.CreateObjectSet<CustomerData>("CustomerDatas");
+                }
+                return _CustomerDatas;
+            }
+        }
+        private ObjectSet<CustomerData> _CustomerDatas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<AppRole> AppRoles
+        {
+            get
+            {
+                if ((_AppRoles == null))
+                {
+                    _AppRoles = base.CreateObjectSet<AppRole>("AppRoles");
+                }
+                return _AppRoles;
+            }
+        }
+        private ObjectSet<AppRole> _AppRoles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<App> Apps
+        {
+            get
+            {
+                if ((_Apps == null))
+                {
+                    _Apps = base.CreateObjectSet<App>("Apps");
+                }
+                return _Apps;
+            }
+        }
+        private ObjectSet<App> _Apps;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Customer> Customers
+        {
+            get
+            {
+                if ((_Customers == null))
+                {
+                    _Customers = base.CreateObjectSet<Customer>("Customers");
+                }
+                return _Customers;
+            }
+        }
+        private ObjectSet<Customer> _Customers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CustomerApp> CustomerApps
+        {
+            get
+            {
+                if ((_CustomerApps == null))
+                {
+                    _CustomerApps = base.CreateObjectSet<CustomerApp>("CustomerApps");
+                }
+                return _CustomerApps;
+            }
+        }
+        private ObjectSet<CustomerApp> _CustomerApps;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<UserCustomerApp> UserCustomerApps
+        {
+            get
+            {
+                if ((_UserCustomerApps == null))
+                {
+                    _UserCustomerApps = base.CreateObjectSet<UserCustomerApp>("UserCustomerApps");
+                }
+                return _UserCustomerApps;
+            }
+        }
+        private ObjectSet<UserCustomerApp> _UserCustomerApps;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SiteAdStatu> SiteAdStatus
+        {
+            get
+            {
+                if ((_SiteAdStatus == null))
+                {
+                    _SiteAdStatus = base.CreateObjectSet<SiteAdStatu>("SiteAdStatus");
+                }
+                return _SiteAdStatus;
+            }
+        }
+        private ObjectSet<SiteAdStatu> _SiteAdStatus;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SiteAdIDGenerator> SiteAdIDGenerators
+        {
+            get
+            {
+                if ((_SiteAdIDGenerators == null))
+                {
+                    _SiteAdIDGenerators = base.CreateObjectSet<SiteAdIDGenerator>("SiteAdIDGenerators");
+                }
+                return _SiteAdIDGenerators;
+            }
+        }
+        private ObjectSet<SiteAdIDGenerator> _SiteAdIDGenerators;
 
         #endregion
         #region AddTo Methods
@@ -170,6 +306,70 @@ namespace TK1.Bizz.Data
         {
             base.AddObject("SiteAdPics", siteAdPic);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CustomerDatas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCustomerDatas(CustomerData customerData)
+        {
+            base.AddObject("CustomerDatas", customerData);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the AppRoles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAppRoles(AppRole appRole)
+        {
+            base.AddObject("AppRoles", appRole);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Apps EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToApps(App app)
+        {
+            base.AddObject("Apps", app);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Customers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCustomers(Customer customer)
+        {
+            base.AddObject("Customers", customer);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CustomerApps EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCustomerApps(CustomerApp customerApp)
+        {
+            base.AddObject("CustomerApps", customerApp);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the UserCustomerApps EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUserCustomerApps(UserCustomerApp userCustomerApp)
+        {
+            base.AddObject("UserCustomerApps", userCustomerApp);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SiteAdStatus EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSiteAdStatus(SiteAdStatu siteAdStatu)
+        {
+            base.AddObject("SiteAdStatus", siteAdStatu);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SiteAdIDGenerators EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSiteAdIDGenerators(SiteAdIDGenerator siteAdIDGenerator)
+        {
+            base.AddObject("SiteAdIDGenerators", siteAdIDGenerator);
+        }
 
         #endregion
     }
@@ -178,6 +378,1034 @@ namespace TK1.Bizz.Data
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="App")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class App : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new App object.
+        /// </summary>
+        /// <param name="appID">Initial value of the AppID property.</param>
+        public static App CreateApp(global::System.Int32 appID)
+        {
+            App app = new App();
+            app.AppID = appID;
+            return app;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AppID
+        {
+            get
+            {
+                return _AppID;
+            }
+            set
+            {
+                if (_AppID != value)
+                {
+                    OnAppIDChanging(value);
+                    ReportPropertyChanging("AppID");
+                    _AppID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("AppID");
+                    OnAppIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _AppID;
+        partial void OnAppIDChanging(global::System.Int32 value);
+        partial void OnAppIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ContextID
+        {
+            get
+            {
+                return _ContextID;
+            }
+            set
+            {
+                OnContextIDChanging(value);
+                ReportPropertyChanging("ContextID");
+                _ContextID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContextID");
+                OnContextIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ContextID;
+        partial void OnContextIDChanging(Nullable<global::System.Int32> value);
+        partial void OnContextIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_AppRole_App", "AppRole")]
+        public EntityCollection<AppRole> AppRoles
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<AppRole>("TK1Model.FK_AppRole_App", "AppRole");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<AppRole>("TK1Model.FK_AppRole_App", "AppRole", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_CustomerApp_App", "CustomerApp")]
+        public EntityCollection<CustomerApp> CustomerApps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerApp>("TK1Model.FK_CustomerApp_App", "CustomerApp");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerApp>("TK1Model.FK_CustomerApp_App", "CustomerApp", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="AppRole")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AppRole : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new AppRole object.
+        /// </summary>
+        /// <param name="appRoleID">Initial value of the AppRoleID property.</param>
+        /// <param name="appID">Initial value of the AppID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        public static AppRole CreateAppRole(global::System.Int32 appRoleID, global::System.Int32 appID, global::System.String name, global::System.String description)
+        {
+            AppRole appRole = new AppRole();
+            appRole.AppRoleID = appRoleID;
+            appRole.AppID = appID;
+            appRole.Name = name;
+            appRole.Description = description;
+            return appRole;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AppRoleID
+        {
+            get
+            {
+                return _AppRoleID;
+            }
+            set
+            {
+                if (_AppRoleID != value)
+                {
+                    OnAppRoleIDChanging(value);
+                    ReportPropertyChanging("AppRoleID");
+                    _AppRoleID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("AppRoleID");
+                    OnAppRoleIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _AppRoleID;
+        partial void OnAppRoleIDChanging(global::System.Int32 value);
+        partial void OnAppRoleIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AppID
+        {
+            get
+            {
+                return _AppID;
+            }
+            set
+            {
+                OnAppIDChanging(value);
+                ReportPropertyChanging("AppID");
+                _AppID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AppID");
+                OnAppIDChanged();
+            }
+        }
+        private global::System.Int32 _AppID;
+        partial void OnAppIDChanging(global::System.Int32 value);
+        partial void OnAppIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_AppRole_App", "App")]
+        public App App
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<App>("TK1Model.FK_AppRole_App", "App").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<App>("TK1Model.FK_AppRole_App", "App").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<App> AppReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<App>("TK1Model.FK_AppRole_App", "App");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<App>("TK1Model.FK_AppRole_App", "App", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_UserCustomerApp_AppRole", "UserCustomerApp")]
+        public EntityCollection<UserCustomerApp> UserCustomerApps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserCustomerApp>("TK1Model.FK_UserCustomerApp_AppRole", "UserCustomerApp");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserCustomerApp>("TK1Model.FK_UserCustomerApp_AppRole", "UserCustomerApp", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="Customer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Customer : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Customer object.
+        /// </summary>
+        /// <param name="customerID">Initial value of the CustomerID property.</param>
+        /// <param name="contextID">Initial value of the ContextID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Customer CreateCustomer(global::System.Int32 customerID, global::System.Int32 contextID, global::System.String name)
+        {
+            Customer customer = new Customer();
+            customer.CustomerID = customerID;
+            customer.ContextID = contextID;
+            customer.Name = name;
+            return customer;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerID
+        {
+            get
+            {
+                return _CustomerID;
+            }
+            set
+            {
+                if (_CustomerID != value)
+                {
+                    OnCustomerIDChanging(value);
+                    ReportPropertyChanging("CustomerID");
+                    _CustomerID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CustomerID");
+                    OnCustomerIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CustomerID;
+        partial void OnCustomerIDChanging(global::System.Int32 value);
+        partial void OnCustomerIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ContextID
+        {
+            get
+            {
+                return _ContextID;
+            }
+            set
+            {
+                OnContextIDChanging(value);
+                ReportPropertyChanging("ContextID");
+                _ContextID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContextID");
+                OnContextIDChanged();
+            }
+        }
+        private global::System.Int32 _ContextID;
+        partial void OnContextIDChanging(global::System.Int32 value);
+        partial void OnContextIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FullName
+        {
+            get
+            {
+                return _FullName;
+            }
+            set
+            {
+                OnFullNameChanging(value);
+                ReportPropertyChanging("FullName");
+                _FullName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FullName");
+                OnFullNameChanged();
+            }
+        }
+        private global::System.String _FullName;
+        partial void OnFullNameChanging(global::System.String value);
+        partial void OnFullNameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_CustomerData_Customer", "CustomerData")]
+        public EntityCollection<CustomerData> CustomerDatas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerData>("TK1Model.FK_CustomerData_Customer", "CustomerData");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerData>("TK1Model.FK_CustomerData_Customer", "CustomerData", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_CustomerApp_Customer", "CustomerApp")]
+        public EntityCollection<CustomerApp> CustomerApps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerApp>("TK1Model.FK_CustomerApp_Customer", "CustomerApp");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerApp>("TK1Model.FK_CustomerApp_Customer", "CustomerApp", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="CustomerApp")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CustomerApp : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CustomerApp object.
+        /// </summary>
+        /// <param name="customerAppID">Initial value of the CustomerAppID property.</param>
+        /// <param name="customerID">Initial value of the CustomerID property.</param>
+        /// <param name="appID">Initial value of the AppID property.</param>
+        /// <param name="status">Initial value of the Status property.</param>
+        public static CustomerApp CreateCustomerApp(global::System.Int32 customerAppID, global::System.Int32 customerID, global::System.Int32 appID, global::System.String status)
+        {
+            CustomerApp customerApp = new CustomerApp();
+            customerApp.CustomerAppID = customerAppID;
+            customerApp.CustomerID = customerID;
+            customerApp.AppID = appID;
+            customerApp.Status = status;
+            return customerApp;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerAppID
+        {
+            get
+            {
+                return _CustomerAppID;
+            }
+            set
+            {
+                if (_CustomerAppID != value)
+                {
+                    OnCustomerAppIDChanging(value);
+                    ReportPropertyChanging("CustomerAppID");
+                    _CustomerAppID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CustomerAppID");
+                    OnCustomerAppIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CustomerAppID;
+        partial void OnCustomerAppIDChanging(global::System.Int32 value);
+        partial void OnCustomerAppIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerID
+        {
+            get
+            {
+                return _CustomerID;
+            }
+            set
+            {
+                OnCustomerIDChanging(value);
+                ReportPropertyChanging("CustomerID");
+                _CustomerID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CustomerID");
+                OnCustomerIDChanged();
+            }
+        }
+        private global::System.Int32 _CustomerID;
+        partial void OnCustomerIDChanging(global::System.Int32 value);
+        partial void OnCustomerIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AppID
+        {
+            get
+            {
+                return _AppID;
+            }
+            set
+            {
+                OnAppIDChanging(value);
+                ReportPropertyChanging("AppID");
+                _AppID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AppID");
+                OnAppIDChanged();
+            }
+        }
+        private global::System.Int32 _AppID;
+        partial void OnAppIDChanging(global::System.Int32 value);
+        partial void OnAppIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_CustomerApp_App", "App")]
+        public App App
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<App>("TK1Model.FK_CustomerApp_App", "App").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<App>("TK1Model.FK_CustomerApp_App", "App").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<App> AppReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<App>("TK1Model.FK_CustomerApp_App", "App");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<App>("TK1Model.FK_CustomerApp_App", "App", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_CustomerApp_Customer", "Customer")]
+        public Customer Customer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("TK1Model.FK_CustomerApp_Customer", "Customer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("TK1Model.FK_CustomerApp_Customer", "Customer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Customer> CustomerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("TK1Model.FK_CustomerApp_Customer", "Customer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("TK1Model.FK_CustomerApp_Customer", "Customer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_UserCustomerApp_CustomerApp", "UserCustomerApp")]
+        public EntityCollection<UserCustomerApp> UserCustomerApps
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserCustomerApp>("TK1Model.FK_UserCustomerApp_CustomerApp", "UserCustomerApp");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserCustomerApp>("TK1Model.FK_UserCustomerApp_CustomerApp", "UserCustomerApp", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="CustomerData")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CustomerData : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CustomerData object.
+        /// </summary>
+        /// <param name="customerDataID">Initial value of the CustomerDataID property.</param>
+        /// <param name="customerID">Initial value of the CustomerID property.</param>
+        /// <param name="bizzCode">Initial value of the BizzCode property.</param>
+        /// <param name="bizzAcronym">Initial value of the BizzAcronym property.</param>
+        public static CustomerData CreateCustomerData(global::System.Int32 customerDataID, global::System.Int32 customerID, global::System.Int32 bizzCode, global::System.String bizzAcronym)
+        {
+            CustomerData customerData = new CustomerData();
+            customerData.CustomerDataID = customerDataID;
+            customerData.CustomerID = customerID;
+            customerData.BizzCode = bizzCode;
+            customerData.BizzAcronym = bizzAcronym;
+            return customerData;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerDataID
+        {
+            get
+            {
+                return _CustomerDataID;
+            }
+            set
+            {
+                if (_CustomerDataID != value)
+                {
+                    OnCustomerDataIDChanging(value);
+                    ReportPropertyChanging("CustomerDataID");
+                    _CustomerDataID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("CustomerDataID");
+                    OnCustomerDataIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _CustomerDataID;
+        partial void OnCustomerDataIDChanging(global::System.Int32 value);
+        partial void OnCustomerDataIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerID
+        {
+            get
+            {
+                return _CustomerID;
+            }
+            set
+            {
+                OnCustomerIDChanging(value);
+                ReportPropertyChanging("CustomerID");
+                _CustomerID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CustomerID");
+                OnCustomerIDChanged();
+            }
+        }
+        private global::System.Int32 _CustomerID;
+        partial void OnCustomerIDChanging(global::System.Int32 value);
+        partial void OnCustomerIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BizzCode
+        {
+            get
+            {
+                return _BizzCode;
+            }
+            set
+            {
+                OnBizzCodeChanging(value);
+                ReportPropertyChanging("BizzCode");
+                _BizzCode = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BizzCode");
+                OnBizzCodeChanged();
+            }
+        }
+        private global::System.Int32 _BizzCode;
+        partial void OnBizzCodeChanging(global::System.Int32 value);
+        partial void OnBizzCodeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String BizzAcronym
+        {
+            get
+            {
+                return _BizzAcronym;
+            }
+            set
+            {
+                OnBizzAcronymChanging(value);
+                ReportPropertyChanging("BizzAcronym");
+                _BizzAcronym = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("BizzAcronym");
+                OnBizzAcronymChanged();
+            }
+        }
+        private global::System.String _BizzAcronym;
+        partial void OnBizzAcronymChanging(global::System.String value);
+        partial void OnBizzAcronymChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DataLoadEmail
+        {
+            get
+            {
+                return _DataLoadEmail;
+            }
+            set
+            {
+                OnDataLoadEmailChanging(value);
+                ReportPropertyChanging("DataLoadEmail");
+                _DataLoadEmail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DataLoadEmail");
+                OnDataLoadEmailChanged();
+            }
+        }
+        private global::System.String _DataLoadEmail;
+        partial void OnDataLoadEmailChanging(global::System.String value);
+        partial void OnDataLoadEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NavLogoUrl
+        {
+            get
+            {
+                return _NavLogoUrl;
+            }
+            set
+            {
+                OnNavLogoUrlChanging(value);
+                ReportPropertyChanging("NavLogoUrl");
+                _NavLogoUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NavLogoUrl");
+                OnNavLogoUrlChanged();
+            }
+        }
+        private global::System.String _NavLogoUrl;
+        partial void OnNavLogoUrlChanging(global::System.String value);
+        partial void OnNavLogoUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NavContactMail
+        {
+            get
+            {
+                return _NavContactMail;
+            }
+            set
+            {
+                OnNavContactMailChanging(value);
+                ReportPropertyChanging("NavContactMail");
+                _NavContactMail = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NavContactMail");
+                OnNavContactMailChanged();
+            }
+        }
+        private global::System.String _NavContactMail;
+        partial void OnNavContactMailChanging(global::System.String value);
+        partial void OnNavContactMailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NavContactPhone
+        {
+            get
+            {
+                return _NavContactPhone;
+            }
+            set
+            {
+                OnNavContactPhoneChanging(value);
+                ReportPropertyChanging("NavContactPhone");
+                _NavContactPhone = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NavContactPhone");
+                OnNavContactPhoneChanged();
+            }
+        }
+        private global::System.String _NavContactPhone;
+        partial void OnNavContactPhoneChanging(global::System.String value);
+        partial void OnNavContactPhoneChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_CustomerData_Customer", "Customer")]
+        public Customer Customer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("TK1Model.FK_CustomerData_Customer", "Customer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("TK1Model.FK_CustomerData_Customer", "Customer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Customer> CustomerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("TK1Model.FK_CustomerData_Customer", "Customer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("TK1Model.FK_CustomerData_Customer", "Customer", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -203,7 +1431,10 @@ namespace TK1.Bizz.Data
         /// <param name="internalArea">Initial value of the InternalArea property.</param>
         /// <param name="externalArea">Initial value of the ExternalArea property.</param>
         /// <param name="value">Initial value of the Value property.</param>
-        public static SiteAd CreateSiteAd(global::System.Int32 siteAdID, global::System.Int32 siteAdTypeID, global::System.String customerCodename, global::System.String categoryName, global::System.String cityName, global::System.String districtName, global::System.Double totalArea, global::System.Int32 totalRooms, global::System.Double internalArea, global::System.Double externalArea, global::System.Double value)
+        /// <param name="featuredAd">Initial value of the FeaturedAd property.</param>
+        /// <param name="siteAdStatusID">Initial value of the SiteAdStatusID property.</param>
+        /// <param name="visible">Initial value of the Visible property.</param>
+        public static SiteAd CreateSiteAd(global::System.Int32 siteAdID, global::System.Int32 siteAdTypeID, global::System.String customerCodename, global::System.String categoryName, global::System.String cityName, global::System.String districtName, global::System.Double totalArea, global::System.Int32 totalRooms, global::System.Double internalArea, global::System.Double externalArea, global::System.Double value, global::System.Boolean featuredAd, global::System.Int32 siteAdStatusID, global::System.Boolean visible)
         {
             SiteAd siteAd = new SiteAd();
             siteAd.SiteAdID = siteAdID;
@@ -217,6 +1448,9 @@ namespace TK1.Bizz.Data
             siteAd.InternalArea = internalArea;
             siteAd.ExternalArea = externalArea;
             siteAd.Value = value;
+            siteAd.FeaturedAd = featuredAd;
+            siteAd.SiteAdStatusID = siteAdStatusID;
+            siteAd.Visible = visible;
             return siteAd;
         }
 
@@ -711,6 +1945,102 @@ namespace TK1.Bizz.Data
         private global::System.String _ImageUrl;
         partial void OnImageUrlChanging(global::System.String value);
         partial void OnImageUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean FeaturedAd
+        {
+            get
+            {
+                return _FeaturedAd;
+            }
+            set
+            {
+                OnFeaturedAdChanging(value);
+                ReportPropertyChanging("FeaturedAd");
+                _FeaturedAd = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FeaturedAd");
+                OnFeaturedAdChanged();
+            }
+        }
+        private global::System.Boolean _FeaturedAd;
+        partial void OnFeaturedAdChanging(global::System.Boolean value);
+        partial void OnFeaturedAdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SiteAdStatusID
+        {
+            get
+            {
+                return _SiteAdStatusID;
+            }
+            set
+            {
+                OnSiteAdStatusIDChanging(value);
+                ReportPropertyChanging("SiteAdStatusID");
+                _SiteAdStatusID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SiteAdStatusID");
+                OnSiteAdStatusIDChanged();
+            }
+        }
+        private global::System.Int32 _SiteAdStatusID;
+        partial void OnSiteAdStatusIDChanging(global::System.Int32 value);
+        partial void OnSiteAdStatusIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Visible
+        {
+            get
+            {
+                return _Visible;
+            }
+            set
+            {
+                OnVisibleChanging(value);
+                ReportPropertyChanging("Visible");
+                _Visible = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Visible");
+                OnVisibleChanged();
+            }
+        }
+        private global::System.Boolean _Visible;
+        partial void OnVisibleChanging(global::System.Boolean value);
+        partial void OnVisibleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
 
         #endregion
     
@@ -794,6 +2124,44 @@ namespace TK1.Bizz.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteAdPic>("TK1Model.FK_SiteAdPic_SiteAd", "SiteAdPic", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_SiteAd_SiteAdStatus", "SiteAdStatu")]
+        public SiteAdStatu SiteAdStatu
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteAdStatu>("TK1Model.FK_SiteAd_SiteAdStatus", "SiteAdStatu").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteAdStatu>("TK1Model.FK_SiteAd_SiteAdStatus", "SiteAdStatu").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SiteAdStatu> SiteAdStatuReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteAdStatu>("TK1Model.FK_SiteAd_SiteAdStatus", "SiteAdStatu");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteAdStatu>("TK1Model.FK_SiteAd_SiteAdStatus", "SiteAdStatu", value);
                 }
             }
         }
@@ -1054,6 +2422,157 @@ namespace TK1.Bizz.Data
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="SiteAdIDGenerator")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SiteAdIDGenerator : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SiteAdIDGenerator object.
+        /// </summary>
+        /// <param name="siteAdTypeID">Initial value of the SiteAdTypeID property.</param>
+        /// <param name="customerCodename">Initial value of the CustomerCodename property.</param>
+        /// <param name="siteAdID">Initial value of the SiteAdID property.</param>
+        public static SiteAdIDGenerator CreateSiteAdIDGenerator(global::System.Int32 siteAdTypeID, global::System.String customerCodename, global::System.Int32 siteAdID)
+        {
+            SiteAdIDGenerator siteAdIDGenerator = new SiteAdIDGenerator();
+            siteAdIDGenerator.SiteAdTypeID = siteAdTypeID;
+            siteAdIDGenerator.CustomerCodename = customerCodename;
+            siteAdIDGenerator.SiteAdID = siteAdID;
+            return siteAdIDGenerator;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SiteAdTypeID
+        {
+            get
+            {
+                return _SiteAdTypeID;
+            }
+            set
+            {
+                if (_SiteAdTypeID != value)
+                {
+                    OnSiteAdTypeIDChanging(value);
+                    ReportPropertyChanging("SiteAdTypeID");
+                    _SiteAdTypeID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("SiteAdTypeID");
+                    OnSiteAdTypeIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SiteAdTypeID;
+        partial void OnSiteAdTypeIDChanging(global::System.Int32 value);
+        partial void OnSiteAdTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CustomerCodename
+        {
+            get
+            {
+                return _CustomerCodename;
+            }
+            set
+            {
+                if (_CustomerCodename != value)
+                {
+                    OnCustomerCodenameChanging(value);
+                    ReportPropertyChanging("CustomerCodename");
+                    _CustomerCodename = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("CustomerCodename");
+                    OnCustomerCodenameChanged();
+                }
+            }
+        }
+        private global::System.String _CustomerCodename;
+        partial void OnCustomerCodenameChanging(global::System.String value);
+        partial void OnCustomerCodenameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SiteAdID
+        {
+            get
+            {
+                return _SiteAdID;
+            }
+            set
+            {
+                OnSiteAdIDChanging(value);
+                ReportPropertyChanging("SiteAdID");
+                _SiteAdID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SiteAdID");
+                OnSiteAdIDChanged();
+            }
+        }
+        private global::System.Int32 _SiteAdID;
+        partial void OnSiteAdIDChanging(global::System.Int32 value);
+        partial void OnSiteAdIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_SiteAdIDGenerator_SiteAdType", "SiteAdType")]
+        public SiteAdType SiteAdType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteAdType>("TK1Model.FK_SiteAdIDGenerator_SiteAdType", "SiteAdType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteAdType>("TK1Model.FK_SiteAdIDGenerator_SiteAdType", "SiteAdType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SiteAdType> SiteAdTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SiteAdType>("TK1Model.FK_SiteAdIDGenerator_SiteAdType", "SiteAdType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteAdType>("TK1Model.FK_SiteAdIDGenerator_SiteAdType", "SiteAdType", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="SiteAdPic")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1236,6 +2755,102 @@ namespace TK1.Bizz.Data
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ThumbnailUrl
+        {
+            get
+            {
+                return _ThumbnailUrl;
+            }
+            set
+            {
+                OnThumbnailUrlChanging(value);
+                ReportPropertyChanging("ThumbnailUrl");
+                _ThumbnailUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ThumbnailUrl");
+                OnThumbnailUrlChanged();
+            }
+        }
+        private global::System.String _ThumbnailUrl;
+        partial void OnThumbnailUrlChanging(global::System.String value);
+        partial void OnThumbnailUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PictureUrl
+        {
+            get
+            {
+                return _PictureUrl;
+            }
+            set
+            {
+                OnPictureUrlChanging(value);
+                ReportPropertyChanging("PictureUrl");
+                _PictureUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PictureUrl");
+                OnPictureUrlChanged();
+            }
+        }
+        private global::System.String _PictureUrl;
+        partial void OnPictureUrlChanging(global::System.String value);
+        partial void OnPictureUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PictureFilePath
+        {
+            get
+            {
+                return _PictureFilePath;
+            }
+            set
+            {
+                OnPictureFilePathChanging(value);
+                ReportPropertyChanging("PictureFilePath");
+                _PictureFilePath = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PictureFilePath");
+                OnPictureFilePathChanged();
+            }
+        }
+        private global::System.String _PictureFilePath;
+        partial void OnPictureFilePathChanging(global::System.String value);
+        partial void OnPictureFilePathChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ThumbnailFilePath
+        {
+            get
+            {
+                return _ThumbnailFilePath;
+            }
+            set
+            {
+                OnThumbnailFilePathChanging(value);
+                ReportPropertyChanging("ThumbnailFilePath");
+                _ThumbnailFilePath = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ThumbnailFilePath");
+                OnThumbnailFilePathChanged();
+            }
+        }
+        private global::System.String _ThumbnailFilePath;
+        partial void OnThumbnailFilePathChanging(global::System.String value);
+        partial void OnThumbnailFilePathChanged();
 
         #endregion
     
@@ -1275,6 +2890,112 @@ namespace TK1.Bizz.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SiteAd>("TK1Model.FK_SiteAdPic_SiteAd", "SiteAd", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="SiteAdStatu")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SiteAdStatu : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SiteAdStatu object.
+        /// </summary>
+        /// <param name="siteAdStatusID">Initial value of the SiteAdStatusID property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        public static SiteAdStatu CreateSiteAdStatu(global::System.Int32 siteAdStatusID, global::System.String description)
+        {
+            SiteAdStatu siteAdStatu = new SiteAdStatu();
+            siteAdStatu.SiteAdStatusID = siteAdStatusID;
+            siteAdStatu.Description = description;
+            return siteAdStatu;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SiteAdStatusID
+        {
+            get
+            {
+                return _SiteAdStatusID;
+            }
+            set
+            {
+                if (_SiteAdStatusID != value)
+                {
+                    OnSiteAdStatusIDChanging(value);
+                    ReportPropertyChanging("SiteAdStatusID");
+                    _SiteAdStatusID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("SiteAdStatusID");
+                    OnSiteAdStatusIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _SiteAdStatusID;
+        partial void OnSiteAdStatusIDChanging(global::System.Int32 value);
+        partial void OnSiteAdStatusIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_SiteAd_SiteAdStatus", "SiteAd")]
+        public EntityCollection<SiteAd> SiteAds
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteAd>("TK1Model.FK_SiteAd_SiteAdStatus", "SiteAd");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteAd>("TK1Model.FK_SiteAd_SiteAdStatus", "SiteAd", value);
                 }
             }
         }
@@ -1381,6 +3102,266 @@ namespace TK1.Bizz.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteAd>("TK1Model.FK_SiteAd_SiteAdType", "SiteAd", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_SiteAdIDGenerator_SiteAdType", "SiteAdIDGenerator")]
+        public EntityCollection<SiteAdIDGenerator> SiteAdIDGenerators
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SiteAdIDGenerator>("TK1Model.FK_SiteAdIDGenerator_SiteAdType", "SiteAdIDGenerator");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SiteAdIDGenerator>("TK1Model.FK_SiteAdIDGenerator_SiteAdType", "SiteAdIDGenerator", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="TK1Model", Name="UserCustomerApp")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class UserCustomerApp : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new UserCustomerApp object.
+        /// </summary>
+        /// <param name="userCustomerAppID">Initial value of the UserCustomerAppID property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
+        /// <param name="customerAppID">Initial value of the CustomerAppID property.</param>
+        /// <param name="appRoleID">Initial value of the AppRoleID property.</param>
+        /// <param name="status">Initial value of the Status property.</param>
+        public static UserCustomerApp CreateUserCustomerApp(global::System.Int32 userCustomerAppID, global::System.Int32 userID, global::System.Int32 customerAppID, global::System.Int32 appRoleID, global::System.String status)
+        {
+            UserCustomerApp userCustomerApp = new UserCustomerApp();
+            userCustomerApp.UserCustomerAppID = userCustomerAppID;
+            userCustomerApp.UserID = userID;
+            userCustomerApp.CustomerAppID = customerAppID;
+            userCustomerApp.AppRoleID = appRoleID;
+            userCustomerApp.Status = status;
+            return userCustomerApp;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserCustomerAppID
+        {
+            get
+            {
+                return _UserCustomerAppID;
+            }
+            set
+            {
+                if (_UserCustomerAppID != value)
+                {
+                    OnUserCustomerAppIDChanging(value);
+                    ReportPropertyChanging("UserCustomerAppID");
+                    _UserCustomerAppID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("UserCustomerAppID");
+                    OnUserCustomerAppIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _UserCustomerAppID;
+        partial void OnUserCustomerAppIDChanging(global::System.Int32 value);
+        partial void OnUserCustomerAppIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserID
+        {
+            get
+            {
+                return _UserID;
+            }
+            set
+            {
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerAppID
+        {
+            get
+            {
+                return _CustomerAppID;
+            }
+            set
+            {
+                OnCustomerAppIDChanging(value);
+                ReportPropertyChanging("CustomerAppID");
+                _CustomerAppID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CustomerAppID");
+                OnCustomerAppIDChanged();
+            }
+        }
+        private global::System.Int32 _CustomerAppID;
+        partial void OnCustomerAppIDChanging(global::System.Int32 value);
+        partial void OnCustomerAppIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AppRoleID
+        {
+            get
+            {
+                return _AppRoleID;
+            }
+            set
+            {
+                OnAppRoleIDChanging(value);
+                ReportPropertyChanging("AppRoleID");
+                _AppRoleID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AppRoleID");
+                OnAppRoleIDChanged();
+            }
+        }
+        private global::System.Int32 _AppRoleID;
+        partial void OnAppRoleIDChanging(global::System.Int32 value);
+        partial void OnAppRoleIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_UserCustomerApp_AppRole", "AppRole")]
+        public AppRole AppRole
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppRole>("TK1Model.FK_UserCustomerApp_AppRole", "AppRole").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppRole>("TK1Model.FK_UserCustomerApp_AppRole", "AppRole").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AppRole> AppRoleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppRole>("TK1Model.FK_UserCustomerApp_AppRole", "AppRole");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AppRole>("TK1Model.FK_UserCustomerApp_AppRole", "AppRole", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1Model", "FK_UserCustomerApp_CustomerApp", "CustomerApp")]
+        public CustomerApp CustomerApp
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CustomerApp>("TK1Model.FK_UserCustomerApp_CustomerApp", "CustomerApp").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CustomerApp>("TK1Model.FK_UserCustomerApp_CustomerApp", "CustomerApp").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CustomerApp> CustomerAppReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CustomerApp>("TK1Model.FK_UserCustomerApp_CustomerApp", "CustomerApp");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CustomerApp>("TK1Model.FK_UserCustomerApp_CustomerApp", "CustomerApp", value);
                 }
             }
         }

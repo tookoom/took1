@@ -45,12 +45,14 @@
   <ItemGroup>
     <Compile Include="AdminHelper.cs" />
     <Compile Include="Const\AppNames.cs" />
+    <Compile Include="Const\AppRoles.cs" />
     <Compile Include="Const\CustomerNames.cs" />
     <Compile Include="Data\BizzModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BizzModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\BizzUserController.cs" />
     <Compile Include="Data\Extension\SiteAdExtension.cs" />
     <Compile Include="Data\BizzBaseController.cs" />
     <Compile Include="Data\Presentation\SiteReleaseAdView.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Data\Presentation\SiteAdView.cs" />
     <Compile Include="Data\Presentation\SiteAdDetail.cs" />
     <Compile Include="Integra\FileLoader.cs" />
+    <Compile Include="Net\MailHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
