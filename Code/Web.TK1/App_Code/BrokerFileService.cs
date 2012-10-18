@@ -12,34 +12,27 @@ using System.Web.Hosting;
 [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
 public class BrokerFileService
 {
-	[OperationContract]
-	public void DoWork()
-	{
-        string data = System.Web.Hosting.HostingEnvironment.MapPath("~/");
-        AppLogController.WriteAppLogEntry("Teste", data);
-        return;
-	}
+
     [OperationContract]
     public void LogCustomerAccess(string customerCodename)
     {
-        //string data = System.Web.Hosting.HostingEnvironment.MapPath("~/");
-        string data = HostingEnvironment.ApplicationVirtualPath;
-        AppLogController.WriteAppLogEntry("Bizz Service Customer Access", data);
-        return;
+        AppLogController.WriteAppLogEntry("Bizz Service Customer Access", customerCodename);
     }
     [OperationContract]
     public PictureInfo SaveBrokerSiteAdPic(string customerCodename, TK1.Bizz.Data.Presentation.SiteAdTypes adType, int siteAdID, UploadPicture uploadPicture)
     {
         PictureInfo result = new PictureInfo() { Success = false };
         string rootPath = HostingEnvironment.MapPath("~/");
-        string rootUrl = System.ServiceModel.OperationContext.Current.RequestContext.RequestMessage.Headers.To.ToString();
-        rootPath += "Integra\\Arquivos\\Bizz\\Broker\\RealEstate\\";
-        rootUrl += "Integra\\Arquivos\\Bizz\\Broker\\RealEstate\\";
+        string rootUrl = @"http://www.tk1.net.br/";
+        rootPath += "Integra\\Arquivos\\Bizz\\Broker\\RealEstate";
+        rootUrl += "Integra/Arquivos/Bizz/Broker/RealEstate";
         if (!Directory.Exists(rootPath))
             Directory.CreateDirectory(rootPath);
         if (uploadPicture != null & !string.IsNullOrEmpty(customerCodename))
         {
             string basePath = string.Format("{0}\\{1}\\{2}\\{3}\\", rootPath, customerCodename, adType.ToString(), siteAdID);
+            string baseUrl = string.Format("{0}/{1}/{2}/{3}/", rootUrl, customerCodename, adType.ToString(), siteAdID);
+
             if (!Directory.Exists(basePath))
                 Directory.CreateDirectory(basePath);
 
@@ -53,8 +46,8 @@ public class BrokerFileService
 
             result.PicturePath = pictureFilePath;
             result.ThumbnaiPath = thumbnailFilePath;
-            result.PictureUrl = rootUrl + uploadPicture.FileName;
-            result.ThumbnailUrl = rootUrl + "Thumbs\\" + uploadPicture.FileName;
+            result.PictureUrl = baseUrl + uploadPicture.FileName;
+            result.ThumbnailUrl = baseUrl + "Thumbs/" + uploadPicture.FileName;
 
             try
             {
