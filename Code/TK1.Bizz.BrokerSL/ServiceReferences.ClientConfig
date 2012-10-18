@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="CustomBinding_BrokerFileService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://tk1.net.br/services/BrokerFileService.svc"
+                binding="basicHttpBinding" bindingConfiguration="CustomBinding_BrokerFileService"
+                contract="BrokerFileServiceReference.BrokerFileService" name="CustomBinding_BrokerFileService" />
+        </client>
+    </system.serviceModel>
+</configuration>
