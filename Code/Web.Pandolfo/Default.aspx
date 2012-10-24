@@ -84,7 +84,7 @@
                         </div>
                         <h2><%# Eval("District")%></h2>
                         <h3><%# Eval("SiteType")%></h3>
-                        <p><%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%></p>
+                        <p><%# Eval("SiteTotalRooms")%> dormitórios</p>
                         <p><%# Eval("SiteTotalArea")%>  m²</p>
                         <p><b><%# Eval("Value", "{0:c}")%></b></p>
                         <div class="featureViewerDetailButton">
@@ -118,7 +118,7 @@
                         </div>
                         <h2><%# Eval("District")%></h2>
                         <h3><%# Eval("SiteType")%></h3>
-                        <p><%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%></p>
+                        <p><%# Eval("SiteTotalRooms")%>  dormitórios</p>
                         <p><%# Eval("SiteTotalArea")%>  m²</p>
                         <p><b><%# Eval("Value", "{0:c}")%></b></p>
                         <div class="featureViewerDetailButton">
@@ -131,7 +131,70 @@
             </ItemTemplate>
         </asp:DataList>
         <br />
+        <table width="100%">
+            <tr>
+                <td width="40%" style="vertical-align:top">
+                    <h2>Parceiros</h2>
+                    
+                    <table border="0" cellpadding="4" cellspacing="0">
+                        <tr>
+                            <td>
+                                <a target="_blank" href="http://www.lojadez.net/">
+                                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoLojaDez.jpg" alt="Loja Dez" 
+                                    height="50px"/></a>
+                            </td>
+                            <td>
+                                <a target="_blank" href="http://www.lojadez.net/">Loja Dez Móveis. A melhor 
+                                negociação da avenida Ipiranga!</a> 
+                            </td>
 
+                        </tr>
+                        <tr>
+                            <td>
+                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">
+                                    <img src="http://pandolfo.tk1.net.br/Imagens/MailSmall.png" alt="" 
+                                    height="30px" style="margin-left:10px"/></a>
+                            </td>
+                            <td>
+                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">Arquiteta e Urbanista Karla Schmuck</a> 
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">
+                                    <img src="http://pandolfo.tk1.net.br/Imagens/MailSmall.png" alt="" 
+                                    height="30px" style="margin-left:10px"/></a>
+                            </td>
+                            <td>
+                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">Corretora de Seguros Safety </a> 
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+                <td width="40%" style="vertical-align:top">
+                    <h2>Redes Sociais</h2>
+                    <table border="0" cellpadding="4" cellspacing="0">
+                        <tr>
+                            <td>
+                                <a target="_blank" href="https://www.facebook.com/PandolfoImoveis?ref=ts&fref=ts">
+                                    <img src="http://pandolfo.tk1.net.br/Imagens/FacebookIcon.png" alt="Pandolfo no Facebook" 
+                                    height="40px"/></a>
+                            </td>
+                            <td style="vertical-align:top; ">
+                                <a target="_blank" href="https://www.facebook.com/PandolfoImoveis?ref=ts&fref=ts">Visite a página da Pandolfo Imóveis no Facebook</a>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </td>
+                <td width="20%">
+                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoEficiencia.png" alt="Pandolfo" width="200px"/>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <asp:ObjectDataSource ID="objectDataSourceFeaturedRentSites" runat="server" 

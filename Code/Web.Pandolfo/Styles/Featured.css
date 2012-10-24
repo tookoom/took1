@@ -5,10 +5,20 @@
 {
     padding:8px;
 }
+.featureViewerInner P
+{
+    margin-bottom: 0px;
+    line-height: 1em;
+}
+.featureViewerInner h1,.featureViewerInner h2,.featureViewerInner h3, h4, h5, h6
+{
+    margin-bottom: 0px;
+    line-height: 1em;
+}
 .featureViewerOuter
 {
     width:178px;
-    background-color: #EFEFEF;
+    background-color: #FFF;
     overflow: hidden;
     margin-right:8px;
 }
