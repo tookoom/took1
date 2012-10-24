@@ -11,7 +11,17 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <img src="http://pandolfo.tk1.net.br/Imagens/Header3.png" />
+                <table width="100%">
+                    <tr>
+                        <td><img src="http://pandolfo.tk1.net.br/Imagens/LogoRotatorio.gif" alt="Pandolfo" width="200px"/></td>
+                        <td><img src="http://pandolfo.tk1.net.br/Imagens/LogoPandolfoPI.png" alt="Pandolfo" width="200px"/></td>
+                        <td rowspan="2"><img src="http://pandolfo.tk1.net.br/Imagens/LogoPandolfo.png" alt="Pandolfo" width="700px"/></td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://pandolfo.tk1.net.br/Imagens/LogoPandolfoTexto.png"  alt="Pandolfo" width="200px"/></td>
+                    </tr>
+                </table>
+                
             </div>
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
