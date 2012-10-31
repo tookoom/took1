@@ -1,0 +1,57 @@
+﻿
+.divSitePics
+{
+    background-color: #efefef;
+    max-width:960px;
+    width: auto;
+    height:632px;
+    /*margin-top:4px;*/
+    /*border: 1px solid Blue;*/
+    font-size:medium;
+}
+.siteHeaderPrice
+{
+    float:right; 
+}
+.sitePrice
+{
+    font-size:large;
+    font-weight:bold;
+    text-align:left;
+}
+
+.searchDetailHeader
+{
+    /*padding-top:0px;
+    margin-top:0px;*/
+    width: 100%;
+    background-color: #fff;
+}
+div.searchDetailHeader h1
+{
+    font-size: xx-large;
+}
+div.searchDetailHeader h2
+{
+    font-size: x-large;
+}
+div.searchDetailHeader h3
+{
+    font-size: large;
+}
+
+
+.searchResultPagerButton
+{
+}
+.searchResultPagerActiveButton
+{
+    font-weight:bold;
+    font-size:large;
+}
+.searchResultPagerNestPrevButton
+{
+     padding: 4px;
+     cursor:pointer;
+}
+

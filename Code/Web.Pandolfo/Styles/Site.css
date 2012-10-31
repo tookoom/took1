@@ -3,13 +3,13 @@
 
 body   
 {
-    /*background: #d4dfe9;*/
+    background: #d3d3d3;
     font-size: medium;
     font-family: "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
     color: #000;
-
+/*
 background: rgb(0,0,0);
 background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(188,188,188,1) 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(188,188,188,1)));
@@ -18,7 +18,7 @@ background: -o-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(188,188,188,1) 100%);
 background: -ms-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(188,188,188,1) 100%);
 background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(188,188,188,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#bcbcbc',GradientType=0 );
-
+*/
 
 }
 
@@ -51,8 +51,7 @@ img
 
 p
 {
-    margin-bottom: 10px;
-    line-height: 1.6em;
+    margin-bottom: 4px;
 }
 
 
@@ -71,15 +70,19 @@ h1, h2, h3, h4, h5, h6
 h1
 {
     font-size: x-large;
-    padding-bottom: 0px;
+    padding-bottom: 6px;
     margin-bottom: 0px;
     margin-top: 0px;
+    padding-top: 10px;
 }
 
 h2
 {
     font-size: large;
     font-weight: 600;
+    padding-top: 6px;
+    margin-top: 0px;
+
 }
 
 h3
@@ -146,7 +149,7 @@ first child of the left and right table columns */
 
 .mainContent
 {
-    background: #efefef;
+    background: #fff;
     border: 1px solid #333333;
     border-top: 0px;
 }
@@ -155,7 +158,7 @@ first child of the left and right table columns */
 { 
     margin: 0px 8px 8px 8px;
     min-height: 420px;
-    background: #efefef;
+    background: #fff;
 }
 
 .leftCol
@@ -181,7 +184,7 @@ first child of the left and right table columns */
     color: #333333;
     margin: 0px auto;
     line-height: normal;
-    background: #efefef;
+    background: #fff;
 }
 
 .lnkButton
@@ -237,8 +240,8 @@ div.menu ul li a, div.menu ul li a:visited
     font-size:medium;
     font-weight: bold;
     border: 1px #333333 solid;
-    border-bottom: 0px #efefef solid;
-    color: #fff;
+    border-bottom: 0px #fff solid;
+    color: #333;
     display: block;
     line-height: 1.6em;
     padding: 4px 20px;
@@ -264,22 +267,22 @@ div.menu ul li a:hover
 {
     text-decoration: none;
     /*border: 1px #333333 solid;*/
-    border-bottom: 0px #efefef solid;
+    border-bottom: 0px #fff solid;
     /*background: white;*/
     color: #333;
-background: -moz-linear-gradient(top,  rgba(255,255,255,0.5) 0%, rgba(239,239,239,1) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(239,239,239,1)));
-background: -webkit-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
-background: -o-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
-background: -ms-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
-background: linear-gradient(to bottom,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#efefef',GradientType=0 );
+background: -moz-linear-gradient(top,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,1)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,1) 100%);
+background: -o-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,1) 100%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,1) 100%);
+background: linear-gradient(to bottom,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#ffffff',GradientType=0 );
 }
 
 div.menu ul li a:active
 {
     text-decoration: none;
-    border-bottom: 1px white solid;
+    border-bottom: 0px white solid;
 }
 
 /* FORM ELEMENTS   

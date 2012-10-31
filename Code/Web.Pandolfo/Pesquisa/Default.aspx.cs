@@ -141,12 +141,20 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     {
         SiteAdController siteController = new SiteAdController();
 
-        var cities = siteController.GetCities(customerName);
+        var cities = siteController.GetCities(customerName, SiteAdTypes.Rent);
         foreach (var city in cities.OrderBy(o => o))
-            dropDownRentCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+            dropDownRentCities.Items.Add(new ListItem(city));
+        //if (dropDownRentCities.SelectedItem == null)
+        //{
+        //    foreach (ListItem item in dropDownRentCities.Items)
+        //    {
+        //        if (item.Text == "Porto Alegre")
+        //            item.Selected = true;
+        //    }
+        //}
 
-        checkBoxListRentDistricts.Items.Add(new ListItem("Todos", "*") { Selected = true });
-        var districts = siteController.GetDistricts(customerName);
+        checkBoxListRentDistricts.Items.Add(new ListItem("Todos os bairros", "*") { Selected = true });
+        var districts = siteController.GetDistricts(customerName, SiteAdTypes.Rent);
         foreach (var district in districts.OrderBy(o => o))
             checkBoxListRentDistricts.Items.Add(new ListItem(district, district));
 
@@ -190,12 +198,20 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     {
         SiteAdController siteController = new SiteAdController();
 
-        var cities = siteController.GetCities(customerName);
+        var cities = siteController.GetCities(customerName, SiteAdTypes.Sell);
         foreach (var city in cities.OrderBy(o => o))
-            dropDownSellingCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+            dropDownSellingCities.Items.Add(new ListItem(city) );
+        //if (dropDownSellingCities.SelectedItem == null)
+        //{
+        //    foreach (ListItem item in dropDownSellingCities.Items)
+        //    {
+        //        if (item.Text == "Porto Alegre")
+        //            item.Selected = true;
+        //    }
+        //}
 
-        checkBoxListSellingDistricts.Items.Add(new ListItem("Todos", "*") { Selected = true });
-        var districts = siteController.GetDistricts(customerName);
+        checkBoxListSellingDistricts.Items.Add(new ListItem("Todos os bairros", "*") { Selected = true });
+        var districts = siteController.GetDistricts(customerName, SiteAdTypes.Sell);
         foreach (var district in districts.OrderBy(o => o))
             checkBoxListSellingDistricts.Items.Add(new ListItem(district, district));
 
@@ -336,9 +352,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     {
         SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName };
 
-        parameters.AdType = SiteAdTypes.Rent;
-        if (radioButtonBuy.Checked)
-            parameters.AdType = SiteAdTypes.Sell;
+        parameters.AdType = SiteAdTypes.Sell;
 
         if (dropDownSellingCities.SelectedItem != null)
             parameters.CityName = dropDownSellingCities.SelectedItem.Text;

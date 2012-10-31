@@ -3,6 +3,7 @@
 <%@ Register assembly="System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" namespace="System.Web.UI.WebControls" tagprefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     
@@ -19,8 +20,6 @@
         document.write('<style>.noscript { display: none; }</style>');
 	</script>
 
-
-
     <div id="divSiteNotFound" runat="server" class="center">
         
         <h2>Imóvel não cadastrado em nosso sistema
@@ -33,12 +32,16 @@
              <asp:Repeater ID="Repeater2" runat="server" 
                 DataSourceID="objectDataSourceSiteDescription" >
                 <ItemTemplate>
-                    <div style="float:left; padding-top: 2px;">
+                    <div class="siteHeaderPrice">   
+                        <h2><%# Eval("AdTypeName")%>: <%# Eval("Value", "{0:c}")%></h2>
+                        
+                    </div>
+                    <div >
                         <h2>
                             <b><%# Eval("SiteType")%> bairro <%# Eval("District")%></b>
                         </h2>
                         <b style="line-height: 1.5em;">Código do imóvel: <%# Eval("Code")%></b>
-                        <br />
+                      
                     </div>
                     
                </ItemTemplate>                                 
@@ -47,10 +50,8 @@
         </div>
         <br />
         <div id="divSitePics" class="divSitePics" style="height:650px">
-            
 		    <div id="page">
 			    <div id="container">
-				    <!-- Start Advanced Gallery Html Containers -->
 				    <div id="gallery" class="content">
 					    <div id="controls" class="controls"></div>
 					    <div class="slideshow-container">
@@ -71,33 +72,6 @@
         
         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="siteDescription">
             <tr>
-                <td class="navData">
-                    <%--<asp:Repeater ID="repeaterNavData" runat="server" DataSourceID="navDataSource">
-                        <ItemTemplate>
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <img src="../Imagens/<%# Eval("LogoUrl")%>" />
-                                </tr>
-
-                                <tr>
-                                <p>Fone:</p>
-                                </tr>
-
-                                <tr>
-                                <p><%# Eval("ContactPhone")%></p>
-                                </tr>
-                            </table>
-                        </ItemTemplate>                                 
-                    </asp:Repeater>--%>
-<%--                    <asp:ObjectDataSource ID="navDataSource" runat="server" 
-                        SelectMethod="GetNavData" 
-                        TypeName="TK1.Bizz.Mdo.Data.Controller.SiteAdController">
-                        <SelectParameters>
-                            <asp:QueryStringParameter DefaultValue="0" Name="customerID" 
-                                QueryStringField="CustomerID" Type="Int32" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>--%>
-                </td>
                 <td style="width: 50%; vertical-align: top;">
                     <asp:Repeater ID="Repeater1" runat="server" 
                         DataSourceID="objectDataSourceSiteDescription" >
@@ -109,14 +83,14 @@
                             <p> <%# Eval("CondoDescription")%> </p>
                             <p runat="server" visible='<%#Eval("IsAreaDescriptionVisible")%>'> <b>Infraestrutura do Bairro: </b></p>
                             <p> <%# Eval("AreaDescription")%> </p>
-                            <%--<div id="Div1" runat="server" visible='<%#getRentDivVisibility(Eval("AdType.AdTypeID").ToString())%>'>
-                                <p> Aluguel: <%# Eval("Price", "{0:c}")%> </p>
-                                <p> IPTU: <%# Eval("IPTU", "{0:c}")%> </p>
-                                <p> Condomínio: <%# Eval("Cond", "{0:c}")%> </p>
-                            </div>--%>
                             <br />
                             <div class="sitePrice">
                                 Valor: <%# Eval("Value", "{0:c}")%>
+                                <div id="Div1" runat="server" visible='<%#getRentDivVisibility(Eval("AdTypeID").ToString())%>'>
+                                    <p> IPTU: <%# Eval("CityTaxes", "{0:c}")%> </p>
+                                    <p> Condomínio: <%# Eval("CondoTaxes", "{0:c}")%> </p>
+                                </div>
+
                             </div>
                         </ItemTemplate>                                 
                     </asp:Repeater>
@@ -125,20 +99,20 @@
                 <td style="width: 5%; vertical-align: top;"></td>
                 <td style="width: 20%; vertical-align: top;">
                     <p> <b>Detalhes:</b></p>
-                    <asp:Repeater ID="Repeater3" runat="server" 
-                        DataSourceID="objectDataSourceSiteDetail" >
+                    <asp:Repeater ID="Repeater3" runat="server" DataSourceID="objectDataSourceSiteDetail" >
                         <ItemTemplate>
                             <table border="0" cellpadding="0" cellspacing="0" >
                                 <tr style="height: 26px">
-                                    <td><img src="../Imagens/Dot.png" style="vertical-align:middle; padding: 2px 3px 5px 0px;"/>
-                                    </td>
-                                    <td><%--<p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>--%>
-                                    <%# Eval("Name")%>
-                                    </td>
+                                    <td><img src="../Imagens/Dot.png" style="vertical-align:middle; padding: 2px 3px 5px 0px;" /></td>
+                                    <td><%# Eval("Name")%></td>
                                 </tr>
                             </table>
                         </ItemTemplate>                                 
                     </asp:Repeater>
+                </td>
+                <td style="width: 20%; vertical-align: top;">
+                    <p> <b>Solicite Contato</b></p>
+                    Preencha seus dados e a Pandolfo Imóveis entra em contato com você.
                 </td>
             </tr>
         </table>
@@ -154,9 +128,8 @@
 
         <SelectParameters>
             <asp:Parameter DefaultValue="Pandolfo" Name="customerCodename" Type="String" />
-            <asp:Parameter DefaultValue="1" Name="siteAdTypeID" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
-                QueryStringField="ID" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="0" Name="siteAdTypeID" QueryStringField="AdTypeID" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" QueryStringField="ID" Type="Int32" />
         </SelectParameters>
 
     </asp:ObjectDataSource>
@@ -167,9 +140,8 @@
 
         <SelectParameters>
             <asp:Parameter DefaultValue="Pandolfo" Name="customerCodename" Type="String" />
-            <asp:Parameter DefaultValue="1" Name="siteAdTypeID" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
-                QueryStringField="ID" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="0" Name="siteAdTypeID" QueryStringField="AdTypeID" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" QueryStringField="ID" Type="Int32" />
         </SelectParameters>
 
     </asp:ObjectDataSource>
