@@ -20,12 +20,11 @@ public partial class Contato_Default : System.Web.UI.Page
     private string createMailBody()
     {
         string result = string.Empty;
-        //string contactType = radioButtonListContactType.SelectedValue;
+        string contactType = radioButtonListContactType.SelectedValue;
         string timestamp = DateTime.Now.ToString();
         string name = textBoxContactName.Text;
         string mail = textBoxContactMail.Text;
         string phone = textBoxContactPhone.Text;
-        //string contact = radioButtonListResponseType.SelectedValue;
         string message = textBoxContactMessage.Text;
 
 
@@ -33,10 +32,8 @@ public partial class Contato_Default : System.Web.UI.Page
         try
         {
             string body = HtmlTemplates.GetContactMailTemplate();
-            //if (body.Contains(MailTemplateTags.SiteContact.Contact))
-            //    body = body.Replace(MailTemplateTags.SiteContact.Contact, contact);
-            //if (body.Contains(MailTemplateTags.SiteContact.ContactType))
-            //    body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
+            if (body.Contains(MailTemplateTags.SiteContact.ContactType))
+                body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
             if (body.Contains(MailTemplateTags.General.Mail))
                 body = body.Replace(MailTemplateTags.General.Mail, mail);
             if (body.Contains(MailTemplateTags.General.Message))
@@ -52,7 +49,7 @@ public partial class Contato_Default : System.Web.UI.Page
         }
         catch (Exception exception)
         {
-            AppLogController.WriteException("FaleConosco_Default.createMailBody", exception, true);
+            AppLogController.WriteException("Pandolfo.FaleConosco_Default.createMailBody", exception, true);
         }
         return result;
     }
@@ -65,8 +62,21 @@ public partial class Contato_Default : System.Web.UI.Page
     {
         string subject = "Mensagem enviada através do site Pandolfo Imóveis";
         string body = createMailBody();
-        var mailHelper = new MailHelper();
-        mailHelper.SendMail(subject, body, MailAdresses.Contato, true);
+        var mailHelper = new PandolfoMailHelper();
+        string mailTo = string.Empty;
+        switch (radioButtonListContactType.SelectedValue)
+        {
+            case "Aluguel":
+                mailTo = MailAdresses.Aluguel;
+                break;
+            case "Vendas":
+                mailTo = MailAdresses.Vendas;
+                break;
+            default:
+                mailTo = MailAdresses.Contato;
+                break;
+        }
+        mailHelper.SendMail(subject, body, mailTo, true);
         createMessageAlert(this, "Mensagem enviada", "");
     }
 

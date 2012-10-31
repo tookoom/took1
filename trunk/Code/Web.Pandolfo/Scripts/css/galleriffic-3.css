@@ -20,13 +20,15 @@ div.controls a {
 	padding: 5px;
     
 }
-div.ss-controls {
+div.ss-controls 
+{
+    font-weight:bold;
 	float: left;
 }
 div.nav-controls 
 {
-	/*float: right;*/
-	margin-left:410px;
+    font-weight:bold;
+	margin-left:400px;
 }
 div.slideshow-container {
 	position: relative;
@@ -72,7 +74,7 @@ div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.sli
 }
 div.slideshow img {
 	vertical-align: middle;
-	border: 1px solid #ccc;
+	border: 0px solid #ccc;
     max-height:490px;
     /*max-width:490px;*/
 }
@@ -105,7 +107,6 @@ div.image-desc {
 }
 div.navigation 
 {
-    
     /*background-color: Fuchsia;*/
     margin-left: -20px;
 }
@@ -135,7 +136,7 @@ a.thumb:focus {
 ul.thumbs img {
 	border: none;
 	display: block;
-		width:50px;
+	width:50px;
 	height:50px;
 }
 div.pagination 
@@ -147,7 +148,7 @@ div.navigation div.top {
 	height: 11px;
 }
 div.navigation div.bottom {
-	margin-top: 12px;
+	margin-top: 8px;
 }
 div.pagination a, div.pagination span.current, div.pagination span.ellipsis {
 	display: block;

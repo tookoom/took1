@@ -16,7 +16,7 @@ namespace TK1.Bizz.Pandolfo
             html.Body.Attributes.Set("style", "font-family: \"Helvetica Neue\", \"Lucida Grande\", \"Segoe UI\", Arial, Helvetica, Verdana, sans-serif");
             
             html.Body.Children.Add(new HtmlHeading(4,"Mensagem enviada através do site Pandolfo Imóveis:"));
-            //html.Body.Children.Add(new HtmlParagraph("Tipo de contato: #TK1_TAG_CONTACT_TYPE#"));
+            html.Body.Children.Add(new HtmlParagraph("Tipo de contato: #TK1_TAG_CONTACT_TYPE#"));
             html.Body.Children.Add(new HtmlParagraph("Data do envio: #TK1_TAG_TIMESTAMP#"));
             html.Body.Children.Add(new HtmlBlankRow());
 

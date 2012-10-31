@@ -72,14 +72,14 @@
     </h1>
     <div class="featuredSites">
 
-        <asp:DataList ID="dataListFeaturedSiteAds" runat="server" 
+        <asp:DataList ID="dataListFeaturedSellingSiteAds" runat="server" 
             DataSourceID="objectDataSourceFeaturedSellingSites" RepeatDirection="Horizontal">
             <ItemTemplate>
                 <div class="featureViewerOuter">
                     <div class="featureViewerInner">
                         <div class="featureViewerImage">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("Code") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
+                                <img src="<%# Eval("MainPicUrl") %>" width="160px"/>
                             </a>
                         </div>
                         <h2><%# Eval("District")%></h2>
@@ -113,7 +113,7 @@
                     <div class="featureViewerInner">
                         <div class="featureViewerImage">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("Code") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
+                                <img src="<%# Eval("MainPicUrl") %>" width="160px"/>
                             </a>
                         </div>
                         <h2><%# Eval("District")%></h2>

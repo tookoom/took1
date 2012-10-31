@@ -21,12 +21,12 @@ public partial class _Default : System.Web.UI.Page
     {
         SiteAdController siteController = new SiteAdController();
 
-        var cities = siteController.GetCities(customerName);
+        var cities = siteController.GetCities(customerName, SiteAdTypes.Rent);
         foreach (var city in cities.OrderBy(o => o))
             dropDownRentCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
         dropDownRentDistricts.Items.Add(new ListItem("Todos os bairros", "*") { Selected = true });
-        var districts = siteController.GetDistricts(customerName);
+        var districts = siteController.GetDistricts(customerName, SiteAdTypes.Rent);
         foreach (var district in districts.OrderBy(o => o))
             dropDownRentDistricts.Items.Add(new ListItem(district, district));
 
@@ -39,16 +39,16 @@ public partial class _Default : System.Web.UI.Page
     {
         SiteAdController siteController = new SiteAdController();
 
-        var cities = siteController.GetCities(customerName);
+        var cities = siteController.GetCities(customerName, SiteAdTypes.Sell);
         foreach (var city in cities.OrderBy(o => o))
             dropDownSellingCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
         dropDownSellingDistricts.Items.Add(new ListItem("Todos os bairros", "*") { Selected = true });
-        var districts = siteController.GetDistricts(customerName);
+        var districts = siteController.GetDistricts(customerName, SiteAdTypes.Sell);
         foreach (var district in districts.OrderBy(o => o))
             dropDownSellingDistricts.Items.Add(new ListItem(district, district));
 
-        dropDownSellingSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
+        dropDownSellingSiteType.Items.Add(new ListItem("Todos os tipos de imóvel", "*") { Selected = true });
         var siteTypes = siteController.GetSiteTypes(customerName, SiteAdTypes.Sell);
         foreach (var siteType in siteTypes.OrderBy(o => o))
             dropDownSellingSiteType.Items.Add(new ListItem(siteType, siteType));

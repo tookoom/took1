@@ -18,33 +18,29 @@ public partial class Imovel_Default : System.Web.UI.Page
             objectDataSourceSiteDetail.Select();
         }
     }
-    public override void VerifyRenderingInServerForm(Control control)
+
+    protected bool getRentDivVisibility(string adType)
     {
-        return;
+        bool result = false;
+        switch (adType)
+        {
+            case "1":
+                result = true;
+                break;
+
+            default:
+                result = false;
+                break;
+        }
+        return result;
     }
-
-    //protected bool getRentDivVisibility(string adType)
-    //{
-    //    bool result = false;
-    //    switch (adType)
-    //    {
-    //        case "1":
-    //            result = true;
-    //            break;
-
-    //        default:
-    //            result = false;
-    //            break;
-    //    }
-    //    return result;
-    //}
     private string getSitePicGallery(int siteAdTypeID, int siteAdID)
     {
         SiteAdController siteController = new SiteAdController();
         var customerName = CustomerNames.Pandolfo.ToString();
 
         string result = string.Empty;
-        string baseUrl = baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Bizz/Broker/RealEstate/pandolfo/{0}/{1}/", siteAdTypeID == 1 ? "Rent" : "Sell", siteAdID);
+        string baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Bizz/Broker/RealEstate/pandolfo/{0}/{1}/", siteAdTypeID == 1 ? "Rent" : "Sell", siteAdID);
 
         var siteAd = siteController.GetSiteAd(customerName, siteAdTypeID, siteAdID);
         var siteAdPics = new List<SiteAdPicView>();
@@ -67,7 +63,7 @@ public partial class Imovel_Default : System.Web.UI.Page
             index++;
             string fileName = item.FileName;
             string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
-            string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
+            string imageThumbSource = baseUrl +"thumbs/" + fileName;
             //string imageTitle = string.Format("Foto {0}", index);
             string imageDescription = item.Description ?? string.Empty;
 
@@ -84,7 +80,7 @@ public partial class Imovel_Default : System.Web.UI.Page
         }
         if (string.IsNullOrEmpty(items))
         {
-            string imageSource = @"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
+            string imageSource = @"http://www.tk1.net.br/Images/ImagemNaoDisponivel.png";
             string li = "<li>"
                 + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
                 + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
@@ -123,7 +119,7 @@ public partial class Imovel_Default : System.Web.UI.Page
                 divSiteNotFound.Visible = false;
                 divSiteDetails.Visible = true;
 
-                string literal = getSitePicGallery(siteAdView.CustomerID, siteAdView.Code);
+                string literal = getSitePicGallery(siteAdView.AdTypeID, siteAdView.Code);
 
                 literalSitePics.Text = literal;
             }

@@ -11,24 +11,23 @@
     <div class="quickSearch">
         <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tr>
-                <%--<td width="13%">Estou procurando:</td>--%>
-                <td width="8%" class="radioItem">
+                <td width="6%" class="radioItem">
                     <asp:RadioButton ID="radioButtonRent" runat="server" Text="Aluguel"  TextStyle="bold"
                             GroupName="radioButtonAdType"  />
                 </td>
-                <td width="30%" colspan="2">
+                <td width="27%" colspan="2">
                     <div id="divRentCities">
-                        <asp:DropDownList ID="dropDownRentCities" runat="server" Font-Size="Medium" Width="100%">
+                        <asp:DropDownList ID="dropDownRentCities" runat="server" Font-Size="Medium" Width="96%">
                         </asp:DropDownList>
                     </div>
                     <div id="divSellingCities">
-                        <asp:DropDownList ID="dropDownSellingCities" runat="server"  Font-Size="Medium" Width="100%">
+                        <asp:DropDownList ID="dropDownSellingCities" runat="server"  Font-Size="Medium" Width="96%">
                         </asp:DropDownList>
                     </div>
                 </td>
                 <td width="15%" rowspan="4">
                     <div style="overflow-y: scroll; float: left; width: 100%; height:120px; background-color: White;
-                        color: Black;">
+                        color: Black; border:1px solid #e3e3e3; font-size:medium; font-weight:normal;">
                         <div id="divRentDistricts">
                             <asp:CheckBoxList ID="checkBoxListRentDistricts" runat="server">
                             </asp:CheckBoxList>
@@ -41,57 +40,45 @@
                 </td>
             </tr>
             <tr>
-                <%--<td> </td>--%>
                 <td class="radioItem">
                     <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Venda" TextStyle="bold"
                                 GroupName="radioButtonAdType" />
                 </td>
                 <td colspan="2">
                     <div id="divRentSiteTypes">
-                        <asp:DropDownList ID="dropDownRentSiteType" runat="server"  Font-Size="Medium" Width="100%"></asp:DropDownList>
+                        <asp:DropDownList ID="dropDownRentSiteType" runat="server"  Font-Size="Medium" Width="96%"></asp:DropDownList>
                     </div>
                     <div id="divSellingSiteTypes">
-                        <asp:DropDownList ID="dropDownSellingSiteType" runat="server"  Font-Size="Medium" Width="100%"></asp:DropDownList>
+                        <asp:DropDownList ID="dropDownSellingSiteType" runat="server"  Font-Size="Medium" Width="96%"></asp:DropDownList>
                     </div>
-                    <%--<div id="divRentDistricts">
-                        <asp:DropDownList ID="dropDownRentDistricts" runat="server" Font-Size="Medium" Width="100%">
-                        </asp:DropDownList>
-                    </div>
-                    <div id="divSellingDistricts">
-                        <asp:DropDownList ID="dropDownSellingDistricts" runat="server"  Font-Size="Medium" Width="100%">
-                        </asp:DropDownList>
-                    </div>--%>
                 </td>
             </tr>
             <tr>
-                <%--<td></td>--%>
                 <td></td>
-                <td colspan="2"><asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="100%" Font-Size="Medium"></asp:DropDownList></td>
+                <td colspan="2"><asp:DropDownList ID="dropDownRoomNumber" runat="server" Width="96%" Font-Size="Medium"></asp:DropDownList></td>
             </tr>
             <tr>
-                <%--<td></td>--%>
                 <td></td>
                 <td>Preço Mínimo:</td>
                 <td>
                     <div id="divRentPriceFrom">
-                        <asp:DropDownList ID="dropDownRentPriceFrom" runat="server" Width="100%" Font-Size="Medium"></asp:DropDownList>
+                        <asp:DropDownList ID="dropDownRentPriceFrom" runat="server" Width="94%" Font-Size="Medium"></asp:DropDownList>
                     </div>
                     <div id="divSellingPriceFrom">
-                        <asp:DropDownList ID="dropDownSellingPriceFrom" runat="server" Width="100%" Font-Size="Medium">
+                        <asp:DropDownList ID="dropDownSellingPriceFrom" runat="server" Width="94%" Font-Size="Medium">
                         </asp:DropDownList>
                     </div>
                 </td>
             </tr>
             <tr>
-                <%--<td></td>--%>
                 <td></td>
                 <td>Preço Máximo:</td>                            
                 <td width="18%">
                     <div id="divRentPriceTo">
-                        <asp:DropDownList ID="dropDownRentPriceTo" runat="server" Width="100%" Font-Size="Medium"></asp:DropDownList>
+                        <asp:DropDownList ID="dropDownRentPriceTo" runat="server" Width="94%" Font-Size="Medium"></asp:DropDownList>
                     </div>
                     <div id="divSellingPriceTo">
-                        <asp:DropDownList ID="dropDownSellingPriceTo" runat="server" Width="100%" Font-Size="Medium">
+                        <asp:DropDownList ID="dropDownSellingPriceTo" runat="server" Width="94%" Font-Size="Medium">
                         </asp:DropDownList>
                     </div>
                 </td>
@@ -109,7 +96,7 @@
                 <%--<td></td>--%>
                 <td></td>
                 <td>Busca pelo código:</td>
-                <td><asp:TextBox ID="textBoxSiteCode" runat="server" Width="100%" Font-Size="Large"></asp:TextBox></td>
+                <td><asp:TextBox ID="textBoxSiteCode" runat="server" Width="92%" Font-Size="Large"></asp:TextBox></td>
             </tr>
             </table>
     </div>
@@ -195,7 +182,7 @@
                 <table class="searchResultTable" border="0" cellpadding="0px 0px 4px 0px;" cellspacing="0" width="100%">
                     <tr class="center">
                         <td style="vertical-align: middle;">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&CustomerID=<%# Eval("CustomerID")%>">
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
                                 <img src="<%# Eval("MainPicUrl") %>" height="110px" width="120px" style="margin: 4px 0px 4px 0px;" />
                             </a>
                         <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
@@ -216,7 +203,7 @@
                         </td>
                         <td style="vertical-align: middle; width:100px; text-align:center;">Bairro <%# Eval("District")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Value", "{0:c}")%></td>
-                        <td style="vertical-align: middle; text-align:center; width:80px;"><a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&CustomerID=<%# Eval("CustomerID")%>"><b>Detalhes</b></a></td>
+                        <td style="vertical-align: middle; text-align:center; width:80px;"><a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>"><b>Detalhes</b></a></td>
                     </tr>
                     <hr />
                 </table>
@@ -255,7 +242,7 @@
             </asp:DataPager>
         </div>
     </div>
-
+    <br />
 <%--    <div>
         <asp:Literal ID="literalDebugResult" Text="Debug" runat="server"/>
     </div>
