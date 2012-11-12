@@ -33,7 +33,7 @@
                 DataSourceID="objectDataSourceSiteDescription" >
                 <ItemTemplate>
                     <div class="siteHeaderPrice">   
-                        <h2><%# Eval("AdTypeName")%>: <%# Eval("Value", "{0:c}")%></h2>
+                        <h2><b><%# Eval("AdTypeName")%>: <%# Eval("Value", "{0:c}")%></b></h2>
                         
                     </div>
                     <div >
@@ -72,7 +72,7 @@
         
         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="siteDescription">
             <tr>
-                <td style="width: 50%; vertical-align: top;">
+                <td style="width: 40%; vertical-align: top;">
                     <asp:Repeater ID="Repeater1" runat="server" 
                         DataSourceID="objectDataSourceSiteDescription" >
                         <ItemTemplate>
@@ -97,7 +97,7 @@
 
                 </td>
                 <td style="width: 5%; vertical-align: top;"></td>
-                <td style="width: 20%; vertical-align: top;">
+                <td style="width: 15%; vertical-align: top;">
                     <p> <b>Detalhes:</b></p>
                     <asp:Repeater ID="Repeater3" runat="server" DataSourceID="objectDataSourceSiteDetail" >
                         <ItemTemplate>
@@ -110,15 +110,46 @@
                         </ItemTemplate>                                 
                     </asp:Repeater>
                 </td>
-                <td style="width: 20%; vertical-align: top;">
-                    <p> <b>Solicite Contato</b></p>
-                    Preencha seus dados e a Pandolfo Imóveis entra em contato com você.
+                <td style="width: 35%; vertical-align: top;">
+                    <div class="highlight">
+                        <p> <b>Solicite Contato</b></p>
+                        <table border="0" cellpadding="4" cellspacing="4" width="100%">
+                            <tr>
+                                <td colspan="2">Preencha seus dados para que a Pandolfo Imóveis entre em contato: </td>
+                            </tr>
+                            <tr>
+                                <td>Nome: </td>
+                                <td width="95%"><asp:TextBox runat="server" ID="textBoxContactName" width="98%"/></td>
+                            </tr>
+                            <tr>
+                                <td>Telefone: </td>
+                                <td><asp:TextBox runat="server" ID="textBoxContactPhone" width="98%"/></td>
+                            </tr>
+                            <tr>
+                                <td>E-mail: </td>
+                                <td><asp:TextBox runat="server" ID="textBoxContactMail" width="98%"/></td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align:top;">Mensagem: </td>
+                                <td><asp:TextBox runat="server" ID="textBoxContactMessage" width="97%" TextMode="MultiLine" Height="60px"/></td>
+                            </tr>
+                            <tr>    
+                                <td colspan="2">
+                                    <div class="button">
+                                        <asp:LinkButton ID="buttonSendMessage" runat="server" OnClick="buttonSendMessage_OnClick">
+                                            <img src="http://pandolfo.tk1.net.br/Imagens/ContactRequest.png" />
+                                        </asp:LinkButton>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </td>
             </tr>
         </table>
-        <div class="buttonSearchBack">
+<%--        <div class="button">
             <a href="javascript: history.go(-1)" style="margin-top:4px; font-size:medium; font-weight:bold; text-align:right;">Retornar à pesquisa</a>
-        </div>
+        </div>--%>
         <br />
     </div>
     <br />

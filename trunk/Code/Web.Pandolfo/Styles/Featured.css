@@ -1,6 +1,24 @@
 ﻿
 /* VIEWER   
 ----------------------------------------------------------*/
+.featureViewerOuter
+{
+    text-align:center;
+    width:178px;
+    background-color: #efefef;
+    overflow: hidden;
+    margin-right:8px;
+    
+background: rgb(255,255,255);
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(239,239,239,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(239,239,239,1)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#efefef',GradientType=0 );
+}
+
 .featureViewerInner
 {
     padding:8px;
@@ -15,13 +33,7 @@
     margin-bottom: 0px;
     line-height: 1em;
 }
-.featureViewerOuter
-{
-    width:178px;
-    background-color: #efefef;
-    overflow: hidden;
-    margin-right:8px;
-}
+
 div.featureViewerImage
 {
     height:100px;
@@ -42,17 +54,13 @@ div.featureViewerImage
 }
 div.featureViewerDetailButton
 {
-    width:160;
-    height: 30px;
+    padding-top: 4px;
     text-align:center;
 }
 div.featureViewerDetailButton a
 {
-    margin-left: auto;
-    margin-right: auto;
-    font-size:large;
+    font-size:small;
     font-weight:bold;
-    color:#333333;
     text-align:center;
 }
 /* DETAILS   

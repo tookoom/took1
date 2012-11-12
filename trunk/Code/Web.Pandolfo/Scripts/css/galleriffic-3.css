@@ -6,7 +6,7 @@ div.content {
 }
 div.content a, div.navigation a {
 	text-decoration: none;
-	color: #777;
+	color: #333;
 }
 div.content a:focus, div.content a:hover, div.content a:active {
 	text-decoration: underline;
@@ -28,7 +28,7 @@ div.ss-controls
 div.nav-controls 
 {
     font-weight:bold;
-	margin-left:400px;
+	margin-left:380px;
 }
 div.slideshow-container {
 	position: relative;
@@ -60,7 +60,7 @@ div.slideshow span.image-wrapper {
 	/*background-color: Fuchsia;*/
 	width: 700px;
     overflow:hidden;
-    border: 1px solid #bfbfbf;
+    border: 1px solid #d3d3d3;
 }
 div.slideshow a.advance-link {
 	display: block;
@@ -74,7 +74,7 @@ div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.sli
 }
 div.slideshow img {
 	vertical-align: middle;
-	border: 0px solid #ccc;
+	border: 0px solid #d3d3d3;
     max-height:490px;
     /*max-width:490px;*/
 }
@@ -125,10 +125,10 @@ ul.thumbs li {
 a.thumb {
 	padding: 2px;
 	display: block;
-	border: 1px solid #ccc;
+	border: 1px solid #d3d3d3;
 }
 ul.thumbs li.selected a.thumb {
-	background: #000;
+	background: #fff;
 }
 a.thumb:focus {
 	outline: none;
@@ -155,7 +155,7 @@ div.pagination a, div.pagination span.current, div.pagination span.ellipsis {
 	float: left;
 	margin-right: 2px;
 	padding: 4px 7px 2px 7px;
-	border: 1px solid #ccc;
+	border: 1px solid #d3d3d3;
 }
 div.pagination a:hover {
 	background-color: #eee;
