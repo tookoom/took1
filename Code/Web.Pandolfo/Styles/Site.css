@@ -9,17 +9,6 @@ body
     margin: 0px;
     padding: 0px;
     color: #000;
-/*
-background: rgb(0,0,0);
-background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(188,188,188,1) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(188,188,188,1)));
-background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(188,188,188,1) 100%);
-background: -o-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(188,188,188,1) 100%);
-background: -ms-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(188,188,188,1) 100%);
-background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(188,188,188,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#bcbcbc',GradientType=0 );
-*/
-
 }
 
 a
@@ -114,7 +103,6 @@ first child of the left and right table columns */
 .page
 {
     width: 960px;
-    /*background-color: #fff;*/
     margin: 20px auto 10px auto;
     border: 0px solid #afafaf;
 }
@@ -124,16 +112,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    /*background: #fff;*/
     width: 100%;
-    
-    /*background: -moz-linear-gradient(top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,0)));
-    background: -webkit-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: -o-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: -ms-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=0 );*/
 }
 
 .header h1
@@ -182,33 +161,56 @@ first child of the left and right table columns */
 .highlight
 {
     color: #333333;
-    margin: 0px auto;
+    margin: 0px 8px;
     line-height: normal;
-    background: #fff;
+    
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(239,239,239,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(239,239,239,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(239,239,239,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#efefef',GradientType=0 );
 }
 
-.lnkButton
+.button
 {
-    background: white;
+    color:#333;
+    border:solid 1px #d3d3d3;
+    min-width:70px;
+    height:40px;
+    vertical-align:middle;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+}
+
+/*.button a
+{
+    color:#333;
     display:block;
-    margin:auto;
-    padding: 4px;
-    text-align:center;
-    vertical-align: middle;
-    width:auto;
+    padding:2px 20px 2px 40px;
+    min-width:70px;
+    vertical-align:middle;
+}*/
+
+.button:hover
+{
+background: rgb(239,239,239);
+background: -moz-linear-gradient(top,  rgba(239,239,239,1) 0%, rgba(255,255,255,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,239,239,1)), color-stop(100%,rgba(255,255,255,1)));
+background: -webkit-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(255,255,255,1) 100%);
+background: -o-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(255,255,255,1) 100%);
+background: -ms-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(255,255,255,1) 100%);
+background: linear-gradient(to bottom,  rgba(239,239,239,1) 0%,rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#ffffff',GradientType=0 );
 }
 
-.lnkButton:hover
+.button a:active
 {
-    background: white;
 }
-.lnkButton a
+.button a:hover
 {
-    text-decoration: none;
-}
-.lnkButton a:hover
-{
-    text-decoration: underline;
 }
 
 /* TAB MENU   

@@ -8,6 +8,10 @@ using System.IO;
 using TK1.Bizz.Data.Presentation;
 using TK1.Bizz.Data.Controller;
 using TK1.Bizz;
+using TK1.Bizz.Pandolfo;
+using TK1.Web.Extension;
+using TK1.Bizz.Pandolfo.Const;
+using TK1.Data;
 
 public partial class Imovel_Default : System.Web.UI.Page
 {
@@ -81,9 +85,10 @@ public partial class Imovel_Default : System.Web.UI.Page
         if (string.IsNullOrEmpty(items))
         {
             string imageSource = @"http://www.tk1.net.br/Images/ImagemNaoDisponivel.png";
+            string imageThumbSource = @"http://www.tk1.net.br/Images/ImagemNaoDisponivelThumb.png";
             string li = "<li>"
                 + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
-                + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
+                + "<img src=\"" + imageThumbSource + "\" alt=\"" + "" + "\" />"
                 + "</a>"
                 + "<div class=\"caption\">"
                 + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
@@ -101,9 +106,77 @@ public partial class Imovel_Default : System.Web.UI.Page
         result = string.Format(ul, items);
         return result;
     }
+    private string createMailBody()
+    {
+        string result = string.Empty;
+        string contactType = this.GetQueryStringIntegerValue("adTypeID") == 1 ? "Aluguel" : "Vendas";
+        string timestamp = DateTime.Now.ToString();
+        string name = textBoxContactName.Text;
+        string mail = textBoxContactMail.Text;
+        string phone = textBoxContactPhone.Text;
+        string message = textBoxContactMessage.Text;
+
+
+
+        try
+        {
+            string body = HtmlTemplates.GetContactMailTemplate();
+            if (body.Contains(MailTemplateTags.SiteContact.ContactType))
+                body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
+            if (body.Contains(MailTemplateTags.General.Mail))
+                body = body.Replace(MailTemplateTags.General.Mail, mail);
+            if (body.Contains(MailTemplateTags.General.Message))
+                body = body.Replace(MailTemplateTags.General.Message, message);
+            if (body.Contains(MailTemplateTags.General.Name))
+                body = body.Replace(MailTemplateTags.General.Name, name);
+            if (body.Contains(MailTemplateTags.SiteContact.Phone))
+                body = body.Replace(MailTemplateTags.SiteContact.Phone, phone);
+            if (body.Contains(MailTemplateTags.General.Timestamp))
+                body = body.Replace(MailTemplateTags.General.Timestamp, timestamp);
+
+            result = body;
+        }
+        catch (Exception exception)
+        {
+            AppLogController.WriteException("Pandolfo.FaleConosco_Default.createMailBody", exception, true);
+        }
+        return result;
+    }
+    private void createMessageAlert(System.Web.UI.Page senderPage, string alertMsg, string alertKey)
+    {
+        string strScript = "<script language=JavaScript>alert('" + alertMsg + "')</script>";
+        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", strScript);
+    }
+    private void sendMessage()
+    {
+        string subject = "Solicitação de Contato site Pandolfo Imóveis";
+        string body = createMailBody();
+        var mailHelper = new PandolfoMailHelper();
+        string mailTo = string.Empty;
+        int adType = this.GetQueryStringIntegerValue("adTypeID");
+        switch (adType)
+        {
+            case 1:
+                mailTo = MailAdresses.Aluguel;
+                break;
+            case 2:
+                mailTo = MailAdresses.Vendas;
+                break;
+            default:
+                mailTo = MailAdresses.Contato;
+                break;
+        }
+        mailHelper.SendMail(subject, body, mailTo, true);
+        createMessageAlert(this, "Mensagem enviada", "");
+    }
 
 
     #region EVENT HANDLERS
+    protected void buttonSendMessage_OnClick(object sender, EventArgs e)
+    {
+        sendMessage();
+    }
+
     protected void objectDataSourceSiteDescription_Selected(object sender, ObjectDataSourceStatusEventArgs e)
     {
         if (e != null)

@@ -25,18 +25,33 @@
                         </asp:DropDownList>
                     </div>
                 </td>
-                <td width="15%" rowspan="4">
-                    <div style="overflow-y: scroll; float: left; width: 100%; height:120px; background-color: White;
-                        color: Black; border:1px solid #e3e3e3; font-size:medium; font-weight:normal;">
-                        <div id="divRentDistricts">
-                            <asp:CheckBoxList ID="checkBoxListRentDistricts" runat="server">
-                            </asp:CheckBoxList>
-                        </div>
-                        <div id="divSellingDistricts">
-                            <asp:CheckBoxList ID="checkBoxListSellingDistricts" runat="server">
-                            </asp:CheckBoxList>
-                        </div>
-                    </div>
+                <td width="15%" rowspan="6">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td style="vertical-align:top;">
+                                <div style="overflow-y: scroll; float: left; width: 99%; height:116px; background-color: White;
+                                    color: Black; border:1px solid #d3d3d3; font-size:medium; font-weight:normal; margin-bottom:6px;margin-top:4px;">
+                                    <div id="divRentDistricts">
+                                        <asp:CheckBoxList ID="checkBoxListRentDistricts" runat="server">
+                                        </asp:CheckBoxList>
+                                    </div>
+                                    <div id="divSellingDistricts">
+                                        <asp:CheckBoxList ID="checkBoxListSellingDistricts" runat="server">
+                                        </asp:CheckBoxList>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align:bottom;">
+                                <div class="button">
+                                    <asp:LinkButton ID="buttonSearch" runat="server" OnClick="buttonSearch_Click">
+                                    <img src="http://pandolfo.tk1.net.br/Imagens/Search.png" />
+                                    </asp:LinkButton>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
             <tr>
@@ -82,21 +97,12 @@
                         </asp:DropDownList>
                     </div>
                 </td>
-                <td rowspan="2"><asp:LinkButton ID="buttonSearch" CssClass="lnkButton" runat="server" Height="100%" Width="100%" OnClick="buttonSearch_Click">
-                        Pesquisar
-                        <img src="../Imagens/SearchSmall.png" />
-                </asp:LinkButton>
-                            <%--<div class="quickSearchButton">
-                                <a href="Pesquisa/Default.aspx">
-                                    Pesquisar</a>
-                                </div>--%>
-                </td>
             </tr>
             <tr>
                 <%--<td></td>--%>
                 <td></td>
                 <td>Busca pelo código:</td>
-                <td><asp:TextBox ID="textBoxSiteCode" runat="server" Width="92%" Font-Size="Large"></asp:TextBox></td>
+                <td><asp:TextBox ID="textBoxSiteCode" runat="server" Width="93%" Font-Size="Large"></asp:TextBox></td>
             </tr>
             </table>
     </div>

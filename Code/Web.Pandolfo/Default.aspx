@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Pandolfo Imóveis" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -16,21 +16,22 @@
                     <asp:RadioButton ID="radioButtonRent" runat="server" Text="Aluguel"  TextStyle="bold"
                             GroupName="radioButtonAdType"  />
                 </td>
-                <td width="40%">
+                <td width="35%">
                     <div id="divRentCities">
-                        <asp:DropDownList ID="dropDownRentCities" runat="server" Font-Size="Medium" Width="100%">
+                        <asp:DropDownList ID="dropDownRentCities" runat="server" Font-Size="Medium" Width="90%">
                         </asp:DropDownList>
                     </div>
                     <div id="divSellingCities">
-                        <asp:DropDownList ID="dropDownSellingCities" runat="server"  Font-Size="Medium" Width="100%">
+                        <asp:DropDownList ID="dropDownSellingCities" runat="server"  Font-Size="Medium" Width="90%">
                         </asp:DropDownList>
                     </div>
                 </td>
-                <td width=20%" rowspan=3>
-                    <asp:LinkButton ID="buttonSearch" CssClass="lnkButton" runat="server"  Height="100%" Width="100%" OnClick="buttonSearch_Click" >
-                        Pesquisar
-                        <img src="Imagens/SearchSmall.png" />
-                    </asp:LinkButton>
+                <td width=25%" rowspan=3>
+                    <div class="button" style="margin-right:20px;">
+                        <asp:LinkButton ID="buttonSearch" runat="server" OnClick="buttonSearch_Click">
+                        <img src="Imagens/Search.png" />
+                        </asp:LinkButton>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -41,11 +42,11 @@
                 </td>
                 <td>
                     <div id="divRentDistricts">
-                        <asp:DropDownList ID="dropDownRentDistricts" runat="server" Font-Size="Medium" Width="100%">
+                        <asp:DropDownList ID="dropDownRentDistricts" runat="server" Font-Size="Medium" Width="90%">
                         </asp:DropDownList>
                     </div>
                     <div id="divSellingDistricts">
-                        <asp:DropDownList ID="dropDownSellingDistricts" runat="server"  Font-Size="Medium" Width="100%">
+                        <asp:DropDownList ID="dropDownSellingDistricts" runat="server"  Font-Size="Medium" Width="90%">
                         </asp:DropDownList>
                     </div>
                 </td>
@@ -55,10 +56,10 @@
                 <td> </td>
                 <td>
                     <div id="divRentSiteTypes">
-                        <asp:DropDownList ID="dropDownRentSiteType" runat="server"  Font-Size="Medium" Width="100%"></asp:DropDownList>
+                        <asp:DropDownList ID="dropDownRentSiteType" runat="server"  Font-Size="Medium" Width="90%"></asp:DropDownList>
                     </div>
                     <div id="divSellingSiteTypes">
-                        <asp:DropDownList ID="dropDownSellingSiteType" runat="server"  Font-Size="Medium" Width="100%"></asp:DropDownList>
+                        <asp:DropDownList ID="dropDownSellingSiteType" runat="server"  Font-Size="Medium" Width="90%"></asp:DropDownList>
                     </div>
                 </td>
             </tr>
@@ -85,11 +86,11 @@
                         <h2><%# Eval("District")%></h2>
                         <h3><%# Eval("SiteType")%></h3>
                         <p><%# Eval("SiteTotalRooms")%> dormitórios</p>
-                        <p><%# Eval("SiteTotalArea")%>  m²</p>
-                        <p><b><%# Eval("Value", "{0:c}")%></b></p>
+                        <%# Eval("SiteTotalArea")%>  m²
+                        <h3><%# Eval("Value", "{0:c}")%></h3>
                         <div class="featureViewerDetailButton">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                                Detalhes</a>
+                                Ver mais detalhes</a>
                         </div>
 
                     </div >
@@ -118,12 +119,12 @@
                         </div>
                         <h2><%# Eval("District")%></h2>
                         <h3><%# Eval("SiteType")%></h3>
-                        <p><%# Eval("SiteTotalRooms")%>  dormitórios</p>
-                        <p><%# Eval("SiteTotalArea")%>  m²</p>
-                        <p><b><%# Eval("Value", "{0:c}")%></b></p>
+                        <p><%# Eval("SiteTotalRooms")%> dormitórios</p>
+                        <%# Eval("SiteTotalArea")%>  m²
+                        <h3><%# Eval("Value", "{0:c}")%></h3>
                         <div class="featureViewerDetailButton">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                                Detalhes</a>
+                                Ver mais detalhes</a>
                         </div>
 
                     </div >
@@ -131,6 +132,7 @@
             </ItemTemplate>
         </asp:DataList>
         <br />
+        <hr />
         <table width="100%">
             <tr>
                 <td width="40%" style="vertical-align:top">
@@ -144,10 +146,16 @@
                                     height="50px"/></a>
                             </td>
                             <td>
-                                <a target="_blank" href="http://www.lojadez.net/">Loja Dez Móveis. A melhor 
-                                negociação da avenida Ipiranga!</a> 
+                                <a target="_blank" href="http://www.lojadez.net/">Loja Dez Móveis</a> 
                             </td>
 
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <a target="_blank" href="mailto:debora@safetycorretora.com.br">
+                                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoSafety.jpg" alt="" 
+                                    height="50px"/></a>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -157,17 +165,6 @@
                             </td>
                             <td>
                                 <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">Arquiteta e Urbanista Karla Schmuck</a> 
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>
-                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">
-                                    <img src="http://pandolfo.tk1.net.br/Imagens/MailSmall.png" alt="" 
-                                    height="30px" style="margin-left:10px"/></a>
-                            </td>
-                            <td>
-                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">Corretora de Seguros Safety </a> 
                             </td>
 
                         </tr>
@@ -190,8 +187,8 @@
                     </table>
 
                 </td>
-                <td width="20%">
-                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoEficiencia.png" alt="Pandolfo" width="200px"/>
+                <td width="20%" style="vertical-align:top; text-align:right;">
+                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoEficiencia.png" alt="Pandolfo" width="150px"/>
                 </td>
             </tr>
         </table>

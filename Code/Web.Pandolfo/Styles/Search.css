@@ -5,13 +5,20 @@
     max-width:960px;
     width: auto;
     height:632px;
-    /*margin-top:4px;*/
-    /*border: 1px solid Blue;*/
-    font-size:medium;
+    font-size:medium;    
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0.5) 0%, rgba(239,239,239,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(239,239,239,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0.5) 0%,rgba(239,239,239,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#efefef',GradientType=0 );
+    
 }
 .siteHeaderPrice
 {
     float:right; 
+    margin-top: 8px;
 }
 .sitePrice
 {
