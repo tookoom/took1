@@ -3,11 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using TK1.Collection;
 
 namespace TK1.Web.Extension
 {
     public static class PageExtension
     {
+        public static int GetQueryStringIntegerValue(this Page page, string key)
+        {
+            int result = -1;
+            var queryStrings = StringDictionary.LoadFromQueryString(page.ClientQueryString);
+            var value = queryStrings.Get(key);
+            if (!string.IsNullOrEmpty(value))
+            {
+                int.TryParse(value, out result);
+            }
+            return result;
+        }
+        public static string GetQueryStringValue(this Page page, string key)
+        {
+            var queryStrings = StringDictionary.LoadFromQueryString(page.ClientQueryString);
+            return queryStrings.Get(key);
+        }
+
         public static int GetSessionIntegerValue(this Page page, string key)
         {
             int result = -1;

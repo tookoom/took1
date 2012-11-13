@@ -106,6 +106,7 @@ namespace TK1.Bizz.BrokerSL
                     file.Thumbnail = buffer;
                     serviceClient.SaveBrokerSiteAdPicAsync(siteAd.CustomerCodename, (Data.Presentation.SiteAdTypes)siteAd.SiteAdTypeID, siteAd.SiteAdID, file, siteAdPic);
                     serviceClient.SaveBrokerSiteAdPicCompleted += new EventHandler<SaveBrokerSiteAdPicCompletedEventArgs>(service_SaveFileCompleted);
+                    busyIndicatorPicUpload.IsBusy = true;
                 }
             }
         }
@@ -216,6 +217,7 @@ namespace TK1.Bizz.BrokerSL
             {
                 MessageBox.Show("Falha no envio do arquivo");
             }
+            busyIndicatorPicUpload.IsBusy = false;
         }
 
         #endregion

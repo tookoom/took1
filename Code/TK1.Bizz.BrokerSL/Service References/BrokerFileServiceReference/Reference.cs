@@ -169,11 +169,6 @@ namespace TK1.Bizz.BrokerSL.BrokerFileServiceReference {
     [System.ServiceModel.ServiceContractAttribute(Namespace="", ConfigurationName="BrokerFileServiceReference.BrokerFileService")]
     public interface BrokerFileService {
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:BrokerFileService/DoWork", ReplyAction="urn:BrokerFileService/DoWorkResponse")]
-        System.IAsyncResult BeginDoWork(System.AsyncCallback callback, object asyncState);
-        
-        void EndDoWork(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="urn:BrokerFileService/LogCustomerAccess", ReplyAction="urn:BrokerFileService/LogCustomerAccessResponse")]
         System.IAsyncResult BeginLogCustomerAccess(string customerCodename, System.AsyncCallback callback, object asyncState);
         
@@ -211,12 +206,6 @@ namespace TK1.Bizz.BrokerSL.BrokerFileServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class BrokerFileServiceClient : System.ServiceModel.ClientBase<TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService>, TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService {
-        
-        private BeginOperationDelegate onBeginDoWorkDelegate;
-        
-        private EndOperationDelegate onEndDoWorkDelegate;
-        
-        private System.Threading.SendOrPostCallback onDoWorkCompletedDelegate;
         
         private BeginOperationDelegate onBeginLogCustomerAccessDelegate;
         
@@ -283,8 +272,6 @@ namespace TK1.Bizz.BrokerSL.BrokerFileServiceReference {
             }
         }
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DoWorkCompleted;
-        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> LogCustomerAccessCompleted;
         
         public event System.EventHandler<SaveBrokerSiteAdPicCompletedEventArgs> SaveBrokerSiteAdPicCompleted;
@@ -292,49 +279,6 @@ namespace TK1.Bizz.BrokerSL.BrokerFileServiceReference {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService.BeginDoWork(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginDoWork(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService.EndDoWork(System.IAsyncResult result) {
-            base.Channel.EndDoWork(result);
-        }
-        
-        private System.IAsyncResult OnBeginDoWork(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return ((TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService)(this)).BeginDoWork(callback, asyncState);
-        }
-        
-        private object[] OnEndDoWork(System.IAsyncResult result) {
-            ((TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService)(this)).EndDoWork(result);
-            return null;
-        }
-        
-        private void OnDoWorkCompleted(object state) {
-            if ((this.DoWorkCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.DoWorkCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void DoWorkAsync() {
-            this.DoWorkAsync(null);
-        }
-        
-        public void DoWorkAsync(object userState) {
-            if ((this.onBeginDoWorkDelegate == null)) {
-                this.onBeginDoWorkDelegate = new BeginOperationDelegate(this.OnBeginDoWork);
-            }
-            if ((this.onEndDoWorkDelegate == null)) {
-                this.onEndDoWorkDelegate = new EndOperationDelegate(this.OnEndDoWork);
-            }
-            if ((this.onDoWorkCompletedDelegate == null)) {
-                this.onDoWorkCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDoWorkCompleted);
-            }
-            base.InvokeAsync(this.onBeginDoWorkDelegate, null, this.onEndDoWorkDelegate, this.onDoWorkCompletedDelegate, userState);
-        }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService.BeginLogCustomerAccess(string customerCodename, System.AsyncCallback callback, object asyncState) {
@@ -507,17 +451,6 @@ namespace TK1.Bizz.BrokerSL.BrokerFileServiceReference {
             
             public BrokerFileServiceClientChannel(System.ServiceModel.ClientBase<TK1.Bizz.BrokerSL.BrokerFileServiceReference.BrokerFileService> client) : 
                     base(client) {
-            }
-            
-            public System.IAsyncResult BeginDoWork(System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[0];
-                System.IAsyncResult _result = base.BeginInvoke("DoWork", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public void EndDoWork(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                base.EndInvoke("DoWork", _args, result);
             }
             
             public System.IAsyncResult BeginLogCustomerAccess(string customerCodename, System.AsyncCallback callback, object asyncState) {

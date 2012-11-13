@@ -3,7 +3,7 @@
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
            xmlns:TK1_Bizz_Data="clr-namespace:TK1.Bizz.Data;assembly=TK1.Silverlight.Data" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" xmlns:TK1_Silverlight_Data_Collection="clr-namespace:TK1.Silverlight.Data.Collection;assembly=TK1.Silverlight.Data" mc:Ignorable="d" x:Class="TK1.Bizz.BrokerSL.SiteAdEditor" 
-           Title="Edição de Imóveis" MinWidth="600" MinHeight="400" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="800" MaxHeight="600">
+           Title="Edição de Imóveis" MinWidth="600" MinHeight="400" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="800" MaxHeight="600" Width="800">
 	<sdk:ChildWindow.Resources>
 		<TK1_Silverlight_Data_Collection:SiteAdStatusCollection x:Key="SiteAdStatusCollectionDataSource" d:IsDataSource="True"/>
 		<DataTemplate x:Key="SiteAdStatusDataTemplate">
@@ -111,23 +111,21 @@
     			<Grid>
     				<Grid.RowDefinitions>
     					<RowDefinition Height="Auto" MinHeight="20"/>
+    					<RowDefinition Height="Auto" MinHeight="00"/>
     					<RowDefinition/>
     				</Grid.RowDefinitions>
-    				<Grid Margin="0" d:LayoutOverrides="Width">
-    					<Grid.ColumnDefinitions>
-    						<ColumnDefinition Width="Auto" MinWidth="5"/>
-    						<ColumnDefinition/>
-    						<ColumnDefinition Width="Auto" MinWidth="5"/>
-    						<ColumnDefinition Width="Auto" MinWidth="5"/>
-    					</Grid.ColumnDefinitions>
-    					<sdk:Label Margin="0,0,4,0" Content="Adicionar Foto:" VerticalAlignment="Center" d:LayoutOverrides="Width" Visibility="Collapsed"/>
-    					<TextBox x:Name="textBoxFileName" TextWrapping="Wrap" VerticalAlignment="Center" Margin="4,0,0,0" Grid.Column="1" d:LayoutOverrides="Width" Visibility="Collapsed"/>
-    					<Button x:Name="buttonGetFilePath" Content="..." Click="buttonGetFilePath_Click" Margin="0,4" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Center" Visibility="Collapsed"/>
-    					<Button x:Name="buttonAddSiteAdPic" Content="Adicionar Foto" Margin="4" d:LayoutOverrides="Height" Click="buttonAddSiteAdPic_Click" MinWidth="100" HorizontalAlignment="Left" Grid.Column="3" VerticalAlignment="Center"/>
-    				</Grid>
+    				<Button x:Name="buttonAddSiteAdPic" Content="Adicionar Foto" Margin="484,4,0,4" Click="buttonAddSiteAdPic_Click" MinWidth="100" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    				<toolkit:BusyIndicator x:Name="busyIndicatorPicUpload" Content="" Margin="0" d:LayoutOverrides="Height" BusyContent="Enviando foto. Aguarde." Grid.Row="1" Width="760"/>
     				<sdk:DataGrid x:Name="dataGridSiteAdPics" Margin="0" Grid.RowSpan="2" Grid.Row="4" ItemsSource="{Binding}" AutoGenerateColumns="False">
     					<sdk:DataGrid.Columns>
-    						<sdk:DataGridTextColumn Binding="{Binding PicID, Mode=TwoWay}" Header="Número"/>
+    						<sdk:DataGridTextColumn Binding="{Binding PicID, Mode=TwoWay}" Header="Número" Visibility="Collapsed"/>
+    						<sdk:DataGridTemplateColumn Header="" IsReadOnly="True" CanUserReorder="False">
+    							<sdk:DataGridTemplateColumn.CellTemplate>
+    								<DataTemplate>
+    									<Image Source="{Binding ThumbnailUrl}" Width="64" />
+    								</DataTemplate>
+    							</sdk:DataGridTemplateColumn.CellTemplate>
+    						</sdk:DataGridTemplateColumn>							
     						<sdk:DataGridTextColumn Binding="{Binding Description, Mode=TwoWay}" Header="Descrição"/>
     						<sdk:DataGridTextColumn Binding="{Binding FileName}" Header="Nome do Arquivo" IsReadOnly="True"/>
     						<sdk:DataGridTemplateColumn Header="" IsReadOnly="True" CanUserReorder="False">

@@ -190,9 +190,10 @@ namespace TK1.Bizz.BrokerSL
         }
         private void buttonCancel_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var client = new BrokerFileServiceClient();
-            client.DoWorkAsync();
-
+            string hostName = Application.Current.Host.Source.Host;
+            if (Application.Current.Host.Source.Port != 80)
+                hostName += ":" + Application.Current.Host.Source.Port;
+            MessageBox.Show(hostName);
             brokerContext.RejectChanges();
         }
 

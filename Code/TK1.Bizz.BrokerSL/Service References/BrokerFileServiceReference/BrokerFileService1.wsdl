@@ -8,12 +8,6 @@
       <xsd:import schemaLocation="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="BrokerFileService_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="DoWork" />
-  </wsdl:message>
-  <wsdl:message name="BrokerFileService_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="DoWorkResponse" />
-  </wsdl:message>
   <wsdl:message name="BrokerFileService_LogCustomerAccess_InputMessage">
     <wsdl:part name="parameters" element="LogCustomerAccess" />
   </wsdl:message>
@@ -27,10 +21,6 @@
     <wsdl:part name="parameters" element="SaveBrokerSiteAdPicResponse" />
   </wsdl:message>
   <wsdl:portType name="BrokerFileService">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="urn:BrokerFileService/DoWork" message="BrokerFileService_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="urn:BrokerFileService/DoWorkResponse" message="BrokerFileService_DoWork_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="LogCustomerAccess">
       <wsdl:input wsaw:Action="urn:BrokerFileService/LogCustomerAccess" message="BrokerFileService_LogCustomerAccess_InputMessage" />
       <wsdl:output wsaw:Action="urn:BrokerFileService/LogCustomerAccessResponse" message="BrokerFileService_LogCustomerAccess_OutputMessage" />
