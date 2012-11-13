@@ -289,10 +289,10 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 if (siteAdView.IsRoomNameVisible)
                     siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
                 string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
-                string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
-                if (!string.IsNullOrEmpty(mainPic))
-                    imageUrl = mainPic;
-                siteAdView.MainPicUrl = imageUrl;
+                //string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
+                //if (!string.IsNullOrEmpty(mainPic))
+                //    imageUrl = mainPic;
+                //siteAdView.MainPicUrl = imageUrl;
             }
             setDataBinding(searchResult);
         }

@@ -9,6 +9,30 @@ namespace TK1.Bizz.Pandolfo
 {
     public class HtmlTemplates
     {
+        public static string GetContactRequestMailTemplate()
+        {
+            HtmlDocument html = new HtmlDocument();
+            html.Head.Title = "Mensagem";
+            html.Body.Attributes.Set("style", "font-family: Arial");
+
+            html.Body.Children.Add(new HtmlHeading(4, "Solicitação de contato sobre imóvel através do site Pandolfo Imóveis:"));
+            html.Body.Children.Add(new HtmlParagraph("Tipo de anúncio: #TK1_TAG_CONTACT_TYPE#"));
+            html.Body.Children.Add(new HtmlParagraph("Código do Imóvel: #TK1_TAG_SITE_AD_ID#"));
+            html.Body.Children.Add(new HtmlParagraph("Data do envio: #TK1_TAG_TIMESTAMP#"));
+            html.Body.Children.Add(new HtmlBlankRow());
+
+            html.Body.Children.Add(new HtmlHeading(4, "Informações para contato:"));
+            html.Body.Children.Add(new HtmlParagraph("Nome: #TK1_TAG_NAME#"));
+            html.Body.Children.Add(new HtmlParagraph("E-mail: #TK1_TAG_MAIL#"));
+            html.Body.Children.Add(new HtmlParagraph("Telefone: #TK1_TAG_PHONE#"));
+            html.Body.Children.Add(new HtmlBlankRow());
+
+            html.Body.Children.Add(new HtmlHeading(4, "Mensagem:"));
+            html.Body.Children.Add(new HtmlParagraph("#TK1_TAG_MESSAGE#"));
+
+            return html.GetHtml();
+        }
+
         public static string GetContactMailTemplate()
         {
             HtmlDocument html = new HtmlDocument();
@@ -24,7 +48,6 @@ namespace TK1.Bizz.Pandolfo
             html.Body.Children.Add(new HtmlParagraph("Nome: #TK1_TAG_NAME#"));
             html.Body.Children.Add(new HtmlParagraph("E-mail: #TK1_TAG_MAIL#"));
             html.Body.Children.Add(new HtmlParagraph("Telefone: #TK1_TAG_PHONE#"));
-            //html.Body.Children.Add(new HtmlParagraph("Forma de contato preferida: #TK1_TAG_CONTACT#"));
             html.Body.Children.Add(new HtmlBlankRow());
 
             html.Body.Children.Add(new HtmlHeading(4, "Mensagem:"));
