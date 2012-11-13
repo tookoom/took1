@@ -115,14 +115,16 @@ public partial class Imovel_Default : System.Web.UI.Page
         string mail = textBoxContactMail.Text;
         string phone = textBoxContactPhone.Text;
         string message = textBoxContactMessage.Text;
-
+        string siteAdID = this.GetQueryStringValue("ID");
 
 
         try
         {
-            string body = HtmlTemplates.GetContactMailTemplate();
+            string body = HtmlTemplates.GetContactRequestMailTemplate();
             if (body.Contains(MailTemplateTags.SiteContact.ContactType))
                 body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
+            if (body.Contains(MailTemplateTags.SiteContact.SiteAdID))
+                body = body.Replace(MailTemplateTags.SiteContact.SiteAdID, siteAdID);
             if (body.Contains(MailTemplateTags.General.Mail))
                 body = body.Replace(MailTemplateTags.General.Mail, mail);
             if (body.Contains(MailTemplateTags.General.Message))
@@ -138,7 +140,7 @@ public partial class Imovel_Default : System.Web.UI.Page
         }
         catch (Exception exception)
         {
-            AppLogController.WriteException("Pandolfo.FaleConosco_Default.createMailBody", exception, true);
+            AppLogController.WriteException("Pandolfo.Imóvel_Default.createMailBody", exception, true);
         }
         return result;
     }
@@ -149,7 +151,7 @@ public partial class Imovel_Default : System.Web.UI.Page
     }
     private void sendMessage()
     {
-        string subject = "Solicitação de Contato site Pandolfo Imóveis";
+        string subject = "Solicitação de Contato via site Pandolfo Imóveis";
         string body = createMailBody();
         var mailHelper = new PandolfoMailHelper();
         string mailTo = string.Empty;
@@ -166,6 +168,7 @@ public partial class Imovel_Default : System.Web.UI.Page
                 mailTo = MailAdresses.Contato;
                 break;
         }
+        //mailTo = "andre@tk1.net.br";
         mailHelper.SendMail(subject, body, mailTo, true);
         createMessageAlert(this, "Mensagem enviada", "");
     }

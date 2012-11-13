@@ -21,6 +21,8 @@ namespace TK1.Bizz.Pandolfo
             public const string ContactType = "#TK1_TAG_CONTACT_TYPE#";
             public const string Phone = "#TK1_TAG_PHONE#";
             public const string Contact = "#TK1_TAG_CONTACT#";
+            public const string SiteAdID = "#TK1_TAG_SITE_AD_ID#";
+
         }
         public class XmlFileLoad
         {
