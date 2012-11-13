@@ -32,64 +32,68 @@ namespace TK1.Silverlight.Data.Web
         {
             return this.ObjectContext.SiteAds.Where(o => o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)adType);
         }
-
         public void InsertSiteAd(SiteAd siteAd)
         {
-            if ((siteAd.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAd, EntityState.Added);
+                if ((siteAd.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAd, EntityState.Added);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAds.AddObject(siteAd);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAds.AddObject(siteAd);
+                AppLogController.WriteException("TK1.BrokerService.InsertSiteAd", exception, true);
             }
         }
-        //public void CreateSiteAdAutoID(SiteAd siteAd)
-        //{
-        //    if (siteAd!= null)
-        //    {
-        //        var generator = this.ObjectContext.SiteAdIDGenerators.Where(o => o.CustomerCodename == siteAd.CustomerCodename & o.SiteAdTypeID == siteAd.SiteAdTypeID).FirstOrDefault();
-        //        if (generator == null)
-        //        {
-        //            var maxSiteID = this.ObjectContext.SiteAds.Where(o => o.CustomerCodename == siteAd.CustomerCodename & o.SiteAdTypeID == siteAd.SiteAdTypeID).Max(o => o.SiteAdID);
-        //            this.ObjectContext.SiteAdIDGenerators.AddObject(new SiteAdIDGenerator()
-        //            {
-        //                CustomerCodename = siteAd.CustomerCodename,
-        //                SiteAdID = maxSiteID + 1,
-        //                SiteAdTypeID = siteAd.SiteAdTypeID
-        //            });
-        //            siteAd.SiteAdID = maxSiteID + 1;
-        //        }
-        //        else
-        //        {
-        //            generator.SiteAdID += 1;
-        //            siteAd.SiteAdID = generator.SiteAdID;
-        //        }
-        //    }
-        //    if ((siteAd.EntityState != EntityState.Detached))
-        //    {
-        //        this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAd, EntityState.Added);
-        //    }
-        //    else
-        //    {
-        //        this.ObjectContext.SiteAds.AddObject(siteAd);
-        //    }
-        //}
         public void UpdateSiteAd(SiteAd currentSiteAd)
         {
-            this.ObjectContext.SiteAds.AttachAsModified(currentSiteAd, this.ChangeSet.GetOriginal(currentSiteAd));
+            try
+            {
+                this.ObjectContext.SiteAds.AttachAsModified(currentSiteAd, this.ChangeSet.GetOriginal(currentSiteAd));
+            }
+            catch (Exception exception)
+            {
+                AppLogController.WriteException("TK1.BrokerService.UpdateSiteAd", exception, true);
+            }
         }
-
         public void DeleteSiteAd(SiteAd siteAd)
         {
-            if ((siteAd.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAd, EntityState.Deleted);
+                if ((siteAd.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAd, EntityState.Deleted);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAds.Attach(siteAd);
+                    clearReferences(siteAd);
+                    this.ObjectContext.SiteAds.DeleteObject(siteAd);
+                }
+
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAds.Attach(siteAd);
-                this.ObjectContext.SiteAds.DeleteObject(siteAd);
+                AppLogController.WriteException("TK1.BrokerService.DeleteSiteAd", exception, true);
+            }
+        }
+
+        private void clearReferences(SiteAd siteAd)
+        {
+            if (siteAd != null)
+            {
+                var details = siteAd.SiteAdDetails.ToList();
+                foreach (var item in details)
+                    this.ObjectContext.SiteAdDetails.DeleteObject(item);
+
+                var pics = siteAd.SiteAdPics.ToList();
+                foreach (var item in pics)
+                    this.ObjectContext.SiteAdPics.DeleteObject(item);
             }
         }
 
@@ -99,37 +103,59 @@ namespace TK1.Silverlight.Data.Web
         // To support paging you will need to add ordering to the 'SiteAdIDGenerators' query.
         public IQueryable<SiteAdIDGenerator> GetSiteAdIDGenerators(string customerCodename, SiteAdTypes adType)
         {
-            var results = this.ObjectContext.SiteAdIDGenerators.Where(o => o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)adType );
+            var results = this.ObjectContext.SiteAdIDGenerators.Where(o => o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)adType);
             return results;
         }
 
         public void InsertSiteAdIDGenerator(SiteAdIDGenerator siteAdIDGenerator)
         {
-            if ((siteAdIDGenerator.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdIDGenerator, EntityState.Added);
+                if ((siteAdIDGenerator.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdIDGenerator, EntityState.Added);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAdIDGenerators.AddObject(siteAdIDGenerator);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAdIDGenerators.AddObject(siteAdIDGenerator);
+                AppLogController.WriteException("TK1.BrokerService.InsertSiteAdIDGenerator", exception, true);
             }
         }
 
         public void UpdateSiteAdIDGenerator(SiteAdIDGenerator currentSiteAdIDGenerator)
         {
-            this.ObjectContext.SiteAdIDGenerators.AttachAsModified(currentSiteAdIDGenerator, this.ChangeSet.GetOriginal(currentSiteAdIDGenerator));
+            try
+            {
+                this.ObjectContext.SiteAdIDGenerators.AttachAsModified(currentSiteAdIDGenerator, this.ChangeSet.GetOriginal(currentSiteAdIDGenerator));
+            }
+            catch (Exception exception)
+            {
+                AppLogController.WriteException("TK1.BrokerService.UpdateSiteAdIDGenerator", exception, true);
+            }
+
         }
 
         public void DeleteSiteAdIDGenerator(SiteAdIDGenerator siteAdIDGenerator)
         {
-            if ((siteAdIDGenerator.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdIDGenerator, EntityState.Deleted);
+                if ((siteAdIDGenerator.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdIDGenerator, EntityState.Deleted);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAdIDGenerators.Attach(siteAdIDGenerator);
+                    this.ObjectContext.SiteAdIDGenerators.DeleteObject(siteAdIDGenerator);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAdIDGenerators.Attach(siteAdIDGenerator);
-                this.ObjectContext.SiteAdIDGenerators.DeleteObject(siteAdIDGenerator);
+                AppLogController.WriteException("TK1.BrokerService.DeleteSiteAdIDGenerator", exception, true);
             }
         }
 
@@ -145,31 +171,52 @@ namespace TK1.Silverlight.Data.Web
 
         public void InsertSiteAdDetail(SiteAdDetail siteAdDetail)
         {
-            if ((siteAdDetail.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdDetail, EntityState.Added);
+                if ((siteAdDetail.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdDetail, EntityState.Added);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAdDetails.AddObject(siteAdDetail);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAdDetails.AddObject(siteAdDetail);
+                AppLogController.WriteException("TK1.BrokerService.InsertSiteAdDetail", exception, true);
             }
         }
 
         public void UpdateSiteAdDetail(SiteAdDetail currentSiteAdDetail)
         {
-            this.ObjectContext.SiteAdDetails.AttachAsModified(currentSiteAdDetail, this.ChangeSet.GetOriginal(currentSiteAdDetail));
+            try
+            {
+                this.ObjectContext.SiteAdDetails.AttachAsModified(currentSiteAdDetail, this.ChangeSet.GetOriginal(currentSiteAdDetail));
+            }
+            catch (Exception exception)
+            {
+                AppLogController.WriteException("TK1.BrokerService.UpdateSiteAdDetail", exception, true);
+            }
         }
 
         public void DeleteSiteAdDetail(SiteAdDetail siteAdDetail)
         {
-            if ((siteAdDetail.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdDetail, EntityState.Deleted);
+                if ((siteAdDetail.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdDetail, EntityState.Deleted);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAdDetails.Attach(siteAdDetail);
+                    this.ObjectContext.SiteAdDetails.DeleteObject(siteAdDetail);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAdDetails.Attach(siteAdDetail);
-                this.ObjectContext.SiteAdDetails.DeleteObject(siteAdDetail);
+                AppLogController.WriteException("TK1.BrokerService.DeleteSiteAdDetail", exception, true);
             }
         }
 
@@ -185,31 +232,52 @@ namespace TK1.Silverlight.Data.Web
 
         public void InsertSiteAdPic(SiteAdPic siteAdPic)
         {
-            if ((siteAdPic.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdPic, EntityState.Added);
+                if ((siteAdPic.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdPic, EntityState.Added);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAdPics.AddObject(siteAdPic);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAdPics.AddObject(siteAdPic);
+                AppLogController.WriteException("TK1.BrokerService.InsertSiteAdPic", exception, true);
             }
         }
 
         public void UpdateSiteAdPic(SiteAdPic currentSiteAdPic)
         {
-            this.ObjectContext.SiteAdPics.AttachAsModified(currentSiteAdPic, this.ChangeSet.GetOriginal(currentSiteAdPic));
+            try
+            {
+                this.ObjectContext.SiteAdPics.AttachAsModified(currentSiteAdPic, this.ChangeSet.GetOriginal(currentSiteAdPic));
+            }
+            catch (Exception exception)
+            {
+                AppLogController.WriteException("TK1.BrokerService.UpdateSiteAdPic", exception, true);
+            }
         }
 
         public void DeleteSiteAdPic(SiteAdPic siteAdPic)
         {
-            if ((siteAdPic.EntityState != EntityState.Detached))
+            try
             {
-                this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdPic, EntityState.Deleted);
+                if ((siteAdPic.EntityState != EntityState.Detached))
+                {
+                    this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdPic, EntityState.Deleted);
+                }
+                else
+                {
+                    this.ObjectContext.SiteAdPics.Attach(siteAdPic);
+                    this.ObjectContext.SiteAdPics.DeleteObject(siteAdPic);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                this.ObjectContext.SiteAdPics.Attach(siteAdPic);
-                this.ObjectContext.SiteAdPics.DeleteObject(siteAdPic);
+                AppLogController.WriteException("TK1.BrokerService.DeleteSiteAdPic", exception, true);
             }
         }
 

@@ -82,6 +82,7 @@
     <Reference Include="System.Windows.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
+    <Reference Include="TK1.Silverlight.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -123,7 +124,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="ServiceReferences.ClientConfig" />
+    <Content Include="ServiceReferences.ClientConfig">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Service References\BrokerFileServiceReference\BrokerFileService.wsdl" />
     <None Include="Service References\BrokerFileServiceReference\BrokerFileService.xsd">
       <SubType>Designer</SubType>

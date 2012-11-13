@@ -135,19 +135,22 @@ namespace TK1.Bizz.Data.Controller
                         siteCategory = SiteAdCategories.Comercial;
                     siteAd.SiteAdDetails.Load();
                     siteAd.SiteAdPics.Load();
-                    string mainPicName = string.Empty;
+
+                    string mainPicUrl = string.Empty;
                     if (siteAd.SiteAdPics.Count > 0)
-                        mainPicName = siteAd.SiteAdPics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+                        mainPicUrl = siteAd.SiteAdPics.OrderBy(o => o.PicID).FirstOrDefault().PictureUrl;
+                    else
+                        mainPicUrl = @"http://www.tk1.net.br/Images/ImagemNaoDisponivel.png";
 
                     SiteAdView siteAdView = new SiteAdView()
                     {
                         AdCategory = siteCategory,
-                        AdType = SiteAdTypes.Sell,
+                        AdType = (SiteAdTypes)siteAd.SiteAdTypeID,
                         CityTaxes = (float)(siteAd.CityTaxes ?? 0),
                         Code = siteAd.SiteAdID,
                         CondoTaxes = (float)(siteAd.CondoTaxes ?? 0),
                         District = siteAd.DistrictName,
-                        MainPicUrl = mainPicName,
+                        MainPicUrl = mainPicUrl,
                         SiteInternalArea = (float)siteAd.InternalArea,
                         SiteTotalArea = (float)siteAd.TotalArea,
                         SiteTotalRooms = siteAd.TotalRooms,
@@ -301,7 +304,7 @@ namespace TK1.Bizz.Data.Controller
             {
                 if (parameters != null)
                 {
-                    var query = Entities.SiteAds.Where(o => o.CustomerCodename == parameters.CustomerCodename & o.Visible);
+                    var query = Entities.SiteAds.Where(o => o.CustomerCodename == parameters.CustomerCodename & o.Visible & o.SiteAdTypeID == parameters.AdTypeID);
                     //var list = query.ToList();
                     if (parameters.Code > 0)
                     {
@@ -310,15 +313,9 @@ namespace TK1.Bizz.Data.Controller
                     else
                     {
                         query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
-                        //list = query.ToList();
-                        //query = query.FilterCategory(parameters.Category);
-                        //list = query.ToList();
                         query = query.FilterCity(parameters.CityName);
-                        //list = query.ToList();
                         query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
-                        //list = query.ToList();
                         query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
-                       // list = query.ToList();
                         if (parameters.SiteType != "*")
                             query = query.FilterSiteType(parameters.SiteType);
                         if (!parameters.Districts.Contains("*"))
@@ -331,12 +328,14 @@ namespace TK1.Bizz.Data.Controller
                         var siteCategory = SiteAdCategories.Residencial;
                         if (siteAd.CategoryName != SiteAdCategories.Residencial.ToString())
                             siteCategory = SiteAdCategories.Comercial;
-                        //ad.Site.AddressInfoReference.Load();
                         siteAd.SiteAdDetails.Load();
                         siteAd.SiteAdPics.Load();
-                        string mainPicName = string.Empty;
+
+                        string mainPicUrl = string.Empty;
                         if (siteAd.SiteAdPics.Count > 0)
-                            mainPicName = siteAd.SiteAdPics.OrderBy(o => o.PicID).FirstOrDefault().FileName;
+                            mainPicUrl = siteAd.SiteAdPics.OrderBy(o => o.PicID).FirstOrDefault().ThumbnailUrl;
+                        else
+                            mainPicUrl = @"http://www.tk1.net.br/Images/ImagemNaoDisponivelThumb.png";
 
                         SiteAdView siteAdView = new SiteAdView()
                         {
@@ -346,12 +345,11 @@ namespace TK1.Bizz.Data.Controller
                             Code = siteAd.SiteAdID,
                             CondoTaxes = (float)(siteAd.CondoTaxes ?? 0),
                             District = siteAd.DistrictName,
-                            MainPicUrl = mainPicName,
+                            MainPicUrl = mainPicUrl,
                             SiteInternalArea = (float)siteAd.InternalArea,
                             SiteTotalArea = (float)siteAd.TotalArea,
                             SiteTotalRooms = siteAd.TotalRooms,
                             SiteType = siteAd.SiteTypeName,
-                            //SiteTypeRoomName = siteAd.SiteType.RoomDisplayName,
                             Value = (float)(siteAd.Value)
 
                         };

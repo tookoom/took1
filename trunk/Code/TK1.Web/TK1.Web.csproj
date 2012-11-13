@@ -44,6 +44,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extension\PageExtension.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TK1\TK1.csproj">
+      <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
+      <Name>TK1</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Util\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
