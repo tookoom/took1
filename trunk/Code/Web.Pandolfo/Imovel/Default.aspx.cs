@@ -109,7 +109,7 @@ public partial class Imovel_Default : System.Web.UI.Page
     private string createMailBody()
     {
         string result = string.Empty;
-        string contactType = this.GetQueryStringIntegerValue("adTypeID") == 1 ? "Aluguel" : "Vendas";
+        string contactType = this.GetQueryStringIntegerValue("AdTypeID") == 1 ? "Aluguel" : "Vendas";
         string timestamp = DateTime.Now.ToString();
         string name = textBoxContactName.Text;
         string mail = textBoxContactMail.Text;
@@ -155,7 +155,7 @@ public partial class Imovel_Default : System.Web.UI.Page
         string body = createMailBody();
         var mailHelper = new PandolfoMailHelper();
         string mailTo = string.Empty;
-        int adType = this.GetQueryStringIntegerValue("adTypeID");
+        int adType = this.GetQueryStringIntegerValue("AdTypeID");
         switch (adType)
         {
             case 1:
