@@ -72,23 +72,24 @@
         
         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="siteDescription">
             <tr>
-                <td style="width: 40%; vertical-align: top;">
+                <td style="width: 60%; vertical-align: top;">
                     <asp:Repeater ID="Repeater1" runat="server" 
                         DataSourceID="objectDataSourceSiteDescription" >
                         <ItemTemplate>
-                            <b><h4> <%# Eval("ShortDescription")%> </h4></b>
-                            <p> <b>Características do Imóvel: </b></p>
-                            <p> <%# Eval("FullDescription")%> </p>
-                            <p runat="server" visible='<%#Eval("IsCondoDescriptionVisible")%>'> <b>Infraestrutura do Condomínio: </b></p>
-                            <p> <%# Eval("CondoDescription")%> </p>
-                            <p runat="server" visible='<%#Eval("IsAreaDescriptionVisible")%>'> <b>Infraestrutura do Bairro: </b></p>
-                            <p> <%# Eval("AreaDescription")%> </p>
+                            <h4 runat="server" visible='<%#Eval("IsTitleVisible")%>'> <%# Eval("Title")%> </h4>
+                            <h4>Características do Imóvel: </h4>
+                            <%# Eval("FullDescription")%>
+                            <h4 runat="server" visible='<%#Eval("IsCondoDescriptionVisible")%>'> Infraestrutura do Condomínio: </h4>
+                            <%# Eval("CondoDescription")%>
+                            <h4 runat="server" visible='<%#Eval("IsAreaDescriptionVisible")%>'> Infraestrutura do Bairro: </h4>
+                            <%# Eval("AreaDescription")%>
+                            <br />
                             <br />
                             <div class="sitePrice">
                                 Valor: <%# Eval("Value", "{0:c}")%>
                                 <div id="Div1" runat="server" visible='<%#getRentDivVisibility(Eval("AdTypeID").ToString())%>'>
-                                    <p> IPTU: <%# Eval("CityTaxes", "{0:c}")%> </p>
-                                    <p> Condomínio: <%# Eval("CondoTaxes", "{0:c}")%> </p>
+                                    <p runat="server" visible='<%#Eval("IsCityTaxesVisible")%>'> IPTU: <%# Eval("CityTaxes", "{0:c}")%> </p>
+                                    <p runat="server" visible='<%#Eval("IsCondoTaxesVisible")%>'> Condomínio: <%# Eval("CondoTaxes", "{0:c}")%> </p>
                                 </div>
 
                             </div>
@@ -96,8 +97,8 @@
                     </asp:Repeater>
 
                 </td>
-                <td style="width: 5%; vertical-align: top;"></td>
-                <td style="width: 15%; vertical-align: top;">
+                <td style="width: 2%; vertical-align: top;"></td>
+                <%--<td style="width: 15%; vertical-align: top;">
                     <p> <b>Detalhes:</b></p>
                     <asp:Repeater ID="Repeater3" runat="server" DataSourceID="objectDataSourceSiteDetail" >
                         <ItemTemplate>
@@ -109,7 +110,7 @@
                             </table>
                         </ItemTemplate>                                 
                     </asp:Repeater>
-                </td>
+                </td>--%>
                 <td style="width: 35%; vertical-align: top;">
                     <div class="highlight">
                         <p> <b>Solicite Contato</b></p>

@@ -9,6 +9,11 @@
 </head>
 <body>
     <form runat="server">
+
+    <div style="margin: auto; width:500px;">
+        <img src="http://pandolfo.tk1.net.br/Imagens/AvisoSite.png" />
+     </div>
+
     <div class="page">
         <div class="header">
             <div class="title">

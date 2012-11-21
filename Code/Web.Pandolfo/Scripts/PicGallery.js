@@ -56,6 +56,7 @@ function loadGallery($) {
         nextPageLinkText: 'Próxima &rsaquo;&rsaquo;',
         prevPageLinkText: '&lsaquo;&lsaquo; Anterior',
         enableHistory: true,
+        enableKeyboardNavigation: false,
         autoStart: false,
         syncTransitions: true,
         defaultTransitionDuration: 900,

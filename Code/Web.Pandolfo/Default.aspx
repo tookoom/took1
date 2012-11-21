@@ -26,8 +26,8 @@
                         </asp:DropDownList>
                     </div>
                 </td>
-                <td width=25%" rowspan=3>
-                    <div class="button" style="margin-right:20px;">
+                <td width=25%" rowspan=3 style="vertical-align:top;">
+                    <div class="button" style="margin-right:20px; margin-top:4px;">
                         <asp:LinkButton ID="buttonSearch" runat="server" OnClick="buttonSearch_Click">
                         <img src="Imagens/Search.png" />
                         </asp:LinkButton>
