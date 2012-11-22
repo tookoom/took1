@@ -142,7 +142,7 @@
                         <tr>
                             <td>
                                 <a target="_blank" href="http://www.lojadez.net/">
-                                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoLojaDez.jpg" alt="Loja Dez" 
+                                    <img src="http://www.pandolfoimoveis.com.br/Imagens/LogoLojaDez.jpg" alt="Loja Dez" 
                                     height="50px"/></a>
                             </td>
                             <td>
@@ -153,14 +153,14 @@
                         <tr>
                             <td colspan="2">
                                 <a target="_blank" href="mailto:debora@safetycorretora.com.br">
-                                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoSafety.jpg" alt="" 
+                                    <img src="http://www.pandolfoimoveis.com.br/Imagens/LogoSafety.jpg" alt="" 
                                     height="50px"/></a>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">
-                                    <img src="http://pandolfo.tk1.net.br/Imagens/MailSmall.png" alt="" 
+                                    <img src="http://www.pandolfoimoveis.com.br/Imagens/MailSmall.png" alt="" 
                                     height="30px" style="margin-left:10px"/></a>
                             </td>
                             <td>
@@ -176,7 +176,7 @@
                         <tr>
                             <td>
                                 <a target="_blank" href="https://www.facebook.com/PandolfoImoveis?ref=ts&fref=ts">
-                                    <img src="http://pandolfo.tk1.net.br/Imagens/FacebookIcon.png" alt="Pandolfo no Facebook" 
+                                    <img src="http://www.pandolfoimoveis.com.br/Imagens/FacebookIcon.png" alt="Pandolfo no Facebook" 
                                     height="40px"/></a>
                             </td>
                             <td style="vertical-align:top; ">
@@ -188,7 +188,7 @@
 
                 </td>
                 <td width="20%" style="vertical-align:top; text-align:right;">
-                    <img src="http://pandolfo.tk1.net.br/Imagens/LogoEficiencia.png" alt="Pandolfo" width="150px"/>
+                    <img src="http://www.pandolfoimoveis.com.br/Imagens/LogoEficiencia.png" alt="Pandolfo" width="150px"/>
                 </td>
             </tr>
         </table>

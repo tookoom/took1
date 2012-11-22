@@ -11,7 +11,7 @@
     <form runat="server">
 
     <div style="margin: auto; width:500px;">
-        <img src="http://pandolfo.tk1.net.br/Imagens/AvisoSite.png" />
+        <img src="http://www.pandolfoimoveis.com.br/Imagens/AvisoSite.png" />
      </div>
 
     <div class="page">
@@ -19,8 +19,8 @@
             <div class="title">
                 <table width="100%">
                     <tr>
-                        <td><img src="http://pandolfo.tk1.net.br/Imagens/LogoPandolfoCinza.png" alt="Pandolfo" width="300px"/></td>
-                        <td width="660px" align="right" style="vertical-align:bottom"><img src="http://pandolfo.tk1.net.br/Imagens/HeaderAddr.png" alt="Pandolfo" width="400px"/></td>
+                        <td><img src="http://www.pandolfoimoveis.com.br/Imagens/LogoPandolfoCinza.png" alt="Pandolfo" width="300px"/></td>
+                        <td width="660px" align="right" style="vertical-align:bottom"><img src="http://www.pandolfoimoveis.com.br/Imagens/HeaderAddr.png" alt="Pandolfo" width="400px"/></td>
                     </tr>
                 </table>
                 
