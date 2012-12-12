@@ -153,5 +153,20 @@ public partial class _Default : System.Web.UI.Page
         var searchType = radioButtonBuy.Checked ? "selling" : "rent";
         Response.Redirect("Pesquisa/Default.aspx?searchType=" + searchType);
     }
+    public void objectDataSourceFeaturedRentSites_OnSelected(object source, ObjectDataSourceStatusEventArgs e)
+    {
+        if (e.ReturnValue != null)
+        {
+            var items = e.ReturnValue as List<SiteAdView>;
+            if (items != null)
+            {
+                foreach (var item in items)
+                {
+                    item.IsRoomNameVisible = item.AdCategory == SiteAdCategories.Residencial;
+                    item.IsAreaNameVisible = item.AdCategory == SiteAdCategories.Comercial;
+                }
+            }
+        }
+    }
     #endregion
 }

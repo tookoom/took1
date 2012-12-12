@@ -85,8 +85,8 @@
                         </div>
                         <h2><%# Eval("District")%></h2>
                         <h3><%# Eval("SiteType")%></h3>
-                        <p><%# Eval("SiteTotalRooms")%> dormitórios</p>
-                        <%# Eval("SiteTotalArea")%>  m²
+                        <p runat="server" visible='<%# Eval("IsRoomNameVisible")%>'><%# Eval("SiteTotalRooms")%> dormitórios</p>
+                        <p runat="server" visible='<%# Eval("IsAreaNameVisible")%>'><%# Eval("SiteTotalArea")%>  m²</p>
                         <h3><%# Eval("Value", "{0:c}")%></h3>
                         <div class="featureViewerDetailButton">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
@@ -119,8 +119,8 @@
                         </div>
                         <h2><%# Eval("District")%></h2>
                         <h3><%# Eval("SiteType")%></h3>
-                        <p><%# Eval("SiteTotalRooms")%> dormitórios</p>
-                        <%# Eval("SiteTotalArea")%>  m²
+                        <p runat="server" visible='<%# Eval("IsRoomNameVisible")%>'><%# Eval("SiteTotalRooms")%> dormitórios</p>
+                        <p runat="server" visible='<%# Eval("IsAreaNameVisible")%>'><%# Eval("SiteTotalArea")%>  m²</p>
                         <h3><%# Eval("Value", "{0:c}")%></h3>
                         <div class="featureViewerDetailButton">
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
@@ -194,14 +194,15 @@
         </table>
     </div>
 
-    <asp:ObjectDataSource ID="objectDataSourceFeaturedRentSites" runat="server" 
+    <asp:ObjectDataSource ID="objectDataSourceFeaturedRentSites" runat="server"  OnSelected="objectDataSourceFeaturedRentSites_OnSelected"
         SelectMethod="GetFeaturedRentSiteAds" 
         TypeName="TK1.Bizz.Data.Controller.SiteAdController">
         <SelectParameters>
             <asp:Parameter DefaultValue="Pandolfo" Name="customerName" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="objectDataSourceFeaturedSellingSites" runat="server" 
+
+    <asp:ObjectDataSource ID="objectDataSourceFeaturedSellingSites" runat="server"   OnSelected="objectDataSourceFeaturedRentSites_OnSelected"
         SelectMethod="GetFeaturedSellingSiteAds" 
         TypeName="TK1.Bizz.Data.Controller.SiteAdController">
         <SelectParameters>

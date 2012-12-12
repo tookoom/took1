@@ -116,6 +116,7 @@ public partial class Imovel_Default : System.Web.UI.Page
         string phone = textBoxContactPhone.Text;
         string message = textBoxContactMessage.Text;
         string siteAdID = this.GetQueryStringValue("ID");
+        string siteAdLink = string.Format("http://www.pandolfoimoveis.com.br/Imovel/Default.aspx?ID={0}&AdTypeID={1}", this.GetQueryStringIntegerValue("ID"), this.GetQueryStringIntegerValue("AdTypeID"));
 
 
         try
@@ -125,6 +126,8 @@ public partial class Imovel_Default : System.Web.UI.Page
                 body = body.Replace(MailTemplateTags.SiteContact.ContactType, contactType);
             if (body.Contains(MailTemplateTags.SiteContact.SiteAdID))
                 body = body.Replace(MailTemplateTags.SiteContact.SiteAdID, siteAdID);
+            if (body.Contains(MailTemplateTags.SiteContact.SiteAdLink))
+                body = body.Replace(MailTemplateTags.SiteContact.SiteAdLink, siteAdLink);
             if (body.Contains(MailTemplateTags.General.Mail))
                 body = body.Replace(MailTemplateTags.General.Mail, mail);
             if (body.Contains(MailTemplateTags.General.Message))

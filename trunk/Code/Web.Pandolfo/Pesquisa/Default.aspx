@@ -191,7 +191,7 @@
                             <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
                                 <img src="<%# Eval("MainPicUrl") %>" height="110px" width="120px" style="margin: 4px 0px 4px 0px;" />
                             </a>
-                        <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
+                        <td style="vertical-align: middle; width:100px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
                         <td>
                             <table>
                                 <tr>
@@ -199,13 +199,13 @@
                                 </tr>
                                 <tr>
                                     <td id="Td2" style="vertical-align: middle; width:140px; text-align:center;" runat="server" visible='<%#Eval("IsRoomNameVisible")%>'>
-                                           <%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%>
+                                           <%# Eval("SiteTotalRooms")%>  dormitórios
                                     </td>
                                 </tr>
                             </table>
                         </td>
-                        <td id="Td1" style="vertical-align: middle; width:80px; text-align:center;" runat="server">
-                               <%# Eval("SiteTotalArea", "{0:0.##}")%>  m²
+                        <td style="vertical-align: middle; width:140px; text-align:center;" >
+                               <div runat="server"  visible='<%#Eval("IsAreaNameVisible")%>'><%# Eval("SiteTotalArea", "{0:0.##}")%>  m²</div>
                         </td>
                         <td style="vertical-align: middle; width:100px; text-align:center;">Bairro <%# Eval("District")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Value", "{0:c}")%></td>

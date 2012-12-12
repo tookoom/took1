@@ -9,11 +9,12 @@
 </head>
 <body>
     <form runat="server">
-
+<%--
     <div style="margin: auto; width:500px;">
         <img src="http://www.pandolfoimoveis.com.br/Imagens/AvisoSite.png" />
      </div>
 
+--%>    
     <div class="page">
         <div class="header">
             <div class="title">
