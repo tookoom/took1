@@ -284,15 +284,14 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             searchResult = siteController.SearchSites(parameters);
             foreach (var siteAdView in searchResult)
             {
-                siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
-                siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
-                if (siteAdView.IsRoomNameVisible)
-                    siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
-                string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
-                //string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
-                //if (!string.IsNullOrEmpty(mainPic))
-                //    imageUrl = mainPic;
-                //siteAdView.MainPicUrl = imageUrl;
+                siteAdView.IsRoomNameVisible = siteAdView.AdCategory == SiteAdCategories.Residencial;
+                siteAdView.IsAreaNameVisible = siteAdView.SiteTotalArea > 0;
+
+                //siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
+                //siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
+                //if (siteAdView.IsRoomNameVisible)
+                //    siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
+                //string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
             }
             setDataBinding(searchResult);
         }
@@ -515,24 +514,6 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             }
         }
     }
-    //private void setSiteAdMainPic(SiteAdController siteController, List<SiteAdView> searchResult, string mdoCodename)
-    //{
-    //    if (siteController != null & searchResult != null)
-    //    {
-    //        foreach (var siteAdView in searchResult)
-    //        {
-    //            string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
-    //            //if (string.IsNullOrEmpty(siteAdView.MainPicUrl))
-    //            //{
-    //            var customerName = CustomerNames.Pandolfo.ToString();
-    //            string mainPic = getSiteMainPic(customerName, siteAdView.Code);
-    //            if (!string.IsNullOrEmpty(mainPic))
-    //                imageUrl = mainPic;
-    //            //}
-    //            siteAdView.MainPicUrl = imageUrl;
-    //        }
-    //    }
-    //}
 
     #region EVENTS
     protected override void OnInit(EventArgs e)

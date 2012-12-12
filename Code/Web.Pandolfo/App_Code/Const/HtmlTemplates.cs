@@ -14,10 +14,12 @@ namespace TK1.Bizz.Pandolfo
             HtmlDocument html = new HtmlDocument();
             html.Head.Title = "Mensagem";
             html.Body.Attributes.Set("style", "font-family: Arial");
+            
 
             html.Body.Children.Add(new HtmlHeading(4, "Solicitação de contato sobre imóvel através do site Pandolfo Imóveis:"));
             html.Body.Children.Add(new HtmlParagraph("Tipo de anúncio: #TK1_TAG_CONTACT_TYPE#"));
             html.Body.Children.Add(new HtmlParagraph("Código do Imóvel: #TK1_TAG_SITE_AD_ID#"));
+            html.Body.Children.Add(new HtmlLiteral("<a href=\"#TK1_TAG_SITE_AD_LINK#\">Clique aqui para visualizar anúncio</a>"));
             html.Body.Children.Add(new HtmlParagraph("Data do envio: #TK1_TAG_TIMESTAMP#"));
             html.Body.Children.Add(new HtmlBlankRow());
 
