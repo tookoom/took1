@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>TK1 Bizz App</title>
-    <link href="../Styles/Bizz.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/Bizz.css" rel="stylesheet" type="text/css" />    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -30,8 +30,21 @@
 
                         </asp:Menu>
                     </td>--%>
-                    <td style="text-align:right"><asp:Label ID="labelUserName" Text="User Name" runat="server"></asp:Label></td>
-                    <td width="40px"><img src="http://tk1.net.br/Images/Icon_Logout.png" alt="TK1"/></td>
+                    <td style="text-align:right; padding-right:10px;"><asp:Label ID="labelUserName" Text="User Name" runat="server"></asp:Label></td>
+                    <td width="20px">
+                        <div class="darkButton" >
+                            <asp:LinkButton ID="buttonSettings" runat="server" OnClick="buttonSettings_Click">
+                                <img src="http://tk1.net.br/Images/Icon_User_Settings.png" alt="TK1" width="26px"/>
+                            </asp:LinkButton>
+                        </div>
+                    </td>
+                    <td width="20px">
+                        <div class="darkButton" >
+                            <asp:LinkButton ID="buttonLogout" runat="server" OnClick="buttonLogout_Click">
+                                <img src="http://tk1.net.br/Images/Icon_Logout.png" alt="TK1" width="20px"/>
+                            </asp:LinkButton>
+                        </div>
+                    </td>
                 </tr>
             </table>
         </div>

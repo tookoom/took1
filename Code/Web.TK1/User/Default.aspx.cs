@@ -19,6 +19,7 @@ public partial class User_Default : BizzPage
     protected void linkButtonLogin_Click(object sender, EventArgs e)
     {
         //forceLogin();
+        //return;
         string userName = textBoxUserName.Text;
         string userPassword = textBoxUserPassword.Text;
         bool isValidUser = ValidateUser(userName, userPassword);

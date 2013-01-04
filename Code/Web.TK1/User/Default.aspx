@@ -39,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="color:Maroon">
-                                    <div id="divLoginFail" runat="server" visible="false">Falha ao conectar.<br /> Verifique e-mail e senha.</div>
+                                    <div id="divLoginFail" runat="server" visible="false">Falha ao conectar.<br /> Verifique usuário e senha.</div>
                                 </td>
                             </tr>
                         </table>

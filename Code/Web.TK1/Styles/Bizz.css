@@ -33,6 +33,10 @@ p
     margin-bottom: 10px;
     line-height: 1.6em;
 }
+img
+{  
+    border-style: none;
+}
 
 
 /* HEADINGS   
@@ -179,6 +183,60 @@ first child of the left and right table columns */
     text-align: center;
     line-height: normal;
 }
+
+/* BUTTON   
+----------------------------------------------------------*/
+.darkButton
+{
+    /*min-width:30px;
+    min-height:20px;*/
+    vertical-align:middle;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+}
+
+.darkButton:hover
+{
+    background-color: #222;
+}
+
+.darkButton a:active
+{
+}
+.darkButton a:hover
+{
+}
+
+/* BUTTON   
+----------------------------------------------------------*/
+.darkLinkButton
+{
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    margin-left: 10px;
+    color: #333;
+}
+
+.darkLinkButton a:link
+{
+    color: #333;
+    text-decoration: none;
+}
+
+.darkLinkButton a:visited
+{
+    color: #333;
+}
+
+.darkLinkButton a:hover
+{
+    color: #333;
+    text-decoration: underline;
+}
+
+
 
 
 /* TAB MENU   

@@ -17,15 +17,46 @@ public class BizzPage : System.Web.UI.Page
         if (userID <= 0)
             Response.Redirect("~/User");
     }
-    protected bool ValidateUser(string userName, string userPassword)
+    protected bool CheckUser(string userLogin, string userPassword)
+    {
+        var userController = new UserController();
+        var userID = userController.GetUserID(userLogin, userPassword);
+        return userID > 0;
+    }
+    protected bool ValidateUser(string userLogin, string userPassword)
     {
         var userController = new UserController();
         var bizzUserController = new BizzUserController();
-        var userID = userController.GetUserID(userName, userPassword);
-        Page.SetSessionValue(WebSessionKeys.BizzUserID, userID);
-        Page.SetSessionValue(WebSessionKeys.BizzUserCustomerName, bizzUserController.GetUserCustomerName(userID));
-        Page.SetSessionValue(WebSessionKeys.BizzUserName, userController.GetUserName(userID));
+        var userID = userController.GetUserID(userLogin, userPassword);
+        if (userID > 0)
+        {
+            Page.SetSessionValue(WebSessionKeys.BizzUserID, userID);
+            Page.SetSessionValue(WebSessionKeys.BizzUserLogin, userLogin);
+            Page.SetSessionValue(WebSessionKeys.BizzUserCustomerName, bizzUserController.GetUserCustomerName(userID));
+            Page.SetSessionValue(WebSessionKeys.BizzUserName, userController.GetUserName(userID));
+        }
+        else
+        {
+            Page.SetSessionValue(WebSessionKeys.BizzUserID, 0);
+            Page.SetSessionValue(WebSessionKeys.BizzUserLogin, string.Empty);
+            Page.SetSessionValue(WebSessionKeys.BizzUserCustomerName, string.Empty);
+            Page.SetSessionValue(WebSessionKeys.BizzUserName, string.Empty);
+        }
         return userID > 0;
+    }
+    protected bool ChangeUserPassword(string userLogin, string userPassword, string newPassword, string newPasswordTest)
+    {
+        bool result = false;
+        var userController = new UserController();
+        if (!string.IsNullOrEmpty(userLogin) & !string.IsNullOrEmpty(newPassword))
+        {
+            if (!string.IsNullOrWhiteSpace(userLogin) & !string.IsNullOrWhiteSpace(newPassword))
+            {
+                if(newPassword == newPasswordTest)
+                    result = userController.SetUserPassword(userLogin, userPassword, newPassword);
+            }
+        }
+        return result;
     }
 
 }
