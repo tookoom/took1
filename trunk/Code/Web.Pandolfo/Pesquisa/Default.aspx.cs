@@ -352,7 +352,13 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         SiteAdSearchParameters parameters = new SiteAdSearchParameters() { CustomerCodename = customerName };
 
         parameters.AdType = SiteAdTypes.Sell;
-
+        if (!string.IsNullOrEmpty(textBoxSiteCode.Text))
+        {
+            int siteCode = 0;
+            if (int.TryParse(textBoxSiteCode.Text, out siteCode))
+                parameters.Code = siteCode;
+            textBoxSiteCode.Text = string.Empty;
+        }
         if (dropDownSellingCities.SelectedItem != null)
             parameters.CityName = dropDownSellingCities.SelectedItem.Text;
         if (dropDownSellingPriceFrom.SelectedItem != null)
