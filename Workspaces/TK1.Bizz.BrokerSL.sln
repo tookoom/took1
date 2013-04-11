@@ -1,0 +1,93 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.BrokerSL", "..\Code\TK1.Bizz.BrokerSL\TK1.Bizz.BrokerSL.csproj", "{9A104551-72B5-4979-B344-3975DBEEE56C}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TK1.Bizz.BrokerSLSite", "..\Code\TK1.Bizz.BrokerSLSite\", "{1DFE2FAF-EFEC-4B5E-A46A-51A9717B2425}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{2330A766-379C-4395-B714-1B13A3A44133}|TK1.Silverlight.Data.dll;{24865DD0-45C0-442F-902E-DAF4C17E935D}|TK1.Silverlight.Data.Web.dll;{AB2EC906-93AE-4F64-B71D-E04C88036D7D}|TK1.Bizz.dll;{2484CD63-A0B0-46AE-A423-B32E6A6AD279}|TK1.Data.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/TK1.Bizz.BrokerSLSite"
+		Debug.AspNetCompiler.PhysicalPath = "..\Code\TK1.Bizz.BrokerSLSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\TK1.Bizz.BrokerSLSite\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/TK1.Bizz.BrokerSLSite"
+		Release.AspNetCompiler.PhysicalPath = "..\Code\TK1.Bizz.BrokerSLSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\TK1.Bizz.BrokerSLSite\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57910"
+		ProjOutputReferences = "{9A104551-72B5-4979-B344-3975DBEEE56C}|ClientBin|false;"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TK1.Silverlight.Data", "TK1.Silverlight.Data", "{D2427A72-1340-4DE8-94F4-5B2F26BB6BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.Data.Web", "..\Code\TK1.Silverlight.Data.Web\TK1.Silverlight.Data.Web.csproj", "{24865DD0-45C0-442F-902E-DAF4C17E935D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.Data", "..\Code\TK1.Silverlight.Data\TK1.Silverlight.Data.csproj", "{2330A766-379C-4395-B714-1B13A3A44133}"
+	ProjectSection(ProjectDependencies) = postProject
+		{24865DD0-45C0-442F-902E-DAF4C17E935D} = {24865DD0-45C0-442F-902E-DAF4C17E935D}
+		{24865DD0-45C0-442F-902E-DAF4C17E935D} = {24865DD0-45C0-442F-902E-DAF4C17E935D}
+		{24865DD0-45C0-442F-902E-DAF4C17E935D} = {24865DD0-45C0-442F-902E-DAF4C17E935D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz", "..\Code\TK1.Bizz\TK1.Bizz.csproj", "{AB2EC906-93AE-4F64-B71D-E04C88036D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data", "..\Code\TK1.Data\TK1.Data.csproj", "{2484CD63-A0B0-46AE-A423-B32E6A6AD279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.Util", "..\Code\TK1.Silverlight.Util\TK1.Silverlight.Util.csproj", "{1656D489-136A-4647-9498-B0E0AB438CF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFE2FAF-EFEC-4B5E-A46A-51A9717B2425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFE2FAF-EFEC-4B5E-A46A-51A9717B2425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFE2FAF-EFEC-4B5E-A46A-51A9717B2425}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFE2FAF-EFEC-4B5E-A46A-51A9717B2425}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1656D489-136A-4647-9498-B0E0AB438CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1656D489-136A-4647-9498-B0E0AB438CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1656D489-136A-4647-9498-B0E0AB438CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1656D489-136A-4647-9498-B0E0AB438CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24865DD0-45C0-442F-902E-DAF4C17E935D} = {D2427A72-1340-4DE8-94F4-5B2F26BB6BEB}
+		{2330A766-379C-4395-B714-1B13A3A44133} = {D2427A72-1340-4DE8-94F4-5B2F26BB6BEB}
+	EndGlobalSection
+EndGlobal

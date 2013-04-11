@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pandolfo", "..\Code\Web.Pandolfo\", "{07ABAB1E-A179-46AD-9F8E-28014FECE971}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;{AB2EC906-93AE-4F64-B71D-E04C88036D7D}|TK1.Bizz.dll;{2484CD63-A0B0-46AE-A423-B32E6A6AD279}|TK1.Data.dll;{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}|TK1.Web.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/Web.Pandolfo"
+		Debug.AspNetCompiler.PhysicalPath = "..\Code\Web.Pandolfo\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.Pandolfo\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Web.Pandolfo"
+		Release.AspNetCompiler.PhysicalPath = "..\Code\Web.Pandolfo\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.Pandolfo\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54864"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz", "..\Code\TK1.Bizz\TK1.Bizz.csproj", "{AB2EC906-93AE-4F64-B71D-E04C88036D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data", "..\Code\TK1.Data\TK1.Data.csproj", "{2484CD63-A0B0-46AE-A423-B32E6A6AD279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Web", "..\Code\TK1.Web\TK1.Web.csproj", "{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07ABAB1E-A179-46AD-9F8E-28014FECE971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07ABAB1E-A179-46AD-9F8E-28014FECE971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07ABAB1E-A179-46AD-9F8E-28014FECE971}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{07ABAB1E-A179-46AD-9F8E-28014FECE971}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
