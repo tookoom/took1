@@ -12,6 +12,7 @@ using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Bizz.Mdo.Selling.Xml;
 using TK1.Bizz.Integra;
 using TK1.Utility;
+using TK1.Bizz.Net;
 
 namespace TK1.Bizz.Mdo.Selling
 {
@@ -20,12 +21,14 @@ namespace TK1.Bizz.Mdo.Selling
         #region PUBLIC PROPERTIES
         public string MdoAcronym { get; set; }
         public bool SendReportMail { get; set; }
+        public bool SendErrorOnly { get; set; }
 
         #endregion
 
         public SellingSiteHelper()
         {
             SendReportMail = true;
+            SendErrorOnly = true;
         }
 
         public string LoadXmlSiteAd(string sourceDir, string fileFilter)
@@ -96,13 +99,13 @@ namespace TK1.Bizz.Mdo.Selling
                     string mailTo = string.Empty;
                     if (siteController != null)
                         mailTo = siteController.GetXmlSellingLoadEmail(MdoAcronym);
-                    sendReportMail(result, mailTo);
+                    sendReportMail(result, mailTo, errorCount > 0);
                 }
             }
             return result;
         }
 
-        private static void moveXmlFile(string sourcePath)
+        private void moveXmlFile(string sourcePath)
         {
             if (!string.IsNullOrEmpty(sourcePath))
             {
@@ -122,20 +125,23 @@ namespace TK1.Bizz.Mdo.Selling
                 }
             }
         }
-        private static void sendReportMail(string body, string mailTo)
+        private void sendReportMail(string body, string mailTo, bool hasError)
         {
-
             try
             {
                 string subject = "Relatório de carga de cadastros IMÓVEIS VENDA";
-                AdminHelper.SendMail(subject, body);
-                AdminHelper.SendMail(subject, body, mailTo);
+                if (SendReportMail)
+                {
+                    var mailHelper = new MailHelper();
+                    if (SendErrorOnly)
+                        mailHelper.SendMail(subject, body, "suporte@tk1.net.br", false);
+                    mailHelper.SendMail(subject, body, mailTo, false);
+                }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                AppLogController.WriteException("Bizz.Mdo.SellingSiteHelper.sendReportMail", exception);
             }
         }
-
-
     }
 }

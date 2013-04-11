@@ -118,15 +118,35 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                         xmlSite.ZipCode = XmlLoader.GetElementValue(element, XmlSiteTags.ZipCode);
 
                         xmlSite.Details = new StringDictionary();
-                        string auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber);
+                        if (xmlSite.RoomNumber == 1)
+                            xmlSite.Details.Set("Dormitório", xmlSite.RoomNumber.ToString());
+                        if (xmlSite.RoomNumber > 1)
+                            xmlSite.Details.Set("Dormitórios", xmlSite.RoomNumber.ToString());
+
+
+                        var auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.SuiteNumber);
                         if (!string.IsNullOrEmpty(auxValue))
-                            xmlSite.Details.Set("Dormitórios", auxValue);
-                        auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.SuiteNumber);
-                        if (!string.IsNullOrEmpty(auxValue))
-                            xmlSite.Details.Set("Suítes", auxValue);
+                        {
+                            if (auxValue != "0")
+                            {
+                                if (auxValue == "1")
+                                    xmlSite.Details.Set("Suíte", auxValue);
+                                else
+                                    xmlSite.Details.Set("Suítes", auxValue);
+                            }
+                        }
+
                         auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.GarageNumber);
                         if (!string.IsNullOrEmpty(auxValue))
-                            xmlSite.Details.Set("Garagens", auxValue);
+                        {
+                            if (auxValue != "0")
+                            {
+                                if (auxValue == "1")
+                                    xmlSite.Details.Set("Garagem", auxValue);
+                                else
+                                    xmlSite.Details.Set("Garagens", auxValue);
+                            }
+                        }
 
                         xmlSite.Pictures = new List<XmlSitePic>();
                         var pictures = element.Element(XmlSiteTags.Pictures);

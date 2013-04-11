@@ -54,6 +54,7 @@ namespace TK1.Silverlight.Data.Web
         {
             try
             {
+                AppLogController.WriteAppLogEntry("TK1.BrokerService.UpdateSiteAd", currentSiteAd.ToString());
                 this.ObjectContext.SiteAds.AttachAsModified(currentSiteAd, this.ChangeSet.GetOriginal(currentSiteAd));
             }
             catch (Exception exception)
@@ -204,6 +205,7 @@ namespace TK1.Silverlight.Data.Web
         {
             try
             {
+                AppLogController.WriteAppLogEntry("TK1.BrokerService.DeleteSiteAdDetail", "BEGIN");
                 if ((siteAdDetail.EntityState != EntityState.Detached))
                 {
                     this.ObjectContext.ObjectStateManager.ChangeObjectState(siteAdDetail, EntityState.Deleted);
@@ -213,6 +215,8 @@ namespace TK1.Silverlight.Data.Web
                     this.ObjectContext.SiteAdDetails.Attach(siteAdDetail);
                     this.ObjectContext.SiteAdDetails.DeleteObject(siteAdDetail);
                 }
+                AppLogController.WriteAppLogEntry("TK1.BrokerService.DeleteSiteAdDetail", "END");
+
             }
             catch (Exception exception)
             {
@@ -279,6 +283,25 @@ namespace TK1.Silverlight.Data.Web
             {
                 AppLogController.WriteException("TK1.BrokerService.DeleteSiteAdPic", exception, true);
             }
+        }
+        public bool RemoveSiteAdPic(string customerCodename, SiteAdTypes adType, int siteAdID, int index)
+        {
+            bool result = false;
+            try
+            {
+                var pic = this.ObjectContext.SiteAdPics.Where(o => o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)adType & o.SiteAdID == siteAdID).FirstOrDefault();
+                if (pic != null)
+                {
+                    this.ObjectContext.SiteAdPics.DeleteObject(pic);
+                    this.ObjectContext.SaveChanges();
+                    result = true;
+                }
+            }
+            catch (Exception exception)
+            {
+                AppLogController.WriteException("TK1.BrokerService.RemoveSiteAdPics", exception, true);
+            }
+            return result;
         }
 
         public int GenerateSiteAdID(string customerCodename, SiteAdTypes adType)

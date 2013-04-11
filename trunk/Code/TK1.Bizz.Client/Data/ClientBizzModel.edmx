@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TK1ClientBizzModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TK1ClientBizzModelStoreContainer">
+          <EntitySet Name="BRE_PropertyAd" EntityType="TK1ClientBizzModel.Store.BRE_PropertyAd" store:Type="Tables" Schema="tk1" />
+          <EntitySet Name="BRE_PropertyAdDetail" EntityType="TK1ClientBizzModel.Store.BRE_PropertyAdDetail" store:Type="Tables" Schema="tk1" />
+          <EntitySet Name="BRE_PropertyAdPic" EntityType="TK1ClientBizzModel.Store.BRE_PropertyAdPic" store:Type="Tables" Schema="tk1" />
+          <EntitySet Name="BRE_PropertyReleaseAd" EntityType="TK1ClientBizzModel.Store.BRE_PropertyReleaseAd" store:Type="Tables" Schema="tk1" />
+        </EntityContainer>
+        <EntityType Name="BRE_PropertyAd">
+          <Key>
+            <PropertyRef Name="PropertyAdID" />
+            <PropertyRef Name="PropertyAdTypeID" />
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="PropertyAdID" Type="int" Nullable="false" />
+          <Property Name="PropertyAdTypeID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PropertyAdStatusID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CategoryName" Type="tinytext" Nullable="false" />
+          <Property Name="PropertyTypeName" Type="tinytext" Nullable="false" />
+          <Property Name="CityName" Type="tinytext" Nullable="false" />
+          <Property Name="DistrictName" Type="tinytext" Nullable="false" />
+          <Property Name="TotalArea" Type="float" Nullable="false" />
+          <Property Name="TotalRooms" Type="int" Nullable="false" />
+          <Property Name="InternalArea" Type="float" Nullable="false" />
+          <Property Name="ExternalArea" Type="float" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="CityTaxes" Type="float" />
+          <Property Name="CondoTaxes" Type="float" />
+          <Property Name="Title" Type="text" />
+          <Property Name="ShortDescription" Type="text" />
+          <Property Name="Featured" Type="bit" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="FullDescription" Type="text" />
+          <Property Name="AreaDescription" Type="text" />
+          <Property Name="CondoDescription" Type="text" />
+          <Property Name="PicUrl" Type="text" />
+        </EntityType>
+        <EntityType Name="BRE_PropertyAdDetail">
+          <Key>
+            <PropertyRef Name="PropertyAdDetailID" />
+          </Key>
+          <Property Name="PropertyAdDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyAdID" Type="int" Nullable="false" />
+          <Property Name="PropertyAdTypeID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="tinytext" />
+          <Property Name="Value" Type="tinytext" />
+          <Property Name="Type" Type="tinytext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BRE_PropertyAdPic">
+          <Key>
+            <PropertyRef Name="PropertyAdPicID" />
+          </Key>
+          <Property Name="PropertyAdPicID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyAdID" Type="int" Nullable="false" />
+          <Property Name="PropertyAdTypeID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FileName" Type="tinytext" />
+          <Property Name="Description" Type="tinytext" />
+          <Property Name="PictureUrl" Type="tinytext" />
+          <Property Name="ThumbnailUrl" Type="tinytext" />
+          <Property Name="PictureFilePath" Type="tinytext" />
+          <Property Name="ThumbnailFilePath" Type="tinytext" />
+        </EntityType>
+        <EntityType Name="BRE_PropertyReleaseAd">
+          <Key>
+            <PropertyRef Name="PropertyAdID" />
+            <PropertyRef Name="PropertyAdTypeID" />
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="PropertyAdID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PropertyAdTypeID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="ConstructorName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="AddressComplement" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="AddressNumber" Type="int" Nullable="false" />
+          <Property Name="MinTotalArea" Type="float" Nullable="false" />
+          <Property Name="MaxTotalArea" Type="float" Nullable="false" />
+          <Property Name="MinTotalRooms" Type="int" Nullable="false" />
+          <Property Name="MaxTotalRooms" Type="int" Nullable="false" />
+          <Property Name="MinSuites" Type="int" Nullable="false" />
+          <Property Name="MaxSuites" Type="int" Nullable="false" />
+          <Property Name="MinInternalArea" Type="float" Nullable="false" />
+          <Property Name="MaxInternalArea" Type="float" Nullable="false" />
+          <Property Name="MinExternalArea" Type="float" Nullable="false" />
+          <Property Name="MaxExternalArea" Type="float" Nullable="false" />
+          <Property Name="MinValue" Type="float" Nullable="false" />
+          <Property Name="MaxValue" Type="float" Nullable="false" />
+          <Property Name="ElevatorNumber" Type="int" Nullable="false" />
+          <Property Name="MinGarageNumber" Type="int" Nullable="false" />
+          <Property Name="MaxGarageNumber" Type="int" Nullable="false" />
+          <Property Name="TotalFloorUnitNumber" Type="int" Nullable="false" />
+          <Property Name="TotalUnitNumber" Type="int" Nullable="false" />
+          <Property Name="TowerNumber" Type="int" Nullable="false" />
+          <Property Name="TowerFloorNumber" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TK1ClientBizzModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TK1ClientBizzEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PropertyAd" EntityType="TK1ClientBizzModel.PropertyAd" />
+          <EntitySet Name="PropertyAdDetail" EntityType="TK1ClientBizzModel.PropertyAdDetail" />
+          <EntitySet Name="PropertyAdPic" EntityType="TK1ClientBizzModel.PropertyAdPic" />
+          <EntitySet Name="PropertyReleaseAd" EntityType="TK1ClientBizzModel.PropertyReleaseAd" />
+          <AssociationSet Name="PropertyAdPropertyAdDetail" Association="TK1ClientBizzModel.PropertyAdPropertyAdDetail">
+            <End Role="PropertyAd" EntitySet="PropertyAd" />
+            <End Role="PropertyAdDetail" EntitySet="PropertyAdDetail" />
+          </AssociationSet>
+          <AssociationSet Name="PropertyAdPropertyAdPic" Association="TK1ClientBizzModel.PropertyAdPropertyAdPic">
+            <End Role="PropertyAd" EntitySet="PropertyAd" />
+            <End Role="PropertyAdPic" EntitySet="PropertyAdPic" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PropertyAd">
+          <Key>
+            <PropertyRef Name="PropertyAdID" />
+            <PropertyRef Name="PropertyAdTypeID" />
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="PropertyAdID" Type="Int32" Nullable="false" />
+          <Property Name="PropertyAdTypeID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PropertyAdStatusID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PropertyTypeName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" Nullable="false" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TotalArea" Type="Single" Nullable="false" />
+          <Property Name="TotalRooms" Type="Int32" Nullable="false" />
+          <Property Name="InternalArea" Type="Single" Nullable="false" />
+          <Property Name="ExternalArea" Type="Single" Nullable="false" />
+          <Property Name="Value" Type="Single" Nullable="false" />
+          <Property Name="CityTaxes" Type="Single" />
+          <Property Name="CondoTaxes" Type="Single" />
+          <Property Name="Title" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="Featured" Type="Boolean" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Type="String" Name="FullDescription" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaDescription" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CondoDescription" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PicUrl" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PropertyAdDetails" Relationship="TK1ClientBizzModel.PropertyAdPropertyAdDetail" FromRole="PropertyAd" ToRole="PropertyAdDetail" />
+          <NavigationProperty Name="PropertyAdPics" Relationship="TK1ClientBizzModel.PropertyAdPropertyAdPic" FromRole="PropertyAd" ToRole="PropertyAdPic" />
+        </EntityType>
+        <EntityType Name="PropertyAdDetail">
+          <Key>
+            <PropertyRef Name="PropertyAdDetailID" />
+          </Key>
+          <Property Name="PropertyAdDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyAdID" Type="Int32" Nullable="false" />
+          <Property Name="PropertyAdTypeID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PropertyAd" Relationship="TK1ClientBizzModel.PropertyAdPropertyAdDetail" FromRole="PropertyAdDetail" ToRole="PropertyAd" />
+        </EntityType>
+        <EntityType Name="PropertyAdPic">
+          <Key>
+            <PropertyRef Name="PropertyAdPicID" />
+          </Key>
+          <Property Name="PropertyAdPicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyAdID" Type="Int32" Nullable="false" />
+          <Property Name="PropertyAdTypeID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FileName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PictureUrl" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ThumbnailUrl" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PictureFilePath" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ThumbnailFilePath" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PropertyAd" Relationship="TK1ClientBizzModel.PropertyAdPropertyAdPic" FromRole="PropertyAdPic" ToRole="PropertyAd" />
+        </EntityType>
+        <EntityType Name="PropertyReleaseAd">
+          <Key>
+            <PropertyRef Name="PropertyAdID" />
+            <PropertyRef Name="PropertyAdTypeID" />
+            <PropertyRef Name="CustomerCode" />
+          </Key>
+          <Property Name="PropertyAdID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PropertyAdTypeID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ConstructorName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="AddressComplement" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="AddressNumber" Type="Int32" Nullable="false" />
+          <Property Name="MinTotalArea" Type="Single" Nullable="false" />
+          <Property Name="MaxTotalArea" Type="Single" Nullable="false" />
+          <Property Name="MinTotalRooms" Type="Int32" Nullable="false" />
+          <Property Name="MaxTotalRooms" Type="Int32" Nullable="false" />
+          <Property Name="MinSuites" Type="Int32" Nullable="false" />
+          <Property Name="MaxSuites" Type="Int32" Nullable="false" />
+          <Property Name="MinInternalArea" Type="Single" Nullable="false" />
+          <Property Name="MaxInternalArea" Type="Single" Nullable="false" />
+          <Property Name="MinExternalArea" Type="Single" Nullable="false" />
+          <Property Name="MaxExternalArea" Type="Single" Nullable="false" />
+          <Property Name="MinValue" Type="Single" Nullable="false" />
+          <Property Name="MaxValue" Type="Single" Nullable="false" />
+          <Property Name="ElevatorNumber" Type="Int32" Nullable="false" />
+          <Property Name="MinGarageNumber" Type="Int32" Nullable="false" />
+          <Property Name="MaxGarageNumber" Type="Int32" Nullable="false" />
+          <Property Name="TotalFloorUnitNumber" Type="Int32" Nullable="false" />
+          <Property Name="TotalUnitNumber" Type="Int32" Nullable="false" />
+          <Property Name="TowerNumber" Type="Int32" Nullable="false" />
+          <Property Name="TowerFloorNumber" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PropertyAdPropertyAdDetail">
+          <End Type="TK1ClientBizzModel.PropertyAd" Role="PropertyAd" Multiplicity="1" />
+          <End Type="TK1ClientBizzModel.PropertyAdDetail" Role="PropertyAdDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyAd">
+              <PropertyRef Name="PropertyAdID" />
+              <PropertyRef Name="PropertyAdTypeID" />
+              <PropertyRef Name="CustomerCode" />
+            </Principal>
+            <Dependent Role="PropertyAdDetail">
+              <PropertyRef Name="PropertyAdID" />
+              <PropertyRef Name="PropertyAdTypeID" />
+              <PropertyRef Name="CustomerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PropertyAdPropertyAdPic">
+          <End Type="TK1ClientBizzModel.PropertyAd" Role="PropertyAd" Multiplicity="1" />
+          <End Type="TK1ClientBizzModel.PropertyAdPic" Role="PropertyAdPic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyAd">
+              <PropertyRef Name="PropertyAdID" />
+              <PropertyRef Name="PropertyAdTypeID" />
+              <PropertyRef Name="CustomerCode" />
+            </Principal>
+            <Dependent Role="PropertyAdPic">
+              <PropertyRef Name="PropertyAdID" />
+              <PropertyRef Name="PropertyAdTypeID" />
+              <PropertyRef Name="CustomerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TK1ClientBizzModelStoreContainer" CdmEntityContainer="TK1ClientBizzEntities">
+          <EntitySetMapping Name="PropertyAd">
+            <EntityTypeMapping TypeName="TK1ClientBizzModel.PropertyAd">
+              <MappingFragment StoreEntitySet="BRE_PropertyAd">
+                <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+                <ScalarProperty Name="CondoDescription" ColumnName="CondoDescription" />
+                <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="PropertyAdID" ColumnName="PropertyAdID" />
+                <ScalarProperty Name="PropertyAdTypeID" ColumnName="PropertyAdTypeID" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="PropertyAdStatusID" ColumnName="PropertyAdStatusID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="PropertyTypeName" ColumnName="PropertyTypeName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="TotalArea" ColumnName="TotalArea" />
+                <ScalarProperty Name="TotalRooms" ColumnName="TotalRooms" />
+                <ScalarProperty Name="InternalArea" ColumnName="InternalArea" />
+                <ScalarProperty Name="ExternalArea" ColumnName="ExternalArea" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CityTaxes" ColumnName="CityTaxes" />
+                <ScalarProperty Name="CondoTaxes" ColumnName="CondoTaxes" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Featured" ColumnName="Featured" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertyAdDetail">
+            <EntityTypeMapping TypeName="TK1ClientBizzModel.PropertyAdDetail">
+              <MappingFragment StoreEntitySet="BRE_PropertyAdDetail">
+                <ScalarProperty Name="PropertyAdDetailID" ColumnName="PropertyAdDetailID" />
+                <ScalarProperty Name="PropertyAdID" ColumnName="PropertyAdID" />
+                <ScalarProperty Name="PropertyAdTypeID" ColumnName="PropertyAdTypeID" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertyAdPic">
+            <EntityTypeMapping TypeName="TK1ClientBizzModel.PropertyAdPic">
+              <MappingFragment StoreEntitySet="BRE_PropertyAdPic">
+                <ScalarProperty Name="PropertyAdPicID" ColumnName="PropertyAdPicID" />
+                <ScalarProperty Name="PropertyAdID" ColumnName="PropertyAdID" />
+                <ScalarProperty Name="PropertyAdTypeID" ColumnName="PropertyAdTypeID" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+                <ScalarProperty Name="ThumbnailUrl" ColumnName="ThumbnailUrl" />
+                <ScalarProperty Name="PictureFilePath" ColumnName="PictureFilePath" />
+                <ScalarProperty Name="ThumbnailFilePath" ColumnName="ThumbnailFilePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertyReleaseAd">
+            <EntityTypeMapping TypeName="TK1ClientBizzModel.PropertyReleaseAd">
+              <MappingFragment StoreEntitySet="BRE_PropertyReleaseAd">
+                <ScalarProperty Name="PropertyAdID" ColumnName="PropertyAdID" />
+                <ScalarProperty Name="PropertyAdTypeID" ColumnName="PropertyAdTypeID" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ConstructorName" ColumnName="ConstructorName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AddressComplement" ColumnName="AddressComplement" />
+                <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+                <ScalarProperty Name="MinTotalArea" ColumnName="MinTotalArea" />
+                <ScalarProperty Name="MaxTotalArea" ColumnName="MaxTotalArea" />
+                <ScalarProperty Name="MinTotalRooms" ColumnName="MinTotalRooms" />
+                <ScalarProperty Name="MaxTotalRooms" ColumnName="MaxTotalRooms" />
+                <ScalarProperty Name="MinSuites" ColumnName="MinSuites" />
+                <ScalarProperty Name="MaxSuites" ColumnName="MaxSuites" />
+                <ScalarProperty Name="MinInternalArea" ColumnName="MinInternalArea" />
+                <ScalarProperty Name="MaxInternalArea" ColumnName="MaxInternalArea" />
+                <ScalarProperty Name="MinExternalArea" ColumnName="MinExternalArea" />
+                <ScalarProperty Name="MaxExternalArea" ColumnName="MaxExternalArea" />
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="ElevatorNumber" ColumnName="ElevatorNumber" />
+                <ScalarProperty Name="MinGarageNumber" ColumnName="MinGarageNumber" />
+                <ScalarProperty Name="MaxGarageNumber" ColumnName="MaxGarageNumber" />
+                <ScalarProperty Name="TotalFloorUnitNumber" ColumnName="TotalFloorUnitNumber" />
+                <ScalarProperty Name="TotalUnitNumber" ColumnName="TotalUnitNumber" />
+                <ScalarProperty Name="TowerNumber" ColumnName="TowerNumber" />
+                <ScalarProperty Name="TowerFloorNumber" ColumnName="TowerFloorNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ClientBizzModel" ZoomLevel="99">
+        <EntityTypeShape EntityType="TK1ClientBizzModel.PropertyAd" Width="2.5" PointX="5.25" PointY="0.875" Height="5.2494108072916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1ClientBizzModel.PropertyAdDetail" Width="2" PointX="1.75" PointY="0.75" Height="2.5571907552083331" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1ClientBizzModel.PropertyAdPic" Width="1.5" PointX="8.5" PointY="0.875" Height="3.1340950520833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="TK1ClientBizzModel.PropertyReleaseAd" Width="2.625" PointX="1.5" PointY="4.5" Height="6.21091796875" IsExpanded="true" />
+        <AssociationConnector Association="TK1ClientBizzModel.PropertyAdPropertyAdDetail">
+          <ConnectorPoint PointX="5.25" PointY="2.0910953776041667" />
+          <ConnectorPoint PointX="3.75" PointY="2.0910953776041667" />
+        </AssociationConnector>
+        <AssociationConnector Association="TK1ClientBizzModel.PropertyAdPropertyAdPic">
+          <ConnectorPoint PointX="7.75" PointY="2.4420475260416667" />
+          <ConnectorPoint PointX="8.5" PointY="2.4420475260416667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

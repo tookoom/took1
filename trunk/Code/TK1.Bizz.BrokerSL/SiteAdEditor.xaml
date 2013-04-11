@@ -3,7 +3,7 @@
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
            xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
            xmlns:TK1_Bizz_Data="clr-namespace:TK1.Bizz.Data;assembly=TK1.Silverlight.Data" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" xmlns:TK1_Silverlight_Data_Collection="clr-namespace:TK1.Silverlight.Data.Collection;assembly=TK1.Silverlight.Data" mc:Ignorable="d" x:Class="TK1.Bizz.BrokerSL.SiteAdEditor" 
-           Title="Edição de Imóveis" MinWidth="600" MinHeight="400" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="800" MaxHeight="600" Width="800">
+           Title="Edição de Imóveis" MinWidth="600" MinHeight="400" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="800" MaxHeight="500" Width="800">
 	<sdk:ChildWindow.Resources>
 		<TK1_Silverlight_Data_Collection:SiteAdStatusCollection x:Key="SiteAdStatusCollectionDataSource" d:IsDataSource="True"/>
 		<DataTemplate x:Key="SiteAdStatusDataTemplate">
@@ -122,16 +122,16 @@
     						<sdk:DataGridTemplateColumn Header="" IsReadOnly="True" CanUserReorder="False">
     							<sdk:DataGridTemplateColumn.CellTemplate>
     								<DataTemplate>
-    									<Image Source="{Binding ThumbnailUrl}" Width="64" />
+    									<Image Source="{Binding ThumbnailUrl}" Width="64" Margin="4,4,4,4" />
     								</DataTemplate>
     							</sdk:DataGridTemplateColumn.CellTemplate>
     						</sdk:DataGridTemplateColumn>							
-    						<sdk:DataGridTextColumn Binding="{Binding Description, Mode=TwoWay}" Header="Descrição"/>
+    						<sdk:DataGridTextColumn Binding="{Binding Description, Mode=TwoWay}" Header="Descrição" MinWidth="200"/>
     						<sdk:DataGridTextColumn Binding="{Binding FileName}" Header="Nome do Arquivo" IsReadOnly="True"/>
     						<sdk:DataGridTemplateColumn Header="" IsReadOnly="True" CanUserReorder="False">
     							<sdk:DataGridTemplateColumn.CellTemplate>
     								<DataTemplate>
-    									<Button x:Name="buttonSiteAdPicRemove" Content="Remover" Width="100" Tag="{Binding SiteAdID}" Click="buttonSiteAdPicRemove_Click"/>
+    									<Button x:Name="buttonSiteAdPicRemove" Content="Remover" Width="100" Tag="{Binding SiteAdID}" Click="buttonSiteAdPicRemove_Click" Height="Auto"/>
     								</DataTemplate>
     							</sdk:DataGridTemplateColumn.CellTemplate>
     						</sdk:DataGridTemplateColumn>

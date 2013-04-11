@@ -140,8 +140,10 @@ namespace TK1.Bizz.BrokerSL
                 var siteAdPic = dataGridSiteAdPics.SelectedItem as SiteAdPic;
                 if (siteAdPic != null)
                 {
-                    siteAd.SiteAdPics.Remove(siteAdPic);
-                    dataGridSiteAdPics.ItemsSource = siteAd.SiteAdPics;
+                    //siteAd.SiteAdPics.Remove(siteAdPic);
+                    //dataGridSiteAdPics.ItemsSource = siteAd.SiteAdPics;
+                    //brokerContext.SubmitChanges();
+                    brokerContext.RemoveSiteAdPic(siteAdPic.SiteAd.CustomerCodename, (Data.Presentation.SiteAdTypes)siteAdPic.SiteAd.SiteAdTypeID, siteAdPic.SiteAdID, siteAdPic.PicID, dataContextRemoveSiteAdPic_Completed, null);
                 }
             }
         }
@@ -188,9 +190,31 @@ namespace TK1.Bizz.BrokerSL
             }
             else
             {
-                dataGridSiteAdPics.ItemsSource = loadOperation.Entities;
+                var siteAd = DataContext as SiteAd;
+                if (siteAd != null)
+                {
+                    dataGridSiteAdPics.ItemsSource = loadOperation.Entities;
+                }
             }
         }
+        private void dataContextRemoveSiteAdPic_Completed(InvokeOperation<bool> invokeOperation)
+        {
+            if (invokeOperation.HasError)
+            {
+                MessageBox.Show(string.Format("Falha na remoção de foto de imóvel: {0}", invokeOperation.Error));
+                invokeOperation.MarkErrorAsHandled();
+            }
+            else
+            {
+                var siteAd = DataContext as SiteAd;
+                var result = invokeOperation.Value;
+                if (siteAd != null & result)
+                {
+                    loadSiteAd(siteAd);
+                }
+            }
+        }
+
         private void service_SaveFileCompleted(object sender, SaveBrokerSiteAdPicCompletedEventArgs e)
         {
             bool fileSaveSuccess = false;

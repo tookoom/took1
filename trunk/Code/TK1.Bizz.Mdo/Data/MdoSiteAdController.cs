@@ -577,6 +577,40 @@ namespace TK1.Bizz.Mdo.Data.Controller
             }
             return result;
         }
+        public List<SiteAdPicView> GetSitePics(int customerID, int siteAdID)
+        {
+            List<SiteAdPicView> result = new List<SiteAdPicView>();
+            try
+            {
+                var siteAd = Entities.SiteAds.Get(customerID, siteAdID);
+                if (siteAd != null)
+                {
+                    siteAd.SiteReference.Load();
+                    if (siteAd.Site != null)
+                        siteAd.Site.SitePics.Load();
+                    if (siteAd.Site.SitePics != null)
+                    {
+                        var query = from o in siteAd.Site.SitePics
+                                    select o;
+                        foreach (var item in query)
+                        {
+                            result.Add(new SiteAdPicView()
+                            {
+                                Description = item.Description,
+                                FileName = item.FileName,
+                                Index = item.PicID
+                            });
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetSiteDetail", exception);
+            }
+            return result;
+        }
 
         public SiteReleaseAd GetSiteReleaseAd(int customerID, int siteReleaseAdID)
         {
@@ -843,6 +877,42 @@ namespace TK1.Bizz.Mdo.Data.Controller
             return result;
         }
 
+        #region SYNC METHODS
+        public List<SiteAd> GetSiteAdsToSync(string clientAcronym)
+        {
+            var result = new List<SiteAd>();
+            try
+            {
+                int customerID = GetCustomerID(clientAcronym);
+                var customer = (from o in Entities.Customers
+                                where o.CustomerID == customerID
+                                select o).FirstOrDefault();
+                if (customer != null)
+                {
+                    var siteAds = (from o in customer.SiteAds
+                                   select o).ToList();
+
+
+                    foreach (var siteAd in siteAds)
+                    {
+                        siteAd.SiteReference.Load();
+                        siteAd.Site.SiteDescriptions.Load();
+                        siteAd.Site.SitePics.Load();
+                        siteAd.Site.SiteTypeReference.Load();
+                    }
+                    result = siteAds;
+                }
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("MdoSiteAdController.GetSiteAdToSync", exception);
+            }
+            return result;
+        }
+
+        #endregion
+
+
         public static List<SiteAd> OrderResults(List<SiteAd> siteAds, SiteAdSearchResultOrders resultOrder)
         {
             List<SiteAd> result = null;
@@ -907,6 +977,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
                 result = new List<SiteAdView>();
             return result;
         }
+
 
         private static void addSiteDetails(Site site, Collection.StringDictionary details)
         {
@@ -1207,6 +1278,7 @@ namespace TK1.Bizz.Mdo.Data.Controller
         //    return result;
         //} 
         #endregion
+
 
 
     }

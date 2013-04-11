@@ -11,5 +11,9 @@ namespace TK1.Bizz.Data.Presentation
 
         public string Description { get; set; }
         public string FileName { get; set; }
+        public string Url { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public string Path { get; set; }
+        public string ThumbnailPath { get; set; }
     }
 }

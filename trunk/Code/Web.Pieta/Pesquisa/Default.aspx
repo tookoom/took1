@@ -3,7 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
     <script src="../Scripts/js/jquery-1.3.2.js" type="text/javascript"></script>
-
+    <script src="../Scripts/Search.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.url.js" type="text/javascript"></script>
 
 <div style="min-height:190px;">
     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="searchBar">
@@ -111,7 +112,7 @@
         <tr>
             <td style="width: 450px"></td>
             <td style="width: auto">
-                <div class="buttonSearch">
+                <div id="divSearchButton" class="buttonSearch">
                     <asp:LinkButton ID="buttonSearch" Text="Pesquisar" runat="server" 
                         style="margin: 2px 0px 2px 8px;"
                          OnClick="buttonSearch_Click" />
@@ -123,57 +124,22 @@
 
     <script type="text/javascript">
         $("input:radio").click(function () {
-            if ($('input[id*=radioButtonRent]').is(":checked")) {
-                //alert('rent');
-                $("#divRentParameters").show();
-                $("#divSellingParameters").hide();
-
-                $("#divRentCities").show();
-                $("#divSellingCities").hide();
-
-                $("#divRentDistricts").show();
-                $("#divSellingDistricts").hide();
-            }
-            else {
-                //alert('selling');
-                $("#divRentParameters").hide();
-                $("#divSellingParameters").show();
-
-                $("#divRentCities").hide();
-                $("#divSellingCities").show();
-
-                $("#divRentDistricts").hide();
-                $("#divSellingDistricts").show();
-            }
+            setSearchFieldsVisibility();
         });
     </script>
 
+    <script type="text/javascript">
+        $("#divSearchButton").click(function () {
+            alert('1');
+            window.location.search = 'quickSearch=no';
+        });
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            //alert("test2");
-            if ($('input[id*=radioButtonRent]').is(":checked")) {
-                //alert('rent');
-                $("#divRentParameters").show();
-                $("#divSellingParameters").hide();
-
-                $("#divRentCities").show();
-                $("#divSellingCities").hide();
-
-                $("#divRentDistricts").show();
-                $("#divSellingDistricts").hide();
-            }
-            else {
-                //alert('selling');
-                $("#divRentParameters").hide();
-                $("#divSellingParameters").show();
-
-                $("#divRentCities").hide();
-                $("#divSellingCities").show();
-
-                $("#divRentDistricts").hide();
-                $("#divSellingDistricts").show();
-            } 
+            //alert('1');
+            setSearchType();
+            setSearchFieldsVisibility();
         });
     </script>
 

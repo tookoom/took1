@@ -55,8 +55,8 @@ namespace TK1.Dev.UnitTest
             try
             {
                 string subject = "Relatório de carga de cadastros IMÓVEIS VENDA";
-                AdminHelper.SendMail(subject, body);
-                AdminHelper.SendMail(subject, body, mailTo);
+                //AdminHelper.SendMail(subject, body);
+                //AdminHelper.SendMail(subject, body, mailTo);
             }
             catch (Exception)
             {

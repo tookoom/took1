@@ -7,8 +7,10 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <script src="Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <script src="Scripts/EasySlider/easySlider1.7.js" type="text/javascript"></script>
+    <script src="Scripts/Search.js" type="text/javascript"></script>
     <link href="Styles/Release.css" rel="stylesheet" type="text/css" />
     <link href="Styles/Featured.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/QuickSearch.css" rel="stylesheet" type="text/css" />
     <link href="Styles/EasySlider/SiteRelease.css" rel="stylesheet" type="text/css" />
 
     	<script type="text/javascript">
@@ -22,6 +24,62 @@
 			});
 		});	
 	</script>
+
+    <div class="headerBlueLine"><h1>Encontre seu imóvel</h1></div>
+        <div class="quickSearchOuter">
+            <div class="quickSearchInner">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td >Quero </td>
+                         <td class="radioItem">
+                            <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar"  TextStyle="bold"
+                                 GroupName="radioButtonAdType"  /></td>
+                        <td class="radioItem">
+                            <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" TextStyle="bold"
+                                GroupName="radioButtonAdType" /></td>
+                        <td>
+                            <div id="divRentSiteTypes">
+                                <asp:DropDownList ID="dropDownRentSiteType" runat="server"  Font-Size="Medium"></asp:DropDownList>
+                            </div>
+                            <div id="divSellingSiteTypes">
+                                <asp:DropDownList ID="dropDownSellingSiteType" runat="server"  Font-Size="Medium"></asp:DropDownList>
+                            </div>
+                        </td>      
+                        <td >em </td>
+                        <td>
+                            <div id="divRentCities">
+                                <asp:DropDownList ID="dropDownRentCities" runat="server" Font-Size="Medium">
+                                </asp:DropDownList>
+                            </div>
+                            <div id="divSellingCities">
+                                <asp:DropDownList ID="dropDownSellingCities" runat="server"  Font-Size="Medium">
+                                </asp:DropDownList>
+                            </div>
+                        </td>                        
+                        <td >no bairro</td>
+                        <td>                            
+                            <div id="divRentDistricts">
+                                <asp:DropDownList ID="dropDownRentDistricts" runat="server" Font-Size="Medium">
+                                </asp:DropDownList>
+                            </div>
+                            <div id="divSellingDistricts">
+                                <asp:DropDownList ID="dropDownSellingDistricts" runat="server"  Font-Size="Medium">
+                                </asp:DropDownList>
+                            </div>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="buttonSearch" runat="server"  OnClick="buttonSearch_Click" >Pesquisar</asp:LinkButton>
+                            <%--<div class="quickSearchButton">
+                                <a href="Pesquisa/Default.aspx">
+                                    Pesquisar</a>
+                            </div>--%>
+                        </td>
+                    </tr>
+                </table>
+                
+
+            </div >
+        </div>
 
     <div class="headerBlueLine"><h1>Destaques Vendas</h1></div>
     <div class="featuredSites">
@@ -86,6 +144,7 @@
     </div>
 --%>
    <asp:Literal id="literalSiteReleaseAds" runat="server" />
+       
 
 <br />
 
@@ -172,25 +231,19 @@
         TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController">
     </asp:ObjectDataSource>
 
-    <%--<script type="text/javascript">
-            $(document).ready(function () {
-                var options1 = {
-            }
-            var options2 = {
-                caption: false,
-                navigation: 'permanent',
-                direction: 'left'
-            }
-            var options3 = {
-                caption: 'permanent',
-                opacity: 1
-            }
-
-            //        $('#ppy1').popeye(options1);
-            //        $('#ppy2').popeye(options2);
-            $('#ppy3').popeye(options3);
+    <script type="text/javascript">
+        $("input:radio").click(function () {
+            setQuickSearchFieldsVisibility();
         });
-    </script>--%>
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setQuickSearchFieldsVisibility();
+        });
+    </script>
+
 
 
 </asp:Content>
