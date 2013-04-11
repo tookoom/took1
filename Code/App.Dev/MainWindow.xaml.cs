@@ -41,8 +41,14 @@ namespace TK1.Dev
             //PietaUnitTest.TestXmlLoad();
             //TK1ServicesUnitTest.Test();
             //MdoUnitTest.LoadXmlFile();
-            InetsoftUnitTest.LoadXmlFile();
+            //InetsoftUnitTest.LoadXmlFile();
             //MdoUnitTest.SendTestMail();
+            //TK1DataUnitTest.UserLogin();
+            //BizzUnitTest.UserTest();
+            //BizzUnitTest.MailTest();
+            //MySqlUnitTest.Test();
+            //BizzClientUnitTest.AppLog();
+            IntegraUnitTest.BrokerIntegrationTest();
         }
 
 
@@ -96,24 +102,24 @@ namespace TK1.Dev
         {
             try
             {
-                AM_DWEntities entities = new AM_DWEntities();
-                int count = 0;
-                DateTime from = new DateTime(1970, 1, 1);
-                DateTime to = new DateTime(2070, 12, 31);
-                DateTime date = from;
-                while (date <= to)
-                {
-                    count++;
-                    var exists = (from el in entities.Times
-                                  where el.TimeID == date
-                                  select el).FirstOrDefault() != null;
-                    if (!exists)
-                    {
-                        entities.Times.AddObject(new Time() { Day = date.Day, Month = date.Month, Year = date.Year, Quarter = ((date.Month - 1) / 3) + 1, TimeID = date });
-                        entities.SaveChanges();
-                    }
-                    date = date.AddDays(1);
-                }
+                //AM_DWEntities entities = new AM_DWEntities();
+                //int count = 0;
+                //DateTime from = new DateTime(1970, 1, 1);
+                //DateTime to = new DateTime(2070, 12, 31);
+                //DateTime date = from;
+                //while (date <= to)
+                //{
+                //    count++;
+                //    var exists = (from el in entities.Times
+                //                  where el.TimeID == date
+                //                  select el).FirstOrDefault() != null;
+                //    if (!exists)
+                //    {
+                //        entities.Times.AddObject(new Time() { Day = date.Day, Month = date.Month, Year = date.Year, Quarter = ((date.Month - 1) / 3) + 1, TimeID = date });
+                //        entities.SaveChanges();
+                //    }
+                //    date = date.AddDays(1);
+                //}
             }
             catch (Exception exception) { }
 

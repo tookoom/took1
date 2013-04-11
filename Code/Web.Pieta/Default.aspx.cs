@@ -6,17 +6,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TK1.Bizz.Pieta.Data.Controller;
 using System.IO;
+using TK1.Bizz.Data.Controller;
+using TK1.Bizz.Mdo.Data.Controller;
+using TK1.Bizz.Data.Presentation;
+using TK1.Bizz.Mdo.Data;
 
 public partial class _Default : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        if (!Page.IsPostBack)
-        {
-            literalSiteReleaseAds.Text = getSiteReleaseAdsGallery();
-        }
+    #region PRIVATE MEMBERS
+    private static string searchParametersSessionKey = "PietaQuickSearchParameter";
 
-    }
+    #endregion
+
     private string getSiteReleaseAdsGallery()
     {
         string result = string.Empty;
@@ -93,41 +94,151 @@ public partial class _Default : System.Web.UI.Page
         }
         return result;
     }
-        //<div  id="slider" class="releaseViewer">
-        //    <ul>				
-                //<li>
-                    //<table border="0" cellpadding="0" cellspacing="0">
-                    //    <tr>
-                    //        <td>
-                    //            <div class="releaseViewerImage">
-                    //                <img src="Imovel/Fotos/Venda/1/foto_00001_01_Fachada_____________.jpg" />
-                    //            </div>
-                    //        </td>
-                    //        <td>
-                    //            <div class="releaseViewerInfo">
-                    //                <div class="headerBlueShortLine">
-                    //                    <h1>Lançamento</h1>
-                    //                </div>
-                    //                <h3>Apartamento 2 - bairro Nonoai</h3>
-                    //                <p>
-                    //                    Descrição resumida do imóvel 2</p>
-                    //                <h4>
-                    //                    80m² a 100m²</h4>
-                    //                <h4>
-                    //                    2 a 3 dormitórios</h4>
-                    //                <a href="/Imovel/Lancamentos/?ID=1"><b>Detalhes</b></a>
-                    //            </div>
-                    //        </td>
-                    //    </tr>
-                    //</table>
-                //</li>
-            //</ul>
-    //</div>
-
-
-    protected void listViewSearchResults_PagePropertiesChanged(object sender, EventArgs e)
+    private void loadRentSearchParameter()
     {
-        //setDataBinding(Page.Session[searchResultSessionKey]);
+        SiteAdController siteController = new SiteAdController();
+
+        var cities = siteController.GetCities("pieta");
+        foreach (var city in cities.OrderBy(o => o))
+            dropDownRentCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+
+        dropDownRentDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
+        var districts = siteController.GetDistricts("pieta");
+        foreach (var district in districts.OrderBy(o => o))
+            dropDownRentDistricts.Items.Add(new ListItem(district));
+
+        dropDownRentSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
+        var siteTypes = siteController.GetSiteTypes("pieta", SiteAdTypes.Rent);
+        foreach (var siteType in siteTypes.OrderBy(o => o))
+            dropDownRentSiteType.Items.Add(new ListItem(siteType, siteType));
     }
+    private void loadSellingSearchParameter()
+    {
+        MdoSiteAdController siteController = new MdoSiteAdController();
+
+        var cities = siteController.GetCities("pieta");
+        foreach (var city in cities.OrderBy(o => o))
+            dropDownSellingCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
+
+        dropDownSellingDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
+        var districts = siteController.GetDistricts("pieta");
+        foreach (var district in districts.OrderBy(o => o))
+            dropDownSellingDistricts.Items.Add(new ListItem(district));
+
+        dropDownSellingSiteType.Items.Add(new ListItem("Imóvel Comercial", SiteAdCategories.Comercial.ToString() + "*"));
+        var siteComercialTypes = siteController.GetSiteTypes(SiteAdCategories.Comercial.ToString());
+        foreach (var siteType in siteComercialTypes.OrderBy(o => o))
+            dropDownSellingSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Comercial.ToString() + siteType));
+
+        dropDownSellingSiteType.Items.Add(new ListItem("Imóvel Residencial", SiteAdCategories.Residencial.ToString() + "*") { Selected = true });
+        var siteResidenceTypes = siteController.GetSiteTypes(SiteAdCategories.Residencial.ToString());
+        foreach (var siteType in siteResidenceTypes.OrderBy(o => o))
+            dropDownSellingSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residencial.ToString() + siteType));
+
+    }
+
+    private void searchRentSite()
+    {
+        MdoSiteAdSearchParameters parameters = new MdoSiteAdSearchParameters() { CustomerCodename = "pieta", MdoCode = 4 };
+
+        parameters.AdType = SiteAdTypes.Rent;
+
+        if (dropDownRentCities.SelectedItem != null)
+            parameters.CityName = dropDownRentCities.SelectedItem.Text;
+        if (dropDownRentSiteType.SelectedItem != null)
+        {
+            string text = dropDownRentSiteType.SelectedItem.Text;
+            string value = dropDownRentSiteType.SelectedItem.Value;
+            //if (value.Contains(SiteAdCategories.Residencial.ToString()))
+            //    parameters.Category = SiteAdCategories.Residencial.ToString();
+            //else
+            //    parameters.Category = SiteAdCategories.Comercial.ToString();
+            if (value.Contains("*"))
+                parameters.SiteType = "*";
+            else
+            {
+                string siteType = dropDownRentSiteType.SelectedItem.Text;
+                if (siteType.Contains("- "))
+                    siteType = siteType.Replace("- ", "");
+                parameters.SiteType = siteType;
+            }
+        }
+        if (dropDownRentDistricts.SelectedItem != null)
+            parameters.Districts.Add(dropDownRentDistricts.SelectedItem.Text);
+
+        setSearchSiteParameters(parameters);
+    }
+    private void searchSellingSite()
+    {
+        MdoSiteAdSearchParameters parameters = new MdoSiteAdSearchParameters() { CustomerCodename = "pieta", MdoCode = 4 };
+
+        parameters.AdType = SiteAdTypes.Rent;
+        if (radioButtonBuy.Checked)
+            parameters.AdType = SiteAdTypes.Sell;
+
+        if (dropDownSellingCities.SelectedItem != null)
+            parameters.CityName = dropDownSellingCities.SelectedItem.Text;
+        if (dropDownSellingSiteType.SelectedItem != null)
+        {
+            string text = dropDownSellingSiteType.SelectedItem.Text;
+            string value = dropDownSellingSiteType.SelectedItem.Value;
+            if (value.Contains(SiteAdCategories.Residencial.ToString()))
+                parameters.Category = SiteAdCategories.Residencial.ToString();
+            else
+                parameters.Category = SiteAdCategories.Comercial.ToString();
+            if (value.Contains("*"))
+                parameters.SiteType = "*";
+            else
+            {
+                string siteType = dropDownSellingSiteType.SelectedItem.Text;
+                if (siteType.Contains("- "))
+                    siteType = siteType.Replace("- ", "");
+                parameters.SiteType = siteType;
+            }
+        }
+
+        if (dropDownSellingDistricts.SelectedItem != null)
+            parameters.Districts.Add(dropDownSellingDistricts.SelectedItem.Text);
+        
+
+        setSearchSiteParameters(parameters);
+    }
+    private void setSearchSiteParameters(MdoSiteAdSearchParameters parameters)
+    {
+        if (parameters != null)
+        {
+            if (Page.Session[searchParametersSessionKey] != null)
+                Page.Session.Remove(searchParametersSessionKey);
+            Page.Session.Add(searchParametersSessionKey, parameters);
+
+        }
+    }
+
+    #region EVENTS
+    protected override void OnInit(EventArgs e)
+    {
+        radioButtonBuy.Checked = true;
+        loadSellingSearchParameter();
+        loadRentSearchParameter();
+        base.OnPreInit(e);
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            literalSiteReleaseAds.Text = getSiteReleaseAdsGallery();
+        }
+    }
+    protected void buttonSearch_Click(object sender, EventArgs e)
+    {
+        if (radioButtonBuy.Checked)
+            searchSellingSite();
+        else
+            searchRentSite();
+        var searchType = radioButtonBuy.Checked ? "selling" : "rent";
+        Response.Redirect("Pesquisa/Default.aspx?quickSearch=" + searchType);
+    }
+    #endregion
 
 }

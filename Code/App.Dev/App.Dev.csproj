@@ -53,7 +53,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\Workspaces\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -81,10 +85,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DWEntities.Designer.cs">
+    <Compile Include="Data\AppLog.cs">
+      <DependentUpon>ITK1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ITK1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DWEntities.edmx</DependentUpon>
+      <DependentUpon>ITK1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ITK1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITK1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ITK1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ITK1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Service References\TK1IntegraService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -92,7 +109,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="SetLocale.cs" />
+    <Compile Include="UnitTest\BizzUnitTest.cs" />
+    <Compile Include="UnitTest\BizzClientUnitTest.cs" />
     <Compile Include="UnitTest\InetsoftUnitTest.cs" />
+    <Compile Include="UnitTest\IntegraUnitTest.cs" />
+    <Compile Include="UnitTest\MySqlUnitTest.cs" />
     <Compile Include="UnitTest\TK1ServicesUnitTest.cs" />
     <Compile Include="UnitTest\MdoUnitTest.cs" />
     <Compile Include="UnitTest\PietaUnitTest.cs" />
@@ -136,10 +157,24 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="DWEntities.edmx">
+    <EntityDeploy Include="Data\ITK1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DWEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>ITK1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Data\ITK1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ITK1.edmx</DependentUpon>
+      <LastGenOutput>ITK1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Data\ITK1.edmx.diagram">
+      <DependentUpon>ITK1.edmx</DependentUpon>
+    </None>
+    <None Include="Data\ITK1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ITK1.edmx</DependentUpon>
+      <LastGenOutput>ITK1.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -159,6 +194,10 @@
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz.Client\TK1.Bizz.Client.csproj">
+      <Project>{A2208D64-3AF4-48CC-9F3D-09950AC737DB}</Project>
+      <Name>TK1.Bizz.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj">
       <Project>{CF258131-13C0-4F5D-8657-891E00E66815}</Project>
       <Name>TK1.Bizz.Inetsoft</Name>
@@ -170,6 +209,10 @@
     <ProjectReference Include="..\TK1.Bizz.Pieta\TK1.Bizz.Pieta.csproj">
       <Project>{3A912BDF-BFDE-4BB9-B182-6625FA40269A}</Project>
       <Name>TK1.Bizz.Pieta</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz.Sync\TK1.Bizz.Sync.csproj">
+      <Project>{B450CBE2-2081-4CD2-850D-876D4E949DC4}</Project>
+      <Name>TK1.Bizz.Sync</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
       <Project>{AB2EC906-93AE-4F64-B71D-E04C88036D7D}</Project>
@@ -229,6 +272,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

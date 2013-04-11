@@ -14,10 +14,12 @@ namespace TK1.Bizz.Data.Presentation
         public bool IsAddressVisible { get; set; }
         public bool IsAreaDescriptionVisible { get { return !string.IsNullOrEmpty(AreaDescription); } }
         public bool IsAreaNameVisible { get; set; }
+        public bool IsCityTaxesVisible { get { return CityTaxes != 0; } }
         public bool IsCondoDescriptionVisible { get { return !string.IsNullOrEmpty(CondoDescription); } }
-        //public bool IsRoomNameVisible { get { return false; } }
+        public bool IsCondoTaxesVisible { get { return CondoTaxes != 0; } }
+        public bool IsFeatured { get; set; }
         public bool IsRoomNameVisible { get; set; }
-        public bool IsTaxVisible { get { return CityTaxes != 0 | CondoTaxes != 0; } }
+        public bool IsTitleVisible { get { return !string.IsNullOrEmpty(Title); } }
 
         public int Code { get; set; }
         public int CustomerID { get; set; }

@@ -34,5 +34,10 @@ namespace TK1.Dev.UnitTest
                     audit.FinishProcessExecution(false);
             }
         }
+        public static void UserLogin()
+        {
+            UserController userController = new UserController();
+            int userID = userController.GetUserID("andre", "senhda");
+        }
     }
 }

@@ -18,6 +18,7 @@ using TK1.Bizz.Data.Controller;
 public partial class Pesquisa_Default : System.Web.UI.Page
 {
     #region PRIVATE MEMBERS
+    private static string searchParametersSessionKey = "PietaQuickSearchParameter";
     private static string searchResultSessionKey = "PietaSearchResult";
     
     #endregion
@@ -103,7 +104,8 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         foreach (var district in districts.OrderBy(o => o))
             checkBoxListRentDistricts.Items.Add(new ListItem(district));
 
-        var siteTypes = siteController.GetSiteTypes("pieta", 1);
+        dropDownRentSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
+        var siteTypes = siteController.GetSiteTypes("pieta", SiteAdTypes.Rent);
         foreach (var siteType in siteTypes.OrderBy(o => o))
             dropDownRentSiteType.Items.Add(new ListItem(siteType, siteType));
 
@@ -283,10 +285,10 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         {
             string text = dropDownRentSiteType.SelectedItem.Text;
             string value = dropDownRentSiteType.SelectedItem.Value;
-            if (value.Contains(SiteAdCategories.Residencial.ToString()))
-                parameters.Category = SiteAdCategories.Residencial.ToString();
-            else
-                parameters.Category = SiteAdCategories.Comercial.ToString();
+            //if (value.Contains(SiteAdCategories.Residencial.ToString()))
+            //    parameters.Category = SiteAdCategories.Residencial.ToString();
+            //else
+            //    parameters.Category = SiteAdCategories.Comercial.ToString();
             if (value.Contains("*"))
                 parameters.SiteType = "*";
             else
@@ -390,6 +392,75 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         listViewSearchResults.DataSource = dataToBind;
         listViewSearchResults.DataBind();
     }
+    private void setSearchParameters(MdoSiteAdSearchParameters parameters)
+    {
+        if (parameters != null)
+        {
+            if (parameters.AdType == SiteAdTypes.Rent)
+                setRentSearchParameters(parameters);
+            else
+                setSellingSearchParameters(parameters);
+        }
+    }
+    private void setSellingSearchParameters(MdoSiteAdSearchParameters parameters)
+    {
+        if (parameters != null)
+        {
+            radioButtonBuy.Checked = true;
+
+            var item = (from el in dropDownSellingCities.Items.Cast<ListItem>()
+                        where el.Text == parameters.CityName
+                        select el).FirstOrDefault();
+            if (item != null)
+                item.Selected = true;
+
+            item = (from el in checkBoxListSellingDistricts.Items.Cast<ListItem>()
+                    where el.Text == parameters.Districts.FirstOrDefault()
+                    select el).FirstOrDefault();
+            if (item != null)
+                item.Selected = true;
+
+            item = (from el in dropDownSellingSiteType.Items.Cast<ListItem>()
+                    where el.Text == parameters.SiteType
+                    select el).FirstOrDefault();
+            if (item != null)
+                item.Selected = true;
+        }
+    }
+    private void setRentSearchParameters(MdoSiteAdSearchParameters parameters)
+    {
+        if (parameters != null)
+        {
+            radioButtonRent.Checked = true;
+
+            var item = (from el in dropDownRentCities.Items.Cast<ListItem>()
+                        where el.Text == parameters.CityName
+                        select el).FirstOrDefault();
+            if (item != null)
+            {
+                dropDownRentCities.SelectedItem.Selected = false;
+                item.Selected = true;
+            }
+
+            item = (from el in checkBoxListRentDistricts.Items.Cast<ListItem>()
+                    where el.Text == parameters.Districts.FirstOrDefault()
+                    select el).FirstOrDefault();
+            if (item != null)
+            {
+                checkBoxListRentDistricts.SelectedItem.Selected = false;
+                item.Selected = true;
+            }
+
+            item = (from el in dropDownRentSiteType.Items.Cast<ListItem>()
+                    where el.Text == parameters.SiteType
+                    select el).FirstOrDefault();
+            if (item != null)
+            {
+                dropDownRentSiteType.SelectedItem.Selected = false;
+                item.Selected = true;
+            }
+        }
+    }
 
 
     #region EVENTS
@@ -398,9 +469,17 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         radioButtonBuy.Checked = true;
         loadSellingSearchParameter();
         loadRentSearchParameter();
+
+        //if (Page.Session[searchParametersSessionKey] != null)
+        {
+            var parameters = Page.Session[searchParametersSessionKey] as MdoSiteAdSearchParameters;
+            Page.Session[searchParametersSessionKey] = null;
+            setSearchParameters(parameters);
+            searchSite(parameters);
+        }
+
         base.OnPreInit(e);
     }
-    
     protected void Page_Load(object sender, EventArgs e)
     {
 

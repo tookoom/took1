@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MailHelper.cs" />
     <Compile Include="Const\MailAdresses.cs" />
     <Compile Include="Const\ParameterNames.cs" />
     <Compile Include="Const\ParameterGroupNames.cs" />

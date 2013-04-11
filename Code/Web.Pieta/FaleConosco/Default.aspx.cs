@@ -69,7 +69,8 @@ public partial class FaleConosco_Default : System.Web.UI.Page
     {
         string subject = "Mensagem enviada através do site Pietá Imóveis";
         string body = createMailBody();
-        AdminHelper.SendMail(subject, body, "emailContato");
+        var mailHelper = new MailHelper();
+        mailHelper.SendMail(subject, body, "pieta@pietaimoveis.com.br");
         createMessageAlert(this, "Mensagem enviada", "");
     }
 

@@ -28,5 +28,20 @@ namespace TK1.Data.Controller
                 result = user.Person.FullName;
             return result;
         }
+        public bool SetUserPassword(string userName, string userPassword, string newPassword)
+        {
+            bool result = false;
+            var user = (from o in Entities.Users
+                        where o.Name == userName & o.Password == userPassword
+                        select o).FirstOrDefault();
+            if (user != null)
+            {
+                user.Password = newPassword;
+                Entities.SaveChanges();
+                result = true;
+            }
+            return result;
+        }
+
     }
 }

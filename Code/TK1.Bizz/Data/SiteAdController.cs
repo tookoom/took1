@@ -178,6 +178,30 @@ namespace TK1.Bizz.Data.Controller
         }
         #endregion
 
+        #region SYNC METHODS
+        public List<SiteAd> GetSiteAdsToSync(string customerCodename)
+        {
+            var result = new List<SiteAd>();
+            try
+            {
+                var siteAds = Entities.SiteAds.Where(o=>o.CustomerCodename == customerCodename & o.Visible).ToList();
+                foreach (var siteAd in siteAds)
+                {
+                    siteAd.SiteAdDetails.Load();
+                    siteAd.SiteAdPics.Load();
+                    siteAd.SiteAdTypeReference.Load();
+                }
+                result = siteAds;
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetSiteAdToSync", exception);
+            }
+            return result;
+        }
+
+        #endregion
+
         public SiteAd GetSiteAd(string customerCodename, int siteAdTypeID, int siteAdID)
         {
             SiteAd result = null;
@@ -209,7 +233,6 @@ namespace TK1.Bizz.Data.Controller
                     var siteCategory = SiteAdCategories.Residencial;
                     if (siteAd.CategoryName != SiteAdCategories.Residencial.ToString())
                         siteCategory = SiteAdCategories.Comercial;
-                    //ad.Site.AddressInfoReference.Load();
                     siteAd.SiteAdDetails.Load();
                     siteAd.SiteAdPics.Load();
                     siteAd.SiteAdTypeReference.Load();
@@ -222,12 +245,16 @@ namespace TK1.Bizz.Data.Controller
                         AdCategory = siteCategory,
                         AdType = (SiteAdTypes)siteAdTypeID,
                         AdTypeName = siteAd.SiteAdType.Description,
+                        AreaDescription = siteAd.AreaDescription,
                         City = siteAd.CityName,
                         CityTaxes = (float)(siteAd.CityTaxes ?? 0),
                         Code = siteAd.SiteAdID,
+                        CondoDescription = siteAd.CondoDescription,
                         CondoTaxes = (float)(siteAd.CondoTaxes ?? 0),
                         District = siteAd.DistrictName,
                         FullDescription = siteAd.FullDescription,
+                        IsAddressVisible = false,
+                        IsFeatured = siteAd.FeaturedAd,
                         MainPicUrl = mainPicName,
                         SiteInternalArea = (float)siteAd.InternalArea,
                         SiteTotalArea = (float)siteAd.TotalArea,
@@ -235,6 +262,7 @@ namespace TK1.Bizz.Data.Controller
                         SiteType = siteAd.SiteTypeName,
                         ShortDescription = siteAd.ShortDescription,
                         //SiteTypeRoomName = siteAd.SiteType.RoomDisplayName,
+                        Title = siteAd.Title,
                         Value = (float)(siteAd.Value)
 
                     };
@@ -275,6 +303,42 @@ namespace TK1.Bizz.Data.Controller
             catch (Exception exception)
             {
                 audit.WriteException("SiteController.GetSiteDetail", exception);
+            }
+            return result;
+        }
+        public List<SiteAdPicView> GetSiteAdPics(string customerCodename, int siteAdTypeID, int siteAdID)
+        {
+            List<SiteAdPicView> result = new List<SiteAdPicView>();
+            try
+            {
+                var siteAd = Entities.SiteAds.Get(customerCodename, siteAdTypeID, siteAdID);
+                if (siteAd != null)
+                {
+                    siteAd.SiteAdPics.Load();
+                    if (siteAd.SiteAdPics != null)
+                    {
+                        var query = from o in siteAd.SiteAdPics
+                                    select o;
+                        foreach (var item in query)
+                        {
+                            result.Add(new SiteAdPicView()
+                            {
+                                Description = item.Description,
+                                FileName = item.FileName,
+                                Index = item.PicID,
+                                Path = item.PictureFilePath,
+                                ThumbnailPath = item.ThumbnailFilePath,
+                                ThumbnailUrl = item.ThumbnailUrl,
+                                Url = item.PictureUrl
+                            });
+                        }
+                    }
+                }
+
+            }
+            catch (Exception exception)
+            {
+                audit.WriteException("SiteController.GetSitePic", exception);
             }
             return result;
         }
@@ -399,6 +463,7 @@ namespace TK1.Bizz.Data.Controller
                 result = new List<SiteAdView>();
             return result;
         }
+
 
     }
 }
