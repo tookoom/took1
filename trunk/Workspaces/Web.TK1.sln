@@ -4,7 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.TK1", "..\Code\Web.TK1\", "{C483E23A-3C31-46F8-86D3-A1805B4A7D97}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{07143283-7469-446F-A469-86F64C5CB61F}|TK1.Bizz.Mdo.dll;{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}|TK1.Basics.dll;{AB2EC906-93AE-4F64-B71D-E04C88036D7D}|TK1.Bizz.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;{2484CD63-A0B0-46AE-A423-B32E6A6AD279}|TK1.Data.dll;{CF258131-13C0-4F5D-8657-891E00E66815}|TK1.Bizz.Inetsoft.dll;"
+		ProjectReferences = "{07143283-7469-446F-A469-86F64C5CB61F}|TK1.Bizz.Mdo.dll;{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}|TK1.Basics.dll;{AB2EC906-93AE-4F64-B71D-E04C88036D7D}|TK1.Bizz.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;{2484CD63-A0B0-46AE-A423-B32E6A6AD279}|TK1.Data.dll;{CF258131-13C0-4F5D-8657-891E00E66815}|TK1.Bizz.Inetsoft.dll;{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}|TK1.Web.dll;{24865DD0-45C0-442F-902E-DAF4C17E935D}|TK1.Silverlight.Data.Web.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Web.TK1"
 		Debug.AspNetCompiler.PhysicalPath = "..\Code\Web.TK1\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.TK1\"
@@ -19,7 +19,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.TK1", "..\Code\Web.TK1\
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "62418"
+		VWDPort = "54487"
+		ProjOutputReferences = "{9A104551-72B5-4979-B344-3975DBEEE56C}|ClientBin|false;"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Mdo", "..\Code\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj", "{07143283-7469-446F-A469-86F64C5CB61F}"
@@ -33,6 +34,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data", "..\Code\TK1.Data\TK1.Data.csproj", "{2484CD63-A0B0-46AE-A423-B32E6A6AD279}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Inetsoft", "..\Code\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj", "{CF258131-13C0-4F5D-8657-891E00E66815}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Web", "..\Code\TK1.Web\TK1.Web.csproj", "{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.BrokerSL", "..\Code\TK1.Bizz.BrokerSL\TK1.Bizz.BrokerSL.csproj", "{9A104551-72B5-4979-B344-3975DBEEE56C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.Data", "..\Code\TK1.Silverlight.Data\TK1.Silverlight.Data.csproj", "{2330A766-379C-4395-B714-1B13A3A44133}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Silverlight.Data.Web", "..\Code\TK1.Silverlight.Data.Web\TK1.Silverlight.Data.Web.csproj", "{24865DD0-45C0-442F-902E-DAF4C17E935D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +77,22 @@ Global
 		{CF258131-13C0-4F5D-8657-891E00E66815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF258131-13C0-4F5D-8657-891E00E66815}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF258131-13C0-4F5D-8657-891E00E66815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1077F865-9CA4-41F0-A0AE-E25E7E1F7A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A104551-72B5-4979-B344-3975DBEEE56C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2330A766-379C-4395-B714-1B13A3A44133}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24865DD0-45C0-442F-902E-DAF4C17E935D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
