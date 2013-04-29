@@ -34,14 +34,14 @@
                     <td width="20px">
                         <div class="darkButton" >
                             <asp:LinkButton ID="buttonSettings" runat="server" OnClick="buttonSettings_Click">
-                                <img src="http://tk1.net.br/Images/Icon_User_Settings.png" alt="TK1" width="26px"/>
+                                <img src="http://tk1br.azurewebsites.net/Images/Icon_User_Settings.png" alt="TK1" width="26px"/>
                             </asp:LinkButton>
                         </div>
                     </td>
                     <td width="20px">
                         <div class="darkButton" >
                             <asp:LinkButton ID="buttonLogout" runat="server" OnClick="buttonLogout_Click">
-                                <img src="http://tk1.net.br/Images/Icon_Logout.png" alt="TK1" width="20px"/>
+                                <img src="http://tk1br.azurewebsites.net/Images/Icon_Logout.png" alt="TK1" width="20px"/>
                             </asp:LinkButton>
                         </div>
                     </td>
@@ -60,7 +60,7 @@
                 <tr>
                     <td></td>
                     <td style="text-align:right"></td>
-                    <td width="40px"><img src="http://tk1.net.br/Images/LogoTK1_Icon.png" alt="TK1"/></td>
+                    <td width="40px"><img src="http://tk1br.azurewebsites.net/Images/LogoTK1_Icon.png" alt="TK1"/></td>
                 </tr>
             </table>
         </div>
