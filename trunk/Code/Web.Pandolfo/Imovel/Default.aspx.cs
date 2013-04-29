@@ -44,7 +44,7 @@ public partial class Imovel_Default : System.Web.UI.Page
         var customerName = CustomerNames.Pandolfo.ToString();
 
         string result = string.Empty;
-        string baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Bizz/Broker/RealEstate/pandolfo/{0}/{1}/", siteAdTypeID == 1 ? "Rent" : "Sell", siteAdID);
+        string baseUrl = string.Format(@"http://tk1br.azurewebsites.net/Integra/Arquivos/Bizz/Broker/RealEstate/pandolfo/{0}/{1}/", siteAdTypeID == 1 ? "Rent" : "Sell", siteAdID);
 
         var siteAd = siteController.GetSiteAd(customerName, siteAdTypeID, siteAdID);
         var siteAdPics = new List<SiteAdPicView>();
@@ -84,8 +84,8 @@ public partial class Imovel_Default : System.Web.UI.Page
         }
         if (string.IsNullOrEmpty(items))
         {
-            string imageSource = @"http://www.tk1.net.br/Images/ImagemNaoDisponivel.png";
-            string imageThumbSource = @"http://www.tk1.net.br/Images/ImagemNaoDisponivelThumb.png";
+            string imageSource = @"http://tk1br.azurewebsites.net/Images/ImagemNaoDisponivel.png";
+            string imageThumbSource = @"http://tk1br.azurewebsites.net/Images/ImagemNaoDisponivelThumb.png";
             string li = "<li>"
                 + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
                 + "<img src=\"" + imageThumbSource + "\" alt=\"" + "" + "\" />"
