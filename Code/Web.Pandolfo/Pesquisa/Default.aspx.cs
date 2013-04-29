@@ -123,10 +123,10 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         switch (siteAdTypeID)
         {
             case (int)SiteAdTypes.Rent:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", siteAdID);
+                baseUrl = string.Format(@"http://tk1br.azurewebsites.net/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", siteAdID);
                 break;
             case (int)SiteAdTypes.Sell:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
+                baseUrl = string.Format(@"http://tk1br.azurewebsites.net/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
                 break;
         }
         //var siteAdPics = siteController.GetSitePics(siteAdTypeID, siteAdID);
@@ -291,7 +291,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 //siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
                 //if (siteAdView.IsRoomNameVisible)
                 //    siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
-                //string imageUrl = "http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
+                //string imageUrl = "http://tk1br.azurewebsites.net/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png";
             }
             setDataBinding(searchResult);
         }
