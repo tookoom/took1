@@ -23,7 +23,7 @@ public class BrokerFileService
     {
         PictureInfo result = new PictureInfo() { Success = false };
         string rootPath = HostingEnvironment.MapPath("~/");
-        string rootUrl = @"http://www.tk1br.azurewebsites.net/";
+        string rootUrl = @"http://tk1br.azurewebsites.net/";
         rootPath += "Integra\\Arquivos\\Bizz\\Broker\\RealEstate";
         rootUrl += "Integra/Arquivos/Bizz/Broker/RealEstate";
         if (!Directory.Exists(rootPath))
