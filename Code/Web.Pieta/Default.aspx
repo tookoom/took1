@@ -25,82 +25,26 @@
 		});	
 	</script>
 
-    <div class="headerBlueLine"><h1>Encontre seu imóvel</h1></div>
-        <div class="quickSearchOuter">
-            <div class="quickSearchInner">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                    <tr>
-                        <td >Quero </td>
-                         <td class="radioItem">
-                            <asp:RadioButton ID="radioButtonRent" runat="server" Text="Alugar"  TextStyle="bold"
-                                 GroupName="radioButtonAdType"  /></td>
-                        <td class="radioItem">
-                            <asp:RadioButton ID="radioButtonBuy" runat="server" Text="Comprar" TextStyle="bold"
-                                GroupName="radioButtonAdType" /></td>
-                        <td>
-                            <div id="divRentSiteTypes">
-                                <asp:DropDownList ID="dropDownRentSiteType" runat="server"  Font-Size="Medium"></asp:DropDownList>
-                            </div>
-                            <div id="divSellingSiteTypes">
-                                <asp:DropDownList ID="dropDownSellingSiteType" runat="server"  Font-Size="Medium"></asp:DropDownList>
-                            </div>
-                        </td>      
-                        <td >em </td>
-                        <td>
-                            <div id="divRentCities">
-                                <asp:DropDownList ID="dropDownRentCities" runat="server" Font-Size="Medium">
-                                </asp:DropDownList>
-                            </div>
-                            <div id="divSellingCities">
-                                <asp:DropDownList ID="dropDownSellingCities" runat="server"  Font-Size="Medium">
-                                </asp:DropDownList>
-                            </div>
-                        </td>                        
-                        <td >no bairro</td>
-                        <td>                            
-                            <div id="divRentDistricts">
-                                <asp:DropDownList ID="dropDownRentDistricts" runat="server" Font-Size="Medium">
-                                </asp:DropDownList>
-                            </div>
-                            <div id="divSellingDistricts">
-                                <asp:DropDownList ID="dropDownSellingDistricts" runat="server"  Font-Size="Medium">
-                                </asp:DropDownList>
-                            </div>
-                        </td>
-                        <td>
-                            <asp:LinkButton ID="buttonSearch" runat="server"  OnClick="buttonSearch_Click" >Pesquisar</asp:LinkButton>
-                            <%--<div class="quickSearchButton">
-                                <a href="Pesquisa/Default.aspx">
-                                    Pesquisar</a>
-                            </div>--%>
-                        </td>
-                    </tr>
-                </table>
-                
-
-            </div >
-        </div>
-
     <div class="headerBlueLine"><h1>Destaques Vendas</h1></div>
     <div class="featuredSites">
 
         <asp:DataList ID="dataListFeaturedSiteAds" runat="server" 
-            DataSourceID="objectDataSourceFeaturedSites" RepeatDirection="Horizontal" RepeatLayout="Table">
+            DataSourceID="objectDataSourceFeaturedPropertyAds" RepeatDirection="Horizontal">
             <ItemTemplate>
                 <div class="featureViewerOuter">
                     <div class="featureViewerInner">
                         <div class="featureViewerImage">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
-                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("Code") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
+                            <a href="/Imovel/Default.aspx?ID=<%# Eval("AdCode")%>&AdType=<%# Eval("AdType")%>">
+                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("AdCode") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
                             </a>
                         </div>
                         <h2><%# Eval("District")%></h2>
-                        <h3><%# Eval("SiteType")%></h3>
-                        <p><%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%></p>
-                        <p><%# Eval("SiteTotalArea")%>  m²</p>
+                        <h3><%# Eval("PropertyType")%></h3>
+                        <p><%# Eval("TotalRooms")%>  <%# Eval("PropertyTypeRoomName")%></p>
+                        <p><%# Eval("TotalArea")%>  m²</p>
                         <p><b><%# Eval("Value", "{0:c}")%></b></p>
                         <div class="featureViewerDetailButton">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
+                            <a href="/Imovel/Default.aspx?ID=<%# Eval("AdCode")%>&AdType=<%# Eval("AdType")%>">
                                 Detalhes</a>
                         </div>
 
@@ -113,99 +57,30 @@
     </div>
 
     <div class="headerBlueLine"><h1>Lançamentos</h1></div>
-
-<%--    <div  id="slider" class="releaseViewer">
-    		<ul>				
-				<li>
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td>
-                                <div class="releaseViewerImage">
-                                    <img src="Imovel/Fotos/Venda/1/foto_00001_01_Fachada_____________.jpg" />
-                                </div>
-                            </td>
-                            <td>
-                                <div class="releaseViewerInfo">
-                                    <h3>Apartamento 2 - bairro Nonoai</h3>
-                                    <p>
-                                        Descrição resumida do imóvel 2</p>
-                                    <h4>
-                                        80m² a 100m²</h4>
-                                    <h4>
-                                        2 a 3 dormitórios</h4>
-                                    <a href="/Imovel/Lancamentos/?ID=1"><b>Detalhes</b></a>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </li>
-			</ul>
-
-    </div>
---%>
    <asp:Literal id="literalSiteReleaseAds" runat="server" />
+    <br />
+    <br />
        
+    <div class="headerBlueLine"><h1>Redes Sociais</h1></div>
+    <table border="0" cellpadding="4" cellspacing="0">
+        <tr>
+            <td>
+                <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">
+                    <img src="Images/FacebookIcon.png" alt="Pietá no Facebook" 
+                    height="70px"/></a>
+            </td>
+            <td style="vertical-align:top; ">
+                <p>
+                    Novidades, informações e contato.
+                </p>
+                <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">Conheça a página da
+                    Pietá Imóveis no Facebook!</a>
+            </td>
 
-<br />
+        </tr>
+    </table>
+    <br />
 
-        <table border="0" cellpadding="0" cellspacing="0" width="932px">
-            <tr>
-                <td style="width: 60%; vertical-align: top; padding-right:16px;">
-                    <div class="headerBlueShortLine">
-                        <h1>Vantagens Pietá Imóveis</h1>
-                    </div>
-                </td>
-                <td style="width: 40%; vertical-align: top; padding-right:16px;">
-                    <div class="headerBlueShortLine">
-                        <h1>Redes Sociais</h1>
-                    </div>
-                </td>
-                <%--<td style="width: 30%; vertical-align: top;">
-                    <div class="headerBlueShortLine">
-                        <h1>Avisos</h1>
-                    </div>
-                </td>--%>
-            </tr>
-            <tr>
-                <td style="vertical-align:top;">
-                    <table border="0" cellpadding="4" cellspacing="0">
-                        <tr>
-                            <td>
-                                <img src="Images/CaixaAqui.jpg" />
-                            </td>
-                            <td style="vertical-align:top;">
-                                <p>Os correspondentes Caixa Aqui trazem várias vantagens e serviços para os usuários.</p>
-                                <a target="_blank" href="http://www1.caixa.gov.br/atendimento/canais_atendimento/correspondentes_bancarios.asp">Saiba mais</a>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td style="vertical-align:top;">
-                    <table border="0" cellpadding="4" cellspacing="0">
-                        <tr>
-                            <td>
-                                <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">
-                                    <img src="Images/FacebookIcon.png" alt="Pietá no Facebook" 
-                                    height="70px"/></a>
-                            </td>
-                            <td style="vertical-align:top; ">
-                                <p>
-                                    Novidades, informações e contato.
-                                </p>
-                                <a target="_blank" href="http://www.facebook.com/profile.php?id=100002698020190">Conheça a página da
-                                    Pietá Imóveis no Facebook!</a>
-                            </td>
-
-                        </tr>
-                    </table>
-                </td>
-                <%--<td style="vertical-align:top;">
-                    <b><p>Prezados clientes,</p></b>
-                    <p>Informamos que em razão das festas de fim de ano não haverá expediente nos dias 24 e 25 de dezembro de 2011 e nos dias 30, 31 de dezembro e 1º de janeiro de 2012.</p>
-                    <b><p> Feliz Natal e Próspero Ano Novo!</p></b>
-                </td>--%>
-            </tr>
-        </table>
 
     <div class="clear releases">
     <br />
@@ -218,17 +93,21 @@
     </div>
 
 
-    <asp:ObjectDataSource ID="objectDataSourceFeaturedSites" runat="server" 
-        SelectMethod="GetFeaturedSiteAds" 
-        TypeName="TK1.Bizz.Mdo.Data.Controller.MdoSiteAdController">
+    <asp:ObjectDataSource ID="objectDataSourceFeaturedPropertyAds" runat="server" 
+        SelectMethod="GetFeaturedSellingPropertyAds" 
+        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource">
         <SelectParameters>
-            <asp:Parameter DefaultValue="pieta" Name="mdoAcronym" Type="String" />
+            <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
+            <asp:Parameter DefaultValue="5" Name="count" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
 
-    <asp:ObjectDataSource ID="objectDataSourceSiteReleases" runat="server" 
-        SelectMethod="GetSiteReleaseAds" 
-        TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController">
+    <asp:ObjectDataSource ID="objectDataSourcePropertyReleaseAds" runat="server" 
+        SelectMethod="GetPropertyReleaseAds" 
+        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
+        </SelectParameters>
     </asp:ObjectDataSource>
 
     <script type="text/javascript">

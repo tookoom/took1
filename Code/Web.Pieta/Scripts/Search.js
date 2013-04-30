@@ -49,8 +49,8 @@ function setSearchFieldsVisibility() {
 function setQuickSearchFieldsVisibility() {
     if ($('input[id*=radioButtonRent]').is(":checked")) {
         //alert('rent');
-        $("#divRentSiteTypes").show();
-        $("#divSellingSiteTypes").hide();
+        $("#divRentPropertyTypes").show();
+        $("#divSellingPropertyTypes").hide();
 
         $("#divRentCities").show();
         $("#divSellingCities").hide();
@@ -60,8 +60,8 @@ function setQuickSearchFieldsVisibility() {
     }
     else {
         //alert('selling');
-        $("#divRentSiteTypes").hide();
-        $("#divSellingSiteTypes").show();
+        $("#divRentPropertyTypes").hide();
+        $("#divSellingPropertyTypes").show();
 
         $("#divRentCities").hide();
         $("#divSellingCities").show();

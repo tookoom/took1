@@ -4,14 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TK1.Bizz.Mdo.Data;
 using TK1.Bizz.Pieta;
 using System.IO;
-using TK1.Bizz.Data.Presentation;
+using TK1.Bizz.Client.Data.Presentation;
 using TK1.Bizz.Pieta.Data.Controller;
+using TK1.Bizz.Client.Data.Controller;
 
 public partial class Imovel_Lancamento_Default : System.Web.UI.Page
 {
+    #region PRIVATE MEMBERS
+    private static string customerCode = "pieta";
+
+    #endregion
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -24,8 +29,8 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
     {
         if (e != null)
         {
-            var siteAd = e.ReturnValue as SiteAdView;
-            if (siteAd == null)
+            var propertyAd = e.ReturnValue as PropertyReleaseAdView;
+            if (propertyAd == null)
             {
                 divSiteNotFound.Visible = true;
                 divSiteDetails.Visible = false;
@@ -35,7 +40,7 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
                 divSiteNotFound.Visible = false;
                 divSiteDetails.Visible = true;
 
-                string literal = getSitePicGallery(siteAd.AdTypeID, siteAd.Code);
+                string literal = getSitePicGallery(propertyAd.AdType, propertyAd.AdCode);
 
                 //literal = "<ul id=\"picGallery\">"
                 //    + "<li><img src=\"../Imovel/Fotos/Aluguel/5/1.jpg\" title=\"1\" /></li>"
@@ -48,12 +53,12 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
             }
         }
     }
-    protected bool getRentDivVisibility(SiteAdTypes siteAdType)
+    protected bool getRentDivVisibility(PropertyAdTypes adType)
     {
         bool result = false;
-        switch (siteAdType)
+        switch (adType)
         {
-            case SiteAdTypes.Rent:
+            case PropertyAdTypes.Rent:
                 result = true;
                 break;
 
@@ -63,82 +68,21 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
         }
         return result;
     }
-    private string getSitePicGallery(int siteAdType, int siteAdID)
+    private string getSitePicGallery(PropertyAdTypes adType, int adCode)
     {
-        string result = getReleaseSitePicGallery(siteAdType, siteAdID);
+        string result = getReleaseSitePicGallery(adType, adCode);
 
-        #region OLD CODE
-        ////PietaSiteAdController siteController = new PietaSiteAdController();
-        ////var siteAdPics = siteController.GetSitePics(siteAdType, siteAdID);
-
-
-        ////string baseUrl = string.Empty;
-        ////if (siteAdType == 1)
-        ////    baseUrl = string.Format("~/Imovel/Fotos/Aluguel/{0}/", siteAdID);
-        ////if (siteAdType == 2)
-        ////    baseUrl = string.Format("~/Imovel/Fotos/Venda/{0}/", siteAdID);
-        ////if (!string.IsNullOrEmpty(baseUrl))
-        ////{
-        ////    baseUrl = this.ResolveUrl(baseUrl);
-        ////    string path = Server.MapPath(baseUrl);
-        ////    string items = string.Empty;
-        ////    if (Directory.Exists(path))
-        ////    {
-        ////        int index = 0;
-        ////        foreach (var file in Directory.GetFiles(path, "*.jpg"))
-        ////        {
-        ////            index++;
-        ////            string fileName = Path.GetFileName(file);
-        ////            string imageSource = baseUrl + fileName;
-        ////            string imageThumbSource = baseUrl + fileName;
-        ////            string imageTitle = string.Format("Foto {0}", index);
-        ////            string imageDescription = siteAdPics.Where(o => o.FileName == fileName).Select(o => o.Description).FirstOrDefault() ?? string.Empty;
-        ////            string li = "<li>"
-        ////                    + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
-        ////                    + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-        ////                    + "</a>"
-        ////                    + "<div class=\"caption\">"
-        ////                //+ "<div class=\"image-title\">" + imageTitle + "</div>"
-        ////                    + "<div class=\"image-title\">" + imageDescription + "</div>"
-        ////                    + "</div>"
-        ////                    + "</li>";
-        ////            items += li + Environment.NewLine;
-        ////        }
-        ////        if (string.IsNullOrEmpty(items))
-        ////        {
-        ////            string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
-        ////            string li = "<li>"
-        ////                + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + "" + "\">"
-        ////                + "<img src=\"" + imageSource + "\" alt=\"" + "" + "\" />"
-        ////                + "</a>"
-        ////                + "<div class=\"caption\">"
-        ////                + "<div class=\"image-title\">" + "Imagem não disponível" + "</div>"
-        ////                + "<div class=\"image-desc\">" + "Aguarde atualização do cadastro"
-        ////                //+ "<p visible=\"false\">" + baseUrl + "</p>"
-        ////                //+ "<p visible=\"false\">" + path + "</p>"
-        ////                + "</div>"
-        ////                + "</div>"
-        ////                + "</li>";
-        ////            items += li + Environment.NewLine;
-        ////        }
-        ////        string ul = "<ul class=\"thumbs noscript\">"
-        ////            + "{0}"
-        ////            + "</ul>";
-        ////        result = string.Format(ul, items);
-        ////    }
-        ////} 
-        #endregion
         return result;
     }
-    private string getReleaseSitePicGallery(int siteAdTypeID, int siteReleaseAdID)
+    private string getReleaseSitePicGallery(PropertyAdTypes adType, int adCode)
     {
         string result = string.Empty;
-        PietaSiteAdController siteController = new PietaSiteAdController();
-        var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/L{0}/", siteReleaseAdID);
-        var siteAdPics = siteController.GetSiteReleasePics(siteReleaseAdID);
+        PropertyAdController propertyAdController = new PropertyAdController(customerCode);
+        var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/L{0}/", adCode);
+        var adPics = propertyAdController.GetPropertyPicViews(PropertyAdTypes.Release,  adCode);
         string items = string.Empty;
         int index = 0;
-        foreach (var item in siteAdPics)
+        foreach (var item in adPics)
         {
             index++;
             string fileName = item.FileName;
@@ -186,12 +130,12 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
     //private string getSitePicGallery_WEB(int siteAdType, int siteAdID)
     //{
     //    string result = string.Empty;
-    //    PietaSiteAdController siteController = new PietaSiteAdController();
+    //    PropertyAdController propertyAdController = new PropertyAdController(customerCode);
     //    var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
-    //    var siteAdPics = siteController.GetSitePics(siteAdType, siteAdID);
+    //    var adPics = propertyAdController.GetPropertyPicViews(siteAdType, siteAdID);
     //    string items = string.Empty;
     //    int index = 0;
-    //    foreach (var item in siteAdPics)
+    //    foreach (var item in adPics)
     //    {
     //        index++;
     //        string fileName = item.FileName;
@@ -231,8 +175,8 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
     //}
     //private string getSitePicGallery_MDO(int siteAdType, int siteAdID)
     //{
-    //    PietaSiteAdController siteController = new PietaSiteAdController();
-    //    var siteAdPics = siteController.GetSitePics(siteAdType, siteAdID);
+    //    PropertyAdController propertyAdController = new PropertyAdController(customerCode);
+    //    var adPics = propertyAdController.GetPropertyPicViews(siteAdType, siteAdID);
 
     //    string result = string.Empty;
     //    string baseUrl = string.Format("~\\Integra\\Mdo\\SimVendas\\Fotos\\{0}\\{1}\\", mdoCode, siteAdID);
@@ -252,7 +196,7 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
     //                string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
     //                string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
     //                string imageTitle = string.Format("Foto {0}", index);
-    //                string imageDescription = siteController.GetSitePicDescription(fileName) ?? string.Empty;
+    //                string imageDescription = propertyAdController.GetSitePicDescription(fileName) ?? string.Empty;
 
     //                string li = "<li>"
     //                        + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"

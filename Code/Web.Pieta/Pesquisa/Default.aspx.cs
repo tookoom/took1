@@ -4,20 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TK1.Bizz.Mdo.Data;
 using TK1.Bizz.Pieta.Const;
 using TK1.Data.Converter;
 using TK1.Bizz.Pieta;
 using System.IO;
-using TK1.Bizz.Mdo.Data.Controller;
-using TK1.Bizz.Data.Presentation;
+using TK1.Bizz.Client.Data.Presentation;
 using TK1.Bizz.Pieta.Data.Controller;
-using TK1.Bizz.Data;
-using TK1.Bizz.Data.Controller;
+using TK1.Bizz.Client.Data;
+using TK1.Bizz.Client.Data.Controller;
 
 public partial class Pesquisa_Default : System.Web.UI.Page
 {
     #region PRIVATE MEMBERS
+    private static string customerCode = "pieta";
     private static string searchParametersSessionKey = "PietaQuickSearchParameter";
     private static string searchResultSessionKey = "PietaSearchResult";
     
@@ -30,13 +29,13 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             result = true;
         return result;
     }
-    protected bool getSiteAreaVisibility(SiteAdCategories siteAdCategory)
+    protected bool getSiteAreaVisibility(PropertyAdCategories siteAdCategory)
     {
         return true;
         bool result = false;
         switch (siteAdCategory)
         {
-            case SiteAdCategories.Comercial:
+            case PropertyAdCategories.Comercial:
                 result = true;
                 break;
 
@@ -54,34 +53,34 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             result = true;
         return result;
     }
-    private string getSiteMainPic(int siteAdTypeID, int siteAdID)
+    private string getSiteMainPic(PropertyAdTypes adType, int adCode)
     {
         string result = string.Empty;
         string baseUrl = string.Empty;
-        PietaSiteAdController siteController = new PietaSiteAdController();
-        switch (siteAdTypeID)
+        PropertyAdController customerController = new PropertyAdController(customerCode);
+        switch (adType)
         {
-            case (int)SiteAdTypes.Rent:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", siteAdID);
+            case PropertyAdTypes.Rent:
+                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", adCode);
                 break;
-            case (int)SiteAdTypes.Sell:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
+            case PropertyAdTypes.Sell:
+                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", adCode);
                 break;
         }
-        var siteAdPics = siteController.GetSitePics(siteAdTypeID, siteAdID);
-        foreach (var item in siteAdPics)
+        var adPics = customerController.GetPropertyPicViews(adType, adCode);
+        foreach (var item in adPics)
         {
             result = baseUrl + item.FileName;
             break;
         }
         return result;
     }
-    protected bool getSiteRoomNameVisibility(SiteAdCategories siteAdCategory)
+    protected bool getSiteRoomNameVisibility(PropertyAdCategories siteAdCategory)
     {
         bool result = false;
         switch (siteAdCategory)
         {
-            case SiteAdCategories.Residencial:
+            case PropertyAdCategories.Residencial:
                 result = true;
                 break;
 
@@ -93,21 +92,21 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     private void loadRentSearchParameter()
     {
-        SiteAdController siteController = new SiteAdController();
+        PropertyAdController propertyAdController = new PropertyAdController(customerCode);
 
-        var cities = siteController.GetCities("pieta");
+        var cities = propertyAdController.GetCities(PropertyAdTypes.Rent);
         foreach (var city in cities.OrderBy(o => o))
             dropDownRentCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
-        checkBoxListRentDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
-        var districts = siteController.GetDistricts("pieta");
+        checkBoxListRentDistricts.Items.Add(new ListItem("Todos", "*") { Selected = true });
+        var districts = propertyAdController.GetDistricts(PropertyAdTypes.Rent);
         foreach (var district in districts.OrderBy(o => o))
-            checkBoxListRentDistricts.Items.Add(new ListItem(district));
+            checkBoxListRentDistricts.Items.Add(new ListItem(district, district));
 
-        dropDownRentSiteType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
-        var siteTypes = siteController.GetSiteTypes("pieta", SiteAdTypes.Rent);
-        foreach (var siteType in siteTypes.OrderBy(o => o))
-            dropDownRentSiteType.Items.Add(new ListItem(siteType, siteType));
+        dropDownRentPropertyType.Items.Add(new ListItem("Escolha o tipo de imóvel", "*") { Selected = true });
+        var propertyTypes = propertyAdController.GetPropertyTypes(PropertyAdTypes.Rent);
+        foreach (var siteType in propertyTypes.OrderBy(o => o))
+            dropDownRentPropertyType.Items.Add(new ListItem(siteType, siteType));
 
         dropDownRentRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
         dropDownRentRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
@@ -142,26 +141,26 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     private void loadSellingSearchParameter()
     {
-        MdoSiteAdController siteController = new MdoSiteAdController();
+        PropertyAdController propertyAdController = new PropertyAdController(customerCode);
 
-        var cities = siteController.GetCities("pieta");
+        var cities = propertyAdController.GetCities(PropertyAdTypes.Sell);
         foreach (var city in cities.OrderBy(o => o))
             dropDownSellingCities.Items.Add(new ListItem(city) { Selected = city == "Porto Alegre" });
 
-        checkBoxListSellingDistricts.Items.Add(new ListItem("Todos", "All") { Selected = true });
-        var districts = siteController.GetDistricts("pieta");
+        checkBoxListSellingDistricts.Items.Add(new ListItem("Todos", "*") { Selected = true });
+        var districts = propertyAdController.GetDistricts(PropertyAdTypes.Sell);
         foreach (var district in districts.OrderBy(o => o))
-            checkBoxListSellingDistricts.Items.Add(new ListItem(district));
+            checkBoxListSellingDistricts.Items.Add(new ListItem(district, district));
 
-        dropDownSellingSiteType.Items.Add(new ListItem("Comercial", SiteAdCategories.Comercial.ToString() + "*"));
-        var siteComercialTypes = siteController.GetSiteTypes(SiteAdCategories.Comercial.ToString());
-        foreach (var siteType in siteComercialTypes.OrderBy(o => o))
-            dropDownSellingSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Comercial.ToString() + siteType));
+        dropDownSellingPropertyType.Items.Add(new ListItem("Comercial", PropertyAdCategories.Comercial.ToString() + "*"));
+        var comercialPropertyTypes = propertyAdController.GetPropertyTypes(PropertyAdTypes.Sell, PropertyAdCategories.Comercial);
+        foreach (var siteType in comercialPropertyTypes.OrderBy(o => o))
+            dropDownSellingPropertyType.Items.Add(new ListItem("- " + siteType, PropertyAdCategories.Comercial.ToString() + siteType));
 
-        dropDownSellingSiteType.Items.Add(new ListItem("Residencial", SiteAdCategories.Residencial.ToString() + "*") { Selected = true });
-        var siteResidenceTypes = siteController.GetSiteTypes(SiteAdCategories.Residencial.ToString());
-        foreach (var siteType in siteResidenceTypes.OrderBy(o => o))
-            dropDownSellingSiteType.Items.Add(new ListItem("- " + siteType, SiteAdCategories.Residencial.ToString() + siteType));
+        dropDownSellingPropertyType.Items.Add(new ListItem("Residencial", PropertyAdCategories.Residencial.ToString() + "*") { Selected = true });
+        var residencialPropertyTypes = propertyAdController.GetPropertyTypes(PropertyAdTypes.Sell, PropertyAdCategories.Residencial);
+        foreach (var siteType in residencialPropertyTypes.OrderBy(o => o))
+            dropDownSellingPropertyType.Items.Add(new ListItem("- " + siteType, PropertyAdCategories.Residencial.ToString() + siteType));
 
         dropDownSellingRoomNumber.Items.Add(new ListItem("1 dormitório", "1"));
         dropDownSellingRoomNumber.Items.Add(new ListItem("1 dormitório ou mais", "1+") { Selected = true });
@@ -223,29 +222,29 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     private void orderSearchResultsByArea(bool descendingOrder)
     {
-        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAdView>;
+        var searchResult = Page.Session[searchResultSessionKey] as List<PropertyAdView>;
         if (searchResult != null)
         {
             if (descendingOrder)
-                setDataBinding(searchResult.OrderByDescending(o => o.SiteTotalArea).ToList());
+                setDataBinding(searchResult.OrderByDescending(o => o.InternalArea).ToList());
             else
-                setDataBinding(searchResult.OrderBy(o => o.SiteTotalArea).ToList());
+                setDataBinding(searchResult.OrderBy(o => o.InternalArea).ToList());
         }
     }
     private void orderSearchResultsByCode(bool descendingOrder)
     {
-        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAdView>;
+        var searchResult = Page.Session[searchResultSessionKey] as List<PropertyAdView>;
         if (searchResult != null)
         {
             if (descendingOrder)
-                setDataBinding(searchResult.OrderByDescending(o => o.Code).ToList());
+                setDataBinding(searchResult.OrderByDescending(o => o.AdCode).ToList());
             else
-                setDataBinding(searchResult.OrderBy(o => o.Code).ToList());
+                setDataBinding(searchResult.OrderBy(o => o.AdCode).ToList());
         }
     }
     private void orderSearchResultsByValue(bool descendingOrder)
     {
-        var searchResult = Page.Session[searchResultSessionKey] as List<SiteAdView>;
+        var searchResult = Page.Session[searchResultSessionKey] as List<PropertyAdView>;
         if (searchResult != null)
         {
             if(descendingOrder)
@@ -256,9 +255,9 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     private void searchRentSite()
     {
-        MdoSiteAdSearchParameters parameters = new MdoSiteAdSearchParameters() { CustomerCodename = "pieta", MdoCode = 4 };
+        PropertyAdSearchParameters parameters = new PropertyAdSearchParameters() { CustomerCodename = customerCode };
 
-        parameters.AdType = SiteAdTypes.Rent;
+        parameters.AdType = PropertyAdTypes.Rent;
 
         if (!string.IsNullOrEmpty(textBoxRentSiteCode.Text))
         {
@@ -281,38 +280,38 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             else
                 parameters.RoomsTo = StringConverter.ToInt(dropDownRentRoomNumber.SelectedItem.Value, int.MaxValue);
         }
-        if (dropDownRentSiteType.SelectedItem != null)
+        if (dropDownRentPropertyType.SelectedItem != null)
         {
-            string text = dropDownRentSiteType.SelectedItem.Text;
-            string value = dropDownRentSiteType.SelectedItem.Value;
-            //if (value.Contains(SiteAdCategories.Residencial.ToString()))
-            //    parameters.Category = SiteAdCategories.Residencial.ToString();
+            string text = dropDownRentPropertyType.SelectedItem.Text;
+            string value = dropDownRentPropertyType.SelectedItem.Value;
+            //if (value.Contains(PropertyAdCategories.Residencial.ToString()))
+            //    parameters.Category = PropertyAdCategories.Residencial.ToString();
             //else
-            //    parameters.Category = SiteAdCategories.Comercial.ToString();
+            //    parameters.Category = PropertyAdCategories.Comercial.ToString();
             if (value.Contains("*"))
-                parameters.SiteType = "*";
+                parameters.PropertyType = "*";
             else
             {
-                string siteType = dropDownRentSiteType.SelectedItem.Text;
+                string siteType = dropDownRentPropertyType.SelectedItem.Text;
                 if (siteType.Contains("- "))
                     siteType = siteType.Replace("- ", "");
-                parameters.SiteType = siteType;
+                parameters.PropertyType = siteType;
             }
         }
 
         foreach (ListItem item in checkBoxListRentDistricts.Items)
             if (item.Selected)
-                parameters.Districts.Add(item.Text);
+                parameters.Districts.Add(item.Value);
 
         searchSite(parameters);
     }
     private void searchSellingSite()
     {
-        MdoSiteAdSearchParameters parameters = new MdoSiteAdSearchParameters() { CustomerCodename = "pieta", MdoCode = 4 };
+        PropertyAdSearchParameters parameters = new PropertyAdSearchParameters() { CustomerCodename = customerCode };
 
-        parameters.AdType = SiteAdTypes.Rent;
+        parameters.AdType = PropertyAdTypes.Rent;
         if (radioButtonBuy.Checked)
-            parameters.AdType = SiteAdTypes.Sell;
+            parameters.AdType = PropertyAdTypes.Sell;
 
         if (!string.IsNullOrEmpty(textBoxSellingSiteCode.Text))
         {
@@ -335,49 +334,49 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             else
                 parameters.RoomsTo = StringConverter.ToInt(dropDownSellingRoomNumber.SelectedItem.Value, int.MaxValue);
         }
-        if (dropDownSellingSiteType.SelectedItem != null)
+        if (dropDownSellingPropertyType.SelectedItem != null)
         {
-            string text = dropDownSellingSiteType.SelectedItem.Text;
-            string value = dropDownSellingSiteType.SelectedItem.Value;
-            if (value.Contains(SiteAdCategories.Residencial.ToString()))
-                parameters.Category = SiteAdCategories.Residencial.ToString();
+            string text = dropDownSellingPropertyType.SelectedItem.Text;
+            string value = dropDownSellingPropertyType.SelectedItem.Value;
+            if (value.Contains(PropertyAdCategories.Residencial.ToString()))
+                parameters.Category = PropertyAdCategories.Residencial.ToString();
             else
-                parameters.Category = SiteAdCategories.Comercial.ToString();
+                parameters.Category = PropertyAdCategories.Comercial.ToString();
             if (value.Contains("*"))
-                parameters.SiteType = "*";
+                parameters.PropertyType = "*";
             else
             {
-                string siteType = dropDownSellingSiteType.SelectedItem.Text;
+                string siteType = dropDownSellingPropertyType.SelectedItem.Text;
                 if (siteType.Contains("- "))
                     siteType = siteType.Replace("- ", "");
-                parameters.SiteType = siteType;
+                parameters.PropertyType = siteType;
             }
         }
 
         foreach (ListItem item in checkBoxListSellingDistricts.Items)
             if (item.Selected)
-                parameters.Districts.Add(item.Text);
+                parameters.Districts.Add(item.Value);
 
         searchSite(parameters);
     }
-    private void searchSite(MdoSiteAdSearchParameters parameters)
+    private void searchSite(PropertyAdSearchParameters parameters)
     {
         if (parameters != null)
         {
-            PietaSiteAdController siteController = new PietaSiteAdController();
-            List<SiteAdView> searchResult = new List<SiteAdView>();
-            searchResult = siteController.SearchSites(parameters);
-            foreach (var siteAdView in searchResult)
+            PropertyAdController propertyAdController = new PropertyAdController(customerCode);
+            List<PropertyAdView> searchResult = new List<PropertyAdView>();
+            searchResult = propertyAdController.SearchPropertyAds(parameters);
+            foreach (var propertyAdView in searchResult)
             {
-                siteAdView.IsAreaNameVisible = getSiteAreaVisibility(siteAdView.AdCategory);
-                siteAdView.IsRoomNameVisible = getSiteRoomNameVisibility(siteAdView.AdCategory);
-                if (siteAdView.IsRoomNameVisible)
-                    siteAdView.IsRoomNameVisible = !string.IsNullOrEmpty(siteAdView.SiteTypeRoomName);
+                propertyAdView.IsAreaNameVisible = getSiteAreaVisibility(propertyAdView.AdCategory);
+                propertyAdView.IsRoomNameVisible = getSiteRoomNameVisibility(propertyAdView.AdCategory);
+                if (propertyAdView.IsRoomNameVisible)
+                    propertyAdView.IsRoomNameVisible = !string.IsNullOrEmpty(propertyAdView.PropertyTypeRoomName);
                 string imageUrl = "http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
-                string mainPic = getSiteMainPic(siteAdView.AdTypeID, siteAdView.Code);
+                string mainPic = getSiteMainPic(propertyAdView.AdType, propertyAdView.AdCode);
                 if (!string.IsNullOrEmpty(mainPic))
                     imageUrl = mainPic;
-                siteAdView.MainPicUrl = imageUrl;
+                propertyAdView.MainPicUrl = imageUrl;
             }
             setDataBinding(searchResult);
         }
@@ -392,17 +391,17 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         listViewSearchResults.DataSource = dataToBind;
         listViewSearchResults.DataBind();
     }
-    private void setSearchParameters(MdoSiteAdSearchParameters parameters)
+    private void setSearchParameters(PropertyAdSearchParameters parameters)
     {
         if (parameters != null)
         {
-            if (parameters.AdType == SiteAdTypes.Rent)
+            if (parameters.AdType == PropertyAdTypes.Rent)
                 setRentSearchParameters(parameters);
             else
                 setSellingSearchParameters(parameters);
         }
     }
-    private void setSellingSearchParameters(MdoSiteAdSearchParameters parameters)
+    private void setSellingSearchParameters(PropertyAdSearchParameters parameters)
     {
         if (parameters != null)
         {
@@ -420,14 +419,14 @@ public partial class Pesquisa_Default : System.Web.UI.Page
             if (item != null)
                 item.Selected = true;
 
-            item = (from el in dropDownSellingSiteType.Items.Cast<ListItem>()
-                    where el.Text == parameters.SiteType
+            item = (from el in dropDownSellingPropertyType.Items.Cast<ListItem>()
+                    where el.Text == parameters.PropertyType
                     select el).FirstOrDefault();
             if (item != null)
                 item.Selected = true;
         }
     }
-    private void setRentSearchParameters(MdoSiteAdSearchParameters parameters)
+    private void setRentSearchParameters(PropertyAdSearchParameters parameters)
     {
         if (parameters != null)
         {
@@ -451,12 +450,12 @@ public partial class Pesquisa_Default : System.Web.UI.Page
                 item.Selected = true;
             }
 
-            item = (from el in dropDownRentSiteType.Items.Cast<ListItem>()
-                    where el.Text == parameters.SiteType
+            item = (from el in dropDownRentPropertyType.Items.Cast<ListItem>()
+                    where el.Text == parameters.PropertyType
                     select el).FirstOrDefault();
             if (item != null)
             {
-                dropDownRentSiteType.SelectedItem.Selected = false;
+                dropDownRentPropertyType.SelectedItem.Selected = false;
                 item.Selected = true;
             }
         }
@@ -472,7 +471,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
 
         //if (Page.Session[searchParametersSessionKey] != null)
         {
-            var parameters = Page.Session[searchParametersSessionKey] as MdoSiteAdSearchParameters;
+            var parameters = Page.Session[searchParametersSessionKey] as PropertyAdSearchParameters;
             Page.Session[searchParametersSessionKey] = null;
             setSearchParameters(parameters);
             searchSite(parameters);

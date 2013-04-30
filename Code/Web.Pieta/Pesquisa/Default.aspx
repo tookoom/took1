@@ -38,7 +38,7 @@
                         <tr>
                             <td>Tipo:</td>
                             <td>
-                                <asp:DropDownList ID="dropDownSellingSiteType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                                <asp:DropDownList ID="dropDownSellingPropertyType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
                             <td>
                                 <asp:DropDownList ID="dropDownSellingRoomNumber" runat="server" Width="260px" Font-Size="Medium"></asp:DropDownList></td>
                             <td style="width: 80px"></td>
@@ -69,7 +69,7 @@
                         <tr>
                             <td>Tipo:</td>
                             <td>
-                                <asp:DropDownList ID="dropDownRentSiteType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
+                                <asp:DropDownList ID="dropDownRentPropertyType" runat="server" Width="210px" Font-Size="Medium"></asp:DropDownList></td>
                             <td>
                                 <asp:DropDownList ID="dropDownRentRoomNumber" runat="server" Width="260px" Font-Size="Medium"></asp:DropDownList></td>
                             <td style="width: 80px"></td>
@@ -130,15 +130,15 @@
 
     <script type="text/javascript">
         $("#divSearchButton").click(function () {
-            alert('1');
-            window.location.search = 'quickSearch=no';
+            //alert('1');
+           // window.location.search = 'quickSearch=no';
         });
     </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             //alert('1');
-            setSearchType();
+            //setSearchType();
             setSearchFieldsVisibility();
         });
     </script>
@@ -220,37 +220,37 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="932px">
                     <tr class="center">
                         <td style="vertical-align: middle; width:170px;">
-                            <a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>">
+                            <a href="../Imovel/Default.aspx?ID=<%# Eval("AdCode")%>&AdType=<%# Eval("AdType")%>">
                                 <img src="<%# Eval("MainPicUrl") %>" height="100px" style="margin: 6px 0px 4px 0px;" />
                             </a>
                         </td>
-                        <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("Code")%></b></td>
+                        <td style="vertical-align: middle; width:80px; text-align:center;"><b>Código <%# Eval("AdCode")%></b></td>
                         <td>
                             <table>
                                 <tr>
                                     <td style="vertical-align: middle; width: 140px; text-align: center;">
-                                        <%# Eval("SiteType")%>
+                                        <%# Eval("PropertyType")%>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td id="Td2" style="vertical-align: middle; width: 140px; text-align: center;" runat="server"
                                         visible='<%#Eval("IsRoomNameVisible")%>'>
-                                        <%# Eval("SiteTotalRooms")%>
-                                        <%# Eval("SiteTypeRoomName")%>
+                                        <%# Eval("TotalRooms")%>
+                                        <%# Eval("PropertyTypeRoomName")%>
                                     </td>
                                 </tr>
                             </table>
                         </td>
-                        <%--<td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("SiteType")%></td>
+                        <%--<td style="vertical-align: middle; width:130px; text-align:center;"><%# Eval("PropertyType")%></td>
                         <td style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#Eval("IsRoomNameVisible")%>'>
-                               <%# Eval("SiteTotalRooms")%>  <%# Eval("SiteTypeRoomName")%>
+                               <%# Eval("TotalRooms")%>  <%# Eval("PropertyTypeRoomName")%>
                         </td>--%>
                         <td id="Td1" style="vertical-align: middle; width:130px; text-align:center;" runat="server" visible='<%#Eval("IsAreaNameVisible")%>'>
-                               <%# Eval("SiteInternalArea", "{0:0.##}")%>  m²
+                               <%# Eval("InternalArea", "{0:0.##}")%>  m²
                         </td>
                         <td style="vertical-align: middle; width:150px; text-align:center;">Bairro <%# Eval("District")%></td>
                         <td style="vertical-align: middle; font-size: 1.5em; width:200px; text-align:center;"><%# Eval("Value", "{0:c}")%></td>
-                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("Code")%>&AdTypeID=<%# Eval("AdTypeID")%>"><b>Detalhes</b></a></td>
+                        <td style="vertical-align: middle; text-align:center; "><a href="../Imovel/Default.aspx?ID=<%# Eval("AdCode")%>&AdType=<%# Eval("AdType")%>"><b>Detalhes</b></a></td>
                     </tr>
                     
                 </table>
@@ -268,7 +268,7 @@
 
 
         <asp:ObjectDataSource ID="objectDataSourceSiteSearch" runat="server" 
-            SelectMethod="SearchSites" TypeName="TK1.Bizz.Mdo.Data.SiteController" >
+            SelectMethod="SearchSites" TypeName="TK1.Bizz.Mdo.Client.Data.SiteController" >
             <SelectParameters>
                 <asp:Parameter Name="parameters" Type="Object" />
             </SelectParameters>
