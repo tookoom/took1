@@ -8,7 +8,6 @@ using TK1.Bizz.Pieta;
 using System.IO;
 using TK1.Bizz.Pieta.Const;
 using TK1.Data;
-using TK1.Bizz.Mdo;
 using TK1.Bizz;
 
 public partial class FaleConosco_Default : System.Web.UI.Page

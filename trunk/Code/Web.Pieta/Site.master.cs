@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-//using System.Web.UI;
-//using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxMenu;
 
 public partial class SiteMaster : System.Web.UI.MasterPage
 {

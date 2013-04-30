@@ -36,10 +36,10 @@
                 <ItemTemplate>
                     <div style="float:left; padding-top: 2px;">
                         <h2>
-                            <%# Eval("SiteType")%> - <%# Eval("AdTypeName")%> 
+                            <%# Eval("PropertyType")%> - <%# Eval("AdTypeName")%> 
                         </h2>
                         <h3><%# Eval("City")%>, bairro <%# Eval("District")%></h3>
-                        <b style="line-height: 1.8em;">Código do anúncio: <%# Eval("Code")%></b>
+                        <b style="line-height: 1.8em;">Código do anúncio: <%# Eval("AdCode")%></b>
                         <br />
                     </div>
                     <div style="float:right; padding-top: 8px;">
@@ -99,7 +99,7 @@
                             <p> <%# Eval("CondoDescription")%> </p>
                             <p runat="server" visible='<%#Eval("IsAreaDescriptionVisible")%>'> <b>Infraestrutura do Bairro: </b></p>
                             <p> <%# Eval("AreaDescription")%> </p>
-                            <div runat="server" visible='<%#Eval("IsTaxVisible")%>'>
+                            <div runat="server" visible='<%#Eval("IsCityTaxesVisible")%>'>
                                 <p> Aluguel: <%# Eval("Value", "{0:c}")%> </p>
                                 <p> IPTU: <%# Eval("CityTaxes", "{0:c}")%> </p>
                                 <p> Condomínio: <%# Eval("CondoTaxes", "{0:c}")%> </p>
@@ -124,7 +124,7 @@
                                         </td>
                                         <td>
                                             <%--<p style="padding: 3px; vertical-align:middle;"> <%# Eval("Name")%> </p>--%>
-                                            <%# Eval("Name")%>
+                                            <%# Eval("Value")%>
                                         </td>
                                     </tr>
                                 </table>
@@ -149,13 +149,14 @@
     <br />
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDetail" runat="server" 
-        SelectMethod="GetSiteDetail" 
-        TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController" >
+        SelectMethod="GetPropertyAdDetails" 
+        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource" >
 
         <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="0" Name="adType" 
-                QueryStringField="AdTypeID" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
+            <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
+            <asp:QueryStringParameter Name="adType" 
+                QueryStringField="AdType" Type="String" />
+            <asp:QueryStringParameter Name="adCode" 
                 QueryStringField="ID" Type="Int32" />
         </SelectParameters>
 
@@ -163,13 +164,15 @@
 
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDescription" runat="server" 
-        SelectMethod="GetSiteAd" TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController" 
+        SelectMethod="GetPropertyAd" 
+        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource" 
         onselected="objectDataSourceSiteDescription_Selected">
 
         <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="0" Name="adType" 
-                QueryStringField="AdTypeID" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="0" Name="siteAdID" 
+            <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
+            <asp:QueryStringParameter Name="adType" 
+                QueryStringField="AdType" Type="String" />
+            <asp:QueryStringParameter Name="adCode" 
                 QueryStringField="ID" Type="Int32" />
         </SelectParameters>
 

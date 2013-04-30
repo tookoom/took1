@@ -36,10 +36,10 @@
                 <ItemTemplate>
                     <div style="float:left; padding-top: 2px;">
                         <h2>
-                            <%# Eval("SiteType")%> 
+                            <%# Eval("PropertyType")%> 
                         </h2>
                         <h3><%# Eval("City")%>, bairro <%# Eval("District")%></h3>
-                        <b style="line-height: 1.5em;">Código do anúncio: <%# Eval("Code")%></b>
+                        <b style="line-height: 1.5em;">Código do anúncio: <%# Eval("AdCode")%></b>
                         <br />
                     </div>
                </ItemTemplate>                                 
@@ -73,7 +73,7 @@
 
         <table border="0" cellpadding="8" cellspacing="0" width="932px">
             <tr>
-                <td style="width: 50%; vertical-align: top;">
+                <td style="width: 80%; vertical-align: top;">
                     <div class="headerBlueShortLine">
                         <h1>Características</h1>
                     </div>
@@ -93,7 +93,7 @@
                     </asp:Repeater>
 
                 </td>
-                <td style="width: 30%; vertical-align: top;">
+<%--                <td style="width: 30%; vertical-align: top;">
                     <div class="headerBlueShortLine">
                         <h1>Detalhes</h1>
                     </div>
@@ -107,14 +107,14 @@
                                                 padding: 2px 3px 5px 0px;" />
                                         </td>
                                         <td>
-                                            <%# Eval("Name")%>
+                                            <%# Eval("Value")%>
                                         </td>
                                     </tr>
                                 </table>
                             </ItemTemplate>
                         </asp:Repeater>
                     </div>
-                </td>
+                </td>--%>
                 <td style="width: 20%; vertical-align: top;">
                     <div class="headerBlueShortLine">
                         <h1>Contato</h1>
@@ -133,11 +133,13 @@
     <br />
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDetail" runat="server" 
-        SelectMethod="GetSiteReleaseDetail" 
-        TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController" >
+        SelectMethod="GetPropertyAdDetails" 
+        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource" >
 
         <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="0" Name="siteReleaseAdID" 
+            <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
+            <asp:Parameter DefaultValue="Release" Name="adType" Type="String" />
+            <asp:QueryStringParameter DefaultValue="0" Name="adCode" 
                 QueryStringField="ID" Type="Int32" />
         </SelectParameters>
 
@@ -145,11 +147,13 @@
 
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDescription" runat="server" 
-        SelectMethod="GetSiteReleaseAd" TypeName="TK1.Bizz.Pieta.Data.Controller.PietaSiteAdController" 
+        SelectMethod="GetPropertyReleaseAd" 
+        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource" 
         onselected="objectDataSourceSiteDescription_Selected">
 
         <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="0" Name="siteReleaseAdID" 
+            <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
+            <asp:QueryStringParameter DefaultValue="0" Name="adCode" 
                 QueryStringField="ID" Type="Int32" />
         </SelectParameters>
 
