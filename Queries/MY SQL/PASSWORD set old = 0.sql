@@ -1,0 +1,2 @@
+SET SESSION old_passwords=0;
+SET PASSWORD FOR tk1=PASSWORD('tk1pwd');
