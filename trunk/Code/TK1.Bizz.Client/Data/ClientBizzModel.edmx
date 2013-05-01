@@ -74,7 +74,7 @@
             <PropertyRef Name="PropertyAdTypeID" />
             <PropertyRef Name="CustomerCode" />
           </Key>
-          <Property Name="PropertyAdID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PropertyAdID" Type="int" Nullable="false" />
           <Property Name="PropertyAdTypeID" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
@@ -94,13 +94,13 @@
           <Property Name="MaxExternalArea" Type="float" Nullable="false" />
           <Property Name="MinValue" Type="float" Nullable="false" />
           <Property Name="MaxValue" Type="float" Nullable="false" />
-          <Property Name="ElevatorNumber" Type="int" Nullable="false" />
-          <Property Name="MinGarageNumber" Type="int" Nullable="false" />
-          <Property Name="MaxGarageNumber" Type="int" Nullable="false" />
-          <Property Name="TotalFloorUnitNumber" Type="int" Nullable="false" />
-          <Property Name="TotalUnitNumber" Type="int" Nullable="false" />
-          <Property Name="TowerNumber" Type="int" Nullable="false" />
-          <Property Name="TowerFloorNumber" Type="int" Nullable="false" />
+          <Property Name="TotalElevators" Type="int" Nullable="false" />
+          <Property Name="MinParkingLots" Type="int" Nullable="false" />
+          <Property Name="MaxParkingLots" Type="int" Nullable="false" />
+          <Property Name="TotalFloorUnits" Type="int" Nullable="false" />
+          <Property Name="TotalUnits" Type="int" Nullable="false" />
+          <Property Name="TotalTowers" Type="int" Nullable="false" />
+          <Property Name="TotalTowerFloors" Type="int" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -118,6 +118,10 @@
           <AssociationSet Name="PropertyAdPropertyAdPic" Association="TK1ClientBizzModel.PropertyAdPropertyAdPic">
             <End Role="PropertyAd" EntitySet="PropertyAd" />
             <End Role="PropertyAdPic" EntitySet="PropertyAdPic" />
+          </AssociationSet>
+          <AssociationSet Name="PropertyReleaseAdPropertyAd" Association="TK1ClientBizzModel.PropertyReleaseAdPropertyAd">
+            <End Role="PropertyReleaseAd" EntitySet="PropertyReleaseAd" />
+            <End Role="PropertyAd" EntitySet="PropertyAd" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PropertyAd">
@@ -151,6 +155,7 @@
           <Property Type="String" Name="PicUrl" MaxLength="65535" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PropertyAdDetails" Relationship="TK1ClientBizzModel.PropertyAdPropertyAdDetail" FromRole="PropertyAd" ToRole="PropertyAdDetail" />
           <NavigationProperty Name="PropertyAdPics" Relationship="TK1ClientBizzModel.PropertyAdPropertyAdPic" FromRole="PropertyAd" ToRole="PropertyAdPic" />
+          <NavigationProperty Name="PropertyReleaseAd" Relationship="TK1ClientBizzModel.PropertyReleaseAdPropertyAd" FromRole="PropertyAd" ToRole="PropertyReleaseAd" />
         </EntityType>
         <EntityType Name="PropertyAdDetail">
           <Key>
@@ -187,7 +192,7 @@
             <PropertyRef Name="PropertyAdTypeID" />
             <PropertyRef Name="CustomerCode" />
           </Key>
-          <Property Name="PropertyAdID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PropertyAdID" Type="Int32" Nullable="false" />
           <Property Name="PropertyAdTypeID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -207,13 +212,14 @@
           <Property Name="MaxExternalArea" Type="Single" Nullable="false" />
           <Property Name="MinValue" Type="Single" Nullable="false" />
           <Property Name="MaxValue" Type="Single" Nullable="false" />
-          <Property Name="ElevatorNumber" Type="Int32" Nullable="false" />
-          <Property Name="MinGarageNumber" Type="Int32" Nullable="false" />
-          <Property Name="MaxGarageNumber" Type="Int32" Nullable="false" />
-          <Property Name="TotalFloorUnitNumber" Type="Int32" Nullable="false" />
-          <Property Name="TotalUnitNumber" Type="Int32" Nullable="false" />
-          <Property Name="TowerNumber" Type="Int32" Nullable="false" />
-          <Property Name="TowerFloorNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PropertyAd" Relationship="TK1ClientBizzModel.PropertyReleaseAdPropertyAd" FromRole="PropertyReleaseAd" ToRole="PropertyAd" />
+          <Property Type="Int32" Name="TotalElevators" Nullable="false" />
+          <Property Type="Int32" Name="TotalFloorUnits" Nullable="false" />
+          <Property Type="Int32" Name="TotalUnits" Nullable="false" />
+          <Property Type="Int32" Name="TotalTowers" Nullable="false" />
+          <Property Type="Int32" Name="TotalTowerFloors" Nullable="false" />
+          <Property Type="Int32" Name="MinParkingLots" Nullable="false" />
+          <Property Type="Int32" Name="MaxParkingLots" Nullable="false" />
         </EntityType>
         <Association Name="PropertyAdPropertyAdDetail">
           <End Type="TK1ClientBizzModel.PropertyAd" Role="PropertyAd" Multiplicity="1" />
@@ -241,6 +247,22 @@
               <PropertyRef Name="CustomerCode" />
             </Principal>
             <Dependent Role="PropertyAdPic">
+              <PropertyRef Name="PropertyAdID" />
+              <PropertyRef Name="PropertyAdTypeID" />
+              <PropertyRef Name="CustomerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PropertyReleaseAdPropertyAd">
+          <End Type="TK1ClientBizzModel.PropertyReleaseAd" Role="PropertyReleaseAd" Multiplicity="1" />
+          <End Type="TK1ClientBizzModel.PropertyAd" Role="PropertyAd" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyReleaseAd">
+              <PropertyRef Name="PropertyAdID" />
+              <PropertyRef Name="PropertyAdTypeID" />
+              <PropertyRef Name="CustomerCode" />
+            </Principal>
+            <Dependent Role="PropertyAd">
               <PropertyRef Name="PropertyAdID" />
               <PropertyRef Name="PropertyAdTypeID" />
               <PropertyRef Name="CustomerCode" />
@@ -314,6 +336,13 @@
           <EntitySetMapping Name="PropertyReleaseAd">
             <EntityTypeMapping TypeName="TK1ClientBizzModel.PropertyReleaseAd">
               <MappingFragment StoreEntitySet="BRE_PropertyReleaseAd">
+                <ScalarProperty Name="MaxParkingLots" ColumnName="MaxParkingLots" />
+                <ScalarProperty Name="MinParkingLots" ColumnName="MinParkingLots" />
+                <ScalarProperty Name="TotalTowerFloors" ColumnName="TotalTowerFloors" />
+                <ScalarProperty Name="TotalTowers" ColumnName="TotalTowers" />
+                <ScalarProperty Name="TotalUnits" ColumnName="TotalUnits" />
+                <ScalarProperty Name="TotalFloorUnits" ColumnName="TotalFloorUnits" />
+                <ScalarProperty Name="TotalElevators" ColumnName="TotalElevators" />
                 <ScalarProperty Name="PropertyAdID" ColumnName="PropertyAdID" />
                 <ScalarProperty Name="PropertyAdTypeID" ColumnName="PropertyAdTypeID" />
                 <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
@@ -334,14 +363,7 @@
                 <ScalarProperty Name="MaxExternalArea" ColumnName="MaxExternalArea" />
                 <ScalarProperty Name="MinValue" ColumnName="MinValue" />
                 <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
-                <ScalarProperty Name="ElevatorNumber" ColumnName="ElevatorNumber" />
-                <ScalarProperty Name="MinGarageNumber" ColumnName="MinGarageNumber" />
-                <ScalarProperty Name="MaxGarageNumber" ColumnName="MaxGarageNumber" />
-                <ScalarProperty Name="TotalFloorUnitNumber" ColumnName="TotalFloorUnitNumber" />
-                <ScalarProperty Name="TotalUnitNumber" ColumnName="TotalUnitNumber" />
-                <ScalarProperty Name="TowerNumber" ColumnName="TowerNumber" />
-                <ScalarProperty Name="TowerFloorNumber" ColumnName="TowerFloorNumber" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
@@ -377,6 +399,7 @@
           <ConnectorPoint PointX="7.75" PointY="2.4420475260416667" />
           <ConnectorPoint PointX="8.5" PointY="2.4420475260416667" />
         </AssociationConnector>
+        <AssociationConnector Association="TK1ClientBizzModel.PropertyReleaseAdPropertyAd" />
       </Diagram>
     </Diagrams>
   </Designer>

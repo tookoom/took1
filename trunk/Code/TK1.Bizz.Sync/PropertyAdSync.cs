@@ -61,14 +61,14 @@ namespace TK1.Bizz.Sync
                 throw new NullReferenceException("Paramenter siteAdDetails can't be null");
 
 
-            var propertyAdController = new PropertyAdController();
+            var propertyAdController = new PropertyAdController(customerCode);
             var propertyAdType = getPropertyAdTypes(siteAdView.AdTypeID);
 
-            propertyAdController.RemovePropertyAdDetails(customerCode, propertyAdType, siteAdView.Code);
+            propertyAdController.RemovePropertyAdDetails(propertyAdType, siteAdView.Code);
 
             foreach (var item in siteAdDetails)
             {
-                propertyAdController.SetPropertyAdDetails(customerCode, propertyAdType, siteAdView.Code, new PropertyAdDetailView
+                propertyAdController.SetPropertyAdDetails(propertyAdType, siteAdView.Code, new PropertyAdDetailView
                 {
                     ImageUrl = item.ImageUrl,
                     Name = item.Name,
@@ -85,14 +85,14 @@ namespace TK1.Bizz.Sync
                 throw new NullReferenceException("Paramenter siteAdPics can't be null");
 
 
-            var propertyAdController = new PropertyAdController();
+            var propertyAdController = new PropertyAdController(customerCode);
             var propertyAdType = getPropertyAdTypes(siteAdView.AdTypeID);
 
-            propertyAdController.RemovePropertyAdPics(customerCode, propertyAdType, siteAdView.Code);
+            propertyAdController.RemovePropertyAdPics(propertyAdType, siteAdView.Code);
 
             foreach (var item in siteAdPics)
             {
-                propertyAdController.SetPropertyAdPics(customerCode, propertyAdType, siteAdView.Code, new PropertyAdPicView
+                propertyAdController.SetPropertyAdPics(propertyAdType, siteAdView.Code, new PropertyAdPicView
                 {
                     Description = item.Description,
                     FileName = item.FileName,
@@ -109,11 +109,11 @@ namespace TK1.Bizz.Sync
         {
             if (siteAdView != null)
             {
-                var propertyAdController = new PropertyAdController();
+                var propertyAdController = new PropertyAdController(customerCode);
                 var propertyAdCategory = getPropertyAdCategories(siteAdView.AdCategory);
                 var propertyAdType = getPropertyAdTypes(siteAdView.AdTypeID);
 
-                propertyAdController.SetPropertyAd(customerCode, new PropertyAdView()
+                propertyAdController.SetPropertyAd(new PropertyAdView()
                 {
                     AdCategory = propertyAdCategory,
                     Address = siteAdView.Address,
@@ -122,16 +122,16 @@ namespace TK1.Bizz.Sync
                     AreaDescription = siteAdView.AreaDescription,
                     City = siteAdView.City,
                     CityTaxes = siteAdView.CityTaxes,
-                    Code = siteAdView.Code,
+                    AdCode = siteAdView.Code,
                     CondoDescription = siteAdView.CondoDescription,
                     CondoTaxes = siteAdView.CondoTaxes,
                     District = siteAdView.District,
                     FullDescription = siteAdView.FullDescription,
                     IsFeatured = siteAdView.IsFeatured,
                     MainPicUrl = siteAdView.MainPicUrl,
-                    PropertyInternalArea = siteAdView.SiteInternalArea,
-                    PropertyTotalArea = siteAdView.SiteTotalArea,
-                    PropertyTotalRooms = siteAdView.SiteTotalRooms,
+                    InternalArea = siteAdView.SiteInternalArea,
+                    TotalArea = siteAdView.SiteTotalArea,
+                    TotalRooms = siteAdView.SiteTotalRooms,
                     PropertyType = siteAdView.SiteType,
                     PropertyTypeRoomName = siteAdView.SiteTypeRoomName,
                     ShortDescription = siteAdView.ShortDescription,

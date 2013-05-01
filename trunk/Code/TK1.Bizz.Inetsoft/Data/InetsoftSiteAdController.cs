@@ -60,7 +60,7 @@ namespace TK1.Bizz.Inetsoft.Data.Controller
                             CondoDescription = StringHelper.ConvertCaseString(xmlSiteAd.CondDescription.Trim(), StringHelper.UpperCase.UpperFirstParagraph),
                             CustomerCodename = customerCodeName,
                             Value = xmlSiteAd.Value,
-                            SiteAdID = xmlSiteAd.SiteCode,
+                            SiteAdID = xmlSiteAd.AdCode,
                             ShortDescription = StringHelper.ConvertCaseString(xmlSiteAd.ShortDescription.Trim(), StringHelper.UpperCase.UpperFirstParagraph)
                         };
                         Entities.AddToSiteAds(siteAd);

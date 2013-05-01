@@ -49,16 +49,5 @@ namespace TK1.Bizz.Client.Data.Extension
             return siteAds.Where(o => o.PropertyTypeName == siteTypeName);
         }
 
-        #region OLD
-        //public static IQueryable<PropertyAd> FilterPropertyRegion(this IQueryable<PropertyAd> siteAds, int regionID)
-        //{
-        //    return siteAds.Where(o => o.Property.District.Region.RegionID == regionID);
-        //}
-        //public static IQueryable<PropertyAd> FilterPropertyRegion(this IQueryable<PropertyAd> siteAds, string regionName)
-        //{
-        //    return siteAds.Where(o => o.Property.District.Region.Name == regionName);
-        //}
-        
-        #endregion
     }
 }
