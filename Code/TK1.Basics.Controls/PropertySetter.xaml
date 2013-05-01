@@ -15,7 +15,6 @@
     		<RowDefinition />
     	</Grid.RowDefinitions>
     	<ScrollViewer Margin="4" Grid.Row="1" d:LayoutOverrides="Width, Height, GridBox" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
-    		<TK1_Controls:PropertyEditor x:Name="propertyEditor" IsExpanded="True" />
     	</ScrollViewer>
         <TextBlock Text="PropertySetter" TextWrapping="Wrap" d:LayoutOverrides="Height" Margin="4,2" FontWeight="Bold" Grid.ColumnSpan="2" />
     	<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="4">

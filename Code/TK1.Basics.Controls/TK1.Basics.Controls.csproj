@@ -139,10 +139,6 @@
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TK1.Controls\TK1.Controls.csproj">
-      <Project>{B92BEEE2-B92C-4AB1-81E0-74D29815D202}</Project>
-      <Name>TK1.Controls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
       <Name>TK1</Name>

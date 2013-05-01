@@ -289,7 +289,7 @@ namespace TK1.Silverlight.Data.Web
             bool result = false;
             try
             {
-                var pic = this.ObjectContext.SiteAdPics.Where(o => o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)adType & o.SiteAdID == siteAdID).FirstOrDefault();
+                var pic = this.ObjectContext.SiteAdPics.Where(o => o.CustomerCodename == customerCodename & o.SiteAdTypeID == (int)adType & o.SiteAdID == siteAdID & o.PicID == index).FirstOrDefault();
                 if (pic != null)
                 {
                     this.ObjectContext.SiteAdPics.DeleteObject(pic);

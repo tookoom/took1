@@ -113,6 +113,7 @@
     <Compile Include="UnitTest\BizzClientUnitTest.cs" />
     <Compile Include="UnitTest\InetsoftUnitTest.cs" />
     <Compile Include="UnitTest\IntegraUnitTest.cs" />
+    <Compile Include="UnitTest\MdoClientUnitTest.cs" />
     <Compile Include="UnitTest\MySqlUnitTest.cs" />
     <Compile Include="UnitTest\TK1ServicesUnitTest.cs" />
     <Compile Include="UnitTest\MdoUnitTest.cs" />
@@ -217,10 +218,6 @@
     <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
       <Project>{AB2EC906-93AE-4F64-B71D-E04C88036D7D}</Project>
       <Name>TK1.Bizz</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Data.Model.Presentation\TK1.Data.Model.Presentation.csproj">
-      <Project>{5A742711-0956-4D06-8544-56286E383BB8}</Project>
-      <Name>TK1.Data.Model.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
