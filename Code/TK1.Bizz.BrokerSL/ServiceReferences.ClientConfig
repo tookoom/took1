@@ -9,7 +9,7 @@
             </basicHttpBinding>
         </bindings>
         <client>
-            <endpoint address="http://tk1.net.br/services/BrokerFileService.svc"
+            <endpoint address="http://tk1br.azurewebsites.net/services/BrokerFileService.svc"
                 binding="basicHttpBinding" bindingConfiguration="CustomBinding_BrokerFileService"
                 contract="BrokerFileServiceReference.BrokerFileService" name="CustomBinding_BrokerFileService" />
         </client>

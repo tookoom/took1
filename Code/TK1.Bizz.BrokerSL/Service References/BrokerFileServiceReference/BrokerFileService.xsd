@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TK1.Bizz.Data.Presentation" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TK1.Bizz.Data.Presentation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://tk1br.azurewebsites.net/services/BrokerFileService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:simpleType name="SiteAdTypes">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Rent">

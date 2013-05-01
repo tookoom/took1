@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="CustomBinding_BrokerFileService" contract="BrokerFileServiceReference.BrokerFileService" bindingType="basicHttpBinding" address="http://tk1.net.br/services/BrokerFileService.svc" bindingConfiguration="CustomBinding_BrokerFileService">
+    <endpoint name="CustomBinding_BrokerFileService" contract="BrokerFileServiceReference.BrokerFileService" bindingType="basicHttpBinding" address="http://tk1br.azurewebsites.net/services/BrokerFileService.svc" bindingConfiguration="CustomBinding_BrokerFileService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://tk1.net.br/services/BrokerFileService.svc</serializedValue>
+          <serializedValue>http://tk1br.azurewebsites.net/services/BrokerFileService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

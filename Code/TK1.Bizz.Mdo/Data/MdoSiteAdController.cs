@@ -56,10 +56,10 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                 {
                                     City = city,
                                     District = district,
-                                    ExternalArea = xmlSiteAd.ExternalArea,
-                                    InternalArea = xmlSiteAd.InternalArea,
-                                    TotalArea = xmlSiteAd.TotalArea,
-                                    TotalRooms = xmlSiteAd.RoomNumber,
+                                    ExternalArea = xmlSiteAd.MinExternalArea,
+                                    InternalArea = xmlSiteAd.MinInternalArea,
+                                    TotalArea = xmlSiteAd.MinTotalArea,
+                                    TotalRooms = xmlSiteAd.MinTotalRooms,
                                     SiteType = siteType
                                 };
                                 addSitePictures(site, xmlSiteAd.Pictures);
@@ -72,9 +72,9 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                     Customer = customer,
                                     Description = xmlSiteAd.InternetDescription,
                                     IsFeatured = xmlSiteAd.IsFeatured,
-                                    Price = xmlSiteAd.Value,
+                                    Price = xmlSiteAd.MinValue,
                                     Site = site,
-                                    SiteAdID = xmlSiteAd.SiteCode,
+                                    SiteAdID = xmlSiteAd.AdCode,
                                     ShortDescription = xmlSiteAd.ShortDescription
                                 };
                                 Entities.AddToSiteAds(siteAd);
@@ -118,10 +118,10 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                     {
                                         City = city,
                                         District = district,
-                                        ExternalArea = xmlSiteAd.ExternalArea,
-                                        InternalArea = xmlSiteAd.InternalArea,
-                                        TotalArea = xmlSiteAd.TotalArea,
-                                        TotalRooms = xmlSiteAd.RoomNumber,
+                                        ExternalArea = xmlSiteAd.MinExternalArea,
+                                        InternalArea = xmlSiteAd.MinInternalArea,
+                                        TotalArea = xmlSiteAd.MinTotalArea,
+                                        TotalRooms = xmlSiteAd.MinTotalRooms,
                                         SiteType = siteType
                                     };
                                     addSitePictures(site, xmlSiteAd.Pictures);
@@ -137,23 +137,23 @@ namespace TK1.Bizz.Mdo.Data.Controller
                                         ConstructorName = xmlSiteAd.ConstructorName,
                                         Customer = customer,
                                         FullDescription = xmlSiteAd.AdText,
-                                        MinExternalArea = xmlSiteAd.ExternalArea,
-                                        MinInternalArea = xmlSiteAd.InternalArea,
-                                        MinGarageNumber = xmlSiteAd.GarageNumber,
-                                        MinSuites = xmlSiteAd.SuiteNumber,
-                                        MinTotalArea = xmlSiteAd.TotalArea,
-                                        MinTotalRooms = xmlSiteAd.RoomNumber,
-                                        MinValue = xmlSiteAd.Value,
+                                        MinExternalArea = xmlSiteAd.MinExternalArea,
+                                        MinInternalArea = xmlSiteAd.MinInternalArea,
+                                        MinGarageNumber = xmlSiteAd.MinParkingLots,
+                                        MinSuites = xmlSiteAd.MinSuites,
+                                        MinTotalArea = xmlSiteAd.MinTotalArea,
+                                        MinTotalRooms = xmlSiteAd.MinTotalRooms,
+                                        MinValue = xmlSiteAd.MinValue,
                                         MaxExternalArea = xmlSiteAd.MaxInternalArea,
-                                        MaxGarageNumber = xmlSiteAd.MaxGarageNumber,
+                                        MaxGarageNumber = xmlSiteAd.MaxParkingLots,
                                         MaxInternalArea = xmlSiteAd.MaxInternalArea,
-                                        MaxSuites = xmlSiteAd.MaxSuiteNumber,
+                                        MaxSuites = xmlSiteAd.MaxSuites,
                                         MaxTotalArea = xmlSiteAd.MaxTotalArea,
-                                        MaxTotalRooms = xmlSiteAd.MaxRoomNumber,
+                                        MaxTotalRooms = xmlSiteAd.MaxTotalRooms,
                                         MaxValue = xmlSiteAd.MaxValue,
                                         Name = xmlSiteAd.Name,
                                         Site = site,
-                                        SiteReleaseAdID = xmlSiteAd.SiteCode,
+                                        SiteReleaseAdID = xmlSiteAd.AdCode,
                                         ShortDescription = xmlSiteAd.ShortAdText
                                     };
                                     Entities.AddToSiteReleaseAds(siteReleaseAd);

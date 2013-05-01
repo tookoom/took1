@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TK1.Bizz.Data.Presentation" />
-  <xs:import schemaLocation="http://tk1.net.br/services/BrokerFileService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:import schemaLocation="http://tk1br.azurewebsites.net/services/BrokerFileService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TK1.Bizz.Data.Presentation" />
+  <xs:import schemaLocation="http://tk1br.azurewebsites.net/services/BrokerFileService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
   <xs:element name="LogCustomerAccess">
     <xs:complexType>
       <xs:sequence>

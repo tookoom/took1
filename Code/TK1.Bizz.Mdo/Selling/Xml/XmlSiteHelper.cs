@@ -102,26 +102,26 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                         xmlSite.District = XmlLoader.GetElementValue(element, XmlSiteTags.District);
                         if (xmlSite.District != null)
                             xmlSite.District = xmlSite.District.Trim();
-                        xmlSite.ExternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.ExternalArea), 0);
-                        xmlSite.InternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.InternalArea), 0);
+                        xmlSite.MinExternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.ExternalArea), 0);
+                        xmlSite.MinInternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.InternalArea), 0);
                         xmlSite.InternetDescription = XmlLoader.GetElementValue(element, XmlSiteTags.Description);
                         xmlSite.IsFeatured = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.IsFeatured), "N").ToUpper() == "S";
-                        xmlSite.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber), 0);
-                        xmlSite.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.SiteCode), 0);
+                        xmlSite.MinTotalRooms = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.RoomNumber), 0);
+                        xmlSite.AdCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteTags.SiteCode), 0);
                         xmlSite.SiteType = StringConverter.ToString(XmlLoader.GetElementValue(element, XmlSiteTags.SiteType), "Não Cadastrado");
                         if (xmlSite.SiteType != null)
                             xmlSite.SiteType = xmlSite.SiteType.Trim();
                         xmlSite.ShortDescription = XmlLoader.GetElementValue(element, XmlSiteTags.ShortDescription);
-                        xmlSite.TotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.TotalArea), 0);
+                        xmlSite.MinTotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.TotalArea), 0);
                         xmlSite.UF = XmlLoader.GetElementValue(element, XmlSiteTags.UF);
-                        xmlSite.Value = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Value), 0);
+                        xmlSite.MinValue = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteTags.Value), 0);
                         xmlSite.ZipCode = XmlLoader.GetElementValue(element, XmlSiteTags.ZipCode);
 
                         xmlSite.Details = new StringDictionary();
-                        if (xmlSite.RoomNumber == 1)
-                            xmlSite.Details.Set("Dormitório", xmlSite.RoomNumber.ToString());
-                        if (xmlSite.RoomNumber > 1)
-                            xmlSite.Details.Set("Dormitórios", xmlSite.RoomNumber.ToString());
+                        if (xmlSite.MinTotalRooms == 1)
+                            xmlSite.Details.Set("Dormitório", xmlSite.MinTotalRooms.ToString());
+                        if (xmlSite.MinTotalRooms > 1)
+                            xmlSite.Details.Set("Dormitórios", xmlSite.MinTotalRooms.ToString());
 
 
                         var auxValue = XmlLoader.GetElementValue(element, XmlSiteTags.SuiteNumber);
@@ -165,7 +165,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                                     {
                                         Description = description,
                                         FileName = fileName,
-                                        SiteCode = xmlSite.SiteCode,
+                                        SiteCode = xmlSite.AdCode,
                                         Index = index
                                     });
                                 }
@@ -196,7 +196,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                     foreach (var element in releases)
                     {
                         XmlSiteRelease xmlSiteRelease = new XmlSiteRelease();
-                        xmlSiteRelease.SiteCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.Code), 0);
+                        xmlSiteRelease.AdCode = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.Code), 0);
                         xmlSiteRelease.Name = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.Name);
                         xmlSiteRelease.Address = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.Address);
                         if (xmlSiteRelease.Address != null)
@@ -214,17 +214,17 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                         xmlSiteRelease.ConstructorName = XmlLoader.GetElementValue(element, XmlSiteReleaseTags.ConstructorName);
                         if (xmlSiteRelease.ConstructorName != null)
                             xmlSiteRelease.ConstructorName = xmlSiteRelease.ConstructorName.Trim();
-                        xmlSiteRelease.RoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinRoomNumber), 0);
-                        xmlSiteRelease.MaxRoomNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxRoomNumber), 0);
-                        xmlSiteRelease.SuiteNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinSuiteNumber), 0);
-                        xmlSiteRelease.MaxSuiteNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxSuiteNumber), 0);
-                        xmlSiteRelease.GarageNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinGarageNumber), 0);
-                        xmlSiteRelease.MaxGarageNumber = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxGarageNumber), 0);
-                        xmlSiteRelease.Value = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinValue), 0);
+                        xmlSiteRelease.MinTotalRooms = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinRoomNumber), 0);
+                        xmlSiteRelease.MaxTotalRooms = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxRoomNumber), 0);
+                        xmlSiteRelease.MinSuites = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinSuiteNumber), 0);
+                        xmlSiteRelease.MaxSuites = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxSuiteNumber), 0);
+                        xmlSiteRelease.MinParkingLots = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinGarageNumber), 0);
+                        xmlSiteRelease.MaxParkingLots = StringConverter.ToInt(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxGarageNumber), 0);
+                        xmlSiteRelease.MinValue = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinValue), 0);
                         xmlSiteRelease.MaxValue = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxValue), 0);
-                        xmlSiteRelease.InternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinInternalArea), 0);
+                        xmlSiteRelease.MinInternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinInternalArea), 0);
                         xmlSiteRelease.MaxInternalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxInternalArea), 0);
-                        xmlSiteRelease.TotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinTotalArea), 0);
+                        xmlSiteRelease.MinTotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MinTotalArea), 0);
                         xmlSiteRelease.MaxTotalArea = StringConverter.ToFloat(XmlLoader.GetElementValue(element, XmlSiteReleaseTags.MaxTotalArea), 0);
 
                         
@@ -255,7 +255,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                                     {
                                         Description = description,
                                         FileName = fileName,
-                                        SiteCode = xmlSiteRelease.SiteCode,
+                                        SiteCode = xmlSiteRelease.AdCode,
                                         Index = index
                                     });
                                 }
@@ -274,7 +274,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                                     {
                                         Description = description,
                                         FileName = fileName,
-                                        SiteCode = xmlSiteRelease.SiteCode,
+                                        SiteCode = xmlSiteRelease.AdCode,
                                         Index = index
                                     });
                                 }
@@ -292,7 +292,7 @@ namespace TK1.Bizz.Mdo.Selling.Xml
                                     {
                                         Description = description,
                                         FileName = fileName,
-                                        SiteCode = xmlSiteRelease.SiteCode,
+                                        SiteCode = xmlSiteRelease.AdCode,
                                         Index = index
                                     });
                                 }

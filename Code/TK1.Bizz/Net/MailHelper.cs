@@ -16,7 +16,7 @@ namespace TK1.Bizz.Net
         {
             try
             {
-                string mailFrom = "admin@tk1.net.br";
+                string mailFrom = "suporte@tk1.net.br";
                 //CREDENTIALS
                 var domain = string.Empty;
                 var password = "P@$$w0rd";

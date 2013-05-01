@@ -21,6 +21,7 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("TK1ClientBizzModel", "PropertyAdPropertyAdDetail", "PropertyAd", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Client.Data.PropertyAd), "PropertyAdDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Client.Data.PropertyAdDetail), true)]
 [assembly: EdmRelationshipAttribute("TK1ClientBizzModel", "PropertyAdPropertyAdPic", "PropertyAd", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Client.Data.PropertyAd), "PropertyAdPic", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TK1.Bizz.Client.Data.PropertyAdPic), true)]
+[assembly: EdmRelationshipAttribute("TK1ClientBizzModel", "PropertyReleaseAdPropertyAd", "PropertyReleaseAd", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Client.Data.PropertyReleaseAd), "PropertyAd", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TK1.Bizz.Client.Data.PropertyAd), true)]
 
 #endregion
 
@@ -842,6 +843,44 @@ namespace TK1.Bizz.Client.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1ClientBizzModel", "PropertyReleaseAdPropertyAd", "PropertyReleaseAd")]
+        public PropertyReleaseAd PropertyReleaseAd
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyReleaseAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyReleaseAd").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyReleaseAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyReleaseAd").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PropertyReleaseAd> PropertyReleaseAdReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyReleaseAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyReleaseAd");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PropertyReleaseAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyReleaseAd", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1450,14 +1489,14 @@ namespace TK1.Bizz.Client.Data
         /// <param name="maxExternalArea">Initial value of the MaxExternalArea property.</param>
         /// <param name="minValue">Initial value of the MinValue property.</param>
         /// <param name="maxValue">Initial value of the MaxValue property.</param>
-        /// <param name="elevatorNumber">Initial value of the ElevatorNumber property.</param>
-        /// <param name="minGarageNumber">Initial value of the MinGarageNumber property.</param>
-        /// <param name="maxGarageNumber">Initial value of the MaxGarageNumber property.</param>
-        /// <param name="totalFloorUnitNumber">Initial value of the TotalFloorUnitNumber property.</param>
-        /// <param name="totalUnitNumber">Initial value of the TotalUnitNumber property.</param>
-        /// <param name="towerNumber">Initial value of the TowerNumber property.</param>
-        /// <param name="towerFloorNumber">Initial value of the TowerFloorNumber property.</param>
-        public static PropertyReleaseAd CreatePropertyReleaseAd(global::System.String propertyAdID, global::System.String propertyAdTypeID, global::System.String customerCode, global::System.String address, global::System.String addressComplement, global::System.Int32 addressNumber, global::System.Single minTotalArea, global::System.Single maxTotalArea, global::System.Int32 minTotalRooms, global::System.Int32 maxTotalRooms, global::System.Int32 minSuites, global::System.Int32 maxSuites, global::System.Single minInternalArea, global::System.Single maxInternalArea, global::System.Single minExternalArea, global::System.Single maxExternalArea, global::System.Single minValue, global::System.Single maxValue, global::System.Int32 elevatorNumber, global::System.Int32 minGarageNumber, global::System.Int32 maxGarageNumber, global::System.Int32 totalFloorUnitNumber, global::System.Int32 totalUnitNumber, global::System.Int32 towerNumber, global::System.Int32 towerFloorNumber)
+        /// <param name="totalElevators">Initial value of the TotalElevators property.</param>
+        /// <param name="totalFloorUnits">Initial value of the TotalFloorUnits property.</param>
+        /// <param name="totalUnits">Initial value of the TotalUnits property.</param>
+        /// <param name="totalTowers">Initial value of the TotalTowers property.</param>
+        /// <param name="totalTowerFloors">Initial value of the TotalTowerFloors property.</param>
+        /// <param name="minParkingLots">Initial value of the MinParkingLots property.</param>
+        /// <param name="maxParkingLots">Initial value of the MaxParkingLots property.</param>
+        public static PropertyReleaseAd CreatePropertyReleaseAd(global::System.Int32 propertyAdID, global::System.String propertyAdTypeID, global::System.String customerCode, global::System.String address, global::System.String addressComplement, global::System.Int32 addressNumber, global::System.Single minTotalArea, global::System.Single maxTotalArea, global::System.Int32 minTotalRooms, global::System.Int32 maxTotalRooms, global::System.Int32 minSuites, global::System.Int32 maxSuites, global::System.Single minInternalArea, global::System.Single maxInternalArea, global::System.Single minExternalArea, global::System.Single maxExternalArea, global::System.Single minValue, global::System.Single maxValue, global::System.Int32 totalElevators, global::System.Int32 totalFloorUnits, global::System.Int32 totalUnits, global::System.Int32 totalTowers, global::System.Int32 totalTowerFloors, global::System.Int32 minParkingLots, global::System.Int32 maxParkingLots)
         {
             PropertyReleaseAd propertyReleaseAd = new PropertyReleaseAd();
             propertyReleaseAd.PropertyAdID = propertyAdID;
@@ -1478,13 +1517,13 @@ namespace TK1.Bizz.Client.Data
             propertyReleaseAd.MaxExternalArea = maxExternalArea;
             propertyReleaseAd.MinValue = minValue;
             propertyReleaseAd.MaxValue = maxValue;
-            propertyReleaseAd.ElevatorNumber = elevatorNumber;
-            propertyReleaseAd.MinGarageNumber = minGarageNumber;
-            propertyReleaseAd.MaxGarageNumber = maxGarageNumber;
-            propertyReleaseAd.TotalFloorUnitNumber = totalFloorUnitNumber;
-            propertyReleaseAd.TotalUnitNumber = totalUnitNumber;
-            propertyReleaseAd.TowerNumber = towerNumber;
-            propertyReleaseAd.TowerFloorNumber = towerFloorNumber;
+            propertyReleaseAd.TotalElevators = totalElevators;
+            propertyReleaseAd.TotalFloorUnits = totalFloorUnits;
+            propertyReleaseAd.TotalUnits = totalUnits;
+            propertyReleaseAd.TotalTowers = totalTowers;
+            propertyReleaseAd.TotalTowerFloors = totalTowerFloors;
+            propertyReleaseAd.MinParkingLots = minParkingLots;
+            propertyReleaseAd.MaxParkingLots = maxParkingLots;
             return propertyReleaseAd;
         }
 
@@ -1497,7 +1536,7 @@ namespace TK1.Bizz.Client.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String PropertyAdID
+        public global::System.Int32 PropertyAdID
         {
             get
             {
@@ -1509,14 +1548,14 @@ namespace TK1.Bizz.Client.Data
                 {
                     OnPropertyAdIDChanging(value);
                     ReportPropertyChanging("PropertyAdID");
-                    _PropertyAdID = StructuralObject.SetValidValue(value, false);
+                    _PropertyAdID = StructuralObject.SetValidValue(value);
                     ReportPropertyChanged("PropertyAdID");
                     OnPropertyAdIDChanged();
                 }
             }
         }
-        private global::System.String _PropertyAdID;
-        partial void OnPropertyAdIDChanging(global::System.String value);
+        private global::System.Int32 _PropertyAdID;
+        partial void OnPropertyAdIDChanging(global::System.Int32 value);
         partial void OnPropertyAdIDChanged();
     
         /// <summary>
@@ -1986,172 +2025,214 @@ namespace TK1.Bizz.Client.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ElevatorNumber
+        public global::System.Int32 TotalElevators
         {
             get
             {
-                return _ElevatorNumber;
+                return _TotalElevators;
             }
             set
             {
-                OnElevatorNumberChanging(value);
-                ReportPropertyChanging("ElevatorNumber");
-                _ElevatorNumber = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ElevatorNumber");
-                OnElevatorNumberChanged();
+                OnTotalElevatorsChanging(value);
+                ReportPropertyChanging("TotalElevators");
+                _TotalElevators = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalElevators");
+                OnTotalElevatorsChanged();
             }
         }
-        private global::System.Int32 _ElevatorNumber;
-        partial void OnElevatorNumberChanging(global::System.Int32 value);
-        partial void OnElevatorNumberChanged();
+        private global::System.Int32 _TotalElevators;
+        partial void OnTotalElevatorsChanging(global::System.Int32 value);
+        partial void OnTotalElevatorsChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 MinGarageNumber
+        public global::System.Int32 TotalFloorUnits
         {
             get
             {
-                return _MinGarageNumber;
+                return _TotalFloorUnits;
             }
             set
             {
-                OnMinGarageNumberChanging(value);
-                ReportPropertyChanging("MinGarageNumber");
-                _MinGarageNumber = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("MinGarageNumber");
-                OnMinGarageNumberChanged();
+                OnTotalFloorUnitsChanging(value);
+                ReportPropertyChanging("TotalFloorUnits");
+                _TotalFloorUnits = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalFloorUnits");
+                OnTotalFloorUnitsChanged();
             }
         }
-        private global::System.Int32 _MinGarageNumber;
-        partial void OnMinGarageNumberChanging(global::System.Int32 value);
-        partial void OnMinGarageNumberChanged();
+        private global::System.Int32 _TotalFloorUnits;
+        partial void OnTotalFloorUnitsChanging(global::System.Int32 value);
+        partial void OnTotalFloorUnitsChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 MaxGarageNumber
+        public global::System.Int32 TotalUnits
         {
             get
             {
-                return _MaxGarageNumber;
+                return _TotalUnits;
             }
             set
             {
-                OnMaxGarageNumberChanging(value);
-                ReportPropertyChanging("MaxGarageNumber");
-                _MaxGarageNumber = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("MaxGarageNumber");
-                OnMaxGarageNumberChanged();
+                OnTotalUnitsChanging(value);
+                ReportPropertyChanging("TotalUnits");
+                _TotalUnits = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalUnits");
+                OnTotalUnitsChanged();
             }
         }
-        private global::System.Int32 _MaxGarageNumber;
-        partial void OnMaxGarageNumberChanging(global::System.Int32 value);
-        partial void OnMaxGarageNumberChanged();
+        private global::System.Int32 _TotalUnits;
+        partial void OnTotalUnitsChanging(global::System.Int32 value);
+        partial void OnTotalUnitsChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TotalFloorUnitNumber
+        public global::System.Int32 TotalTowers
         {
             get
             {
-                return _TotalFloorUnitNumber;
+                return _TotalTowers;
             }
             set
             {
-                OnTotalFloorUnitNumberChanging(value);
-                ReportPropertyChanging("TotalFloorUnitNumber");
-                _TotalFloorUnitNumber = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TotalFloorUnitNumber");
-                OnTotalFloorUnitNumberChanged();
+                OnTotalTowersChanging(value);
+                ReportPropertyChanging("TotalTowers");
+                _TotalTowers = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalTowers");
+                OnTotalTowersChanged();
             }
         }
-        private global::System.Int32 _TotalFloorUnitNumber;
-        partial void OnTotalFloorUnitNumberChanging(global::System.Int32 value);
-        partial void OnTotalFloorUnitNumberChanged();
+        private global::System.Int32 _TotalTowers;
+        partial void OnTotalTowersChanging(global::System.Int32 value);
+        partial void OnTotalTowersChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TotalUnitNumber
+        public global::System.Int32 TotalTowerFloors
         {
             get
             {
-                return _TotalUnitNumber;
+                return _TotalTowerFloors;
             }
             set
             {
-                OnTotalUnitNumberChanging(value);
-                ReportPropertyChanging("TotalUnitNumber");
-                _TotalUnitNumber = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TotalUnitNumber");
-                OnTotalUnitNumberChanged();
+                OnTotalTowerFloorsChanging(value);
+                ReportPropertyChanging("TotalTowerFloors");
+                _TotalTowerFloors = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalTowerFloors");
+                OnTotalTowerFloorsChanged();
             }
         }
-        private global::System.Int32 _TotalUnitNumber;
-        partial void OnTotalUnitNumberChanging(global::System.Int32 value);
-        partial void OnTotalUnitNumberChanged();
+        private global::System.Int32 _TotalTowerFloors;
+        partial void OnTotalTowerFloorsChanging(global::System.Int32 value);
+        partial void OnTotalTowerFloorsChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TowerNumber
+        public global::System.Int32 MinParkingLots
         {
             get
             {
-                return _TowerNumber;
+                return _MinParkingLots;
             }
             set
             {
-                OnTowerNumberChanging(value);
-                ReportPropertyChanging("TowerNumber");
-                _TowerNumber = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TowerNumber");
-                OnTowerNumberChanged();
+                OnMinParkingLotsChanging(value);
+                ReportPropertyChanging("MinParkingLots");
+                _MinParkingLots = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MinParkingLots");
+                OnMinParkingLotsChanged();
             }
         }
-        private global::System.Int32 _TowerNumber;
-        partial void OnTowerNumberChanging(global::System.Int32 value);
-        partial void OnTowerNumberChanged();
+        private global::System.Int32 _MinParkingLots;
+        partial void OnMinParkingLotsChanging(global::System.Int32 value);
+        partial void OnMinParkingLotsChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TowerFloorNumber
+        public global::System.Int32 MaxParkingLots
         {
             get
             {
-                return _TowerFloorNumber;
+                return _MaxParkingLots;
             }
             set
             {
-                OnTowerFloorNumberChanging(value);
-                ReportPropertyChanging("TowerFloorNumber");
-                _TowerFloorNumber = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TowerFloorNumber");
-                OnTowerFloorNumberChanged();
+                OnMaxParkingLotsChanging(value);
+                ReportPropertyChanging("MaxParkingLots");
+                _MaxParkingLots = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MaxParkingLots");
+                OnMaxParkingLotsChanged();
             }
         }
-        private global::System.Int32 _TowerFloorNumber;
-        partial void OnTowerFloorNumberChanging(global::System.Int32 value);
-        partial void OnTowerFloorNumberChanged();
+        private global::System.Int32 _MaxParkingLots;
+        partial void OnMaxParkingLotsChanging(global::System.Int32 value);
+        partial void OnMaxParkingLotsChanged();
 
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("TK1ClientBizzModel", "PropertyReleaseAdPropertyAd", "PropertyAd")]
+        public PropertyAd PropertyAd
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyAd").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyAd").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PropertyAd> PropertyAdReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PropertyAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyAd");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PropertyAd>("TK1ClientBizzModel.PropertyReleaseAdPropertyAd", "PropertyAd", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
 
     #endregion
