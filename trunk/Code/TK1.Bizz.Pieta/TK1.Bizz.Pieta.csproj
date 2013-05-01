@@ -62,21 +62,9 @@
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj">
-      <Project>{07143283-7469-446F-A469-86F64C5CB61F}</Project>
-      <Name>TK1.Bizz.Mdo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
-      <Project>{AB2EC906-93AE-4F64-B71D-E04C88036D7D}</Project>
-      <Name>TK1.Bizz</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
-      <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
-      <Name>TK1.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Media\TK1.Media.csproj">
-      <Project>{2B1DC70C-89E1-46F4-96C7-03BD38D80330}</Project>
-      <Name>TK1.Media</Name>
+    <ProjectReference Include="..\TK1.Bizz.Client\TK1.Bizz.Client.csproj">
+      <Project>{a2208d64-3af4-48cc-9f3d-09950ac737db}</Project>
+      <Name>TK1.Bizz.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
