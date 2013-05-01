@@ -38,24 +38,25 @@ namespace TK1.Dev
         {
             InitializeComponent();
 
+            MdoClientUnitTest.LoadXmlFile();
+            //InetsoftUnitTest.LoadXmlFile();
             //PietaUnitTest.TestXmlLoad();
             //TK1ServicesUnitTest.Test();
             //MdoUnitTest.LoadXmlFile();
-            //InetsoftUnitTest.LoadXmlFile();
             //MdoUnitTest.SendTestMail();
             //TK1DataUnitTest.UserLogin();
             //BizzUnitTest.UserTest();
             //BizzUnitTest.MailTest();
             //MySqlUnitTest.Test();
             //BizzClientUnitTest.AppLog();
-            IntegraUnitTest.BrokerIntegrationTest();
+            //IntegraUnitTest.BrokerIntegrationTest();
         }
 
 
         private void initializeUI()
         {
-            windowController.Window = this;
-            modalDialog.SetParent(layoutRoot);
+            //windowController.Window = this;
+            //modalDialog.SetParent(layoutRoot);
 
             writeOutput1("output 1");
             writeOutput2("output 2");

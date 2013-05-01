@@ -11,6 +11,9 @@ namespace TK1.Dev.UnitTest
 {
     public class PietaUnitTest
     {
+        public static void SearchSite()
+        {
+        }
         public static void NormatizeXmlFile()
         {
             var xml = XmlHelper.NormatizeFile(@"D:\Projetos\TK1\Projects\Pietá\Integração\20110518\VisVen.xml");

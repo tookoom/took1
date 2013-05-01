@@ -13,7 +13,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using TK1.Xml;
-using TK1.Controls;
 
 namespace TK1.Basics.Controls
 {
@@ -114,7 +113,7 @@ namespace TK1.Basics.Controls
             }
             else
             {
-                propertyEditor.Source = value;
+                //propertyEditor.Source = value;
             }
         }
         private void open()

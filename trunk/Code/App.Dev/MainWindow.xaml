@@ -4,8 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     
-    xmlns:TK1_Basics_Controls="clr-namespace:TK1.Basics.Controls;assembly=TK1.Basics.Controls"    
-        
+       
     Title="MainWindow" Height="300" Width="500" mc:Ignorable="d" WindowStyle="None" Loaded="Window_Loaded" AllowsTransparency="True" BorderBrush="#FFCCCCCC" BorderThickness="2,0,0,2">
 	<Window.Resources>
 		<Color x:Key="Orange">#FFE5B266</Color>
@@ -18,7 +17,6 @@
     		<RowDefinition />
     		<RowDefinition Height="Auto" MinHeight="15" />
     	</Grid.RowDefinitions>
-    	<TK1_Basics_Controls:WindowController x:Name="windowController" Margin="0" VerticalAlignment="Top" d:LayoutOverrides="Width" />
         
     	<StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center">
     		<Button x:Name="buttonDev1" Content="Dev1" Click="buttonDev1_Click" />
@@ -58,7 +56,6 @@
     			</Border>
     		</Grid>
     	</Grid>
-        <TK1_Basics_Controls:ModalDialog x:Name="modalDialog" Visibility="Collapsed" />
         
     </Grid>
 </Window>
