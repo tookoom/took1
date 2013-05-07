@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - TK1 Web Solutions</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <br /><br />
+                    <p class="site-title">@Html.ActionLink("TK1 Web Solutions", "Index", "Home")</p>
+                    <br />
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Destaques", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Pesquisa", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
+                        </ul>
+                    </nav>                
+
+                </div>
+                <div class="float-right">
+                    <a hre@*f ="/">
+                        <img src="~/Images/LogoTK1_GRAY.png" width="150px" /><br />
+                    </a>*@
+                    <br />
+@*                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>*@
+
+                </div>
+                <br />
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left block-info">
+                    <h1>Produtos & Serviços</h1>
+                    <p>Imobiliárias e Corretores</p>
+                    <p>Serviços sob demanda</p>
+                    <p>Consultoria em TI</p>
+                    <br />
+                    <br />
+                    <p>&copy; @DateTime.Now.Year - TK1 Web Solutions</p>
+                </div>
+                <div class="float-left block-info">
+                    <h1>Clientes</h1>
+                    <p>Casos de Clientes</p>
+                </div>
+                <div class="float-left block-info">
+                    <h1>Sobre a TK1</h1>
+                    <p>Compromisso</p>
+                </div>                
+                <div class="float-left block-info">
+                    <h1>Contato</h1>
+                    <p>Entre em contato conosco</p>
+                    <p>Redes Sociais</p>
+                </div>
+                <div class="float-right">
+                    <img src="~/Images/LogoTK1_Icon.png" />
+                </div>
+            </div>
+                           
+
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
