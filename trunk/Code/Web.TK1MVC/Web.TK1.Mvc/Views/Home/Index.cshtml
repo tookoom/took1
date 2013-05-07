@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "TK1";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.FeaturedText</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                <b>A TK1 oferece soluções de TI do tamanho das suas necessidades.<br />
+                Seja com <mark>soluções customizadas ou padronizadas</mark>, ou através de <mark>consultoria</mark>, somos o parceiro certo para alavancar seus negócios.
+                    </b>
+@*                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
+                If you have any questions about ASP.NET MVC visit
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.*@
+            </p>
+        </div>
+    </section>
+}
+<article>
+<h2>Conheça nossas soluções:</h2>
+<ol class="round">
+    <li class="one">
+        <h4>oneBroker</h4>
+        <p>Serviços web para imobiliárias e corretores independentes.</p>
+        <ul>
+            <li>Página personalizada ou customizada</li>
+            <li>Pesquisa e visualização de imóveis</li>
+            <li>Cadastro a administração totalmente on-line</li>
+            <li>Integração com outros sistemas de imóveis</li>
+            <li>Use seu domínio próprio ou acesse através de nossa rede de corretores</li>
+        </ul>
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Saiba mais…</a>
+    </li>
+
+    <li class="two">
+        <h4>Soluções web customizadas</h4>
+        <p>Torne seu negócio mais fácil para seus clientes: desenvolvemos soluções web customizadas para sua empresa.</p>
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Saiba mais…</a>
+    </li>
+
+    <li class="three">
+        <h4>Consultoria em TI</h4>
+        <p>Reduza custos, aumente a produtividade, melhore seus serviços. </p>
+
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Saiba mais…</a>
+    </li>
+</ol>
+</article>
+
+<aside>
+    <h2>Já é cliente?</h2>
+    <p>
+        Acesse sua área de usuário:
+    </p>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+</aside>
