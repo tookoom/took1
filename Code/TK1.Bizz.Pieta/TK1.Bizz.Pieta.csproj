@@ -62,10 +62,6 @@
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TK1.Bizz.Client\TK1.Bizz.Client.csproj">
-      <Project>{a2208d64-3af4-48cc-9f3d-09950ac737db}</Project>
-      <Name>TK1.Bizz.Client</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
       <Name>TK1</Name>

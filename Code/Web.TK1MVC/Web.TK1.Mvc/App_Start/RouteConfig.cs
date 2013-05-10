@@ -18,6 +18,12 @@ namespace Web.TK1.Mvc
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "BrokerHome",
+            //    url: "broker/{id}",
+            //    defaults: new { controller = "Broker", action = "Index"}
+            //);
         }
     }
 }

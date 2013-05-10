@@ -57,7 +57,7 @@ namespace TK1.Bizz.Net
             }
             catch (Exception exception)
             {
-                AppLogController.WriteException("Bizz.MailHelper.SendMail", exception);
+                //AppLogController.WriteException("Bizz.MailHelper.SendMail", exception);
                 logMailMessage = true;
             }
             finally
@@ -65,7 +65,7 @@ namespace TK1.Bizz.Net
                 if (logMailMessage)
                 {
                     var logData = string.Format("Subject: {0}{1}To: {2}{3}Body: {4}", subject, Environment.NewLine, mailTo, Environment.NewLine, body);
-                    AppLogController.WriteAppLogEntry("Bizz.MailHelper.SendMail", logData, AppLogLevels.Error);
+                    //AppLogController.WriteAppLogEntry("Bizz.MailHelper.SendMail", logData, AppLogLevels.Error);
                 }
             }
         }
