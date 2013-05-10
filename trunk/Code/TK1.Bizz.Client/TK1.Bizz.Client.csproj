@@ -43,37 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Binding\PropertyAdBindingSource.cs" />
-    <Compile Include="Data\ClientBaseModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClientBaseModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ClientBizzModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClientBizzModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Const\AppLogLevels.cs" />
-    <Compile Include="Data\Const\ConfigurationKeys.cs" />
-    <Compile Include="Data\Controller\AuditClientController.cs" />
-    <Compile Include="Data\Controller\ConfigurationController.cs" />
-    <Compile Include="Data\Extension\PropertyAdExtension.cs" />
-    <Compile Include="Data\Integration\PropertyAdCollection.cs" />
-    <Compile Include="Data\Presentation\Culture\PropertyTranslations.cs" />
-    <Compile Include="Data\Presentation\PropertyAdBaseView.cs" />
-    <Compile Include="Data\Presentation\PropertyAdPicView.cs" />
-    <Compile Include="Data\Presentation\PropertyAdDetailView.cs" />
-    <Compile Include="Data\Presentation\PropertyAdTypes.cs" />
-    <Compile Include="Data\Controller\AppLogClientController.cs" />
-    <Compile Include="Data\Controller\BaseClientController.cs" />
-    <Compile Include="Data\Controller\BizzBaseClientController.cs" />
-    <Compile Include="Data\Controller\PropertyAdController.cs" />
-    <Compile Include="Data\Presentation\PropertyAdView.cs" />
-    <Compile Include="Data\Presentation\PropertyAdCategories.cs" />
-    <Compile Include="Data\Presentation\PropertyReleaseAdView.cs" />
-    <Compile Include="Data\PropertyAdSearchParameters.cs" />
-    <Compile Include="Data\PropertyAdSearchResultOrders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,19 +52,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Data\ClientBaseModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ClientBaseModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <None Include="App.Config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <EntityDeploy Include="Data\ClientBizzModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ClientBizzModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Folder Include="Data\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

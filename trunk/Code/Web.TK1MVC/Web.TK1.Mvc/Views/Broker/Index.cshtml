@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Destaques";
+}
+
+@*@model IEnumerable<TK1.Bizz.Broker.Presentation.PropertyAdView> 
+@{
+    var featureAds = Model;
+}*@
+
+
+<h2>Destaques</h2>
+
+@foreach (var ad in Model)
+{   
+    <fieldset class="FieldsetPost">
+        <legend>@ad.</legend>
+        <div class="clear">
+        </div>
+        <div class="Texto">
+            @Html.Raw( ad.PropertyType )
+        </div>
+        <div class="clear">
+        </div>
+        <div class="LinkLeiaMais">
+            @Html.ActionLink( "Detalhes ...", "Imovel", new { controller = "Broker", customerCode = ad.CustomerCode, adType = ad.AdType,  adCode = ad.AdCode } )
+        </div>
+    </fieldset>
+}

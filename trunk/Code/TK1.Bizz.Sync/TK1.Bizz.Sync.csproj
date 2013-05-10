@@ -46,10 +46,6 @@
     <Compile Include="PropertyAdSync.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TK1.Bizz.Client\TK1.Bizz.Client.csproj">
-      <Project>{A2208D64-3AF4-48CC-9F3D-09950AC737DB}</Project>
-      <Name>TK1.Bizz.Client</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj">
       <Project>{07143283-7469-446F-A469-86F64C5CB61F}</Project>
       <Name>TK1.Bizz.Mdo</Name>

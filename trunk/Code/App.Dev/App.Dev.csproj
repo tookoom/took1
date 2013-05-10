@@ -195,10 +195,6 @@
       <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
       <Name>TK1.Basics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TK1.Bizz.Client\TK1.Bizz.Client.csproj">
-      <Project>{A2208D64-3AF4-48CC-9F3D-09950AC737DB}</Project>
-      <Name>TK1.Bizz.Client</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj">
       <Project>{CF258131-13C0-4F5D-8657-891E00E66815}</Project>
       <Name>TK1.Bizz.Inetsoft</Name>
