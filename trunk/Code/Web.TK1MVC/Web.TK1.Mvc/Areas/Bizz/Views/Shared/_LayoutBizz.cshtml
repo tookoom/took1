@@ -1,0 +1,78 @@
+﻿@{
+    var customerView = new TK1.Bizz.Broker.Presentation.BrokerCustomerWebView();
+    var customer = customerView.Customer;
+
+    customerView.Customer.Code = "demo";
+    customerView.Customer.Name = "Imobiliária Teste";
+    customerView.Customer.AddressList.Add(new TK1.Bizz.Model.Address { AddressInfo = "Rua A, n: 1 - Rio Branco - Porto Alegre" });
+    customerView.Customer.PhoneList.Add(new TK1.Bizz.Model.PhoneNumber { Number = "(51) 3333.4444" });
+
+    customerView.LogoUrl = "/Images/LogoTK1_GRAY.png";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - @customer.Name </title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/bizzcss")
+        @Styles.Render("~/Content/brokercss")
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/picgallery")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div>
+                    <a href ="/">
+                        <img src="@customerView.LogoUrl" height="200px" /><br />
+                    </a>
+                </div>
+                <div class="float-left">
+                    <nav>
+                        <ul id="menu">
+                            <li><a href="~/Bizz/Broker/Index/@customer.Code">Destaques</a></li>
+                            <li><a href="~/Bizz/Broker/Pesquisa/@customer.Code">Encontre seu Imóvel</a></li>
+                            <li><a href="~/Bizz/Broker/Contato/@customer.Code">Localização e Contato</a></li>
+                            @*<li><a href="~/Bizz/Broker/Sobre/@customer.Code">Sobre</a></li>*@
+                        </ul>
+                    </nav>                
+                </div>
+                <br />
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+@*        <footer style="background-color:#efefef;">
+            <div class="content-wrapper">
+
+            Footer 1
+            </div>
+        </footer>*@
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left block-info">
+                    <h1>@customer.Name</h1>
+                    <p>@customer.AddressList.FirstOrDefault().AddressInfo</p>
+                    <p>@customer.PhoneList.FirstOrDefault().Number</p>
+                </div>
+                <div class="float-right">
+                    <img src="~/Images/LogoTK1_Icon.png" />
+                </div>
+            </div>
+                           
+
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

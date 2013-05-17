@@ -8,15 +8,15 @@ namespace TK1.Bizz.Broker.Presentation
     public class PropertyAdSearchParameters
     {
         #region PUBLIC PROPERTIES
+        public string CustomerCode { get; set; }
         public PropertyAdTypes AdType { get; set; }
         public int AdTypeID { get { return (int)AdType; } }
-        
+        public int AdCode { get; set; }
+
         public float AreaFrom { get; set; }
         public float AreaTo { get; set; }
         public string Category { get; set; }
         public string CityName { get; set; }
-        public int Code { get; set; }
-        public string CustomerCodename { get; set; }
         public List<string> Districts { get; set; }
         public string PropertyType { get; set; }
         public PropertyAdSearchResultOrders ResultOrdering { get; set; }
@@ -32,8 +32,8 @@ namespace TK1.Bizz.Broker.Presentation
             AreaFrom = float.MinValue;
             Category = PropertyAdCategories.Residencial.ToString();
             CityName = "Porto Alegre";
-            Code = 0;
-            CustomerCodename = string.Empty;
+            AdCode = 0;
+            CustomerCode = string.Empty;
             Districts = new List<string>();
             PropertyType = "Apartamento";
             ResultOrdering = PropertyAdSearchResultOrders._Undefined;

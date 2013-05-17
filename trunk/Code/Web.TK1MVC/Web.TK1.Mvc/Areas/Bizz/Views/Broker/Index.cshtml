@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Destaques";
+    Layout = "~/Areas/Bizz/Views/Shared/_LayoutBizz.cshtml";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Pesquisa Rápida. </h1><h2>Encontre seu imóvel aqui:</h2>
+            </hgroup>
+            <nav>
+                @Html.DropDownList("AdType")
+                @Html.DropDownList("City")
+                @Html.DropDownList("PropertyType")
+                @Html.DropDownList("District")
+                <div class="float-right">
+                    <input type="button" name="name" value="Pesquisar"  style="width:180px;"/>
+                </div>
+            </nav>
+        </div>
+    </section>
+}
+
+<h2>Destaques Venda</h2>
+    @foreach (var ad in ViewBag.SellFeaturedAds)
+    {   
+        var value = string.Format("{0:C}", ad.Value);
+
+        <div class="float-left featuredAd">
+                <h1>@ad.PropertyType</h1>
+                <img  src="@ad.MainPicUrl" />
+                Bairro @ad.District<br />
+                @ad.TotalRooms @ad.PropertyTypeRoomName
+                <br />
+                <p><b>@value</b></p>
+                <a class="brokerButton" href="~/Bizz/Broker/Imovel/@ad.CustomerCode/Venda/@ad.AdCode">
+                    @*<div class="brokerButton">Detalhes</div>*@
+                    Detalhes
+
+                </a>                
+        </div>
+    }
+<br class="clear" />
+<h2>Destaques Aluguel</h2>
+    @foreach (var ad in ViewBag.RentFeaturedAds)
+    {   
+        var value = string.Format("{0:C}", ad.Value);
+
+        <div class="float-left featuredAd">
+                <h1>@ad.PropertyType</h1>
+                <img  src="@ad.MainPicUrl" />
+                Bairro @ad.District<br />
+                @ad.TotalRooms @ad.PropertyTypeRoomName
+                <br />
+                <p><b>@value</b></p>
+                <a class="brokerButton" href="~/Bizz/Broker/Imovel/@ad.CustomerCode/Venda/@ad.AdCode">
+                    @*<div class="brokerButton">Detalhes</div>*@
+                    Detalhes
+
+                </a>                
+        </div>
+    }

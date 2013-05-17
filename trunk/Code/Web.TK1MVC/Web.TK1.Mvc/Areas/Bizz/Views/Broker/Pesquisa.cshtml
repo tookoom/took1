@@ -1,0 +1,173 @@
+﻿@model TK1.Bizz.Broker.Presentation.PropertyAdSearchParameters
+
+@{
+    ViewBag.Title = "Pesquisa";
+    Layout = "~/Areas/Bizz/Views/Shared/_LayoutBizz.cshtml";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Pesquisa. </h1><h2>Encontre seu imóvel aqui:</h2>
+            </hgroup>
+            <nav>
+                @Html.DropDownList("AdType")
+                @Html.DropDownList("City")
+                @Html.DropDownList("PropertyType")
+                @Html.DropDownList("District")
+                <div class="float-right">
+                    <input type="button" name="name" value="Pesquisar"  style="width:180px;"/>
+                </div>
+            </nav>
+            <b>Mais Opções</b>
+
+@*            <table width="100%">
+                <tr>
+                    <td rowspan="2" style="vertical-align:top;">
+                        <form>
+                            <input type="radio" name="name" value="Aluguel" title="Aluguel" style="width:auto;"/><b>Aluguel</b><br />
+                            <input type="radio" name="name" value="Venda"  title="Venda" style="width:auto;"/><b>Venda</b>
+                        </form>
+
+                    </td>
+                    <td colspan="2"><input type="text" name="name" value="Cidade"  style="width:400px;"/></td>
+                    <td rowspan="5"><textarea rows="10" style="width:350px;">Bairros</textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" name="name" value="Tipo de Imóvel" style="width:400px;"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"><input type="text" name="name" value="Detalhes de Imóvel" style="width:400px;"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><b>Valor mínimo:</b></td>
+                    <td><input type="text" name="name" value=" " style="width:200px;"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><b>Valor máximo:</b></td>
+                    <td><input type="text" name="name" value=" " style="width:200px;"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><b>Buscar pelo código:</b></td>
+                    <td><input type="number" name="phone" value=" " style="width:200px;"/></td>
+                    <td style="text-align:right;"><input type="button" name="name" value="Pesquisar" style="width:200px;"/></td>
+                </tr>
+            </table>*@
+        </div>
+    </section>
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PropertyAdSearchParameters</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AreaFrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AreaFrom)
+            @Html.ValidationMessageFor(model => model.AreaFrom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AreaTo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AreaTo)
+            @Html.ValidationMessageFor(model => model.AreaTo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Category)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Category)
+            @Html.ValidationMessageFor(model => model.Category)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CityName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CityName)
+            @Html.ValidationMessageFor(model => model.CityName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AdCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AdCode)
+            @Html.ValidationMessageFor(model => model.AdCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustomerCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CustomerCode)
+            @Html.ValidationMessageFor(model => model.CustomerCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PropertyType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PropertyType)
+            @Html.ValidationMessageFor(model => model.PropertyType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoomsFrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RoomsFrom)
+            @Html.ValidationMessageFor(model => model.RoomsFrom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoomsTo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RoomsTo)
+            @Html.ValidationMessageFor(model => model.RoomsTo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceTo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceTo)
+            @Html.ValidationMessageFor(model => model.PriceTo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceFrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceFrom)
+            @Html.ValidationMessageFor(model => model.PriceFrom)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

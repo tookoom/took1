@@ -22,7 +22,7 @@
         <div class="clear">
         </div>
         <div class="LinkLeiaMais">
-            @Html.ActionLink( "Detalhes ...", "Imovel", new { controller = "Broker", customerCode = ad.CustomerCode, adType = ad.AdType,  adCode = ad.AdCode } )
+            @Html.ActionLink( "Detalhes ...", "Imovel", new { controller = "Broker", id = ad.CustomerCode, adType = ad.AdType,  adCode = ad.AdCode }, null )
         </div>
     </fieldset>
 }
