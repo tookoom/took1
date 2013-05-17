@@ -78,25 +78,8 @@
     <Compile Include="Broker\Model\PropertyReleaseAd.cs">
       <DependentUpon>BrokerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controller\BizzBaseController.cs" />
     <Compile Include="Controller\BizzBrokerController.cs" />
-    <Compile Include="Model\BizzModel.Designer.cs">
-      <DependentUpon>BizzModel.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Controller\BizzUserController.cs" />
-    <Compile Include="Controller\SiteAdController.cs" />
-    <Compile Include="Model\Extension\SiteAdExtension.cs" />
-    <Compile Include="Presentation\SiteAdCategories.cs" />
-    <Compile Include="Presentation\SiteAdDetail.cs" />
-    <Compile Include="Presentation\SiteAdPicView.cs" />
-    <Compile Include="Presentation\SiteAdTypes.cs" />
-    <Compile Include="Presentation\SiteAdView.cs" />
-    <Compile Include="Presentation\SiteReleaseAdView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Presentation\SiteAdSearchParameters.cs" />
-    <Compile Include="Presentation\SiteAdSearchResultOrders.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
@@ -107,12 +90,6 @@
       <Project>{2484cd63-a0b0-46ae-a423-b32e6a6ad279}</Project>
       <Name>TK1.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Model\BizzModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BizzModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Broker\Model\BrokerModel.edmx">

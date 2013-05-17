@@ -1,0 +1,15 @@
+﻿@model TK1.Bizz.Broker.Presentation.PropertyAdView
+
+@{
+    var customerCode = Model.CustomerCode;
+}
+
+
+
+@{
+    ViewBag.Title = "Sobre";
+    Layout = "~/Areas/Bizz/Views/Shared/_LayoutBizz.cshtml";
+}
+
+<h2>Sobre</h2>
+<p>@customerCode</p>

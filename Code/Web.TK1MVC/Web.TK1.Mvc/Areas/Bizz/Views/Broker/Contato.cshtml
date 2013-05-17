@@ -1,0 +1,73 @@
+﻿@model TK1.Bizz.Broker.Presentation.PropertyAdView
+
+@{
+    var customerCode = Model.CustomerCode;
+    var customerView = new TK1.Bizz.Broker.Presentation.BrokerCustomerWebView();
+    var customer = customerView.Customer;
+
+    customerView.Customer.Code = "demo";
+    customerView.Customer.Name = "Imobiliária Teste";
+    customerView.Customer.AddressList.Add(new TK1.Bizz.Model.Address { AddressInfo = "Rua A, n: 1 - Rio Branco - Porto Alegre" });
+    customerView.Customer.PhoneList.Add(new TK1.Bizz.Model.PhoneNumber { Number = "(51) 3333.4444" });
+
+    customerView.LogoUrl = "/Images/LogoTK1_GRAY.png";
+
+    var address = customer.AddressList.FirstOrDefault().AddressInfo;
+    var phone = customer.PhoneList.FirstOrDefault().Number;
+}
+
+
+
+@{
+    ViewBag.Title = "Contato";
+    Layout = "~/Areas/Bizz/Views/Shared/_LayoutBizz.cshtml";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Fale Conosco </h1>
+            </hgroup>
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><b>Tipo de Contato</b>
+@*                        <div>
+                            <input type="radio" name="name" value="Aluguel" />
+                            <input type="radio" name="name" value="Venda" />
+                            <input type="radio" name="name" value="Outros" />
+                        </div>*@
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Nome:</b></td>
+                    <td><input type="text" name="name" value=" " /></td>
+                    <td rowspan="2">
+                        <textarea rows="5">Digite aqui sua mensagem</textarea>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>E-mail:</b></td>
+                    <td><input type="email" name="name" value=" " /></td>
+                </tr>
+                <tr>
+                    <td><b>Telefone:</b></td>
+                    <td><input type="tel" name="phone" value=" " /></td>
+                    <td style="text-align:right;"><input type="button" name="name" value="Enviar Mensagem" /></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+}
+
+
+<h2>Localização</h2>
+<p>
+    Visite-nos no endereço: @address 
+</p>
+<p>
+    Entre em contato através do telefone: @phone
+</p>
+<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?q=rio+branco+porto+alegre&amp;aq=f&amp;ie=UTF8&amp;hl=pt-BR&amp;hq=&amp;hnear=Rio+Branco,+Porto+Alegre+-+Rio+Grande+do+Sul&amp;ll=-30.03291,-51.201684&amp;spn=0.020137,0.03695&amp;t=m&amp;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.br/maps?q=rio+branco+porto+alegre&amp;aq=f&amp;ie=UTF8&amp;hl=pt-BR&amp;hq=&amp;hnear=Rio+Branco,+Porto+Alegre+-+Rio+Grande+do+Sul&amp;ll=-30.03291,-51.201684&amp;spn=0.020137,0.03695&amp;t=m&amp;z=14&amp;source=embed" style="color:#0000FF;text-align:left">Exibir mapa ampliado</a></small>

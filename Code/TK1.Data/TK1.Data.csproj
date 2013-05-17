@@ -68,6 +68,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bizz\Controller\BizzBaseController.cs" />
+    <Compile Include="Bizz\Controller\BizzUserController.cs" />
+    <Compile Include="Bizz\Controller\SiteAdController.cs" />
+    <Compile Include="Bizz\Model\BizzModel.Designer.cs">
+      <DependentUpon>BizzModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Bizz\Model\Extension\SiteAdExtension.cs" />
+    <Compile Include="Bizz\Presentation\SiteAdCategories.cs" />
+    <Compile Include="Bizz\Presentation\SiteAdDetail.cs" />
+    <Compile Include="Bizz\Presentation\SiteAdPicView.cs" />
+    <Compile Include="Bizz\Presentation\SiteAdSearchParameters.cs" />
+    <Compile Include="Bizz\Presentation\SiteAdSearchResultOrders.cs" />
+    <Compile Include="Bizz\Presentation\SiteAdTypes.cs" />
+    <Compile Include="Bizz\Presentation\SiteAdView.cs" />
+    <Compile Include="Bizz\Presentation\SiteReleaseAdView.cs" />
     <Compile Include="Const\AppLogLevels.cs" />
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\AuditController.cs" />
@@ -106,8 +123,16 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TK1DataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Bizz\Model\BizzModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BizzModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
+      <Project>{ab2ec906-93ae-4f64-b71d-e04c88036d7d}</Project>
+      <Name>TK1.Bizz</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>
       <Name>TK1</Name>

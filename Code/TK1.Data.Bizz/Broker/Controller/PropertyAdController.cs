@@ -133,7 +133,7 @@ namespace TK1.Data.Bizz.Broker.Controller
             try
             {
                 result = (from o in Entities.PropertyAds
-                          where o.Visible & o.CustomerCode == customerCode
+                          where o.Visible & o.CustomerCode == customerCode & o.Visible 
                           select o.PropertyTypeName).Distinct().ToList();
             }
             catch (Exception exception)
@@ -176,6 +176,19 @@ namespace TK1.Data.Bizz.Broker.Controller
             return result;
         }
 
+        public List<PropertyAdTypes> GetAdTypes()
+        {
+            var result = new List<PropertyAdTypes>();
+            foreach (var item in Entities.PropertyAds.Where(o => o.CustomerCode == customerCode & o.Visible).Select(o=>o.PropertyAdType).Distinct())
+            {
+                var adType = PropertyAdTypes._Undefined;
+                if(Enum.TryParse<PropertyAdTypes>(item, out adType))
+                    if(!result.Contains(adType))
+                        result.Add(adType);
+            }
+            return result;
+        }
+
         #endregion
 
         #region PRESENTATION METHODS
@@ -200,13 +213,15 @@ namespace TK1.Data.Bizz.Broker.Controller
 
                     result = new PropertyAdView()
                     {
-                        AdCategory = propertyCategory,
+                        CustomerCode = customerCode,
                         AdType = adType,
+                        AdCode = propertyAd.PropertyAdCode,
+
+                        AdCategory = propertyCategory,
                         AdTypeName = PropertyTranslations.GetAdTypeDisplayName(adType, uiCulture),
                         AreaDescription = propertyAd.AreaDescription,
                         City = propertyAd.CityName,
                         CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
-                        AdCode = propertyAd.PropertyAdCode,
                         CondoDescription = propertyAd.CondoDescription,
                         CondoTaxes = (float)(propertyAd.CondoTaxes ?? 0),
                         District = propertyAd.DistrictName,
@@ -326,9 +341,9 @@ namespace TK1.Data.Bizz.Broker.Controller
             {
                 var adTypeID = parameters.AdType.ToString();
                 var query = Entities.PropertyAds.Where(o => o.CustomerCode == customerCode & o.Visible & o.PropertyAdType == adTypeID);
-                if (parameters.Code > 0)
+                if (parameters.AdCode > 0)
                 {
-                    query = query.FilterCode(parameters.Code);
+                    query = query.FilterCode(parameters.AdCode);
                 }
                 else
                 {
@@ -357,10 +372,12 @@ namespace TK1.Data.Bizz.Broker.Controller
 
                     PropertyAdView propertyAdView = new PropertyAdView()
                     {
-                        AdCategory = propertyCategory,
+                        CustomerCode = customerCode,
                         AdType = parameters.AdType,
-                        CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
                         AdCode = propertyAd.PropertyAdCode,
+
+                        AdCategory = propertyCategory,
+                        CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
                         CondoTaxes = (float)(propertyAd.CondoTaxes ?? 0),
                         District = propertyAd.DistrictName,
                         MainPicUrl = mainPicUrl,
@@ -425,8 +442,8 @@ namespace TK1.Data.Bizz.Broker.Controller
             List<PropertyAdView> result = new List<PropertyAdView>();
             try
             {
-                string propertyType = adType.ToString();
-                var query = Entities.PropertyAds.Where(o => o.CustomerCode == customerCode & o.PropertyAdType == propertyType & o.Featured & o.Visible).Take(count);
+                string propertyAdType = adType.ToString();
+                var query = Entities.PropertyAds.Where(o => o.CustomerCode == customerCode & o.PropertyAdType == propertyAdType & o.Featured & o.Visible).Take(count);
                 foreach (var propertyAd in query.ToList())
                 {
                     var propertyCategory = PropertyAdCategories.Residencial;
@@ -441,10 +458,12 @@ namespace TK1.Data.Bizz.Broker.Controller
 
                     PropertyAdView propertyAdView = new PropertyAdView()
                     {
-                        AdCategory = propertyCategory,
+                        CustomerCode = customerCode,
                         AdType = adType,
-                        CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
                         AdCode = propertyAd.PropertyAdCode,
+
+                        AdCategory = propertyCategory,
+                        CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
                         CondoTaxes = (float)(propertyAd.CondoTaxes ?? 0),
                         District = propertyAd.DistrictName,
                         MainPicUrl = mainPicUrl,
