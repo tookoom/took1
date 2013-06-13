@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TK1ClientBaseModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="TK1ClientBaseModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="TK1ClientBaseModelStoreContainer">
           <EntitySet Name="TK1_ClientAppLog" EntityType="TK1ClientBaseModel.Store.TK1_ClientAppLog" store:Type="Tables" Schema="tk1" />
           <EntitySet Name="TK1_ClientAudit" EntityType="TK1ClientBaseModel.Store.TK1_ClientAudit" store:Type="Tables" Schema="tk1" />
@@ -50,8 +50,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TK1ClientBaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="TK1ClientBaseEntities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="TK1ClientBaseModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TK1ClientBaseEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="ClientAppLog" EntityType="TK1ClientBaseModel.ClientAppLog" />
           <EntitySet Name="ClientConfiguration" EntityType="TK1ClientBaseModel.ClientConfiguration" />
           <EntitySet Name="ClientAudit" EntityType="TK1ClientBaseModel.ClientAudit" />
@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="AppLogID" />
           </Key>
-          <Property Type="Int32" Name="AppLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AppLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="DateTime" Name="LogTimestamp" Nullable="false" />
           <Property Type="Int32" Name="LogType" Nullable="false" />
           <Property Type="String" Name="Message" MaxLength="65535" FixedLength="false" Unicode="false" />
@@ -70,7 +70,7 @@
           <Key>
             <PropertyRef Name="ConfigurationID" />
           </Key>
-          <Property Type="Int32" Name="ConfigurationID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ConfigurationID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="CustomerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Key" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Value" MaxLength="65535" FixedLength="false" Unicode="false" />
@@ -81,7 +81,7 @@
           <Key>
             <PropertyRef Name="AuditID" />
           </Key>
-          <Property Type="Int32" Name="AuditID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AuditID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="GUID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="EventTimestamp" Nullable="false" />
           <Property Type="Int32" Name="EventType" Nullable="false" />
@@ -97,7 +97,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TK1ClientBaseModelStoreContainer" CdmEntityContainer="TK1ClientBaseEntities">
           <EntitySetMapping Name="ClientAppLog">
             <EntityTypeMapping TypeName="TK1ClientBaseModel.ClientAppLog">
@@ -144,7 +144,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />

@@ -176,7 +176,7 @@ namespace TK1.Data.Bizz.Client.Model
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -195,7 +195,7 @@ namespace TK1.Data.Bizz.Client.Model
                 {
                     OnAppLogIDChanging(value);
                     ReportPropertyChanging("AppLogID");
-                    _AppLogID = StructuralObject.SetValidValue(value);
+                    _AppLogID = StructuralObject.SetValidValue(value, "AppLogID");
                     ReportPropertyChanged("AppLogID");
                     OnAppLogIDChanged();
                 }
@@ -220,7 +220,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnLogTimestampChanging(value);
                 ReportPropertyChanging("LogTimestamp");
-                _LogTimestamp = StructuralObject.SetValidValue(value);
+                _LogTimestamp = StructuralObject.SetValidValue(value, "LogTimestamp");
                 ReportPropertyChanged("LogTimestamp");
                 OnLogTimestampChanged();
             }
@@ -244,7 +244,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnLogTypeChanging(value);
                 ReportPropertyChanging("LogType");
-                _LogType = StructuralObject.SetValidValue(value);
+                _LogType = StructuralObject.SetValidValue(value, "LogType");
                 ReportPropertyChanged("LogType");
                 OnLogTypeChanged();
             }
@@ -268,7 +268,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, true);
+                _Message = StructuralObject.SetValidValue(value, true, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -292,7 +292,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnDataChanging(value);
                 ReportPropertyChanging("Data");
-                _Data = StructuralObject.SetValidValue(value, true);
+                _Data = StructuralObject.SetValidValue(value, true, "Data");
                 ReportPropertyChanged("Data");
                 OnDataChanged();
             }
@@ -303,7 +303,6 @@ namespace TK1.Data.Bizz.Client.Model
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -341,7 +340,7 @@ namespace TK1.Data.Bizz.Client.Model
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -360,7 +359,7 @@ namespace TK1.Data.Bizz.Client.Model
                 {
                     OnAuditIDChanging(value);
                     ReportPropertyChanging("AuditID");
-                    _AuditID = StructuralObject.SetValidValue(value);
+                    _AuditID = StructuralObject.SetValidValue(value, "AuditID");
                     ReportPropertyChanged("AuditID");
                     OnAuditIDChanged();
                 }
@@ -385,7 +384,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnGUIDChanging(value);
                 ReportPropertyChanging("GUID");
-                _GUID = StructuralObject.SetValidValue(value, false);
+                _GUID = StructuralObject.SetValidValue(value, false, "GUID");
                 ReportPropertyChanged("GUID");
                 OnGUIDChanged();
             }
@@ -409,7 +408,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnEventTimestampChanging(value);
                 ReportPropertyChanging("EventTimestamp");
-                _EventTimestamp = StructuralObject.SetValidValue(value);
+                _EventTimestamp = StructuralObject.SetValidValue(value, "EventTimestamp");
                 ReportPropertyChanged("EventTimestamp");
                 OnEventTimestampChanged();
             }
@@ -433,7 +432,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnEventTypeChanging(value);
                 ReportPropertyChanging("EventType");
-                _EventType = StructuralObject.SetValidValue(value);
+                _EventType = StructuralObject.SetValidValue(value, "EventType");
                 ReportPropertyChanged("EventType");
                 OnEventTypeChanged();
             }
@@ -457,7 +456,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnAssemblyChanging(value);
                 ReportPropertyChanging("Assembly");
-                _Assembly = StructuralObject.SetValidValue(value, true);
+                _Assembly = StructuralObject.SetValidValue(value, true, "Assembly");
                 ReportPropertyChanged("Assembly");
                 OnAssemblyChanged();
             }
@@ -481,7 +480,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnSourceChanging(value);
                 ReportPropertyChanging("Source");
-                _Source = StructuralObject.SetValidValue(value, true);
+                _Source = StructuralObject.SetValidValue(value, true, "Source");
                 ReportPropertyChanged("Source");
                 OnSourceChanged();
             }
@@ -505,7 +504,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, true);
+                _Message = StructuralObject.SetValidValue(value, true, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -529,7 +528,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnDataChanging(value);
                 ReportPropertyChanging("Data");
-                _Data = StructuralObject.SetValidValue(value, true);
+                _Data = StructuralObject.SetValidValue(value, true, "Data");
                 ReportPropertyChanged("Data");
                 OnDataChanged();
             }
@@ -553,7 +552,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnCustomerCodeChanging(value);
                 ReportPropertyChanging("CustomerCode");
-                _CustomerCode = StructuralObject.SetValidValue(value, false);
+                _CustomerCode = StructuralObject.SetValidValue(value, false, "CustomerCode");
                 ReportPropertyChanged("CustomerCode");
                 OnCustomerCodeChanged();
             }
@@ -577,7 +576,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnProcessNameChanging(value);
                 ReportPropertyChanging("ProcessName");
-                _ProcessName = StructuralObject.SetValidValue(value, false);
+                _ProcessName = StructuralObject.SetValidValue(value, false, "ProcessName");
                 ReportPropertyChanged("ProcessName");
                 OnProcessNameChanged();
             }
@@ -601,7 +600,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnReportVisibleChanging(value);
                 ReportPropertyChanging("ReportVisible");
-                _ReportVisible = StructuralObject.SetValidValue(value);
+                _ReportVisible = StructuralObject.SetValidValue(value, "ReportVisible");
                 ReportPropertyChanged("ReportVisible");
                 OnReportVisibleChanged();
             }
@@ -612,7 +611,6 @@ namespace TK1.Data.Bizz.Client.Model
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -642,7 +640,7 @@ namespace TK1.Data.Bizz.Client.Model
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -661,7 +659,7 @@ namespace TK1.Data.Bizz.Client.Model
                 {
                     OnConfigurationIDChanging(value);
                     ReportPropertyChanging("ConfigurationID");
-                    _ConfigurationID = StructuralObject.SetValidValue(value);
+                    _ConfigurationID = StructuralObject.SetValidValue(value, "ConfigurationID");
                     ReportPropertyChanged("ConfigurationID");
                     OnConfigurationIDChanged();
                 }
@@ -686,7 +684,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnCustomerCodeChanging(value);
                 ReportPropertyChanging("CustomerCode");
-                _CustomerCode = StructuralObject.SetValidValue(value, false);
+                _CustomerCode = StructuralObject.SetValidValue(value, false, "CustomerCode");
                 ReportPropertyChanged("CustomerCode");
                 OnCustomerCodeChanged();
             }
@@ -710,7 +708,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnKeyChanging(value);
                 ReportPropertyChanging("Key");
-                _Key = StructuralObject.SetValidValue(value, false);
+                _Key = StructuralObject.SetValidValue(value, false, "Key");
                 ReportPropertyChanged("Key");
                 OnKeyChanged();
             }
@@ -734,7 +732,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnValueChanging(value);
                 ReportPropertyChanging("Value");
-                _Value = StructuralObject.SetValidValue(value, true);
+                _Value = StructuralObject.SetValidValue(value, true, "Value");
                 ReportPropertyChanged("Value");
                 OnValueChanged();
             }
@@ -758,7 +756,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnGroupChanging(value);
                 ReportPropertyChanging("Group");
-                _Group = StructuralObject.SetValidValue(value, true);
+                _Group = StructuralObject.SetValidValue(value, true, "Group");
                 ReportPropertyChanged("Group");
                 OnGroupChanged();
             }
@@ -782,7 +780,7 @@ namespace TK1.Data.Bizz.Client.Model
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, true);
+                _Type = StructuralObject.SetValidValue(value, true, "Type");
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -793,10 +791,8 @@ namespace TK1.Data.Bizz.Client.Model
 
         #endregion
 
-    
     }
 
     #endregion
 
-    
 }
