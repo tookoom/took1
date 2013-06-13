@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TK1.Bizz.Mdo.Const;
-using TK1.Bizz.Data.Presentation;
-using TK1.Bizz.Data;
+using TK1.Data.Bizz.Presentation;
 
 namespace TK1.Bizz.Mdo.Data
 {

@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TK1.Bizz.Pieta;
 using System.IO;
-using TK1.Bizz.Client.Data.Presentation;
 using TK1.Bizz.Pieta.Data.Controller;
-using TK1.Bizz.Client.Data.Controller;
+using TK1.Bizz.Broker.Presentation;
+using TK1.Data.Bizz.Client.Controller;
 
 public partial class Imovel_Default : System.Web.UI.Page
 {

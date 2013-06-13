@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TK1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="TK1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="TK1ModelStoreContainer">
-          <EntitySet Name="AppRole" EntityType="TK1Model.Store.AppRole" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="CustomerApp" EntityType="TK1Model.Store.CustomerApp" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="CustomerData" EntityType="TK1Model.Store.CustomerData" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="SiteAd" EntityType="TK1Model.Store.SiteAd" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="SiteAdDetail" EntityType="TK1Model.Store.SiteAdDetail" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="SiteAdIDGenerator" EntityType="TK1Model.Store.SiteAdIDGenerator" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="SiteAdPic" EntityType="TK1Model.Store.SiteAdPic" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="SiteAdStatus" EntityType="TK1Model.Store.SiteAdStatus" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="SiteAdType" EntityType="TK1Model.Store.SiteAdType" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="UserCustomerApp" EntityType="TK1Model.Store.UserCustomerApp" store:Type="Tables" Schema="Bizz" />
-          <EntitySet Name="App" EntityType="TK1Model.Store.App" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="Customer" EntityType="TK1Model.Store.Customer" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="AppRole" EntityType="TK1Model.Store.AppRole" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CustomerApp" EntityType="TK1Model.Store.CustomerApp" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CustomerData" EntityType="TK1Model.Store.CustomerData" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SiteAd" EntityType="TK1Model.Store.SiteAd" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SiteAdDetail" EntityType="TK1Model.Store.SiteAdDetail" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SiteAdIDGenerator" EntityType="TK1Model.Store.SiteAdIDGenerator" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SiteAdPic" EntityType="TK1Model.Store.SiteAdPic" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SiteAdStatus" EntityType="TK1Model.Store.SiteAdStatus" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="SiteAdType" EntityType="TK1Model.Store.SiteAdType" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="UserCustomerApp" EntityType="TK1Model.Store.UserCustomerApp" store:Type="Tables" Schema="Bizz" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="App" EntityType="TK1Model.Store.App" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Customer" EntityType="TK1Model.Store.Customer" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_AppRole_App" Association="TK1Model.Store.FK_AppRole_App">
             <End Role="App" EntitySet="App" />
             <End Role="AppRole" EntitySet="AppRole" />
@@ -348,8 +348,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TK1Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="BizzEntities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="TK1Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BizzEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="SiteAdTypes" EntityType="TK1Model.SiteAdType" />
           <EntitySet Name="SiteAds" EntityType="TK1Model.SiteAd" />
           <EntitySet Name="SiteAdDetails" EntityType="TK1Model.SiteAdDetail" />
@@ -455,7 +455,7 @@
           <Key>
             <PropertyRef Name="SiteAdDetailID" />
           </Key>
-          <Property Type="Int32" Name="SiteAdDetailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SiteAdDetailID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="SiteAdID" Nullable="false" />
           <Property Type="Int32" Name="SiteAdTypeID" Nullable="false" />
           <Property Type="String" Name="CustomerCodename" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -531,7 +531,7 @@
           <Key>
             <PropertyRef Name="CustomerDataID" />
           </Key>
-          <Property Type="Int32" Name="CustomerDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerDataID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="CustomerID" Nullable="false" />
           <Property Type="Int32" Name="BizzCode" Nullable="false" />
           <Property Type="String" Name="BizzAcronym" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -545,7 +545,7 @@
           <Key>
             <PropertyRef Name="AppRoleID" />
           </Key>
-          <Property Type="Int32" Name="AppRoleID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AppRoleID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="AppID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -556,7 +556,7 @@
           <Key>
             <PropertyRef Name="AppID" />
           </Key>
-          <Property Type="Int32" Name="AppID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AppID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="ContextID" />
           <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AppRoles" Relationship="TK1Model.FK_AppRole_App" FromRole="App" ToRole="AppRole" />
@@ -566,7 +566,7 @@
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="ContextID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FullName" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -601,7 +601,7 @@
           <Key>
             <PropertyRef Name="CustomerAppID" />
           </Key>
-          <Property Type="Int32" Name="CustomerAppID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CustomerAppID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="CustomerID" Nullable="false" />
           <Property Type="Int32" Name="AppID" Nullable="false" />
           <Property Type="String" Name="Status" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
@@ -637,7 +637,7 @@
           <Key>
             <PropertyRef Name="UserCustomerAppID" />
           </Key>
-          <Property Type="Int32" Name="UserCustomerAppID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserCustomerAppID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="UserID" Nullable="false" />
           <Property Type="Int32" Name="CustomerAppID" Nullable="false" />
           <Property Type="Int32" Name="AppRoleID" Nullable="false" />
@@ -715,7 +715,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TK1ModelStoreContainer" CdmEntityContainer="BizzEntities">
           <EntitySetMapping Name="SiteAdTypes"><EntityTypeMapping TypeName="TK1Model.SiteAdType"><MappingFragment StoreEntitySet="SiteAdType">
             <ScalarProperty Name="SiteAdTypeID" ColumnName="SiteAdTypeID" />
@@ -866,7 +866,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -886,15 +886,15 @@
         <EntityTypeShape EntityType="TK1Model.SiteAd" Width="1.5" PointX="3.875" PointY="4" Height="5.4417122395833317" />
         <EntityTypeShape EntityType="TK1Model.SiteAdDetail" Width="1.5" PointX="6.75" PointY="4.5" Height="2.5571907552083317" />
         <EntityTypeShape EntityType="TK1Model.SiteAdPic" Width="2.5" PointX="6.375" PointY="8.25" Height="3.1340950520833317" />
-        <AssociationConnector Association="TK1Model.FK_SiteAd_SiteAdType" >
+        <AssociationConnector Association="TK1Model.FK_SiteAd_SiteAdType">
           <ConnectorPoint PointX="2.625" PointY="8.0189925130208337" />
           <ConnectorPoint PointX="3.875" PointY="8.0189925130208337" />
         </AssociationConnector>
-        <AssociationConnector Association="TK1Model.FK_SiteAdDetail_SiteAd" >
+        <AssociationConnector Association="TK1Model.FK_SiteAdDetail_SiteAd">
           <ConnectorPoint PointX="5.375" PointY="5.7785953776041659" />
           <ConnectorPoint PointX="6.75" PointY="5.7785953776041659" />
         </AssociationConnector>
-        <AssociationConnector Association="TK1Model.FK_SiteAdPic_SiteAd" >
+        <AssociationConnector Association="TK1Model.FK_SiteAdPic_SiteAd">
           <ConnectorPoint PointX="5.375" PointY="9.3266097005208337" />
           <ConnectorPoint PointX="6.375" PointY="9.3266097005208337" />
         </AssociationConnector>
@@ -902,42 +902,42 @@
         <EntityTypeShape EntityType="TK1Model.AppRole" Width="1.5" PointX="11" PointY="2.375" Height="2.1725878906250102" />
         <EntityTypeShape EntityType="TK1Model.App" Width="1.5" PointX="9" PointY="3" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="TK1Model.Customer" Width="1.5" PointX="1" PointY="0.75" Height="2.1725878906250102" />
-        <AssociationConnector Association="TK1Model.FK_AppRole_App" >
+        <AssociationConnector Association="TK1Model.FK_AppRole_App">
           <ConnectorPoint PointX="10.5" PointY="3.7737939453125" />
           <ConnectorPoint PointX="11" PointY="3.7737939453125" />
         </AssociationConnector>
-        <AssociationConnector Association="TK1Model.FK_CustomerData_Customer" >
+        <AssociationConnector Association="TK1Model.FK_CustomerData_Customer">
           <ConnectorPoint PointX="1.8125" PointY="2.922587890625" />
           <ConnectorPoint PointX="1.8125" PointY="3.875" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TK1Model.CustomerApp" Width="1.5" PointX="3.125" PointY="0.875" Height="2.364889322916667" />
-        <AssociationConnector Association="TK1Model.FK_CustomerApp_App" >
+        <AssociationConnector Association="TK1Model.FK_CustomerApp_App">
           <ConnectorPoint PointX="9" PointY="3.5886951614583338" />
           <ConnectorPoint PointX="3.46875" PointY="3.5886951614583338" />
           <ConnectorPoint PointX="3.46875" PointY="3.239889322916667" />
         </AssociationConnector>
-        <AssociationConnector Association="TK1Model.FK_CustomerApp_Customer" >
+        <AssociationConnector Association="TK1Model.FK_CustomerApp_Customer">
           <ConnectorPoint PointX="2.5" PointY="1.8987939453125" />
           <ConnectorPoint PointX="3.125" PointY="1.8987939453125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TK1Model.UserCustomerApp" Width="2.25" PointX="13.25" PointY="1.5" Height="2.3648893229166674" />
-        <AssociationConnector Association="TK1Model.FK_UserCustomerApp_AppRole" >
+        <AssociationConnector Association="TK1Model.FK_UserCustomerApp_AppRole">
           <ConnectorPoint PointX="12.5" PointY="3.1199446614583337" />
           <ConnectorPoint PointX="13.25" PointY="3.1199446614583337" />
         </AssociationConnector>
-        <AssociationConnector Association="TK1Model.FK_UserCustomerApp_CustomerApp" >
+        <AssociationConnector Association="TK1Model.FK_UserCustomerApp_CustomerApp">
           <ConnectorPoint PointX="4.625" PointY="1.90625" />
           <ConnectorPoint PointX="13.25" PointY="1.90625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TK1Model.SiteAdStatu" Width="1.5" PointX="1.125" PointY="9" Height="1.5956835937500031" />
-        <AssociationConnector Association="TK1Model.FK_SiteAd_SiteAdStatus" >
+        <AssociationConnector Association="TK1Model.FK_SiteAd_SiteAdStatus">
           <ConnectorPoint PointX="2.625" PointY="9.7490175320002983" />
           <ConnectorPoint PointX="2.9166666666666665" PointY="9.7490175320002983" />
           <ConnectorPoint PointX="3.0833333333333335" PointY="9.7490175320002983" />
           <ConnectorPoint PointX="3.875" PointY="9.7490175320002983" />
         </AssociationConnector>
         <EntityTypeShape EntityType="TK1Model.SiteAdIDGenerator" Width="1.5" PointX="3.375" PointY="12.125" Height="1.7879850260416674" />
-        <AssociationConnector Association="TK1Model.FK_SiteAdIDGenerator_SiteAdType" >
+        <AssociationConnector Association="TK1Model.FK_SiteAdIDGenerator_SiteAdType">
           <ConnectorPoint PointX="2.6249999999999996" PointY="8.9129850260416674" />
           <ConnectorPoint PointX="3" PointY="9.2879850260416674" />
           <ConnectorPoint PointX="3" PointY="13.018992513020834" />

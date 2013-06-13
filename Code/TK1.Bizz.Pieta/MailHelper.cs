@@ -5,8 +5,7 @@ using System.Text;
 using TK1.Data;
 using System.Net;
 using System.Net.Mail;
-using TK1.Bizz.Client.Data.Controller;
-using TK1.Bizz.Client.Data;
+using TK1.Data.Bizz.Client.Controller;
 
 namespace TK1.Bizz.Pieta
 {

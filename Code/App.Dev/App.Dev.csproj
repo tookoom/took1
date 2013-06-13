@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TK1.Dev</RootNamespace>
     <AssemblyName>TK1.Dev</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -18,7 +18,8 @@
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -43,6 +44,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,6 +53,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -187,14 +190,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TK1.Basics.Controls\TK1.Basics.Controls.csproj">
-      <Project>{B681C774-1337-4713-B04A-E839B1E4E31E}</Project>
-      <Name>TK1.Basics.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
-      <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
-      <Name>TK1.Basics</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj">
       <Project>{CF258131-13C0-4F5D-8657-891E00E66815}</Project>
       <Name>TK1.Bizz.Inetsoft</Name>
@@ -214,6 +209,14 @@
     <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
       <Project>{AB2EC906-93AE-4F64-B71D-E04C88036D7D}</Project>
       <Name>TK1.Bizz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Data.Bizz.Client\TK1.Data.Bizz.Client.csproj">
+      <Project>{e569e820-ae28-4280-80de-f3f29d14b3b2}</Project>
+      <Name>TK1.Data.Bizz.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Data.Bizz\TK1.Data.Bizz.csproj">
+      <Project>{16607470-70ed-465c-80e5-e80753dcbca3}</Project>
+      <Name>TK1.Data.Bizz</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>

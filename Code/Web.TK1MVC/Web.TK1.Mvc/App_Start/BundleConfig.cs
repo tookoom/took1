@@ -8,8 +8,25 @@ namespace Web.TK1.Mvc
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //CUSTOM SCRIPTS
+            bundles.Add(new ScriptBundle("~/bundles/bizzscripts").Include(
+                "~/Scripts/jquery.tn3lite.min.js", "~/Scripts/tk1.bizz.broker.js"));
+
+            //CUSTOM CSS
+            bundles.Add(new StyleBundle("~/Content/bizzcss").Include(
+                "~/Content/base.css", "~/Content/broker.css", "~/Content/brokerparts.css"));
+
+            bundles.Add(new StyleBundle("~/Content/quakecss").Include(
+                "~/Content/ThirdParty/QuakeSlider/quake.slider.css",
+                "~/Content/ThirdParty/QuakeSlider/plain/quake.skin.css"));
+
+            bundles.Add(new StyleBundle("~/Content/tn3css").Include(
+                "~/Content/ThirdParty/tn3/tn3.css"));
+
+
+            #region DEFAULT BUNDLES
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -18,9 +35,6 @@ namespace Web.TK1.Mvc
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            //Custom Scripts
-            bundles.Add(new ScriptBundle("~/bundles/picgallery").Include(
-                "~/Scripts/quake.slider*", "~/Scripts/Custom/PicGallery.js"));
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -28,11 +42,7 @@ namespace Web.TK1.Mvc
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/base.css","~/Content/site.css"));
-            bundles.Add(new StyleBundle("~/Content/bizzcss").Include("~/Content/base.css", "~/Content/broker.css"));
-            bundles.Add(new StyleBundle("~/Content/brokercss")
-                .Include("~/Content/ThirdParty/QuakeSlider/quake.slider.css",
-                    "~/Content/ThirdParty/QuakeSlider/plain/quake.skin.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/base.css", "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -47,6 +57,8 @@ namespace Web.TK1.Mvc
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            #endregion
         }
     }
 }

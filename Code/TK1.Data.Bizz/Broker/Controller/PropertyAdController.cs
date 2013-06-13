@@ -34,6 +34,18 @@ namespace TK1.Data.Bizz.Broker.Controller
         }
 
         #region MASTER DATA METHODS
+        public List<PropertyAdTypes> GetAdTypes()
+        {
+            var result = new List<PropertyAdTypes>();
+            foreach (var item in Entities.PropertyAds.Where(o => o.CustomerCode == customerCode & o.Visible).Select(o => o.PropertyAdType).Distinct())
+            {
+                var adType = PropertyAdTypes._Undefined;
+                if (Enum.TryParse<PropertyAdTypes>(item, out adType))
+                    if (!result.Contains(adType))
+                        result.Add(adType);
+            }
+            return result;
+        }
         public List<string> GetCities()
         {
             List<string> result = new List<string>();
@@ -176,18 +188,6 @@ namespace TK1.Data.Bizz.Broker.Controller
             return result;
         }
 
-        public List<PropertyAdTypes> GetAdTypes()
-        {
-            var result = new List<PropertyAdTypes>();
-            foreach (var item in Entities.PropertyAds.Where(o => o.CustomerCode == customerCode & o.Visible).Select(o=>o.PropertyAdType).Distinct())
-            {
-                var adType = PropertyAdTypes._Undefined;
-                if(Enum.TryParse<PropertyAdTypes>(item, out adType))
-                    if(!result.Contains(adType))
-                        result.Add(adType);
-            }
-            return result;
-        }
 
         #endregion
 
@@ -348,7 +348,8 @@ namespace TK1.Data.Bizz.Broker.Controller
                 else
                 {
                     query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
-                    query = query.FilterCity(parameters.CityName);
+                    if(parameters.CityName!="*")
+                        query = query.FilterCity(parameters.CityName);
                     query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
                     query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
                     if (parameters.PropertyType != "*")
@@ -393,6 +394,65 @@ namespace TK1.Data.Bizz.Broker.Controller
             }
             if (parameters.ResultOrdering != PropertyAdSearchResultOrders._Undefined)
                 result = OrderResults(result, parameters.ResultOrdering);
+            return result;
+        }
+        public List<PropertyAdView> SearchPropertyAds(PropertyAdSearchParameters parameters, int startIndex, int pageSize)
+        {
+            List<PropertyAdView> result = new List<PropertyAdView>();
+            if (parameters != null)
+            {
+                var adTypeID = parameters.AdType.ToString();
+                var query = Entities.PropertyAds.Where(o => o.CustomerCode == customerCode & o.Visible & o.PropertyAdType == adTypeID);
+                if (parameters.AdCode > 0)
+                {
+                    query = query.FilterCode(parameters.AdCode);
+                }
+                else
+                {
+                    query = query.FilterArea(parameters.AreaFrom, parameters.AreaTo);
+                    query = query.FilterCity(parameters.CityName);
+                    query = query.FilterPrice(parameters.PriceFrom, parameters.PriceTo);
+                    query = query.FilterRooms(parameters.RoomsFrom, parameters.RoomsTo);
+                    if (parameters.PropertyType != "*")
+                        query = query.FilterPropertyType(parameters.PropertyType);
+                    if (!parameters.Districts.Contains("*"))
+                        query = query.FilterDistrict(parameters.Districts);
+                }
+                foreach (var propertyAd in query.Skip(startIndex).Take(pageSize))
+                {
+                    var propertyCategory = PropertyAdCategories.Residencial;
+                    if (propertyAd.CategoryName != PropertyAdCategories.Residencial.ToString())
+                        propertyCategory = PropertyAdCategories.Comercial;
+
+                    string mainPicUrl = string.Empty;
+                    if (propertyAd.PropertyAdPics.Count > 0)
+                        mainPicUrl = propertyAd.PropertyAdPics.OrderBy(o => o.PropertyAdPicID).FirstOrDefault().ThumbnailUrl;
+                    else
+                        mainPicUrl = @"http://www.tk1.net.br/Images/ImagemNaoDisponivelThumb.png";
+
+                    PropertyAdView propertyAdView = new PropertyAdView()
+                    {
+                        CustomerCode = customerCode,
+                        AdType = parameters.AdType,
+                        AdCode = propertyAd.PropertyAdCode,
+
+                        AdCategory = propertyCategory,
+                        CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
+                        CondoTaxes = (float)(propertyAd.CondoTaxes ?? 0),
+                        District = propertyAd.DistrictName,
+                        MainPicUrl = mainPicUrl,
+                        InternalArea = (float)propertyAd.InternalArea,
+                        TotalArea = (float)propertyAd.TotalArea,
+                        TotalRooms = propertyAd.TotalRooms,
+                        PropertyType = propertyAd.PropertyTypeName,
+                        Value = (float)(propertyAd.Value)
+
+                    };
+                    result.Add(propertyAdView);
+                }
+            }
+            //if (parameters.ResultOrdering != PropertyAdSearchResultOrders._Undefined)
+            //    result = OrderResults(result, parameters.ResultOrdering);
             return result;
         }
         public static List<PropertyAdView> OrderResults(List<PropertyAdView> propertyAds, PropertyAdSearchResultOrders resultOrder)

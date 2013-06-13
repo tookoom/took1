@@ -25,6 +25,29 @@ namespace TK1.Bizz.Broker.Presentation.Culture
             return result;
 
         }
+        public static PropertyAdTypes GetAdTypeFromDisplayName(string adType, PropertyAdTypes defaultValue)
+        {
+            PropertyAdTypes result = defaultValue;
+            if(adType == null)
+                adType = string.Empty;
+            switch (adType.ToUpper())
+            {
+                case"LANÇAMENTO":
+                case"LANCAMENTO":
+                case"RELEASE":
+                    result = PropertyAdTypes.Release;
+                    break;
+                case "ALUGUEL":
+                case"RENT":
+                    result = PropertyAdTypes.Rent;
+                    break;
+                case "VENDA":
+                case"SELL":
+                    result = PropertyAdTypes.Sell;
+                    break;
+            }
+            return result;
+        }
         public static string GetRoomDisplayName(string propertyType, string uiCulture)
         {
             if (propertyType == null)

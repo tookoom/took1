@@ -14,11 +14,7 @@ namespace Web.TK1.Mvc.Areas.Bizz
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            //context.MapRoute(
-            //    "Bizz_Broker_PropertyAd",
-            //    "Bizz/Broker/Imovel/{customerCode}/{adType}/{adCode}",
-            //    new { customerCode = UrlParameter.Optional, adType = UrlParameter.Optional, adCode = UrlParameter.Optional }
-            //);
+
             context.MapRoute(
                 "Bizz_Broker_PropertyReleaseAd",
                 "Bizz/{controller}/{action}/{customerCode}/Lancamento/{adCode}",
@@ -40,6 +36,16 @@ namespace Web.TK1.Mvc.Areas.Bizz
                 "Bizz/{controller}/{action}/{customerCode}/{adType}/{adCode}",
                 new { action = "Imovel", customerCode = "", adType = "", adCode = 0 }
             );
+
+
+            #region AJAX
+            context.MapRoute(
+                    "Bizz_Broker_Ajax_Cities",
+                    "Bizz/{controller}/{action}/{customerCode}/{adType}",
+                    new { action = "Cities", customerCode = "", adType = "" }
+                ); 
+            #endregion
+
             context.MapRoute(
                 "Bizz_default",
                 "Bizz/{controller}/{action}/{customerCode}",

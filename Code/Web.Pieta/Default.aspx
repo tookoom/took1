@@ -95,7 +95,7 @@
 
     <asp:ObjectDataSource ID="objectDataSourceFeaturedPropertyAds" runat="server" 
         SelectMethod="GetFeaturedSellingPropertyAds" 
-        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource">
+        TypeName="TK1.Bizz.Data.Client.Binding.PropertyAdBindingSource">
         <SelectParameters>
             <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
             <asp:Parameter DefaultValue="5" Name="count" Type="Int32" />
@@ -104,7 +104,7 @@
 
     <asp:ObjectDataSource ID="objectDataSourcePropertyReleaseAds" runat="server" 
         SelectMethod="GetPropertyReleaseAds" 
-        TypeName="TK1.Bizz.Client.Data.Binding.PropertyAdBindingSource">
+        TypeName="TK1.Bizz.Data.Client.Binding.PropertyAdBindingSource">
         <SelectParameters>
             <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
         </SelectParameters>

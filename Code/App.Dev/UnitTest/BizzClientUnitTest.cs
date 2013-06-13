@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TK1.Bizz.Client.Data.Controller;
-using TK1.Bizz.Client.Data;
+using TK1.Data.Bizz.Client.Controller;
 
 namespace TK1.Dev.UnitTest
 {

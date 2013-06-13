@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPaging">
+      <HintPath>..\packages\MvcPaging.2.0.3\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -183,6 +186,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Bizz\BizzAreaRegistration.cs" />
     <Compile Include="Areas\Bizz\Controllers\BrokerController.cs" />
+    <Compile Include="Areas\Bizz\Models\BrokerSessionKeys.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -196,6 +200,8 @@
   <ItemGroup>
     <Content Include="Content\Broker.css" />
     <Content Include="Content\Base.css" />
+    <Content Include="Content\BrokerParts.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -349,7 +355,10 @@
     <Content Include="Images\LogoTK1_GRAY.png" />
     <Content Include="Images\LogoTK1_Icon.png" />
     <Content Include="Images\LogoTK1_Small.jpg" />
-    <Content Include="Scripts\Custom\PicGallery.js" />
+    <Content Include="Scripts\tk1.bizz.broker.js" />
+    <Content Include="Scripts\jquery.tn3lite.min.js" />
+    <Content Include="Scripts\Test\example1_lite.html" />
+    <Content Include="Scripts\tk1.picgallery.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -366,10 +375,25 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\Test\index.htm" />
     <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="Scripts\jquery.pikachoose.js" />
     <Content Include="Scripts\jquery.pikachoose.min.js" />
+    <Content Include="Scripts\quake.slider-min.js" />
+    <Content Include="Scripts\quake.slider.js" />
+    <Content Include="Scripts\Test\index.htm" />
+    <Content Include="Scripts\Test\images\nature\1.jpg" />
+    <Content Include="Scripts\Test\images\nature\10.jpg" />
+    <Content Include="Scripts\Test\images\nature\112.jpg" />
+    <Content Include="Scripts\Test\images\nature\12.jpg" />
+    <Content Include="Scripts\Test\images\nature\2.jpg" />
+    <Content Include="Scripts\Test\images\nature\22.jpg" />
+    <Content Include="Scripts\Test\images\nature\3.jpg" />
+    <Content Include="Scripts\Test\images\nature\33.jpg" />
+    <Content Include="Scripts\Test\images\nature\34.jpg" />
+    <Content Include="Scripts\Test\images\nature\4.jpg" />
+    <Content Include="Scripts\Test\images\nature\5.jpg" />
+    <Content Include="Scripts\Test\images\nature\7.jpg" />
+    <Content Include="Scripts\Test\_index.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -410,10 +434,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Broker\Index.cshtml" />
+    <Content Include="Scripts\Test\images\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Bizz\Models\" />
     <Folder Include="Areas\User\Controllers\" />
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Areas\User\Views\Shared\" />
@@ -455,7 +479,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53392</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:52830/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TK1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="TK1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="TK1ModelStoreContainer">
-          <EntitySet Name="EventLog" EntityType="TK1Model.Store.EventLog" store:Type="Tables" Schema="Audit" />
-          <EntitySet Name="EventType" EntityType="TK1Model.Store.EventType" store:Type="Tables" Schema="Audit" />
-          <EntitySet Name="ProcExec" EntityType="TK1Model.Store.ProcExec" store:Type="Tables" Schema="Audit" />
-          <EntitySet Name="ProcExecStatus" EntityType="TK1Model.Store.ProcExecStatus" store:Type="Tables" Schema="Audit" />
-          <EntitySet Name="XmlFiles" EntityType="TK1Model.Store.XmlFiles" store:Type="Tables" Schema="DataLoad" />
-          <EntitySet Name="AddressData" EntityType="TK1Model.Store.AddressData" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="AddressType" EntityType="TK1Model.Store.AddressType" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="App" EntityType="TK1Model.Store.App" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="AppLog" EntityType="TK1Model.Store.AppLog" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="Category" EntityType="TK1Model.Store.Category" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="ContactData" EntityType="TK1Model.Store.ContactData" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="ContactType" EntityType="TK1Model.Store.ContactType" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="Context" EntityType="TK1Model.Store.Context" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="Customer" EntityType="TK1Model.Store.Customer" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="CustomerContactData" EntityType="TK1Model.Store.CustomerContactData" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="CustomerPerson" EntityType="TK1Model.Store.CustomerPerson" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="Parameter" EntityType="TK1Model.Store.Parameter" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="ParameterGroup" EntityType="TK1Model.Store.ParameterGroup" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="Person" EntityType="TK1Model.Store.Person" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="PersonAddressData" EntityType="TK1Model.Store.PersonAddressData" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="PersonContactData" EntityType="TK1Model.Store.PersonContactData" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="Process" EntityType="TK1Model.Store.Process" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="User" EntityType="TK1Model.Store.User" store:Type="Tables" Schema="TK1" />
-          <EntitySet Name="WebSession" EntityType="TK1Model.Store.WebSession" store:Type="Tables" Schema="TK1" />
+          <EntitySet Name="EventLog" EntityType="TK1Model.Store.EventLog" store:Type="Tables" Schema="Audit" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="EventType" EntityType="TK1Model.Store.EventType" store:Type="Tables" Schema="Audit" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ProcExec" EntityType="TK1Model.Store.ProcExec" store:Type="Tables" Schema="Audit" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ProcExecStatus" EntityType="TK1Model.Store.ProcExecStatus" store:Type="Tables" Schema="Audit" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="XmlFiles" EntityType="TK1Model.Store.XmlFiles" store:Type="Tables" Schema="DataLoad" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AddressData" EntityType="TK1Model.Store.AddressData" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AddressType" EntityType="TK1Model.Store.AddressType" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="App" EntityType="TK1Model.Store.App" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AppLog" EntityType="TK1Model.Store.AppLog" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Category" EntityType="TK1Model.Store.Category" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ContactData" EntityType="TK1Model.Store.ContactData" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ContactType" EntityType="TK1Model.Store.ContactType" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Context" EntityType="TK1Model.Store.Context" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Customer" EntityType="TK1Model.Store.Customer" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CustomerContactData" EntityType="TK1Model.Store.CustomerContactData" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CustomerPerson" EntityType="TK1Model.Store.CustomerPerson" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Parameter" EntityType="TK1Model.Store.Parameter" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ParameterGroup" EntityType="TK1Model.Store.ParameterGroup" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Person" EntityType="TK1Model.Store.Person" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PersonAddressData" EntityType="TK1Model.Store.PersonAddressData" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PersonContactData" EntityType="TK1Model.Store.PersonContactData" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Process" EntityType="TK1Model.Store.Process" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="User" EntityType="TK1Model.Store.User" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WebSession" EntityType="TK1Model.Store.WebSession" store:Type="Tables" Schema="TK1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_AddressData_AddressType" Association="TK1Model.Store.FK_AddressData_AddressType">
             <End Role="AddressType" EntitySet="AddressType" />
             <End Role="AddressData" EntitySet="AddressData" />
@@ -620,8 +620,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TK1Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="TK1Entities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="TK1Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TK1Entities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="ProcExecs" EntityType="TK1Model.ProcExec" />
           <EntitySet Name="ProcExecStatus" EntityType="TK1Model.ProcExecStatu" />
           <EntitySet Name="XmlFiles" EntityType="TK1Model.XmlFile" />
@@ -743,7 +743,7 @@
           <Key>
             <PropertyRef Name="ProcExecID" />
           </Key>
-          <Property Name="ProcExecID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcExecID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ProcessID" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
           <Property Name="BeginTimestamp" Type="DateTime" />
@@ -775,7 +775,7 @@
           <Key>
             <PropertyRef Name="AddressDataID" />
           </Key>
-          <Property Name="AddressDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="AddressTypeID" Type="Int32" Nullable="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
           <Property Name="Index" Type="Int32" Nullable="false" />
@@ -786,7 +786,7 @@
           <Key>
             <PropertyRef Name="AddressTypeID" />
           </Key>
-          <Property Name="AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="AddressDatas" Relationship="TK1Model.FK_AddressData_AddressType" FromRole="AddressType" ToRole="AddressData" />
         </EntityType>
@@ -794,7 +794,7 @@
           <Key>
             <PropertyRef Name="AppID" />
           </Key>
-          <Property Name="AppID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ContextID" Type="Int32" />
           <NavigationProperty Name="Context" Relationship="TK1Model.FK_App_Context" FromRole="App" ToRole="Context" />
           <NavigationProperty Name="Processes" Relationship="TK1Model.FK_Process_App" FromRole="App" ToRole="Process" />
@@ -804,7 +804,7 @@
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ContextID" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="Caption" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
@@ -816,7 +816,7 @@
           <Key>
             <PropertyRef Name="ContactDataID" />
           </Key>
-          <Property Name="ContactDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ContactTypeID" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
@@ -829,7 +829,7 @@
           <Key>
             <PropertyRef Name="ContactTypeID" />
           </Key>
-          <Property Name="ContactTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
           <Property Name="CustomData" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="ContactDatas" Relationship="TK1Model.FK_ContactData_ContactDataType" FromRole="ContactType" ToRole="ContactData" />
@@ -838,7 +838,7 @@
           <Key>
             <PropertyRef Name="ContextID" />
           </Key>
-          <Property Name="ContextID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContextID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
           <Property Name="CustomData" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="XmlFiles" Relationship="TK1Model.FK_XmlFiles_Context" FromRole="Context" ToRole="XmlFiles" />
@@ -851,7 +851,7 @@
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ContextID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="FullName" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
@@ -874,7 +874,7 @@
           <Key>
             <PropertyRef Name="CustomerPersonID" />
           </Key>
-          <Property Name="CustomerPersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerPersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="TK1Model.FK_CustomerPerson_Customer" FromRole="CustomerPerson" ToRole="Customer" />
@@ -884,7 +884,7 @@
           <Key>
             <PropertyRef Name="ParameterID" />
           </Key>
-          <Property Name="ParameterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ParameterGroupID" Type="Int32" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="Value" Type="String" MaxLength="1024" Unicode="false" FixedLength="false" />
@@ -894,7 +894,7 @@
           <Key>
             <PropertyRef Name="ParameterGroupID" />
           </Key>
-          <Property Name="ParameterGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Parameters" Relationship="TK1Model.FK_Parameter_ParameterGroup" FromRole="ParameterGroup" ToRole="Parameter" />
         </EntityType>
@@ -902,7 +902,7 @@
           <Key>
             <PropertyRef Name="PersonID" />
           </Key>
-          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="FirstName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="LastName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="NickName" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
@@ -919,7 +919,7 @@
           <Key>
             <PropertyRef Name="PersonAddressID" />
           </Key>
-          <Property Name="PersonAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
           <Property Name="AddressDataID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AddressData" Relationship="TK1Model.FK_PersonAddress_AddressData" FromRole="PersonAddressData" ToRole="AddressData" />
@@ -929,7 +929,7 @@
           <Key>
             <PropertyRef Name="PersonContactDataID" />
           </Key>
-          <Property Name="PersonContactDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonContactDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
           <Property Name="ContactDataID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ContactData" Relationship="TK1Model.FK_PersonContactData_ContactData" FromRole="PersonContactData" ToRole="ContactData" />
@@ -939,7 +939,7 @@
           <Key>
             <PropertyRef Name="ProcessID" />
           </Key>
-          <Property Name="ProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="AppID" Type="Int32" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProcExecs" Relationship="TK1Model.FK_ProcExec_Process" FromRole="Process" ToRole="ProcExec" />
@@ -951,7 +951,7 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PersonID" Type="Int32" />
           <Property Name="ContextID" Type="Int32" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
@@ -1215,7 +1215,7 @@
           <Key>
             <PropertyRef Name="EventID" />
           </Key>
-          <Property Type="Int32" Name="EventID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EventID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="ProcExecID" Nullable="false" />
           <Property Type="DateTime" Name="EventTimestamp" Nullable="false" />
           <Property Type="Byte" Name="EventTypeID" Nullable="false" />
@@ -1262,7 +1262,7 @@
           <Key>
             <PropertyRef Name="AppLogID" />
           </Key>
-          <Property Type="Int32" Name="AppLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AppLogID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="DateTime" Name="LogTimestamp" Nullable="false" />
           <Property Type="Int32" Name="Level" Nullable="false" />
           <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1283,7 +1283,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TK1ModelStoreContainer" CdmEntityContainer="TK1Entities">
           <EntitySetMapping Name="ProcExecs"><EntityTypeMapping TypeName="TK1Model.ProcExec"><MappingFragment StoreEntitySet="ProcExec">
             <ScalarProperty Name="ProcExecID" ColumnName="ProcExecID" />
@@ -1451,7 +1451,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -1618,14 +1618,14 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="TK1Model.EventLog" Width="1.5" PointX="10" PointY="10.375" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="TK1Model.EventType" Width="1.5" PointX="7.75" PointY="14.125" Height="1.595683593749996" />
-        <AssociationConnector Association="TK1Model.FK_EventLog_EventType" >
+        <AssociationConnector Association="TK1Model.FK_EventLog_EventType">
           <ConnectorPoint PointX="9.25" PointY="14.922841796874998" />
           <ConnectorPoint PointX="9.5416666666666661" PointY="14.922841796874998" />
           <ConnectorPoint PointX="9.7083333333333339" PointY="14.922841796874998" />
           <ConnectorPoint PointX="10.75" PointY="14.922841796874998" />
           <ConnectorPoint PointX="10.75" PointY="13.316793619791667" />
         </AssociationConnector>
-        <AssociationConnector Association="TK1Model.FK_EventLog_ProcExec" >
+        <AssociationConnector Association="TK1Model.FK_EventLog_ProcExec">
           <ConnectorPoint PointX="9.25" PointY="11.903595377604166" />
           <ConnectorPoint PointX="9.5416666666666661" PointY="11.903595377604166" />
           <ConnectorPoint PointX="9.7083333333333339" PointY="11.903595377604166" />
