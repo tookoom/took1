@@ -11,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TK1.Basics.Controls;
 using TK1.Utility;
 using TK1.Dev.Data;
 using TK1.Settings;

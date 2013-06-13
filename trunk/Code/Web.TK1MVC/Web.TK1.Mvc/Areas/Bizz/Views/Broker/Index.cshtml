@@ -10,10 +10,21 @@
                 <h1>Pesquisa Rápida. </h1><h2>Encontre seu imóvel aqui:</h2>
             </hgroup>
             <nav>
-                @Html.DropDownList("AdType")
-                @Html.DropDownList("City")
-                @Html.DropDownList("PropertyType")
-                @Html.DropDownList("District")
+                <select id="adTypeSelect">
+                    @foreach (var item in ViewBag.AdType)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                <select id="citySelect">
+                    <option value="*">Selecione Cidade</option>
+                </select>
+                <select id="propertyTypeSelect">
+                    <option value="*">Todos os Imóveis</option>
+                </select>
+                <select id="districtSelect">
+                    <option value="*">Todos os Bairros</option>
+                </select>
                 <div class="float-right">
                     <input type="button" name="name" value="Pesquisar"  style="width:180px;"/>
                 </div>
@@ -24,7 +35,7 @@
 
 <h2>Destaques Venda</h2>
     @foreach (var ad in ViewBag.SellFeaturedAds)
-    {   
+    {
         var value = string.Format("{0:C}", ad.Value);
 
         <div class="float-left featuredAd">
@@ -44,7 +55,7 @@
 <br class="clear" />
 <h2>Destaques Aluguel</h2>
     @foreach (var ad in ViewBag.RentFeaturedAds)
-    {   
+    {
         var value = string.Format("{0:C}", ad.Value);
 
         <div class="float-left featuredAd">
@@ -61,3 +72,11 @@
                 </a>                
         </div>
     }
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            initializeSelects('@ViewBag.CustomerCode');
+        });
+    </script>
+}

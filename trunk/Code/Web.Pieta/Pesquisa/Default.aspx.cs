@@ -8,10 +8,9 @@ using TK1.Bizz.Pieta.Const;
 using TK1.Data.Converter;
 using TK1.Bizz.Pieta;
 using System.IO;
-using TK1.Bizz.Client.Data.Presentation;
 using TK1.Bizz.Pieta.Data.Controller;
-using TK1.Bizz.Client.Data;
-using TK1.Bizz.Client.Data.Controller;
+using TK1.Bizz.Broker.Presentation;
+using TK1.Data.Bizz.Client.Controller;
 
 public partial class Pesquisa_Default : System.Web.UI.Page
 {
@@ -255,7 +254,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     private void searchRentSite()
     {
-        PropertyAdSearchParameters parameters = new PropertyAdSearchParameters() { CustomerCodename = customerCode };
+        PropertyAdSearchParameters parameters = new PropertyAdSearchParameters() { CustomerCode = customerCode };
 
         parameters.AdType = PropertyAdTypes.Rent;
 
@@ -263,7 +262,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         {
             int siteCode = 0;
             if (int.TryParse(textBoxRentSiteCode.Text, out siteCode))
-                parameters.Code = siteCode;
+                parameters.AdCode = siteCode;
             textBoxRentSiteCode.Text = string.Empty;
         }
         if (dropDownRentCities.SelectedItem != null)
@@ -307,7 +306,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     }
     private void searchSellingSite()
     {
-        PropertyAdSearchParameters parameters = new PropertyAdSearchParameters() { CustomerCodename = customerCode };
+        PropertyAdSearchParameters parameters = new PropertyAdSearchParameters() { CustomerCode = customerCode };
 
         parameters.AdType = PropertyAdTypes.Rent;
         if (radioButtonBuy.Checked)
@@ -317,7 +316,7 @@ public partial class Pesquisa_Default : System.Web.UI.Page
         {
             int siteCode = 0;
             if (int.TryParse(textBoxSellingSiteCode.Text, out siteCode))
-                parameters.Code = siteCode;
+                parameters.AdCode = siteCode;
             textBoxSellingSiteCode.Text = string.Empty;
         }
         if (dropDownSellingCities.SelectedItem != null)

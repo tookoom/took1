@@ -10,10 +10,10 @@ using TK1.Data.Controller;
 using TK1.Bizz.Inetsoft.Rent.Xml;
 //using TK1.Bizz.Inetsoft.Rent.Data;
 using System.Threading;
-using TK1.Bizz.Data.Presentation;
-using TK1.Bizz.Data;
 using TK1.Data.Converter;
-using TK1.Bizz.Data.Controller;
+using TK1.Data.Bizz.Model;
+using TK1.Data.Bizz.Controller;
+using TK1.Data.Bizz.Presentation;
 
 namespace TK1.Bizz.Inetsoft.Data.Controller
 {

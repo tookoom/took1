@@ -326,9 +326,9 @@ namespace TK1.Data.Bizz.Client.Controller
             {
                 var adTypeID = parameters.AdType.ToString();
                 var query = Entities.PropertyAd.Where(o => o.CustomerCode == customerCode & o.Visible & o.PropertyAdTypeID == adTypeID);
-                if (parameters.Code > 0)
+                if (parameters.AdCode > 0)
                 {
-                    query = query.FilterCode(parameters.Code);
+                    query = query.FilterCode(parameters.AdCode);
                 }
                 else
                 {

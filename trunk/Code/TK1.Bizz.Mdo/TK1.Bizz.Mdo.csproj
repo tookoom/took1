@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TK1.Bizz.Mdo</RootNamespace>
     <AssemblyName>TK1.Bizz.Mdo</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -86,21 +89,17 @@
     <Compile Include="Xml\XmlHeader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
-      <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
-      <Name>TK1.Basics</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
       <Project>{AB2EC906-93AE-4F64-B71D-E04C88036D7D}</Project>
       <Name>TK1.Bizz</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
-      <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
-      <Name>TK1.Data</Name>
+    <ProjectReference Include="..\TK1.Data.Bizz.Client\TK1.Data.Bizz.Client.csproj">
+      <Project>{e569e820-ae28-4280-80de-f3f29d14b3b2}</Project>
+      <Name>TK1.Data.Bizz.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TK1.Media\TK1.Media.csproj">
-      <Project>{2b1dc70c-89e1-46f4-96c7-03bd38d80330}</Project>
-      <Name>TK1.Media</Name>
+    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
+      <Project>{2484cd63-a0b0-46ae-a423-b32e6a6ad279}</Project>
+      <Name>TK1.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>

@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -292,6 +293,7 @@ namespace TK1.Bizz.Mdo.Data
         private ObjectSet<SiteReleaseAd> _SiteReleaseAds;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -399,11 +401,11 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -428,7 +430,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -447,7 +450,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnCategoryIDChanging(value);
                     ReportPropertyChanging("CategoryID");
-                    _CategoryID = StructuralObject.SetValidValue(value);
+                    _CategoryID = StructuralObject.SetValidValue(value, "CategoryID");
                     ReportPropertyChanged("CategoryID");
                     OnCategoryIDChanged();
                 }
@@ -472,7 +475,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -496,7 +499,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -520,7 +523,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCaptionChanging(value);
                 ReportPropertyChanging("Caption");
-                _Caption = StructuralObject.SetValidValue(value, true);
+                _Caption = StructuralObject.SetValidValue(value, true, "Caption");
                 ReportPropertyChanged("Caption");
                 OnCaptionChanged();
             }
@@ -544,7 +547,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -568,7 +571,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCustomDataChanging(value);
                 ReportPropertyChanging("CustomData");
-                _CustomData = StructuralObject.SetValidValue(value, true);
+                _CustomData = StructuralObject.SetValidValue(value, true, "CustomData");
                 ReportPropertyChanged("CustomData");
                 OnCustomDataChanged();
             }
@@ -578,7 +581,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnCustomDataChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -648,6 +651,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -672,7 +676,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -691,7 +696,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnNameChanging(value);
                     ReportPropertyChanging("Name");
-                    _Name = StructuralObject.SetValidValue(value, false);
+                    _Name = StructuralObject.SetValidValue(value, false, "Name");
                     ReportPropertyChanged("Name");
                     OnNameChanged();
                 }
@@ -702,7 +707,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -728,6 +733,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -756,7 +762,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -775,7 +782,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnCustomerIDChanging(value);
                     ReportPropertyChanging("CustomerID");
-                    _CustomerID = StructuralObject.SetValidValue(value);
+                    _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                     ReportPropertyChanged("CustomerID");
                     OnCustomerIDChanged();
                 }
@@ -800,7 +807,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -824,7 +831,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -848,7 +855,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnFullNameChanging(value);
                 ReportPropertyChanging("FullName");
-                _FullName = StructuralObject.SetValidValue(value, true);
+                _FullName = StructuralObject.SetValidValue(value, true, "FullName");
                 ReportPropertyChanged("FullName");
                 OnFullNameChanged();
             }
@@ -858,7 +865,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnFullNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -928,6 +935,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -958,7 +966,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -977,7 +986,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnCustomerDataIDChanging(value);
                     ReportPropertyChanging("CustomerDataID");
-                    _CustomerDataID = StructuralObject.SetValidValue(value);
+                    _CustomerDataID = StructuralObject.SetValidValue(value, "CustomerDataID");
                     ReportPropertyChanged("CustomerDataID");
                     OnCustomerDataIDChanged();
                 }
@@ -1002,7 +1011,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCustomerIDChanging(value);
                 ReportPropertyChanging("CustomerID");
-                _CustomerID = StructuralObject.SetValidValue(value);
+                _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                 ReportPropertyChanged("CustomerID");
                 OnCustomerIDChanged();
             }
@@ -1026,7 +1035,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMdoCodeChanging(value);
                 ReportPropertyChanging("MdoCode");
-                _MdoCode = StructuralObject.SetValidValue(value);
+                _MdoCode = StructuralObject.SetValidValue(value, "MdoCode");
                 ReportPropertyChanged("MdoCode");
                 OnMdoCodeChanged();
             }
@@ -1050,7 +1059,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMdoAcronymChanging(value);
                 ReportPropertyChanging("MdoAcronym");
-                _MdoAcronym = StructuralObject.SetValidValue(value, false);
+                _MdoAcronym = StructuralObject.SetValidValue(value, false, "MdoAcronym");
                 ReportPropertyChanged("MdoAcronym");
                 OnMdoAcronymChanged();
             }
@@ -1074,7 +1083,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnXmlSellingEmailChanging(value);
                 ReportPropertyChanging("XmlSellingEmail");
-                _XmlSellingEmail = StructuralObject.SetValidValue(value, true);
+                _XmlSellingEmail = StructuralObject.SetValidValue(value, true, "XmlSellingEmail");
                 ReportPropertyChanged("XmlSellingEmail");
                 OnXmlSellingEmailChanged();
             }
@@ -1098,7 +1107,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNavLogoUrlChanging(value);
                 ReportPropertyChanging("NavLogoUrl");
-                _NavLogoUrl = StructuralObject.SetValidValue(value, true);
+                _NavLogoUrl = StructuralObject.SetValidValue(value, true, "NavLogoUrl");
                 ReportPropertyChanged("NavLogoUrl");
                 OnNavLogoUrlChanged();
             }
@@ -1122,7 +1131,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNavContactMailChanging(value);
                 ReportPropertyChanging("NavContactMail");
-                _NavContactMail = StructuralObject.SetValidValue(value, true);
+                _NavContactMail = StructuralObject.SetValidValue(value, true, "NavContactMail");
                 ReportPropertyChanged("NavContactMail");
                 OnNavContactMailChanged();
             }
@@ -1146,7 +1155,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNavContactPhoneChanging(value);
                 ReportPropertyChanging("NavContactPhone");
-                _NavContactPhone = StructuralObject.SetValidValue(value, true);
+                _NavContactPhone = StructuralObject.SetValidValue(value, true, "NavContactPhone");
                 ReportPropertyChanged("NavContactPhone");
                 OnNavContactPhoneChanged();
             }
@@ -1156,7 +1165,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnNavContactPhoneChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1198,6 +1207,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1224,7 +1234,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1243,7 +1254,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnNameChanging(value);
                     ReportPropertyChanging("Name");
-                    _Name = StructuralObject.SetValidValue(value, false);
+                    _Name = StructuralObject.SetValidValue(value, false, "Name");
                     ReportPropertyChanged("Name");
                     OnNameChanged();
                 }
@@ -1268,7 +1279,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnRegionIDChanging(value);
                 ReportPropertyChanging("RegionID");
-                _RegionID = StructuralObject.SetValidValue(value);
+                _RegionID = StructuralObject.SetValidValue(value, "RegionID");
                 ReportPropertyChanged("RegionID");
                 OnRegionIDChanged();
             }
@@ -1278,7 +1289,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnRegionIDChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1342,6 +1353,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1366,7 +1378,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1385,7 +1398,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnRegionIDChanging(value);
                     ReportPropertyChanging("RegionID");
-                    _RegionID = StructuralObject.SetValidValue(value);
+                    _RegionID = StructuralObject.SetValidValue(value, "RegionID");
                     ReportPropertyChanged("RegionID");
                     OnRegionIDChanged();
                 }
@@ -1410,7 +1423,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1420,7 +1433,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1446,6 +1459,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1484,7 +1498,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1503,7 +1518,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnSiteIDChanging(value);
                     ReportPropertyChanging("SiteID");
-                    _SiteID = StructuralObject.SetValidValue(value);
+                    _SiteID = StructuralObject.SetValidValue(value, "SiteID");
                     ReportPropertyChanged("SiteID");
                     OnSiteIDChanged();
                 }
@@ -1528,7 +1543,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnAddressInfoIDChanging(value);
                 ReportPropertyChanging("AddressInfoID");
-                _AddressInfoID = StructuralObject.SetValidValue(value);
+                _AddressInfoID = StructuralObject.SetValidValue(value, "AddressInfoID");
                 ReportPropertyChanged("AddressInfoID");
                 OnAddressInfoIDChanged();
             }
@@ -1552,7 +1567,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCityNameChanging(value);
                 ReportPropertyChanging("CityName");
-                _CityName = StructuralObject.SetValidValue(value, false);
+                _CityName = StructuralObject.SetValidValue(value, false, "CityName");
                 ReportPropertyChanged("CityName");
                 OnCityNameChanged();
             }
@@ -1576,7 +1591,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnDistrictNameChanging(value);
                 ReportPropertyChanging("DistrictName");
-                _DistrictName = StructuralObject.SetValidValue(value, false);
+                _DistrictName = StructuralObject.SetValidValue(value, false, "DistrictName");
                 ReportPropertyChanged("DistrictName");
                 OnDistrictNameChanged();
             }
@@ -1600,7 +1615,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnSiteTypeIDChanging(value);
                 ReportPropertyChanging("SiteTypeID");
-                _SiteTypeID = StructuralObject.SetValidValue(value);
+                _SiteTypeID = StructuralObject.SetValidValue(value, "SiteTypeID");
                 ReportPropertyChanged("SiteTypeID");
                 OnSiteTypeIDChanged();
             }
@@ -1624,7 +1639,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTotalAreaChanging(value);
                 ReportPropertyChanging("TotalArea");
-                _TotalArea = StructuralObject.SetValidValue(value);
+                _TotalArea = StructuralObject.SetValidValue(value, "TotalArea");
                 ReportPropertyChanged("TotalArea");
                 OnTotalAreaChanged();
             }
@@ -1648,7 +1663,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTotalRoomsChanging(value);
                 ReportPropertyChanging("TotalRooms");
-                _TotalRooms = StructuralObject.SetValidValue(value);
+                _TotalRooms = StructuralObject.SetValidValue(value, "TotalRooms");
                 ReportPropertyChanged("TotalRooms");
                 OnTotalRoomsChanged();
             }
@@ -1672,7 +1687,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnInternalAreaChanging(value);
                 ReportPropertyChanging("InternalArea");
-                _InternalArea = StructuralObject.SetValidValue(value);
+                _InternalArea = StructuralObject.SetValidValue(value, "InternalArea");
                 ReportPropertyChanged("InternalArea");
                 OnInternalAreaChanged();
             }
@@ -1696,7 +1711,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnExternalAreaChanging(value);
                 ReportPropertyChanging("ExternalArea");
-                _ExternalArea = StructuralObject.SetValidValue(value);
+                _ExternalArea = StructuralObject.SetValidValue(value, "ExternalArea");
                 ReportPropertyChanged("ExternalArea");
                 OnExternalAreaChanged();
             }
@@ -1706,7 +1721,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnExternalAreaChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1912,6 +1927,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1944,7 +1960,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1963,7 +1980,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnSiteAdIDChanging(value);
                     ReportPropertyChanging("SiteAdID");
-                    _SiteAdID = StructuralObject.SetValidValue(value);
+                    _SiteAdID = StructuralObject.SetValidValue(value, "SiteAdID");
                     ReportPropertyChanged("SiteAdID");
                     OnSiteAdIDChanged();
                 }
@@ -1988,7 +2005,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnSiteIDChanging(value);
                 ReportPropertyChanging("SiteID");
-                _SiteID = StructuralObject.SetValidValue(value);
+                _SiteID = StructuralObject.SetValidValue(value, "SiteID");
                 ReportPropertyChanged("SiteID");
                 OnSiteIDChanged();
             }
@@ -2012,7 +2029,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCategoryIDChanging(value);
                 ReportPropertyChanging("CategoryID");
-                _CategoryID = StructuralObject.SetValidValue(value);
+                _CategoryID = StructuralObject.SetValidValue(value, "CategoryID");
                 ReportPropertyChanged("CategoryID");
                 OnCategoryIDChanged();
             }
@@ -2036,7 +2053,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnPriceChanging(value);
                 ReportPropertyChanging("Price");
-                _Price = StructuralObject.SetValidValue(value);
+                _Price = StructuralObject.SetValidValue(value, "Price");
                 ReportPropertyChanged("Price");
                 OnPriceChanged();
             }
@@ -2060,7 +2077,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, true);
+                _Title = StructuralObject.SetValidValue(value, true, "Title");
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
@@ -2084,7 +2101,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -2108,7 +2125,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnImageUrlChanging(value);
                 ReportPropertyChanging("ImageUrl");
-                _ImageUrl = StructuralObject.SetValidValue(value, true);
+                _ImageUrl = StructuralObject.SetValidValue(value, true, "ImageUrl");
                 ReportPropertyChanged("ImageUrl");
                 OnImageUrlChanged();
             }
@@ -2132,7 +2149,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnIPTUChanging(value);
                 ReportPropertyChanging("IPTU");
-                _IPTU = StructuralObject.SetValidValue(value);
+                _IPTU = StructuralObject.SetValidValue(value, "IPTU");
                 ReportPropertyChanged("IPTU");
                 OnIPTUChanged();
             }
@@ -2156,7 +2173,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCondChanging(value);
                 ReportPropertyChanging("Cond");
-                _Cond = StructuralObject.SetValidValue(value);
+                _Cond = StructuralObject.SetValidValue(value, "Cond");
                 ReportPropertyChanged("Cond");
                 OnCondChanged();
             }
@@ -2180,7 +2197,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnShortDescriptionChanging(value);
                 ReportPropertyChanging("ShortDescription");
-                _ShortDescription = StructuralObject.SetValidValue(value, true);
+                _ShortDescription = StructuralObject.SetValidValue(value, true, "ShortDescription");
                 ReportPropertyChanged("ShortDescription");
                 OnShortDescriptionChanged();
             }
@@ -2204,7 +2221,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnAreaDescriptionChanging(value);
                 ReportPropertyChanging("AreaDescription");
-                _AreaDescription = StructuralObject.SetValidValue(value, true);
+                _AreaDescription = StructuralObject.SetValidValue(value, true, "AreaDescription");
                 ReportPropertyChanged("AreaDescription");
                 OnAreaDescriptionChanged();
             }
@@ -2228,7 +2245,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCondDescriptionChanging(value);
                 ReportPropertyChanging("CondDescription");
-                _CondDescription = StructuralObject.SetValidValue(value, true);
+                _CondDescription = StructuralObject.SetValidValue(value, true, "CondDescription");
                 ReportPropertyChanged("CondDescription");
                 OnCondDescriptionChanged();
             }
@@ -2254,7 +2271,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnCustomerIDChanging(value);
                     ReportPropertyChanging("CustomerID");
-                    _CustomerID = StructuralObject.SetValidValue(value);
+                    _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                     ReportPropertyChanged("CustomerID");
                     OnCustomerIDChanged();
                 }
@@ -2279,7 +2296,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnIsFeaturedChanging(value);
                 ReportPropertyChanging("IsFeatured");
-                _IsFeatured = StructuralObject.SetValidValue(value);
+                _IsFeatured = StructuralObject.SetValidValue(value, "IsFeatured");
                 ReportPropertyChanged("IsFeatured");
                 OnIsFeaturedChanged();
             }
@@ -2289,7 +2306,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnIsFeaturedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2407,6 +2424,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2437,7 +2455,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2456,7 +2475,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnSiteDescriptionIDChanging(value);
                     ReportPropertyChanging("SiteDescriptionID");
-                    _SiteDescriptionID = StructuralObject.SetValidValue(value);
+                    _SiteDescriptionID = StructuralObject.SetValidValue(value, "SiteDescriptionID");
                     ReportPropertyChanged("SiteDescriptionID");
                     OnSiteDescriptionIDChanged();
                 }
@@ -2481,7 +2500,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnSiteIDChanging(value);
                 ReportPropertyChanging("SiteID");
-                _SiteID = StructuralObject.SetValidValue(value);
+                _SiteID = StructuralObject.SetValidValue(value, "SiteID");
                 ReportPropertyChanged("SiteID");
                 OnSiteIDChanged();
             }
@@ -2505,7 +2524,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -2529,7 +2548,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnValueChanging(value);
                 ReportPropertyChanging("Value");
-                _Value = StructuralObject.SetValidValue(value, false);
+                _Value = StructuralObject.SetValidValue(value, false, "Value");
                 ReportPropertyChanged("Value");
                 OnValueChanged();
             }
@@ -2553,7 +2572,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, true);
+                _Type = StructuralObject.SetValidValue(value, true, "Type");
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -2563,7 +2582,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnTypeChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2605,6 +2624,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2631,7 +2651,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2650,7 +2671,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnSiteIDChanging(value);
                     ReportPropertyChanging("SiteID");
-                    _SiteID = StructuralObject.SetValidValue(value);
+                    _SiteID = StructuralObject.SetValidValue(value, "SiteID");
                     ReportPropertyChanged("SiteID");
                     OnSiteIDChanged();
                 }
@@ -2677,7 +2698,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnPicIDChanging(value);
                     ReportPropertyChanging("PicID");
-                    _PicID = StructuralObject.SetValidValue(value);
+                    _PicID = StructuralObject.SetValidValue(value, "PicID");
                     ReportPropertyChanged("PicID");
                     OnPicIDChanged();
                 }
@@ -2702,7 +2723,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, true);
+                _FileName = StructuralObject.SetValidValue(value, true, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -2726,7 +2747,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -2736,7 +2757,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnDescriptionChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2778,6 +2799,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2852,7 +2874,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2871,7 +2894,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnSiteReleaseAdIDChanging(value);
                     ReportPropertyChanging("SiteReleaseAdID");
-                    _SiteReleaseAdID = StructuralObject.SetValidValue(value);
+                    _SiteReleaseAdID = StructuralObject.SetValidValue(value, "SiteReleaseAdID");
                     ReportPropertyChanged("SiteReleaseAdID");
                     OnSiteReleaseAdIDChanged();
                 }
@@ -2898,7 +2921,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnCustomerIDChanging(value);
                     ReportPropertyChanging("CustomerID");
-                    _CustomerID = StructuralObject.SetValidValue(value);
+                    _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                     ReportPropertyChanged("CustomerID");
                     OnCustomerIDChanged();
                 }
@@ -2923,7 +2946,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnSiteIDChanging(value);
                 ReportPropertyChanging("SiteID");
-                _SiteID = StructuralObject.SetValidValue(value);
+                _SiteID = StructuralObject.SetValidValue(value, "SiteID");
                 ReportPropertyChanged("SiteID");
                 OnSiteIDChanged();
             }
@@ -2947,7 +2970,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCategoryIDChanging(value);
                 ReportPropertyChanging("CategoryID");
-                _CategoryID = StructuralObject.SetValidValue(value);
+                _CategoryID = StructuralObject.SetValidValue(value, "CategoryID");
                 ReportPropertyChanged("CategoryID");
                 OnCategoryIDChanged();
             }
@@ -2971,7 +2994,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnConstructorNameChanging(value);
                 ReportPropertyChanging("ConstructorName");
-                _ConstructorName = StructuralObject.SetValidValue(value, true);
+                _ConstructorName = StructuralObject.SetValidValue(value, true, "ConstructorName");
                 ReportPropertyChanged("ConstructorName");
                 OnConstructorNameChanged();
             }
@@ -2995,7 +3018,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -3019,7 +3042,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnAddressComplementChanging(value);
                 ReportPropertyChanging("AddressComplement");
-                _AddressComplement = StructuralObject.SetValidValue(value, false);
+                _AddressComplement = StructuralObject.SetValidValue(value, false, "AddressComplement");
                 ReportPropertyChanged("AddressComplement");
                 OnAddressComplementChanged();
             }
@@ -3043,7 +3066,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnAddressNumberChanging(value);
                 ReportPropertyChanging("AddressNumber");
-                _AddressNumber = StructuralObject.SetValidValue(value);
+                _AddressNumber = StructuralObject.SetValidValue(value, "AddressNumber");
                 ReportPropertyChanged("AddressNumber");
                 OnAddressNumberChanged();
             }
@@ -3067,7 +3090,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMinTotalAreaChanging(value);
                 ReportPropertyChanging("MinTotalArea");
-                _MinTotalArea = StructuralObject.SetValidValue(value);
+                _MinTotalArea = StructuralObject.SetValidValue(value, "MinTotalArea");
                 ReportPropertyChanged("MinTotalArea");
                 OnMinTotalAreaChanged();
             }
@@ -3091,7 +3114,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMaxTotalAreaChanging(value);
                 ReportPropertyChanging("MaxTotalArea");
-                _MaxTotalArea = StructuralObject.SetValidValue(value);
+                _MaxTotalArea = StructuralObject.SetValidValue(value, "MaxTotalArea");
                 ReportPropertyChanged("MaxTotalArea");
                 OnMaxTotalAreaChanged();
             }
@@ -3115,7 +3138,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMinTotalRoomsChanging(value);
                 ReportPropertyChanging("MinTotalRooms");
-                _MinTotalRooms = StructuralObject.SetValidValue(value);
+                _MinTotalRooms = StructuralObject.SetValidValue(value, "MinTotalRooms");
                 ReportPropertyChanged("MinTotalRooms");
                 OnMinTotalRoomsChanged();
             }
@@ -3139,7 +3162,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMaxTotalRoomsChanging(value);
                 ReportPropertyChanging("MaxTotalRooms");
-                _MaxTotalRooms = StructuralObject.SetValidValue(value);
+                _MaxTotalRooms = StructuralObject.SetValidValue(value, "MaxTotalRooms");
                 ReportPropertyChanged("MaxTotalRooms");
                 OnMaxTotalRoomsChanged();
             }
@@ -3163,7 +3186,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMinSuitesChanging(value);
                 ReportPropertyChanging("MinSuites");
-                _MinSuites = StructuralObject.SetValidValue(value);
+                _MinSuites = StructuralObject.SetValidValue(value, "MinSuites");
                 ReportPropertyChanged("MinSuites");
                 OnMinSuitesChanged();
             }
@@ -3187,7 +3210,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMaxSuitesChanging(value);
                 ReportPropertyChanging("MaxSuites");
-                _MaxSuites = StructuralObject.SetValidValue(value);
+                _MaxSuites = StructuralObject.SetValidValue(value, "MaxSuites");
                 ReportPropertyChanged("MaxSuites");
                 OnMaxSuitesChanged();
             }
@@ -3211,7 +3234,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMinInternalAreaChanging(value);
                 ReportPropertyChanging("MinInternalArea");
-                _MinInternalArea = StructuralObject.SetValidValue(value);
+                _MinInternalArea = StructuralObject.SetValidValue(value, "MinInternalArea");
                 ReportPropertyChanged("MinInternalArea");
                 OnMinInternalAreaChanged();
             }
@@ -3235,7 +3258,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMaxInternalAreaChanging(value);
                 ReportPropertyChanging("MaxInternalArea");
-                _MaxInternalArea = StructuralObject.SetValidValue(value);
+                _MaxInternalArea = StructuralObject.SetValidValue(value, "MaxInternalArea");
                 ReportPropertyChanged("MaxInternalArea");
                 OnMaxInternalAreaChanged();
             }
@@ -3259,7 +3282,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMinExternalAreaChanging(value);
                 ReportPropertyChanging("MinExternalArea");
-                _MinExternalArea = StructuralObject.SetValidValue(value);
+                _MinExternalArea = StructuralObject.SetValidValue(value, "MinExternalArea");
                 ReportPropertyChanged("MinExternalArea");
                 OnMinExternalAreaChanged();
             }
@@ -3283,7 +3306,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMaxExternalAreaChanging(value);
                 ReportPropertyChanging("MaxExternalArea");
-                _MaxExternalArea = StructuralObject.SetValidValue(value);
+                _MaxExternalArea = StructuralObject.SetValidValue(value, "MaxExternalArea");
                 ReportPropertyChanged("MaxExternalArea");
                 OnMaxExternalAreaChanged();
             }
@@ -3307,7 +3330,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMinValueChanging(value);
                 ReportPropertyChanging("MinValue");
-                _MinValue = StructuralObject.SetValidValue(value);
+                _MinValue = StructuralObject.SetValidValue(value, "MinValue");
                 ReportPropertyChanged("MinValue");
                 OnMinValueChanged();
             }
@@ -3331,7 +3354,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMaxValueChanging(value);
                 ReportPropertyChanging("MaxValue");
-                _MaxValue = StructuralObject.SetValidValue(value);
+                _MaxValue = StructuralObject.SetValidValue(value, "MaxValue");
                 ReportPropertyChanged("MaxValue");
                 OnMaxValueChanged();
             }
@@ -3355,7 +3378,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnElevatorNumberChanging(value);
                 ReportPropertyChanging("ElevatorNumber");
-                _ElevatorNumber = StructuralObject.SetValidValue(value);
+                _ElevatorNumber = StructuralObject.SetValidValue(value, "ElevatorNumber");
                 ReportPropertyChanged("ElevatorNumber");
                 OnElevatorNumberChanged();
             }
@@ -3379,7 +3402,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMinGarageNumberChanging(value);
                 ReportPropertyChanging("MinGarageNumber");
-                _MinGarageNumber = StructuralObject.SetValidValue(value);
+                _MinGarageNumber = StructuralObject.SetValidValue(value, "MinGarageNumber");
                 ReportPropertyChanged("MinGarageNumber");
                 OnMinGarageNumberChanged();
             }
@@ -3403,7 +3426,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnMaxGarageNumberChanging(value);
                 ReportPropertyChanging("MaxGarageNumber");
-                _MaxGarageNumber = StructuralObject.SetValidValue(value);
+                _MaxGarageNumber = StructuralObject.SetValidValue(value, "MaxGarageNumber");
                 ReportPropertyChanged("MaxGarageNumber");
                 OnMaxGarageNumberChanged();
             }
@@ -3427,7 +3450,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTotalFloorUnitNumberChanging(value);
                 ReportPropertyChanging("TotalFloorUnitNumber");
-                _TotalFloorUnitNumber = StructuralObject.SetValidValue(value);
+                _TotalFloorUnitNumber = StructuralObject.SetValidValue(value, "TotalFloorUnitNumber");
                 ReportPropertyChanged("TotalFloorUnitNumber");
                 OnTotalFloorUnitNumberChanged();
             }
@@ -3451,7 +3474,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTotalUnitNumberChanging(value);
                 ReportPropertyChanging("TotalUnitNumber");
-                _TotalUnitNumber = StructuralObject.SetValidValue(value);
+                _TotalUnitNumber = StructuralObject.SetValidValue(value, "TotalUnitNumber");
                 ReportPropertyChanged("TotalUnitNumber");
                 OnTotalUnitNumberChanged();
             }
@@ -3475,7 +3498,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTowerNumberChanging(value);
                 ReportPropertyChanging("TowerNumber");
-                _TowerNumber = StructuralObject.SetValidValue(value);
+                _TowerNumber = StructuralObject.SetValidValue(value, "TowerNumber");
                 ReportPropertyChanged("TowerNumber");
                 OnTowerNumberChanged();
             }
@@ -3499,7 +3522,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTowerFloorNumberChanging(value);
                 ReportPropertyChanging("TowerFloorNumber");
-                _TowerFloorNumber = StructuralObject.SetValidValue(value);
+                _TowerFloorNumber = StructuralObject.SetValidValue(value, "TowerFloorNumber");
                 ReportPropertyChanged("TowerFloorNumber");
                 OnTowerFloorNumberChanged();
             }
@@ -3523,7 +3546,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCityTaxesChanging(value);
                 ReportPropertyChanging("CityTaxes");
-                _CityTaxes = StructuralObject.SetValidValue(value);
+                _CityTaxes = StructuralObject.SetValidValue(value, "CityTaxes");
                 ReportPropertyChanged("CityTaxes");
                 OnCityTaxesChanged();
             }
@@ -3547,7 +3570,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCondoTaxesChanging(value);
                 ReportPropertyChanging("CondoTaxes");
-                _CondoTaxes = StructuralObject.SetValidValue(value);
+                _CondoTaxes = StructuralObject.SetValidValue(value, "CondoTaxes");
                 ReportPropertyChanged("CondoTaxes");
                 OnCondoTaxesChanged();
             }
@@ -3571,7 +3594,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, true);
+                _Title = StructuralObject.SetValidValue(value, true, "Title");
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
@@ -3595,7 +3618,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnShortDescriptionChanging(value);
                 ReportPropertyChanging("ShortDescription");
-                _ShortDescription = StructuralObject.SetValidValue(value, true);
+                _ShortDescription = StructuralObject.SetValidValue(value, true, "ShortDescription");
                 ReportPropertyChanged("ShortDescription");
                 OnShortDescriptionChanged();
             }
@@ -3619,7 +3642,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnFullDescriptionChanging(value);
                 ReportPropertyChanging("FullDescription");
-                _FullDescription = StructuralObject.SetValidValue(value, true);
+                _FullDescription = StructuralObject.SetValidValue(value, true, "FullDescription");
                 ReportPropertyChanged("FullDescription");
                 OnFullDescriptionChanged();
             }
@@ -3643,7 +3666,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnAreaDescriptionChanging(value);
                 ReportPropertyChanging("AreaDescription");
-                _AreaDescription = StructuralObject.SetValidValue(value, true);
+                _AreaDescription = StructuralObject.SetValidValue(value, true, "AreaDescription");
                 ReportPropertyChanged("AreaDescription");
                 OnAreaDescriptionChanged();
             }
@@ -3667,7 +3690,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCondoDescriptionChanging(value);
                 ReportPropertyChanging("CondoDescription");
-                _CondoDescription = StructuralObject.SetValidValue(value, true);
+                _CondoDescription = StructuralObject.SetValidValue(value, true, "CondoDescription");
                 ReportPropertyChanged("CondoDescription");
                 OnCondoDescriptionChanged();
             }
@@ -3691,7 +3714,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnImageUrlChanging(value);
                 ReportPropertyChanging("ImageUrl");
-                _ImageUrl = StructuralObject.SetValidValue(value, true);
+                _ImageUrl = StructuralObject.SetValidValue(value, true, "ImageUrl");
                 ReportPropertyChanged("ImageUrl");
                 OnImageUrlChanged();
             }
@@ -3715,7 +3738,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -3725,7 +3748,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -3843,6 +3866,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3873,7 +3897,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3892,7 +3917,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnSiteTypeIDChanging(value);
                     ReportPropertyChanging("SiteTypeID");
-                    _SiteTypeID = StructuralObject.SetValidValue(value);
+                    _SiteTypeID = StructuralObject.SetValidValue(value, "SiteTypeID");
                     ReportPropertyChanged("SiteTypeID");
                     OnSiteTypeIDChanged();
                 }
@@ -3917,7 +3942,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnCategoryIDChanging(value);
                 ReportPropertyChanging("CategoryID");
-                _CategoryID = StructuralObject.SetValidValue(value);
+                _CategoryID = StructuralObject.SetValidValue(value, "CategoryID");
                 ReportPropertyChanged("CategoryID");
                 OnCategoryIDChanged();
             }
@@ -3941,7 +3966,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -3965,7 +3990,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnRoomDisplayNameChanging(value);
                 ReportPropertyChanging("RoomDisplayName");
-                _RoomDisplayName = StructuralObject.SetValidValue(value, false);
+                _RoomDisplayName = StructuralObject.SetValidValue(value, false, "RoomDisplayName");
                 ReportPropertyChanged("RoomDisplayName");
                 OnRoomDisplayNameChanged();
             }
@@ -3975,7 +4000,7 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnRoomDisplayNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -4039,6 +4064,7 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4067,7 +4093,8 @@ namespace TK1.Bizz.Mdo.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4086,7 +4113,7 @@ namespace TK1.Bizz.Mdo.Data
                 {
                     OnFileNameChanging(value);
                     ReportPropertyChanging("FileName");
-                    _FileName = StructuralObject.SetValidValue(value, false);
+                    _FileName = StructuralObject.SetValidValue(value, false, "FileName");
                     ReportPropertyChanged("FileName");
                     OnFileNameChanged();
                 }
@@ -4111,7 +4138,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -4135,7 +4162,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnLoadTimestampChanging(value);
                 ReportPropertyChanging("LoadTimestamp");
-                _LoadTimestamp = StructuralObject.SetValidValue(value);
+                _LoadTimestamp = StructuralObject.SetValidValue(value, "LoadTimestamp");
                 ReportPropertyChanged("LoadTimestamp");
                 OnLoadTimestampChanged();
             }
@@ -4159,7 +4186,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnProcessTimestampChanging(value);
                 ReportPropertyChanging("ProcessTimestamp");
-                _ProcessTimestamp = StructuralObject.SetValidValue(value);
+                _ProcessTimestamp = StructuralObject.SetValidValue(value, "ProcessTimestamp");
                 ReportPropertyChanged("ProcessTimestamp");
                 OnProcessTimestampChanged();
             }
@@ -4183,7 +4210,7 @@ namespace TK1.Bizz.Mdo.Data
             {
                 OnDataChanging(value);
                 ReportPropertyChanging("Data");
-                _Data = StructuralObject.SetValidValue(value, true);
+                _Data = StructuralObject.SetValidValue(value, true, "Data");
                 ReportPropertyChanged("Data");
                 OnDataChanged();
             }
@@ -4193,9 +4220,9 @@ namespace TK1.Bizz.Mdo.Data
         partial void OnDataChanged();
 
         #endregion
-    
+
     }
 
     #endregion
-    
+
 }

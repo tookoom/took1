@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -477,6 +478,7 @@ namespace TK1.Data
         private ObjectSet<WebSession> _WebSessions;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -672,11 +674,11 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -707,7 +709,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -726,7 +729,7 @@ namespace TK1.Data
                 {
                     OnAddressDataIDChanging(value);
                     ReportPropertyChanging("AddressDataID");
-                    _AddressDataID = StructuralObject.SetValidValue(value);
+                    _AddressDataID = StructuralObject.SetValidValue(value, "AddressDataID");
                     ReportPropertyChanged("AddressDataID");
                     OnAddressDataIDChanged();
                 }
@@ -751,7 +754,7 @@ namespace TK1.Data
             {
                 OnAddressTypeIDChanging(value);
                 ReportPropertyChanging("AddressTypeID");
-                _AddressTypeID = StructuralObject.SetValidValue(value);
+                _AddressTypeID = StructuralObject.SetValidValue(value, "AddressTypeID");
                 ReportPropertyChanged("AddressTypeID");
                 OnAddressTypeIDChanged();
             }
@@ -775,7 +778,7 @@ namespace TK1.Data
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -799,7 +802,7 @@ namespace TK1.Data
             {
                 OnIndexChanging(value);
                 ReportPropertyChanging("Index");
-                _Index = StructuralObject.SetValidValue(value);
+                _Index = StructuralObject.SetValidValue(value, "Index");
                 ReportPropertyChanged("Index");
                 OnIndexChanged();
             }
@@ -809,7 +812,7 @@ namespace TK1.Data
         partial void OnIndexChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -873,6 +876,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -899,7 +903,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -918,7 +923,7 @@ namespace TK1.Data
                 {
                     OnAddressTypeIDChanging(value);
                     ReportPropertyChanging("AddressTypeID");
-                    _AddressTypeID = StructuralObject.SetValidValue(value);
+                    _AddressTypeID = StructuralObject.SetValidValue(value, "AddressTypeID");
                     ReportPropertyChanged("AddressTypeID");
                     OnAddressTypeIDChanged();
                 }
@@ -943,7 +948,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -953,7 +958,7 @@ namespace TK1.Data
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -979,6 +984,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1003,7 +1009,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1022,7 +1029,7 @@ namespace TK1.Data
                 {
                     OnAppIDChanging(value);
                     ReportPropertyChanging("AppID");
-                    _AppID = StructuralObject.SetValidValue(value);
+                    _AppID = StructuralObject.SetValidValue(value, "AppID");
                     ReportPropertyChanged("AppID");
                     OnAppIDChanged();
                 }
@@ -1047,7 +1054,7 @@ namespace TK1.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -1071,7 +1078,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1081,7 +1088,7 @@ namespace TK1.Data
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1145,6 +1152,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1173,7 +1181,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1192,7 +1201,7 @@ namespace TK1.Data
                 {
                     OnAppLogIDChanging(value);
                     ReportPropertyChanging("AppLogID");
-                    _AppLogID = StructuralObject.SetValidValue(value);
+                    _AppLogID = StructuralObject.SetValidValue(value, "AppLogID");
                     ReportPropertyChanged("AppLogID");
                     OnAppLogIDChanged();
                 }
@@ -1217,7 +1226,7 @@ namespace TK1.Data
             {
                 OnLogTimestampChanging(value);
                 ReportPropertyChanging("LogTimestamp");
-                _LogTimestamp = StructuralObject.SetValidValue(value);
+                _LogTimestamp = StructuralObject.SetValidValue(value, "LogTimestamp");
                 ReportPropertyChanged("LogTimestamp");
                 OnLogTimestampChanged();
             }
@@ -1241,7 +1250,7 @@ namespace TK1.Data
             {
                 OnLevelChanging(value);
                 ReportPropertyChanging("Level");
-                _Level = StructuralObject.SetValidValue(value);
+                _Level = StructuralObject.SetValidValue(value, "Level");
                 ReportPropertyChanged("Level");
                 OnLevelChanged();
             }
@@ -1265,7 +1274,7 @@ namespace TK1.Data
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, true);
+                _Message = StructuralObject.SetValidValue(value, true, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -1289,7 +1298,7 @@ namespace TK1.Data
             {
                 OnDataChanging(value);
                 ReportPropertyChanging("Data");
-                _Data = StructuralObject.SetValidValue(value, true);
+                _Data = StructuralObject.SetValidValue(value, true, "Data");
                 ReportPropertyChanged("Data");
                 OnDataChanged();
             }
@@ -1299,7 +1308,7 @@ namespace TK1.Data
         partial void OnDataChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -1324,7 +1333,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1343,7 +1353,7 @@ namespace TK1.Data
                 {
                     OnCategoryIDChanging(value);
                     ReportPropertyChanging("CategoryID");
-                    _CategoryID = StructuralObject.SetValidValue(value);
+                    _CategoryID = StructuralObject.SetValidValue(value, "CategoryID");
                     ReportPropertyChanged("CategoryID");
                     OnCategoryIDChanged();
                 }
@@ -1368,7 +1378,7 @@ namespace TK1.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -1392,7 +1402,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1416,7 +1426,7 @@ namespace TK1.Data
             {
                 OnCaptionChanging(value);
                 ReportPropertyChanging("Caption");
-                _Caption = StructuralObject.SetValidValue(value, true);
+                _Caption = StructuralObject.SetValidValue(value, true, "Caption");
                 ReportPropertyChanged("Caption");
                 OnCaptionChanged();
             }
@@ -1440,7 +1450,7 @@ namespace TK1.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -1464,7 +1474,7 @@ namespace TK1.Data
             {
                 OnCustomDataChanging(value);
                 ReportPropertyChanging("CustomData");
-                _CustomData = StructuralObject.SetValidValue(value, true);
+                _CustomData = StructuralObject.SetValidValue(value, true, "CustomData");
                 ReportPropertyChanged("CustomData");
                 OnCustomDataChanged();
             }
@@ -1474,7 +1484,7 @@ namespace TK1.Data
         partial void OnCustomDataChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1516,6 +1526,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1546,7 +1557,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1565,7 +1577,7 @@ namespace TK1.Data
                 {
                     OnContactDataIDChanging(value);
                     ReportPropertyChanging("ContactDataID");
-                    _ContactDataID = StructuralObject.SetValidValue(value);
+                    _ContactDataID = StructuralObject.SetValidValue(value, "ContactDataID");
                     ReportPropertyChanged("ContactDataID");
                     OnContactDataIDChanged();
                 }
@@ -1590,7 +1602,7 @@ namespace TK1.Data
             {
                 OnContactTypeIDChanging(value);
                 ReportPropertyChanging("ContactTypeID");
-                _ContactTypeID = StructuralObject.SetValidValue(value);
+                _ContactTypeID = StructuralObject.SetValidValue(value, "ContactTypeID");
                 ReportPropertyChanged("ContactTypeID");
                 OnContactTypeIDChanged();
             }
@@ -1614,7 +1626,7 @@ namespace TK1.Data
             {
                 OnDataChanging(value);
                 ReportPropertyChanging("Data");
-                _Data = StructuralObject.SetValidValue(value, false);
+                _Data = StructuralObject.SetValidValue(value, false, "Data");
                 ReportPropertyChanged("Data");
                 OnDataChanged();
             }
@@ -1638,7 +1650,7 @@ namespace TK1.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -1662,7 +1674,7 @@ namespace TK1.Data
             {
                 OnIndexChanging(value);
                 ReportPropertyChanging("Index");
-                _Index = StructuralObject.SetValidValue(value);
+                _Index = StructuralObject.SetValidValue(value, "Index");
                 ReportPropertyChanged("Index");
                 OnIndexChanged();
             }
@@ -1672,7 +1684,7 @@ namespace TK1.Data
         partial void OnIndexChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1758,6 +1770,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1784,7 +1797,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1803,7 +1817,7 @@ namespace TK1.Data
                 {
                     OnContactTypeIDChanging(value);
                     ReportPropertyChanging("ContactTypeID");
-                    _ContactTypeID = StructuralObject.SetValidValue(value);
+                    _ContactTypeID = StructuralObject.SetValidValue(value, "ContactTypeID");
                     ReportPropertyChanged("ContactTypeID");
                     OnContactTypeIDChanged();
                 }
@@ -1828,7 +1842,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1852,7 +1866,7 @@ namespace TK1.Data
             {
                 OnCustomDataChanging(value);
                 ReportPropertyChanging("CustomData");
-                _CustomData = StructuralObject.SetValidValue(value, true);
+                _CustomData = StructuralObject.SetValidValue(value, true, "CustomData");
                 ReportPropertyChanged("CustomData");
                 OnCustomDataChanged();
             }
@@ -1862,7 +1876,7 @@ namespace TK1.Data
         partial void OnCustomDataChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -1888,6 +1902,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1912,7 +1927,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1931,7 +1947,7 @@ namespace TK1.Data
                 {
                     OnContextIDChanging(value);
                     ReportPropertyChanging("ContextID");
-                    _ContextID = StructuralObject.SetValidValue(value);
+                    _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                     ReportPropertyChanged("ContextID");
                     OnContextIDChanged();
                 }
@@ -1956,7 +1972,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1980,7 +1996,7 @@ namespace TK1.Data
             {
                 OnCustomDataChanging(value);
                 ReportPropertyChanging("CustomData");
-                _CustomData = StructuralObject.SetValidValue(value, true);
+                _CustomData = StructuralObject.SetValidValue(value, true, "CustomData");
                 ReportPropertyChanged("CustomData");
                 OnCustomDataChanged();
             }
@@ -1990,7 +2006,7 @@ namespace TK1.Data
         partial void OnCustomDataChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2104,6 +2120,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2132,7 +2149,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2151,7 +2169,7 @@ namespace TK1.Data
                 {
                     OnCustomerIDChanging(value);
                     ReportPropertyChanging("CustomerID");
-                    _CustomerID = StructuralObject.SetValidValue(value);
+                    _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                     ReportPropertyChanged("CustomerID");
                     OnCustomerIDChanged();
                 }
@@ -2176,7 +2194,7 @@ namespace TK1.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -2200,7 +2218,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -2224,7 +2242,7 @@ namespace TK1.Data
             {
                 OnFullNameChanging(value);
                 ReportPropertyChanging("FullName");
-                _FullName = StructuralObject.SetValidValue(value, true);
+                _FullName = StructuralObject.SetValidValue(value, true, "FullName");
                 ReportPropertyChanged("FullName");
                 OnFullNameChanged();
             }
@@ -2234,7 +2252,7 @@ namespace TK1.Data
         partial void OnFullNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2342,6 +2360,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2370,7 +2389,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2389,7 +2409,7 @@ namespace TK1.Data
                 {
                     OnCustomerContactInfoIDChanging(value);
                     ReportPropertyChanging("CustomerContactInfoID");
-                    _CustomerContactInfoID = StructuralObject.SetValidValue(value);
+                    _CustomerContactInfoID = StructuralObject.SetValidValue(value, "CustomerContactInfoID");
                     ReportPropertyChanged("CustomerContactInfoID");
                     OnCustomerContactInfoIDChanged();
                 }
@@ -2414,7 +2434,7 @@ namespace TK1.Data
             {
                 OnCustomerIDChanging(value);
                 ReportPropertyChanging("CustomerID");
-                _CustomerID = StructuralObject.SetValidValue(value);
+                _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                 ReportPropertyChanged("CustomerID");
                 OnCustomerIDChanged();
             }
@@ -2438,7 +2458,7 @@ namespace TK1.Data
             {
                 OnContactDataIDChanging(value);
                 ReportPropertyChanging("ContactDataID");
-                _ContactDataID = StructuralObject.SetValidValue(value);
+                _ContactDataID = StructuralObject.SetValidValue(value, "ContactDataID");
                 ReportPropertyChanged("ContactDataID");
                 OnContactDataIDChanged();
             }
@@ -2448,7 +2468,7 @@ namespace TK1.Data
         partial void OnContactDataIDChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2528,6 +2548,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2556,7 +2577,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2575,7 +2597,7 @@ namespace TK1.Data
                 {
                     OnCustomerPersonIDChanging(value);
                     ReportPropertyChanging("CustomerPersonID");
-                    _CustomerPersonID = StructuralObject.SetValidValue(value);
+                    _CustomerPersonID = StructuralObject.SetValidValue(value, "CustomerPersonID");
                     ReportPropertyChanged("CustomerPersonID");
                     OnCustomerPersonIDChanged();
                 }
@@ -2600,7 +2622,7 @@ namespace TK1.Data
             {
                 OnCustomerIDChanging(value);
                 ReportPropertyChanging("CustomerID");
-                _CustomerID = StructuralObject.SetValidValue(value);
+                _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                 ReportPropertyChanged("CustomerID");
                 OnCustomerIDChanged();
             }
@@ -2624,7 +2646,7 @@ namespace TK1.Data
             {
                 OnPersonIDChanging(value);
                 ReportPropertyChanging("PersonID");
-                _PersonID = StructuralObject.SetValidValue(value);
+                _PersonID = StructuralObject.SetValidValue(value, "PersonID");
                 ReportPropertyChanged("PersonID");
                 OnPersonIDChanged();
             }
@@ -2634,7 +2656,7 @@ namespace TK1.Data
         partial void OnPersonIDChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2714,6 +2736,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2748,7 +2771,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2767,7 +2791,7 @@ namespace TK1.Data
                 {
                     OnEventIDChanging(value);
                     ReportPropertyChanging("EventID");
-                    _EventID = StructuralObject.SetValidValue(value);
+                    _EventID = StructuralObject.SetValidValue(value, "EventID");
                     ReportPropertyChanged("EventID");
                     OnEventIDChanged();
                 }
@@ -2792,7 +2816,7 @@ namespace TK1.Data
             {
                 OnProcExecIDChanging(value);
                 ReportPropertyChanging("ProcExecID");
-                _ProcExecID = StructuralObject.SetValidValue(value);
+                _ProcExecID = StructuralObject.SetValidValue(value, "ProcExecID");
                 ReportPropertyChanged("ProcExecID");
                 OnProcExecIDChanged();
             }
@@ -2816,7 +2840,7 @@ namespace TK1.Data
             {
                 OnEventTimestampChanging(value);
                 ReportPropertyChanging("EventTimestamp");
-                _EventTimestamp = StructuralObject.SetValidValue(value);
+                _EventTimestamp = StructuralObject.SetValidValue(value, "EventTimestamp");
                 ReportPropertyChanged("EventTimestamp");
                 OnEventTimestampChanged();
             }
@@ -2840,7 +2864,7 @@ namespace TK1.Data
             {
                 OnEventTypeIDChanging(value);
                 ReportPropertyChanging("EventTypeID");
-                _EventTypeID = StructuralObject.SetValidValue(value);
+                _EventTypeID = StructuralObject.SetValidValue(value, "EventTypeID");
                 ReportPropertyChanged("EventTypeID");
                 OnEventTypeIDChanged();
             }
@@ -2864,7 +2888,7 @@ namespace TK1.Data
             {
                 OnAssemblyChanging(value);
                 ReportPropertyChanging("Assembly");
-                _Assembly = StructuralObject.SetValidValue(value, false);
+                _Assembly = StructuralObject.SetValidValue(value, false, "Assembly");
                 ReportPropertyChanged("Assembly");
                 OnAssemblyChanged();
             }
@@ -2888,7 +2912,7 @@ namespace TK1.Data
             {
                 OnSourceChanging(value);
                 ReportPropertyChanging("Source");
-                _Source = StructuralObject.SetValidValue(value, false);
+                _Source = StructuralObject.SetValidValue(value, false, "Source");
                 ReportPropertyChanged("Source");
                 OnSourceChanged();
             }
@@ -2912,7 +2936,7 @@ namespace TK1.Data
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, true);
+                _Message = StructuralObject.SetValidValue(value, true, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -2936,7 +2960,7 @@ namespace TK1.Data
             {
                 OnDataChanging(value);
                 ReportPropertyChanging("Data");
-                _Data = StructuralObject.SetValidValue(value, true);
+                _Data = StructuralObject.SetValidValue(value, true, "Data");
                 ReportPropertyChanged("Data");
                 OnDataChanged();
             }
@@ -2946,7 +2970,7 @@ namespace TK1.Data
         partial void OnDataChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -3026,6 +3050,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3052,7 +3077,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3071,7 +3097,7 @@ namespace TK1.Data
                 {
                     OnEventTypeIDChanging(value);
                     ReportPropertyChanging("EventTypeID");
-                    _EventTypeID = StructuralObject.SetValidValue(value);
+                    _EventTypeID = StructuralObject.SetValidValue(value, "EventTypeID");
                     ReportPropertyChanged("EventTypeID");
                     OnEventTypeIDChanged();
                 }
@@ -3096,7 +3122,7 @@ namespace TK1.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -3106,7 +3132,7 @@ namespace TK1.Data
         partial void OnDescriptionChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -3132,6 +3158,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3158,7 +3185,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3177,7 +3205,7 @@ namespace TK1.Data
                 {
                     OnParameterIDChanging(value);
                     ReportPropertyChanging("ParameterID");
-                    _ParameterID = StructuralObject.SetValidValue(value);
+                    _ParameterID = StructuralObject.SetValidValue(value, "ParameterID");
                     ReportPropertyChanged("ParameterID");
                     OnParameterIDChanged();
                 }
@@ -3202,7 +3230,7 @@ namespace TK1.Data
             {
                 OnParameterGroupIDChanging(value);
                 ReportPropertyChanging("ParameterGroupID");
-                _ParameterGroupID = StructuralObject.SetValidValue(value);
+                _ParameterGroupID = StructuralObject.SetValidValue(value, "ParameterGroupID");
                 ReportPropertyChanged("ParameterGroupID");
                 OnParameterGroupIDChanged();
             }
@@ -3226,7 +3254,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -3250,7 +3278,7 @@ namespace TK1.Data
             {
                 OnValueChanging(value);
                 ReportPropertyChanging("Value");
-                _Value = StructuralObject.SetValidValue(value, true);
+                _Value = StructuralObject.SetValidValue(value, true, "Value");
                 ReportPropertyChanged("Value");
                 OnValueChanged();
             }
@@ -3260,7 +3288,7 @@ namespace TK1.Data
         partial void OnValueChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -3302,6 +3330,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3328,7 +3357,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3347,7 +3377,7 @@ namespace TK1.Data
                 {
                     OnParameterGroupIDChanging(value);
                     ReportPropertyChanging("ParameterGroupID");
-                    _ParameterGroupID = StructuralObject.SetValidValue(value);
+                    _ParameterGroupID = StructuralObject.SetValidValue(value, "ParameterGroupID");
                     ReportPropertyChanged("ParameterGroupID");
                     OnParameterGroupIDChanged();
                 }
@@ -3372,7 +3402,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -3382,7 +3412,7 @@ namespace TK1.Data
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -3408,6 +3438,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3434,7 +3465,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3453,7 +3485,7 @@ namespace TK1.Data
                 {
                     OnPersonIDChanging(value);
                     ReportPropertyChanging("PersonID");
-                    _PersonID = StructuralObject.SetValidValue(value);
+                    _PersonID = StructuralObject.SetValidValue(value, "PersonID");
                     ReportPropertyChanged("PersonID");
                     OnPersonIDChanged();
                 }
@@ -3478,7 +3510,7 @@ namespace TK1.Data
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
+                _FirstName = StructuralObject.SetValidValue(value, true, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -3502,7 +3534,7 @@ namespace TK1.Data
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
+                _LastName = StructuralObject.SetValidValue(value, true, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -3526,7 +3558,7 @@ namespace TK1.Data
             {
                 OnNickNameChanging(value);
                 ReportPropertyChanging("NickName");
-                _NickName = StructuralObject.SetValidValue(value, true);
+                _NickName = StructuralObject.SetValidValue(value, true, "NickName");
                 ReportPropertyChanged("NickName");
                 OnNickNameChanged();
             }
@@ -3550,7 +3582,7 @@ namespace TK1.Data
             {
                 OnFullNameChanging(value);
                 ReportPropertyChanging("FullName");
-                _FullName = StructuralObject.SetValidValue(value, false);
+                _FullName = StructuralObject.SetValidValue(value, false, "FullName");
                 ReportPropertyChanged("FullName");
                 OnFullNameChanged();
             }
@@ -3574,7 +3606,7 @@ namespace TK1.Data
             {
                 OnBirthDateChanging(value);
                 ReportPropertyChanging("BirthDate");
-                _BirthDate = StructuralObject.SetValidValue(value);
+                _BirthDate = StructuralObject.SetValidValue(value, "BirthDate");
                 ReportPropertyChanged("BirthDate");
                 OnBirthDateChanged();
             }
@@ -3598,7 +3630,7 @@ namespace TK1.Data
             {
                 OnCustomSettingsChanging(value);
                 ReportPropertyChanging("CustomSettings");
-                _CustomSettings = StructuralObject.SetValidValue(value, true);
+                _CustomSettings = StructuralObject.SetValidValue(value, true, "CustomSettings");
                 ReportPropertyChanged("CustomSettings");
                 OnCustomSettingsChanged();
             }
@@ -3622,7 +3654,7 @@ namespace TK1.Data
             {
                 OnCustomDataChanging(value);
                 ReportPropertyChanging("CustomData");
-                _CustomData = StructuralObject.SetValidValue(value, true);
+                _CustomData = StructuralObject.SetValidValue(value, true, "CustomData");
                 ReportPropertyChanged("CustomData");
                 OnCustomDataChanged();
             }
@@ -3632,7 +3664,7 @@ namespace TK1.Data
         partial void OnCustomDataChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -3724,6 +3756,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3752,7 +3785,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3771,7 +3805,7 @@ namespace TK1.Data
                 {
                     OnPersonAddressIDChanging(value);
                     ReportPropertyChanging("PersonAddressID");
-                    _PersonAddressID = StructuralObject.SetValidValue(value);
+                    _PersonAddressID = StructuralObject.SetValidValue(value, "PersonAddressID");
                     ReportPropertyChanged("PersonAddressID");
                     OnPersonAddressIDChanged();
                 }
@@ -3796,7 +3830,7 @@ namespace TK1.Data
             {
                 OnPersonIDChanging(value);
                 ReportPropertyChanging("PersonID");
-                _PersonID = StructuralObject.SetValidValue(value);
+                _PersonID = StructuralObject.SetValidValue(value, "PersonID");
                 ReportPropertyChanged("PersonID");
                 OnPersonIDChanged();
             }
@@ -3820,7 +3854,7 @@ namespace TK1.Data
             {
                 OnAddressDataIDChanging(value);
                 ReportPropertyChanging("AddressDataID");
-                _AddressDataID = StructuralObject.SetValidValue(value);
+                _AddressDataID = StructuralObject.SetValidValue(value, "AddressDataID");
                 ReportPropertyChanged("AddressDataID");
                 OnAddressDataIDChanged();
             }
@@ -3830,7 +3864,7 @@ namespace TK1.Data
         partial void OnAddressDataIDChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -3910,6 +3944,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3938,7 +3973,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3957,7 +3993,7 @@ namespace TK1.Data
                 {
                     OnPersonContactDataIDChanging(value);
                     ReportPropertyChanging("PersonContactDataID");
-                    _PersonContactDataID = StructuralObject.SetValidValue(value);
+                    _PersonContactDataID = StructuralObject.SetValidValue(value, "PersonContactDataID");
                     ReportPropertyChanged("PersonContactDataID");
                     OnPersonContactDataIDChanged();
                 }
@@ -3982,7 +4018,7 @@ namespace TK1.Data
             {
                 OnPersonIDChanging(value);
                 ReportPropertyChanging("PersonID");
-                _PersonID = StructuralObject.SetValidValue(value);
+                _PersonID = StructuralObject.SetValidValue(value, "PersonID");
                 ReportPropertyChanged("PersonID");
                 OnPersonIDChanged();
             }
@@ -4006,7 +4042,7 @@ namespace TK1.Data
             {
                 OnContactDataIDChanging(value);
                 ReportPropertyChanging("ContactDataID");
-                _ContactDataID = StructuralObject.SetValidValue(value);
+                _ContactDataID = StructuralObject.SetValidValue(value, "ContactDataID");
                 ReportPropertyChanged("ContactDataID");
                 OnContactDataIDChanged();
             }
@@ -4016,7 +4052,7 @@ namespace TK1.Data
         partial void OnContactDataIDChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -4096,6 +4132,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4124,7 +4161,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4143,7 +4181,7 @@ namespace TK1.Data
                 {
                     OnProcessIDChanging(value);
                     ReportPropertyChanging("ProcessID");
-                    _ProcessID = StructuralObject.SetValidValue(value);
+                    _ProcessID = StructuralObject.SetValidValue(value, "ProcessID");
                     ReportPropertyChanged("ProcessID");
                     OnProcessIDChanged();
                 }
@@ -4168,7 +4206,7 @@ namespace TK1.Data
             {
                 OnAppIDChanging(value);
                 ReportPropertyChanging("AppID");
-                _AppID = StructuralObject.SetValidValue(value);
+                _AppID = StructuralObject.SetValidValue(value, "AppID");
                 ReportPropertyChanged("AppID");
                 OnAppIDChanged();
             }
@@ -4192,7 +4230,7 @@ namespace TK1.Data
             {
                 OnCustomerIDChanging(value);
                 ReportPropertyChanging("CustomerID");
-                _CustomerID = StructuralObject.SetValidValue(value);
+                _CustomerID = StructuralObject.SetValidValue(value, "CustomerID");
                 ReportPropertyChanged("CustomerID");
                 OnCustomerIDChanged();
             }
@@ -4216,7 +4254,7 @@ namespace TK1.Data
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value, true);
+                _Status = StructuralObject.SetValidValue(value, true, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -4226,7 +4264,7 @@ namespace TK1.Data
         partial void OnStatusChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -4328,6 +4366,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4352,7 +4391,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4371,7 +4411,7 @@ namespace TK1.Data
                 {
                     OnProcExecIDChanging(value);
                     ReportPropertyChanging("ProcExecID");
-                    _ProcExecID = StructuralObject.SetValidValue(value);
+                    _ProcExecID = StructuralObject.SetValidValue(value, "ProcExecID");
                     ReportPropertyChanged("ProcExecID");
                     OnProcExecIDChanged();
                 }
@@ -4396,7 +4436,7 @@ namespace TK1.Data
             {
                 OnProcessIDChanging(value);
                 ReportPropertyChanging("ProcessID");
-                _ProcessID = StructuralObject.SetValidValue(value);
+                _ProcessID = StructuralObject.SetValidValue(value, "ProcessID");
                 ReportPropertyChanged("ProcessID");
                 OnProcessIDChanged();
             }
@@ -4420,7 +4460,7 @@ namespace TK1.Data
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value, true);
+                _Status = StructuralObject.SetValidValue(value, true, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -4444,7 +4484,7 @@ namespace TK1.Data
             {
                 OnBeginTimestampChanging(value);
                 ReportPropertyChanging("BeginTimestamp");
-                _BeginTimestamp = StructuralObject.SetValidValue(value);
+                _BeginTimestamp = StructuralObject.SetValidValue(value, "BeginTimestamp");
                 ReportPropertyChanged("BeginTimestamp");
                 OnBeginTimestampChanged();
             }
@@ -4468,7 +4508,7 @@ namespace TK1.Data
             {
                 OnEndTimestampChanging(value);
                 ReportPropertyChanging("EndTimestamp");
-                _EndTimestamp = StructuralObject.SetValidValue(value);
+                _EndTimestamp = StructuralObject.SetValidValue(value, "EndTimestamp");
                 ReportPropertyChanged("EndTimestamp");
                 OnEndTimestampChanged();
             }
@@ -4478,7 +4518,7 @@ namespace TK1.Data
         partial void OnEndTimestampChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -4580,6 +4620,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4606,7 +4647,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4625,7 +4667,7 @@ namespace TK1.Data
                 {
                     OnStatusChanging(value);
                     ReportPropertyChanging("Status");
-                    _Status = StructuralObject.SetValidValue(value, false);
+                    _Status = StructuralObject.SetValidValue(value, false, "Status");
                     ReportPropertyChanged("Status");
                     OnStatusChanged();
                 }
@@ -4650,7 +4692,7 @@ namespace TK1.Data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -4660,7 +4702,7 @@ namespace TK1.Data
         partial void OnDescriptionChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -4686,6 +4728,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4714,7 +4757,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4733,7 +4777,7 @@ namespace TK1.Data
                 {
                     OnUserIDChanging(value);
                     ReportPropertyChanging("UserID");
-                    _UserID = StructuralObject.SetValidValue(value);
+                    _UserID = StructuralObject.SetValidValue(value, "UserID");
                     ReportPropertyChanged("UserID");
                     OnUserIDChanged();
                 }
@@ -4758,7 +4802,7 @@ namespace TK1.Data
             {
                 OnPersonIDChanging(value);
                 ReportPropertyChanging("PersonID");
-                _PersonID = StructuralObject.SetValidValue(value);
+                _PersonID = StructuralObject.SetValidValue(value, "PersonID");
                 ReportPropertyChanged("PersonID");
                 OnPersonIDChanged();
             }
@@ -4782,7 +4826,7 @@ namespace TK1.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -4806,7 +4850,7 @@ namespace TK1.Data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -4830,7 +4874,7 @@ namespace TK1.Data
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, false);
+                _Password = StructuralObject.SetValidValue(value, false, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -4840,7 +4884,7 @@ namespace TK1.Data
         partial void OnPasswordChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -4920,6 +4964,7 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4948,7 +4993,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4967,7 +5013,7 @@ namespace TK1.Data
                 {
                     OnWebSessionIDChanging(value);
                     ReportPropertyChanging("WebSessionID");
-                    _WebSessionID = StructuralObject.SetValidValue(value, false);
+                    _WebSessionID = StructuralObject.SetValidValue(value, false, "WebSessionID");
                     ReportPropertyChanged("WebSessionID");
                     OnWebSessionIDChanged();
                 }
@@ -4994,7 +5040,7 @@ namespace TK1.Data
                 {
                     OnKeyChanging(value);
                     ReportPropertyChanging("Key");
-                    _Key = StructuralObject.SetValidValue(value, false);
+                    _Key = StructuralObject.SetValidValue(value, false, "Key");
                     ReportPropertyChanged("Key");
                     OnKeyChanged();
                 }
@@ -5019,7 +5065,7 @@ namespace TK1.Data
             {
                 OnValueChanging(value);
                 ReportPropertyChanging("Value");
-                _Value = StructuralObject.SetValidValue(value, true);
+                _Value = StructuralObject.SetValidValue(value, true, "Value");
                 ReportPropertyChanged("Value");
                 OnValueChanged();
             }
@@ -5043,7 +5089,7 @@ namespace TK1.Data
             {
                 OnCreationTimestampChanging(value);
                 ReportPropertyChanging("CreationTimestamp");
-                _CreationTimestamp = StructuralObject.SetValidValue(value);
+                _CreationTimestamp = StructuralObject.SetValidValue(value, "CreationTimestamp");
                 ReportPropertyChanged("CreationTimestamp");
                 OnCreationTimestampChanged();
             }
@@ -5067,7 +5113,7 @@ namespace TK1.Data
             {
                 OnUpdateTimestampChanging(value);
                 ReportPropertyChanging("UpdateTimestamp");
-                _UpdateTimestamp = StructuralObject.SetValidValue(value);
+                _UpdateTimestamp = StructuralObject.SetValidValue(value, "UpdateTimestamp");
                 ReportPropertyChanged("UpdateTimestamp");
                 OnUpdateTimestampChanged();
             }
@@ -5077,7 +5123,7 @@ namespace TK1.Data
         partial void OnUpdateTimestampChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -5106,7 +5152,8 @@ namespace TK1.Data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5125,7 +5172,7 @@ namespace TK1.Data
                 {
                     OnFileNameChanging(value);
                     ReportPropertyChanging("FileName");
-                    _FileName = StructuralObject.SetValidValue(value, false);
+                    _FileName = StructuralObject.SetValidValue(value, false, "FileName");
                     ReportPropertyChanged("FileName");
                     OnFileNameChanged();
                 }
@@ -5150,7 +5197,7 @@ namespace TK1.Data
             {
                 OnContextIDChanging(value);
                 ReportPropertyChanging("ContextID");
-                _ContextID = StructuralObject.SetValidValue(value);
+                _ContextID = StructuralObject.SetValidValue(value, "ContextID");
                 ReportPropertyChanged("ContextID");
                 OnContextIDChanged();
             }
@@ -5174,7 +5221,7 @@ namespace TK1.Data
             {
                 OnLoadTimestampChanging(value);
                 ReportPropertyChanging("LoadTimestamp");
-                _LoadTimestamp = StructuralObject.SetValidValue(value);
+                _LoadTimestamp = StructuralObject.SetValidValue(value, "LoadTimestamp");
                 ReportPropertyChanged("LoadTimestamp");
                 OnLoadTimestampChanged();
             }
@@ -5198,7 +5245,7 @@ namespace TK1.Data
             {
                 OnProcessTimestampChanging(value);
                 ReportPropertyChanging("ProcessTimestamp");
-                _ProcessTimestamp = StructuralObject.SetValidValue(value);
+                _ProcessTimestamp = StructuralObject.SetValidValue(value, "ProcessTimestamp");
                 ReportPropertyChanged("ProcessTimestamp");
                 OnProcessTimestampChanged();
             }
@@ -5222,7 +5269,7 @@ namespace TK1.Data
             {
                 OnDataChanging(value);
                 ReportPropertyChanging("Data");
-                _Data = StructuralObject.SetValidValue(value, true);
+                _Data = StructuralObject.SetValidValue(value, true, "Data");
                 ReportPropertyChanged("Data");
                 OnDataChanged();
             }
@@ -5232,7 +5279,7 @@ namespace TK1.Data
         partial void OnDataChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -5274,8 +5321,9 @@ namespace TK1.Data
         }
 
         #endregion
+
     }
 
     #endregion
-    
+
 }

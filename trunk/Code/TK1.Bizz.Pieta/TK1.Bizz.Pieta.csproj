@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TK1.Bizz.Pieta</RootNamespace>
     <AssemblyName>TK1.Bizz.Pieta</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -58,9 +60,13 @@
     <None Include="App.Config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TK1.Basics\TK1.Basics.csproj">
-      <Project>{FE2EC233-7BB8-4625-BFB6-25A8CA9DEE9B}</Project>
-      <Name>TK1.Basics</Name>
+    <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
+      <Project>{ab2ec906-93ae-4f64-b71d-e04c88036d7d}</Project>
+      <Name>TK1.Bizz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Data.Bizz.Client\TK1.Data.Bizz.Client.csproj">
+      <Project>{e569e820-ae28-4280-80de-f3f29d14b3b2}</Project>
+      <Name>TK1.Data.Bizz.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\TK1\TK1.csproj">
       <Project>{B1B8234D-8130-459A-8C16-91E6190E708D}</Project>

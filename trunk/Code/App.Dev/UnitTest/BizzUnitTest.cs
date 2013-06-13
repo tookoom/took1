@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TK1.Data.Controller;
-using TK1.Bizz.Data.Controller;
 using TK1.Bizz;
 using TK1.Bizz.Net;
+using TK1.Data.Bizz.Controller;
 
 namespace TK1.Dev.UnitTest
 {

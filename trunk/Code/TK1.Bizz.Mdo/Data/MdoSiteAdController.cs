@@ -10,9 +10,8 @@ using TK1.Data.Controller;
 using TK1.Bizz.Mdo.Selling.Xml;
 using TK1.Bizz.Mdo.Selling.Data;
 using System.Threading;
-using TK1.Bizz.Data.Presentation;
-using TK1.Bizz.Data;
 using TK1.Data.Converter;
+using TK1.Data.Bizz.Presentation;
 
 namespace TK1.Bizz.Mdo.Data.Controller
 {

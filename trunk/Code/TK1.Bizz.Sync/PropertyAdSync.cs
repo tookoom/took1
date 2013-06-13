@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TK1.Bizz.Data.Controller;
-using TK1.Bizz.Data.Presentation;
-using TK1.Bizz.Client.Data.Controller;
-using TK1.Bizz.Client.Data.Presentation;
+using TK1.Bizz.Broker.Presentation;
 using TK1.Bizz.Mdo.Data.Controller;
+using TK1.Data.Bizz.Broker.Controller;
+using TK1.Data.Bizz.Controller;
+using TK1.Data.Bizz.Presentation;
 
 namespace TK1.Bizz.Sync
 {

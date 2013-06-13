@@ -5,7 +5,6 @@ using System.Text;
 using System.IO;
 using TK1.Data.Converter;
 using System.Drawing;
-using TK1.Media.Imaging;
 
 namespace TK1.Bizz.Mdo.Selling
 {
@@ -82,54 +81,54 @@ namespace TK1.Bizz.Mdo.Selling
         //    result.Add("~/Images/PicNotFound.jpg");
         //    return result;
         //}
-        public static void ResizeSitePics(string picRootPath, int picSize, int thumbSize)
-        {
+        //public static void ResizeSitePics(string picRootPath, int picSize, int thumbSize)
+        //{
 
-            if (!string.IsNullOrEmpty(picRootPath))
-            {
-                if (Directory.Exists(picRootPath))
-                {
-                    foreach (var dir in Directory.GetDirectories(picRootPath))
-                    {
-                        string resizedDir = string.Format("{0}\\resized\\", dir);
-                        if (Directory.Exists(resizedDir))
-                            Directory.Delete(resizedDir, true);
-                        Directory.CreateDirectory(resizedDir);
+        //    if (!string.IsNullOrEmpty(picRootPath))
+        //    {
+        //        if (Directory.Exists(picRootPath))
+        //        {
+        //            foreach (var dir in Directory.GetDirectories(picRootPath))
+        //            {
+        //                string resizedDir = string.Format("{0}\\resized\\", dir);
+        //                if (Directory.Exists(resizedDir))
+        //                    Directory.Delete(resizedDir, true);
+        //                Directory.CreateDirectory(resizedDir);
 
-                        string thumbnailDir = string.Format("{0}\\thumbs\\", dir);
-                        if (Directory.Exists(thumbnailDir))
-                            Directory.Delete(thumbnailDir, true);
-                        Directory.CreateDirectory(thumbnailDir);
+        //                string thumbnailDir = string.Format("{0}\\thumbs\\", dir);
+        //                if (Directory.Exists(thumbnailDir))
+        //                    Directory.Delete(thumbnailDir, true);
+        //                Directory.CreateDirectory(thumbnailDir);
 
-                        foreach (string filePath in System.IO.Directory.GetFiles(dir))
-                        {
-                            string extension = System.IO.Path.GetExtension(filePath);
-                            if (extension != null & extension != string.Empty)
-                            {
-                                if (extension.ToLower() == ".jpg")
-                                {
-                                    string fileName = System.IO.Path.GetFileName(filePath);
-                                    string resizedFilePath = string.Format("{0}{1}", resizedDir, fileName);
-                                    string thumbnailFilePath = string.Format("{0}{1}", thumbnailDir, fileName);
+        //                foreach (string filePath in System.IO.Directory.GetFiles(dir))
+        //                {
+        //                    string extension = System.IO.Path.GetExtension(filePath);
+        //                    if (extension != null & extension != string.Empty)
+        //                    {
+        //                        if (extension.ToLower() == ".jpg")
+        //                        {
+        //                            string fileName = System.IO.Path.GetFileName(filePath);
+        //                            string resizedFilePath = string.Format("{0}{1}", resizedDir, fileName);
+        //                            string thumbnailFilePath = string.Format("{0}{1}", thumbnailDir, fileName);
 
-                                    try
-                                    {
-                                        ImageHelper.CreateThumbnail(filePath, thumbnailFilePath, thumbSize, thumbSize);
-                                        ImageHelper.Resize(filePath, resizedFilePath, picSize, picSize);
+        //                            try
+        //                            {
+        //                                ImageHelper.CreateThumbnail(filePath, thumbnailFilePath, thumbSize, thumbSize);
+        //                                ImageHelper.Resize(filePath, resizedFilePath, picSize, picSize);
 
-                                    }
-                                    catch (Exception exception)
-                                    {
+        //                            }
+        //                            catch (Exception exception)
+        //                            {
 
 
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     
     }
 }

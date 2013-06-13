@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TK1.Bizz.Client.Data.Controller;
 using TK1.Bizz.Inetsoft.Client;
 using TK1.Bizz.Mdo.Client;
 using TK1.Collection;
+using TK1.Data.Bizz.Client.Controller;
 
 public partial class Integra_Sync_Mdo_Default : System.Web.UI.Page
 {

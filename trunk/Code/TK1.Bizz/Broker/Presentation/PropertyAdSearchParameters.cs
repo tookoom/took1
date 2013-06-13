@@ -31,11 +31,11 @@ namespace TK1.Bizz.Broker.Presentation
             AreaTo = float.MaxValue;
             AreaFrom = float.MinValue;
             Category = PropertyAdCategories.Residencial.ToString();
-            CityName = "Porto Alegre";
+            CityName = "*";
             AdCode = 0;
             CustomerCode = string.Empty;
             Districts = new List<string>();
-            PropertyType = "Apartamento";
+            PropertyType = "*";
             ResultOrdering = PropertyAdSearchResultOrders._Undefined;
             RoomsFrom = int.MinValue;
             RoomsTo = int.MaxValue;
