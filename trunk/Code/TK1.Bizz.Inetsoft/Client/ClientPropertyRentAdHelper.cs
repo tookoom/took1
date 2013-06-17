@@ -232,7 +232,7 @@ namespace TK1.Bizz.Inetsoft.Client
                 {
                     var mailHelper = new MailHelper();
                     if (SendErrorOnly)
-                        mailHelper.SendMail(subject, body, "suporte@tk1.net.br", false);
+                        mailHelper.SendMail(subject, body, mailTo, false);
                     mailHelper.SendMail(subject, body, mailTo, false);
                 }
             }
