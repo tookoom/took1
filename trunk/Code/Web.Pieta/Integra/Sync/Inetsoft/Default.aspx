@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div style="font-family:'Verdana Tahoma'; font-size: medium;">
-        <p>Processo de carga de cadastros de alugiéis executado</p>
+        <p>Processo de carga de cadastros de aluguéis executado</p>
         <asp:Literal ID="literalResponse" runat="server"></asp:Literal>
     </div>
     </form>

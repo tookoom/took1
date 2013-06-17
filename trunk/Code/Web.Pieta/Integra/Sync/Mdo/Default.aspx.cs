@@ -21,6 +21,7 @@ public partial class Integra_Sync_Mdo_Default : System.Web.UI.Page
             string fileFilter = "vendaweb*";
 
             var adHelper = new ClientPropertyAdHelper("pieta") { SendReportMail = true };
+            adHelper.BasePicUrl = @"http://pietaimoveis.com.br/Integra/Arquivos/Mdo/Fotos/4";
             var report = adHelper.LoadFile(sourceDir, fileFilter);
             literalResponse.Text = report;
 

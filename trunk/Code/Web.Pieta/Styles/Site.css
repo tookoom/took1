@@ -5,7 +5,9 @@ body
 {
     background: #CFD8DE;
     font-size: medium;
-    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Helvetica, Verdana, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Helvetica, Verdana, Arial, sans-serif;*/
+        font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+
     margin: 0px;
     padding: 0px;
     color: #696969;
@@ -47,16 +49,13 @@ h1, h2, h3, h4, h5, h6
 {
     font-size: medium;
     color: #666666;
-    /*font-variant: small-caps;*/
     text-transform: none;
-    /*font-weight: 200;*/
     margin-bottom: 0px;
 }
 
 h1
 {
     font-size: x-large;
-    font-variant: small-caps;
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
@@ -64,7 +63,6 @@ h1
 h2
 {
     font-size: large;
-    font-variant: small-caps;
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
