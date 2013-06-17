@@ -65,10 +65,6 @@
       <Project>{e569e820-ae28-4280-80de-f3f29d14b3b2}</Project>
       <Name>TK1.Data.Bizz.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TK1.Data.Bizz\TK1.Data.Bizz.csproj">
-      <Project>{16607470-70ed-465c-80e5-e80753dcbca3}</Project>
-      <Name>TK1.Data.Bizz</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
       <Project>{2484CD63-A0B0-46AE-A423-B32E6A6AD279}</Project>
       <Name>TK1.Data</Name>
