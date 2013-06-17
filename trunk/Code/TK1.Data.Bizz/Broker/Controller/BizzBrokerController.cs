@@ -5,7 +5,7 @@ using System.Text;
 using TK1.Data.Bizz.Broker.Model;
 using TK1.Data.Bizz.Model;
 
-namespace TK1.Data.Bizz.Controller
+namespace TK1.Data.Bizz.Broker.Controller
 {
     public class BizzBrokerController
     {
