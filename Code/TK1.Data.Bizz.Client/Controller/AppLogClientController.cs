@@ -21,14 +21,14 @@ namespace TK1.Data.Bizz.Client.Controller
             {
                 using (TK1ClientBaseEntities entities = BaseClientController.GetTK1ClientBaseEntities())
                 {
-                    ClientAppLog result = new ClientAppLog()
+                    ClientAppLog appLogEntry = new ClientAppLog()
                     {
                         LogTimestamp = DateTime.Now,
                         LogType = (int)level,
                         Message = message,
                         Data = data
                     };
-                    entities.AddToClientAppLog(result);
+                    entities.ClientAppLog.Add(appLogEntry);
                     entities.SaveChanges();
                 }
             }

@@ -192,8 +192,8 @@ namespace TK1.Data.Bizz.Client.Controller
                     var propertyCategory = PropertyAdCategories.Residencial;
                     if (propertyAd.CategoryName != PropertyAdCategories.Residencial.ToString())
                         propertyCategory = PropertyAdCategories.Comercial;
-                    propertyAd.PropertyAdDetails.Load();
-                    propertyAd.PropertyAdPics.Load();
+                    //propertyAd.PropertyAdDetails.Load();
+                    //propertyAd.PropertyAdPics.Load();
                     string mainPicName = string.Empty;
                     if (propertyAd.PropertyAdPics.Count > 0)
                         mainPicName = propertyAd.PropertyAdPics.OrderBy(o => o.PropertyAdPicID).FirstOrDefault().FileName;
@@ -273,7 +273,7 @@ namespace TK1.Data.Bizz.Client.Controller
             var propertyAd = getPropertyAd(adType, adCode);
             if (propertyAd != null)
             {
-                propertyAd.PropertyAdDetails.Load();
+                //propertyAd.PropertyAdDetails.Load();
                 if (propertyAd.PropertyAdDetails != null)
                 {
                     var query = from o in propertyAd.PropertyAdDetails
@@ -297,7 +297,7 @@ namespace TK1.Data.Bizz.Client.Controller
             var propertyAd = getPropertyAd(adType, adCode);
             if (propertyAd != null)
             {
-                propertyAd.PropertyAdPics.Load();
+                //propertyAd.PropertyAdPics.Load();
                 if (propertyAd.PropertyAdPics != null)
                 {
                     foreach (var item in propertyAd.PropertyAdPics)
@@ -439,18 +439,18 @@ namespace TK1.Data.Bizz.Client.Controller
             var propertyAd = getPropertyAd(adType, adCode);
             if (propertyAd != null)
             {
-                propertyAd.PropertyAdDetails.Load();
-                propertyAd.PropertyAdPics.Load();
-                propertyAd.PropertyReleaseAdReference.Load();
+                //propertyAd.PropertyAdDetails.Load();
+                //propertyAd.PropertyAdPics.Load();
+                //propertyAd.PropertyReleaseAdReference.Load();
 
                 foreach (var item in propertyAd.PropertyAdDetails.ToList())
-                    Entities.DeleteObject(item);
+                    Entities.PropertyAdDetail.Remove(item);
                 foreach (var item in propertyAd.PropertyAdPics.ToList())
-                    Entities.DeleteObject(item);
+                    Entities.PropertyAdPic.Remove(item);
                 if (propertyAd.PropertyReleaseAd != null)
-                    Entities.DeleteObject(propertyAd.PropertyReleaseAd);
+                    Entities.PropertyReleaseAd.Remove(propertyAd.PropertyReleaseAd);
 
-                Entities.DeleteObject(propertyAd);
+                Entities.PropertyAd.Remove(propertyAd);
                 Entities.SaveChanges();
             }
         }
@@ -459,16 +459,16 @@ namespace TK1.Data.Bizz.Client.Controller
             var details = getPropertyAdDetails(adType, adCode);
             foreach (var item in details)
             {
-                Entities.DeleteObject(item);
+                Entities.PropertyAdDetail.Remove(item);
             }
             Entities.SaveChanges();
         }
         public void RemovePropertyAdPics(PropertyAdTypes adType, int adCode)
         {
-            var details = getPropertyAdPics(adType, adCode);
-            foreach (var item in details)
+            var pics = getPropertyAdPics(adType, adCode);
+            foreach (var item in pics)
             {
-                Entities.DeleteObject(item);
+                Entities.PropertyAdPic.Remove(item);
             }
             Entities.SaveChanges();
         }
@@ -509,7 +509,7 @@ namespace TK1.Data.Bizz.Client.Controller
                     Value = propertyAdView.Value,
                     Visible = true
                 };
-                Entities.PropertyAd.AddObject(newPropertyAd);
+                Entities.PropertyAd.Add(newPropertyAd);
                 Entities.SaveChanges();
             }
             else
@@ -579,7 +579,7 @@ namespace TK1.Data.Bizz.Client.Controller
                     TotalTowerFloors = releaseAdView.TotalTowerFloors,
                     TotalTowers = releaseAdView.TotalTowers
                 };
-                Entities.PropertyReleaseAd.AddObject(newPropertyReleaseAd);
+                Entities.PropertyReleaseAd.Add(newPropertyReleaseAd);
                 Entities.SaveChanges();
             }
             else
@@ -678,7 +678,7 @@ namespace TK1.Data.Bizz.Client.Controller
             var releaseAd = Entities.PropertyReleaseAd.Where(o => o.CustomerCode == customerCode & o.PropertyAdTypeID == propertyTypeID & o.PropertyAdID == releaseAdCode).FirstOrDefault();
             if (releaseAd != null)
             {
-                releaseAd.PropertyAdReference.Load();
+                //releaseAd.PropertyAdReference.Load();
                 if (releaseAd.PropertyAd != null)
                 {
                     //releaseAd.PropertyAd.PropertyAdDetails.Load();
@@ -693,7 +693,7 @@ namespace TK1.Data.Bizz.Client.Controller
             PropertyReleaseAdView result = null;
             if (releaseAd != null)
             {
-                releaseAd.PropertyAdReference.Load();
+                //releaseAd.PropertyAdReference.Load();
                 if (releaseAd.PropertyAd == null)
                     throw new NullReferenceException("Reference releaseAd.PropertyAd can't be null");
 
@@ -701,7 +701,7 @@ namespace TK1.Data.Bizz.Client.Controller
                 Enum.TryParse<PropertyAdCategories>(releaseAd.PropertyAd.CategoryName, out propertyCategory);
 
                 string mainPicName = string.Empty;
-                releaseAd.PropertyAd.PropertyAdPics.Load();
+                //releaseAd.PropertyAd.PropertyAdPics.Load();
                 if (releaseAd.PropertyAd.PropertyAdPics.Count > 0)
                     mainPicName = releaseAd.PropertyAd.PropertyAdPics.OrderBy(o => o.PropertyAdPicID).FirstOrDefault().FileName;
 
