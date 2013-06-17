@@ -150,7 +150,7 @@
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDetail" runat="server" 
         SelectMethod="GetPropertyAdDetails" 
-        TypeName="TK1.Bizz.Data.Client.Binding.PropertyAdBindingSource" >
+        TypeName="TK1.Data.Bizz.Client.Binding.PropertyAdBindingSource" >
 
         <SelectParameters>
             <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
@@ -165,7 +165,7 @@
 
     <asp:ObjectDataSource ID="objectDataSourceSiteDescription" runat="server" 
         SelectMethod="GetPropertyAd" 
-        TypeName="TK1.Bizz.Data.Client.Binding.PropertyAdBindingSource" 
+        TypeName="TK1.Data.Bizz.Client.Binding.PropertyAdBindingSource" 
         onselected="objectDataSourceSiteDescription_Selected">
 
         <SelectParameters>

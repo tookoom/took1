@@ -35,7 +35,7 @@
                     <div class="featureViewerInner">
                         <div class="featureViewerImage">
                             <a href="/Imovel/Default.aspx?ID=<%# Eval("AdCode")%>&AdType=<%# Eval("AdType")%>">
-                                <img src="http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/<%# Eval("AdCode") %>/<%# Eval("MainPicUrl") %>" width="160px"/>
+                                <img src="<%# Eval("MainPicUrl") %>" width="160px"/>
                             </a>
                         </div>
                         <h2><%# Eval("District")%></h2>
@@ -95,7 +95,7 @@
 
     <asp:ObjectDataSource ID="objectDataSourceFeaturedPropertyAds" runat="server" 
         SelectMethod="GetFeaturedSellingPropertyAds" 
-        TypeName="TK1.Bizz.Data.Client.Binding.PropertyAdBindingSource">
+        TypeName="TK1.Data.Bizz.Client.Binding.PropertyAdBindingSource">
         <SelectParameters>
             <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
             <asp:Parameter DefaultValue="5" Name="count" Type="Int32" />
@@ -104,7 +104,7 @@
 
     <asp:ObjectDataSource ID="objectDataSourcePropertyReleaseAds" runat="server" 
         SelectMethod="GetPropertyReleaseAds" 
-        TypeName="TK1.Bizz.Data.Client.Binding.PropertyAdBindingSource">
+        TypeName="TK1.Data.Bizz.Client.Binding.PropertyAdBindingSource">
         <SelectParameters>
             <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
         </SelectParameters>

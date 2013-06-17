@@ -18,6 +18,7 @@ public partial class Integra_Sync_Inetsoft_Default : System.Web.UI.Page
             string fileFilter = "imobiliar*";
 
             var adHelper = new ClientPropertyRentAdHelper("pieta") { SendReportMail = true };
+            adHelper.BasePicUrl = @"http://pietaimoveis.com.br/Integra/Arquivos/Inetsoft/Fotos/Pieta";
             var report = adHelper.LoadFile(sourceDir, fileFilter);
             literalResponse.Text = report;
 
