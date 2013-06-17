@@ -94,8 +94,8 @@ namespace TK1.Data.Bizz.Client.Binding
                     var propertyCategory = PropertyAdCategories.Residencial;
                     if (propertyAd.CategoryName != PropertyAdCategories.Residencial.ToString())
                         propertyCategory = PropertyAdCategories.Comercial;
-                    propertyAd.PropertyAdDetails.Load();
-                    propertyAd.PropertyAdPics.Load();
+                    //propertyAd.PropertyAdDetails.Load();
+                    //propertyAd.PropertyAdPics.Load();
 
                     string mainPicUrl = string.Empty;
                     if (propertyAd.PropertyAdPics.Count > 0)

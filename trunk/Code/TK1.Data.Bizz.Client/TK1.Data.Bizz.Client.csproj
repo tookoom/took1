@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TK1.Data.Bizz.Client</RootNamespace>
     <AssemblyName>TK1.Data.Bizz.Client</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -33,7 +33,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\Workspaces\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -46,8 +50,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binding\PropertyAdBindingSource.cs" />
+    <Compile Include="Controller\AppLogClientController.cs" />
+    <Compile Include="Controller\AuditClientController.cs" />
+    <Compile Include="Controller\BaseClientController.cs" />
+    <Compile Include="Controller\BizzBaseClientController.cs" />
+    <Compile Include="Controller\ConfigurationController.cs" />
+    <Compile Include="Controller\PropertyAdController.cs" />
+    <Compile Include="Model\ClientAppLog.cs">
+      <DependentUpon>ClientBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClientAudit.cs">
+      <DependentUpon>ClientBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClientBaseModel.Context.cs">
+      <DependentUpon>ClientBaseModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Model\ClientBaseModel.cs">
+      <DependentUpon>ClientBaseModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Model\ClientBaseModel.Designer.cs">
       <DependentUpon>ClientBaseModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Model\ClientBizzModel.Context.cs">
+      <DependentUpon>ClientBizzModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Model\ClientBizzModel.cs">
+      <DependentUpon>ClientBizzModel.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -56,26 +92,60 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Controller\AppLogClientController.cs" />
-    <Compile Include="Controller\AuditClientController.cs" />
-    <Compile Include="Controller\BaseClientController.cs" />
-    <Compile Include="Controller\BizzBaseClientController.cs" />
-    <Compile Include="Controller\ConfigurationController.cs" />
-    <Compile Include="Controller\PropertyAdController.cs" />
+    <Compile Include="Model\ClientConfiguration.cs">
+      <DependentUpon>ClientBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Extension\PropertyAdExtension.cs" />
+    <Compile Include="Model\PropertyAd.cs">
+      <DependentUpon>ClientBizzModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PropertyAdDetail.cs">
+      <DependentUpon>ClientBizzModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PropertyAdPic.cs">
+      <DependentUpon>ClientBizzModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PropertyReleaseAd.cs">
+      <DependentUpon>ClientBizzModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Model\ClientBaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClientBaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Model\ClientBaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClientBaseModel.edmx</DependentUpon>
+      <LastGenOutput>ClientBaseModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model\ClientBaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClientBaseModel.edmx</DependentUpon>
+      <LastGenOutput>ClientBaseModel.cs</LastGenOutput>
+    </None>
     <EntityDeploy Include="Model\ClientBizzModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClientBizzModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Model\ClientBizzModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClientBizzModel.edmx</DependentUpon>
+      <LastGenOutput>ClientBizzModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model\ClientBizzModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClientBizzModel.edmx</DependentUpon>
+      <LastGenOutput>ClientBizzModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">

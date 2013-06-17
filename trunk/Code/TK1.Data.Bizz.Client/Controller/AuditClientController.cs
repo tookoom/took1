@@ -102,7 +102,7 @@ namespace TK1.Data.Bizz.Client.Controller
         {
             try
             {
-                Entities.ClientAudit.AddObject(new ClientAudit
+                Entities.ClientAudit.Add(new ClientAudit
                 {
                     Assembly = string.Empty,
                     CustomerCode = customerCode,
@@ -134,7 +134,7 @@ namespace TK1.Data.Bizz.Client.Controller
         {
             try
             {
-                Entities.ClientAudit.AddObject(new ClientAudit
+                Entities.ClientAudit.Add(new ClientAudit
                 {
                     Assembly = assembly,
                     CustomerCode = customerCode,
