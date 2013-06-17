@@ -78,7 +78,7 @@
     <Compile Include="Broker\Model\PropertyReleaseAd.cs">
       <DependentUpon>BrokerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controller\BizzBrokerController.cs" />
+    <Compile Include="Broker\Controller\BizzBrokerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Broker\Presentation\" />
+    <Folder Include="Controller\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
