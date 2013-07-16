@@ -7,6 +7,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <script src="Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <script src="Scripts/EasySlider/easySlider1.7.js" type="text/javascript"></script>
+    <script src="Scripts/jqFancyTransitions.1.8.min.js"></script>
     <script src="Scripts/Search.js" type="text/javascript"></script>
     <link href="Styles/Release.css" rel="stylesheet" type="text/css" />
     <link href="Styles/Featured.css" rel="stylesheet" type="text/css" />
@@ -14,16 +15,26 @@
     <link href="Styles/EasySlider/SiteRelease.css" rel="stylesheet" type="text/css" />
 
     	<script type="text/javascript">
-		$(document).ready(function(){	
-			$("#slider").easySlider({
-				auto: true, 
-				continuous: true,
-				numeric: true,
-				pause: 5000,
-				controlsShow: true,
-			});
-		});	
+    	    $(document).ready(function () {
+
+    	        $('#slideshowHolder').jqFancyTransitions({ width: 932, height: 150 });
+
+
+			    $("#slider").easySlider({
+				    auto: true, 
+				    continuous: true,
+				    numeric: true,
+				    pause: 5000,
+				    controlsShow: true,
+			    });
+		    });	
 	</script>
+
+    <div id='slideshowHolder'>
+        <img src="Images/BanneCasaNova01.png" />
+        <img src="Images/BanneCasaNova02.png" />
+    </div>
+
 
     <div class="headerBlueLine"><h1>Destaques Vendas</h1></div>
     <div class="featuredSites">
