@@ -55,21 +55,11 @@ public partial class Pesquisa_Default : System.Web.UI.Page
     private string getSiteMainPic(PropertyAdTypes adType, int adCode)
     {
         string result = string.Empty;
-        string baseUrl = string.Empty;
         PropertyAdController customerController = new PropertyAdController(customerCode);
-        switch (adType)
-        {
-            case PropertyAdTypes.Rent:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", adCode);
-                break;
-            case PropertyAdTypes.Sell:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", adCode);
-                break;
-        }
         var adPics = customerController.GetPropertyPicViews(adType, adCode);
-        foreach (var item in adPics)
+        foreach (var item in adPics.OrderBy(o=>o.Index))
         {
-            result = baseUrl + item.FileName;
+            result = item.Url;
             break;
         }
         return result;

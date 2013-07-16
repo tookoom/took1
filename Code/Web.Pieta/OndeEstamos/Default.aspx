@@ -11,14 +11,10 @@
         <div class="headerBlueLine"><h1>Pietá Intermediações Imobiliárias</h1></div>
 
         <p>
-        Rua Armando Barbedo, 480 - loja 101 - Bairro Tristeza, Porto Alegre, RS 
+        Avenida Nonoai, 151 - sala 403 - Bairro Nonoai, Porto Alegre, RS 
         </p>
         <p>Fone: (51) 3085.6003</p>
-        <a href="http://www.google.com.br/maps?f=d&source=s_d&saddr=&daddr=R.+Dr.+Armando+Barbedo,+480+-+Tristeza,+Porto+Alegre+-+RS,+91920-520&hl=pt-BR&geocode=CeayMD-ay5fZFfmHNP4ds-vx_Clv6g4YI4IZlTGLcYK8bWSfug&mra=mift&sll=-30.111751,-51.254349&sspn=0.009875,0.017874&g=Rua+Armando+Barbedo,+480+loja+101+-+Bairro+Tristeza+-+Porto+Alegre+-+RS&ie=UTF8&z=16" target="_new">Crie seu itinerário com o Google Maps</a>
-        <p> Ou veja em nosso mapa a localização:</p>
-        <img alt="Mapa Pietá" src="http://www.pietaimoveis.com.br/Images/MapaPietá.png"  class="center" style="width:652px; margin: auto;"/>
-        
-
+        <iframe width="932" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?q=avenida+Nonoai,+151+porto+alegre&amp;hl=pt-BR&amp;sll=-30.08588,-51.215537&amp;sspn=0.016339,0.03165&amp;hnear=Av.+Nonoai,+151+-+Nonoai,+Porto+Alegre+-+Rio+Grande+do+Sul,+91720-000&amp;t=m&amp;ie=UTF8&amp;hq=&amp;ll=-30.087151,-51.216109&amp;spn=0.017063,0.03165&amp;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.br/maps?q=avenida+Nonoai,+151+porto+alegre&amp;hl=pt-BR&amp;sll=-30.08588,-51.215537&amp;sspn=0.016339,0.03165&amp;hnear=Av.+Nonoai,+151+-+Nonoai,+Porto+Alegre+-+Rio+Grande+do+Sul,+91720-000&amp;t=m&amp;ie=UTF8&amp;hq=&amp;ll=-30.087151,-51.216109&amp;spn=0.017063,0.03165&amp;z=14&amp;source=embed" style="color:#0000FF;text-align:left">Exibir mapa ampliado</a></small>
     </div>
 
 </asp:Content>

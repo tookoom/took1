@@ -71,27 +71,16 @@ public partial class Imovel_Default : System.Web.UI.Page
     private string getSitePicGallery(PropertyAdTypes adType, int adCode)
     {
         string result = string.Empty;
-        string baseUrl = string.Empty;
+        string html = string.Empty;
         PropertyAdController customerController = new PropertyAdController(customerCode);
-        switch (adType)
-        {
-            case PropertyAdTypes.Rent:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Arquivos/Inetsoft/Fotos/Pieta/{0}/", adCode);
-                break;
-            case PropertyAdTypes.Sell:
-                baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", adCode);
-                break;
-        }
         var pics = customerController.GetPropertyPicViews(adType, adCode);
-        string items = string.Empty;
         int index = 0;
-        foreach (var item in pics)
+        foreach (var item in pics.OrderBy(o=>o.Index))
         {
             index++;
             string fileName = item.FileName;
-            string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
-            string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
-            //string imageTitle = string.Format("Foto {0}", index);
+            string imageSource = item.Url;
+            string imageThumbSource = item.Url;
             string imageDescription = item.Description ?? string.Empty;
 
             string li = "<li>"
@@ -103,9 +92,9 @@ public partial class Imovel_Default : System.Web.UI.Page
                 //+ "<div class=\"image-desc\">" + imageDescription + "</div>"
                     + "</div>"
                     + "</li>";
-            items += li + Environment.NewLine;
+            html += li + Environment.NewLine;
         }
-        if (string.IsNullOrEmpty(items))
+        if (string.IsNullOrEmpty(html))
         {
             string imageSource = @"http://www.pietaimoveis.com.br/Images/ImageNotFound.png";
             string li = "<li>"
@@ -120,12 +109,12 @@ public partial class Imovel_Default : System.Web.UI.Page
                 + "</div>"
                 + "</div>"
                 + "</li>";
-            items += li + Environment.NewLine;
+            html += li + Environment.NewLine;
         }
         string ul = "<ul class=\"thumbs noscript\">"
             + "{0}"
             + "</ul>";
-        result = string.Format(ul, items);
+        result = string.Format(ul, html);
         return result;
 
     }
