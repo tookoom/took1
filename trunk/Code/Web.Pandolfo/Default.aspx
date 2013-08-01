@@ -188,7 +188,7 @@
 
                 </td>
                 <td width="20%" style="vertical-align:top; text-align:right;">
-                    <img src="http://www.pandolfoimoveis.com.br/Imagens/LogoEficiencia.png" alt="Pandolfo" width="150px"/>
+                    <img src="http://www.pandolfoimoveis.com.br/Imagens/LogoEficiencia.jpg" alt="Pandolfo" width="150px"/>
                 </td>
             </tr>
         </table>
