@@ -9,6 +9,7 @@
         <li><a href="Download/DOCUMENTAÇÃO%20LOCATÁRIO%20E%20FIADOR.docx">Documentação de locatário e fiador</a></li>
         <li><a href="Download/FICHA%20CADASTRAL%20FIADOR.doc">Ficha cadastral de fiador</a></li>
         <li><a href="Download/FICHA%20CADASTRAL%20LOCACÃO.doc">Ficha cadastral para locação</a></li>
+        <li><a href="Download/FICHA%20CADASTRAL%20PESSOA%20JURIDICA.docx">Ficha cadastral pessoa jurídica</a></li>
     </ul>
 </asp:Content>
 
