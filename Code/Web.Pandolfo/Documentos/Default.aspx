@@ -10,6 +10,7 @@
         <li><a href="Download/FICHA%20CADASTRAL%20FIADOR.doc">Ficha cadastral de fiador</a></li>
         <li><a href="Download/FICHA%20CADASTRAL%20LOCACÃO.doc">Ficha cadastral para locação</a></li>
         <li><a href="Download/FICHA%20CADASTRAL%20PESSOA%20JURIDICA.docx">Ficha cadastral pessoa jurídica</a></li>
+        <li><a href="Download/FICHA%20PARA%20SEGURO%20FIANÇA.pdf">Ficha para seguro fiança</a></li>
     </ul>
 </asp:Content>
 
