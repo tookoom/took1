@@ -157,17 +157,6 @@
                                     height="50px"/></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">
-                                    <img src="http://www.pandolfoimoveis.com.br/Imagens/MailSmall.png" alt="" 
-                                    height="30px" style="margin-left:10px"/></a>
-                            </td>
-                            <td>
-                                <a target="_blank" href="mailto:arq.karlaschmuck@hotmail.com">Arquiteta e Urbanista Karla Schmuck</a> 
-                            </td>
-
-                        </tr>
                     </table>
                 </td>
                 <td width="40%" style="vertical-align:top">
