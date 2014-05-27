@@ -12,9 +12,17 @@ namespace Web.TK1.Mvc
             bundles.Add(new ScriptBundle("~/bundles/bizzscripts").Include(
                 "~/Scripts/jquery.tn3lite.min.js", "~/Scripts/tk1.bizz.broker.js"));
 
+            //CUSTOM SCRIPTS
+            bundles.Add(new ScriptBundle("~/bundles/mapscripts").Include(
+                "~/Scripts/tk1.maps.js"));
+
             //CUSTOM CSS
             bundles.Add(new StyleBundle("~/Content/bizzcss").Include(
                 "~/Content/base.css", "~/Content/broker.css", "~/Content/brokerparts.css"));
+
+            //CUSTOM CSS
+            bundles.Add(new StyleBundle("~/Content/mapscss").Include(
+                "~/Content/base.css", "~/Content/maps.css"));
 
             bundles.Add(new StyleBundle("~/Content/quakecss").Include(
                 "~/Content/ThirdParty/QuakeSlider/quake.slider.css",
