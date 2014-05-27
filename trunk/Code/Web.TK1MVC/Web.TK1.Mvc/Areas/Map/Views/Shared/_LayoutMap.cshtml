@@ -1,0 +1,45 @@
+﻿@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/mapscss")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left block-info">
+                    @*<h1>@customer.Name</h1>
+                    <p>@customer.AddressList.FirstOrDefault().AddressInfo</p>
+                    <p>@customer.PhoneList.FirstOrDefault().Number</p>*@
+                </div>
+                <div class="float-right">
+                    <img src="~/Images/LogoTK1_Icon.png" />
+                </div>
+            </div>
+                           
+
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/mapscripts")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -187,6 +187,10 @@
     <Compile Include="Areas\Bizz\BizzAreaRegistration.cs" />
     <Compile Include="Areas\Bizz\Controllers\BrokerController.cs" />
     <Compile Include="Areas\Bizz\Models\BrokerSessionKeys.cs" />
+    <Compile Include="Areas\Map\Controllers\PropertyController.cs" />
+    <Compile Include="Areas\Map\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Map\MapAreaRegistration.cs" />
+    <Compile Include="Areas\Map\Models\MapItem.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -198,6 +202,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Maps.css" />
     <Content Include="Content\Broker.css" />
     <Content Include="Content\Base.css" />
     <Content Include="Content\BrokerParts.css" />
@@ -344,6 +349,10 @@
     <Content Include="Areas\Bizz\Views\Broker\Lancamento.cshtml" />
     <Content Include="Content\ThirdParty\QuakeSlider\plain\images\Thumbs.db" />
     <Content Include="Content\ThirdParty\QuakeSlider\violet\images\Thumbs.db" />
+    <Content Include="Areas\Map\Views\Web.config" />
+    <Content Include="Areas\Map\Views\Shared\_LayoutMap.cshtml" />
+    <Content Include="Areas\Map\Views\Property\Index.cshtml" />
+    <Content Include="Areas\Map\Views\Property\Find.cshtml" />
     <None Include="Properties\PublishProfiles\tk1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\tk1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
@@ -355,6 +364,7 @@
     <Content Include="Images\LogoTK1_GRAY.png" />
     <Content Include="Images\LogoTK1_Icon.png" />
     <Content Include="Images\LogoTK1_Small.jpg" />
+    <Content Include="Scripts\tk1.maps.js" />
     <Content Include="Scripts\tk1.bizz.broker.js" />
     <Content Include="Scripts\jquery.tn3lite.min.js" />
     <Content Include="Scripts\Test\example1_lite.html" />
@@ -394,7 +404,9 @@
     <Content Include="Scripts\Test\images\nature\5.jpg" />
     <Content Include="Scripts\Test\images\nature\7.jpg" />
     <Content Include="Scripts\Test\_index.htm" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
