@@ -6,11 +6,12 @@
     <h1>Documentos para Download</h1>
     <p>Clique nos links abaixo para o download de documentos úteis para a locação de imóveis</p>
     <ul>
-        <li><a href="Download/DOCUMENTAÇÃO%20LOCATÁRIO%20E%20FIADOR.docx">Documentação de locatário e fiador</a></li>
-        <li><a href="Download/FICHA%20CADASTRAL%20FIADOR.doc">Ficha cadastral de fiador</a></li>
-        <li><a href="Download/FICHA%20CADASTRAL%20LOCACÃO.doc">Ficha cadastral para locação</a></li>
-        <li><a href="Download/FICHA%20CADASTRAL%20PESSOA%20JURIDICA.docx">Ficha cadastral pessoa jurídica</a></li>
-        <li><a href="Download/FICHA%20PARA%20SEGURO%20FIANÇA.pdf">Ficha para seguro fiança</a></li>
+        <li><a href="Download/DOCUMENTAÇÃO%20FIADOR%20E%20ESPOSA.docx">Documentação de fiador e esposa</a></li>
+        <li><a href="Download/DOCUMENTAÇÃO%20LOCATÁRIO.docx">Documentação de locatário</a></li>
+        <li><a href="Download/FICHA%20CADASTRAL%20FIADOR.doc">Ficha cadastral cadidado a fiador</a></li>
+        <li><a href="Download/FICHA%20CADASTRAL%20CANDIDATO%20A%20LOCAÇÃO.docx">Ficha cadastral candidado à locação</a></li>
+        <li><a href="Download/FICHA%20SEGURO%20FIANÇA%20PESSOA%20FÍSICA.pdf">Ficha para seguro fiança (pessoa físca)</a></li>
+        <li><a href="Download/FICHA%20SEGURO%20FIANÇA%20PESSOA%20JURÍDICA.pdf">Ficha para seguro fiança (pessoa jurídica)</a></li>
     </ul>
 </asp:Content>
 
