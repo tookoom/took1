@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using TK1.Utility;
 
 namespace Web.TK1.Mvc.Areas.Map
 {
@@ -16,8 +17,8 @@ namespace Web.TK1.Mvc.Areas.Map
         {
             context.MapRoute(
                 "Map_default",
-                "Map/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "{culture}/Map/{controller}/{action}/{id}",
+                new { culture = "default", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
