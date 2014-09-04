@@ -24,11 +24,13 @@ namespace Web.TK1.Mvc.Areas.Map.Models
     }
     public class JsonMapItem
     {
-        public int DonorID { get; set; }
-        public string Title { get; set; }
+        public string Description { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public string Description { get; set; }
+        public string Source { get; set; }
+        public string Title { get; set; }
+        public string Url { get; set; }
+        public string Value { get; set; }
     }
 
 }

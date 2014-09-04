@@ -1,209 +1,536 @@
-﻿function PropertyAds() { }
+﻿function Mapper() { }
+Mapper.BingKey = "AnuuWOkXPOoOTQoMMDXgjjlHsVvGsEBcaCnA0xpFM2suSOlI-Sgc-4XtT2e4dkyu";
+Mapper.MapDivId = 'theMap';
+Mapper.MessageDivId = 'messages';
+Mapper.DialogDivId = 'dialog';
 
-PropertyAds.dragShape = null;
-PropertyAds.dragPixel = null;
-PropertyAds.MapDivId = 'theMap';
-PropertyAds._map = null;
-PropertyAds._points = [];
-PropertyAds._shapes = [];
-PropertyAds.ipInfoDbKey = '';
+Mapper.Bounds = null;
+Mapper.DebugMode = false;
+Mapper.GroupMode = true;
 
-PropertyAds.LoadMap = function (latitude, longitude, onMapLoaded) {
-    PropertyAds._map = new VEMap(PropertyAds.MapDivId);
+Mapper.map;
+Mapper.searchManager;
+Mapper.geoLocationProvider;
+Mapper.gpsLayer;
+Mapper.gpsEnabled = false;
+Mapper.trafficLayer;
+Mapper.trafficEnabled = false;
+Mapper.infoBoxes = null;
+Mapper.currentInfoBox = null;
+Mapper.pushpins = null;
 
-    var options = new VEMapOptions();
-
-    options.EnableBirdseye = false
-
-    this._map.SetDashboardSize(VEDashboardSize.Small);
-
-    if (onMapLoaded != null)
-        PropertyAds._map.onLoadMap = onMapLoaded;
-
-    if (latitude != null && longitude != null) {
-        var center = new VELatLong(latitude, longitude);
-    }
-
-    PropertyAds._map.LoadMap(center, null, null, null, null, null, null, options);
-}
-
-PropertyAds.EnableMapMouseClickCallback = function () {
-    PropertyAds._map.AttachEvent("onmousedown", PropertyAds.onMouseDown);
-    PropertyAds._map.AttachEvent("onmouseup", PropertyAds.onMouseUp);
-    PropertyAds._map.AttachEvent("onmousemove", PropertyAds.onMouseMove);
-}
-
-PropertyAds.onMouseDown = function (e) {
-    if (e.elementID != null) {
-        PropertyAds.dragShape = PropertyAds._map.GetShapeByID(e.elementID);
-        return true;
+Mapper.ClearMap = function () {
+    if (Mapper.map != null) {
+        Mapper.infoBoxes = new JSdict();
+        Mapper.pushpins = new JSdict();
+        Mapper.map.entities.clear();
     }
 }
+Mapper.FindAds = function (zoomLevel) {
+    var bounds = Mapper.map.getBounds();
 
-PropertyAds.onMouseUp = function (e) {
-    if (PropertyAds.dragShape != null) {
-        var x = e.mapX;
-        var y = e.mapY;
-        PropertyAds.dragPixel = new VEPixel(x, y);
-        var LatLong = PropertyAds._map.PixelToLatLong(PropertyAds.dragPixel);
-        $("#Latitude").val(LatLong.Latitude.toString());
-        $("#Longitude").val(LatLong.Longitude.toString());
-        PropertyAds.dragShape = null;
+    if (zoomLevel > 15) {
+        var latMin = 0, latMax = 0, lonMin = 0, lonMax = 0;
 
-        PropertyAds._map.FindLocations(LatLong, PropertyAds.getLocationResults);
-    }
-}
-
-PropertyAds.onMouseMove = function (e) {
-    if (PropertyAds.dragShape != null) {
-        var x = e.mapX;
-        var y = e.mapY;
-        PropertyAds.dragPixel = new VEPixel(x, y);
-        var LatLong = PropertyAds._map.PixelToLatLong(PropertyAds.dragPixel);
-        PropertyAds.dragShape.SetPoints(LatLong);
-        return true;
-    }
-}
-
-PropertyAds.onEndDrag = function (e) {
-    $("#Latitude").val(e.LatLong.Latitude.toString());
-    $("#Longitude").val(e.LatLong.Longitude.toString());
-}
-
-PropertyAds.ClearMap = function () {
-    if (PropertyAds._map != null) {
-        PropertyAds._map.Clear();
-    }
-    PropertyAds._points = [];
-    PropertyAds._shapes = [];
-}
-
-PropertyAds.LoadPin = function (LL, name, description, draggable) {
-    if (LL.Latitude == 0 || LL.Longitude == 0) {
-        return;
-    }
-
-    var shape = new VEShape(VEShapeType.Pushpin, LL);
-
-    if (draggable == true) {
-        shape.Draggable = true;
-        shape.onenddrag = PropertyAds.onEndDrag;
-    }
-
-    //Make a Pushpin with a title and description
-    shape.SetTitle("<span class=\"pinTitle\"> " + escape(name) + "</span>");
-
-    if (description !== undefined) {
-        shape.SetDescription("<p class=\"pinDetails\">" + escape(description) + "</p>");
-    }
-
-    PropertyAds._map.AddShape(shape);
-    PropertyAds._points.push(LL);
-    PropertyAds._shapes.push(shape);
-}
-
-PropertyAds.FindAddressOnMap = function (where) {
-    var numberOfResults = 1;
-    var setBestMapView = true;
-    var showResults = true;
-    var defaultDisambiguation = true;
-
-    PropertyAds._map.Find("", where, null, null, null,
-                         numberOfResults, showResults, true, defaultDisambiguation,
-                         setBestMapView, PropertyAds._callbackForLocation);
-}
-
-PropertyAds._callbackForLocation = function (layer, resultsArray, places, hasMore, VEErrorMessage) {
-    PropertyAds.ClearMap();
-
-    if (places == null) {
-        PropertyAds._map.ShowMessage(VEErrorMessage);
-        return;
-    }
-
-    //Make a pushpin for each place we find
-    $.each(places, function (i, item) {
-        var description = "";
-        if (item.Description !== undefined) {
-            description = item.Description;
+        if (Mapper.GroupMode) {
+            Mapper.ClearMap();
+            Mapper.GroupMode = false;
         }
-        var LL = new VELatLong(item.LatLong.Latitude,
-                        item.LatLong.Longitude);
 
-        PropertyAds.LoadPin(LL, item.Name, description, true);
-    });
 
-    //Make sure all pushpins are visible
-    if (PropertyAds._points.length > 1) {
-        PropertyAds._map.SetMapView(PropertyAds._points);
+        if (Mapper.Bounds == null) {
+            Mapper.Bounds = Microsoft.Maps.LocationRect.fromEdges(bounds.getNorth(), bounds.getWest(), bounds.getSouth(), bounds.getEast());
+            Mapper.FindAdsByLocation(bounds.getSouth(), bounds.getNorth(), bounds.getWest(), bounds.getEast());
+        }
+    
+        if (bounds.getNorth() > Mapper.Bounds.getNorth()) {
+            latMin = Mapper.Bounds.getNorth();
+            latMax = bounds.getNorth();
+            Mapper.Bounds = Microsoft.Maps.LocationRect.fromEdges(bounds.getNorth(), Mapper.Bounds.getWest(), Mapper.Bounds.getSouth(), Mapper.Bounds.getEast());
+            Mapper.FindAdsByLocation(latMin, latMax, Mapper.Bounds.getWest(), Mapper.Bounds.getEast());
+            //Mapper.showMessage("N latMax: " + latMax + " latMin: " + latMin );
+        }
+        if (bounds.getSouth() < Mapper.Bounds.getSouth()) {
+            latMin = bounds.getSouth();
+            latMax = Mapper.Bounds.getSouth();
+            Mapper.Bounds = Microsoft.Maps.LocationRect.fromEdges(Mapper.Bounds.getNorth(), Mapper.Bounds.getWest(), bounds.getSouth(), Mapper.Bounds.getEast());
+            Mapper.FindAdsByLocation(latMin, latMax, Mapper.Bounds.getWest(), Mapper.Bounds.getEast());
+            //Mapper.showMessage("S latMax: " + latMax + " latMin: " + latMin);
+        }
+
+        if (bounds.getWest() < Mapper.Bounds.getWest()) {
+            lonMin = bounds.getWest();
+            lonMax = Mapper.Bounds.getWest();
+            Mapper.Bounds = Microsoft.Maps.LocationRect.fromEdges(Mapper.Bounds.getNorth(), bounds.getWest(), Mapper.Bounds.getSouth(), Mapper.Bounds.getEast());
+            Mapper.FindAdsByLocation(Mapper.Bounds.getSouth(), Mapper.Bounds.getNorth(), lonMin, lonMax);
+            //Mapper.showMessage("E lonMax: " + lonMax + " lonMin: " + lonMin);
+        }
+        if (bounds.getEast() > Mapper.Bounds.getEast()) {
+            lonMin = Mapper.Bounds.getEast();
+            lonMax = bounds.getEast();
+            Mapper.Bounds = Microsoft.Maps.LocationRect.fromEdges(Mapper.Bounds.getNorth(), Mapper.Bounds.getWest(), Mapper.Bounds.getSouth(), bounds.getEast());
+            Mapper.FindAdsByLocation(Mapper.Bounds.getSouth(), Mapper.Bounds.getNorth(), lonMin, lonMax);
+            //Mapper.showMessage("W lonMax: " + lonMax + " lonMin: " + lonMin);
+        }
+        //Mapper.showMessage("N: " + Mapper.Bounds.getNorth() + " W: " + Mapper.Bounds.getWest() + " S: " + Mapper.Bounds.getSouth()+ " E: " + Mapper.Bounds.getEast());
     }
+    else if (zoomLevel > 12) {
+        Mapper.Bounds = null;
+        Mapper.GroupMode = true;
+        Mapper.ClearMap();
+        Mapper.FindAdsByLocationGroup(bounds.getSouth(), bounds.getNorth(), bounds.getWest(), bounds.getEast());
+        Mapper.showMessage("FindAdsByLocationGroup");
 
-    //If we've found exactly one place, that's our address.
-    //lat/long precision was getting lost here with toLocaleString, changed to toString
-    if (PropertyAds._points.length === 1) {
-        $("#Latitude").val(PropertyAds._points[0].Latitude.toString());
-        $("#Longitude").val(PropertyAds._points[0].Longitude.toString());
+    }
+    else {
+        Mapper.Bounds = null;
+        Mapper.GroupMode = true;
+        Mapper.ClearMap();
+        Mapper.FindAdsByCity(bounds.getSouth(), bounds.getNorth(), bounds.getWest(), bounds.getEast());
+        Mapper.showMessage("FindAdsByCity");
     }
 }
+Mapper.FindAdsByCity = function (latMin, latMax, lonMin, lonMax) {
+    var json = { latMin: latMin, latMax: latMax, lonMin: lonMin, lonMax: lonMax };
 
-
-
-PropertyAds._renderDonors = function (donors) {
-
-    PropertyAds.ClearMap();
-
-    $.each(donors, function (i, donor) {
-
-        var LL = new VELatLong(donor.Latitude, donor.Longitude, 0, null);
-
-        // Add Pin to Map
-        PropertyAds.LoadPin(LL, donor.DonorID, donor.Description, false);
-
-
-    });
-
-    // Adjust zoom to display all the pins.
-    if (PropertyAds._points.length > 1) {
-        PropertyAds._map.SetMapView(PropertyAds._points);
-    }
-
-    // Display the event's pin-bubble on hover.
-    $(".DonorsItem").each(function (i, Donors) {
-        $(Donors).hover(
-            function () { PropertyAds._map.ShowInfoBox(PropertyAds._shapes[i]); },
-            function () { PropertyAds._map.HideInfoBox(PropertyAds._shapes[i]); }
-        );
-    });
-
-}
-
-PropertyAds.FindAddress = function (where) {
-    var numberOfResults = 1;
-    var setBestMapView = true;
-    var showResults = true;
-    var defaultDisambiguation = true;
-
-    PropertyAds._map.Find("", where, null, null, null,
-                         numberOfResults, showResults, true, defaultDisambiguation,
-                         setBestMapView, PropertyAds._callbackUpdateMapDonors);
-
-}
-
-PropertyAds._callbackUpdateMapDonors = function (layer, resultsArray, places, hasMore, VEErrorMessage) {
-
-    var center = PropertyAds._map.GetCenter();
-
-    var json = { latitude: center.Latitude, longitude: center.Longitude };
     $.ajax({
         type: "GET",
-        url: "/Search/SearchByLocation",
+        url: "/en/Map/Search/SearchByCity",
         data: json,
         dataType: "json",
-        success: PropertyAds._renderDonors,
-        error: PropertyAds.ajaxFailure
+        success: Mapper.renderItemsGroup,
+        error: Mapper.ajaxFailure
     });
 }
+Mapper.FindAdsByLocation = function (latMin, latMax, lonMin, lonMax) {
+    var json = { latMin: latMin, latMax: latMax, lonMin: lonMin, lonMax: lonMax };
 
-PropertyAds.ajaxFailure = function (request, status, error) {
-    alert(error);
+    $.ajax({
+        type: "GET",
+        url: "/en/Map/Search/SearchByLocation",
+        data: json,
+        dataType: "json",
+        success: Mapper.renderItems,
+        error: Mapper.ajaxFailure
+    });
+}
+Mapper.FindAdsByLocationGroup = function (latMin, latMax, lonMin, lonMax) {
+    var json = { latMin: latMin, latMax: latMax, lonMin: lonMin, lonMax: lonMax };
+
+    $.ajax({
+        type: "GET",
+        url: "/en/Map/Search/SearchByLocationGroup",
+        data: json,
+        dataType: "json",
+        success: Mapper.renderItemsGroup,
+        error: Mapper.ajaxFailure
+    });
+}
+Mapper.Init = function () {
+    Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', { callback: Mapper.initCallback });
+
+    if (Mapper.infoBoxes == null) {
+        Mapper.infoBoxes = new JSdict();
+    }
+    if (Mapper.pushpins == null) {
+        Mapper.pushpins = new JSdict();
+    }
+
+}
+Mapper.Search = function (query) {
+    if (Mapper.searchManager) {
+        var request = {
+            where: query,
+            count: 1,
+            callback: Mapper.geocodeCallback,
+            errorCallback: Mapper.geocodeErrorCallback
+        };
+
+        Mapper.searchManager.geocode(request);
+    } else {
+        //Load the Search module and create a search manager.
+        Microsoft.Maps.loadModule('Microsoft.Maps.Search', {
+            callback: function () {
+                //Create the search manager
+                Mapper.searchManager = new Microsoft.Maps.Search.SearchManager(Mapper.map);
+
+                //Perfrom search logic
+                Mapper.Search(query);
+            }
+        });
+    }
+}
+
+Mapper.addListener = function (element, eventName, eventHandler) {
+    //Cross browser support for adding events. Mainly for IE7/8
+    if (element.addEventListener) {
+        element.addEventListener(eventName, eventHandler, false);
+    } else if (element.attachEvent) {
+        if (eventName == 'DOMContentLoaded') {
+            eventName = 'readystatechange';
+        }
+        element.attachEvent('on' + eventName, eventHandler);
+    }
+}
+Mapper.addPin = function (location, title, description, url, value) {
+    var locationKey = Mapper.getLocationKey(location);
+
+    if (Mapper.pushpins.getVal(locationKey) == null) {
+
+        var descriptionText = description + " " + value;
+        var titleClick = function () {
+            window.open(url, '_blank');
+        }
+        var infobox = new Microsoft.Maps.Infobox(location, { title: title, titleClickHandler: titleClick, description: descriptionText, visible: false });
+        Microsoft.Maps.Events.addHandler(infobox, 'mouseleave', Mapper.onInfoboxMouseLeave);
+        Mapper.map.entities.push(infobox);
+        Mapper.infoBoxes.add(locationKey, infobox);
+
+        var pushpin = new Microsoft.Maps.Pushpin(location, { infobox: infobox });
+        //Microsoft.Maps.Events.addHandler(pushpin, 'mousedown', Mapper.onPinMouseDown);
+        //Microsoft.Maps.Events.addHandler(pushpin, 'mouseout', Mapper.onPinMouseOut);
+        Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', Mapper.onPinMouseOver);
+        Mapper.map.entities.push(pushpin);
+        Mapper.pushpins.add(locationKey, pushpin);
+    }
+
+}
+Mapper.addPinGroup = function (location, title, description, url, value) {
+    var locationKey = Mapper.getLocationKey(location);
+
+    if (Mapper.pushpins.getVal(locationKey) == null) {
+
+        var descriptionText = description;
+        //var titleClick = function () {
+        //    Mapper.Search(url);
+        //}
+        var infobox = new Microsoft.Maps.Infobox(location, { title: title, description: descriptionText, visible: false });
+        Microsoft.Maps.Events.addHandler(infobox, 'mouseleave', Mapper.onInfoboxMouseLeave);
+        Mapper.map.entities.push(infobox);
+        Mapper.infoBoxes.add(locationKey, infobox);
+
+        var pushpin = new Microsoft.Maps.Pushpin(location, { text: description, infobox: infobox });
+        //Microsoft.Maps.Events.addHandler(pushpin, 'mousedown', Mapper.onPinMouseDown);
+        //Microsoft.Maps.Events.addHandler(pushpin, 'mouseout', Mapper.onPinMouseOut);
+        Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', Mapper.onPinMouseOver);
+        Mapper.map.entities.push(pushpin);
+        Mapper.pushpins.add(locationKey, pushpin);
+    }
+
+}
+Mapper.ajaxFailure = function (request, status, error) {
+    Mapper.showMessage("Ajax Failure: " + request.statusText);
+    Mapper.showDialog(request.responseText);
+}
+Mapper.getLocationKey = function (location) {
+    var key = "LAT" + location.latitude + "LON" + location.longitude;
+    return key;
+}
+Mapper.hideInfobox = function (location) {
+    var key = Mapper.getLocationKey(location);
+    var infobox = Mapper.infoBoxes.getVal(key);
+    infobox.setOptions({ visible: false });
+    Mapper.currentInfoBox = null;
+
+    var pushpin = Mapper.pushpins.getVal(key);
+    pushpin.setOptions({ visible: true });
+
+}
+Mapper.renderItems = function (mapItems) {
+    Mapper.showMessage("Ajax Render");
+    var count = 0;
+    $.each(mapItems, function (i, mapItem) {
+        count = count + 1;
+        var location = new Microsoft.Maps.Location(mapItem.Latitude, mapItem.Longitude, 0, null);
+        Mapper.addPin(location, mapItem.Title, mapItem.Description, mapItem.Url, mapItem.Value);
+    });
+    Mapper.showMessage("Ads Loaded: " + count);
+}
+Mapper.renderItemsGroup = function (mapItems) {
+    Mapper.showMessage("Ajax Render");
+    var count = 0;
+    $.each(mapItems, function (i, mapItem) {
+        count = count + 1;
+        var location = new Microsoft.Maps.Location(mapItem.Latitude, mapItem.Longitude, 0, null);
+        Mapper.addPinGroup(location, mapItem.Title, mapItem.Description, mapItem.Url, mapItem.Value);
+    });
+    Mapper.showMessage("Grouped Ads Loaded: " + count);
+}
+Mapper.setMapMode = function (mode) {
+    var m;
+
+    switch (mode) {
+        case 'auto':
+            m = Microsoft.Maps.MapTypeId.auto;
+            break;
+        case 'aerial':
+            m = Microsoft.Maps.MapTypeId.aerial;
+            break;
+        case 'birdseye':
+            m = Microsoft.Maps.MapTypeId.birdseye;
+            break;
+        case 'os':
+            m = Microsoft.Maps.MapTypeId.ordnanceSurvey;
+            break;
+        case 'road':
+        default:
+            m = Microsoft.Maps.MapTypeId.road;
+            break;
+    }
+
+    Mapper.map.setView({ mapTypeId: m });
+}
+Mapper.showDialog = function (msg) {
+    if (Mapper.DebugMode) {
+        var div = $("#" + Mapper.DialogDivId);
+        div.html(msg);
+        $("#" + Mapper.DialogDivId).dialog();
+        //alert(msg);
+        //div.html("");
+    }
+}
+Mapper.showInfobox = function (location) {
+    var key = Mapper.getLocationKey(location);
+    var infobox = Mapper.infoBoxes.getVal(key);
+    infobox.setOptions({ visible: true });
+    if (Mapper.currentInfoBox != null) {
+        Mapper.currentInfoBox.setOptions({ visible: false });
+    }
+    Mapper.currentInfoBox = infobox;
+
+    var pushpin = Mapper.pushpins.getVal(key);
+    pushpin.setOptions({ visible: false });
+
+}
+Mapper.showMessage = function (msg) {
+    if (Mapper.DebugMode) {
+        var div = $("#" + Mapper.MessageDivId);
+        var content = msg + "<br/>" + div.html();
+        div.html(content);
+        //alert(msg);
+    }
+}
+Mapper.toggleGPS = function() {
+    Mapper.gpsEnabled = !gpsEnabled;
+
+        // Initialize the location provider
+    if (!Mapper.geoLocationProvider) {
+        Mapper.geoLocationProvider = new Microsoft.Maps.GeoLocationProvider(map);
+        }
+
+        //Clear the GPS layer 
+        Mapper.gpsLayer.clear();
+
+        if (Mapper.gpsEnabled) {
+            // Get the user's current location
+            Mapper.geoLocationProvider.getCurrentPosition({
+                successCallback: function (e) {
+                    Mapper.gpsLayer.push(new Microsoft.Maps.Pushpin(e.center));
+                },
+                errorCallback: function (e) {
+                    Mapper.showMessage(e.internalError);
+                }
+            });
+        } else {
+            //Remove the accuracy circle and cancel any request that might be processing
+            Mapper.geoLocationProvider.removeAccuracyCircle();
+            Mapper.geoLocationProvider.cancelCurrentRequest();
+        }
+    }
+Mapper.toggleTraffic = function() {
+    Mapper.trafficEnabled = !Mapper.trafficEnabled;
+
+        //Check to see if the traffic layer exists
+    if (Mapper.trafficLayer) {
+        if (Mapper.trafficEnabled) {
+            Mapper.trafficLayer.show();
+            } else {
+            Mapper.trafficLayer.hide();
+            }
+        } else {
+            //Load the traffic module and create the traffic layer.
+            Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', {
+                callback: function () {
+                    //Create the traffic layer
+                    Mapper.trafficLayer = new Microsoft.Maps.Traffic.TrafficLayer(map);
+
+                    //Get the base tile layer and set the opacity
+                    var layer = trafficLayer.getTileLayer();
+                    layer.setOptions({ opacity: 0.5 });
+
+                    Mapper.trafficLayer.show();
+                }
+            });
+        }
+}
+Mapper.updateNavBar = function () {
+    //if (Mapper.map.isRotationEnabled()) {
+    //        document.getElementById('rotationBtns').style.display = '';
+    //    } else {
+    //        document.getElementById('rotationBtns').style.display = 'none';
+    //    }
+}
+
+Mapper.geocodeCallback = function (response, userData) {
+    if (response &&
+        response.results &&
+        response.results.length > 0) {
+        var result = response.results[0];
+        var location = new Microsoft.Maps.Location(result.location.latitude, result.location.longitude);
+        var locationRect = new Microsoft.Maps.LocationRect(location, result.bestView.width, result.bestView.height);
+        //Zoom to result
+        Mapper.map.setView({ center: location, bounds: locationRect });
+        //Mapper.map.setView(result.bestView);
+        Mapper.FindAds(Mapper.map.getZoom());
+
+    } else {
+        showMessage("Not results found.");
+    }
+}
+Mapper.geocodeErrorCallback = function (request) {
+    Mapper.showMessage("Unable to Geocode request.");
+
+    //document.getElementById('searchPanel').style.display = 'none';
+}
+Mapper.initCallback = function () {
+    var mapOptions = {
+        credentials: Mapper.BingKey,
+        showDashboard: true,
+        showCopyright: false,
+        showScalebar: false,
+        enableSearchLogo: false,
+        enableClickableLogo: false,
+        backgroundColor: new Microsoft.Maps.Color(255, 255, 255, 255)
+    };
+
+    // Initialize the map
+    Mapper.map = new Microsoft.Maps.Map(document.getElementById(Mapper.MapDivId), mapOptions);
+    Microsoft.Maps.Events.addHandler(Mapper.map, 'viewchangeend', Mapper.onViewChange);
+
+    Mapper.gpsLayer = new Microsoft.Maps.EntityCollection();
+    Mapper.map.entities.push(Mapper.gpsLayer);
+}
+Mapper.onInfoboxMouseLeave = function (e) {
+    if (e.targetType == 'infobox') {
+        Mapper.hideInfobox(e.target.getLocation());
+    }
+}
+Mapper.onPinMouseDown = function (e) {
+    if (e.targetType == 'pushpin') {
+        Mapper.showInfobox(e.target.getLocation());
+    }
+}
+Mapper.onPinMouseOut = function (e) {
+    if (e.targetType == 'pushpin') {
+        //Mapper.showInfobox(e.target.getLocation());
+    }
+}
+Mapper.onPinMouseOver = function (e) {
+    if (e.targetType == 'pushpin') {
+        Mapper.showInfobox(e.target.getLocation());
+    }
+}
+Mapper.onViewChange = function (e) {
+    Mapper.FindAds(Mapper.map.getZoom());
+}
+
+
+function JSdict() {
+    this.Keys = [];
+    this.Values = [];
+}
+
+// Check if dictionary extensions aren't implemented yet.
+// Returns value of a key
+if (!JSdict.prototype.getVal) {
+    JSdict.prototype.getVal = function (key) {
+        if (key == null) {
+            return "Key cannot be null";
+        }
+        for (var i = 0; i < this.Keys.length; i++) {
+            if (this.Keys[i] == key) {
+                return this.Values[i];
+            }
+        }
+        return null;
+    }
+}
+// Check if dictionary extensions aren't implemented yet.
+// Updates value of a key
+if (!JSdict.prototype.update) {
+    JSdict.prototype.update = function (key, val) {
+        if (key == null || val == null) {
+            return "Key or Value cannot be null";
+        }
+        // Verify dict integrity before each operation
+        if (keysLength != valsLength) {
+            return "Dictionary inconsistent. Keys length don't match values!";
+        }
+        var keysLength = this.Keys.length;
+        var valsLength = this.Values.length;
+        var flag = false;
+        for (var i = 0; i < keysLength; i++) {
+            if (this.Keys[i] == key) {
+                this.Values[i] = val;
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            return "Key does not exist";
+        }
+    }
+}
+// Check if dictionary extensions aren't implemented yet.
+// Adds a unique key value pair
+if (!JSdict.prototype.add) {
+    JSdict.prototype.add = function (key, val) {
+        // Allow only strings or numbers as keys
+        if (typeof (key) == "number" || typeof (key) == "string") {
+            if (key == null || val == null) {
+                return "Key or Value cannot be null";
+            }
+            if (keysLength != valsLength) {
+                return "Dictionary inconsistent. Keys length don't match values!";
+            }
+            var keysLength = this.Keys.length;
+            var valsLength = this.Values.length;
+            for (var i = 0; i < keysLength; i++) {
+                if (this.Keys[i] == key) {
+                    return "Duplicate keys not allowed!";
+                }
+            }
+            this.Keys.push(key);
+            this.Values.push(val);
+        }
+        else {
+            return "Only number or string can be key!";
+        }
+    }
+}
+// Check if dictionary extensions aren't implemented yet.
+// Removes a key value pair
+if (!JSdict.prototype.remove) {
+    JSdict.prototype.remove = function (key) {
+        if (key == null) {
+            return "Key cannot be null";
+        }
+        if (keysLength != valsLength) {
+            return "Dictionary inconsistent. Keys length don't match values!";
+        }
+        var keysLength = this.Keys.length;
+        var valsLength = this.Values.length;
+        var flag = false;
+        for (var i = 0; i < keysLength; i++) {
+            if (this.Keys[i] == key) {
+                this.Keys.shift(key);
+                this.Values.shift(this.Values[i]);
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            return "Key does not exist";
+        }
+    }
 }

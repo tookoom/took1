@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using TK1.Utility;
 
 namespace Web.TK1.Mvc
 {
@@ -15,8 +16,8 @@ namespace Web.TK1.Mvc
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{culture}/{controller}/{action}/{id}",
+                defaults: new { culture = "default", controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             //routes.MapRoute(

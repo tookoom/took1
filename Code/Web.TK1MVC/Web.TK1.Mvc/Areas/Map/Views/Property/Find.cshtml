@@ -1,45 +1,102 @@
-﻿@{
+﻿@using Web.TK1.Mvc.Areas.Map
+@{
     ViewBag.Title = "Find";
     Layout = "~/Areas/Map/Views/Shared/_LayoutMap.cshtml";
 }
 
-<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@Resources.Title_Find. </h1>
+                <h2>@Resources.Title_Sub_Find</h2>
+            </hgroup>
+            <nav>
+                @Resources.Message_EnterLocation: @Html.TextBox("Location")
 
-<h2>Find</h2>
+                <div class="float-right">
+                    <input id="search" type="button" value="@Resources.Button_Search" />
+                </div>
+
+                @*<select id="adTypeSelect">
+                    @foreach (var item in ViewBag.AdType)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>*@
+
+               @* <select id="citySelect">
+        <option value="*">Selecione Cidade</option>
+    </select>
+    <select id="propertyTypeSelect">
+        <option value="*">Todos os Imóveis</option>
+    </select>
+    <select id="districtSelect">
+        <option value="*">Todos os Bairros</option>
+    </select>*@
+            </nav>
+        </div>
+    </section>
+}
+
 
 <div id="mapDivLeft">
-
-    <div id="searchBox">
-        Enter your location @Html.TextBox("Location")
-        <input id="search" type="submit" value="Search" />
+    <div id="theMap" class="float-left">
     </div>
 
-    <div id="theMap">
-    </div>
-
+    <!-- CityMapper Lateral -->
+    <ins class="adsbygoogle float-right"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client="ca-pub-2201820486156825"
+         data-ad-slot="8787819702"></ins>
 </div>
 
 <div id="mapDivRight">
-    <div id="dinnerList"></div>
+    <div id="messages" style="font-size:x-small;">
+    </div>
+    <div id="dialog" title="Error">
+    </div>
 </div>
 
+
+
+<!-- CityMapper Lower -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-2201820486156825"
+     data-ad-slot="6473592105"></ins>
+
+
 @section scripts {
-<script src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.3" type="text/javascript"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+<script src="~/Scripts/purl.js"></script>
 
 <script type="text/javascript">
 
     $(document).ready(function () {
         //alert('Test');
-        PropertyAds.LoadMap();
+        Mapper.Init();
+        var query = $.url().param("query")
+        //alert(query);
+        if (query != null) {
+            Mapper.Search(query);
+        }
     });
 
     $("#search").click(function (evt) {
         var where = jQuery.trim($("#Location").val());
-        where = 'g1s4h2'
-        //if (where.length < 1)
-        //    return;
-        PropertyAds.FindAddress(where);
+        //where = 'sillery';
+        Mapper.Search(where);
     });
 
+</script>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
     }
