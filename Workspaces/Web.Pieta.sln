@@ -4,7 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web.Pieta", "..\Code\Web.Pieta\", "{9557E413-0289-469F-80C6-4016AEA2F1FE}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}|TK1.Bizz.Pieta.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;{a2208d64-3af4-48cc-9f3d-09950ac737db}|TK1.Bizz.Client.dll;{ffd08bc0-d513-4437-81e1-cbcc70d89a18}|TK1.Bizz.Mdo.Client.dll;{07143283-7469-446f-a469-86f64c5cb61f}|TK1.Bizz.Mdo.dll;{cf258131-13c0-4f5d-8657-891e00e66815}|TK1.Bizz.Inetsoft.dll;"
+		ProjectReferences = "{3A912BDF-BFDE-4BB9-B182-6625FA40269A}|TK1.Bizz.Pieta.dll;{B1B8234D-8130-459A-8C16-91E6190E708D}|TK1.dll;{07143283-7469-446f-a469-86f64c5cb61f}|TK1.Bizz.Mdo.dll;{cf258131-13c0-4f5d-8657-891e00e66815}|TK1.Bizz.Inetsoft.dll;{e569e820-ae28-4280-80de-f3f29d14b3b2}|TK1.Data.Bizz.Client.dll;{AB2EC906-93AE-4F64-B71D-E04C88036D7D}|TK1.Bizz.dll;{2484CD63-A0B0-46AE-A423-B32E6A6AD279}|TK1.Data.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Web.Pieta"
 		Debug.AspNetCompiler.PhysicalPath = "..\Code\Web.Pieta\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web.Pieta\"
@@ -27,11 +27,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Pieta", "..\Code\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1", "..\Code\TK1\TK1.csproj", "{B1B8234D-8130-459A-8C16-91E6190E708D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Client", "..\Code\TK1.Bizz.Client\TK1.Bizz.Client.csproj", "{A2208D64-3AF4-48CC-9F3D-09950AC737DB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Mdo", "..\Code\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj", "{07143283-7469-446F-A469-86F64C5CB61F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz.Inetsoft", "..\Code\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj", "{CF258131-13C0-4F5D-8657-891E00E66815}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Bizz", "..\Code\TK1.Bizz\TK1.Bizz.csproj", "{AB2EC906-93AE-4F64-B71D-E04C88036D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data.Bizz.Client", "..\Code\TK1.Data.Bizz.Client\TK1.Data.Bizz.Client.csproj", "{E569E820-AE28-4280-80DE-F3F29D14B3B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK1.Data", "..\Code\TK1.Data\TK1.Data.csproj", "{2484CD63-A0B0-46AE-A423-B32E6A6AD279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +55,6 @@ Global
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1B8234D-8130-459A-8C16-91E6190E708D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2208D64-3AF4-48CC-9F3D-09950AC737DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2208D64-3AF4-48CC-9F3D-09950AC737DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2208D64-3AF4-48CC-9F3D-09950AC737DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2208D64-3AF4-48CC-9F3D-09950AC737DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07143283-7469-446F-A469-86F64C5CB61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07143283-7469-446F-A469-86F64C5CB61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07143283-7469-446F-A469-86F64C5CB61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +63,18 @@ Global
 		{CF258131-13C0-4F5D-8657-891E00E66815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF258131-13C0-4F5D-8657-891E00E66815}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF258131-13C0-4F5D-8657-891E00E66815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2EC906-93AE-4F64-B71D-E04C88036D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E569E820-AE28-4280-80DE-F3F29D14B3B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E569E820-AE28-4280-80DE-F3F29D14B3B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E569E820-AE28-4280-80DE-F3F29D14B3B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E569E820-AE28-4280-80DE-F3F29D14B3B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2484CD63-A0B0-46AE-A423-B32E6A6AD279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
