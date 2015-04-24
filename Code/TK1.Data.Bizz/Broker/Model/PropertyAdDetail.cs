@@ -21,6 +21,7 @@ namespace TK1.Data.Bizz.Broker.Model
         public string Description { get; set; }
         public string Value { get; set; }
         public string Type { get; set; }
+        public string Code { get; set; }
     
         public virtual PropertyAd PropertyAd { get; set; }
     }

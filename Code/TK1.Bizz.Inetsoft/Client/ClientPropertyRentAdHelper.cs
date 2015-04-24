@@ -6,7 +6,8 @@ using System.Text;
 using TK1.Bizz.Broker.Presentation;
 using TK1.Bizz.Broker.Presentation.Culture;
 using TK1.Bizz.Inetsoft.Rent.Xml;
-using TK1.Bizz.Net;
+using TK1.Bizz.Mapper.Model;
+using TK1.Bizz.Pieta;
 using TK1.Data.Bizz.Client.Controller;
 using TK1.Utility;
 
@@ -128,16 +129,19 @@ namespace TK1.Bizz.Inetsoft.Client
                 propertyAdController.SetPropertyAd(new PropertyAdView()
                 {
                     AdCategory = propertyAdCategory,
-                    Address = StringHelper.ConvertCaseString(item.Address.Trim(), StringHelper.UpperCase.UpperFirstWord),
                     AdType = PropertyAdTypes.Rent,
                     AdTypeName = PropertyAdTypes.Rent.ToString(),
+                    Location = new Location()
+                    {
+                        AddressLine = StringHelper.ConvertCaseString(item.Address.Trim(), StringHelper.UpperCase.UpperFirstWord),
+                        Locality = new GeoLocation() { Name = StringHelper.ConvertCaseString(item.City.Trim(), StringHelper.UpperCase.UpperFirstWord) },
+                        District = new GeoLocation() { Name = StringHelper.ConvertCaseString(item.District.Trim(), StringHelper.UpperCase.UpperFirstWord) }
+                    },
                     AreaDescription = item.AreaDescription,
-                    City = StringHelper.ConvertCaseString(item.City.Trim(), StringHelper.UpperCase.UpperFirstWord),
                     CityTaxes = 0,
                     AdCode = item.AdCode,
                     CondoDescription = item.CondDescription,
                     CondoTaxes = 0,
-                    District = StringHelper.ConvertCaseString(item.District.Trim(), StringHelper.UpperCase.UpperFirstWord),
                     FullDescription = item.InternetDescription,
                     IsFeatured = item.IsFeatured,
                     InternalArea = item.InternalArea,
@@ -153,7 +157,7 @@ namespace TK1.Bizz.Inetsoft.Client
                 {
                     propertyAdController.SetPropertyAdDetails(PropertyAdTypes.Rent, item.AdCode, new PropertyAdDetailView
                     {
-                        Name = "InternalArea",
+                        Code = "InternalArea",
                         Value = PropertyTranslations.GetAreaDisplayName(item.InternalArea, uiCulture)
                     });
                 }
@@ -161,7 +165,7 @@ namespace TK1.Bizz.Inetsoft.Client
                 {
                     propertyAdController.SetPropertyAdDetails(PropertyAdTypes.Rent, item.AdCode, new PropertyAdDetailView
                     {
-                        Name = "TotalRooms",
+                        Code = "TotalRooms",
                         Value = PropertyTranslations.GetRoomQuantityDisplayName(item.SiteType, item.TotalRooms, uiCulture)
                     });
                 }
@@ -232,8 +236,8 @@ namespace TK1.Bizz.Inetsoft.Client
                 {
                     var mailHelper = new MailHelper();
                     if (SendErrorOnly)
-                        mailHelper.SendMail(subject, body, mailTo, false);
-                    mailHelper.SendMail(subject, body, mailTo, false);
+                        mailHelper.SendMail(subject, body, mailTo);
+                    mailHelper.SendMail(subject, body, mailTo);
                 }
             }
             catch (Exception exception)

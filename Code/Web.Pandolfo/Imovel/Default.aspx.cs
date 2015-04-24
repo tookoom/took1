@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
-using TK1.Bizz.Data.Presentation;
-using TK1.Bizz.Data.Controller;
 using TK1.Bizz;
 using TK1.Bizz.Pandolfo;
 using TK1.Web.Extension;
 using TK1.Bizz.Pandolfo.Const;
 using TK1.Data;
+using TK1.Data.Bizz.Controller;
+using TK1.Data.Bizz.Presentation;
 
 public partial class Imovel_Default : System.Web.UI.Page
 {

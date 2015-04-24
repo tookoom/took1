@@ -8,7 +8,6 @@ using TK1.Bizz.Pandolfo.Const;
 using TK1.Data;
 using TK1.Bizz;
 using TK1.Bizz.Pandolfo;
-using TK1.Bizz.Net;
 
 public partial class Contato_Default : System.Web.UI.Page
 {

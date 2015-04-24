@@ -65,7 +65,7 @@ namespace TK1.Bizz.Pandolfo
                 if (logMailMessage)
                 {
                     var logData = string.Format("Subject: {0}{1}To: {2}{3}Body: {4}", subject, Environment.NewLine, mailTo, Environment.NewLine, body);
-                    AppLogController.WriteAppLogEntry("Bizz.Pandolfo.PandolfoMailHelper.SendMail", logData, AppLogLevels.Error);
+                    AppLogController.WriteAppLogEntry("Bizz.Pandolfo.PandolfoMailHelper.SendMail", logData, TK1.Data.AppLogLevels.Error);
                 }
             }
         }

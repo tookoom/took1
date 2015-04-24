@@ -69,5 +69,16 @@ namespace TK1.Html.Elements
         {
             return getContainerHtml("div", identLevel);
         }
+
+        public static HtmlDiv Parse(string content)
+        {
+            HtmlDiv result = new HtmlDiv() { HtmlContent = content };
+            if (content.Contains(DivClosingTag ))
+            {
+                result.HtmlContent = content.Substring(0, content.IndexOf(DivClosingTag) + DivClosingTag.Length);
+            }
+            result.Children.AddRange(HtmlHyperlink.ParseList(result.HtmlContent));
+            return result;
+        }
     }
 }

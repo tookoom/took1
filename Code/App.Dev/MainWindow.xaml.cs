@@ -37,18 +37,25 @@ namespace TK1.Dev
         {
             InitializeComponent();
 
-            MdoClientUnitTest.LoadXmlFile();
-            //InetsoftUnitTest.LoadXmlFile();
-            //PietaUnitTest.TestXmlLoad();
-            //TK1ServicesUnitTest.Test();
-            //MdoUnitTest.LoadXmlFile();
-            //MdoUnitTest.SendTestMail();
-            //TK1DataUnitTest.UserLogin();
-            //BizzUnitTest.UserTest();
-            //BizzUnitTest.MailTest();
-            //MySqlUnitTest.Test();
-            //BizzClientUnitTest.AppLog();
-            //IntegraUnitTest.BrokerIntegrationTest();
+            try
+            {
+                BizzClientUnitTest.AppLog();
+                //MdoClientUnitTest.LoadXmlFile();
+                //InetsoftUnitTest.LoadXmlFile();
+                //PietaUnitTest.TestXmlLoad();
+                //TK1ServicesUnitTest.Test();
+                //MdoUnitTest.LoadXmlFile();
+                //MdoUnitTest.SendTestMail();
+                //TK1DataUnitTest.UserLogin();
+                //BizzUnitTest.UserTest();
+                //BizzUnitTest.MailTest();
+                //MySqlUnitTest.Test();
+                //IntegraUnitTest.BrokerIntegrationTest();
+            }
+            catch (Exception exception)
+            {
+            }
+
         }
 
 

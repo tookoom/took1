@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -104,7 +105,7 @@ namespace TK1.Data.Converter
             double result = defaultValue;
             if (value != null)
             {
-                if (!double.TryParse(value, out result))
+                if (!double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
                     result = defaultValue;
             }
             return result;

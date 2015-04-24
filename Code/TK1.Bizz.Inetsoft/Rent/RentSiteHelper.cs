@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TK1.Bizz.Inetsoft.Data;
-//using TK1.Bizz.Inetsoft.Xml;
-//using TK1.Bizz.Inetsoft.Const;
 using System.IO;
 using TK1.Data.Controller;
 using TK1.Data;
@@ -12,7 +10,7 @@ using TK1.Bizz.Inetsoft.Data.Controller;
 using TK1.Bizz.Inetsoft.Rent.Xml;
 using TK1.Bizz.Integra;
 using TK1.Utility;
-using TK1.Bizz.Net;
+using TK1.Bizz.Pieta;
 
 namespace TK1.Bizz.Inetsoft.Rent
 {
@@ -129,8 +127,8 @@ namespace TK1.Bizz.Inetsoft.Rent
                 {
                     var mailHelper = new MailHelper();
                     if (SendErrorOnly)
-                        mailHelper.SendMail(subject, body, "suporte@tk1.net.br", false);
-                    mailHelper.SendMail(subject, body, mailTo, false);
+                        mailHelper.SendMail(subject, body, "suporte@tk1.net.br");
+                    mailHelper.SendMail(subject, body, mailTo);
                 }
             }
             catch (Exception exception)

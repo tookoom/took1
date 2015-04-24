@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TK1.Bizz.Broker.Presentation;
+using TK1.Bizz.Mapper.Model;
 using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Data.Bizz.Broker.Controller;
 using TK1.Data.Bizz.Controller;
@@ -71,7 +72,7 @@ namespace TK1.Bizz.Sync
                 propertyAdController.SetPropertyAdDetails(propertyAdType, siteAdView.Code, new PropertyAdDetailView
                 {
                     ImageUrl = item.ImageUrl,
-                    Name = item.Name,
+                    Code = item.Name,
                     Value = item.Value
                 });
             }
@@ -116,16 +117,19 @@ namespace TK1.Bizz.Sync
                 propertyAdController.SetPropertyAd(new PropertyAdView()
                 {
                     AdCategory = propertyAdCategory,
-                    Address = siteAdView.Address,
                     AdType = propertyAdType,
                     AdTypeName = propertyAdType.ToString(),
+                    Location = new Location()
+                    {
+                        AddressLine = siteAdView.Address,
+                        Locality = new GeoLocation() { Name = siteAdView.City },
+                        District = new GeoLocation() { Name = siteAdView.District }
+                    },
                     AreaDescription = siteAdView.AreaDescription,
-                    City = siteAdView.City,
                     CityTaxes = siteAdView.CityTaxes,
                     AdCode = siteAdView.Code,
                     CondoDescription = siteAdView.CondoDescription,
                     CondoTaxes = siteAdView.CondoTaxes,
-                    District = siteAdView.District,
                     FullDescription = siteAdView.FullDescription,
                     IsFeatured = siteAdView.IsFeatured,
                     MainPicUrl = siteAdView.MainPicUrl,

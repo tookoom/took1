@@ -103,22 +103,7 @@ namespace TK1.Data.Bizz.Client.Binding
                     else
                         mainPicUrl = @"http://www.tk1.net.br/Images/ImagemNaoDisponivel.png";
 
-                    PropertyAdView propertyAdView = new PropertyAdView()
-                    {
-                        AdCategory = propertyCategory,
-                        AdType = adType,
-                        CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
-                        AdCode = propertyAd.PropertyAdID,
-                        CondoTaxes = (float)(propertyAd.CondoTaxes ?? 0),
-                        District = propertyAd.DistrictName,
-                        MainPicUrl = mainPicUrl,
-                        InternalArea = (float)propertyAd.InternalArea,
-                        TotalArea = (float)propertyAd.TotalArea,
-                        TotalRooms = propertyAd.TotalRooms,
-                        PropertyType = propertyAd.PropertyTypeName,
-                        PropertyTypeRoomName = PropertyTranslations.GetRoomDisplayName(propertyAd.PropertyTypeName, propertyAd.TotalRooms, uiCulture),
-                        Value = (float)(propertyAd.Value)
-                    };
+                    PropertyAdView propertyAdView = getpropertyadview(propertyAd); 
                     result.Add(propertyAdView);
 
                 }

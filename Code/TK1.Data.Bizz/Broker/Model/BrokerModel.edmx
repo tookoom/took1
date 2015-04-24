@@ -4,40 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TK1.Broker.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="TK1BrokerModelStoreContainer">
-          <EntitySet Name="PropertyAd" EntityType="TK1.Broker.Model.Store.PropertyAd" store:Type="Tables" Schema="Broker" />
-          <EntitySet Name="PropertyAdCodeGenerator" EntityType="TK1.Broker.Model.Store.PropertyAdCodeGenerator" store:Type="Tables" Schema="Broker" />
-          <EntitySet Name="PropertyAdDetail" EntityType="TK1.Broker.Model.Store.PropertyAdDetail" store:Type="Tables" Schema="Broker" />
-          <EntitySet Name="PropertyAdPic" EntityType="TK1.Broker.Model.Store.PropertyAdPic" store:Type="Tables" Schema="Broker" />
-          <EntitySet Name="PropertyReleaseAd" EntityType="TK1.Broker.Model.Store.PropertyReleaseAd" store:Type="Tables" Schema="Broker" />
-          <AssociationSet Name="FK_PropertyAdPropertyAdDetail" Association="TK1.Broker.Model.Store.FK_PropertyAdPropertyAdDetail">
-            <End Role="PropertyAd" EntitySet="PropertyAd" />
-            <End Role="PropertyAdDetail" EntitySet="PropertyAdDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PropertyAdPropertyAdPic" Association="TK1.Broker.Model.Store.FK_PropertyAdPropertyAdPic">
-            <End Role="PropertyAd" EntitySet="PropertyAd" />
-            <End Role="PropertyAdPic" EntitySet="PropertyAdPic" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PropertyReleaseAdPropertyAd" Association="TK1.Broker.Model.Store.FK_PropertyReleaseAdPropertyAd">
-            <End Role="PropertyReleaseAd" EntitySet="PropertyReleaseAd" />
-            <End Role="PropertyAd" EntitySet="PropertyAd" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="TK1.Broker.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="PropertyAd">
           <Key>
             <PropertyRef Name="CustomerCode" />
             <PropertyRef Name="PropertyAdType" />
             <PropertyRef Name="PropertyAdCode" />
           </Key>
-          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="PropertyAdType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PropertyAdType" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PropertyAdCode" Type="int" Nullable="false" />
-          <Property Name="PropertyAdStatus" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="CategoryName" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="PropertyTypeName" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="CityName" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="DistrictName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="PropertyAdStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PropertyTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="TotalArea" Type="float" Nullable="false" />
           <Property Name="TotalRooms" Type="int" Nullable="false" />
           <Property Name="InternalArea" Type="float" Nullable="false" />
@@ -45,43 +26,50 @@
           <Property Name="Value" Type="float" Nullable="false" />
           <Property Name="CityTaxes" Type="float" />
           <Property Name="CondoTaxes" Type="float" />
-          <Property Name="Title" Type="varchar" />
-          <Property Name="ShortDescription" Type="varchar" />
+          <Property Name="Title" Type="varchar" MaxLength="8000" />
+          <Property Name="ShortDescription" Type="varchar" MaxLength="8000" />
           <Property Name="Featured" Type="bit" Nullable="false" />
           <Property Name="Visible" Type="bit" Nullable="false" />
-          <Property Name="FullDescription" Type="varchar" />
-          <Property Name="AreaDescription" Type="varchar" />
-          <Property Name="CondoDescription" Type="varchar" />
-          <Property Name="PicUrl" Type="varchar" />
+          <Property Name="FullDescription" Type="varchar" MaxLength="8000" />
+          <Property Name="AreaDescription" Type="varchar" MaxLength="8000" />
+          <Property Name="CondoDescription" Type="varchar" MaxLength="8000" />
+          <Property Name="PicUrl" Type="varchar" MaxLength="8000" />
+          <Property Name="PropertyLatitude" Type="float" />
+          <Property Name="PropertyLongitude" Type="float" />
+          <Property Name="DistrictLatitude" Type="float" />
+          <Property Name="DistrictLongitude" Type="float" />
+          <Property Name="CityLatitude" Type="float" />
+          <Property Name="CityLongitude" Type="float" />
         </EntityType>
         <EntityType Name="PropertyAdCodeGenerator">
           <Key>
             <PropertyRef Name="CustomerCode" />
             <PropertyRef Name="PropertyAdType" />
           </Key>
-          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="PropertyAdType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PropertyAdType" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PropertyAdCode" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PropertyAdDetail">
           <Key>
             <PropertyRef Name="PropertyAdDetailID" />
           </Key>
-          <Property Name="PropertyAdDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="PropertyAdType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PropertyAdDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PropertyAdType" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PropertyAdCode" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
-          <Property Name="Value" Type="varchar" MaxLength="255" />
-          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="PropertyAdPic">
           <Key>
             <PropertyRef Name="PropertyAdPicID" />
           </Key>
-          <Property Name="PropertyAdPicID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="PropertyAdType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PropertyAdPicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PropertyAdType" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PropertyAdCode" Type="int" Nullable="false" />
           <Property Name="PicIndex" Type="int" Nullable="false" />
           <Property Name="FileName" Type="varchar" MaxLength="255" />
@@ -98,12 +86,12 @@
             <PropertyRef Name="CustomerCode" />
           </Key>
           <Property Name="PropertyAdCode" Type="int" Nullable="false" />
-          <Property Name="PropertyAdType" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="CustomerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PropertyAdType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="ConstructorName" Type="varchar" MaxLength="50" />
-          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="64" />
-          <Property Name="AddressComplement" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="Address" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="AddressComplement" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="AddressNumber" Type="int" Nullable="false" />
           <Property Name="MinTotalArea" Type="float" Nullable="false" />
           <Property Name="MaxTotalArea" Type="float" Nullable="false" />
@@ -126,8 +114,8 @@
           <Property Name="MaxParkingLots" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_PropertyAdPropertyAdDetail">
-          <End Role="PropertyAd" Type="TK1.Broker.Model.Store.PropertyAd" Multiplicity="1" />
-          <End Role="PropertyAdDetail" Type="TK1.Broker.Model.Store.PropertyAdDetail" Multiplicity="*" />
+          <End Role="PropertyAd" Type="Self.PropertyAd" Multiplicity="1" />
+          <End Role="PropertyAdDetail" Type="Self.PropertyAdDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PropertyAd">
               <PropertyRef Name="CustomerCode" />
@@ -142,8 +130,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PropertyAdPropertyAdPic">
-          <End Role="PropertyAd" Type="TK1.Broker.Model.Store.PropertyAd" Multiplicity="1" />
-          <End Role="PropertyAdPic" Type="TK1.Broker.Model.Store.PropertyAdPic" Multiplicity="*" />
+          <End Role="PropertyAd" Type="Self.PropertyAd" Multiplicity="1" />
+          <End Role="PropertyAdPic" Type="Self.PropertyAdPic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PropertyAd">
               <PropertyRef Name="CustomerCode" />
@@ -158,21 +146,40 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PropertyReleaseAdPropertyAd">
-          <End Role="PropertyReleaseAd" Type="TK1.Broker.Model.Store.PropertyReleaseAd" Multiplicity="1" />
-          <End Role="PropertyAd" Type="TK1.Broker.Model.Store.PropertyAd" Multiplicity="0..1" />
+          <End Role="PropertyAd" Type="Self.PropertyAd" Multiplicity="1" />
+          <End Role="PropertyReleaseAd" Type="Self.PropertyReleaseAd" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="PropertyReleaseAd">
+            <Principal Role="PropertyAd">
               <PropertyRef Name="CustomerCode" />
               <PropertyRef Name="PropertyAdType" />
               <PropertyRef Name="PropertyAdCode" />
             </Principal>
-            <Dependent Role="PropertyAd">
+            <Dependent Role="PropertyReleaseAd">
               <PropertyRef Name="CustomerCode" />
               <PropertyRef Name="PropertyAdType" />
               <PropertyRef Name="PropertyAdCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="TK1BrokerModelStoreContainer">
+          <EntitySet Name="PropertyAd" EntityType="Self.PropertyAd" Schema="Broker" store:Type="Tables" />
+          <EntitySet Name="PropertyAdCodeGenerator" EntityType="Self.PropertyAdCodeGenerator" Schema="Broker" store:Type="Tables" />
+          <EntitySet Name="PropertyAdDetail" EntityType="Self.PropertyAdDetail" Schema="Broker" store:Type="Tables" />
+          <EntitySet Name="PropertyAdPic" EntityType="Self.PropertyAdPic" Schema="Broker" store:Type="Tables" />
+          <EntitySet Name="PropertyReleaseAd" EntityType="Self.PropertyReleaseAd" Schema="Broker" store:Type="Tables" />
+          <AssociationSet Name="FK_PropertyAdPropertyAdDetail" Association="Self.FK_PropertyAdPropertyAdDetail">
+            <End Role="PropertyAd" EntitySet="PropertyAd" />
+            <End Role="PropertyAdDetail" EntitySet="PropertyAdDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropertyAdPropertyAdPic" Association="Self.FK_PropertyAdPropertyAdPic">
+            <End Role="PropertyAd" EntitySet="PropertyAd" />
+            <End Role="PropertyAdPic" EntitySet="PropertyAdPic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropertyReleaseAdPropertyAd" Association="Self.FK_PropertyReleaseAdPropertyAd">
+            <End Role="PropertyAd" EntitySet="PropertyAd" />
+            <End Role="PropertyReleaseAd" EntitySet="PropertyReleaseAd" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -194,6 +201,10 @@
           <AssociationSet Name="FK_PropertyReleaseAdPropertyAd" Association="TK1.Broker.Model.FK_PropertyReleaseAdPropertyAd">
             <End Role="PropertyReleaseAd" EntitySet="PropertyReleaseAds" />
             <End Role="PropertyAd" EntitySet="PropertyAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropertyReleaseAdPropertyAd1" Association="TK1.Broker.Model.FK_PropertyReleaseAdPropertyAd1">
+            <End Role="PropertyAd" EntitySet="PropertyAds" />
+            <End Role="PropertyReleaseAd" EntitySet="PropertyReleaseAds" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PropertyAd">
@@ -228,6 +239,13 @@
           <NavigationProperty Name="PropertyAdDetails" Relationship="TK1.Broker.Model.FK_PropertyAdPropertyAdDetail" FromRole="PropertyAd" ToRole="PropertyAdDetail" />
           <NavigationProperty Name="PropertyAdPics" Relationship="TK1.Broker.Model.FK_PropertyAdPropertyAdPic" FromRole="PropertyAd" ToRole="PropertyAdPic" />
           <NavigationProperty Name="PropertyReleaseAd" Relationship="TK1.Broker.Model.FK_PropertyReleaseAdPropertyAd" FromRole="PropertyAd" ToRole="PropertyReleaseAd" />
+          <NavigationProperty Name="PropertyReleaseAd1" Relationship="TK1.Broker.Model.FK_PropertyReleaseAdPropertyAd1" FromRole="PropertyAd" ToRole="PropertyReleaseAd" />
+          <Property Name="PropertyLatitude" Type="Double" />
+          <Property Name="PropertyLongitude" Type="Double" />
+          <Property Name="CityLatitude" Type="Double" />
+          <Property Name="CityLongitude" Type="Double" />
+          <Property Name="DistrictLatitude" Type="Double" />
+          <Property Name="DistrictLongitude" Type="Double" />
         </EntityType>
         <EntityType Name="PropertyAdCodeGenerator">
           <Key>
@@ -247,9 +265,10 @@
           <Property Name="PropertyAdType" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="PropertyAdCode" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Value" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" MaxLength="255" Unicode="false" FixedLength="false" Nullable="false" />
           <Property Name="Type" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="PropertyAd" Relationship="TK1.Broker.Model.FK_PropertyAdPropertyAdDetail" FromRole="PropertyAdDetail" ToRole="PropertyAd" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PropertyAdPic">
           <Key>
@@ -302,6 +321,7 @@
           <Property Name="MinParkingLots" Type="Int32" Nullable="false" />
           <Property Name="MaxParkingLots" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PropertyAd" Relationship="TK1.Broker.Model.FK_PropertyReleaseAdPropertyAd" FromRole="PropertyReleaseAd" ToRole="PropertyAd" />
+          <NavigationProperty Name="PropertyAd1" Relationship="TK1.Broker.Model.FK_PropertyReleaseAdPropertyAd1" FromRole="PropertyReleaseAd" ToRole="PropertyAd" />
         </EntityType>
         <Association Name="FK_PropertyAdPropertyAdDetail">
           <End Role="PropertyAd" Type="TK1.Broker.Model.PropertyAd" Multiplicity="1" />
@@ -351,6 +371,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PropertyReleaseAdPropertyAd1">
+          <End Type="TK1.Broker.Model.PropertyAd" Role="PropertyAd" Multiplicity="1" />
+          <End Type="TK1.Broker.Model.PropertyReleaseAd" Role="PropertyReleaseAd" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PropertyAd">
+              <PropertyRef Name="CustomerCode" />
+              <PropertyRef Name="PropertyAdType" />
+              <PropertyRef Name="PropertyAdCode" />
+            </Principal>
+            <Dependent Role="PropertyReleaseAd">
+              <PropertyRef Name="CustomerCode" />
+              <PropertyRef Name="PropertyAdType" />
+              <PropertyRef Name="PropertyAdCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -360,6 +396,12 @@
           <EntitySetMapping Name="PropertyAds">
             <EntityTypeMapping TypeName="TK1.Broker.Model.PropertyAd">
               <MappingFragment StoreEntitySet="PropertyAd">
+                <ScalarProperty Name="DistrictLongitude" ColumnName="DistrictLongitude" />
+                <ScalarProperty Name="DistrictLatitude" ColumnName="DistrictLatitude" />
+                <ScalarProperty Name="CityLongitude" ColumnName="CityLongitude" />
+                <ScalarProperty Name="CityLatitude" ColumnName="CityLatitude" />
+                <ScalarProperty Name="PropertyLongitude" ColumnName="PropertyLongitude" />
+                <ScalarProperty Name="PropertyLatitude" ColumnName="PropertyLatitude" />
                 <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
                 <ScalarProperty Name="PropertyAdType" ColumnName="PropertyAdType" />
                 <ScalarProperty Name="PropertyAdCode" ColumnName="PropertyAdCode" />
@@ -398,6 +440,7 @@
           <EntitySetMapping Name="PropertyAdDetails">
             <EntityTypeMapping TypeName="TK1.Broker.Model.PropertyAdDetail">
               <MappingFragment StoreEntitySet="PropertyAdDetail">
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="PropertyAdDetailID" ColumnName="PropertyAdDetailID" />
                 <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
                 <ScalarProperty Name="PropertyAdType" ColumnName="PropertyAdType" />
@@ -475,6 +518,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

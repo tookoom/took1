@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B4E4038-F08D-4E52-8E93-81E340AD494C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.ConsoleDev4</RootNamespace>
+    <AssemblyName>App.ConsoleDev4</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Workspaces\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\MailTests.cs" />
+    <Compile Include="Tests\DataTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TK1.Bizz.Inetsoft\TK1.Bizz.Inetsoft.csproj">
+      <Project>{cf258131-13c0-4f5d-8657-891e00e66815}</Project>
+      <Name>TK1.Bizz.Inetsoft</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz.Mdo\TK1.Bizz.Mdo.csproj">
+      <Project>{07143283-7469-446f-a469-86f64c5cb61f}</Project>
+      <Name>TK1.Bizz.Mdo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz.Pieta\TK1.Bizz.Pieta.csproj">
+      <Project>{3a912bdf-bfde-4bb9-b182-6625fa40269a}</Project>
+      <Name>TK1.Bizz.Pieta</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
+      <Project>{ab2ec906-93ae-4f64-b71d-e04c88036d7d}</Project>
+      <Name>TK1.Bizz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Data.Bizz.Client\TK1.Data.Bizz.Client.csproj">
+      <Project>{8c230fbc-7d12-4c68-af4f-5f31e721b4c9}</Project>
+      <Name>TK1.Data.Bizz.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Data\TK1.Data.csproj">
+      <Project>{2484cd63-a0b0-46ae-a423-b32e6a6ad279}</Project>
+      <Name>TK1.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1.Media\TK1.Media.csproj">
+      <Project>{2b1dc70c-89e1-46f4-96c7-03bd38d80330}</Project>
+      <Name>TK1.Media</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TK1\TK1.csproj">
+      <Project>{b1b8234d-8130-459a-8c16-91e6190e708d}</Project>
+      <Name>TK1</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -47,7 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminHelper.cs" />
+    <Compile Include="Broker\Bot\IPropertyAdBot.cs" />
+    <Compile Include="Broker\Bot\PropertyAdBotFactory.cs" />
+    <Compile Include="Broker\Bot\PropertyAdEventArgs.cs" />
+    <Compile Include="Broker\Bot\Sources\KijijiAdListingBot.cs" />
+    <Compile Include="Broker\Bot\Sources\KijijiPageNavigatorBot.cs" />
+    <Compile Include="Broker\Bot\Sources\KijijiPropertyAdBot.cs" />
     <Compile Include="Broker\Model\BrokerCustomer.cs" />
+    <Compile Include="Broker\Model\PropertyAdDetailCodes.cs" />
     <Compile Include="Broker\Presentation\BrokerCustomerWebView.cs" />
     <Compile Include="Const\AppLogLevels.cs" />
     <Compile Include="Const\AppNames.cs" />
@@ -64,6 +71,9 @@
     <Compile Include="Broker\Presentation\PropertyReleaseAdView.cs" />
     <Compile Include="Broker\Integration\PropertyAdCollection.cs" />
     <Compile Include="Integra\FileLoader.cs" />
+    <Compile Include="Mapper\Model\BingMapsResponse.cs" />
+    <Compile Include="Mapper\Model\GeoLocation.cs" />
+    <Compile Include="Mapper\Model\Location.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\BizzCustomer.cs" />
     <Compile Include="Model\EmailAddress.cs" />
@@ -80,7 +90,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,5 +43,6 @@ namespace TK1.Data.Bizz.Broker.Model
         public int MaxParkingLots { get; set; }
     
         public virtual PropertyAd PropertyAd { get; set; }
+        public virtual PropertyAd PropertyAd1 { get; set; }
     }
 }
