@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tk1Model1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="tk1Model1StoreContainer">
+          <EntitySet Name="TK1_ClientAppLog" EntityType="tk1Model1.Store.TK1_ClientAppLog" store:Type="Tables" Schema="tk1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+        </EntityContainer>
+        <EntityType Name="TK1_ClientAppLog">
+          <Key>
+            <PropertyRef Name="AppLogID" />
+          </Key>
+          <Property Name="AppLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="Message" Type="text" />
+          <Property Name="Data" Type="text" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tk1Model1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="tk1Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="TK1_ClientAppLog" EntityType="tk1Model1.TK1_ClientAppLog" />
+        </EntityContainer>
+        <EntityType Name="TK1_ClientAppLog">
+          <Key>
+            <PropertyRef Name="AppLogID" />
+          </Key>
+          <Property Name="AppLogID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="Data" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tk1Model1StoreContainer" CdmEntityContainer="tk1Entities">
+          <EntitySetMapping Name="TK1_ClientAppLog">
+            <EntityTypeMapping TypeName="tk1Model1.TK1_ClientAppLog">
+              <MappingFragment StoreEntitySet="TK1_ClientAppLog">
+                <ScalarProperty Name="AppLogID" ColumnName="AppLogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>

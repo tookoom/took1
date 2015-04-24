@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locacao>
+<imoveis>
+<imovel>
+  <codigo>9</codigo>
+  <destaque>N</destaque>
+  <endereco>R JOSE DE ALENCAR, 658 206</endereco>
+  <bairro>MENINO DEUS</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO 01, CARPETE, 2º ANDAR, FUNDOS</descricao>
+  <descricaoresumida>BANHEIRO 01, CARPETE, 2º ANDAR, FUNDOS</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), PORTARIA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>34,08</area_uso_privativo>
+  <area_total_imovel>40,40</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1140,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>48,08</valoriptu>
+  <valorcondominio>191,26</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000009AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>10</codigo>
+  <destaque>N</destaque>
+  <endereco>R JOSE DE ALENCAR, 658 207</endereco>
+  <bairro>MENINO DEUS</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO 01, CARPETE, FUNDOS, 2º ANDAR</descricao>
+  <descricaoresumida>BANHEIRO 01, CARPETE, FUNDOS, 2º ANDAR</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), PORTARIA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>25,00</area_uso_privativo>
+  <area_total_imovel>35,93</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>850,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>44,48</valoriptu>
+  <valorcondominio>166,23</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000010AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>13</codigo>
+  <destaque>N</destaque>
+  <endereco>R JOSE DE ALENCAR, 658 308</endereco>
+  <bairro>MENINO DEUS</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO 01, CARPETE, FUNDOS, 3º ANDAR</descricao>
+  <descricaoresumida>BANHEIRO 01, CARPETE, FUNDOS, 3º ANDAR</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), PORTARIA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>30,00</area_uso_privativo>
+  <area_total_imovel>41,36</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>900,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>48,08</valoriptu>
+  <valorcondominio>191,26</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000013AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>19</codigo>
+  <destaque>N</destaque>
+  <endereco>R DOUTOR MARIO TOTTA, 645 10</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO(01), ESTACIONAMENTO ROTATIVO, FUNDOS, TERREO, CONTRA-PISO, SEMI-NOVO</descricao>
+  <descricaoresumida>BANHEIRO(01), ESTACIONAMENTO ROTATIVO, FUNDOS, TERREO, CONTRA-PISO, SEMI-NOVO</descricaoresumida>
+  <infra_estrutura_condominio />
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>27,47</area_uso_privativo>
+  <area_total_imovel>50,98</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1154,00</valor>
+  <tipo>LOJA</tipo>
+  <valoriptu>27,00</valoriptu>
+  <valorcondominio>100,00</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000019AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>20</codigo>
+  <destaque>N</destaque>
+  <endereco>R DOUTOR MARIO TOTTA, 645 12</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO(01), FUNDOS, TERREO, CONTRA-PISO, SEMI-NOVO</descricao>
+  <descricaoresumida>BANHEIRO(01), FUNDOS, TERREO, CONTRA-PISO, SEMI-NOVO</descricaoresumida>
+  <infra_estrutura_condominio />
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>37,68</area_uso_privativo>
+  <area_total_imovel>69,93</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1583,00</valor>
+  <tipo>LOJA</tipo>
+  <valoriptu>48,00</valoriptu>
+  <valorcondominio>67,38</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000020AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>23</codigo>
+  <destaque>N</destaque>
+  <endereco>R DOUTOR MARIO TOTTA, 645 08</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO 01, TERREO, ESTACIONAMENTO ROTATIVO</descricao>
+  <descricaoresumida>BANHEIRO 01, TERREO, ESTACIONAMENTO ROTATIVO</descricaoresumida>
+  <infra_estrutura_condominio />
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>34,99</area_uso_privativo>
+  <area_total_imovel>64,94</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1652,00</valor>
+  <tipo>LOJA</tipo>
+  <valoriptu>46,00</valoriptu>
+  <valorcondominio>62,00</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000023AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>41</codigo>
+  <destaque>N</destaque>
+  <endereco>R VINTE E QUATRO DE OUTUBRO, 1312 203 BOX 11</endereco>
+  <bairro>MOINHOS DE VENTO</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO 1, COPA, AR CONDICIONADO(1), LATERAL, 2º ANDAR, CORTINA, PISO CERAMICA</descricao>
+  <descricaoresumida>BANHEIRO 1, COPA, AR CONDICIONADO(1), LATERAL, 2º ANDAR, CORTINA, PISO CERAMICA</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), VAGA 1 CARRO COBERTA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>24,55</area_uso_privativo>
+  <area_total_imovel>39,00</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>1</garagens>
+  <valor>650,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>60,00</valoriptu>
+  <valorcondominio>231,83</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000041AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000041AB_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000041AC_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000041AD_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>47</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 207</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>2º ANDAR, BANHEIRO 1, ESTACIONAMENTO ROTATIVO, FUNDOS, SALA(1), VISÃO PANORÂMICA, ESPERA SPLIT, 1º ANDAR</descricao>
+  <descricaoresumida>2º ANDAR, BANHEIRO 1, ESTACIONAMENTO ROTATIVO, FUNDOS, SALA(1), VISÃO PANORÂMICA, ESPERA SPLIT, 1º ANDAR</descricaoresumida>
+  <infra_estrutura_condominio>PORTARIA-24 HS, ELEVADOR(1), FACHADA EM ALVENARIA, MONITORAMENTO POR CAMERAS, ESTRUTURA DE SHOPPING, TELHADO VERDE, CIRCULAÇÃO ENVIDRAÇADA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>27,65</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1216,60</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>456,22</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000047AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000047AC_ep_1.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000047AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000047AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000047AF_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>48</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 203</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, PISO FRIO, SALA(1), VISÃO PANORÂMICA, 2º ANDAR, 1ª OCUPAÇÃO</descricao>
+  <descricaoresumida>BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, PISO FRIO, SALA(1), VISÃO PANORÂMICA, 2º ANDAR, 1ª OCUPAÇÃO</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), FACHADA EM ALVENARIA, MONITORAMENTO POR CAMERAS, ESTRUTURA DE SHOPPING, TELHADO VERDE, SISTEMA  INFORMATIZADO</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>31,01</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1364,44</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>511,66</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000048AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AC_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AD_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AF_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AG_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AH_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000048AK_ex_0.jpg</arquivo_foto><descricao_foto>Externa</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>51</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 210</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, 1ª OCUPAÇÃO</descricao>
+  <descricaoresumida>2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, 1ª OCUPAÇÃO</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), FACHADA EM ALVENARIA, MONITORAMENTO POR CAMERAS, ESTRUTURA DE SHOPPING, TELHADO VERDE, CIRCULAÇÃO ENVIDRAÇADA, SISTEMA  INFORMATIZADO</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>26,71</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1175,24</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>440,71</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000051AA_fa_1.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000051AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000051AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000051AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000051AE_ex_0.jpg</arquivo_foto><descricao_foto>Externa</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>53</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 213</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>1ª OCUPAÇÃO, 2º ANDAR, ESTACIONAMENTO ROTATIVO, FUNDOS, PISO FRIO, SALA(1), BANHEIRO 1, ESPERA SPLIT</descricao>
+  <descricaoresumida>1ª OCUPAÇÃO, 2º ANDAR, ESTACIONAMENTO ROTATIVO, FUNDOS, PISO FRIO, SALA(1), BANHEIRO 1, ESPERA SPLIT</descricaoresumida>
+  <infra_estrutura_condominio>PORTARIA-24 HS, ELEVADOR(1), MONITORAMENTO POR CAMERAS, TELHADO VERDE, CIRCULAÇÃO ENVIDRAÇADA, SISTEMA  INFORMATIZADO</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>28,73</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1264,12</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>474,45</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000053AA_fa_1.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000053AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000053AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000053AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000053AE_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000053AF_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000053AG_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>54</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1023 214</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>1º ANDAR, BANHEIRO 1, ESTACIONAMENTO ROTATIVO, FUNDOS, SALA(1), VISÃO PANORÂMICA, ESPERA SPLIT, 2º ANDAR, PISO FRIO</descricao>
+  <descricaoresumida>1º ANDAR, BANHEIRO 1, ESTACIONAMENTO ROTATIVO, FUNDOS, SALA(1), VISÃO PANORÂMICA, ESPERA SPLIT, 2º ANDAR, PISO FRIO</descricaoresumida>
+  <infra_estrutura_condominio>PORTARIA-24 HS, ELEVADOR(1), FACHADA EM ALVENARIA, MONITORAMENTO POR CAMERAS, TELHADO VERDE, CIRCULAÇÃO ENVIDRAÇADA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>28,73</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1264,12</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>474,04</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000054AA_fa_1.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000054AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000054AC_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000054AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000054AE_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000054AF_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000054AG_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>55</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 216</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, CONTRA PISO, JARDIM, PORTARIA, RECEPÇÃO, SALA(1)</descricao>
+  <descricaoresumida>2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, CONTRA PISO, JARDIM, PORTARIA, RECEPÇÃO, SALA(1)</descricaoresumida>
+  <infra_estrutura_condominio>PORTARIA-24 HS, ELEVADOR(1), FACHADA EM ALVENARIA, TELHADO VERDE, SISTEMA  INFORMATIZADO, MONITORAMENTO POR CAMERAS, CIRCULAÇÃO ENVIDRAÇADA, ESTACIONAMENTO VISITANTES, ÓTIMA LOCALIZAÇÃO</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>29,37</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1292,28</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>490,54</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000055AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000055AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000055AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000055AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000055AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000055AF_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>62</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 204</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, CONTRA PISO, ESPERA SPLIT, LATERAL, RECEPÇÃO, SALA(1), ESTACIONAMENTO COLETIVO, SEGURANÇA 24HS P/MONIT.</descricao>
+  <descricaoresumida>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, CONTRA PISO, ESPERA SPLIT, LATERAL, RECEPÇÃO, SALA(1), ESTACIONAMENTO COLETIVO, SEGURANÇA 24HS P/MONIT.</descricaoresumida>
+  <infra_estrutura_condominio>TELHADO VERDE, SISTEMA  INFORMATIZADO, ELEVADOR(1), JARDIM, PORTARIA, FACHADA EM ALVENARIA, ESTRUTURA DE SHOPPING</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>31,20</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1248,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>468,00</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000062AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000062AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000062AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000062AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000062AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000062AF_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000062AG_ci_1.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000062AH_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>63</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 208</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>SALA(1), SEGURANÇA 24HS P/MONIT., 1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, JARDIM, RECEPÇÃO</descricao>
+  <descricaoresumida>SALA(1), SEGURANÇA 24HS P/MONIT., 1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, JARDIM, RECEPÇÃO</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), FACHADA EM ALVENARIA, MONITORAMENTO POR CAMERAS, ESTRUTURA DE SHOPPING, TELHADO VERDE, SISTEMA  INFORMATIZADO</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>32,16</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1415,04</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>530,64</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000063AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000063AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000063AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000063AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000063AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000063AF_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000063AG_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000063AH_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>64</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 212</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, RECEPÇÃO, SALA(1), SEGURANÇA 24HS P/MONIT.</descricao>
+  <descricaoresumida>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, RECEPÇÃO, SALA(1), SEGURANÇA 24HS P/MONIT.</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), JARDIM, FACHADA EM ALVENARIA, MONITORAMENTO POR CAMERAS, ESTRUTURA DE SHOPPING, TELHADO VERDE, CIRCULAÇÃO ENVIDRAÇADA, SISTEMA  INFORMATIZADO</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>29,91</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1316,04</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>493,51</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000064AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000064AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000064AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000064AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000064AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000064AF_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000064AG_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000064AH_ci_1.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>65</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 220</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, CONTRA PISO, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, JARDIM, LATERAL, SALA(1), SEGURANÇA 24HS P/MONIT.</descricao>
+  <descricaoresumida>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, CONTRA PISO, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, JARDIM, LATERAL, SALA(1), SEGURANÇA 24HS P/MONIT.</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1), FACHADA EM ALVENARIA, ESTRUTURA DE SHOPPING, TELHADO VERDE, SISTEMA  INFORMATIZADO</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>55,26</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>2431,44</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>911,79</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000065AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AC_ep_0.jpg</arquivo_foto><descricao_foto>Entrada do Prédio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AF_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AG_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AH_ex_0.jpg</arquivo_foto><descricao_foto>Externa</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AI_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000065AJ_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>76</codigo>
+  <destaque>N</destaque>
+  <endereco>AV CARLOS GOMES, 1987 </endereco>
+  <bairro>PETROPOLIS</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>4 BANHOS, 6 SALAS, CASA COMERCIAL, COFRE, CORTINA, COZINHA C/CHURRASQUEIRA, ESTAC APROXIMAD 10 CARROS, FRENTE, HALL, LAREIRA, PATIO, PISO LAMINADO, PISO CERAMICA, PISO PARQUET, SACADA 2, SALÃO 4 AMBIENTES, 2 SACADAS ABERTAS, LUMINARIA, 3 PAVIMENTOS, CERCA ELÉTRICA</descricao>
+  <descricaoresumida>4 BANHOS, 6 SALAS, CASA COMERCIAL, COFRE, CORTINA, COZINHA C/CHURRASQUEIRA, ESTAC APROXIMAD 10 CARROS, FRENTE, HALL, LAREIRA, PATIO, PISO LAMINADO, PISO CERAMICA, PISO PARQUET, SACADA 2, SALÃO 4 AMBIENTES, 2 SACADAS ABERTAS, LUMINARIA, 3 PAVIMENTOS, CERCA ELÉTRICA</descricaoresumida>
+  <infra_estrutura_condominio>GRADIL, PORTÃO AUTOMATIZADO, FACHADA EM ALVENARIA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>450,00</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>8300,00</valor>
+  <tipo>CASA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>0,00</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000076AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AC_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AD_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AE_pt_0.jpg</arquivo_foto><descricao_foto>Patio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AF_li_0.jpg</arquivo_foto><descricao_foto>Living</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AG_li_0.jpg</arquivo_foto><descricao_foto>Living</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AH_li_0.jpg</arquivo_foto><descricao_foto>Living</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AI_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AJ_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AK_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AL_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AM_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AP_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AQ_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AQ_co_0.jpg</arquivo_foto><descricao_foto>Cozinha</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AR_co_0.jpg</arquivo_foto><descricao_foto>Cozinha</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AR_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AS_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AT_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AU_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AV_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000076AW_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>80</codigo>
+  <destaque>N</destaque>
+  <endereco>R AUGUSTO CONTE, 95 </endereco>
+  <bairro>CAVALHADA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>2  PAVIMENTOS, PISO PARQUET, ESTAC APROXIMAD 10 CARROS, PRÉDIO C/ 9 SALAS, 4 BANHOS</descricao>
+  <descricaoresumida>2  PAVIMENTOS, PISO PARQUET, ESTAC APROXIMAD 10 CARROS, PRÉDIO C/ 9 SALAS, 4 BANHOS</descricaoresumida>
+  <infra_estrutura_condominio>GUARITA, FACHADA EM ALVENARIA, QUADRA ESPORTIVA, TERRENO C/ 1.250M</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>700,00</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>12500,00</valor>
+  <tipo>PREDIO COMERCIAL</tipo>
+  <valoriptu>509,56</valoriptu>
+  <valorcondominio>0,00</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000080AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000080AB_fa_1.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000080AC_es_0.jpg</arquivo_foto><descricao_foto>Quadra de Esportes</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000080AD_pt_0.jpg</arquivo_foto><descricao_foto>Patio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000080AE_pt_0.jpg</arquivo_foto><descricao_foto>Patio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000080AF_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>82</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 211</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, FUNDOS, RECEPÇÃO, ESPERA SPLIT, SEGURANÇA 24HS P/MONIT.</descricao>
+  <descricaoresumida>1ª OCUPAÇÃO, 2º ANDAR, BANHEIRO 1, FUNDOS, RECEPÇÃO, ESPERA SPLIT, SEGURANÇA 24HS P/MONIT.</descricaoresumida>
+  <infra_estrutura_condominio>CIRCULAÇÃO ENVIDRAÇADA, ESTACIONAMENTO VISITANTES, FACHADA EM ALVENARIA, MONITORAMENTO POR CAMERAS, ÓTIMA LOCALIZAÇÃO, TELHADO VERDE, ESTRUTURA DE SHOPPING, JARDIM</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo />
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1342,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>107,30</valoriptu>
+  <valorcondominio>503,25</valorcondominio>
+  <imagens>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>86</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 312</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>2º ANDAR, BANHEIRO 1, FUNDOS, PISO LAMINADO, RECEPÇÃO, SALA(1), SEGURANÇA 24HS P/MONIT., SPLIT</descricao>
+  <descricaoresumida>2º ANDAR, BANHEIRO 1, FUNDOS, PISO LAMINADO, RECEPÇÃO, SALA(1), SEGURANÇA 24HS P/MONIT., SPLIT</descricaoresumida>
+  <infra_estrutura_condominio>CIRCUITO INTERNO DE TV, ELEVADOR(1), ESTACIONAMENTO VISITANTES, FACHADA EM ALVENARIA, JARDIM, MONITORAMENTO POR CAMERAS, ÓTIMA LOCALIZAÇÃO, TELHADO VERDE</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>29,91</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1316,04</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>493,51</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000086AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AB_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AC_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AD_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AE_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AF_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AG_ci_0.jpg</arquivo_foto><descricao_foto>Circulação</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AH_ex_0.jpg</arquivo_foto><descricao_foto>Externa</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AI_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000086AJ_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>87</codigo>
+  <destaque>N</destaque>
+  <endereco>AV WENCESLAU ESCOBAR, 1823 215</endereco>
+  <bairro>TRISTEZA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>2º ANDAR, BANHEIRO 1, CONTRA PISO, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, RECEPÇÃO, SALA(1), SEGURANÇA 24HS P/MONIT., PORTARIA</descricao>
+  <descricaoresumida>2º ANDAR, BANHEIRO 1, CONTRA PISO, ESPERA SPLIT, ESTACIONAMENTO ROTATIVO, FUNDOS, RECEPÇÃO, SALA(1), SEGURANÇA 24HS P/MONIT., PORTARIA</descricaoresumida>
+  <infra_estrutura_condominio>CIRCUITO INTERNO DE TV, ELEVADOR(1), FACHADA EM ALVENARIA, JARDIM, ÓTIMA LOCALIZAÇÃO, TELHADO VERDE, VAGA PARA VISITANTES, SISTEMA  INFORMATIZADO, MONITORAMENTO POR CAMERAS, CIRCULAÇÃO ENVIDRAÇADA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>28,73</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1264,12</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>474,04</valorcondominio>
+  <imagens>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>89</codigo>
+  <destaque>N</destaque>
+  <endereco>R JOSE DE ALENCAR, 658 405</endereco>
+  <bairro>MENINO DEUS</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>BANHEIRO 1, CARPETE, FUNDOS, PORTARIA</descricao>
+  <descricaoresumida>BANHEIRO 1, CARPETE, FUNDOS, PORTARIA</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(1)</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>30,00</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>750,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>156,66</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000089AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>91</codigo>
+  <destaque>N</destaque>
+  <endereco>AV PLINIO BRASIL MILANO, 289 SALA 401</endereco>
+  <bairro>AUXILIADORA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>EXCELENTE SALA COM 83,00M² , MEZANINO COM POSSIBILIDADE DE LOCAÇÃO DA SALA AO LADO COM 26M² TOTALIZANDO 109M², 4º ANDAR, FUNDOS, BANHEIRO, LUMINARIA, PISO CERAMICA, SALA, 4 SALAS POR ANDAR. ALUGUEL DAS 2 SALAS R$ 2.000,00</descricao>
+  <descricaoresumida>EXCELENTE SALA COM 83,00M² , MEZANINO COM POSSIBILIDADE DE LOCAÇÃO DA SALA AO LADO COM 26M² TOTALIZANDO 109M², 4º ANDAR, FUNDOS, BANHEIRO, LUMINARIA, PISO CERAMICA, SALA, 4 SALAS POR ANDAR. ALUGUEL DAS 2 SALAS R$ 2.000,00</descricaoresumida>
+  <infra_estrutura_condominio>4 SALAS POR ANDAR</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>83,00</area_uso_privativo>
+  <area_total_imovel>91,35</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1550,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>88,18</valoriptu>
+  <valorcondominio>344,54</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000091AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AB_ha_0.jpg</arquivo_foto><descricao_foto>Hall</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AC_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AD_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AE_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AF_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AG_me_0.jpg</arquivo_foto><descricao_foto>Mesanino</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AH_me_0.jpg</arquivo_foto><descricao_foto>Mesanino</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AI_me_0.jpg</arquivo_foto><descricao_foto>Mesanino</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000091AJ_vi_0.jpg</arquivo_foto><descricao_foto>Vista</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>92</codigo>
+  <destaque>N</destaque>
+  <endereco>AV PLINIO BRASIL MILANO, 289 402</endereco>
+  <bairro>AUXILIADORA</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>EXCELENTE SALA COM 26M² POSSIBILIDADE DE LOCAÇÃO DA SALA AO LADO COM MEZANINO MEDINDO 83M² TOTALIZANDO 109M², 4º ANDAR, FUNDOS, BANHEIRO, PISO CERAMICA, 4 SALAS POR ANDAR. VALOR DAS 2 SALAS R$ 2.000,00</descricao>
+  <descricaoresumida>EXCELENTE SALA COM 26M² POSSIBILIDADE DE LOCAÇÃO DA SALA AO LADO COM MEZANINO MEDINDO 83M² TOTALIZANDO 109M², 4º ANDAR, FUNDOS, BANHEIRO, PISO CERAMICA, 4 SALAS POR ANDAR. VALOR DAS 2 SALAS R$ 2.000,00</descricaoresumida>
+  <infra_estrutura_condominio>4 SALAS POR ANDAR</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>26,00</area_uso_privativo>
+  <area_total_imovel>30,44</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>650,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>31,56</valoriptu>
+  <valorcondominio>168,53</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000092AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000092AB_ha_0.jpg</arquivo_foto><descricao_foto>Hall</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000092AC_in_0.jpg</arquivo_foto><descricao_foto>Interna</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000092AD_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000092AE_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000092AF_vi_0.jpg</arquivo_foto><descricao_foto>Vista</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>93</codigo>
+  <destaque>N</destaque>
+  <endereco>AV OTAVIO ROCHA, 54 CONJ. 04</endereco>
+  <bairro>CENTRO</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>EXCELENTE SALA, ÓTIMA LOCALIZAÇÃO COM 157,44m² TODO O 4° ANDAR, 2 BANHEIROS, PISO CERÂMICA, 2 ELEVADORES, HALL SOCIAL, PORTARIA</descricao>
+  <descricaoresumida>EXCELENTE SALA, ÓTIMA LOCALIZAÇÃO COM 157,44m² TODO O 4° ANDAR, 2 BANHEIROS, PISO CERÂMICA, 2 ELEVADORES, HALL SOCIAL, PORTARIA</descricaoresumida>
+  <infra_estrutura_condominio>2 ELEVADORES, HALL SOCIAL, PORTARIA</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>157,44</area_uso_privativo>
+  <area_total_imovel>205,39</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>2900,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>209,23</valoriptu>
+  <valorcondominio>342,52</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000093AA_cj_1-sala.jpg</arquivo_foto><descricao_foto>Conjunto sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AB_fa_1-predio.jpg</arquivo_foto><descricao_foto>Fachada predio</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AC_ep_0-escada.jpg</arquivo_foto><descricao_foto>Entrada do Prédio escada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AD_sa_1.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AE_sa_0-frente fundos.jpg</arquivo_foto><descricao_foto>Sala frente fundos</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AG_sa_0-fundos.jpg</arquivo_foto><descricao_foto>Sala fundos</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AG_sa_0-frente.jpg</arquivo_foto><descricao_foto>Sala frente</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AH_sa_0-entrada.jpg</arquivo_foto><descricao_foto>Sala entrada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000093AI_el_0.jpg</arquivo_foto><descricao_foto>Elevador</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>94</codigo>
+  <destaque>N</destaque>
+  <endereco>R DOS ANDRADAS, 1270 7° andar</endereco>
+  <bairro>CENTRO</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>Sala, Andar Inteiro com 226,84m², sendo 06 salas na parte dos fundos do prédio com 02 banheiros e copa. Na parte da Frente existem 02 salões e 01 banheiro. Piso parquet, teto de gesso. Portaria, Circuito Interno de TV, 3 Elevadores.</descricao>
+  <descricaoresumida>Sala, Andar Inteiro com 226,84m², sendo 06 salas na parte dos fundos do prédio com 02 banheiros e copa. Na parte da Frente existem 02 salões e 01 banheiro. Piso parquet, teto de gesso. Portaria, Circuito Interno de TV, 3 Elevadores.</descricaoresumida>
+  <infra_estrutura_condominio>PORTARIA, ELEVADOR(3), CIRCUITO INTERNO DE TV</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>226,84</area_uso_privativo>
+  <area_total_imovel>331,00</area_total_imovel>
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>4800,00</valor>
+  <tipo>CONJUNTO/SALA</tipo>
+  <valoriptu>296,52</valoriptu>
+  <valorcondominio>1125,82</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000094AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AB_an_0.jpg</arquivo_foto><descricao_foto>Andar</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AC_ha_0.jpg</arquivo_foto><descricao_foto>Hall</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AD_sa_0-frente.jpg</arquivo_foto><descricao_foto>Sala frente</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AE_ba_0-1.jpg</arquivo_foto><descricao_foto>Banheiro Social 1</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AF_ba_0-2.jpg</arquivo_foto><descricao_foto>Banheiro Social 2</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AG_ba_0-3.jpg</arquivo_foto><descricao_foto>Banheiro Social 3</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AH_co_0.jpg</arquivo_foto><descricao_foto>Cozinha</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AI_sa_0-lado esquerdo.jpg</arquivo_foto><descricao_foto>Sala lado esquerdo</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AJ_sa_0-fundos.jpg</arquivo_foto><descricao_foto>Sala fundos</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AK_sa_0-lateral.jpg</arquivo_foto><descricao_foto>Sala lateral</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AL_sa_0.jpg</arquivo_foto><descricao_foto>Sala</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000094AM_sa_0-frente.jpg</arquivo_foto><descricao_foto>Sala frente</descricao_foto></imagem>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>95</codigo>
+  <destaque>N</destaque>
+  <endereco>AV TERESOPOLIS, 3160 2</endereco>
+  <bairro>TERESOPOLIS</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>3 BANHEIROS, ALVENARIA, 5 SALAS, COPA COM ARMARIO, ESPERA P/ARCONDICIONADO, FRENTE, CERÂMICA NO PISO, LOJA E SOB LOJA</descricao>
+  <descricaoresumida>3 BANHEIROS, ALVENARIA, 5 SALAS, COPA COM ARMARIO, ESPERA P/ARCONDICIONADO, FRENTE, CERÂMICA NO PISO, LOJA E SOB LOJA</descricaoresumida>
+  <infra_estrutura_condominio />
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo />
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>0</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>4500,00</valor>
+  <tipo>LOJA</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>0,00</valorcondominio>
+  <imagens>
+  </imagens>
+</imovel>
+<imovel>
+  <codigo>107</codigo>
+  <destaque>N</destaque>
+  <endereco>AV GUAIBA, 3450 APTO 205 BLOCO B</endereco>
+  <bairro>VILA ASSUNCAO</bairro>
+  <cidade>PORTO ALEGRE</cidade>
+  <descricao>2 DORMITÓRIOS, 2º ANDAR, AQUECEDOR, ÁREA DE SERVIÇO FECHADA, BANHO  C/ARMARIO E BOX, COZINHA C/ ARMÁRIO, ENSOLARADO, GAS CENTRAL, LAMINADO, LATERAL, LAVABO, LIVING 2 AMBIENTES, RESIDENCIAL, VENTILADOR DE TETO, ELEVADOR(2), GRADIL, GUARITA, JARDIM, PLAYGROUND, PORTÃO AUTOMATIZADO, PORTARIA-24 HS, QUADRA ESPORTIVA, TORRE B, ZELADOR, ÁREA DE 96,00M2</descricao>
+  <descricaoresumida>2 DORMITÓRIOS, 2º ANDAR, AQUECEDOR, ÁREA DE SERVIÇO FECHADA, BANHO  C/ARMARIO E BOX, COZINHA C/ ARMÁRIO, ENSOLARADO, GAS CENTRAL, LAMINADO, LATERAL, LAVABO, LIVING 2 AMBIENTES, RESIDENCIAL, VENTILADOR DE TETO, ELEVADOR(2), GRADIL, GUARITA, JARDIM, PLAYGROUND, PORTÃO AUTOMATIZADO, PORTARIA-24 HS, QUADRA ESPORTIVA, TORRE B, ZELADOR, ÁREA DE 96,00M2</descricaoresumida>
+  <infra_estrutura_condominio>ELEVADOR(2), GRADIL, GUARITA, JARDIM, PLAYGROUND, PORTÃO AUTOMATIZADO, PORTARIA-24 HS, QUADRA ESPORTIVA, TORRE B, ZELADOR</infra_estrutura_condominio>
+  <infra_estrutura_bairro />
+  <area_uso_comum />
+  <area_uso_privativo>96,00</area_uso_privativo>
+  <area_total_imovel />
+  <area_terreno />
+  <tipo_area_terreno />
+  <dormitorios>2</dormitorios>
+  <suites>0</suites>
+  <garagens>0</garagens>
+  <valor>1000,00</valor>
+  <tipo>APARTAMENTO</tipo>
+  <valoriptu>0,00</valoriptu>
+  <valorcondominio>230,00</valorcondominio>
+  <imagens>
+    <imagem><arquivo_foto>00000107AA_fa_0.jpg</arquivo_foto><descricao_foto>Fachada</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AB_fa_0-e jardim.jpg</arquivo_foto><descricao_foto>Fachada e jardim</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AC_ha_1.jpg</arquivo_foto><descricao_foto>Hall</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AD_li_0.jpg</arquivo_foto><descricao_foto>Living</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AE_li_0.jpg</arquivo_foto><descricao_foto>Living</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AF_li_0-vista.jpg</arquivo_foto><descricao_foto>Living vista</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AG_lv_1.jpg</arquivo_foto><descricao_foto>Lavabo</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AH_co_0-com armarios.jpg</arquivo_foto><descricao_foto>Cozinha com armarios</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AI_co_1-com armarios.jpg</arquivo_foto><descricao_foto>Cozinha com armarios</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AJ_co_1-com armarios.jpg</arquivo_foto><descricao_foto>Cozinha com armarios</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AK_co_1-com armarios.jpg</arquivo_foto><descricao_foto>Cozinha com armarios</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AL_ar_1.jpg</arquivo_foto><descricao_foto>Área de Serviço</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AM_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AN_ba_0.jpg</arquivo_foto><descricao_foto>Banheiro Social</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AO_ba_0-box vidro blindex.jpg</arquivo_foto><descricao_foto>Banheiro Social box vidro blindex</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AP_do_0-casal.jpg</arquivo_foto><descricao_foto>Dormitório casal</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AQ_do_0-solteiro.jpg</arquivo_foto><descricao_foto>Dormitório solteiro</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AR_pl_0.jpg</arquivo_foto><descricao_foto>Playground</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AS_es_1.jpg</arquivo_foto><descricao_foto>Quadra de Esportes</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AT_jd_0-folhagens.jpg</arquivo_foto><descricao_foto>Jardim folhagens</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AU_jd_1.jpg</arquivo_foto><descricao_foto>Jardim</descricao_foto></imagem>
+    <imagem><arquivo_foto>00000107AV_jd_0-e estac frente.jpg</arquivo_foto><descricao_foto>Jardim e estac frente</descricao_foto></imagem>
+  </imagens>
+</imovel>
+</imoveis>
+</locacao>
