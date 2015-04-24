@@ -12,7 +12,7 @@ using TK1.Bizz.Mdo.Data.Controller;
 using TK1.Bizz.Mdo.Selling.Xml;
 using TK1.Bizz.Integra;
 using TK1.Utility;
-using TK1.Bizz.Net;
+using TK1.Bizz.Pieta;
 
 namespace TK1.Bizz.Mdo.Selling
 {
@@ -134,8 +134,8 @@ namespace TK1.Bizz.Mdo.Selling
                 {
                     var mailHelper = new MailHelper();
                     if (SendErrorOnly)
-                        mailHelper.SendMail(subject, body, "suporte@tk1.net.br", false);
-                    mailHelper.SendMail(subject, body, mailTo, false);
+                        mailHelper.SendMail(subject, body, "suporte@tk1.net.br");
+                    mailHelper.SendMail(subject, body, mailTo);
                 }
             }
             catch (Exception exception)

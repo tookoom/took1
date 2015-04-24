@@ -101,6 +101,9 @@
     <Compile Include="Controller\ParameterController.cs" />
     <Compile Include="Const\EventTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchAttribute.cs" />
+    <Compile Include="SearchAttributeDataTypes.cs" />
+    <Compile Include="SearchOperators.cs" />
     <Compile Include="TK1DataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

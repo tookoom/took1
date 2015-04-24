@@ -11,10 +11,9 @@ using TK1.Html;
 using TK1.Html.Elements;
 using TK1.Data.Controller;
 using TK1.Xml;
-using TK1.Bizz.Data.Presentation;
-using TK1.Bizz.Data;
-using TK1.Bizz.Data.Controller;
 using TK1.Bizz;
+using TK1.Data.Bizz.Presentation;
+using TK1.Data.Bizz.Controller;
 
 public partial class Pesquisa_Default : System.Web.UI.Page
 {

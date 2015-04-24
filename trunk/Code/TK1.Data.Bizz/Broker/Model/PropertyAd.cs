@@ -43,9 +43,16 @@ namespace TK1.Data.Bizz.Broker.Model
         public string AreaDescription { get; set; }
         public string CondoDescription { get; set; }
         public string PicUrl { get; set; }
+        public Nullable<double> PropertyLatitude { get; set; }
+        public Nullable<double> PropertyLongitude { get; set; }
+        public Nullable<double> CityLatitude { get; set; }
+        public Nullable<double> CityLongitude { get; set; }
+        public Nullable<double> DistrictLatitude { get; set; }
+        public Nullable<double> DistrictLongitude { get; set; }
     
         public virtual ICollection<PropertyAdDetail> PropertyAdDetails { get; set; }
         public virtual ICollection<PropertyAdPic> PropertyAdPics { get; set; }
         public virtual PropertyReleaseAd PropertyReleaseAd { get; set; }
+        public virtual PropertyReleaseAd PropertyReleaseAd1 { get; set; }
     }
 }

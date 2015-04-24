@@ -57,6 +57,10 @@
     <Compile Include="Rent\Xml\XmlSiteTags.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TK1.Bizz.Pieta\TK1.Bizz.Pieta.csproj">
+      <Project>{3a912bdf-bfde-4bb9-b182-6625fa40269a}</Project>
+      <Name>TK1.Bizz.Pieta</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TK1.Bizz\TK1.Bizz.csproj">
       <Project>{AB2EC906-93AE-4F64-B71D-E04C88036D7D}</Project>
       <Name>TK1.Bizz</Name>

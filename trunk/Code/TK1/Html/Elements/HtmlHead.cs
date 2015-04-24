@@ -14,6 +14,11 @@ namespace TK1.Html.Elements
     /// </summary>
     public class HtmlHead : HtmlContainer, IHtmlElement
     {
+        #region CONST VALUES
+        public const string TitleClosingTag = "</title>";
+        public const string TitleOpeningTag = "<title>";
+
+        #endregion
         public string Title { get; set; }
         /// <summary>
         /// Construtor.
@@ -69,5 +74,21 @@ namespace TK1.Html.Elements
         {
             return getContainerHtml("head", identLevel);
         }
+
+        public static HtmlHead Parse(string htmlContent)
+        {
+            if (htmlContent == null)
+                throw new ArgumentNullException("htmlContent");
+
+            HtmlHead result = new HtmlHead() { HtmlContent = htmlContent };
+            //result.HtmlContent = HtmlBase.
+            //if (htmlContent.Contains(HeadeClosingTag))
+            //{
+            //    result.HtmlContent = content.Substring(0, content.IndexOf(DivClosingTag) + DivClosingTag.Length);
+            //}
+            //result.Children.AddRange(HtmlHyperlink.ParseList(result.HtmlContent));
+            return result;
+        }
+
     }
 }

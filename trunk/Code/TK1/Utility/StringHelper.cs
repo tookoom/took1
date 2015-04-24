@@ -87,5 +87,6 @@ namespace TK1.Utility
             UpperFirstWord,
             UpperFirstParagraph
         }
+
     }
 }

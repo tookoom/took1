@@ -78,7 +78,7 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
     {
         string result = string.Empty;
         PropertyAdController propertyAdController = new PropertyAdController(customerCode);
-        var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/L{0}/", adCode);
+        var baseUrl = string.Format(@"http://www.pietaimoveis.com.br/Integra/Arquivos/Mdo/Fotos/4/L{0}/", adCode);
         var adPics = propertyAdController.GetPropertyPicViews(PropertyAdTypes.Release,  adCode);
         string items = string.Empty;
         int index = 0;
@@ -126,116 +126,5 @@ public partial class Imovel_Lancamento_Default : System.Web.UI.Page
 
         return result;
     }
-
-    //private string getSitePicGallery_WEB(int siteAdType, int siteAdID)
-    //{
-    //    string result = string.Empty;
-    //    PropertyAdController propertyAdController = new PropertyAdController(customerCode);
-    //    var baseUrl = string.Format(@"http://www.tk1.net.br/Integra/Mdo/SimVendas/Fotos/4/{0}/", siteAdID);
-    //    var adPics = propertyAdController.GetPropertyPicViews(siteAdType, siteAdID);
-    //    string items = string.Empty;
-    //    int index = 0;
-    //    foreach (var item in adPics)
-    //    {
-    //        index++;
-    //        string fileName = item.FileName;
-    //        string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
-    //        string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
-    //        string imageTitle = string.Format("Foto {0}", index);
-    //        string imageDescription = item.Description ?? string.Empty;
-
-    //        string li = "<li>"
-    //                + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
-    //                + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-    //                + "</a>"
-    //                + "<div class=\"caption\">"
-    //            //+ "<div class=\"download\">"
-    //            //+ "<a href=\"" + imageSource + "\">Download Original </a>"
-    //            //+ "</div>"
-    //                + "<div class=\"image-title\">" + imageTitle + "</div>"
-    //                + "<div class=\"image-desc\">" + imageDescription + "</div>"
-    //                + "</div>"
-    //                + "</li>";
-    //        //string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
-    //        items += li + Environment.NewLine;
-    //    }
-    //    if (!string.IsNullOrEmpty(items))
-    //    {
-    //        string ul = "<ul class=\"thumbs noscript\">"
-    //            + "{0}"
-    //            + "</ul>";
-    //        result = string.Format(ul, items);
-    //    }
-    //    else
-    //    {
-    //        result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
-    //    }
-
-    //    return result;
-    //}
-    //private string getSitePicGallery_MDO(int siteAdType, int siteAdID)
-    //{
-    //    PropertyAdController propertyAdController = new PropertyAdController(customerCode);
-    //    var adPics = propertyAdController.GetPropertyPicViews(siteAdType, siteAdID);
-
-    //    string result = string.Empty;
-    //    string baseUrl = string.Format("~\\Integra\\Mdo\\SimVendas\\Fotos\\{0}\\{1}\\", mdoCode, siteAdID);
-
-    //    if (!string.IsNullOrEmpty(baseUrl))
-    //    {
-    //        baseUrl = this.ResolveUrl(baseUrl);
-    //        string path = Server.MapPath(baseUrl);
-    //        if (Directory.Exists(path))
-    //        {
-    //            string items = string.Empty;
-    //            int index = 0;
-    //            foreach (var file in Directory.GetFiles(path, "*.jpg"))
-    //            {
-    //                index++;
-    //                string fileName = Path.GetFileName(file);
-    //                string imageSource = baseUrl + fileName;// +"resized\\" + fileName;
-    //                string imageThumbSource = baseUrl + fileName;// +"thumbs\\" + fileName;
-    //                string imageTitle = string.Format("Foto {0}", index);
-    //                string imageDescription = propertyAdController.GetSitePicDescription(fileName) ?? string.Empty;
-
-    //                string li = "<li>"
-    //                        + "<a class=\"thumb\" name=\"leaf\" href=\"" + imageSource + "\" title=\"" + imageTitle + "\">"
-    //                        + "<img src=\"" + imageThumbSource + "\" alt=\"" + imageTitle + "\" />"
-    //                        + "</a>"
-    //                        + "<div class=\"caption\">"
-    //                    //+ "<div class=\"download\">"
-    //                    //+ "<a href=\"" + imageSource + "\">Download Original </a>"
-    //                    //+ "</div>"
-    //                        + "<div class=\"image-title\">" + imageTitle + "</div>"
-    //                        + "<div class=\"image-desc\">" + imageDescription + "</div>"
-    //                        + "</div>"
-    //                        + "</li>";
-    //                //string li = string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", imageSource);
-    //                items += li + Environment.NewLine;
-    //            }
-    //            if (!string.IsNullOrEmpty(items))
-    //            {
-    //                string ul = "<ul class=\"thumbs noscript\">"
-    //                    + "{0}"
-    //                    + "</ul>";
-    //                result = string.Format(ul, items);
-    //            }
-    //            else
-    //            {
-    //                result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
-    //            }
-
-    //        }
-    //        else
-    //        {
-    //            result = "<img class=\"center\" src=\"http://www.tk1.net.br/Nav/Mdo/SimVendas/Imagens/ImagemNaoDisponivel.png\" title=\"Imagem não disponível\" />";
-    //        }
-
-    //        //result.Add(string.Format("<li><img src=\"{0}\" title=\"1\" /></li>", baseUrl));
-    //    }
-    //    //result.Add("~/Images/PicNotFound.jpg");
-
-    //    return result;
-    //}
 
 }

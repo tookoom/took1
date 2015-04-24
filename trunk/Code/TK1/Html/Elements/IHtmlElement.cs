@@ -26,5 +26,6 @@ namespace TK1.Html.Elements
         /// <returns>String com HTML do elemento e elementos filhos, se existirem.</returns>
         string GetHtml(int identLevel);
 
+
     }
 }

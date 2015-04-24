@@ -13,6 +13,14 @@ namespace TK1.Html
     /// </summary>
     public class HtmlBase
     {
+        public const string DivClosingTag = "</div>";
+        public const string DivOpeningTag = "<div";
+        public const string HyperlinkClosingTag = "</a>";
+        public const string HyperlinkOpeningTag = "<a";
+        public const string TableClosingTag = "</table>";
+        public const string TableOpeningTag = "<table";
+
+        public string HtmlContent { get; set; }
         protected string getIdentation(int identLevel)
         {
             string result = string.Empty;
@@ -21,6 +29,17 @@ namespace TK1.Html
                 result += "\t";
             }
             return result;
+        }
+
+        protected static string RemoveQuotes(string text)
+        {
+            if (text == null)
+                throw new ArgumentNullException("text");
+            if (text.Contains("\""))
+                text = text.Replace("\"", "");
+            if (text.Contains("'"))
+                text = text.Replace("'", "");
+            return text;
         }
     }
 }

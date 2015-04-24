@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TK1.Bizz.Data;
-using TK1.Bizz.Data.Controller;
-using TK1.Bizz.Data.Presentation;
+//using TK1.Bizz.Data;
+//using TK1.Bizz.Data.Controller;
+//using TK1.Bizz.Data.Presentation;
 using TK1.Bizz;
+using TK1.Data.Bizz.Controller;
+using TK1.Data.Bizz.Presentation;
 
 public partial class _Default : System.Web.UI.Page
 {

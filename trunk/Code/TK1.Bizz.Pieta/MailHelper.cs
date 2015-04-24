@@ -27,7 +27,7 @@ namespace TK1.Bizz.Pieta
                 string mailFrom = "contato@pietaimoveis.com.br";
                 //CREDENTIALS
                 var domain = string.Empty;
-                var password = "senhapieta";
+                var password = "93879999";
                 var userName = mailFrom;
                 var credentials = new NetworkCredential() { Domain = domain, Password = password, UserName = userName };
 

@@ -17,30 +17,60 @@
     	<script type="text/javascript">
     	    $(document).ready(function () {
 
-    	        $('#slideshowHolder').jqFancyTransitions({ width: 932, height: 150 });
+    	        $('#slideshowHolder').jqFancyTransitions({ width: 932, height: 150, delay: 8000 });
 
 
 			    $("#slider").easySlider({
 				    auto: true, 
 				    continuous: true,
 				    numeric: true,
-				    pause: 5000,
+				    pause: 7000,
 				    controlsShow: true,
 			    });
 		    });	
 	</script>
 
     <div id='slideshowHolder'>
-        <img src="Images/BanneCasaNova01.png" />
-        <img src="Images/BanneCasaNova02.png" />
+        <img src="Images/BannerServ01.png" />
+        <img src="Images/BannerServ02.png" />
     </div>
 
 
     <div class="headerBlueLine"><h1>Destaques Vendas</h1></div>
     <div class="featuredSites">
 
-        <asp:DataList ID="dataListFeaturedSiteAds" runat="server" 
+        <asp:DataList ID="dataListFeaturedSellSiteAds" runat="server" 
             DataSourceID="objectDataSourceFeaturedPropertyAds" RepeatDirection="Horizontal">
+            <ItemTemplate>
+                <div class="featureViewerOuter">
+                    <div class="featureViewerInner">
+                        <div class="featureViewerImage">
+                            <a href="/Imovel/Default.aspx?ID=<%# Eval("AdCode")%>&AdType=<%# Eval("AdType")%>">
+                                <img src="<%# Eval("MainPicUrl") %>" width="160px"/>
+                            </a>
+                        </div>
+                        <h2><%# Eval("District")%></h2>
+                        <h3><%# Eval("PropertyType")%></h3>
+                        <p><%# Eval("TotalRooms")%>  <%# Eval("PropertyTypeRoomName")%></p>
+                        <p><%# Eval("TotalArea")%>  m²</p>
+                        <p><b><%# Eval("Value", "{0:c}")%></b></p>
+                        <div class="featureViewerDetailButton">
+                            <a href="/Imovel/Default.aspx?ID=<%# Eval("AdCode")%>&AdType=<%# Eval("AdType")%>">
+                                Detalhes</a>
+                        </div>
+
+                    </div >
+                </div>
+            </ItemTemplate>
+        </asp:DataList>
+
+
+    </div>
+    <div class="headerBlueLine"><h1>Destaques Locação</h1></div>
+    <div class="featuredSites">
+
+        <asp:DataList ID="dataListFeaturedRentSiteAds" runat="server" 
+            DataSourceID="objectDataSourceFeaturedRentPropertyAds" RepeatDirection="Horizontal">
             <ItemTemplate>
                 <div class="featureViewerOuter">
                     <div class="featureViewerInner">
@@ -106,6 +136,15 @@
 
     <asp:ObjectDataSource ID="objectDataSourceFeaturedPropertyAds" runat="server" 
         SelectMethod="GetFeaturedSellingPropertyAds" 
+        TypeName="TK1.Data.Bizz.Client.Binding.PropertyAdBindingSource">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />
+            <asp:Parameter DefaultValue="5" Name="count" Type="Int32" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+
+    <asp:ObjectDataSource ID="objectDataSourceFeaturedRentPropertyAds" runat="server" 
+        SelectMethod="GetFeaturedRentPropertyAds" 
         TypeName="TK1.Data.Bizz.Client.Binding.PropertyAdBindingSource">
         <SelectParameters>
             <asp:Parameter DefaultValue="pieta" Name="customerCode" Type="String" />

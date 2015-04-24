@@ -192,37 +192,11 @@ namespace TK1.Data.Bizz.Client.Controller
                     var propertyCategory = PropertyAdCategories.Residencial;
                     if (propertyAd.CategoryName != PropertyAdCategories.Residencial.ToString())
                         propertyCategory = PropertyAdCategories.Comercial;
-                    //propertyAd.PropertyAdDetails.Load();
-                    //propertyAd.PropertyAdPics.Load();
                     string mainPicName = string.Empty;
                     if (propertyAd.PropertyAdPics.Count > 0)
                         mainPicName = propertyAd.PropertyAdPics.OrderBy(o => o.PropertyAdPicID).FirstOrDefault().FileName;
 
-                    result = new PropertyAdView()
-                    {
-                        AdCategory = propertyCategory,
-                        AdType = adType,
-                        AdTypeName = PropertyTranslations.GetAdTypeDisplayName(adType, uiCulture),
-                        AreaDescription = propertyAd.AreaDescription,
-                        City = propertyAd.CityName,
-                        CityTaxes = (float)(propertyAd.CityTaxes ?? 0),
-                        AdCode = propertyAd.PropertyAdID,
-                        CondoDescription = propertyAd.CondoDescription,
-                        CondoTaxes = (float)(propertyAd.CondoTaxes ?? 0),
-                        District = propertyAd.DistrictName,
-                        FullDescription = propertyAd.FullDescription,
-                        IsAddressVisible = false,
-                        MainPicUrl = mainPicName,
-                        InternalArea = (float)propertyAd.InternalArea,
-                        TotalArea = (float)propertyAd.TotalArea,
-                        TotalRooms = propertyAd.TotalRooms,
-                        PropertyType = propertyAd.PropertyTypeName,
-                        PropertyTypeRoomName = PropertyTranslations.GetRoomDisplayName(propertyAd.PropertyTypeName, uiCulture),
-                        ShortDescription = propertyAd.ShortDescription,
-                        Title = propertyAd.Title,
-                        Value = (float)(propertyAd.Value)
-
-                    };
+                    result = getPropertyAdView(propertyAd);
                 }
             }
             catch (Exception exception)
@@ -282,7 +256,7 @@ namespace TK1.Data.Bizz.Client.Controller
                     {
                         result.Add(new PropertyAdDetailView()
                         {
-                            Name = detail.Value + " " + detail.Description,
+                            Code = detail.Value + " " + detail.Description,
                             Value = detail.Value,
                             ImageUrl = "Dot.png"
                         });
@@ -351,7 +325,7 @@ namespace TK1.Data.Bizz.Client.Controller
 
                     string mainPicUrl = string.Empty;
                     if (propertyAd.PropertyAdPics.Count > 0)
-                        mainPicUrl = propertyAd.PropertyAdPics.OrderBy(o => o.PropertyAdPicID).FirstOrDefault().ThumbnailUrl;
+                        mainPicUrl = propertyAd.PropertyAdPics.OrderBy(o => o.PropertyAdPicID).FirstOrDefault().PictureUrl;
                     else
                         mainPicUrl = @"http://www.tk1.net.br/Images/ImagemNaoDisponivelThumb.png";
 
@@ -410,26 +384,6 @@ namespace TK1.Data.Bizz.Client.Controller
                 result = new List<PropertyAdView>();
             return result;
         }
-
-        //public string GetPropertyPicDescription(string fileName)
-        //{
-        //    string result = null;
-        //    if (fileName != null)
-        //    {
-        //        try
-        //        {
-        //            result = (from o in Entities.PropertyAdPic
-        //                      where o.FileName == fileName
-        //                      select o.Description).FirstOrDefault();
-
-        //        }
-        //        catch (Exception exception)
-        //        {
-        //            AppLogClientController.WriteException("PropertyAsController.GetPropertyPicDescription", exception);
-        //        }
-        //    }
-        //    return result;
-        //}
 
         #endregion
 
@@ -611,6 +565,16 @@ namespace TK1.Data.Bizz.Client.Controller
                 Entities.SaveChanges();
             }
         }
+        public void SetPropertyAdDetails(PropertyAdTypes adType, int adCode, List<PropertyAdDetailView> adDetails)
+        {
+            if (adDetails == null)
+                throw new NullReferenceException("Paramenter adDetails can't be null");
+
+            foreach (var item in adDetails)
+            {
+                SetPropertyAdDetails(adType, adCode, item);
+            }
+        }
         public void SetPropertyAdDetails(PropertyAdTypes adType, int adCode, PropertyAdDetailView adDetailView)
         {
             if (adDetailView == null)
@@ -622,7 +586,7 @@ namespace TK1.Data.Bizz.Client.Controller
                 propertyAd.PropertyAdDetails.Add(new PropertyAdDetail
                 {
                     CustomerCode = customerCode,
-                    Description = adDetailView.Name,
+                    Description = adDetailView.Code,
                     PropertyAdID = adCode,
                     PropertyAdTypeID = adType.ToString(),
                     Type = "",
@@ -665,8 +629,6 @@ namespace TK1.Data.Bizz.Client.Controller
             var propertyAd = Entities.PropertyAd.Where(o => o.CustomerCode == customerCode & o.PropertyAdTypeID == propertyTypeID & o.PropertyAdID == adCode).FirstOrDefault();
             if (propertyAd != null)
             {
-                //propertyAd.PropertyAdDetails.Load();
-                //propertyAd.PropertyAdPics.Load();
                 result = propertyAd;
             }
             return result;

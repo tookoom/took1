@@ -24,5 +24,6 @@ namespace TK1.Bizz.Broker.Presentation
         public float TotalArea { get; set; }
         public int TotalRooms { get; set; }
         public float Value { get; set; }
+
     }
 }

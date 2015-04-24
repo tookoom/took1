@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TK1ClientBaseModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TK1ClientBaseModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="TK1ClientBaseModelStoreContainer">
-          <EntitySet Name="TK1_ClientAppLog" EntityType="TK1ClientBaseModel.Store.TK1_ClientAppLog" store:Type="Tables" Schema="tk1" />
-          <EntitySet Name="TK1_ClientAudit" EntityType="TK1ClientBaseModel.Store.TK1_ClientAudit" store:Type="Tables" Schema="tk1" />
-          <EntitySet Name="TK1_ClientConfiguration" EntityType="TK1ClientBaseModel.Store.TK1_ClientConfiguration" store:Type="Tables" Schema="tk1" />
+          <EntitySet Name="TK1_ClientAppLog" EntityType="TK1ClientBaseModel.Store.TK1_ClientAppLog" store:Type="Tables" Schema="tk1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="TK1_ClientAudit" EntityType="TK1ClientBaseModel.Store.TK1_ClientAudit" store:Type="Tables" Schema="tk1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="TK1_ClientConfiguration" EntityType="TK1ClientBaseModel.Store.TK1_ClientConfiguration" store:Type="Tables" Schema="tk1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
         </EntityContainer>
         <EntityType Name="TK1_ClientAppLog">
           <Key>
@@ -50,7 +50,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TK1ClientBaseModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="TK1ClientBaseModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="TK1ClientBaseEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="ClientAppLog" EntityType="TK1ClientBaseModel.ClientAppLog" />
           <EntitySet Name="ClientConfiguration" EntityType="TK1ClientBaseModel.ClientConfiguration" />
@@ -97,7 +97,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TK1ClientBaseModelStoreContainer" CdmEntityContainer="TK1ClientBaseEntities">
           <EntitySetMapping Name="ClientAppLog">
             <EntityTypeMapping TypeName="TK1ClientBaseModel.ClientAppLog">
@@ -144,27 +144,27 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="False" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram Name="ClientBaseModel">
-        <EntityTypeShape EntityType="TK1ClientBaseModel.ClientAppLog" Width="2.875" PointX="0.75" PointY="0.75" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="TK1ClientBaseModel.ClientConfiguration" Width="2.5" PointX="4" PointY="0.75" />
-        <EntityTypeShape EntityType="TK1ClientBaseModel.ClientAudit" Width="2.125" PointX="0.5" PointY="3.5" />
-      </Diagram>
-    </Diagrams>
-  </Designer>
+    <edmx:Diagrams>
+      <edmx:Diagram Name="ClientBaseModel">
+        <edmx:EntityTypeShape EntityType="TK1ClientBaseModel.ClientAppLog" Width="2.875" PointX="0.75" PointY="0.75" Height="1.9802864583333388" />
+        <edmx:EntityTypeShape EntityType="TK1ClientBaseModel.ClientConfiguration" Width="2.5" PointX="4" PointY="0.75" />
+        <edmx:EntityTypeShape EntityType="TK1ClientBaseModel.ClientAudit" Width="2.125" PointX="0.5" PointY="3.5" />
+      </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
 </edmx:Edmx>

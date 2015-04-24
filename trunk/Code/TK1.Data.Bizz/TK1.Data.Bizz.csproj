@@ -75,10 +75,30 @@
     <Compile Include="Broker\Model\PropertyAdPic.cs">
       <DependentUpon>BrokerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Broker\Model\PropertyAdSearchAttributes.cs" />
     <Compile Include="Broker\Model\PropertyReleaseAd.cs">
       <DependentUpon>BrokerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Broker\Controller\BizzBrokerController.cs" />
+    <Compile Include="Mapper\Controller\BizzMapperController.cs" />
+    <Compile Include="Mapper\Model\LocationGroup.cs">
+      <DependentUpon>MapperModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\Model\MapperModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapperModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\Model\MapperModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapperModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapper\Model\MapperModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapperModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +110,10 @@
       <Project>{2484cd63-a0b0-46ae-a423-b32e6a6ad279}</Project>
       <Name>TK1.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TK1\TK1.csproj">
+      <Project>{b1b8234d-8130-459a-8c16-91e6190e708d}</Project>
+      <Name>TK1</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Broker\Model\BrokerModel.edmx">
@@ -98,7 +122,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Broker\Model\BrokerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BrokerModel.edmx</DependentUpon>
@@ -112,15 +138,29 @@
       <DependentUpon>BrokerModel.edmx</DependentUpon>
       <LastGenOutput>BrokerModel.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="Mapper\Model\MapperModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MapperModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Mapper\Model\MapperModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MapperModel.edmx</DependentUpon>
+      <LastGenOutput>MapperModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Mapper\Model\MapperModel.edmx.diagram">
+      <DependentUpon>MapperModel.edmx</DependentUpon>
+    </None>
+    <None Include="Mapper\Model\MapperModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MapperModel.edmx</DependentUpon>
+      <LastGenOutput>MapperModel.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Broker\Presentation\" />
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

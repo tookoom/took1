@@ -5,16 +5,18 @@ Mapper.MessageDivId = 'messages';
 Mapper.DialogDivId = 'dialog';
 
 Mapper.Bounds = null;
-Mapper.DebugMode = false;
+Mapper.DebugMode = true;
 Mapper.GroupMode = true;
 
 Mapper.map;
 Mapper.searchManager;
 Mapper.geoLocationProvider;
+
 Mapper.gpsLayer;
 Mapper.gpsEnabled = false;
 Mapper.trafficLayer;
 Mapper.trafficEnabled = false;
+
 Mapper.infoBoxes = null;
 Mapper.currentInfoBox = null;
 Mapper.pushpins = null;
@@ -172,23 +174,22 @@ Mapper.addListener = function (element, eventName, eventHandler) {
         element.attachEvent('on' + eventName, eventHandler);
     }
 }
-Mapper.addPin = function (location, title, description, url, value) {
-    var locationKey = Mapper.getLocationKey(location);
+Mapper.addPin = function (locationKey) {
+    var ad = AdController.Get(locationKey);
 
-    if (Mapper.pushpins.getVal(locationKey) == null) {
+    if (ad != null & Mapper.pushpins.getVal(locationKey) == null) {
 
-        var descriptionText = description + " " + value;
-        var titleClick = function () {
-            window.open(url, '_blank');
-        }
-        var infobox = new Microsoft.Maps.Infobox(location, { title: title, titleClickHandler: titleClick, description: descriptionText, visible: false });
-        Microsoft.Maps.Events.addHandler(infobox, 'mouseleave', Mapper.onInfoboxMouseLeave);
-        Mapper.map.entities.push(infobox);
-        Mapper.infoBoxes.add(locationKey, infobox);
+        //var descriptionText = ad.Description + " " + ad.Value;
+        //var titleClick = function () {
+        //    window.open(ad.Url, '_blank');
+        //}
+        //var infobox = new Microsoft.Maps.Infobox(location, { title: title, titleClickHandler: titleClick, description: descriptionText, visible: false });
+        //Microsoft.Maps.Events.addHandler(infobox, 'mouseleave', Mapper.onInfoboxMouseLeave);
+        //Mapper.map.entities.push(infobox);
+        //Mapper.infoBoxes.add(locationKey, infobox);
 
-        var pushpin = new Microsoft.Maps.Pushpin(location, { infobox: infobox });
-        //Microsoft.Maps.Events.addHandler(pushpin, 'mousedown', Mapper.onPinMouseDown);
-        //Microsoft.Maps.Events.addHandler(pushpin, 'mouseout', Mapper.onPinMouseOut);
+        //var pushpin = new Microsoft.Maps.Pushpin(location, { infobox: infobox });
+        var pushpin = new Microsoft.Maps.Pushpin(location);
         Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', Mapper.onPinMouseOver);
         Mapper.map.entities.push(pushpin);
         Mapper.pushpins.add(locationKey, pushpin);
@@ -242,7 +243,16 @@ Mapper.renderItems = function (mapItems) {
     $.each(mapItems, function (i, mapItem) {
         count = count + 1;
         var location = new Microsoft.Maps.Location(mapItem.Latitude, mapItem.Longitude, 0, null);
-        Mapper.addPin(location, mapItem.Title, mapItem.Description, mapItem.Url, mapItem.Value);
+        var locationKey = Mapper.getLocationKey(location);
+        var newAd = new Ad();
+        Ad.Location = location;
+        Ad.Title = mapItem.Title;
+        Ad.Description = mapItem.Description;
+        Ad.Url = mapItem.Url;
+        Ad.Value = mapItem.Value;
+
+        AdController.Set(locationKey)
+        Mapper.addPin(locationKey);
     });
     Mapper.showMessage("Ads Loaded: " + count);
 }
@@ -289,17 +299,31 @@ Mapper.showDialog = function (msg) {
         //div.html("");
     }
 }
-Mapper.showInfobox = function (location) {
-    var key = Mapper.getLocationKey(location);
-    var infobox = Mapper.infoBoxes.getVal(key);
-    infobox.setOptions({ visible: true });
-    if (Mapper.currentInfoBox != null) {
-        Mapper.currentInfoBox.setOptions({ visible: false });
-    }
-    Mapper.currentInfoBox = infobox;
+Mapper.showInfobox = function (locationKey) {
+    var ad = AdController.Get(locationKey);
 
-    var pushpin = Mapper.pushpins.getVal(key);
-    pushpin.setOptions({ visible: false });
+    if (ad != null) {
+        var descriptionText = ad.Description + " " + ad.Value;
+        var titleClick = function () {
+            window.open(ad.Url, '_blank');
+        }
+
+        var infobox = new Microsoft.Maps.Infobox(location, { title: ad.Title, titleClickHandler: titleClick, description: descriptionText, visible: true });
+        Microsoft.Maps.Events.addHandler(infobox, 'mouseleave', Mapper.onInfoboxMouseLeave);
+        Mapper.map.entities.push(infobox);
+        //Mapper.infoBoxes.add(locationKey, infobox);
+        if (Mapper.currentInfoBox != null) {
+            Mapper.currentInfoBox.setOptions({ visible: false });
+        }
+        Mapper.currentInfoBox = infobox;
+
+        var pushpin = Mapper.pushpins.getVal(key);
+        pushpin.setOptions({ visible: false });
+    }
+
+
+    //var infobox = Mapper.infoBoxes.getVal(key);
+    //infobox.setOptions({ visible: true });
 
 }
 Mapper.showMessage = function (msg) {
@@ -427,7 +451,8 @@ Mapper.onPinMouseOut = function (e) {
 }
 Mapper.onPinMouseOver = function (e) {
     if (e.targetType == 'pushpin') {
-        Mapper.showInfobox(e.target.getLocation());
+        var locationKey = Mapper.getLocationKey(e.target.getLocation());
+        Mapper.showInfobox(locationKey);
     }
 }
 Mapper.onViewChange = function (e) {
